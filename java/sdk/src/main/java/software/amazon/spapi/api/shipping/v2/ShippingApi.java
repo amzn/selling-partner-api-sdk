@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -71,19 +72,88 @@ public class ShippingApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for cancelShipment
-     *
-     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelShipmentCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket cancelShipmentBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-cancelShipment"))
+            .build();
+
+    private final Bucket createClaimBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-createClaim"))
+            .build();
+
+    private final Bucket directPurchaseShipmentBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-directPurchaseShipment"))
+            .build();
+
+    private final Bucket generateCollectionFormBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-generateCollectionForm"))
+            .build();
+
+    private final Bucket getAccessPointsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getAccessPoints"))
+            .build();
+
+    private final Bucket getAdditionalInputsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getAdditionalInputs"))
+            .build();
+
+    private final Bucket getCarrierAccountFormInputsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getCarrierAccountFormInputs"))
+            .build();
+
+    private final Bucket getCarrierAccountsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getCarrierAccounts"))
+            .build();
+
+    private final Bucket getCollectionFormBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getCollectionForm"))
+            .build();
+
+    private final Bucket getCollectionFormHistoryBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getCollectionFormHistory"))
+            .build();
+
+    private final Bucket getRatesBucket =
+            Bucket.builder().addLimit(config.getLimit("ShippingApi-getRates")).build();
+
+    private final Bucket getShipmentDocumentsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getShipmentDocuments"))
+            .build();
+
+    private final Bucket getTrackingBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getTracking"))
+            .build();
+
+    private final Bucket getUnmanifestedShipmentsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-getUnmanifestedShipments"))
+            .build();
+
+    private final Bucket linkCarrierAccountBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-linkCarrierAccount"))
+            .build();
+
+    private final Bucket linkCarrierAccount_0Bucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-linkCarrierAccount_0"))
+            .build();
+
+    private final Bucket oneClickShipmentBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-oneClickShipment"))
+            .build();
+
+    private final Bucket purchaseShipmentBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-purchaseShipment"))
+            .build();
+
+    private final Bucket submitNdrFeedbackBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-submitNdrFeedback"))
+            .build();
+
+    private final Bucket unlinkCarrierAccountBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShippingApi-unlinkCarrierAccount"))
+            .build();
+
+    private okhttp3.Call cancelShipmentCall(
             String shipmentId,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -192,8 +262,10 @@ public class ShippingApi {
     public ApiResponse<CancelShipmentResponse> cancelShipmentWithHttpInfo(
             String shipmentId, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (cancelShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
     }
 
     /**
@@ -227,23 +299,14 @@ public class ShippingApi {
 
         okhttp3.Call call = cancelShipmentValidateBeforeCall(
                 shipmentId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (cancelShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
     }
-    /**
-     * Build call for createClaim
-     *
-     * @param body Request body for the createClaim operation (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createClaimCall(
+
+    private okhttp3.Call createClaimCall(
             CreateClaimRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -348,8 +411,10 @@ public class ShippingApi {
     public ApiResponse<CreateClaimResponse> createClaimWithHttpInfo(
             CreateClaimRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = createClaimValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createClaimBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createClaim operation exceeds rate limit");
     }
 
     /**
@@ -382,28 +447,14 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 createClaimValidateBeforeCall(body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createClaimBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createClaim operation exceeds rate limit");
     }
-    /**
-     * Build call for directPurchaseShipment
-     *
-     * @param body DirectPurchaseRequest body (required)
-     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
-     *     request. (optional)
-     * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary
-     *     language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation.
-     *     This does not support additional subtags beyond the primary and secondary language subtags. (optional)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call directPurchaseShipmentCall(
+
+    private okhttp3.Call directPurchaseShipmentCall(
             DirectPurchaseRequest body,
             String xAmznIdempotencyKey,
             String locale,
@@ -532,8 +583,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call = directPurchaseShipmentValidateBeforeCall(
                 body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (directPurchaseShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("directPurchaseShipment operation exceeds rate limit");
     }
 
     /**
@@ -576,25 +629,14 @@ public class ShippingApi {
 
         okhttp3.Call call = directPurchaseShipmentValidateBeforeCall(
                 body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (directPurchaseShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("directPurchaseShipment operation exceeds rate limit");
     }
-    /**
-     * Build call for generateCollectionForm
-     *
-     * @param body GenerateCollectionFormRequest body (required)
-     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
-     *     request. (optional)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call generateCollectionFormCall(
+
+    private okhttp3.Call generateCollectionFormCall(
             GenerateCollectionFormRequest body,
             String xAmznIdempotencyKey,
             String xAmznShippingBusinessId,
@@ -712,8 +754,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call = generateCollectionFormValidateBeforeCall(
                 body, xAmznIdempotencyKey, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (generateCollectionFormBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("generateCollectionForm operation exceeds rate limit");
     }
 
     /**
@@ -752,25 +796,14 @@ public class ShippingApi {
 
         okhttp3.Call call = generateCollectionFormValidateBeforeCall(
                 body, xAmznIdempotencyKey, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (generateCollectionFormBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("generateCollectionForm operation exceeds rate limit");
     }
-    /**
-     * Build call for getAccessPoints
-     *
-     * @param accessPointTypes Access point types (required)
-     * @param countryCode Country code for access point (required)
-     * @param postalCode postal code for access point (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getAccessPointsCall(
+
+    private okhttp3.Call getAccessPointsCall(
             List<String> accessPointTypes,
             String countryCode,
             String postalCode,
@@ -910,8 +943,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getAccessPointsValidateBeforeCall(
                 accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getAccessPointsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAccessPoints operation exceeds rate limit");
     }
 
     /**
@@ -956,25 +991,14 @@ public class ShippingApi {
                 xAmznShippingBusinessId,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getAccessPointsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getAccessPoints operation exceeds rate limit");
     }
-    /**
-     * Build call for getAdditionalInputs
-     *
-     * @param requestToken The request token returned in the response to the getRates operation. (required)
-     * @param rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates
-     *     operation. (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getAdditionalInputsCall(
+
+    private okhttp3.Call getAdditionalInputsCall(
             String requestToken,
             String rateId,
             String xAmznShippingBusinessId,
@@ -1102,8 +1126,10 @@ public class ShippingApi {
             String requestToken, String rateId, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call =
                 getAdditionalInputsValidateBeforeCall(requestToken, rateId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getAdditionalInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAdditionalInputs operation exceeds rate limit");
     }
 
     /**
@@ -1144,22 +1170,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getAdditionalInputsValidateBeforeCall(
                 requestToken, rateId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getAdditionalInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getAdditionalInputs operation exceeds rate limit");
     }
-    /**
-     * Build call for getCarrierAccountFormInputs
-     *
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCarrierAccountFormInputsCall(
+
+    private okhttp3.Call getCarrierAccountFormInputsCall(
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1260,8 +1278,10 @@ public class ShippingApi {
     public ApiResponse<GetCarrierAccountFormInputsResponse> getCarrierAccountFormInputsWithHttpInfo(
             String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = getCarrierAccountFormInputsValidateBeforeCall(xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCarrierAccountFormInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCarrierAccountFormInputs operation exceeds rate limit");
     }
 
     /**
@@ -1294,23 +1314,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getCarrierAccountFormInputsValidateBeforeCall(
                 xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCarrierAccountFormInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCarrierAccountFormInputs operation exceeds rate limit");
     }
-    /**
-     * Build call for getCarrierAccounts
-     *
-     * @param body GetCarrierAccountsRequest body (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCarrierAccountsCall(
+
+    private okhttp3.Call getCarrierAccountsCall(
             GetCarrierAccountsRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -1417,8 +1428,10 @@ public class ShippingApi {
     public ApiResponse<GetCarrierAccountsResponse> getCarrierAccountsWithHttpInfo(
             GetCarrierAccountsRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = getCarrierAccountsValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCarrierAccountsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCarrierAccounts operation exceeds rate limit");
     }
 
     /**
@@ -1454,23 +1467,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getCarrierAccountsValidateBeforeCall(
                 body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCarrierAccountsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCarrierAccounts operation exceeds rate limit");
     }
-    /**
-     * Build call for getCollectionForm
-     *
-     * @param collectionFormId collection form Id to reprint a collection. (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCollectionFormCall(
+
+    private okhttp3.Call getCollectionFormCall(
             String collectionFormId,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -1580,8 +1584,10 @@ public class ShippingApi {
     public ApiResponse<GetCollectionFormResponse> getCollectionFormWithHttpInfo(
             String collectionFormId, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = getCollectionFormValidateBeforeCall(collectionFormId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCollectionFormBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCollectionForm operation exceeds rate limit");
     }
 
     /**
@@ -1616,23 +1622,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getCollectionFormValidateBeforeCall(
                 collectionFormId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCollectionFormBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCollectionForm operation exceeds rate limit");
     }
-    /**
-     * Build call for getCollectionFormHistory
-     *
-     * @param body GetCollectionFormHistoryRequest body (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCollectionFormHistoryCall(
+
+    private okhttp3.Call getCollectionFormHistoryCall(
             GetCollectionFormHistoryRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -1741,8 +1738,10 @@ public class ShippingApi {
     public ApiResponse<GetCollectionFormHistoryResponse> getCollectionFormHistoryWithHttpInfo(
             GetCollectionFormHistoryRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = getCollectionFormHistoryValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCollectionFormHistoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCollectionFormHistory operation exceeds rate limit");
     }
 
     /**
@@ -1778,23 +1777,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getCollectionFormHistoryValidateBeforeCall(
                 body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCollectionFormHistoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCollectionFormHistory operation exceeds rate limit");
     }
-    /**
-     * Build call for getRates
-     *
-     * @param body GetRatesRequest body (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getRatesCall(
+
+    private okhttp3.Call getRatesCall(
             GetRatesRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -1899,8 +1889,10 @@ public class ShippingApi {
     public ApiResponse<GetRatesResponse> getRatesWithHttpInfo(GetRatesRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         okhttp3.Call call = getRatesValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getRatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getRates operation exceeds rate limit");
     }
 
     /**
@@ -1934,29 +1926,14 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getRatesValidateBeforeCall(body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getRatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getRates operation exceeds rate limit");
     }
-    /**
-     * Build call for getShipmentDocuments
-     *
-     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
-     * @param packageClientReferenceId The package client reference identifier originally provided in the request body
-     *     parameter for the getRates operation. (required)
-     * @param format The file format of the document. Must be one of the supported formats returned by the getRates
-     *     operation. (optional)
-     * @param dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the
-     *     supported resolutions returned in the response to the getRates operation. (optional)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getShipmentDocumentsCall(
+
+    private okhttp3.Call getShipmentDocumentsCall(
             String shipmentId,
             String packageClientReferenceId,
             String format,
@@ -2112,8 +2089,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getShipmentDocumentsValidateBeforeCall(
                 shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getShipmentDocumentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShipmentDocuments operation exceeds rate limit");
     }
 
     /**
@@ -2164,26 +2143,14 @@ public class ShippingApi {
                 xAmznShippingBusinessId,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getShipmentDocumentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getShipmentDocuments operation exceeds rate limit");
     }
-    /**
-     * Build call for getTracking
-     *
-     * @param trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
-     *     (required)
-     * @param carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
-     *     (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getTrackingCall(
+
+    private okhttp3.Call getTrackingCall(
             String trackingId,
             String carrierId,
             String xAmznShippingBusinessId,
@@ -2304,8 +2271,10 @@ public class ShippingApi {
     public ApiResponse<GetTrackingResponse> getTrackingWithHttpInfo(
             String trackingId, String carrierId, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = getTrackingValidateBeforeCall(trackingId, carrierId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getTrackingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTracking operation exceeds rate limit");
     }
 
     /**
@@ -2345,23 +2314,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getTrackingValidateBeforeCall(
                 trackingId, carrierId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getTrackingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getTracking operation exceeds rate limit");
     }
-    /**
-     * Build call for getUnmanifestedShipments
-     *
-     * @param body GetUmanifestedShipmentsRequest body (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getUnmanifestedShipmentsCall(
+
+    private okhttp3.Call getUnmanifestedShipmentsCall(
             GetUnmanifestedShipmentsRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -2470,8 +2430,10 @@ public class ShippingApi {
     public ApiResponse<GetUnmanifestedShipmentsResponse> getUnmanifestedShipmentsWithHttpInfo(
             GetUnmanifestedShipmentsRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = getUnmanifestedShipmentsValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getUnmanifestedShipmentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getUnmanifestedShipments operation exceeds rate limit");
     }
 
     /**
@@ -2508,24 +2470,14 @@ public class ShippingApi {
 
         okhttp3.Call call = getUnmanifestedShipmentsValidateBeforeCall(
                 body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getUnmanifestedShipmentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getUnmanifestedShipments operation exceeds rate limit");
     }
-    /**
-     * Build call for linkCarrierAccount
-     *
-     * @param body LinkCarrierAccountRequest body (required)
-     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call linkCarrierAccountCall(
+
+    private okhttp3.Call linkCarrierAccountCall(
             LinkCarrierAccountRequest body,
             String carrierId,
             String xAmznShippingBusinessId,
@@ -2645,8 +2597,10 @@ public class ShippingApi {
             LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         okhttp3.Call call = linkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (linkCarrierAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount operation exceeds rate limit");
     }
 
     /**
@@ -2684,24 +2638,14 @@ public class ShippingApi {
 
         okhttp3.Call call = linkCarrierAccountValidateBeforeCall(
                 body, carrierId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (linkCarrierAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount operation exceeds rate limit");
     }
-    /**
-     * Build call for linkCarrierAccount_0
-     *
-     * @param body LinkCarrierAccountRequest body (required)
-     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call linkCarrierAccount_0Call(
+
+    private okhttp3.Call linkCarrierAccount_0Call(
             LinkCarrierAccountRequest body,
             String carrierId,
             String xAmznShippingBusinessId,
@@ -2821,8 +2765,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 linkCarrierAccount_0ValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (linkCarrierAccount_0Bucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount_0 operation exceeds rate limit");
     }
 
     /**
@@ -2859,23 +2805,14 @@ public class ShippingApi {
 
         okhttp3.Call call = linkCarrierAccount_0ValidateBeforeCall(
                 body, carrierId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (linkCarrierAccount_0Bucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount_0 operation exceeds rate limit");
     }
-    /**
-     * Build call for oneClickShipment
-     *
-     * @param body OneClickShipmentRequest body (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call oneClickShipmentCall(
+
+    private okhttp3.Call oneClickShipmentCall(
             OneClickShipmentRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -2982,8 +2919,10 @@ public class ShippingApi {
     public ApiResponse<OneClickShipmentResponse> oneClickShipmentWithHttpInfo(
             OneClickShipmentRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = oneClickShipmentValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (oneClickShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("oneClickShipment operation exceeds rate limit");
     }
 
     /**
@@ -3019,25 +2958,14 @@ public class ShippingApi {
 
         okhttp3.Call call = oneClickShipmentValidateBeforeCall(
                 body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (oneClickShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("oneClickShipment operation exceeds rate limit");
     }
-    /**
-     * Build call for purchaseShipment
-     *
-     * @param body PurchaseShipmentRequest body (required)
-     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
-     *     request. (optional)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call purchaseShipmentCall(
+
+    private okhttp3.Call purchaseShipmentCall(
             PurchaseShipmentRequest body,
             String xAmznIdempotencyKey,
             String xAmznShippingBusinessId,
@@ -3163,8 +3091,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 purchaseShipmentValidateBeforeCall(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (purchaseShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("purchaseShipment operation exceeds rate limit");
     }
 
     /**
@@ -3206,23 +3136,14 @@ public class ShippingApi {
 
         okhttp3.Call call = purchaseShipmentValidateBeforeCall(
                 body, xAmznIdempotencyKey, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (purchaseShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("purchaseShipment operation exceeds rate limit");
     }
-    /**
-     * Build call for submitNdrFeedback
-     *
-     * @param body Request body for ndrFeedback operation (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call submitNdrFeedbackCall(
+
+    private okhttp3.Call submitNdrFeedbackCall(
             SubmitNdrFeedbackRequest body,
             String xAmznShippingBusinessId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -3325,7 +3246,9 @@ public class ShippingApi {
     public ApiResponse<Void> submitNdrFeedbackWithHttpInfo(
             SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
-        return apiClient.execute(call);
+        if (submitNdrFeedbackBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("submitNdrFeedback operation exceeds rate limit");
     }
 
     /**
@@ -3359,23 +3282,13 @@ public class ShippingApi {
 
         okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(
                 body, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
+        if (submitNdrFeedbackBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("submitNdrFeedback operation exceeds rate limit");
     }
-    /**
-     * Build call for unlinkCarrierAccount
-     *
-     * @param body UnlinkCarrierAccountRequest body (required)
-     * @param carrierId carrier Id to unlink with merchant. (required)
-     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
-     *     AmazonShipping_UK. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call unlinkCarrierAccountCall(
+
+    private okhttp3.Call unlinkCarrierAccountCall(
             UnlinkCarrierAccountRequest body,
             String carrierId,
             String xAmznShippingBusinessId,
@@ -3497,8 +3410,10 @@ public class ShippingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 unlinkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null, null);
-        Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (unlinkCarrierAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("unlinkCarrierAccount operation exceeds rate limit");
     }
 
     /**
@@ -3536,9 +3451,11 @@ public class ShippingApi {
 
         okhttp3.Call call = unlinkCarrierAccountValidateBeforeCall(
                 body, carrierId, xAmznShippingBusinessId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (unlinkCarrierAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("unlinkCarrierAccount operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -3546,7 +3463,6 @@ public class ShippingApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -3565,16 +3481,6 @@ public class ShippingApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -3599,8 +3505,7 @@ public class ShippingApi {
 
             return new ShippingApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

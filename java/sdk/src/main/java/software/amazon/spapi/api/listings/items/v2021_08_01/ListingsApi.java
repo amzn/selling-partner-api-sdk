@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -46,22 +47,29 @@ public class ListingsApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for deleteListingsItem
-     *
-     * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call deleteListingsItemCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket deleteListingsItemBucket = Bucket.builder()
+            .addLimit(config.getLimit("ListingsApi-deleteListingsItem"))
+            .build();
+
+    private final Bucket getListingsItemBucket = Bucket.builder()
+            .addLimit(config.getLimit("ListingsApi-getListingsItem"))
+            .build();
+
+    private final Bucket patchListingsItemBucket = Bucket.builder()
+            .addLimit(config.getLimit("ListingsApi-patchListingsItem"))
+            .build();
+
+    private final Bucket putListingsItemBucket = Bucket.builder()
+            .addLimit(config.getLimit("ListingsApi-putListingsItem"))
+            .build();
+
+    private final Bucket searchListingsItemsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ListingsApi-searchListingsItems"))
+            .build();
+
+    private okhttp3.Call deleteListingsItemCall(
             String sellerId,
             String sku,
             List<String> marketplaceIds,
@@ -199,8 +207,10 @@ public class ListingsApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 deleteListingsItemValidateBeforeCall(sellerId, sku, marketplaceIds, issueLocale, null, null);
-        Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (deleteListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteListingsItem operation exceeds rate limit");
     }
 
     /**
@@ -243,28 +253,14 @@ public class ListingsApi {
 
         okhttp3.Call call = deleteListingsItemValidateBeforeCall(
                 sellerId, sku, marketplaceIds, issueLocale, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (deleteListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("deleteListingsItem operation exceeds rate limit");
     }
-    /**
-     * Build call for getListingsItem
-     *
-     * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param includedData A comma-delimited list of data sets to include in the response. Default:
-     *     &#x60;summaries&#x60;. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getListingsItemCall(
+
+    private okhttp3.Call getListingsItemCall(
             String sellerId,
             String sku,
             List<String> marketplaceIds,
@@ -409,8 +405,10 @@ public class ListingsApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 getListingsItemValidateBeforeCall(sellerId, sku, marketplaceIds, issueLocale, includedData, null, null);
-        Type localVarReturnType = new TypeToken<Item>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Item>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getListingsItem operation exceeds rate limit");
     }
 
     /**
@@ -457,30 +455,14 @@ public class ListingsApi {
 
         okhttp3.Call call = getListingsItemValidateBeforeCall(
                 sellerId, sku, marketplaceIds, issueLocale, includedData, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Item>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Item>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getListingsItem operation exceeds rate limit");
     }
-    /**
-     * Build call for patchListingsItem
-     *
-     * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
-     * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
-     *     (optional)
-     * @param mode The mode of operation for the request. (optional)
-     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call patchListingsItemCall(
+
+    private okhttp3.Call patchListingsItemCall(
             ListingsItemPatchRequest body,
             String sellerId,
             String sku,
@@ -656,8 +638,10 @@ public class ListingsApi {
             throws ApiException, LWAException {
         okhttp3.Call call = patchListingsItemValidateBeforeCall(
                 body, sellerId, sku, marketplaceIds, includedData, mode, issueLocale, null, null);
-        Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (patchListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("patchListingsItem operation exceeds rate limit");
     }
 
     /**
@@ -715,30 +699,14 @@ public class ListingsApi {
                 issueLocale,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (patchListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("patchListingsItem operation exceeds rate limit");
     }
-    /**
-     * Build call for putListingsItem
-     *
-     * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
-     * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
-     *     (optional)
-     * @param mode The mode of operation for the request. (optional)
-     * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call putListingsItemCall(
+
+    private okhttp3.Call putListingsItemCall(
             ListingsItemPutRequest body,
             String sellerId,
             String sku,
@@ -920,8 +888,10 @@ public class ListingsApi {
             throws ApiException, LWAException {
         okhttp3.Call call = putListingsItemValidateBeforeCall(
                 body, sellerId, sku, marketplaceIds, includedData, mode, issueLocale, null, null);
-        Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (putListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("putListingsItem operation exceeds rate limit");
     }
 
     /**
@@ -981,62 +951,14 @@ public class ListingsApi {
                 issueLocale,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (putListingsItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListingsItemSubmissionResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("putListingsItem operation exceeds rate limit");
     }
-    /**
-     * Build call for searchListingsItems
-     *
-     * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
-     *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
-     *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
-     *     &#x60;summaries&#x60;. (optional)
-     * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
-     *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
-     *     &#x27;identifiers&#x27; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;.
-     *     (optional)
-     * @param identifiersType A type of product identifiers that you can use to search for listings items. **Note**:
-     *     This is required when &#x60;identifiers&#x60; is provided. (optional)
-     * @param variationParentSku Filters results to include listing items that are variation children of the specified
-     *     SKU. **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or
-     *     &#x60;packageHierarchySku&#x60; in your request. (optional)
-     * @param packageHierarchySku Filter results to include listing items that contain or are contained by the specified
-     *     SKU. **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or
-     *     &#x60;variationParentSku&#x60; in your request. (optional)
-     * @param createdAfter A date-time that is used to filter listing items. The response includes listings items that
-     *     were created at or after this time. Values are in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param createdBefore A date-time that is used to filter listing items. The response includes listings items that
-     *     were created at or before this time. Values are in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param lastUpdatedAfter A date-time that is used to filter listing items. The response includes listings items
-     *     that were last updated at or after this time. Values are in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param lastUpdatedBefore A date-time that is used to filter listing items. The response includes listings items
-     *     that were last updated at or before this time. Values are in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param withIssueSeverity Filter results to include only listing items that have issues that match one or more of
-     *     the specified severity levels. (optional)
-     * @param withStatus Filter results to include only listing items that have the specified status. (optional)
-     * @param withoutStatus Filter results to include only listing items that don&#x27;t contain the specified statuses.
-     *     (optional)
-     * @param sortBy An attribute by which to sort the returned listing items. (optional, default to lastUpdatedDate)
-     * @param sortOrder The order in which to sort the result items. (optional, default to DESC)
-     * @param pageSize The number of results that you want to include on each page. (optional, default to 10)
-     * @param pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
-     *     (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call searchListingsItemsCall(
+
+    private okhttp3.Call searchListingsItemsCall(
             String sellerId,
             List<String> marketplaceIds,
             String issueLocale,
@@ -1389,8 +1311,10 @@ public class ListingsApi {
                 pageToken,
                 null,
                 null);
-        Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (searchListingsItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchListingsItems operation exceeds rate limit");
     }
 
     /**
@@ -1502,9 +1426,11 @@ public class ListingsApi {
                 pageToken,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (searchListingsItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("searchListingsItems operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -1512,7 +1438,6 @@ public class ListingsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1531,16 +1456,6 @@ public class ListingsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -1565,8 +1480,7 @@ public class ListingsApi {
 
             return new ListingsApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

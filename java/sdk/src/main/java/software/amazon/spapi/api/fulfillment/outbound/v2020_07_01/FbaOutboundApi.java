@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -61,18 +62,65 @@ public class FbaOutboundApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for cancelFulfillmentOrder
-     *
-     * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
-     *     created. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelFulfillmentOrderCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket cancelFulfillmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-cancelFulfillmentOrder"))
+            .build();
+
+    private final Bucket createFulfillmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-createFulfillmentOrder"))
+            .build();
+
+    private final Bucket createFulfillmentReturnBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-createFulfillmentReturn"))
+            .build();
+
+    private final Bucket deliveryOffersBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-deliveryOffers"))
+            .build();
+
+    private final Bucket getFeatureInventoryBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-getFeatureInventory"))
+            .build();
+
+    private final Bucket getFeatureSKUBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-getFeatureSKU"))
+            .build();
+
+    private final Bucket getFeaturesBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-getFeatures"))
+            .build();
+
+    private final Bucket getFulfillmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-getFulfillmentOrder"))
+            .build();
+
+    private final Bucket getFulfillmentPreviewBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-getFulfillmentPreview"))
+            .build();
+
+    private final Bucket getPackageTrackingDetailsBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-getPackageTrackingDetails"))
+            .build();
+
+    private final Bucket listAllFulfillmentOrdersBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-listAllFulfillmentOrders"))
+            .build();
+
+    private final Bucket listReturnReasonCodesBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-listReturnReasonCodes"))
+            .build();
+
+    private final Bucket submitFulfillmentOrderStatusUpdateBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-submitFulfillmentOrderStatusUpdate"))
+            .build();
+
+    private final Bucket updateFulfillmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-updateFulfillmentOrder"))
+            .build();
+
+    private okhttp3.Call cancelFulfillmentOrderCall(
             String sellerFulfillmentOrderId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -177,8 +225,10 @@ public class FbaOutboundApi {
     public ApiResponse<CancelFulfillmentOrderResponse> cancelFulfillmentOrderWithHttpInfo(
             String sellerFulfillmentOrderId) throws ApiException, LWAException {
         okhttp3.Call call = cancelFulfillmentOrderValidateBeforeCall(sellerFulfillmentOrderId, null, null);
-        Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (cancelFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelFulfillmentOrder operation exceeds rate limit");
     }
 
     /**
@@ -211,21 +261,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = cancelFulfillmentOrderValidateBeforeCall(
                 sellerFulfillmentOrderId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (cancelFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelFulfillmentOrder operation exceeds rate limit");
     }
-    /**
-     * Build call for createFulfillmentOrder
-     *
-     * @param body CreateFulfillmentOrderRequest parameter (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createFulfillmentOrderCall(
+
+    private okhttp3.Call createFulfillmentOrderCall(
             CreateFulfillmentOrderRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -323,8 +366,10 @@ public class FbaOutboundApi {
     public ApiResponse<CreateFulfillmentOrderResponse> createFulfillmentOrderWithHttpInfo(
             CreateFulfillmentOrderRequest body) throws ApiException, LWAException {
         okhttp3.Call call = createFulfillmentOrderValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createFulfillmentOrder operation exceeds rate limit");
     }
 
     /**
@@ -355,24 +400,14 @@ public class FbaOutboundApi {
         }
 
         okhttp3.Call call = createFulfillmentOrderValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createFulfillmentOrder operation exceeds rate limit");
     }
-    /**
-     * Build call for createFulfillmentReturn
-     *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
-     *     based on the buyer&#x27;s request to return items. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createFulfillmentReturnCall(
+
+    private okhttp3.Call createFulfillmentReturnCall(
             CreateFulfillmentReturnRequest body,
             String sellerFulfillmentOrderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -485,8 +520,10 @@ public class FbaOutboundApi {
     public ApiResponse<CreateFulfillmentReturnResponse> createFulfillmentReturnWithHttpInfo(
             CreateFulfillmentReturnRequest body, String sellerFulfillmentOrderId) throws ApiException, LWAException {
         okhttp3.Call call = createFulfillmentReturnValidateBeforeCall(body, sellerFulfillmentOrderId, null, null);
-        Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createFulfillmentReturnBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createFulfillmentReturn operation exceeds rate limit");
     }
 
     /**
@@ -522,21 +559,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = createFulfillmentReturnValidateBeforeCall(
                 body, sellerFulfillmentOrderId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createFulfillmentReturnBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createFulfillmentReturn operation exceeds rate limit");
     }
-    /**
-     * Build call for deliveryOffers
-     *
-     * @param body GetDeliveryOffersRequest parameter (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call deliveryOffersCall(
+
+    private okhttp3.Call deliveryOffersCall(
             GetDeliveryOffersRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -633,8 +663,10 @@ public class FbaOutboundApi {
     public ApiResponse<GetDeliveryOffersResponse> deliveryOffersWithHttpInfo(GetDeliveryOffersRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = deliveryOffersValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (deliveryOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deliveryOffers operation exceeds rate limit");
     }
 
     /**
@@ -665,28 +697,14 @@ public class FbaOutboundApi {
         }
 
         okhttp3.Call call = deliveryOffersValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (deliveryOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("deliveryOffers operation exceeds rate limit");
     }
-    /**
-     * Build call for getFeatureInventory
-     *
-     * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
-     *     specified feature. (required)
-     * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
-     * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
-     * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
-     *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getFeatureInventoryCall(
+
+    private okhttp3.Call getFeatureInventoryCall(
             String marketplaceId,
             String featureName,
             String nextToken,
@@ -822,8 +840,10 @@ public class FbaOutboundApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getFeatureInventoryValidateBeforeCall(
                 marketplaceId, featureName, nextToken, queryStartDate, null, null);
-        Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getFeatureInventoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFeatureInventory operation exceeds rate limit");
     }
 
     /**
@@ -866,24 +886,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = getFeatureInventoryValidateBeforeCall(
                 marketplaceId, featureName, nextToken, queryStartDate, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getFeatureInventoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getFeatureInventory operation exceeds rate limit");
     }
-    /**
-     * Build call for getFeatureSKU
-     *
-     * @param marketplaceId The marketplace for which to return the count. (required)
-     * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getFeatureSKUCall(
+
+    private okhttp3.Call getFeatureSKUCall(
             String marketplaceId,
             String featureName,
             String sellerSku,
@@ -1010,8 +1020,10 @@ public class FbaOutboundApi {
     public ApiResponse<GetFeatureSkuResponse> getFeatureSKUWithHttpInfo(
             String marketplaceId, String featureName, String sellerSku) throws ApiException, LWAException {
         okhttp3.Call call = getFeatureSKUValidateBeforeCall(marketplaceId, featureName, sellerSku, null, null);
-        Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getFeatureSKUBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFeatureSKU operation exceeds rate limit");
     }
 
     /**
@@ -1053,21 +1065,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = getFeatureSKUValidateBeforeCall(
                 marketplaceId, featureName, sellerSku, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getFeatureSKUBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getFeatureSKU operation exceeds rate limit");
     }
-    /**
-     * Build call for getFeatures
-     *
-     * @param marketplaceId The marketplace for which to return the list of features. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getFeaturesCall(
+
+    private okhttp3.Call getFeaturesCall(
             String marketplaceId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1169,8 +1174,10 @@ public class FbaOutboundApi {
     public ApiResponse<GetFeaturesResponse> getFeaturesWithHttpInfo(String marketplaceId)
             throws ApiException, LWAException {
         okhttp3.Call call = getFeaturesValidateBeforeCall(marketplaceId, null, null);
-        Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getFeaturesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFeatures operation exceeds rate limit");
     }
 
     /**
@@ -1201,22 +1208,14 @@ public class FbaOutboundApi {
         }
 
         okhttp3.Call call = getFeaturesValidateBeforeCall(marketplaceId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getFeaturesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getFeatures operation exceeds rate limit");
     }
-    /**
-     * Build call for getFulfillmentOrder
-     *
-     * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
-     *     created. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getFulfillmentOrderCall(
+
+    private okhttp3.Call getFulfillmentOrderCall(
             String sellerFulfillmentOrderId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1321,8 +1320,10 @@ public class FbaOutboundApi {
     public ApiResponse<GetFulfillmentOrderResponse> getFulfillmentOrderWithHttpInfo(String sellerFulfillmentOrderId)
             throws ApiException, LWAException {
         okhttp3.Call call = getFulfillmentOrderValidateBeforeCall(sellerFulfillmentOrderId, null, null);
-        Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFulfillmentOrder operation exceeds rate limit");
     }
 
     /**
@@ -1355,21 +1356,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = getFulfillmentOrderValidateBeforeCall(
                 sellerFulfillmentOrderId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getFulfillmentOrder operation exceeds rate limit");
     }
-    /**
-     * Build call for getFulfillmentPreview
-     *
-     * @param body GetFulfillmentPreviewRequest parameter (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getFulfillmentPreviewCall(
+
+    private okhttp3.Call getFulfillmentPreviewCall(
             GetFulfillmentPreviewRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1467,8 +1461,10 @@ public class FbaOutboundApi {
     public ApiResponse<GetFulfillmentPreviewResponse> getFulfillmentPreviewWithHttpInfo(
             GetFulfillmentPreviewRequest body) throws ApiException, LWAException {
         okhttp3.Call call = getFulfillmentPreviewValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getFulfillmentPreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFulfillmentPreview operation exceeds rate limit");
     }
 
     /**
@@ -1499,22 +1495,14 @@ public class FbaOutboundApi {
         }
 
         okhttp3.Call call = getFulfillmentPreviewValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getFulfillmentPreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getFulfillmentPreview operation exceeds rate limit");
     }
-    /**
-     * Build call for getPackageTrackingDetails
-     *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getPackageTrackingDetailsCall(
+
+    private okhttp3.Call getPackageTrackingDetailsCall(
             Integer packageNumber,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1618,8 +1606,10 @@ public class FbaOutboundApi {
     public ApiResponse<GetPackageTrackingDetailsResponse> getPackageTrackingDetailsWithHttpInfo(Integer packageNumber)
             throws ApiException, LWAException {
         okhttp3.Call call = getPackageTrackingDetailsValidateBeforeCall(packageNumber, null, null);
-        Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getPackageTrackingDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPackageTrackingDetails operation exceeds rate limit");
     }
 
     /**
@@ -1652,24 +1642,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call =
                 getPackageTrackingDetailsValidateBeforeCall(packageNumber, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getPackageTrackingDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getPackageTrackingDetails operation exceeds rate limit");
     }
-    /**
-     * Build call for listAllFulfillmentOrders
-     *
-     * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
-     *     time. An update is defined as any change in fulfillment order status, including the creation of a new
-     *     fulfillment order. (optional)
-     * @param nextToken A string token returned in the response to your previous request. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listAllFulfillmentOrdersCall(
+
+    private okhttp3.Call listAllFulfillmentOrdersCall(
             OffsetDateTime queryStartDate,
             String nextToken,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -1776,8 +1756,10 @@ public class FbaOutboundApi {
     public ApiResponse<ListAllFulfillmentOrdersResponse> listAllFulfillmentOrdersWithHttpInfo(
             OffsetDateTime queryStartDate, String nextToken) throws ApiException, LWAException {
         okhttp3.Call call = listAllFulfillmentOrdersValidateBeforeCall(queryStartDate, nextToken, null, null);
-        Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listAllFulfillmentOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listAllFulfillmentOrders operation exceeds rate limit");
     }
 
     /**
@@ -1814,27 +1796,14 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = listAllFulfillmentOrdersValidateBeforeCall(
                 queryStartDate, nextToken, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listAllFulfillmentOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listAllFulfillmentOrders operation exceeds rate limit");
     }
-    /**
-     * Build call for listReturnReasonCodes
-     *
-     * @param sellerSku The seller SKU for which return reason codes are required. (required)
-     * @param marketplaceId The marketplace for which the seller wants return reason codes. (optional)
-     * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
-     *     created. The service uses this value to determine the marketplace for which the seller wants return reason
-     *     codes. (optional)
-     * @param language The language that the &#x60;TranslatedDescription&#x60; property of the
-     *     &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listReturnReasonCodesCall(
+
+    private okhttp3.Call listReturnReasonCodesCall(
             String sellerSku,
             String marketplaceId,
             String sellerFulfillmentOrderId,
@@ -1972,8 +1941,10 @@ public class FbaOutboundApi {
             throws ApiException, LWAException {
         okhttp3.Call call = listReturnReasonCodesValidateBeforeCall(
                 sellerSku, marketplaceId, sellerFulfillmentOrderId, language, null, null);
-        Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listReturnReasonCodesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listReturnReasonCodes operation exceeds rate limit");
     }
 
     /**
@@ -2022,23 +1993,14 @@ public class FbaOutboundApi {
                 language,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listReturnReasonCodesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listReturnReasonCodes operation exceeds rate limit");
     }
-    /**
-     * Build call for submitFulfillmentOrderStatusUpdate
-     *
-     * @param body The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
-     *     created. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call submitFulfillmentOrderStatusUpdateCall(
+
+    private okhttp3.Call submitFulfillmentOrderStatusUpdateCall(
             SubmitFulfillmentOrderStatusUpdateRequest body,
             String sellerFulfillmentOrderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -2152,8 +2114,11 @@ public class FbaOutboundApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 submitFulfillmentOrderStatusUpdateValidateBeforeCall(body, sellerFulfillmentOrderId, null, null);
-        Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (submitFulfillmentOrderStatusUpdateBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("submitFulfillmentOrderStatusUpdate operation exceeds rate limit");
     }
 
     /**
@@ -2187,23 +2152,15 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = submitFulfillmentOrderStatusUpdateValidateBeforeCall(
                 body, sellerFulfillmentOrderId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (submitFulfillmentOrderStatusUpdateBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else
+            throw new ApiException.RateLimitExceeded("submitFulfillmentOrderStatusUpdate operation exceeds rate limit");
     }
-    /**
-     * Build call for updateFulfillmentOrder
-     *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
-     * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
-     *     created. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateFulfillmentOrderCall(
+
+    private okhttp3.Call updateFulfillmentOrderCall(
             UpdateFulfillmentOrderRequest body,
             String sellerFulfillmentOrderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -2316,8 +2273,10 @@ public class FbaOutboundApi {
     public ApiResponse<UpdateFulfillmentOrderResponse> updateFulfillmentOrderWithHttpInfo(
             UpdateFulfillmentOrderRequest body, String sellerFulfillmentOrderId) throws ApiException, LWAException {
         okhttp3.Call call = updateFulfillmentOrderValidateBeforeCall(body, sellerFulfillmentOrderId, null, null);
-        Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (updateFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateFulfillmentOrder operation exceeds rate limit");
     }
 
     /**
@@ -2353,9 +2312,11 @@ public class FbaOutboundApi {
 
         okhttp3.Call call = updateFulfillmentOrderValidateBeforeCall(
                 body, sellerFulfillmentOrderId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (updateFulfillmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateFulfillmentOrder operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -2363,7 +2324,6 @@ public class FbaOutboundApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2382,16 +2342,6 @@ public class FbaOutboundApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -2416,8 +2366,7 @@ public class FbaOutboundApi {
 
             return new FbaOutboundApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

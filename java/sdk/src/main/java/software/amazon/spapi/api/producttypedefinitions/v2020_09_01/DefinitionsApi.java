@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -42,33 +43,17 @@ public class DefinitionsApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for getDefinitionsProductType
-     *
-     * @param productType The Amazon product type name. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This
-     *     parameter is limited to one marketplaceId at this time. (required)
-     * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
-     *     populated within the product type definition schema, such as brand names associated with the selling partner.
-     *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
-     *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
-     *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
-     *     default to LATEST)
-     * @param requirements The name of the requirements set to retrieve requirements for. (optional, default to LISTING)
-     * @param requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the
-     *     product type definition schema. Non-enforced requirements enable structural validation of individual
-     *     attributes without all the required attributes being present (such as for partial updates). (optional,
-     *     default to ENFORCED)
-     * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
-     *     language of the first marketplace in the request. (optional, default to DEFAULT)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getDefinitionsProductTypeCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket getDefinitionsProductTypeBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefinitionsApi-getDefinitionsProductType"))
+            .build();
+
+    private final Bucket searchDefinitionsProductTypesBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefinitionsApi-searchDefinitionsProductTypes"))
+            .build();
+
+    private okhttp3.Call getDefinitionsProductTypeCall(
             String productType,
             List<String> marketplaceIds,
             String sellerId,
@@ -258,8 +243,10 @@ public class DefinitionsApi {
                 locale,
                 null,
                 null);
-        Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getDefinitionsProductTypeBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDefinitionsProductType operation exceeds rate limit");
     }
 
     /**
@@ -321,29 +308,14 @@ public class DefinitionsApi {
                 locale,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getDefinitionsProductTypeBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getDefinitionsProductType operation exceeds rate limit");
     }
-    /**
-     * Build call for searchDefinitionsProductTypes
-     *
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
-     *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
-     *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call searchDefinitionsProductTypesCall(
+
+    private okhttp3.Call searchDefinitionsProductTypesCall(
             List<String> marketplaceIds,
             List<String> keywords,
             String itemName,
@@ -477,8 +449,10 @@ public class DefinitionsApi {
             throws ApiException, LWAException {
         okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
                 marketplaceIds, keywords, itemName, locale, searchLocale, null, null);
-        Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (searchDefinitionsProductTypesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchDefinitionsProductTypes operation exceeds rate limit");
     }
 
     /**
@@ -522,9 +496,11 @@ public class DefinitionsApi {
 
         okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
                 marketplaceIds, keywords, itemName, locale, searchLocale, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (searchDefinitionsProductTypesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("searchDefinitionsProductTypes operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -532,7 +508,6 @@ public class DefinitionsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -551,16 +526,6 @@ public class DefinitionsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -585,8 +550,7 @@ public class DefinitionsApi {
 
             return new DefinitionsApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

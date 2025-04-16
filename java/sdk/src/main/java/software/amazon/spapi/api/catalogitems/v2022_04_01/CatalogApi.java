@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -42,23 +43,17 @@ public class CatalogApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for getCatalogItem
-     *
-     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
-     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     *     (required)
-     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
-     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
-     *     the marketplace. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCatalogItemCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket getCatalogItemBucket = Bucket.builder()
+            .addLimit(config.getLimit("CatalogApi-getCatalogItem"))
+            .build();
+
+    private final Bucket searchCatalogItemsBucket = Bucket.builder()
+            .addLimit(config.getLimit("CatalogApi-searchCatalogItems"))
+            .build();
+
+    private okhttp3.Call getCatalogItemCall(
             String asin,
             List<String> marketplaceIds,
             List<String> includedData,
@@ -186,8 +181,10 @@ public class CatalogApi {
             String asin, List<String> marketplaceIds, List<String> includedData, String locale)
             throws ApiException, LWAException {
         okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null, null);
-        Type localVarReturnType = new TypeToken<Item>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCatalogItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Item>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
     }
 
     /**
@@ -228,45 +225,14 @@ public class CatalogApi {
 
         okhttp3.Call call = getCatalogItemValidateBeforeCall(
                 asin, marketplaceIds, includedData, locale, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Item>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCatalogItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Item>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
     }
-    /**
-     * Build call for searchCatalogItems
-     *
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
-     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     *     (required)
-     * @param identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog.
-     *     **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
-     * @param identifiersType The type of product identifiers that you can use to search the Amazon catalog. **Note:**
-     *     &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
-     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
-     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
-     *     the marketplace. (optional)
-     * @param sellerId A selling partner identifier, such as a seller account or vendor code. **Note:** Required when
-     *     &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
-     * @param keywords A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You
-     *     cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
-     * @param brandNames A comma-delimited list of brand names that you can use to limit the search in queries based on
-     *     &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param classificationIds A comma-delimited list of classification identifiers that you can use to limit the
-     *     search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;.
-     *     (optional)
-     * @param pageSize The number of results to include on each page. (optional, default to 10)
-     * @param pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
-     *     (optional)
-     * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
-     *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
-     *     (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call searchCatalogItemsCall(
+
+    private okhttp3.Call searchCatalogItemsCall(
             List<String> marketplaceIds,
             List<String> identifiers,
             String identifiersType,
@@ -521,8 +487,10 @@ public class CatalogApi {
                 keywordsLocale,
                 null,
                 null);
-        Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (searchCatalogItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchCatalogItems operation exceeds rate limit");
     }
 
     /**
@@ -603,9 +571,11 @@ public class CatalogApi {
                 keywordsLocale,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (searchCatalogItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("searchCatalogItems operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -613,7 +583,6 @@ public class CatalogApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -632,16 +601,6 @@ public class CatalogApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -666,8 +625,7 @@ public class CatalogApi {
 
             return new CatalogApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

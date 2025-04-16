@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -42,20 +43,17 @@ public class SolicitationsApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for createProductReviewAndSellerFeedbackSolicitation
-     *
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a solicitation is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
-     *     Only one marketplace can be specified. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createProductReviewAndSellerFeedbackSolicitationCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket createProductReviewAndSellerFeedbackSolicitationBucket = Bucket.builder()
+            .addLimit(config.getLimit("SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation"))
+            .build();
+
+    private final Bucket getSolicitationActionsForOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("SolicitationsApi-getSolicitationActionsForOrder"))
+            .build();
+
+    private okhttp3.Call createProductReviewAndSellerFeedbackSolicitationCall(
             String amazonOrderId,
             List<String> marketplaceIds,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -177,9 +175,13 @@ public class SolicitationsApi {
                     String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(
                 amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType =
-                new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createProductReviewAndSellerFeedbackSolicitationBucket.tryConsume(1)) {
+            Type localVarReturnType =
+                    new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "createProductReviewAndSellerFeedbackSolicitation operation exceeds rate limit");
     }
 
     /**
@@ -217,25 +219,17 @@ public class SolicitationsApi {
 
         okhttp3.Call call = createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType =
-                new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createProductReviewAndSellerFeedbackSolicitationBucket.tryConsume(1)) {
+            Type localVarReturnType =
+                    new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "createProductReviewAndSellerFeedbackSolicitation operation exceeds rate limit");
     }
-    /**
-     * Build call for getSolicitationActionsForOrder
-     *
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
-     *     solicitation types. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
-     *     Only one marketplace can be specified. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getSolicitationActionsForOrderCall(
+
+    private okhttp3.Call getSolicitationActionsForOrderCall(
             String amazonOrderId,
             List<String> marketplaceIds,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -359,8 +353,10 @@ public class SolicitationsApi {
     public ApiResponse<GetSolicitationActionsForOrderResponse> getSolicitationActionsForOrderWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = getSolicitationActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getSolicitationActionsForOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSolicitationActionsForOrder operation exceeds rate limit");
     }
 
     /**
@@ -400,9 +396,11 @@ public class SolicitationsApi {
 
         okhttp3.Call call = getSolicitationActionsForOrderValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getSolicitationActionsForOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getSolicitationActionsForOrder operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -410,7 +408,6 @@ public class SolicitationsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -429,16 +426,6 @@ public class SolicitationsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -463,8 +450,7 @@ public class SolicitationsApi {
 
             return new SolicitationsApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

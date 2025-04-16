@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -50,18 +51,43 @@ public class ReportsApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for cancelReport
-     *
-     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
-     *     (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelReportCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket cancelReportBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-cancelReport"))
+            .build();
+
+    private final Bucket cancelReportScheduleBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-cancelReportSchedule"))
+            .build();
+
+    private final Bucket createReportBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-createReport"))
+            .build();
+
+    private final Bucket createReportScheduleBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-createReportSchedule"))
+            .build();
+
+    private final Bucket getReportBucket =
+            Bucket.builder().addLimit(config.getLimit("ReportsApi-getReport")).build();
+
+    private final Bucket getReportDocumentBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-getReportDocument"))
+            .build();
+
+    private final Bucket getReportScheduleBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-getReportSchedule"))
+            .build();
+
+    private final Bucket getReportSchedulesBucket = Bucket.builder()
+            .addLimit(config.getLimit("ReportsApi-getReportSchedules"))
+            .build();
+
+    private final Bucket getReportsBucket =
+            Bucket.builder().addLimit(config.getLimit("ReportsApi-getReports")).build();
+
+    private okhttp3.Call cancelReportCall(
             String reportId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -161,7 +187,9 @@ public class ReportsApi {
      */
     public ApiResponse<Void> cancelReportWithHttpInfo(String reportId) throws ApiException, LWAException {
         okhttp3.Call call = cancelReportValidateBeforeCall(reportId, null, null);
-        return apiClient.execute(call);
+        if (cancelReportBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelReport operation exceeds rate limit");
     }
 
     /**
@@ -194,21 +222,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = cancelReportValidateBeforeCall(reportId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
+        if (cancelReportBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelReport operation exceeds rate limit");
     }
-    /**
-     * Build call for cancelReportSchedule
-     *
-     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
-     *     with a seller ID. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelReportScheduleCall(
+
+    private okhttp3.Call cancelReportScheduleCall(
             String reportScheduleId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -306,7 +326,9 @@ public class ReportsApi {
     public ApiResponse<Void> cancelReportScheduleWithHttpInfo(String reportScheduleId)
             throws ApiException, LWAException {
         okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, null, null);
-        return apiClient.execute(call);
+        if (cancelReportScheduleBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelReportSchedule operation exceeds rate limit");
     }
 
     /**
@@ -338,20 +360,13 @@ public class ReportsApi {
 
         okhttp3.Call call =
                 cancelReportScheduleValidateBeforeCall(reportScheduleId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
+        if (cancelReportScheduleBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelReportSchedule operation exceeds rate limit");
     }
-    /**
-     * Build call for createReport
-     *
-     * @param body Information required to create the report. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createReportCall(
+
+    private okhttp3.Call createReportCall(
             CreateReportSpecification body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -446,8 +461,10 @@ public class ReportsApi {
     public ApiResponse<CreateReportResponse> createReportWithHttpInfo(CreateReportSpecification body)
             throws ApiException, LWAException {
         okhttp3.Call call = createReportValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createReportBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReport operation exceeds rate limit");
     }
 
     /**
@@ -477,21 +494,14 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = createReportValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createReportBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createReport operation exceeds rate limit");
     }
-    /**
-     * Build call for createReportSchedule
-     *
-     * @param body Information required to create the report schedule. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createReportScheduleCall(
+
+    private okhttp3.Call createReportScheduleCall(
             CreateReportScheduleSpecification body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -589,8 +599,10 @@ public class ReportsApi {
     public ApiResponse<CreateReportScheduleResponse> createReportScheduleWithHttpInfo(
             CreateReportScheduleSpecification body) throws ApiException, LWAException {
         okhttp3.Call call = createReportScheduleValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createReportScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReportSchedule operation exceeds rate limit");
     }
 
     /**
@@ -622,22 +634,14 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = createReportScheduleValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createReportScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createReportSchedule operation exceeds rate limit");
     }
-    /**
-     * Build call for getReport
-     *
-     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
-     *     (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getReportCall(
+
+    private okhttp3.Call getReportCall(
             String reportId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -737,8 +741,10 @@ public class ReportsApi {
      */
     public ApiResponse<Report> getReportWithHttpInfo(String reportId) throws ApiException, LWAException {
         okhttp3.Call call = getReportValidateBeforeCall(reportId, null, null);
-        Type localVarReturnType = new TypeToken<Report>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getReportBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Report>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReport operation exceeds rate limit");
     }
 
     /**
@@ -769,21 +775,14 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = getReportValidateBeforeCall(reportId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Report>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getReportBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Report>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getReport operation exceeds rate limit");
     }
-    /**
-     * Build call for getReportDocument
-     *
-     * @param reportDocumentId The identifier for the report document. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getReportDocumentCall(
+
+    private okhttp3.Call getReportDocumentCall(
             String reportDocumentId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -883,8 +882,10 @@ public class ReportsApi {
     public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(String reportDocumentId)
             throws ApiException, LWAException {
         okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, null, null);
-        Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getReportDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReportDocument operation exceeds rate limit");
     }
 
     /**
@@ -915,22 +916,14 @@ public class ReportsApi {
 
         okhttp3.Call call =
                 getReportDocumentValidateBeforeCall(reportDocumentId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getReportDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getReportDocument operation exceeds rate limit");
     }
-    /**
-     * Build call for getReportSchedule
-     *
-     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
-     *     with a seller ID. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getReportScheduleCall(
+
+    private okhttp3.Call getReportScheduleCall(
             String reportScheduleId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1032,8 +1025,10 @@ public class ReportsApi {
     public ApiResponse<ReportSchedule> getReportScheduleWithHttpInfo(String reportScheduleId)
             throws ApiException, LWAException {
         okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, null, null);
-        Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getReportScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReportSchedule operation exceeds rate limit");
     }
 
     /**
@@ -1065,22 +1060,14 @@ public class ReportsApi {
 
         okhttp3.Call call =
                 getReportScheduleValidateBeforeCall(reportScheduleId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getReportScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getReportSchedule operation exceeds rate limit");
     }
-    /**
-     * Build call for getReportSchedules
-     *
-     * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
-     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getReportSchedulesCall(
+
+    private okhttp3.Call getReportSchedulesCall(
             List<String> reportTypes,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -1183,8 +1170,10 @@ public class ReportsApi {
     public ApiResponse<ReportScheduleList> getReportSchedulesWithHttpInfo(List<String> reportTypes)
             throws ApiException, LWAException {
         okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, null, null);
-        Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getReportSchedulesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReportSchedules operation exceeds rate limit");
     }
 
     /**
@@ -1217,38 +1206,14 @@ public class ReportsApi {
 
         okhttp3.Call call =
                 getReportSchedulesValidateBeforeCall(reportTypes, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getReportSchedulesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getReportSchedules operation exceeds rate limit");
     }
-    /**
-     * Build call for getReports
-     *
-     * @param reportTypes A list of report types used to filter reports. Refer to [Report Type
-     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When
-     *     reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince,
-     *     createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param processingStatuses A list of processing statuses used to filter reports. (optional)
-     * @param marketplaceIds A list of marketplace identifiers used to filter reports. The reports returned will match
-     *     at least one of the marketplaces that you specify. (optional)
-     * @param pageSize The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param createdSince The earliest report creation date and time for reports to include in the response, in &lt;a
-     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
-     *     format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param createdUntil The latest report creation date and time for reports to include in the response, in &lt;a
-     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
-     *     format. The default is now. (optional)
-     * @param nextToken A string token returned in the response to your previous request. &#x60;nextToken&#x60; is
-     *     returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of
-     *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
-     *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getReportsCall(
+
+    private okhttp3.Call getReportsCall(
             List<String> reportTypes,
             List<String> processingStatuses,
             List<String> marketplaceIds,
@@ -1433,8 +1398,10 @@ public class ReportsApi {
                 nextToken,
                 null,
                 null);
-        Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getReportsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReports operation exceeds rate limit");
     }
 
     /**
@@ -1498,9 +1465,11 @@ public class ReportsApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getReportsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getReports operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -1508,7 +1477,6 @@ public class ReportsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1527,16 +1495,6 @@ public class ReportsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -1561,8 +1519,7 @@ public class ReportsApi {
 
             return new ReportsApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

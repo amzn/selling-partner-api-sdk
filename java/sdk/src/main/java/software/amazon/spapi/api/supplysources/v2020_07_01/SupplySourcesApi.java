@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -48,17 +49,33 @@ public class SupplySourcesApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for archiveSupplySource
-     *
-     * @param supplySourceId The unique identifier of a supply source. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call archiveSupplySourceCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket archiveSupplySourceBucket = Bucket.builder()
+            .addLimit(config.getLimit("SupplySourcesApi-archiveSupplySource"))
+            .build();
+
+    private final Bucket createSupplySourceBucket = Bucket.builder()
+            .addLimit(config.getLimit("SupplySourcesApi-createSupplySource"))
+            .build();
+
+    private final Bucket getSupplySourceBucket = Bucket.builder()
+            .addLimit(config.getLimit("SupplySourcesApi-getSupplySource"))
+            .build();
+
+    private final Bucket getSupplySourcesBucket = Bucket.builder()
+            .addLimit(config.getLimit("SupplySourcesApi-getSupplySources"))
+            .build();
+
+    private final Bucket updateSupplySourceBucket = Bucket.builder()
+            .addLimit(config.getLimit("SupplySourcesApi-updateSupplySource"))
+            .build();
+
+    private final Bucket updateSupplySourceStatusBucket = Bucket.builder()
+            .addLimit(config.getLimit("SupplySourcesApi-updateSupplySourceStatus"))
+            .build();
+
+    private okhttp3.Call archiveSupplySourceCall(
             String supplySourceId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -146,8 +163,10 @@ public class SupplySourcesApi {
     public ApiResponse<ErrorList> archiveSupplySourceWithHttpInfo(String supplySourceId)
             throws ApiException, LWAException {
         okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, null, null);
-        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (archiveSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("archiveSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -172,21 +191,14 @@ public class SupplySourcesApi {
 
         okhttp3.Call call =
                 archiveSupplySourceValidateBeforeCall(supplySourceId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (archiveSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("archiveSupplySource operation exceeds rate limit");
     }
-    /**
-     * Build call for createSupplySource
-     *
-     * @param body A request to create a supply source. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createSupplySourceCall(
+
+    private okhttp3.Call createSupplySourceCall(
             CreateSupplySourceRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -272,8 +284,10 @@ public class SupplySourcesApi {
     public ApiResponse<CreateSupplySourceResponse> createSupplySourceWithHttpInfo(CreateSupplySourceRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = createSupplySourceValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -298,21 +312,14 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = createSupplySourceValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createSupplySource operation exceeds rate limit");
     }
-    /**
-     * Build call for getSupplySource
-     *
-     * @param supplySourceId The unique identifier of a supply source. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getSupplySourceCall(
+
+    private okhttp3.Call getSupplySourceCall(
             String supplySourceId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -400,8 +407,10 @@ public class SupplySourcesApi {
     public ApiResponse<SupplySource> getSupplySourceWithHttpInfo(String supplySourceId)
             throws ApiException, LWAException {
         okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, null, null);
-        Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -426,22 +435,14 @@ public class SupplySourcesApi {
 
         okhttp3.Call call =
                 getSupplySourceValidateBeforeCall(supplySourceId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getSupplySource operation exceeds rate limit");
     }
-    /**
-     * Build call for getSupplySources
-     *
-     * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
-     * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getSupplySourcesCall(
+
+    private okhttp3.Call getSupplySourcesCall(
             String nextPageToken,
             BigDecimal pageSize,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -531,8 +532,10 @@ public class SupplySourcesApi {
     public ApiResponse<GetSupplySourcesResponse> getSupplySourcesWithHttpInfo(String nextPageToken, BigDecimal pageSize)
             throws ApiException, LWAException {
         okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, null, null);
-        Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getSupplySourcesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSupplySources operation exceeds rate limit");
     }
 
     /**
@@ -559,22 +562,14 @@ public class SupplySourcesApi {
 
         okhttp3.Call call =
                 getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getSupplySourcesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getSupplySources operation exceeds rate limit");
     }
-    /**
-     * Build call for updateSupplySource
-     *
-     * @param supplySourceId The unique identitier of a supply source. (required)
-     * @param body (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateSupplySourceCall(
+
+    private okhttp3.Call updateSupplySourceCall(
             String supplySourceId,
             UpdateSupplySourceRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -666,8 +661,10 @@ public class SupplySourcesApi {
     public ApiResponse<ErrorList> updateSupplySourceWithHttpInfo(String supplySourceId, UpdateSupplySourceRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, null, null);
-        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (updateSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -694,22 +691,14 @@ public class SupplySourcesApi {
 
         okhttp3.Call call =
                 updateSupplySourceValidateBeforeCall(supplySourceId, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (updateSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateSupplySource operation exceeds rate limit");
     }
-    /**
-     * Build call for updateSupplySourceStatus
-     *
-     * @param supplySourceId The unique identifier of a supply source. (required)
-     * @param body (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateSupplySourceStatusCall(
+
+    private okhttp3.Call updateSupplySourceStatusCall(
             String supplySourceId,
             UpdateSupplySourceStatusRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -801,8 +790,10 @@ public class SupplySourcesApi {
     public ApiResponse<ErrorList> updateSupplySourceStatusWithHttpInfo(
             String supplySourceId, UpdateSupplySourceStatusRequest body) throws ApiException, LWAException {
         okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, null, null);
-        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (updateSupplySourceStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateSupplySourceStatus operation exceeds rate limit");
     }
 
     /**
@@ -829,9 +820,11 @@ public class SupplySourcesApi {
 
         okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(
                 supplySourceId, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (updateSupplySourceStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateSupplySourceStatus operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -839,7 +832,6 @@ public class SupplySourcesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -858,16 +850,6 @@ public class SupplySourcesApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -892,8 +874,7 @@ public class SupplySourcesApi {
 
             return new SupplySourcesApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

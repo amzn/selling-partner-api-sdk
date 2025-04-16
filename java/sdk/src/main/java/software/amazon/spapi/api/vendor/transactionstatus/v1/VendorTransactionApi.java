@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -41,18 +42,13 @@ public class VendorTransactionApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for getTransaction
-     *
-     * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
-     *     request of a specific transaction. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getTransactionCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket getTransactionBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorTransactionApi-getTransaction"))
+            .build();
+
+    private okhttp3.Call getTransactionCall(
             String transactionId,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -151,8 +147,10 @@ public class VendorTransactionApi {
     public ApiResponse<GetTransactionResponse> getTransactionWithHttpInfo(String transactionId)
             throws ApiException, LWAException {
         okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null, null);
-        Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getTransactionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTransaction operation exceeds rate limit");
     }
 
     /**
@@ -183,9 +181,11 @@ public class VendorTransactionApi {
         }
 
         okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getTransactionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getTransaction operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -193,7 +193,6 @@ public class VendorTransactionApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -212,16 +211,6 @@ public class VendorTransactionApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -246,8 +235,7 @@ public class VendorTransactionApi {
 
             return new VendorTransactionApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -44,17 +45,16 @@ public class OffersApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for listOfferMetrics
-     *
-     * @param body The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listOfferMetricsCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket listOfferMetricsBucket = Bucket.builder()
+            .addLimit(config.getLimit("OffersApi-listOfferMetrics"))
+            .build();
+
+    private final Bucket listOffersBucket =
+            Bucket.builder().addLimit(config.getLimit("OffersApi-listOffers")).build();
+
+    private okhttp3.Call listOfferMetricsCall(
             ListOfferMetricsRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -147,8 +147,10 @@ public class OffersApi {
     public ApiResponse<ListOfferMetricsResponse> listOfferMetricsWithHttpInfo(ListOfferMetricsRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = listOfferMetricsValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listOfferMetricsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listOfferMetrics operation exceeds rate limit");
     }
 
     /**
@@ -179,21 +181,14 @@ public class OffersApi {
         }
 
         okhttp3.Call call = listOfferMetricsValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listOfferMetricsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listOfferMetrics operation exceeds rate limit");
     }
-    /**
-     * Build call for listOffers
-     *
-     * @param body The request body for the &#x60;listOffers&#x60; operation. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listOffersCall(
+
+    private okhttp3.Call listOffersCall(
             ListOffersRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -286,8 +281,10 @@ public class OffersApi {
     public ApiResponse<ListOffersResponse> listOffersWithHttpInfo(ListOffersRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = listOffersValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listOffers operation exceeds rate limit");
     }
 
     /**
@@ -317,9 +314,11 @@ public class OffersApi {
         }
 
         okhttp3.Call call = listOffersValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listOffers operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -327,7 +326,6 @@ public class OffersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -346,16 +344,6 @@ public class OffersApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -380,8 +368,7 @@ public class OffersApi {
 
             return new OffersApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

@@ -17,7 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
+import io.github.bucket4j.Bucket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +26,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -39,18 +40,13 @@ public class ShipmentApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for updateShipmentStatus
-     *
-     * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateShipmentStatusCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket updateShipmentStatusBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShipmentApi-updateShipmentStatus"))
+            .build();
+
+    private okhttp3.Call updateShipmentStatusCall(
             UpdateShipmentStatusRequest body,
             String orderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -153,7 +149,9 @@ public class ShipmentApi {
     public ApiResponse<Void> updateShipmentStatusWithHttpInfo(UpdateShipmentStatusRequest body, String orderId)
             throws ApiException, LWAException {
         okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, null, null);
-        return apiClient.execute(call);
+        if (updateShipmentStatusBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateShipmentStatus operation exceeds rate limit");
     }
 
     /**
@@ -185,8 +183,10 @@ public class ShipmentApi {
 
         okhttp3.Call call =
                 updateShipmentStatusValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
+        if (updateShipmentStatusBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateShipmentStatus operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -194,7 +194,6 @@ public class ShipmentApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -213,16 +212,6 @@ public class ShipmentApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -247,8 +236,7 @@ public class ShipmentApi {
 
             return new ShipmentApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

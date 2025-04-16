@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -41,21 +42,13 @@ public class AutomotiveApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for getVehicles
-     *
-     * @param marketplaceId An identifier for the marketplace in which the resource operates. (required)
-     * @param vehicleType An identifier for vehicle type. (required)
-     * @param pageToken A token to fetch a certain page when there are multiple pages worth of results. (optional)
-     * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
-     *     catalog after this date will be returned. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getVehiclesCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket getVehiclesBucket = Bucket.builder()
+            .addLimit(config.getLimit("AutomotiveApi-getVehicles"))
+            .build();
+
+    private okhttp3.Call getVehiclesCall(
             String marketplaceId,
             String vehicleType,
             String pageToken,
@@ -169,8 +162,10 @@ public class AutomotiveApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 getVehiclesValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null, null);
-        Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getVehiclesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getVehicles operation exceeds rate limit");
     }
 
     /**
@@ -204,9 +199,11 @@ public class AutomotiveApi {
 
         okhttp3.Call call = getVehiclesValidateBeforeCall(
                 marketplaceId, vehicleType, pageToken, updatedAfter, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getVehiclesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getVehicles operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -214,7 +211,6 @@ public class AutomotiveApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -233,16 +229,6 @@ public class AutomotiveApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -267,8 +253,7 @@ public class AutomotiveApi {
 
             return new AutomotiveApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

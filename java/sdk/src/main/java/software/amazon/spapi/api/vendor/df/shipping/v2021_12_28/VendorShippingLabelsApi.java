@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -46,19 +47,25 @@ public class VendorShippingLabelsApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for createShippingLabels
-     *
-     * @param body The request payload that contains the parameters for creating shipping labels. (required)
-     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping labels. It should
-     *     be the same number as the &#x60;purchaseOrderNumber&#x60; in the order. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createShippingLabelsCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket createShippingLabelsBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorShippingLabelsApi-createShippingLabels"))
+            .build();
+
+    private final Bucket getShippingLabelBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorShippingLabelsApi-getShippingLabel"))
+            .build();
+
+    private final Bucket getShippingLabelsBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorShippingLabelsApi-getShippingLabels"))
+            .build();
+
+    private final Bucket submitShippingLabelRequestBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorShippingLabelsApi-submitShippingLabelRequest"))
+            .build();
+
+    private okhttp3.Call createShippingLabelsCall(
             CreateShippingLabelsRequest body,
             String purchaseOrderNumber,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -169,8 +176,10 @@ public class VendorShippingLabelsApi {
     public ApiResponse<ShippingLabel> createShippingLabelsWithHttpInfo(
             CreateShippingLabelsRequest body, String purchaseOrderNumber) throws ApiException, LWAException {
         okhttp3.Call call = createShippingLabelsValidateBeforeCall(body, purchaseOrderNumber, null, null);
-        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (createShippingLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createShippingLabels operation exceeds rate limit");
     }
 
     /**
@@ -204,22 +213,14 @@ public class VendorShippingLabelsApi {
 
         okhttp3.Call call = createShippingLabelsValidateBeforeCall(
                 body, purchaseOrderNumber, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (createShippingLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createShippingLabels operation exceeds rate limit");
     }
-    /**
-     * Build call for getShippingLabel
-     *
-     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping label. It should
-     *     be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getShippingLabelCall(
+
+    private okhttp3.Call getShippingLabelCall(
             String purchaseOrderNumber,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -322,8 +323,10 @@ public class VendorShippingLabelsApi {
     public ApiResponse<ShippingLabel> getShippingLabelWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
         okhttp3.Call call = getShippingLabelValidateBeforeCall(purchaseOrderNumber, null, null);
-        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getShippingLabelBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShippingLabel operation exceeds rate limit");
     }
 
     /**
@@ -355,33 +358,14 @@ public class VendorShippingLabelsApi {
 
         okhttp3.Call call =
                 getShippingLabelValidateBeforeCall(purchaseOrderNumber, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getShippingLabelBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getShippingLabel operation exceeds rate limit");
     }
-    /**
-     * Build call for getShippingLabels
-     *
-     * @param createdAfter Shipping labels that became available after this date and time will be included in the
-     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     *     (required)
-     * @param createdBefore Shipping labels that became available before this date and time will be included in the
-     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     *     (required)
-     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
-     *     contains orders for all warehouses. (optional)
-     * @param limit The limit to the number of records returned. (optional)
-     * @param sortOrder The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending
-     *     (&#x60;DESC&#x60;) sort order. (optional, default to ASC)
-     * @param nextToken Used for pagination when there are more ship labels than the specified result size limit. The
-     *     token value is returned in the previous API call. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getShippingLabelsCall(
+
+    private okhttp3.Call getShippingLabelsCall(
             OffsetDateTime createdAfter,
             OffsetDateTime createdBefore,
             String shipFromPartyId,
@@ -554,8 +538,10 @@ public class VendorShippingLabelsApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getShippingLabelsValidateBeforeCall(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null, null);
-        Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getShippingLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShippingLabels operation exceeds rate limit");
     }
 
     /**
@@ -614,21 +600,14 @@ public class VendorShippingLabelsApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getShippingLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getShippingLabels operation exceeds rate limit");
     }
-    /**
-     * Build call for submitShippingLabelRequest
-     *
-     * @param body The request body that contains the shipping labels data. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call submitShippingLabelRequestCall(
+
+    private okhttp3.Call submitShippingLabelRequestCall(
             SubmitShippingLabelsRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -727,8 +706,10 @@ public class VendorShippingLabelsApi {
     public ApiResponse<TransactionReference> submitShippingLabelRequestWithHttpInfo(SubmitShippingLabelsRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = submitShippingLabelRequestValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (submitShippingLabelRequestBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitShippingLabelRequest operation exceeds rate limit");
     }
 
     /**
@@ -760,9 +741,11 @@ public class VendorShippingLabelsApi {
 
         okhttp3.Call call =
                 submitShippingLabelRequestValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (submitShippingLabelRequestBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("submitShippingLabelRequest operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -770,7 +753,6 @@ public class VendorShippingLabelsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -789,16 +771,6 @@ public class VendorShippingLabelsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -823,8 +795,7 @@ public class VendorShippingLabelsApi {
 
             return new VendorShippingLabelsApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

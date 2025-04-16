@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -43,27 +44,25 @@ public class DefaultApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for listFinancialEventGroups
-     *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listFinancialEventGroupsCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket listFinancialEventGroupsBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listFinancialEventGroups"))
+            .build();
+
+    private final Bucket listFinancialEventsBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listFinancialEvents"))
+            .build();
+
+    private final Bucket listFinancialEventsByGroupIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listFinancialEventsByGroupId"))
+            .build();
+
+    private final Bucket listFinancialEventsByOrderIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listFinancialEventsByOrderId"))
+            .build();
+
+    private okhttp3.Call listFinancialEventGroupsCall(
             Integer maxResultsPerPage,
             OffsetDateTime financialEventGroupStartedBefore,
             OffsetDateTime financialEventGroupStartedAfter,
@@ -214,8 +213,10 @@ public class DefaultApi {
                 nextToken,
                 null,
                 null);
-        Type localVarReturnType = new TypeToken<ListFinancialEventGroupsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listFinancialEventGroupsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventGroupsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listFinancialEventGroups operation exceeds rate limit");
     }
 
     /**
@@ -266,31 +267,14 @@ public class DefaultApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListFinancialEventGroupsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listFinancialEventGroupsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventGroupsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listFinancialEventGroups operation exceeds rate limit");
     }
-    /**
-     * Build call for listFinancialEvents
-     *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listFinancialEventsCall(
+
+    private okhttp3.Call listFinancialEventsCall(
             Integer maxResultsPerPage,
             OffsetDateTime postedAfter,
             OffsetDateTime postedBefore,
@@ -423,8 +407,10 @@ public class DefaultApi {
             throws ApiException, LWAException {
         okhttp3.Call call = listFinancialEventsValidateBeforeCall(
                 maxResultsPerPage, postedAfter, postedBefore, nextToken, null, null);
-        Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listFinancialEventsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listFinancialEvents operation exceeds rate limit");
     }
 
     /**
@@ -471,33 +457,14 @@ public class DefaultApi {
 
         okhttp3.Call call = listFinancialEventsValidateBeforeCall(
                 maxResultsPerPage, postedAfter, postedBefore, nextToken, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listFinancialEventsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listFinancialEvents operation exceeds rate limit");
     }
-    /**
-     * Build call for listFinancialEventsByGroupId
-     *
-     * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listFinancialEventsByGroupIdCall(
+
+    private okhttp3.Call listFinancialEventsByGroupIdCall(
             String eventGroupId,
             Integer maxResultsPerPage,
             OffsetDateTime postedAfter,
@@ -658,8 +625,10 @@ public class DefaultApi {
             throws ApiException, LWAException {
         okhttp3.Call call = listFinancialEventsByGroupIdValidateBeforeCall(
                 eventGroupId, maxResultsPerPage, postedAfter, postedBefore, nextToken, null, null);
-        Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listFinancialEventsByGroupIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listFinancialEventsByGroupId operation exceeds rate limit");
     }
 
     /**
@@ -716,24 +685,14 @@ public class DefaultApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listFinancialEventsByGroupIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listFinancialEventsByGroupId operation exceeds rate limit");
     }
-    /**
-     * Build call for listFinancialEventsByOrderId
-     *
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listFinancialEventsByOrderIdCall(
+
+    private okhttp3.Call listFinancialEventsByOrderIdCall(
             String orderId,
             Integer maxResultsPerPage,
             String nextToken,
@@ -850,8 +809,10 @@ public class DefaultApi {
             String orderId, Integer maxResultsPerPage, String nextToken) throws ApiException, LWAException {
         okhttp3.Call call =
                 listFinancialEventsByOrderIdValidateBeforeCall(orderId, maxResultsPerPage, nextToken, null, null);
-        Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (listFinancialEventsByOrderIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listFinancialEventsByOrderId operation exceeds rate limit");
     }
 
     /**
@@ -889,9 +850,11 @@ public class DefaultApi {
 
         okhttp3.Call call = listFinancialEventsByOrderIdValidateBeforeCall(
                 orderId, maxResultsPerPage, nextToken, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (listFinancialEventsByOrderIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListFinancialEventsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listFinancialEventsByOrderId operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -899,7 +862,6 @@ public class DefaultApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -918,16 +880,6 @@ public class DefaultApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -952,8 +904,7 @@ public class DefaultApi {
 
             return new DefaultApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

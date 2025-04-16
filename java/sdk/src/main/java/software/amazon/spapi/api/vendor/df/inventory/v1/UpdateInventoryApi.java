@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -42,18 +43,13 @@ public class UpdateInventoryApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for submitInventoryUpdate
-     *
-     * @param body The request body containing the inventory update data to submit. (required)
-     * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call submitInventoryUpdateCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket submitInventoryUpdateBucket = Bucket.builder()
+            .addLimit(config.getLimit("UpdateInventoryApi-submitInventoryUpdate"))
+            .build();
+
+    private okhttp3.Call submitInventoryUpdateCall(
             SubmitInventoryUpdateRequest body,
             String warehouseId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -161,8 +157,10 @@ public class UpdateInventoryApi {
     public ApiResponse<SubmitInventoryUpdateResponse> submitInventoryUpdateWithHttpInfo(
             SubmitInventoryUpdateRequest body, String warehouseId) throws ApiException, LWAException {
         okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, null, null);
-        Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (submitInventoryUpdateBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitInventoryUpdate operation exceeds rate limit");
     }
 
     /**
@@ -197,9 +195,11 @@ public class UpdateInventoryApi {
 
         okhttp3.Call call =
                 submitInventoryUpdateValidateBeforeCall(body, warehouseId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (submitInventoryUpdateBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("submitInventoryUpdate operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -207,7 +207,6 @@ public class UpdateInventoryApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -226,16 +225,6 @@ public class UpdateInventoryApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -260,8 +249,7 @@ public class UpdateInventoryApi {
 
             return new UpdateInventoryApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

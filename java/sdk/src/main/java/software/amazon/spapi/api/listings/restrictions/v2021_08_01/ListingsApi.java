@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -41,24 +42,13 @@ public class ListingsApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for getListingsRestrictions
-     *
-     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param sellerId A selling partner identifier, such as a merchant account. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param conditionType The condition used to filter restrictions. (optional)
-     * @param reasonLocale A locale for reason text localization. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
-     *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
-     *     (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getListingsRestrictionsCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket getListingsRestrictionsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ListingsApi-getListingsRestrictions"))
+            .build();
+
+    private okhttp3.Call getListingsRestrictionsCall(
             String asin,
             String sellerId,
             List<String> marketplaceIds,
@@ -199,8 +189,10 @@ public class ListingsApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getListingsRestrictionsValidateBeforeCall(
                 asin, sellerId, marketplaceIds, conditionType, reasonLocale, null, null);
-        Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getListingsRestrictionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getListingsRestrictions operation exceeds rate limit");
     }
 
     /**
@@ -243,9 +235,11 @@ public class ListingsApi {
 
         okhttp3.Call call = getListingsRestrictionsValidateBeforeCall(
                 asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getListingsRestrictionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getListingsRestrictions operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -253,7 +247,6 @@ public class ListingsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -272,16 +265,6 @@ public class ListingsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -306,8 +289,7 @@ public class ListingsApi {
 
             return new ListingsApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }

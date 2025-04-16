@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -43,17 +44,17 @@ public class CustomerInvoicesApi {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Build call for getCustomerInvoice
-     *
-     * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCustomerInvoiceCall(
+    private final Configuration config = Configuration.get();
+
+    private final Bucket getCustomerInvoiceBucket = Bucket.builder()
+            .addLimit(config.getLimit("CustomerInvoicesApi-getCustomerInvoice"))
+            .build();
+
+    private final Bucket getCustomerInvoicesBucket = Bucket.builder()
+            .addLimit(config.getLimit("CustomerInvoicesApi-getCustomerInvoices"))
+            .build();
+
+    private okhttp3.Call getCustomerInvoiceCall(
             String purchaseOrderNumber,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -154,8 +155,10 @@ public class CustomerInvoicesApi {
     public ApiResponse<CustomerInvoice> getCustomerInvoiceWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
         okhttp3.Call call = getCustomerInvoiceValidateBeforeCall(purchaseOrderNumber, null, null);
-        Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCustomerInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCustomerInvoice operation exceeds rate limit");
     }
 
     /**
@@ -186,30 +189,14 @@ public class CustomerInvoicesApi {
 
         okhttp3.Call call =
                 getCustomerInvoiceValidateBeforeCall(purchaseOrderNumber, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCustomerInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCustomerInvoice operation exceeds rate limit");
     }
-    /**
-     * Build call for getCustomerInvoices
-     *
-     * @param createdAfter Orders that became available after this date and time will be included in the result. Values
-     *     are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
-     * @param createdBefore Orders that became available before this date and time will be included in the result.
-     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
-     * @param shipFromPartyId The vendor warehouseId for order fulfillment. If not specified, the result will contain
-     *     orders for all warehouses. (optional)
-     * @param limit The limit to the number of records returned (optional)
-     * @param sortOrder Sort ASC or DESC by order creation date. (optional)
-     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
-     *     value is returned in the previous API call. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCustomerInvoicesCall(
+
+    private okhttp3.Call getCustomerInvoicesCall(
             OffsetDateTime createdAfter,
             OffsetDateTime createdBefore,
             String shipFromPartyId,
@@ -374,8 +361,10 @@ public class CustomerInvoicesApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getCustomerInvoicesValidateBeforeCall(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null, null);
-        Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (getCustomerInvoicesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCustomerInvoices operation exceeds rate limit");
     }
 
     /**
@@ -431,9 +420,11 @@ public class CustomerInvoicesApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (getCustomerInvoicesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCustomerInvoices operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -441,7 +432,6 @@ public class CustomerInvoicesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -460,16 +450,6 @@ public class CustomerInvoicesApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -494,8 +474,7 @@ public class CustomerInvoicesApi {
 
             return new CustomerInvoicesApi(new ApiClient()
                     .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+                    .setBasePath(endpoint));
         }
     }
 }
