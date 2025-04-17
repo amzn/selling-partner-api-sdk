@@ -91,4 +91,10 @@ public class ApiException extends Exception {
     public String getResponseBody() {
         return responseBody;
     }
+
+    public static class RateLimitExceeded extends ApiException {
+        public RateLimitExceeded(String message) {
+            super(message);
+        }
+    }
 }

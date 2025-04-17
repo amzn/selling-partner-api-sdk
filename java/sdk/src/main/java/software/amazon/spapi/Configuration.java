@@ -12,24 +12,40 @@
 
 package software.amazon.spapi;
 
-public class Configuration {
-    private static ApiClient defaultApiClient = new ApiClient();
+import io.github.bucket4j.BandwidthBuilder.BandwidthBuilderBuildStage;
+import io.github.bucket4j.BandwidthBuilder.BandwidthBuilderCapacityStage;
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import org.yaml.snakeyaml.Yaml;
 
-    /**
-     * Get the default API client, which would be used when creating API instances without providing an API client.
-     *
-     * @return Default API client
-     */
-    public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+public class Configuration {
+    private final Map<String, List<Integer>> rateLimitConfiguration =
+            new Yaml().load(this.getClass().getClassLoader().getResourceAsStream("rate-limits.yml"));
+    private static Configuration instance;
+
+    private Configuration() {}
+
+    public Function<BandwidthBuilderCapacityStage, BandwidthBuilderBuildStage> getLimit(String operation) {
+        return limit -> limit.capacity(getValue(operation, 1))
+                .refillGreedy(getValue(operation, 0), Duration.ofSeconds(getValue(operation, 2)));
     }
 
-    /**
-     * Set the default API client, which would be used when creating API instances without providing an API client.
-     *
-     * @param apiClient API client
-     */
-    public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+    private Integer getValue(String operation, Integer position) {
+        if (rateLimitConfiguration.containsKey(operation)) {
+            if (rateLimitConfiguration.get(operation).contains(position)) {
+                return rateLimitConfiguration.get(operation).get(position);
+            }
+        }
+
+        return 1;
+    }
+
+    public static Configuration get() {
+        if (instance == null) {
+            instance = new Configuration();
+        }
+        return instance;
     }
 }

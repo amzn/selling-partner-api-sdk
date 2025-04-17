@@ -14,8 +14,6 @@ package software.amazon.spapi;
 
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
-import com.google.common.util.concurrent.RateLimiter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +26,6 @@ import java.security.KeyStore;
 import java.text.DateFormat;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.net.ssl.*;
@@ -69,8 +66,6 @@ public class ApiClient {
     private HttpLoggingInterceptor loggingInterceptor;
 
     private LWAAuthorizationSigner lwaAuthorizationSigner;
-    private RateLimiter rateLimiter;
-    private RateLimitConfiguration rateLimitConfiguration;
 
     /*
      * Constructor for ApiClient
@@ -382,22 +377,6 @@ public class ApiClient {
      */
     public ApiClient setLWAAuthorizationSigner(LWAAuthorizationSigner lwaAuthorizationSigner) {
         this.lwaAuthorizationSigner = lwaAuthorizationSigner;
-        return this;
-    }
-
-    /**
-     * Sets the RateLimiter A rate limiter is used to manage a high volume of traffic allowing N requests per second
-     *
-     * @return Api client
-     */
-    public ApiClient setRateLimiter(RateLimitConfiguration rateLimitConfiguration) {
-        if (rateLimitConfiguration != null) {
-            rateLimiter = RateLimiter.create(rateLimitConfiguration.getRateLimitPermit());
-
-            // Add rateLimiter to httpclient interceptor for execute
-            RateLimitInterceptor rateLimiterInterceptor = new RateLimitInterceptor(rateLimiter, rateLimitConfiguration);
-            httpClient.interceptors().add(rateLimiterInterceptor);
-        }
         return this;
     }
 
@@ -1095,31 +1074,5 @@ public class ApiClient {
         } catch (IOException e) {
             throw new AssertionError(e);
         }
-    }
-}
-
-class RateLimitInterceptor implements Interceptor {
-    RateLimiter rateLimiter;
-    RateLimitConfiguration rateLimitConfiguration;
-
-    public RateLimitInterceptor(RateLimiter rateLimiter, RateLimitConfiguration rateLimitConfiguration) {
-        this.rateLimiter = rateLimiter;
-        this.rateLimitConfiguration = rateLimitConfiguration;
-    }
-
-    @Override
-    public Response intercept(Chain chain) throws IOException {
-        if (rateLimitConfiguration.getTimeOut() == Long.MAX_VALUE) {
-            rateLimiter.acquire();
-        } else {
-            try {
-                if (!rateLimiter.tryAcquire(rateLimitConfiguration.getTimeOut(), TimeUnit.MILLISECONDS)) {
-                    throw new ApiException("Throttled as per the ratelimiter on client");
-                }
-            } catch (ApiException e) {
-                e.printStackTrace();
-            }
-        }
-        return chain.proceed(chain.request());
     }
 }
