@@ -65,7 +65,7 @@ export class ShipmentInvoiceApi {
       let accepts = ['application/json'];
       let returnType = GetInvoiceStatusResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentInvoiceApi-getInvoiceStatus',
         '/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -113,7 +113,7 @@ export class ShipmentInvoiceApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentInvoiceApi-getShipmentDetails',
         '/fba/outbound/brazil/v0/shipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -167,7 +167,7 @@ export class ShipmentInvoiceApi {
       let accepts = ['application/json'];
       let returnType = SubmitInvoiceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentInvoiceApi-submitInvoice',
         '/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

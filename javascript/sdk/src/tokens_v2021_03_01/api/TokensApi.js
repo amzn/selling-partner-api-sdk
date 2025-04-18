@@ -63,7 +63,7 @@ export class TokensApi {
       let accepts = ['application/json'];
       let returnType = CreateRestrictedDataTokenResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'TokensApi-createRestrictedDataToken',
         '/tokens/2021-03-01/restrictedDataToken', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

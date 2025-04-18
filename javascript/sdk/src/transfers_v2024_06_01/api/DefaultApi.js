@@ -69,7 +69,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = GetPaymentMethodsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-getPaymentMethods',
         '/finances/transfers/2024-06-01/paymentMethods', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -118,7 +118,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = InitiatePayoutResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-initiatePayout',
         '/finances/transfers/2024-06-01/payouts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

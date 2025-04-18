@@ -72,7 +72,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-cancelInbound',
         '/awd/2024-05-09/inboundOrders/{orderId}/cancellation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -119,7 +119,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = InboundEligibility;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-checkInboundEligibility',
         '/awd/2024-05-09/inboundEligibility', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -167,7 +167,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-confirmInbound',
         '/awd/2024-05-09/inboundOrders/{orderId}/confirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -214,7 +214,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = InboundOrderReference;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-createInbound',
         '/awd/2024-05-09/inboundOrders', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -262,7 +262,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = InboundOrder;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-getInbound',
         '/awd/2024-05-09/inboundOrders/{orderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -314,7 +314,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = InboundShipment;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-getInboundShipment',
         '/awd/2024-05-09/inboundShipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -370,7 +370,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = ShipmentLabels;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-getInboundShipmentLabels',
         '/awd/2024-05-09/inboundShipments/{shipmentId}/labels', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -430,7 +430,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = ShipmentListing;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-listInboundShipments',
         '/awd/2024-05-09/inboundShipments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -490,7 +490,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = InventoryListing;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-listInventory',
         '/awd/2024-05-09/inventory', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -549,7 +549,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-updateInbound',
         '/awd/2024-05-09/inboundOrders/{orderId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -604,7 +604,7 @@ export class AwdApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AwdApi-updateInboundShipmentTransportDetails',
         '/awd/2024-05-09/inboundShipments/{shipmentId}/transport', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

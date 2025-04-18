@@ -71,7 +71,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-cancelReport',
         '/reports/2021-06-30/reports/{reportId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -119,7 +119,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-cancelReportSchedule',
         '/reports/2021-06-30/schedules/{reportScheduleId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -166,7 +166,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = CreateReportResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-createReport',
         '/reports/2021-06-30/reports', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -213,7 +213,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = CreateReportScheduleResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-createReportSchedule',
         '/reports/2021-06-30/schedules', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -261,7 +261,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = Report;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-getReport',
         '/reports/2021-06-30/reports/{reportId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -309,7 +309,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = ReportDocument;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-getReportDocument',
         '/reports/2021-06-30/documents/{reportDocumentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -357,7 +357,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = ReportSchedule;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-getReportSchedule',
         '/reports/2021-06-30/schedules/{reportScheduleId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -405,7 +405,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = ReportScheduleList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-getReportSchedules',
         '/reports/2021-06-30/schedules', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -462,7 +462,7 @@ export class ReportsApi {
       let accepts = ['application/json'];
       let returnType = GetReportsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ReportsApi-getReports',
         '/reports/2021-06-30/reports', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

@@ -85,7 +85,7 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ListingsItemSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-deleteListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -157,7 +157,7 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = Item;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-getListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -238,7 +238,7 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ListingsItemSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-patchListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -321,7 +321,7 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ListingsItemSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-putListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -419,7 +419,7 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ItemSearchResults;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-searchListingsItems',
         '/listings/2021-08-01/items/{sellerId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

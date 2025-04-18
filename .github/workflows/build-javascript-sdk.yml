@@ -26,12 +26,13 @@ jobs:
       - name: Remove old sdk files
         working-directory: ./selling-partner-api-sdk/javascript
         run: |
-          echo "Remove all files under sdk except .openapi-generator-ignore, sample-node-app, package.json and readme"
+          echo "Remove all files under sdk except .openapi-generator-ignore, sample-node-app, package.json, helper and readme"
           find sdk -mindepth 1 -maxdepth 1 \
               ! -name '.openapi-generator-ignore' \
               ! -name 'sample-node-app' \
               ! -name 'package.json' \
               ! -name 'README.md' \
+              ! -name 'helper' \
               -exec rm -rf {} +
       - name: Execute OpenAPI generator
         working-directory: ./selling-partner-api-sdk/javascript
@@ -84,11 +85,6 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vendor-shipments-api-model/vendorShipments.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package vendorshipments_v1 && \
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package vendortransactionstatus_v1 && \
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package vehicles_v2024_11_01
-      - name: Copy Auth&Auth helper
-        working-directory: ./selling-partner-api-sdk/javascript
-        run: |
-          mkdir sdk/helper
-          cp -R ../../selling-partner-api-models/clients/sellingpartner-api-aa-javascript/src/helper/* sdk/helper/
       - name: Generate consolidated index.js file
         working-directory: ./selling-partner-api-sdk/javascript
         run: |

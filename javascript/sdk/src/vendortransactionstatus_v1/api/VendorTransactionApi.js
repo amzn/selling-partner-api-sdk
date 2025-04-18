@@ -62,7 +62,7 @@ export class VendorTransactionApi {
       let accepts = ['application/json'];
       let returnType = GetTransactionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorTransactionApi-getTransaction',
         '/vendor/transactions/v1/transactions/{transactionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

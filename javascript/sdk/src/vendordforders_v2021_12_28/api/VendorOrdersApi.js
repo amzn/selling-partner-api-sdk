@@ -66,7 +66,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json'];
       let returnType = Order;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-getOrder',
         '/vendor/directFulfillment/orders/2021-12-28/purchaseOrders/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -135,7 +135,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json', 'pagination', 'orders'];
       let returnType = OrderList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-getOrders',
         '/vendor/directFulfillment/orders/2021-12-28/purchaseOrders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -190,7 +190,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json'];
       let returnType = TransactionId;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-submitAcknowledgement',
         '/vendor/directFulfillment/orders/2021-12-28/acknowledgements', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

@@ -62,7 +62,7 @@ export class OffersApi {
       let accepts = ['application/json'];
       let returnType = ListOfferMetricsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OffersApi-listOfferMetrics',
         '/replenishment/2022-11-07/offers/metrics/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -107,7 +107,7 @@ export class OffersApi {
       let accepts = ['application/json'];
       let returnType = ListOffersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OffersApi-listOffers',
         '/replenishment/2022-11-07/offers/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

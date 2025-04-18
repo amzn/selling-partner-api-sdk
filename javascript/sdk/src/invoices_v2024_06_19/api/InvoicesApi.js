@@ -69,7 +69,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = ExportInvoicesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-createInvoicesExport',
         '/tax/invoices/2024-06-19/exports', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -124,7 +124,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = GetInvoiceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-getInvoice',
         '/tax/invoices/2024-06-19/invoices/{invoiceId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -201,7 +201,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = GetInvoicesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-getInvoices',
         '/tax/invoices/2024-06-19/invoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -263,7 +263,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = GetInvoicesAttributesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-getInvoicesAttributes',
         '/tax/invoices/2024-06-19/attributes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -311,7 +311,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = GetInvoicesDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-getInvoicesDocument',
         '/tax/invoices/2024-06-19/documents/{invoicesDocumentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -359,7 +359,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = GetInvoicesExportResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-getInvoicesExport',
         '/tax/invoices/2024-06-19/exports/{exportId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -419,7 +419,7 @@ export class InvoicesApi {
       let accepts = ['application/json'];
       let returnType = GetInvoicesExportsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'InvoicesApi-getInvoicesExports',
         '/tax/invoices/2024-06-19/exports', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

@@ -110,7 +110,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-getShipmentDetails',
         '/vendor/shipping/v1/shipments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -194,7 +194,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentLabels;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-getShipmentLabels',
         '/vendor/shipping/v1/transportLabels', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -250,7 +250,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = SubmitShipmentConfirmationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-submitShipmentConfirmations',
         '/vendor/shipping/v1/shipmentConfirmations', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -299,7 +299,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = SubmitShipmentConfirmationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-submitShipments',
         '/vendor/shipping/v1/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

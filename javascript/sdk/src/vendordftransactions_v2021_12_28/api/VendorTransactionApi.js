@@ -64,7 +64,7 @@ export class VendorTransactionApi {
       let accepts = ['application/json'];
       let returnType = TransactionStatus;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorTransactionApi-getTransactionStatus',
         '/vendor/directFulfillment/transactions/2021-12-28/transactions/{transactionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

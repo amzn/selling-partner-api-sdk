@@ -61,5 +61,7 @@ sort "$output_file" -o "$output_file"
 # Add LwaAuthClient export at the end
 echo "" >> "$output_file"  # Add blank line for readability
 echo "export * from './helper/LwaAuthClient.mjs';" >> "$output_file"
+echo "export * from './helper/ScopeConstants.mjs';" >> "$output_file"
+echo "export * from './helper/RateLimitConfiguration.mjs';" >> "$output_file"
 
 echo "Generated consolidated index.js in sdk folder with exports for all APIs and LwaAuthClient"

@@ -69,7 +69,7 @@ export class <classname> {
       let accepts = [<#produces>'<& mediaType>'<^-last>, </-last></produces>];
       let returnType = <#returnType><&returnType></returnType><^returnType>null</returnType>;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( '<classname>-<operationId>',
         '<&path>', '<httpMethod>',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType<^usePromises>, callback</usePromises>

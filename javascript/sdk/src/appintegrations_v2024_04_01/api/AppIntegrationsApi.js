@@ -65,7 +65,7 @@ export class AppIntegrationsApi {
       let accepts = ['application/json'];
       let returnType = CreateNotificationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AppIntegrationsApi-createNotification',
         '/appIntegrations/2024-04-01/notifications', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -112,7 +112,7 @@ export class AppIntegrationsApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AppIntegrationsApi-deleteNotifications',
         '/appIntegrations/2024-04-01/notifications/deletion', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -166,7 +166,7 @@ export class AppIntegrationsApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AppIntegrationsApi-recordActionFeedback',
         '/appIntegrations/2024-04-01/notifications/{notificationId}/feedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

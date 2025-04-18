@@ -66,7 +66,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json'];
       let returnType = GetPurchaseOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-getPurchaseOrder',
         '/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -133,7 +133,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetPurchaseOrdersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-getPurchaseOrders',
         '/vendor/orders/v1/purchaseOrders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -214,7 +214,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json'];
       let returnType = GetPurchaseOrdersStatusResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-getPurchaseOrdersStatus',
         '/vendor/orders/v1/purchaseOrdersStatus', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -274,7 +274,7 @@ export class VendorOrdersApi {
       let accepts = ['application/json'];
       let returnType = SubmitAcknowledgementResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorOrdersApi-submitAcknowledgement',
         '/vendor/orders/v1/acknowledgements', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

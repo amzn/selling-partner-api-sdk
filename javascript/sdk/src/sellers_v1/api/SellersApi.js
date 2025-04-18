@@ -56,7 +56,7 @@ export class SellersApi {
       let accepts = ['application/json'];
       let returnType = GetAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SellersApi-getAccount',
         '/sellers/v1/account', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -96,7 +96,7 @@ export class SellersApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetMarketplaceParticipationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SellersApi-getMarketplaceParticipations',
         '/sellers/v1/marketplaceParticipations', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

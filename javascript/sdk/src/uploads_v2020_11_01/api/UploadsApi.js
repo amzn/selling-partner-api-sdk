@@ -80,7 +80,7 @@ export class UploadsApi {
       let accepts = ['application/json'];
       let returnType = CreateUploadDestinationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'UploadsApi-createUploadDestinationForResource',
         '/uploads/2020-11-01/uploadDestinations/{resource}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

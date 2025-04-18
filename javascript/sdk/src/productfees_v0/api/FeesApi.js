@@ -72,7 +72,7 @@ export class FeesApi {
       let accepts = ['application/json'];
       let returnType = GetMyFeesEstimateResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeesApi-getMyFeesEstimateForASIN',
         '/products/fees/v0/items/{Asin}/feesEstimate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -127,7 +127,7 @@ export class FeesApi {
       let accepts = ['application/json'];
       let returnType = GetMyFeesEstimateResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeesApi-getMyFeesEstimateForSKU',
         '/products/fees/v0/listings/{SellerSKU}/feesEstimate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -175,7 +175,7 @@ export class FeesApi {
       let accepts = ['application/json'];
       let returnType = [FeesEstimateResult];
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeesApi-getMyFeesEstimates',
         '/products/fees/v0/feesEstimate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

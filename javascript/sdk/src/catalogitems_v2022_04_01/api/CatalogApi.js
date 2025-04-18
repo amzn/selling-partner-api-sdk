@@ -77,7 +77,7 @@ export class CatalogApi {
       let accepts = ['application/json'];
       let returnType = Item;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'CatalogApi-getCatalogItem',
         '/catalog/2022-04-01/items/{asin}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -153,7 +153,7 @@ export class CatalogApi {
       let accepts = ['application/json'];
       let returnType = ItemSearchResults;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'CatalogApi-searchCatalogItems',
         '/catalog/2022-04-01/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

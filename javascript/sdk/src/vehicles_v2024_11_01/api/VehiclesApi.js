@@ -76,7 +76,7 @@ export class VehiclesApi {
       let accepts = ['application/json'];
       let returnType = VehiclesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VehiclesApi-getVehicles',
         '/catalog/2024-11-01/automotive/vehicles', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

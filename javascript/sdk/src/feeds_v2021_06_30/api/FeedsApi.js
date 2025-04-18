@@ -69,7 +69,7 @@ export class FeedsApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeedsApi-cancelFeed',
         '/feeds/2021-06-30/feeds/{feedId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -116,7 +116,7 @@ export class FeedsApi {
       let accepts = ['application/json'];
       let returnType = CreateFeedResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeedsApi-createFeed',
         '/feeds/2021-06-30/feeds', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -163,7 +163,7 @@ export class FeedsApi {
       let accepts = ['application/json'];
       let returnType = CreateFeedDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeedsApi-createFeedDocument',
         '/feeds/2021-06-30/documents', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -211,7 +211,7 @@ export class FeedsApi {
       let accepts = ['application/json'];
       let returnType = Feed;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeedsApi-getFeed',
         '/feeds/2021-06-30/feeds/{feedId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -259,7 +259,7 @@ export class FeedsApi {
       let accepts = ['application/json'];
       let returnType = FeedDocument;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeedsApi-getFeedDocument',
         '/feeds/2021-06-30/documents/{feedDocumentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -316,7 +316,7 @@ export class FeedsApi {
       let accepts = ['application/json'];
       let returnType = GetFeedsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeedsApi-getFeeds',
         '/feeds/2021-06-30/feeds', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

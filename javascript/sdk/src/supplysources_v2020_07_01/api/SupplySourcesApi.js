@@ -68,7 +68,7 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = ErrorList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-archiveSupplySource',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -115,7 +115,7 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = CreateSupplySourceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-createSupplySource',
         '/supplySources/2020-07-01/supplySources', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -163,7 +163,7 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = SupplySource;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-getSupplySource',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -210,7 +210,7 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = GetSupplySourcesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-getSupplySources',
         '/supplySources/2020-07-01/supplySources', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -263,7 +263,7 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = ErrorList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-updateSupplySource',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -316,7 +316,7 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = ErrorList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-updateSupplySourceStatus',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}/status', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

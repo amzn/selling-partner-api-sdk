@@ -66,7 +66,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetBillOfLadingResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getBillOfLading',
         '/fba/inbound/v0/shipments/{shipmentId}/billOfLading', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -140,7 +140,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetLabelsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getLabels',
         '/fba/inbound/v0/shipments/{shipmentId}/labels', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -202,7 +202,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetPrepInstructionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getPrepInstructions',
         '/fba/inbound/v0/prepInstructions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -268,7 +268,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipmentItems',
         '/fba/inbound/v0/shipmentItems', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -325,7 +325,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipmentItemsByShipmentId',
         '/fba/inbound/v0/shipments/{shipmentId}/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -394,7 +394,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipments',
         '/fba/inbound/v0/shipments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

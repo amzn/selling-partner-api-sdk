@@ -97,7 +97,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateConfirmCustomizationDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-confirmCustomizationDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmCustomizationDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -160,7 +160,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateAmazonMotorsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createAmazonMotors',
         '/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -223,7 +223,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateConfirmDeliveryDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createConfirmDeliveryDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmDeliveryDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -286,7 +286,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateConfirmOrderDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createConfirmOrderDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmOrderDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -349,7 +349,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateConfirmServiceDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createConfirmServiceDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmServiceDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -412,7 +412,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateDigitalAccessKeyResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createDigitalAccessKey',
         '/messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -475,7 +475,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateLegalDisclosureResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createLegalDisclosure',
         '/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -532,7 +532,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateNegativeFeedbackRemovalResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createNegativeFeedbackRemoval',
         '/messaging/v1/orders/{amazonOrderId}/messages/negativeFeedbackRemoval', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -594,7 +594,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateUnexpectedProblemResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createUnexpectedProblem',
         '/messaging/v1/orders/{amazonOrderId}/messages/unexpectedProblem', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -657,7 +657,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateWarrantyResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-createWarranty',
         '/messaging/v1/orders/{amazonOrderId}/messages/warranty', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -714,7 +714,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = GetAttributesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-getAttributes',
         '/messaging/v1/orders/{amazonOrderId}/attributes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -770,7 +770,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = GetMessagingActionsForOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-getMessagingActionsForOrder',
         '/messaging/v1/orders/{amazonOrderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -832,7 +832,7 @@ export class MessagingApi {
       let accepts = ['application/hal+json'];
       let returnType = InvoiceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MessagingApi-sendInvoice',
         '/messaging/v1/orders/{amazonOrderId}/messages/invoice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

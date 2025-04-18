@@ -96,7 +96,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = CancelShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-cancelShipment',
         '/shipping/v2/shipments/{shipmentId}/cancel', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -149,7 +149,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = CreateClaimResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-createClaim',
         '/shipping/v2/claims', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -206,7 +206,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = DirectPurchaseResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-directPurchaseShipment',
         '/shipping/v2/shipments/directPurchase', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -263,7 +263,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GenerateCollectionFormResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-generateCollectionForm',
         '/shipping/v2/collectionForms', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -332,7 +332,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetAccessPointsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getAccessPoints',
         '/shipping/v2/accessPoints', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -395,7 +395,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetAdditionalInputsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getAdditionalInputs',
         '/shipping/v2/shipments/additionalInputs/schema', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -443,7 +443,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCarrierAccountFormInputsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCarrierAccountFormInputs',
         '/shipping/v2/carrierAccountFormInputs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -495,7 +495,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCarrierAccountsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCarrierAccounts',
         '/shipping/v2/carrierAccounts', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -549,7 +549,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCollectionFormResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCollectionForm',
         '/shipping/v2/collectionForms/{collectionFormId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -602,7 +602,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCollectionFormHistoryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCollectionFormHistory',
         '/shipping/v2/collectionForms/history', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -655,7 +655,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetRatesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getRates',
         '/shipping/v2/shipments/rates', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -720,7 +720,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentDocumentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getShipmentDocuments',
         '/shipping/v2/shipments/{shipmentId}/documents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -784,7 +784,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetTrackingResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getTracking',
         '/shipping/v2/tracking', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -838,7 +838,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetUnmanifestedShipmentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getUnmanifestedShipments',
         '/shipping/v2/unmanifestedShipments', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -898,7 +898,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = LinkCarrierAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount',
         '/shipping/v2/carrierAccounts/{carrierId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -959,7 +959,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = LinkCarrierAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount_0',
         '/shipping/v2/carrierAccounts/{carrierId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1013,7 +1013,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = OneClickShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-oneClickShipment',
         '/shipping/v2/oneClickShipment', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1068,7 +1068,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = PurchaseShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-purchaseShipment',
         '/shipping/v2/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1122,7 +1122,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-submitNdrFeedback',
         '/shipping/v2/ndrFeedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1182,7 +1182,7 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = UnlinkCarrierAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-unlinkCarrierAccount',
         '/shipping/v2/carrierAccounts/{carrierId}/unlink', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

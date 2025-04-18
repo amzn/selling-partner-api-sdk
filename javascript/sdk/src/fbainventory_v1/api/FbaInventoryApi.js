@@ -73,7 +73,7 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = AddInventoryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-addInventory',
         '/fba/inventory/v1/items/inventory', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -121,7 +121,7 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = CreateInventoryItemResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-createInventoryItem',
         '/fba/inventory/v1/items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -176,7 +176,7 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = DeleteInventoryItemResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-deleteInventoryItem',
         '/fba/inventory/v1/items/{sellerSku}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -251,7 +251,7 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = GetInventorySummariesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-getInventorySummaries',
         '/fba/inventory/v1/summaries', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

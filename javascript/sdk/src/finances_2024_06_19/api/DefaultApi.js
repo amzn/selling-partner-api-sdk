@@ -71,7 +71,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ListTransactionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-listTransactions',
         '/finances/2024-06-19/transactions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
