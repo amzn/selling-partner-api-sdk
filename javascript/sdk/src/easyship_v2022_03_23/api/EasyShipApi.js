@@ -69,7 +69,7 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = Package;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-createScheduledPackage',
         '/easyShip/2022-03-23/package', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -116,7 +116,7 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = CreateScheduledPackagesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-createScheduledPackageBulk',
         '/easyShip/2022-03-23/packages/bulk', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -171,7 +171,7 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = Package;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-getScheduledPackage',
         '/easyShip/2022-03-23/package', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -216,7 +216,7 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = ListHandoverSlotsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-listHandoverSlots',
         '/easyShip/2022-03-23/timeSlot', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -261,7 +261,7 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = Packages;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-updateScheduledPackages',
         '/easyShip/2022-03-23/package', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

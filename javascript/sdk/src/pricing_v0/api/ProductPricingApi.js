@@ -83,7 +83,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetPricingResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getCompetitivePricing',
         '/products/pricing/v0/competitivePrice', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -154,7 +154,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetOffersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getItemOffers',
         '/products/pricing/v0/items/{Asin}/offers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -205,7 +205,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetItemOffersBatchResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getItemOffersBatch',
         '/batches/products/pricing/v0/itemOffers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -271,7 +271,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetOffersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getListingOffers',
         '/products/pricing/v0/listings/{SellerSKU}/offers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -322,7 +322,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetListingOffersBatchResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getListingOffersBatch',
         '/batches/products/pricing/v0/listingOffers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -387,7 +387,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetPricingResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getPricing',
         '/products/pricing/v0/price', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

@@ -121,7 +121,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = CancelInboundPlanResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-cancelInboundPlan',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -182,7 +182,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = CancelSelfShipAppointmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-cancelSelfShipAppointment',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentCancellation', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -246,7 +246,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ConfirmDeliveryWindowOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-confirmDeliveryWindowOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -303,7 +303,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ConfirmPackingOptionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-confirmPackingOption',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -359,7 +359,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ConfirmPlacementOptionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-confirmPlacementOption',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -422,7 +422,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ConfirmShipmentContentUpdatePreviewResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-confirmShipmentContentUpdatePreview',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -478,7 +478,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ConfirmTransportationOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-confirmTransportationOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions/confirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -526,7 +526,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = CreateInboundPlanResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-createInboundPlan',
         '/inbound/fba/2024-03-20/inboundPlans', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -573,7 +573,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = CreateMarketplaceItemLabelsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-createMarketplaceItemLabels',
         '/inbound/fba/2024-03-20/items/labels', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -628,7 +628,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GenerateDeliveryWindowOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-generateDeliveryWindowOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -677,7 +677,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GeneratePackingOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-generatePackingOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -731,7 +731,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GeneratePlacementOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-generatePlacementOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -793,7 +793,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GenerateSelfShipAppointmentSlotsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-generateSelfShipAppointmentSlots',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -856,7 +856,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GenerateShipmentContentUpdatePreviewsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-generateShipmentContentUpdatePreviews',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -912,7 +912,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GenerateTransportationOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-generateTransportationOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -968,7 +968,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetDeliveryChallanDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getDeliveryChallanDocument',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1017,7 +1017,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = InboundOperationStatus;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getInboundOperationStatus',
         '/inbound/fba/2024-03-20/operations/{operationId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1065,7 +1065,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = InboundPlan;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getInboundPlan',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1126,7 +1126,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetSelfShipAppointmentSlotsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getSelfShipAppointmentSlots',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1185,7 +1185,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = Shipment;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipment',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1248,7 +1248,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ContentUpdatePreview;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipmentContentUpdatePreview',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1311,7 +1311,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListDeliveryWindowOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listDeliveryWindowOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1369,7 +1369,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListInboundPlanBoxesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listInboundPlanBoxes',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1426,7 +1426,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListInboundPlanItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listInboundPlanItems',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1483,7 +1483,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListInboundPlanPalletsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listInboundPlanPallets',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1539,7 +1539,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListInboundPlansResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listInboundPlans',
         '/inbound/fba/2024-03-20/inboundPlans', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1599,7 +1599,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListItemComplianceDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listItemComplianceDetails',
         '/inbound/fba/2024-03-20/items/compliance', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1661,7 +1661,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListPackingGroupBoxesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listPackingGroupBoxes',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1726,7 +1726,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListPackingGroupItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listPackingGroupItems',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1784,7 +1784,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListPackingOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listPackingOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1841,7 +1841,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListPlacementOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listPlacementOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1899,7 +1899,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListPrepDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listPrepDetails',
         '/inbound/fba/2024-03-20/items/prepDetails', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1961,7 +1961,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListShipmentBoxesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listShipmentBoxes',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2026,7 +2026,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListShipmentContentUpdatePreviewsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listShipmentContentUpdatePreviews',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2091,7 +2091,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListShipmentItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listShipmentItems',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2156,7 +2156,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListShipmentPalletsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listShipmentPallets',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2218,7 +2218,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ListTransportationOptionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-listTransportationOptions',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2291,7 +2291,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = ScheduleSelfShipAppointmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-scheduleSelfShipAppointment',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots/{slotId}/schedule', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2348,7 +2348,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = SetPackingInformationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-setPackingInformation',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingInformation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2396,7 +2396,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = SetPrepDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-setPrepDetails',
         '/inbound/fba/2024-03-20/items/prepDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2450,7 +2450,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-updateInboundPlanName',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/name', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2505,7 +2505,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = UpdateItemComplianceDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-updateItemComplianceDetails',
         '/inbound/fba/2024-03-20/items/compliance', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2567,7 +2567,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-updateShipmentName',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/name', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2630,7 +2630,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = UpdateShipmentSourceAddressResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-updateShipmentSourceAddress',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/sourceAddress', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -2693,7 +2693,7 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = UpdateShipmentTrackingDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-updateShipmentTrackingDetails',
         '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/trackingDetails', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

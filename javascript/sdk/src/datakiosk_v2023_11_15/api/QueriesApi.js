@@ -67,7 +67,7 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-cancelQuery',
         '/dataKiosk/2023-11-15/queries/{queryId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -114,7 +114,7 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = CreateQueryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-createQuery',
         '/dataKiosk/2023-11-15/queries', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -162,7 +162,7 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = GetDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-getDocument',
         '/dataKiosk/2023-11-15/documents/{documentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -215,7 +215,7 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = GetQueriesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-getQueries',
         '/dataKiosk/2023-11-15/queries', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -268,7 +268,7 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = Query;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-getQuery',
         '/dataKiosk/2023-11-15/queries/{queryId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

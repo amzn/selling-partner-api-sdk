@@ -65,7 +65,7 @@ export class CustomerInvoicesApi {
       let accepts = ['application/json'];
       let returnType = CustomerInvoice;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'CustomerInvoicesApi-getCustomerInvoice',
         '/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -132,7 +132,7 @@ export class CustomerInvoicesApi {
       let accepts = ['application/json', 'payload'];
       let returnType = CustomerInvoiceList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'CustomerInvoicesApi-getCustomerInvoices',
         '/vendor/directFulfillment/shipping/2021-12-28/customerInvoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

@@ -81,7 +81,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json'];
       let returnType = CancelFulfillmentOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-cancelFulfillmentOrder',
         '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -128,7 +128,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json'];
       let returnType = CreateFulfillmentOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-createFulfillmentOrder',
         '/fba/outbound/2020-07-01/fulfillmentOrders', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -182,7 +182,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = CreateFulfillmentReturnResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-createFulfillmentReturn',
         '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/return', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -230,7 +230,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetDeliveryOffersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-deliveryOffers',
         '/fba/outbound/2020-07-01/deliveryOffers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -291,7 +291,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetFeatureInventoryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-getFeatureInventory',
         '/fba/outbound/2020-07-01/features/inventory/{featureName}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -357,7 +357,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetFeatureSkuResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-getFeatureSKU',
         '/fba/outbound/2020-07-01/features/inventory/{featureName}/{sellerSku}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -407,7 +407,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetFeaturesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-getFeatures',
         '/fba/outbound/2020-07-01/features', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -455,7 +455,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetFulfillmentOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-getFulfillmentOrder',
         '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -502,7 +502,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetFulfillmentPreviewResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-getFulfillmentPreview',
         '/fba/outbound/2020-07-01/fulfillmentOrders/preview', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -550,7 +550,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetPackageTrackingDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-getPackageTrackingDetails',
         '/fba/outbound/2020-07-01/tracking', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -597,7 +597,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = ListAllFulfillmentOrdersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-listAllFulfillmentOrders',
         '/fba/outbound/2020-07-01/fulfillmentOrders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -655,7 +655,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json', 'payload'];
       let returnType = ListReturnReasonCodesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-listReturnReasonCodes',
         '/fba/outbound/2020-07-01/returnReasonCodes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -713,7 +713,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json'];
       let returnType = SubmitFulfillmentOrderStatusUpdateResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-submitFulfillmentOrderStatusUpdate',
         '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -768,7 +768,7 @@ export class FbaOutboundApi {
       let accepts = ['application/json'];
       let returnType = UpdateFulfillmentOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaOutboundApi-updateFulfillmentOrder',
         '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

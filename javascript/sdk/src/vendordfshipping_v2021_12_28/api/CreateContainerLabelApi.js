@@ -64,7 +64,7 @@ export class CreateContainerLabelApi {
       let accepts = ['application/json', 'containerLabel'];
       let returnType = CreateContainerLabelResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'CreateContainerLabelApi-createContainerLabel',
         '/vendor/directFulfillment/shipping/2021-12-28/containerLabel', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

@@ -68,7 +68,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = PackingSlip;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-getPackingSlip',
         '/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -135,7 +135,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = PackingSlipList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-getPackingSlips',
         '/vendor/directFulfillment/shipping/2021-12-28/packingSlips', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -190,7 +190,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = TransactionReference;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-submitShipmentConfirmations',
         '/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -239,7 +239,7 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = TransactionReference;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-submitShipmentStatusUpdates',
         '/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

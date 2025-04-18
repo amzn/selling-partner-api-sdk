@@ -69,7 +69,7 @@ export class UpdateInventoryApi {
       let accepts = ['application/json'];
       let returnType = SubmitInventoryUpdateResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'UpdateInventoryApi-submitInventoryUpdate',
         '/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

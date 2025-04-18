@@ -83,7 +83,7 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = RestrictionList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-getListingsRestrictions',
         '/listings/2021-08-01/restrictions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

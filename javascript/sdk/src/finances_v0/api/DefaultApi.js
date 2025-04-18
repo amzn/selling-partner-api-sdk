@@ -66,7 +66,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ListFinancialEventGroupsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-listFinancialEventGroups',
         '/finances/v0/financialEventGroups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -121,7 +121,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ListFinancialEventsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-listFinancialEvents',
         '/finances/v0/financialEvents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -183,7 +183,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ListFinancialEventsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-listFinancialEventsByGroupId',
         '/finances/v0/financialEventGroups/{eventGroupId}/financialEvents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -242,7 +242,7 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ListFinancialEventsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-listFinancialEventsByOrderId',
         '/finances/v0/orders/{orderId}/financialEvents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

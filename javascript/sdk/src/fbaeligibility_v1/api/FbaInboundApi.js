@@ -73,7 +73,7 @@ export class FbaInboundApi {
       let accepts = ['application/json', 'ItemEligibilityPreview'];
       let returnType = GetItemEligibilityPreviewResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getItemEligibilityPreview',
         '/fba/inbound/v1/eligibility/itemPreview', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

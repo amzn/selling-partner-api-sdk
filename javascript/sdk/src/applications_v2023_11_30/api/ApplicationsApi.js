@@ -55,7 +55,7 @@ export class ApplicationsApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ApplicationsApi-rotateApplicationClientSecret',
         '/applications/2023-11-30/clientSecret', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

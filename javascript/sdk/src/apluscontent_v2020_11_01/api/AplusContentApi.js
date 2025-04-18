@@ -79,7 +79,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = PostContentDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-createContentDocument',
         '/aplus/2020-11-01/contentDocuments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -142,7 +142,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = GetContentDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-getContentDocument',
         '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -207,7 +207,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = ListContentDocumentAsinRelationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-listContentDocumentAsinRelations',
         '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -267,7 +267,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = PostContentDocumentApprovalSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-postContentDocumentApprovalSubmission',
         '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -329,7 +329,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = PostContentDocumentAsinRelationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-postContentDocumentAsinRelations',
         '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -386,7 +386,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = PostContentDocumentSuspendSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-postContentDocumentSuspendSubmission',
         '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -439,7 +439,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = SearchContentDocumentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-searchContentDocuments',
         '/aplus/2020-11-01/contentDocuments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -500,7 +500,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = SearchContentPublishRecordsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-searchContentPublishRecords',
         '/aplus/2020-11-01/contentPublishRecords', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -564,7 +564,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = PostContentDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-updateContentDocument',
         '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -624,7 +624,7 @@ export class AplusContentApi {
       let accepts = ['application/json'];
       let returnType = ValidateContentDocumentAsinRelationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'AplusContentApi-validateContentDocumentAsinRelations',
         '/aplus/2020-11-01/contentAsinValidations', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

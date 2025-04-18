@@ -78,7 +78,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-confirmShipment',
         '/orders/v0/orders/{orderId}/shipmentConfirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -127,7 +127,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = GetOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrder',
         '/orders/v0/orders/{orderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -175,7 +175,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = GetOrderAddressResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrderAddress',
         '/orders/v0/orders/{orderId}/address', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -223,7 +223,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = GetOrderBuyerInfoResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrderBuyerInfo',
         '/orders/v0/orders/{orderId}/buyerInfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -275,7 +275,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = GetOrderItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrderItems',
         '/orders/v0/orders/{orderId}/orderItems', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -329,7 +329,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = GetOrderItemsBuyerInfoResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrderItemsBuyerInfo',
         '/orders/v0/orders/{orderId}/orderItems/buyerInfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -379,7 +379,7 @@ export class OrdersV0Api {
       let accepts = ['application/json', 'PendingOrder', 'ApprovedOrder', 'RejectedOrder'];
       let returnType = GetOrderRegulatedInfoResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrderRegulatedInfo',
         '/orders/v0/orders/{orderId}/regulatedInfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -471,7 +471,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = GetOrdersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-getOrders',
         '/orders/v0/orders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -547,7 +547,7 @@ export class OrdersV0Api {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OrdersV0Api-updateVerificationStatus',
         '/orders/v0/orders/{orderId}/regulatedInfo', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

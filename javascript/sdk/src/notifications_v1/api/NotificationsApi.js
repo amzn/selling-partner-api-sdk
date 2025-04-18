@@ -70,7 +70,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = CreateDestinationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-createDestination',
         '/notifications/v1/destinations', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -124,7 +124,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = CreateSubscriptionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-createSubscription',
         '/notifications/v1/subscriptions/{notificationType}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -173,7 +173,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = DeleteDestinationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-deleteDestination',
         '/notifications/v1/destinations/{destinationId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -228,7 +228,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Operation Response'];
       let returnType = DeleteSubscriptionByIdResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-deleteSubscriptionById',
         '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -277,7 +277,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = GetDestinationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-getDestination',
         '/notifications/v1/destinations/{destinationId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -318,7 +318,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = GetDestinationsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-getDestinations',
         '/notifications/v1/destinations', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -369,7 +369,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = GetSubscriptionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-getSubscription',
         '/notifications/v1/subscriptions/{notificationType}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -426,7 +426,7 @@ export class NotificationsApi {
       let accepts = ['application/json', 'Successful Response'];
       let returnType = GetSubscriptionByIdResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'NotificationsApi-getSubscriptionById',
         '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

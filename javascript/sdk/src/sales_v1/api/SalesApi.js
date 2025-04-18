@@ -90,7 +90,7 @@ export class SalesApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetOrderMetricsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SalesApi-getOrderMetrics',
         '/sales/v1/orderMetrics', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

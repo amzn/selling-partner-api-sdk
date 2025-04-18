@@ -69,7 +69,7 @@ export class ShipmentApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentApi-updateShipmentStatus',
         '/orders/v0/orders/{orderId}/shipment', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

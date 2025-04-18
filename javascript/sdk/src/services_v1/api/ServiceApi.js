@@ -94,7 +94,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = SetAppointmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-addAppointmentForServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/appointments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -156,7 +156,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = AssignAppointmentResourcesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-assignAppointmentResources',
         '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -213,7 +213,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = CancelReservationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-cancelReservation',
         '/service/v1/reservation/{reservationId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -269,7 +269,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = CancelServiceJobByServiceJobIdResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-cancelServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/cancellations', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -318,7 +318,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = CompleteServiceJobByServiceJobIdResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-completeServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/completions', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -372,7 +372,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = CreateReservationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-createReservation',
         '/service/v1/reservation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -420,7 +420,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = CreateServiceDocumentUploadDestination;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-createServiceDocumentUploadDestination',
         '/service/v1/documents', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -488,7 +488,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = GetAppointmentSlotsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-getAppointmentSlots',
         '/service/v1/appointmentSlots', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -554,7 +554,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = GetAppointmentSlotsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-getAppointmmentSlotsByJobId',
         '/service/v1/serviceJobs/{serviceJobId}/appointmentSlots', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -623,7 +623,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = FixedSlotCapacity;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-getFixedSlotCapacity',
         '/service/v1/serviceResources/{resourceId}/capacity/fixed', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -692,7 +692,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = RangeSlotCapacity;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-getRangeSlotCapacity',
         '/service/v1/serviceResources/{resourceId}/capacity/range', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -744,7 +744,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = GetServiceJobByServiceJobIdResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-getServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -824,7 +824,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = GetServiceJobsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-getServiceJobs',
         '/service/v1/serviceJobs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -901,7 +901,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = SetAppointmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -964,7 +964,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = String;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-setAppointmentFulfillmentData',
         '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1027,7 +1027,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = UpdateReservationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-updateReservation',
         '/service/v1/reservation/{reservationId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -1090,7 +1090,7 @@ export class ServiceApi {
       let accepts = ['application/json'];
       let returnType = UpdateScheduleResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ServiceApi-updateSchedule',
         '/service/v1/serviceResources/{resourceId}/schedules', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

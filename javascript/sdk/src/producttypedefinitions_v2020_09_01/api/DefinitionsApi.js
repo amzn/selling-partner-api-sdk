@@ -83,7 +83,7 @@ export class DefinitionsApi {
       let accepts = ['application/json'];
       let returnType = ProductTypeDefinition;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefinitionsApi-getDefinitionsProductType',
         '/definitions/2020-09-01/productTypes/{productType}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -148,7 +148,7 @@ export class DefinitionsApi {
       let accepts = ['application/json'];
       let returnType = ProductTypeList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefinitionsApi-searchDefinitionsProductTypes',
         '/definitions/2020-09-01/productTypes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

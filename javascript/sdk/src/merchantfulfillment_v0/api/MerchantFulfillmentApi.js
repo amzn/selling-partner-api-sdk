@@ -69,7 +69,7 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = CancelShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-cancelShipment',
         '/mfn/v0/shipments/{shipmentId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -116,7 +116,7 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = CreateShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-createShipment',
         '/mfn/v0/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -163,7 +163,7 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = GetAdditionalSellerInputsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-getAdditionalSellerInputs',
         '/mfn/v0/additionalSellerInputs', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -210,7 +210,7 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = GetEligibleShipmentServicesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-getEligibleShipmentServices',
         '/mfn/v0/eligibleShippingServices', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -258,7 +258,7 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-getShipment',
         '/mfn/v0/shipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

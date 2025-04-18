@@ -62,7 +62,7 @@ export class VendorInvoiceApi {
       let accepts = ['application/json'];
       let returnType = SubmitInvoiceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorInvoiceApi-submitInvoice',
         '/vendor/directFulfillment/payments/v1/invoices', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType

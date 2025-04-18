@@ -65,7 +65,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = CompetitiveSummaryBatchResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getCompetitiveSummary',
         '/batches/products/pricing/2022-05-01/items/competitiveSummary', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
@@ -112,7 +112,7 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetFeaturedOfferExpectedPriceBatchResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getFeaturedOfferExpectedPriceBatch',
         '/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         contentTypes, accepts, returnType
