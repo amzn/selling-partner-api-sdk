@@ -7,4 +7,4 @@ pom.xml
 src/main/AndroidManifest.xml
 docs/**
 README.md
-auth/**
+src/main/java/software/amazon/spapi/auth/**
