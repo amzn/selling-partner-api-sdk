@@ -1,0 +1,12 @@
+# Skip generation of unnecessary files
+.travis.yml
+build.sbt
+git_push.sh
+.gitlab-ci.yml
+gradle.properties
+tox.ini
+setup.cfg
+docs/**
+pyproject.toml
+setup.py
+README.md
