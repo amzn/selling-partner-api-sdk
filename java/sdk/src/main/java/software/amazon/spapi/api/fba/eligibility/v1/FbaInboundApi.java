@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fba.eligibility.v1.GetItemEligibilityPreviewResponse;
 
@@ -48,7 +47,6 @@ public class FbaInboundApi {
      * @param program The program that you want to check eligibility against. (required)
      * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
      *     only when program&#x3D;INBOUND. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -58,7 +56,6 @@ public class FbaInboundApi {
             String asin,
             String program,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -86,17 +83,6 @@ public class FbaInboundApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -105,7 +91,6 @@ public class FbaInboundApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -113,7 +98,6 @@ public class FbaInboundApi {
             String asin,
             String program,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'asin' is set
@@ -127,7 +111,7 @@ public class FbaInboundApi {
                     "Missing the required parameter 'program' when calling getItemEligibilityPreview(Async)");
         }
 
-        return getItemEligibilityPreviewCall(asin, program, marketplaceIds, progressListener, progressRequestListener);
+        return getItemEligibilityPreviewCall(asin, program, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -175,7 +159,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GetItemEligibilityPreviewResponse> getItemEligibilityPreviewWithHttpInfo(
             String asin, String program, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, null, null);
+        okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -207,16 +191,14 @@ public class FbaInboundApi {
             final ApiCallback<GetItemEligibilityPreviewResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(
-                asin, program, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

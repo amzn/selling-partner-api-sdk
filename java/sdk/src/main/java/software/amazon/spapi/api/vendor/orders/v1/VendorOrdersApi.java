@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.orders.v1.GetPurchaseOrderResponse;
 import software.amazon.spapi.models.vendor.orders.v1.GetPurchaseOrdersResponse;
@@ -51,16 +50,13 @@ public class VendorOrdersApi {
      *
      * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
      *     8-character alpha-numeric code. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getPurchaseOrderCall(
-            String purchaseOrderNumber,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -85,17 +81,6 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -104,14 +89,11 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getPurchaseOrderValidateBeforeCall(
-            String purchaseOrderNumber,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'purchaseOrderNumber' is set
         if (purchaseOrderNumber == null) {
@@ -119,7 +101,7 @@ public class VendorOrdersApi {
                     "Missing the required parameter 'purchaseOrderNumber' when calling getPurchaseOrder(Async)");
         }
 
-        return getPurchaseOrderCall(purchaseOrderNumber, progressListener, progressRequestListener);
+        return getPurchaseOrderCall(purchaseOrderNumber, progressRequestListener);
     }
 
     /**
@@ -159,7 +141,7 @@ public class VendorOrdersApi {
      */
     public ApiResponse<GetPurchaseOrderResponse> getPurchaseOrderWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, null, null);
+        okhttp3.Call call = getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, null);
         Type localVarReturnType = new TypeToken<GetPurchaseOrderResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -184,16 +166,13 @@ public class VendorOrdersApi {
             String purchaseOrderNumber, final ApiCallback<GetPurchaseOrderResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, progressListener, progressRequestListener);
+        okhttp3.Call call = getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetPurchaseOrderResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -226,7 +205,6 @@ public class VendorOrdersApi {
      *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in the filter, all
      *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
      *     application are returned. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -245,7 +223,6 @@ public class VendorOrdersApi {
             String isPOChanged,
             String purchaseOrderState,
             String orderingVendorCode,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -286,17 +263,6 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -305,7 +271,6 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -322,7 +287,6 @@ public class VendorOrdersApi {
             String isPOChanged,
             String purchaseOrderState,
             String orderingVendorCode,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
@@ -339,7 +303,6 @@ public class VendorOrdersApi {
                 isPOChanged,
                 purchaseOrderState,
                 orderingVendorCode,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -484,7 +447,6 @@ public class VendorOrdersApi {
                 isPOChanged,
                 purchaseOrderState,
                 orderingVendorCode,
-                null,
                 null);
         Type localVarReturnType = new TypeToken<GetPurchaseOrdersResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -549,11 +511,9 @@ public class VendorOrdersApi {
             final ApiCallback<GetPurchaseOrdersResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -570,7 +530,6 @@ public class VendorOrdersApi {
                 isPOChanged,
                 purchaseOrderState,
                 orderingVendorCode,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetPurchaseOrdersResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -608,7 +567,6 @@ public class VendorOrdersApi {
      *     providing ship to location id here. This value should be same as &#x27;shipToParty.partyId&#x27; in the
      *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
      *     warehouses used for vendor group purchase orders. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -628,7 +586,6 @@ public class VendorOrdersApi {
             String itemReceiveStatus,
             String orderingVendorCode,
             String shipToPartyId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -673,17 +630,6 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -692,7 +638,6 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -710,7 +655,6 @@ public class VendorOrdersApi {
             String itemReceiveStatus,
             String orderingVendorCode,
             String shipToPartyId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
@@ -728,7 +672,6 @@ public class VendorOrdersApi {
                 itemReceiveStatus,
                 orderingVendorCode,
                 shipToPartyId,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -879,7 +822,6 @@ public class VendorOrdersApi {
                 itemReceiveStatus,
                 orderingVendorCode,
                 shipToPartyId,
-                null,
                 null);
         Type localVarReturnType = new TypeToken<GetPurchaseOrdersStatusResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -947,11 +889,9 @@ public class VendorOrdersApi {
             final ApiCallback<GetPurchaseOrdersStatusResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -969,7 +909,6 @@ public class VendorOrdersApi {
                 itemReceiveStatus,
                 orderingVendorCode,
                 shipToPartyId,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetPurchaseOrdersStatusResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -979,7 +918,6 @@ public class VendorOrdersApi {
      * Build call for submitAcknowledgement
      *
      * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -987,7 +925,6 @@ public class VendorOrdersApi {
      */
     public okhttp3.Call submitAcknowledgementCall(
             SubmitAcknowledgementRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1010,17 +947,6 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1029,13 +955,11 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitAcknowledgementValidateBeforeCall(
             SubmitAcknowledgementRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1043,7 +967,7 @@ public class VendorOrdersApi {
             throw new ApiException("Missing the required parameter 'body' when calling submitAcknowledgement(Async)");
         }
 
-        return submitAcknowledgementCall(body, progressListener, progressRequestListener);
+        return submitAcknowledgementCall(body, progressRequestListener);
     }
 
     /**
@@ -1082,7 +1006,7 @@ public class VendorOrdersApi {
      */
     public ApiResponse<SubmitAcknowledgementResponse> submitAcknowledgementWithHttpInfo(
             SubmitAcknowledgementRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null, null);
+        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<SubmitAcknowledgementResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1106,15 +1030,13 @@ public class VendorOrdersApi {
             SubmitAcknowledgementRequest body, final ApiCallback<SubmitAcknowledgementResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<SubmitAcknowledgementResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

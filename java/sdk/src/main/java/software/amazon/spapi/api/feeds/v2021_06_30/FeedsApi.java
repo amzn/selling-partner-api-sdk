@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedDocumentResponse;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedDocumentSpecification;
@@ -53,16 +52,13 @@ public class FeedsApi {
      *
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelFeedCall(
-            String feedId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -86,17 +82,6 @@ public class FeedsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -105,21 +90,18 @@ public class FeedsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelFeedValidateBeforeCall(
-            String feedId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling cancelFeed(Async)");
         }
 
-        return cancelFeedCall(feedId, progressListener, progressRequestListener);
+        return cancelFeedCall(feedId, progressRequestListener);
     }
 
     /**
@@ -162,7 +144,7 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> cancelFeedWithHttpInfo(String feedId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, null, null);
+        okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, null);
         return apiClient.execute(call);
     }
 
@@ -188,15 +170,13 @@ public class FeedsApi {
     public okhttp3.Call cancelFeedAsync(String feedId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, progressListener, progressRequestListener);
+        okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -204,16 +184,13 @@ public class FeedsApi {
      * Build call for createFeed
      *
      * @param body Information required to create the feed. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createFeedCall(
-            CreateFeedSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateFeedSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -235,17 +212,6 @@ public class FeedsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -254,21 +220,18 @@ public class FeedsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createFeedValidateBeforeCall(
-            CreateFeedSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateFeedSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createFeed(Async)");
         }
 
-        return createFeedCall(body, progressListener, progressRequestListener);
+        return createFeedCall(body, progressRequestListener);
     }
 
     /**
@@ -318,7 +281,7 @@ public class FeedsApi {
      */
     public ApiResponse<CreateFeedResponse> createFeedWithHttpInfo(CreateFeedSpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createFeedValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createFeedValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -347,15 +310,13 @@ public class FeedsApi {
     public okhttp3.Call createFeedAsync(CreateFeedSpecification body, final ApiCallback<CreateFeedResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createFeedValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createFeedValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -364,7 +325,6 @@ public class FeedsApi {
      * Build call for createFeedDocument
      *
      * @param body Specifies the content type for the createFeedDocument operation. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,7 +332,6 @@ public class FeedsApi {
      */
     public okhttp3.Call createFeedDocumentCall(
             CreateFeedDocumentSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -395,17 +354,6 @@ public class FeedsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -414,13 +362,11 @@ public class FeedsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createFeedDocumentValidateBeforeCall(
             CreateFeedDocumentSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -428,7 +374,7 @@ public class FeedsApi {
             throw new ApiException("Missing the required parameter 'body' when calling createFeedDocument(Async)");
         }
 
-        return createFeedDocumentCall(body, progressListener, progressRequestListener);
+        return createFeedDocumentCall(body, progressRequestListener);
     }
 
     /**
@@ -473,7 +419,7 @@ public class FeedsApi {
      */
     public ApiResponse<CreateFeedDocumentResponse> createFeedDocumentWithHttpInfo(CreateFeedDocumentSpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -500,15 +446,13 @@ public class FeedsApi {
             CreateFeedDocumentSpecification body, final ApiCallback<CreateFeedDocumentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -518,16 +462,13 @@ public class FeedsApi {
      *
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getFeedCall(
-            String feedId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -551,17 +492,6 @@ public class FeedsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -570,21 +500,18 @@ public class FeedsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getFeedValidateBeforeCall(
-            String feedId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling getFeed(Async)");
         }
 
-        return getFeedCall(feedId, progressListener, progressRequestListener);
+        return getFeedCall(feedId, progressRequestListener);
     }
 
     /**
@@ -623,7 +550,7 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Feed> getFeedWithHttpInfo(String feedId) throws ApiException, LWAException {
-        okhttp3.Call call = getFeedValidateBeforeCall(feedId, null, null);
+        okhttp3.Call call = getFeedValidateBeforeCall(feedId, null);
         Type localVarReturnType = new TypeToken<Feed>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -647,15 +574,13 @@ public class FeedsApi {
     public okhttp3.Call getFeedAsync(String feedId, final ApiCallback<Feed> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getFeedValidateBeforeCall(feedId, progressListener, progressRequestListener);
+        okhttp3.Call call = getFeedValidateBeforeCall(feedId, progressRequestListener);
         Type localVarReturnType = new TypeToken<Feed>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -664,16 +589,13 @@ public class FeedsApi {
      * Build call for getFeedDocument
      *
      * @param feedDocumentId The identifier of the feed document. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getFeedDocumentCall(
-            String feedDocumentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -697,17 +619,6 @@ public class FeedsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -716,14 +627,11 @@ public class FeedsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getFeedDocumentValidateBeforeCall(
-            String feedDocumentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'feedDocumentId' is set
         if (feedDocumentId == null) {
@@ -731,7 +639,7 @@ public class FeedsApi {
                     "Missing the required parameter 'feedDocumentId' when calling getFeedDocument(Async)");
         }
 
-        return getFeedDocumentCall(feedDocumentId, progressListener, progressRequestListener);
+        return getFeedDocumentCall(feedDocumentId, progressRequestListener);
     }
 
     /**
@@ -769,7 +677,7 @@ public class FeedsApi {
      */
     public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(String feedDocumentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, null, null);
+        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, null);
         Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -792,16 +700,13 @@ public class FeedsApi {
     public okhttp3.Call getFeedDocumentAsync(String feedDocumentId, final ApiCallback<FeedDocument> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getFeedDocumentValidateBeforeCall(feedDocumentId, progressListener, progressRequestListener);
+        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, progressRequestListener);
         Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -824,7 +729,6 @@ public class FeedsApi {
      *     number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds
      *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
      *     cause the request to fail. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -838,7 +742,6 @@ public class FeedsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -873,17 +776,6 @@ public class FeedsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -892,7 +784,6 @@ public class FeedsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -904,7 +795,6 @@ public class FeedsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
@@ -916,7 +806,6 @@ public class FeedsApi {
                 createdSince,
                 createdUntil,
                 nextToken,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -1000,15 +889,7 @@ public class FeedsApi {
             String nextToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getFeedsValidateBeforeCall(
-                feedTypes,
-                marketplaceIds,
-                pageSize,
-                processingStatuses,
-                createdSince,
-                createdUntil,
-                nextToken,
-                null,
-                null);
+                feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken, null);
         Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1053,11 +934,9 @@ public class FeedsApi {
             final ApiCallback<GetFeedsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -1069,7 +948,6 @@ public class FeedsApi {
                 createdSince,
                 createdUntil,
                 nextToken,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

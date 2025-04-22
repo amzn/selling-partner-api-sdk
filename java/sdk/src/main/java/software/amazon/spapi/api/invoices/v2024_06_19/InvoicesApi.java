@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.invoices.v2024_06_19.ExportInvoicesRequest;
 import software.amazon.spapi.models.invoices.v2024_06_19.ExportInvoicesResponse;
@@ -53,16 +52,13 @@ public class InvoicesApi {
      * Build call for createInvoicesExport
      *
      * @param body Information required to create the export request. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createInvoicesExportCall(
-            ExportInvoicesRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ExportInvoicesRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -84,17 +80,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -103,21 +88,18 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createInvoicesExportValidateBeforeCall(
-            ExportInvoicesRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ExportInvoicesRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createInvoicesExport(Async)");
         }
 
-        return createInvoicesExportCall(body, progressListener, progressRequestListener);
+        return createInvoicesExportCall(body, progressRequestListener);
     }
 
     /**
@@ -153,7 +135,7 @@ public class InvoicesApi {
      */
     public ApiResponse<ExportInvoicesResponse> createInvoicesExportWithHttpInfo(ExportInvoicesRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createInvoicesExportValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createInvoicesExportValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<ExportInvoicesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -177,15 +159,13 @@ public class InvoicesApi {
             ExportInvoicesRequest body, final ApiCallback<ExportInvoicesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createInvoicesExportValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createInvoicesExportValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<ExportInvoicesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -195,7 +175,6 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -204,7 +183,6 @@ public class InvoicesApi {
     public okhttp3.Call getInvoiceCall(
             String marketplaceId,
             String invoiceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -231,17 +209,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -250,14 +217,12 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getInvoiceValidateBeforeCall(
             String marketplaceId,
             String invoiceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -269,7 +234,7 @@ public class InvoicesApi {
             throw new ApiException("Missing the required parameter 'invoiceId' when calling getInvoice(Async)");
         }
 
-        return getInvoiceCall(marketplaceId, invoiceId, progressListener, progressRequestListener);
+        return getInvoiceCall(marketplaceId, invoiceId, progressRequestListener);
     }
 
     /**
@@ -313,7 +278,7 @@ public class InvoicesApi {
      */
     public ApiResponse<GetInvoiceResponse> getInvoiceWithHttpInfo(String marketplaceId, String invoiceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInvoiceValidateBeforeCall(marketplaceId, invoiceId, null, null);
+        okhttp3.Call call = getInvoiceValidateBeforeCall(marketplaceId, invoiceId, null);
         Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -340,16 +305,13 @@ public class InvoicesApi {
             String marketplaceId, String invoiceId, final ApiCallback<GetInvoiceResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getInvoiceValidateBeforeCall(marketplaceId, invoiceId, progressListener, progressRequestListener);
+        okhttp3.Call call = getInvoiceValidateBeforeCall(marketplaceId, invoiceId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -388,7 +350,6 @@ public class InvoicesApi {
      * @param externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -409,7 +370,6 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -454,17 +414,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -473,7 +422,6 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -492,7 +440,6 @@ public class InvoicesApi {
             List<String> statuses,
             String externalInvoiceId,
             String sortBy,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -515,7 +462,6 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -672,7 +618,6 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
-                null,
                 null);
         Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -741,11 +686,9 @@ public class InvoicesApi {
             final ApiCallback<GetInvoicesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -764,7 +707,6 @@ public class InvoicesApi {
                 statuses,
                 externalInvoiceId,
                 sortBy,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -774,16 +716,13 @@ public class InvoicesApi {
      * Build call for getInvoicesAttributes
      *
      * @param marketplaceId The marketplace identifier. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesAttributesCall(
-            String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -808,17 +747,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -827,14 +755,11 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getInvoicesAttributesValidateBeforeCall(
-            String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
         if (marketplaceId == null) {
@@ -842,7 +767,7 @@ public class InvoicesApi {
                     "Missing the required parameter 'marketplaceId' when calling getInvoicesAttributes(Async)");
         }
 
-        return getInvoicesAttributesCall(marketplaceId, progressListener, progressRequestListener);
+        return getInvoicesAttributesCall(marketplaceId, progressRequestListener);
     }
 
     /**
@@ -880,7 +805,7 @@ public class InvoicesApi {
      */
     public ApiResponse<GetInvoicesAttributesResponse> getInvoicesAttributesWithHttpInfo(String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInvoicesAttributesValidateBeforeCall(marketplaceId, null, null);
+        okhttp3.Call call = getInvoicesAttributesValidateBeforeCall(marketplaceId, null);
         Type localVarReturnType = new TypeToken<GetInvoicesAttributesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -904,16 +829,13 @@ public class InvoicesApi {
             String marketplaceId, final ApiCallback<GetInvoicesAttributesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getInvoicesAttributesValidateBeforeCall(marketplaceId, progressListener, progressRequestListener);
+        okhttp3.Call call = getInvoicesAttributesValidateBeforeCall(marketplaceId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetInvoicesAttributesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -922,16 +844,13 @@ public class InvoicesApi {
      * Build call for getInvoicesDocument
      *
      * @param invoicesDocumentId The export document identifier. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesDocumentCall(
-            String invoicesDocumentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String invoicesDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -956,17 +875,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -975,14 +883,11 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getInvoicesDocumentValidateBeforeCall(
-            String invoicesDocumentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String invoicesDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'invoicesDocumentId' is set
         if (invoicesDocumentId == null) {
@@ -990,7 +895,7 @@ public class InvoicesApi {
                     "Missing the required parameter 'invoicesDocumentId' when calling getInvoicesDocument(Async)");
         }
 
-        return getInvoicesDocumentCall(invoicesDocumentId, progressListener, progressRequestListener);
+        return getInvoicesDocumentCall(invoicesDocumentId, progressRequestListener);
     }
 
     /**
@@ -1031,7 +936,7 @@ public class InvoicesApi {
      */
     public ApiResponse<GetInvoicesDocumentResponse> getInvoicesDocumentWithHttpInfo(String invoicesDocumentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, null, null);
+        okhttp3.Call call = getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, null);
         Type localVarReturnType = new TypeToken<GetInvoicesDocumentResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1056,16 +961,13 @@ public class InvoicesApi {
             String invoicesDocumentId, final ApiCallback<GetInvoicesDocumentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, progressListener, progressRequestListener);
+        okhttp3.Call call = getInvoicesDocumentValidateBeforeCall(invoicesDocumentId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetInvoicesDocumentResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1074,16 +976,13 @@ public class InvoicesApi {
      * Build call for getInvoicesExport
      *
      * @param exportId The unique identifier for the export. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoicesExportCall(
-            String exportId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String exportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1107,17 +1006,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1126,21 +1014,18 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getInvoicesExportValidateBeforeCall(
-            String exportId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String exportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'exportId' is set
         if (exportId == null) {
             throw new ApiException("Missing the required parameter 'exportId' when calling getInvoicesExport(Async)");
         }
 
-        return getInvoicesExportCall(exportId, progressListener, progressRequestListener);
+        return getInvoicesExportCall(exportId, progressRequestListener);
     }
 
     /**
@@ -1178,7 +1063,7 @@ public class InvoicesApi {
      */
     public ApiResponse<GetInvoicesExportResponse> getInvoicesExportWithHttpInfo(String exportId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, null, null);
+        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, null);
         Type localVarReturnType = new TypeToken<GetInvoicesExportResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1201,15 +1086,13 @@ public class InvoicesApi {
     public okhttp3.Call getInvoicesExportAsync(String exportId, final ApiCallback<GetInvoicesExportResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, progressListener, progressRequestListener);
+        okhttp3.Call call = getInvoicesExportValidateBeforeCall(exportId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetInvoicesExportResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1230,7 +1113,6 @@ public class InvoicesApi {
      *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1243,7 +1125,6 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1274,17 +1155,6 @@ public class InvoicesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1293,7 +1163,6 @@ public class InvoicesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1304,7 +1173,6 @@ public class InvoicesApi {
             Integer pageSize,
             OffsetDateTime dateEnd,
             String status,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -1314,14 +1182,7 @@ public class InvoicesApi {
         }
 
         return getInvoicesExportsCall(
-                marketplaceId,
-                dateStart,
-                nextToken,
-                pageSize,
-                dateEnd,
-                status,
-                progressListener,
-                progressRequestListener);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, progressRequestListener);
     }
 
     /**
@@ -1398,7 +1259,7 @@ public class InvoicesApi {
             String status)
             throws ApiException, LWAException {
         okhttp3.Call call = getInvoicesExportsValidateBeforeCall(
-                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, null, null);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, null);
         Type localVarReturnType = new TypeToken<GetInvoicesExportsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1440,23 +1301,14 @@ public class InvoicesApi {
             final ApiCallback<GetInvoicesExportsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getInvoicesExportsValidateBeforeCall(
-                marketplaceId,
-                dateStart,
-                nextToken,
-                pageSize,
-                dateEnd,
-                status,
-                progressListener,
-                progressRequestListener);
+                marketplaceId, dateStart, nextToken, pageSize, dateEnd, status, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetInvoicesExportsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

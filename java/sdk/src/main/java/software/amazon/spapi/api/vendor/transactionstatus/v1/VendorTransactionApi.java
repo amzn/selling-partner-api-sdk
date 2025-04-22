@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.transactionstatus.v1.GetTransactionResponse;
 
@@ -46,16 +45,13 @@ public class VendorTransactionApi {
      *
      * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
      *     request of a specific transaction. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransactionCall(
-            String transactionId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transactionId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -79,17 +75,6 @@ public class VendorTransactionApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -98,21 +83,18 @@ public class VendorTransactionApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getTransactionValidateBeforeCall(
-            String transactionId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transactionId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'transactionId' is set
         if (transactionId == null) {
             throw new ApiException("Missing the required parameter 'transactionId' when calling getTransaction(Async)");
         }
 
-        return getTransactionCall(transactionId, progressListener, progressRequestListener);
+        return getTransactionCall(transactionId, progressRequestListener);
     }
 
     /**
@@ -150,7 +132,7 @@ public class VendorTransactionApi {
      */
     public ApiResponse<GetTransactionResponse> getTransactionWithHttpInfo(String transactionId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null, null);
+        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null);
         Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -174,15 +156,13 @@ public class VendorTransactionApi {
     public okhttp3.Call getTransactionAsync(String transactionId, final ApiCallback<GetTransactionResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressListener, progressRequestListener);
+        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
