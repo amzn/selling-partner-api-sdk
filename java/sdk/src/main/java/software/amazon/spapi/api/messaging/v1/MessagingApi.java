@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -58,26 +59,68 @@ import software.amazon.spapi.models.messaging.v1.InvoiceResponse;
 
 public class MessagingApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public MessagingApi(ApiClient apiClient) {
+    public MessagingApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for confirmCustomizationDetails
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call confirmCustomizationDetailsCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket confirmCustomizationDetailsBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-confirmCustomizationDetails"))
+            .build();
+
+    public final Bucket createAmazonMotorsBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createAmazonMotors"))
+            .build();
+
+    public final Bucket createConfirmDeliveryDetailsBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createConfirmDeliveryDetails"))
+            .build();
+
+    public final Bucket createConfirmOrderDetailsBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createConfirmOrderDetails"))
+            .build();
+
+    public final Bucket createConfirmServiceDetailsBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createConfirmServiceDetails"))
+            .build();
+
+    public final Bucket createDigitalAccessKeyBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createDigitalAccessKey"))
+            .build();
+
+    public final Bucket createLegalDisclosureBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createLegalDisclosure"))
+            .build();
+
+    public final Bucket createNegativeFeedbackRemovalBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createNegativeFeedbackRemoval"))
+            .build();
+
+    public final Bucket createUnexpectedProblemBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createUnexpectedProblem"))
+            .build();
+
+    public final Bucket createWarrantyBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-createWarranty"))
+            .build();
+
+    public final Bucket getAttributesBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-getAttributes"))
+            .build();
+
+    public final Bucket getMessagingActionsForOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-getMessagingActionsForOrder"))
+            .build();
+
+    public final Bucket sendInvoiceBucket = Bucket.builder()
+            .addLimit(config.getLimit("MessagingApi-sendInvoice"))
+            .build();
+
+    private okhttp3.Call confirmCustomizationDetailsCall(
             CreateConfirmCustomizationDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -206,8 +249,10 @@ public class MessagingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 confirmCustomizationDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("confirmCustomizationDetails operation exceeds rate limit");
     }
 
     /**
@@ -246,25 +291,14 @@ public class MessagingApi {
 
         okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("confirmCustomizationDetails operation exceeds rate limit");
     }
-    /**
-     * Build call for createAmazonMotors
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createAmazonMotorsCall(
+
+    private okhttp3.Call createAmazonMotorsCall(
             CreateAmazonMotorsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -390,8 +424,10 @@ public class MessagingApi {
             CreateAmazonMotorsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         okhttp3.Call call = createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createAmazonMotorsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createAmazonMotors operation exceeds rate limit");
     }
 
     /**
@@ -430,25 +466,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createAmazonMotorsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createAmazonMotorsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createAmazonMotors operation exceeds rate limit");
     }
-    /**
-     * Build call for createConfirmDeliveryDetails
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createConfirmDeliveryDetailsCall(
+
+    private okhttp3.Call createConfirmDeliveryDetailsCall(
             CreateConfirmDeliveryDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -577,8 +602,10 @@ public class MessagingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 createConfirmDeliveryDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createConfirmDeliveryDetails operation exceeds rate limit");
     }
 
     /**
@@ -617,25 +644,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createConfirmDeliveryDetails operation exceeds rate limit");
     }
-    /**
-     * Build call for createConfirmOrderDetails
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createConfirmOrderDetailsCall(
+
+    private okhttp3.Call createConfirmOrderDetailsCall(
             CreateConfirmOrderDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -762,8 +778,10 @@ public class MessagingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 createConfirmOrderDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createConfirmOrderDetails operation exceeds rate limit");
     }
 
     /**
@@ -802,25 +820,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createConfirmOrderDetails operation exceeds rate limit");
     }
-    /**
-     * Build call for createConfirmServiceDetails
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createConfirmServiceDetailsCall(
+
+    private okhttp3.Call createConfirmServiceDetailsCall(
             CreateConfirmServiceDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -949,8 +956,10 @@ public class MessagingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 createConfirmServiceDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createConfirmServiceDetails operation exceeds rate limit");
     }
 
     /**
@@ -989,25 +998,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createConfirmServiceDetails operation exceeds rate limit");
     }
-    /**
-     * Build call for createDigitalAccessKey
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createDigitalAccessKeyCall(
+
+    private okhttp3.Call createDigitalAccessKeyCall(
             CreateDigitalAccessKeyRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -1134,8 +1132,10 @@ public class MessagingApi {
             CreateDigitalAccessKeyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createDigitalAccessKey operation exceeds rate limit");
     }
 
     /**
@@ -1174,25 +1174,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createDigitalAccessKey operation exceeds rate limit");
     }
-    /**
-     * Build call for createLegalDisclosure
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createLegalDisclosureCall(
+
+    private okhttp3.Call createLegalDisclosureCall(
             CreateLegalDisclosureRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -1319,8 +1308,10 @@ public class MessagingApi {
             CreateLegalDisclosureRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         okhttp3.Call call = createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createLegalDisclosure operation exceeds rate limit");
     }
 
     /**
@@ -1359,24 +1350,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createLegalDisclosureValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createLegalDisclosure operation exceeds rate limit");
     }
-    /**
-     * Build call for createNegativeFeedbackRemoval
-     *
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createNegativeFeedbackRemovalCall(
+
+    private okhttp3.Call createNegativeFeedbackRemovalCall(
             String amazonOrderId,
             List<String> marketplaceIds,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -1494,8 +1475,10 @@ public class MessagingApi {
     public ApiResponse<CreateNegativeFeedbackRemovalResponse> createNegativeFeedbackRemovalWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createNegativeFeedbackRemovalBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createNegativeFeedbackRemoval operation exceeds rate limit");
     }
 
     /**
@@ -1532,25 +1515,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createNegativeFeedbackRemovalBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createNegativeFeedbackRemoval operation exceeds rate limit");
     }
-    /**
-     * Build call for createUnexpectedProblem
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createUnexpectedProblemCall(
+
+    private okhttp3.Call createUnexpectedProblemCall(
             CreateUnexpectedProblemRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -1677,8 +1649,10 @@ public class MessagingApi {
             CreateUnexpectedProblemRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createUnexpectedProblem operation exceeds rate limit");
     }
 
     /**
@@ -1717,25 +1691,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createUnexpectedProblem operation exceeds rate limit");
     }
-    /**
-     * Build call for createWarranty
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createWarrantyCall(
+
+    private okhttp3.Call createWarrantyCall(
             CreateWarrantyRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -1859,8 +1822,10 @@ public class MessagingApi {
             CreateWarrantyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         okhttp3.Call call = createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createWarranty operation exceeds rate limit");
     }
 
     /**
@@ -1899,24 +1864,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createWarrantyValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createWarranty operation exceeds rate limit");
     }
-    /**
-     * Build call for getAttributes
-     *
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getAttributesCall(
+
+    private okhttp3.Call getAttributesCall(
             String amazonOrderId,
             List<String> marketplaceIds,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -2020,8 +1975,10 @@ public class MessagingApi {
     public ApiResponse<GetAttributesResponse> getAttributesWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAttributes operation exceeds rate limit");
     }
 
     /**
@@ -2051,24 +2008,14 @@ public class MessagingApi {
 
         okhttp3.Call call = getAttributesValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getAttributes operation exceeds rate limit");
     }
-    /**
-     * Build call for getMessagingActionsForOrder
-     *
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
-     *     message types. (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getMessagingActionsForOrderCall(
+
+    private okhttp3.Call getMessagingActionsForOrderCall(
             String amazonOrderId,
             List<String> marketplaceIds,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -2188,8 +2135,10 @@ public class MessagingApi {
     public ApiResponse<GetMessagingActionsForOrderResponse> getMessagingActionsForOrderWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMessagingActionsForOrder operation exceeds rate limit");
     }
 
     /**
@@ -2227,25 +2176,14 @@ public class MessagingApi {
 
         okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getMessagingActionsForOrder operation exceeds rate limit");
     }
-    /**
-     * Build call for sendInvoice
-     *
-     * @param body This contains the message body for a message. (required)
-     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     *     (required)
-     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
-     *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call sendInvoiceCall(
+
+    private okhttp3.Call sendInvoiceCall(
             InvoiceRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
@@ -2354,8 +2292,10 @@ public class MessagingApi {
     public ApiResponse<InvoiceResponse> sendInvoiceWithHttpInfo(
             InvoiceRequest body, String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("sendInvoice operation exceeds rate limit");
     }
 
     /**
@@ -2388,9 +2328,11 @@ public class MessagingApi {
 
         okhttp3.Call call = sendInvoiceValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("sendInvoice operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -2398,7 +2340,7 @@ public class MessagingApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2420,13 +2362,8 @@ public class MessagingApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -2449,10 +2386,11 @@ public class MessagingApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new MessagingApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new MessagingApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }
