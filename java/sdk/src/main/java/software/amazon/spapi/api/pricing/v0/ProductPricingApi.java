@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -41,32 +42,40 @@ import software.amazon.spapi.models.pricing.v0.GetPricingResponse;
 
 public class ProductPricingApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public ProductPricingApi(ApiClient apiClient) {
+    public ProductPricingApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for getCompetitivePricing
-     *
-     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     *     (required)
-     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
-     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
-     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
-     *     provide in the Skus parameter. Possible values: Asin, Sku. (required)
-     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
-     *     the given marketplace. (optional)
-     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
-     *     Business buyers. Default is Consumer. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getCompetitivePricingCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket getCompetitivePricingBucket = Bucket.builder()
+            .addLimit(config.getLimit("ProductPricingApi-getCompetitivePricing"))
+            .build();
+
+    public final Bucket getItemOffersBucket = Bucket.builder()
+            .addLimit(config.getLimit("ProductPricingApi-getItemOffers"))
+            .build();
+
+    public final Bucket getItemOffersBatchBucket = Bucket.builder()
+            .addLimit(config.getLimit("ProductPricingApi-getItemOffersBatch"))
+            .build();
+
+    public final Bucket getListingOffersBucket = Bucket.builder()
+            .addLimit(config.getLimit("ProductPricingApi-getListingOffers"))
+            .build();
+
+    public final Bucket getListingOffersBatchBucket = Bucket.builder()
+            .addLimit(config.getLimit("ProductPricingApi-getListingOffersBatch"))
+            .build();
+
+    public final Bucket getPricingBucket = Bucket.builder()
+            .addLimit(config.getLimit("ProductPricingApi-getPricing"))
+            .build();
+
+    private okhttp3.Call getCompetitivePricingCall(
             String marketplaceId,
             String itemType,
             List<String> asins,
@@ -214,8 +223,10 @@ public class ProductPricingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 getCompetitivePricingValidateBeforeCall(marketplaceId, itemType, asins, skus, customerType, null, null);
-        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCompetitivePricing operation exceeds rate limit");
     }
 
     /**
@@ -264,26 +275,14 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getCompetitivePricingValidateBeforeCall(
                 marketplaceId, itemType, asins, skus, customerType, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getCompetitivePricing operation exceeds rate limit");
     }
-    /**
-     * Build call for getItemOffers
-     *
-     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     *     (required)
-     * @param itemCondition Filters the offer listings to be considered based on item condition. Possible values: New,
-     *     Used, Collectible, Refurbished, Club. (required)
-     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getItemOffersCall(
+
+    private okhttp3.Call getItemOffersCall(
             String marketplaceId,
             String itemCondition,
             String asin,
@@ -414,8 +413,10 @@ public class ProductPricingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 getItemOffersValidateBeforeCall(marketplaceId, itemCondition, asin, customerType, null, null);
-        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getItemOffers operation exceeds rate limit");
     }
 
     /**
@@ -455,21 +456,14 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getItemOffersValidateBeforeCall(
                 marketplaceId, itemCondition, asin, customerType, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getItemOffers operation exceeds rate limit");
     }
-    /**
-     * Build call for getItemOffersBatch
-     *
-     * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getItemOffersBatchCall(
+
+    private okhttp3.Call getItemOffersBatchCall(
             GetItemOffersBatchRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -567,8 +561,10 @@ public class ProductPricingApi {
     public ApiResponse<GetItemOffersBatchResponse> getItemOffersBatchWithHttpInfo(GetItemOffersBatchRequest body)
             throws ApiException, LWAException {
         okhttp3.Call call = getItemOffersBatchValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getItemOffersBatch operation exceeds rate limit");
     }
 
     /**
@@ -599,27 +595,14 @@ public class ProductPricingApi {
         }
 
         okhttp3.Call call = getItemOffersBatchValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getItemOffersBatch operation exceeds rate limit");
     }
-    /**
-     * Build call for getListingOffers
-     *
-     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     *     (required)
-     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
-     *     Refurbished, Club. (required)
-     * @param sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
-     *     SellerId, which is included with every operation that you submit. (required)
-     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getListingOffersCall(
+
+    private okhttp3.Call getListingOffersCall(
             String marketplaceId,
             String itemCondition,
             String sellerSKU,
@@ -761,8 +744,10 @@ public class ProductPricingApi {
             throws ApiException, LWAException {
         okhttp3.Call call =
                 getListingOffersValidateBeforeCall(marketplaceId, itemCondition, sellerSKU, customerType, null, null);
-        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getListingOffers operation exceeds rate limit");
     }
 
     /**
@@ -806,21 +791,14 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getListingOffersValidateBeforeCall(
                 marketplaceId, itemCondition, sellerSKU, customerType, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getListingOffers operation exceeds rate limit");
     }
-    /**
-     * Build call for getListingOffersBatch
-     *
-     * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getListingOffersBatchCall(
+
+    private okhttp3.Call getListingOffersBatchCall(
             GetListingOffersBatchRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -916,8 +894,10 @@ public class ProductPricingApi {
     public ApiResponse<GetListingOffersBatchResponse> getListingOffersBatchWithHttpInfo(
             GetListingOffersBatchRequest body) throws ApiException, LWAException {
         okhttp3.Call call = getListingOffersBatchValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getListingOffersBatch operation exceeds rate limit");
     }
 
     /**
@@ -947,33 +927,14 @@ public class ProductPricingApi {
         }
 
         okhttp3.Call call = getListingOffersBatchValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getListingOffersBatch operation exceeds rate limit");
     }
-    /**
-     * Build call for getPricing
-     *
-     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     *     (required)
-     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
-     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
-     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
-     *     provide in the Skus parameter. (required)
-     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
-     *     the given marketplace. (optional)
-     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
-     *     Refurbished, Club. (optional)
-     * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
-     *     Default is B2C. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getPricingCall(
+
+    private okhttp3.Call getPricingCall(
             String marketplaceId,
             String itemType,
             List<String> asins,
@@ -1144,8 +1105,10 @@ public class ProductPricingApi {
             throws ApiException, LWAException {
         okhttp3.Call call = getPricingValidateBeforeCall(
                 marketplaceId, itemType, asins, skus, itemCondition, offerType, null, null);
-        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPricing operation exceeds rate limit");
     }
 
     /**
@@ -1204,9 +1167,11 @@ public class ProductPricingApi {
                 offerType,
                 progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getPricing operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -1214,7 +1179,7 @@ public class ProductPricingApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1236,13 +1201,8 @@ public class ProductPricingApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1265,10 +1225,11 @@ public class ProductPricingApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ProductPricingApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new ProductPricingApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }
