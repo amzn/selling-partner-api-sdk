@@ -4,8 +4,6 @@ package {{invokerPackage}};
 
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
-import okhttp3.logging.HttpLoggingInterceptor;
-import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.BufferedSink;
 import okio.Okio;
 {{#joda}}
@@ -58,8 +56,6 @@ public class ApiClient {
 
     private OkHttpClient httpClient;
     private JSON json;
-
-    private HttpLoggingInterceptor loggingInterceptor;
 
     private LWAAuthorizationSigner lwaAuthorizationSigner;
     private RateLimiter rateLimiter;
@@ -211,27 +207,6 @@ public class ApiClient {
      */
     public boolean isDebugging() {
         return debugging;
-    }
-
-    /**
-     * Enable/disable debugging for this API client.
-     *
-     * @param debugging To enable (true) or disable (false) debugging
-     * @return ApiClient
-     */
-    public ApiClient setDebugging(boolean debugging) {
-        if (debugging != this.debugging) {
-            if (debugging) {
-                loggingInterceptor = new HttpLoggingInterceptor();
-                loggingInterceptor.setLevel(Level.BODY);
-                httpClient.interceptors().add(loggingInterceptor);
-            } else {
-                httpClient.interceptors().remove(loggingInterceptor);
-                loggingInterceptor = null;
-            }
-        }
-        this.debugging = debugging;
-        return this;
     }
 
     /**
