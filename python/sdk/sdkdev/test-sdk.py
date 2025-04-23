@@ -1,7 +1,9 @@
+from spapi import SellersApi, SPAPIConfig, SPAPIClient, ApiException
+from spapi.models.sellers_v1 import GetMarketplaceParticipationsResponse
+
 if __name__ == "__main__":
     print("Starting the Script...")
 
-    from src.sp_api.auth.credentials import SPAPIConfig
     # User inputs their credentials in the config
     config = SPAPIConfig(
         client_id="",
@@ -11,20 +13,25 @@ if __name__ == "__main__":
         scope = None
     )
 
-    from src.spapiclient import SPAPIClient
 
     # Create the API Client
-    print("Config and client initialized...")
     spapi_client = SPAPIClient(config)
 
-    marketplace_ids = ["ATVPDKIKX0DER"]
-
-    from src import SellersApi
-
     sellers_api = SellersApi(spapi_client.api_client)
-    response = sellers_api.get_marketplace_participations()
+
+    response = None
+    try:
+        response = sellers_api.get_marketplace_participations()
+    except ApiException as e:
+        print(f"API Exception occurred: {str(e)}")
+        print(f"Error status code: {e.status}")
+        print(f"Error reason: {e.reason}")
+        print(f"Error body: {e.body}")
+
 
 
     print("Sellers API Response:")
-    print(response)
+    if response is not None:
+        for marketplaceParticipation in GetMarketplaceParticipationsResponse(response).payload.payload:
+            print(marketplaceParticipation.marketplace.id)
 

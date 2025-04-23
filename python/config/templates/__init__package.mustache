@@ -5,18 +5,16 @@ __version__ = "{{packageVersion}}"
 {{/apis}}{{/apiInfo}}
 
 # import ApiClient
-from {{packageName}}.api_response import ApiResponse
-from {{packageName}}.api_client import ApiClient
 from {{packageName}}.configuration import Configuration
-from {{packageName}}.exceptions import OpenApiException
-from {{packageName}}.exceptions import ApiTypeError
-from {{packageName}}.exceptions import ApiValueError
-from {{packageName}}.exceptions import ApiKeyError
-from {{packageName}}.exceptions import ApiAttributeError
-from {{packageName}}.exceptions import ApiException
+from {{packageName}}.api_client import ApiClient
+from {{packageName}}.client import SPAPIClient
+from {{packageName}}.rest import ApiException
 {{#hasHttpSignatureMethods}}
 from {{packageName}}.signing import HttpSigningConfiguration
 {{/hasHttpSignatureMethods}}
+
+#import Auth Config
+from {{packageName}}.auth.credentials import SPAPIConfig
 
 
 {{#recursionLimit}}

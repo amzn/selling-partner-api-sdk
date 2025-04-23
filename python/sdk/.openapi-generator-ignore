@@ -1,4 +1,5 @@
 # Skip generation of unnecessary files
+.github/**
 .travis.yml
 build.sbt
 git_push.sh
@@ -10,4 +11,6 @@ docs/**
 pyproject.toml
 setup.py
 README.md
-pyvenv.cfg
+spapi/api_response.py
+spapi/exceptions.py
+spapi/py.typed

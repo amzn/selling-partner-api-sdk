@@ -1,4 +1,3 @@
-
 class LwaException(Exception):
     def __init__(self, error_code, error_message, cause=None):
         super().__init__(f"LWA Error - Code {error_code}, Message: {error_message}")

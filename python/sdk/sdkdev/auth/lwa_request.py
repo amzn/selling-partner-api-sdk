@@ -2,8 +2,8 @@ import requests
 import time
 import logging
 
-from spapi.auth.LwaException import LwaException
-from spapi.auth.LwaExceptionErrorCode import LwaExceptionErrorCode
+from spapi.auth.lwa_exception import LwaException
+from spapi.auth.lwa_exception_error_code import LwaExceptionErrorCode
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
