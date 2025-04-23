@@ -195,7 +195,7 @@ export class ApiClient {
     #rdtClient = null;
     #defaultRateLimitFetcher = null;
     #customizedRateLimiter = null;
-    #useDefaultRateLimiter = false;
+    #useDefaultRateLimiter = true;
 
     /**
     * Constructs a new ApiClient.

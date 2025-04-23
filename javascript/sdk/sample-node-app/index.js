@@ -105,14 +105,15 @@ async function getOrdersWithRateLimiterAndRetry(rateLimitPermit, waitTimeOutInMi
   const ordersApiClient = new OrdersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
   ordersApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken);
 
-  // Option1: Use our default rate limiter. Our rate limiter uses the rate limit and burst values in our official document.
-  ordersApiClient.enableDefaultRateLimiter();
+  // Option1: Use our default rate limiter. Our rate limiter uses the rate limit and burst values in our official document. 
+  // It is turned on by default.
 
   // Option2: Use your customized rate limiter, you need to replace <RateLimit> and <BurstValue> with actual numbers.
   // const rateLimitConfig = new RateLimitConfiguration(<RateLimit>, <BurstValue>);
   // ordersApiClient.enableCustomizedRateLimiter(rateLimitConfig);
 
-  // Option3: Disable rate limit
+  // Option3: Disable rate limiter. By calling this function, you are disabling both default and customized rate limiter.
+  // If you want to turn on default rate limiter, use .enableDefaultRateLimiter(), If you want to apply customized rate limiter, see Option2.
   // ordersApiClient.disableRatelimiter();
 
   const ordersApi = new OrdersSpApi.OrdersV0Api(ordersApiClient);
