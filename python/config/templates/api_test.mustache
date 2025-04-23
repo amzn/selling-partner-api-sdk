@@ -34,7 +34,7 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
    {{#operation}}
     def test_{{operationId}}(self):
         self.instruct_backend_mock("{{operationId}}", "{{responses.0.code}}")
-        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
         self.assertEqual({{responses.0.code}}, response[1])
         self.assert_valid_response_payload({{responses.0.code}}, response[0])
         pass
