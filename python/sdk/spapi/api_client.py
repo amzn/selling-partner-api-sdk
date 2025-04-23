@@ -15,9 +15,7 @@ import importlib
 import six
 from six.moves.urllib.parse import quote
 
-import spapi
 from spapi.configuration import Configuration
-import spapi.models.sellers_v1
 from spapi import rest
 
 
