@@ -36,20 +36,20 @@ use SpApi\AuthAndAuth\LWAAuthorizationSigner;
  */
 class Configuration
 {
-    public const BOOLEAN_FORMAT_INT = 'int';
-    public const BOOLEAN_FORMAT_STRING = 'string';
+    public const string BOOLEAN_FORMAT_INT = 'int';
+    public const string BOOLEAN_FORMAT_STRING = 'string';
 
     /**
-     * @var Configuration
+     * @var ?Configuration
      */
-    private static Configuration $defaultConfiguration;
+    private static ?Configuration $defaultConfiguration = null;
 
     /**
      * Boolean format for query string
      *
      * @var string
      */
-    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
+    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_STRING;
 
     /**
      * The host
