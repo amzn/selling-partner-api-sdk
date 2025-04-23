@@ -10,3 +10,4 @@ docs/**
 pyproject.toml
 setup.py
 README.md
+pyvenv.cfg
