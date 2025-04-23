@@ -3,7 +3,7 @@ import logging
 from spapi import Configuration
 from spapi import ApiClient
 
-from spapi.auth.LwaRequest import AccessTokenCache
+from spapi.auth.lwa_request import AccessTokenCache
 
 logging.basicConfig(level=logging.INFO)
 

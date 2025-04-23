@@ -4,6 +4,7 @@ from __future__ import absolute_import
 
 import unittest
 import requests
+import random
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
@@ -26,18 +27,21 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
             scope = None
         )
         client = SPAPIClient(config, self.mock_server_endpoint_oauth, self.mock_server_endpoint)
-        self.api = SellersApi(client.api_client)
+        self.api = {{classname}}(client.api_client)
 
     def tearDown(self):
         pass
 
    {{#operation}}
     def test_{{operationId}}(self):
-        self.instruct_backend_mock("{{operationId}}", "{{responses.0.code}}")
-        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+        {{#allParams}}{{#required}}{{paramName}} = {{#isListContainer}}[random.random() for _ in range(2)]{{/isListContainer}}{{^isListContainer}}random.random(){{/isListContainer}}
+        {{/required}}{{/allParams}}
+        self.instruct_backend_mock(self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
+        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}{{paramName}}=None{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
         self.assertEqual({{responses.0.code}}, response[1])
         self.assert_valid_response_payload({{responses.0.code}}, response[0])
         pass
+
    {{/operation}}
 {{/operations}}
 
@@ -48,6 +52,10 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
     def assert_valid_response_payload(self, status_code: int, body: any) -> None:
         if status_code != 204:
             self.assertIsNotNone(body)
+
+    def to_camel_case(self, snake_str):
+        components = snake_str.split('_')
+        return components[0] + ''.join(x.title() for x in components[1:])
 
 if __name__ == '__main__':
     unittest.main()
