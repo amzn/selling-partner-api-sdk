@@ -30,5 +30,3 @@ if __name__ == "__main__":
         get_marketplace_participations_response = GetMarketplaceParticipationsResponse(response.payload)
         for marketplaceParticipation in get_marketplace_participations_response.payload:
             print(marketplaceParticipation.marketplace.id)
-
-

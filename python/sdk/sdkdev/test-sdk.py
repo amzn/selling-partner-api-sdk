@@ -2,9 +2,8 @@ from spapi import SellersApi, SPAPIConfig, SPAPIClient, ApiException
 from spapi.models.sellers_v1 import GetMarketplaceParticipationsResponse
 
 if __name__ == "__main__":
-    print("Starting the Script...")
 
-    # User inputs their credentials in the config
+    # Credentials configuration
     config = SPAPIConfig(
         client_id="",
         client_secret="",
@@ -13,11 +12,9 @@ if __name__ == "__main__":
         scope = None
     )
 
-
-    # Create the API Client
-    spapi_client = SPAPIClient(config)
-
-    sellers_api = SellersApi(spapi_client.api_client)
+    # Create the API Client with configuration
+    client = SPAPIClient(config)
+    sellers_api = SellersApi(client.api_client)
 
     response = None
     try:
@@ -28,10 +25,8 @@ if __name__ == "__main__":
         print(f"Error reason: {e.reason}")
         print(f"Error body: {e.body}")
 
-
-
-    print("Sellers API Response:")
     if response is not None:
-        for marketplaceParticipation in GetMarketplaceParticipationsResponse(response).payload.payload:
+        print("Sellers API Response:")
+        get_marketplace_participations_response = GetMarketplaceParticipationsResponse(response.payload)
+        for marketplaceParticipation in get_marketplace_participations_response.payload:
             print(marketplaceParticipation.marketplace.id)
-
