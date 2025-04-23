@@ -81,7 +81,7 @@ async function getMarketplaceParticipations() {
 getMarketplaceParticipations();
 ```
 
-Alternatively, you can go to `@amazon-sp-api-release/amazon-sp-api-sdk-js/sample-node-app` and copy over and modify `index.js` and `app.config.mjs` files and give them a try. You can see multiple API operation call samples with various way of retrieving token, as well how to set up rate limiter and retry logic when making API calls. Note that the rate limiter is turned on by default to protect your API calls from 403 errors.
+Alternatively, you can go to `@amazon-sp-api-release/amazon-sp-api-sdk-js/sample-node-app` and copy over and modify `index.js` and `app.config.mjs` files and give them a try. You can see multiple API operation call samples with various way of retrieving token, as well how to set up rate limiter and retry logic when making API calls. Note that the rate limiter is turned on by default to protect your API calls from 429 errors.
 
 ##### Additional Note: 
 This Amazon Selling Partner API JavaScript SDK is fully compatible with ECMAScript modules (ESM). You can use modern ES6+ import/export syntax as demonstrated in the example code:
