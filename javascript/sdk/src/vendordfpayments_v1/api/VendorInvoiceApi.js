@@ -36,30 +36,18 @@ export class VendorInvoiceApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
-        this.#defaultRateLimiterMap = new Map();
+        this.initializeDefaultRateLimiterMap();
     }
 
     /**
-     * Creates a new instance of the API class with initialized rate limiters
-     * @param {module:vendordfpayments_v1/ApiClient} [apiClient] Optional API client implementation to use
-     * @returns {Promise} A promise that resolves with the initialized API instance
+     * Initialize rate limiters for API operations
      */
-    static async create(apiClient) {
-        const apiInstance = new VendorInvoiceApi(apiClient);
-        await apiInstance.initializeDefaultRateLimiters();
-        return apiInstance;
-    }
-
-    /**
-     * Initialize rate limiters for all operations
-     * @private
-     */
-    async initializeDefaultRateLimiters() {
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
         const operations = [
             'VendorInvoiceApi-submitInvoice',
         ];
-
-        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
 
         for (const operation of operations) {
             const config = defaultRateLimitFetcher.getLimit(operation);
@@ -70,7 +58,6 @@ export class VendorInvoiceApi {
     /**
      * Get rate limiter for a specific operation
      * @param {String} operation name
-     * @private
      */
     getRateLimiter(operation) {
         return this.#defaultRateLimiterMap.get(operation);

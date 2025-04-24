@@ -46,25 +46,15 @@ export class AplusContentApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
-        this.#defaultRateLimiterMap = new Map();
+        this.initializeDefaultRateLimiterMap();
     }
 
     /**
-     * Creates a new instance of the API class with initialized rate limiters
-     * @param {module:apluscontent_v2020_11_01/ApiClient} [apiClient] Optional API client implementation to use
-     * @returns {Promise} A promise that resolves with the initialized API instance
+     * Initialize rate limiters for API operations
      */
-    static async create(apiClient) {
-        const apiInstance = new AplusContentApi(apiClient);
-        await apiInstance.initializeDefaultRateLimiters();
-        return apiInstance;
-    }
-
-    /**
-     * Initialize rate limiters for all operations
-     * @private
-     */
-    async initializeDefaultRateLimiters() {
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
         const operations = [
             'AplusContentApi-createContentDocument',
             'AplusContentApi-getContentDocument',
@@ -78,8 +68,6 @@ export class AplusContentApi {
             'AplusContentApi-validateContentDocumentAsinRelations',
         ];
 
-        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
-
         for (const operation of operations) {
             const config = defaultRateLimitFetcher.getLimit(operation);
             this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
@@ -89,7 +77,6 @@ export class AplusContentApi {
     /**
      * Get rate limiter for a specific operation
      * @param {String} operation name
-     * @private
      */
     getRateLimiter(operation) {
         return this.#defaultRateLimiterMap.get(operation);

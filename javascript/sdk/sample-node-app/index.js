@@ -18,7 +18,7 @@ async function getMarketplaceParticipations() {
   try {
       //Configure Sellers ApiClient
       const sellersApiClient = new SellersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
-      const sellersApi = await SellersSpApi.SellersApi.create(sellersApiClient);
+      const sellersApi = new SellersSpApi.SellersApi(sellersApiClient);
 
       sellersApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken, null);
       
@@ -44,7 +44,7 @@ async function createDestination() {
   try {
     //Configure Notifications ApiClient and notification Api
     const notificationsApiClient = new NotificationsSpApi.ApiClient(AppConfig.spApiNAEndpoint);
-    const notificationsApi = await NotificationsSpApi.NotificationsApi.create(notificationsApiClient);
+    const notificationsApi = new NotificationsSpApi.NotificationsApi(notificationsApiClient);
 
     notificationsApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, null, ScopeConstants.SCOPE_NOTIFICATION_API);
     
@@ -78,7 +78,7 @@ async function getOrders() {
 
       //Configure Orders ApiClient and Order Api instance
       const ordersApiClient = new OrdersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
-      const ordersApi = await OrdersSpApi.OrdersV0Api.create(ordersApiClient);
+      const ordersApi = new OrdersSpApi.OrdersV0Api(ordersApiClient);
 
       ordersApiClient.applyXAmzAccessTokenToRequest(
         await lwaAuthClient.getAccessToken()
@@ -106,7 +106,7 @@ async function getOrders() {
  */
 async function getOrdersWithRateLimiterAndRetry(retryCount) {
   const ordersApiClient = new OrdersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
-  const ordersApi = await OrdersSpApi.OrdersV0Api.create(ordersApiClient);
+  const ordersApi = new OrdersSpApi.OrdersV0Api(ordersApiClient);
 
   ordersApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken);
 

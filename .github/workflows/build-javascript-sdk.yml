@@ -34,6 +34,11 @@ jobs:
               ! -name 'README.md' \
               ! -name 'helper' \
               -exec rm -rf {} +
+      - name: Create DefaultRateLimitMap.mjs file
+        working-directory: ./selling-partner-api-sdk/javascript
+        run: |
+          chmod +x scripts/create-rate-limit-map.sh
+          ./scripts/create-rate-limit-map.sh
       - name: Execute OpenAPI generator
         working-directory: ./selling-partner-api-sdk/javascript
         run: |

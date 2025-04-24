@@ -16,3 +16,16 @@ src/vehicles_v2024_11_01/model/VehicleIdentifiers.js
 src/vehicles_v2024_11_01/model/VehicleStandard.js
 src/vehicles_v2024_11_01/model/VehicleStatusInCatalog.js
 src/vehicles_v2024_11_01/model/VehiclesResponse.js
+test/vehicles_v2024_11_01/api/AutomotiveApi.spec.js
+test/vehicles_v2024_11_01/api/VehiclesApi.spec.js
+test/vehicles_v2024_11_01/model/EngineOutput.spec.js
+test/vehicles_v2024_11_01/model/EngineOutputUnit.spec.js
+test/vehicles_v2024_11_01/model/Error.spec.js
+test/vehicles_v2024_11_01/model/ErrorList.spec.js
+test/vehicles_v2024_11_01/model/MonthAndYear.spec.js
+test/vehicles_v2024_11_01/model/Pagination.spec.js
+test/vehicles_v2024_11_01/model/Vehicle.spec.js
+test/vehicles_v2024_11_01/model/VehicleIdentifiers.spec.js
+test/vehicles_v2024_11_01/model/VehicleStandard.spec.js
+test/vehicles_v2024_11_01/model/VehicleStatusInCatalog.spec.js
+test/vehicles_v2024_11_01/model/VehiclesResponse.spec.js
