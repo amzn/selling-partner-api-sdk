@@ -186,7 +186,8 @@ class ObjectSerializer
         string $openApiType = 'string',
         string $style = 'form',
         bool $explode = true,
-        bool $required = true
+        bool $required = true,
+        ?Configuration $config = null
     ): array {
         // Check if we should omit this parameter from the query. This should only happen when:
         //  - Parameter is NOT required; AND
@@ -244,7 +245,10 @@ class ObjectSerializer
         }
 
         if ('boolean' === $openApiType && is_bool($value)) {
-            $value = self::convertBoolToQueryStringFormat($value);
+            $config = $config ?? Configuration::getDefaultConfiguration();
+            $value = Configuration::BOOLEAN_FORMAT_STRING === $config->getBooleanFormatForQueryString()
+                ? ($value ? 'true' : 'false')
+                : (int) $value;
         }
 
         // handle style in serializeCollection

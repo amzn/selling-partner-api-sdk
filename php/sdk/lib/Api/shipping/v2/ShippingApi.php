@@ -1564,7 +1564,8 @@ class ShippingApi
             'array', // openApiType
             'form', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1573,7 +1574,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1582,7 +1584,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
 
         // header params
@@ -1878,7 +1881,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1887,7 +1891,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
 
         // header params
@@ -3543,7 +3548,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3552,7 +3558,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            false // required
+            false, // required
+            $this->config
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3561,7 +3568,8 @@ class ShippingApi
             'number', // openApiType
             '', // style
             false, // explode
-            false // required
+            false, // required
+            $this->config
         ) ?? []);
 
         // header params
@@ -3866,7 +3874,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3875,7 +3884,8 @@ class ShippingApi
             'string', // openApiType
             '', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
 
         // header params
