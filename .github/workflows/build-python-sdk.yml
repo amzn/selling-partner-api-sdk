@@ -32,7 +32,7 @@ jobs:
       - name: Copy Auth&Auth and other SDK required files # make sure to update if packages change in the generation below
         working-directory: ./selling-partner-api-sdk/python
         run: |
-          mkdir sdk/spapi/auth
+          mkdir -p sdk/spapi/auth
           cp -R dev-sdk/auth/** sdk/spapi/auth
           cp dev-sdk/client.py sdk/spapi/
           cp dev-sdk/.openapi-generator-ignore sdk/spapi/
