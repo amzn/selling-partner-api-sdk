@@ -89,7 +89,7 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.vehicles_v2024_11_01,apiPackage=api.vehicles_v2024_11_01 --global-property modelTests=false,modelDocs=false,apiDocs=false
       - name: Create SDK python package __init__.py file
         working-directory: ./selling-partner-api-sdk/python
-        run: python3 dev-sdk/script-create_init.py
+        run: python3 dev-sdk/script_create_init.py
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
