@@ -17,6 +17,8 @@ import {GetLabelsResponse} from '../model/GetLabelsResponse.js';
 import {GetPrepInstructionsResponse} from '../model/GetPrepInstructionsResponse.js';
 import {GetShipmentItemsResponse} from '../model/GetShipmentItemsResponse.js';
 import {GetShipmentsResponse} from '../model/GetShipmentsResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * FbaInbound service.
@@ -24,6 +26,9 @@ import {GetShipmentsResponse} from '../model/GetShipmentsResponse.js';
 * @version v0
 */
 export class FbaInboundApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new FbaInboundApi. 
@@ -34,6 +39,49 @@ export class FbaInboundApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:fulfillmentinbound_v0/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new FbaInboundApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'FbaInboundApi-getBillOfLading',
+            'FbaInboundApi-getLabels',
+            'FbaInboundApi-getPrepInstructions',
+            'FbaInboundApi-getShipmentItems',
+            'FbaInboundApi-getShipmentItemsByShipmentId',
+            'FbaInboundApi-getShipments',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -69,7 +117,7 @@ export class FbaInboundApi {
       return this.apiClient.callApi( 'FbaInboundApi-getBillOfLading',
         '/fba/inbound/v0/shipments/{shipmentId}/billOfLading', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getBillOfLading')
       );
     }
 
@@ -143,7 +191,7 @@ export class FbaInboundApi {
       return this.apiClient.callApi( 'FbaInboundApi-getLabels',
         '/fba/inbound/v0/shipments/{shipmentId}/labels', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getLabels')
       );
     }
 
@@ -205,7 +253,7 @@ export class FbaInboundApi {
       return this.apiClient.callApi( 'FbaInboundApi-getPrepInstructions',
         '/fba/inbound/v0/prepInstructions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getPrepInstructions')
       );
     }
 
@@ -271,7 +319,7 @@ export class FbaInboundApi {
       return this.apiClient.callApi( 'FbaInboundApi-getShipmentItems',
         '/fba/inbound/v0/shipmentItems', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItems')
       );
     }
 
@@ -328,7 +376,7 @@ export class FbaInboundApi {
       return this.apiClient.callApi( 'FbaInboundApi-getShipmentItemsByShipmentId',
         '/fba/inbound/v0/shipments/{shipmentId}/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItemsByShipmentId')
       );
     }
 
@@ -397,7 +445,7 @@ export class FbaInboundApi {
       return this.apiClient.callApi( 'FbaInboundApi-getShipments',
         '/fba/inbound/v0/shipments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipments')
       );
     }
 

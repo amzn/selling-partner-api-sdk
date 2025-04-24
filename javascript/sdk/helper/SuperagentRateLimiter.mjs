@@ -22,9 +22,12 @@ export class SuperagentRateLimiter {
 
         this.#limiter = new Bottleneck({
             reservoir: burstRequests,  // Initial capacity
-            reservoirRefreshAmount: refreshAmount, // How many tokens to add during each refresh
-            reservoirRefreshInterval: refreshInterval, // Refresh interval in milliseconds
-            maxConcurrent: burstRequests // Maximum number of requests running at the same time
+            reservoirIncreaseAmount: refreshAmount, // How many tokens to increase during each refresh
+            reservoirIncreaseInterval: refreshInterval, // increase interval in milliseconds
+            reservoirIncreaseMaximum: burstRequests, // maximum token bucket size
+            maxConcurrent: burstRequests, // Maximum number of requests running at the same time
+            highWater: 0,
+            strategy: Bottleneck.strategy.BLOCK, // Block requests when rate limit reached
         });
           
     }
@@ -35,17 +38,26 @@ export class SuperagentRateLimiter {
      */
     getPlugin() {
         return (request) => {
-            // Add rate limiting before the request is sent
-            request.on('request', async () => {
-                try {
-                    // Schedule the request
-                    await this.#limiter.schedule(async () => {
-                        return Promise.resolve();
-                    });
-                } catch (error) {
-                    throw new Error(`Rate limit exceed error: ${error.message}`);
-                }
+            // Create a promise that must resolve before the request is sent
+            const rateLimitPromise = new Promise((resolve, reject) => {
+                this.#limiter.schedule(async () => {
+                    resolve();
+                }).catch(error => {
+                    reject(new Error(`Rate limit exceed error: ${error.message}`));
+                });
             });
+
+            // Modify the request to wait for rate limiting
+            const originalEnd = request.end;
+            request.end = function (fn) {
+                rateLimitPromise
+                    .then(() => {
+                        originalEnd.call(request, fn);
+                    })
+                    .catch(error => {
+                        fn(error);
+                    });
+            };
         };
     }
 }

@@ -22,6 +22,8 @@ import {GetDestinationResponse} from '../model/GetDestinationResponse.js';
 import {GetDestinationsResponse} from '../model/GetDestinationsResponse.js';
 import {GetSubscriptionByIdResponse} from '../model/GetSubscriptionByIdResponse.js';
 import {GetSubscriptionResponse} from '../model/GetSubscriptionResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Notifications service.
@@ -29,6 +31,9 @@ import {GetSubscriptionResponse} from '../model/GetSubscriptionResponse.js';
 * @version v1
 */
 export class NotificationsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new NotificationsApi. 
@@ -39,6 +44,51 @@ export class NotificationsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:notifications_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new NotificationsApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'NotificationsApi-createDestination',
+            'NotificationsApi-createSubscription',
+            'NotificationsApi-deleteDestination',
+            'NotificationsApi-deleteSubscriptionById',
+            'NotificationsApi-getDestination',
+            'NotificationsApi-getDestinations',
+            'NotificationsApi-getSubscription',
+            'NotificationsApi-getSubscriptionById',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -73,7 +123,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-createDestination',
         '/notifications/v1/destinations', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-createDestination')
       );
     }
 
@@ -127,7 +177,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-createSubscription',
         '/notifications/v1/subscriptions/{notificationType}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-createSubscription')
       );
     }
 
@@ -176,7 +226,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-deleteDestination',
         '/notifications/v1/destinations/{destinationId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-deleteDestination')
       );
     }
 
@@ -231,7 +281,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-deleteSubscriptionById',
         '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-deleteSubscriptionById')
       );
     }
 
@@ -280,7 +330,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-getDestination',
         '/notifications/v1/destinations/{destinationId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getDestination')
       );
     }
 
@@ -321,7 +371,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-getDestinations',
         '/notifications/v1/destinations', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getDestinations')
       );
     }
 
@@ -372,7 +422,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-getSubscription',
         '/notifications/v1/subscriptions/{notificationType}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getSubscription')
       );
     }
 
@@ -429,7 +479,7 @@ export class NotificationsApi {
       return this.apiClient.callApi( 'NotificationsApi-getSubscriptionById',
         '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getSubscriptionById')
       );
     }
 

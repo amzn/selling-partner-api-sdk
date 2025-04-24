@@ -17,6 +17,8 @@ import {CompetitiveSummaryBatchResponse} from '../model/CompetitiveSummaryBatchR
 import {Errors} from '../model/Errors.js';
 import {GetFeaturedOfferExpectedPriceBatchRequest} from '../model/GetFeaturedOfferExpectedPriceBatchRequest.js';
 import {GetFeaturedOfferExpectedPriceBatchResponse} from '../model/GetFeaturedOfferExpectedPriceBatchResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * ProductPricing service.
@@ -24,6 +26,9 @@ import {GetFeaturedOfferExpectedPriceBatchResponse} from '../model/GetFeaturedOf
 * @version 2022-05-01
 */
 export class ProductPricingApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ProductPricingApi. 
@@ -34,6 +39,45 @@ export class ProductPricingApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:pricing_v2022_05_01/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new ProductPricingApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'ProductPricingApi-getCompetitiveSummary',
+            'ProductPricingApi-getFeaturedOfferExpectedPriceBatch',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -68,7 +112,7 @@ export class ProductPricingApi {
       return this.apiClient.callApi( 'ProductPricingApi-getCompetitiveSummary',
         '/batches/products/pricing/2022-05-01/items/competitiveSummary', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getCompetitiveSummary')
       );
     }
 
@@ -115,7 +159,7 @@ export class ProductPricingApi {
       return this.apiClient.callApi( 'ProductPricingApi-getFeaturedOfferExpectedPriceBatch',
         '/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getFeaturedOfferExpectedPriceBatch')
       );
     }
 

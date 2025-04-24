@@ -18,8 +18,9 @@ async function getMarketplaceParticipations() {
   try {
       //Configure Sellers ApiClient
       const sellersApiClient = new SellersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
+      const sellersApi = await SellersSpApi.SellersApi.create(sellersApiClient);
+
       sellersApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken, null);
-      const sellersApi = new SellersSpApi.SellersApi(sellersApiClient);
       
       //Call GetMarkerplaceParticipations API
       const participations = await sellersApi.getMarketplaceParticipations();
@@ -41,10 +42,11 @@ async function getMarketplaceParticipations() {
 */
 async function createDestination() {
   try {
-    //Configure Notifications ApiClient
+    //Configure Notifications ApiClient and notification Api
     const notificationsApiClient = new NotificationsSpApi.ApiClient(AppConfig.spApiNAEndpoint);
+    const notificationsApi = await NotificationsSpApi.NotificationsApi.create(notificationsApiClient);
+
     notificationsApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, null, ScopeConstants.SCOPE_NOTIFICATION_API);
-    const notificationsApi = new NotificationsSpApi.NotificationsApi(notificationsApiClient);
     
     //Build createDestination request
     const sqsResource = new NotificationsSpApi.SqsResource('<REPLACE_WITH_YOUR_SQS_QUEUE_ARN>');
@@ -74,12 +76,13 @@ async function getOrders() {
       //Set up LwaAuthClient instance
       const lwaAuthClient = new LwaAuthClient(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken, null);
 
-      //Configure Orders ApiClient
+      //Configure Orders ApiClient and Order Api instance
       const ordersApiClient = new OrdersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
+      const ordersApi = await OrdersSpApi.OrdersV0Api.create(ordersApiClient);
+
       ordersApiClient.applyXAmzAccessTokenToRequest(
         await lwaAuthClient.getAccessToken()
       );
-      const ordersApi = new OrdersSpApi.OrdersV0Api(ordersApiClient);
       
       //Call GetOrders API
       const marketPlaceIds = ['ATVPDKIKX0DER'];
@@ -99,24 +102,34 @@ async function getOrders() {
 
 /**
  * We support a built in rate limiter.
- * Here is a sample SDK usage of calling Orders listTransactions API with a rate limiter and retry logic.
+ * Here is a sample SDK usage of calling Orders getOrders API with a rate limiter and retry logic.
  */
-async function getOrdersWithRateLimiterAndRetry(rateLimitPermit, waitTimeOutInMilliSeconds, burstRequests, retryCount) {
+async function getOrdersWithRateLimiterAndRetry(retryCount) {
   const ordersApiClient = new OrdersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
+  const ordersApi = await OrdersSpApi.OrdersV0Api.create(ordersApiClient);
+
   ordersApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken);
 
-  // Option1: Use our default rate limiter. Our rate limiter uses the rate limit and burst values in our official document. 
-  // It is turned on by default.
+  /**
+   * [Recommended] Option1: Use our default rate limiter. Our rate limiter uses the rate limit and burst values in our official document.
+   * It is turned on by default.
+   * /
 
-  // Option2: Use your customized rate limiter, you need to replace <RateLimit> and <BurstValue> with actual numbers.
+  /**
+   * Option2: Use your customized rate limiter, you need to replace <RateLimit> and <BurstValue> with actual numbers.
+   * Then call setCustomizedRateLimiterForOperation(), please refer to helper/rate-limit.yml when specifying operation name.
+   * Note that for other operations that you did not configure customized rate limiter, they still use default rate limiter.
+   */
+
   // const rateLimitConfig = new RateLimitConfiguration(<RateLimit>, <BurstValue>);
-  // ordersApiClient.enableCustomizedRateLimiter(rateLimitConfig);
+  // ordersApiClient.setCustomizedRateLimiterForOperation('OrdersV0Api-getOrders', rateLimitConfig);
 
-  // Option3: Disable rate limiter. By calling this function, you are disabling both default and customized rate limiter.
-  // If you want to turn on default rate limiter, use .enableDefaultRateLimiter(), If you want to apply customized rate limiter, see Option2.
+  /**
+   * [For dynamic usage plan APIs] Option3: Disable rate limiter. By calling this function, you are disabling both default and customized rate limiter.
+   */
+
   // ordersApiClient.disableRatelimiter();
 
-  const ordersApi = new OrdersSpApi.OrdersV0Api(ordersApiClient);
   const marketPlaceIds = ['ATVPDKIKX0DER'];
   const opts = {
     createdAfter: '2024-01-01'

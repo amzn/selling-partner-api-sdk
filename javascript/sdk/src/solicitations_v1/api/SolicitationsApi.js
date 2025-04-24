@@ -14,6 +14,8 @@
 import {ApiClient} from "../ApiClient.js";
 import {CreateProductReviewAndSellerFeedbackSolicitationResponse} from '../model/CreateProductReviewAndSellerFeedbackSolicitationResponse.js';
 import {GetSolicitationActionsForOrderResponse} from '../model/GetSolicitationActionsForOrderResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Solicitations service.
@@ -21,6 +23,9 @@ import {GetSolicitationActionsForOrderResponse} from '../model/GetSolicitationAc
 * @version v1
 */
 export class SolicitationsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new SolicitationsApi. 
@@ -31,6 +36,45 @@ export class SolicitationsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:solicitations_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new SolicitationsApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation',
+            'SolicitationsApi-getSolicitationActionsForOrder',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -73,7 +117,7 @@ export class SolicitationsApi {
       return this.apiClient.callApi( 'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation',
         '/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation')
       );
     }
 
@@ -129,7 +173,7 @@ export class SolicitationsApi {
       return this.apiClient.callApi( 'SolicitationsApi-getSolicitationActionsForOrder',
         '/solicitations/v1/orders/{amazonOrderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SolicitationsApi-getSolicitationActionsForOrder')
       );
     }
 

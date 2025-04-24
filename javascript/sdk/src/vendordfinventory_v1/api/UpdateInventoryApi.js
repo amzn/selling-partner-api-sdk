@@ -14,6 +14,8 @@
 import {ApiClient} from "../ApiClient.js";
 import {SubmitInventoryUpdateRequest} from '../model/SubmitInventoryUpdateRequest.js';
 import {SubmitInventoryUpdateResponse} from '../model/SubmitInventoryUpdateResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * UpdateInventory service.
@@ -21,6 +23,9 @@ import {SubmitInventoryUpdateResponse} from '../model/SubmitInventoryUpdateRespo
 * @version v1
 */
 export class UpdateInventoryApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new UpdateInventoryApi. 
@@ -31,6 +36,44 @@ export class UpdateInventoryApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:vendordfinventory_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new UpdateInventoryApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'UpdateInventoryApi-submitInventoryUpdate',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -72,7 +115,7 @@ export class UpdateInventoryApi {
       return this.apiClient.callApi( 'UpdateInventoryApi-submitInventoryUpdate',
         '/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('UpdateInventoryApi-submitInventoryUpdate')
       );
     }
 

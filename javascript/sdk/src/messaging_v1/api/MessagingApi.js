@@ -35,6 +35,8 @@ import {GetAttributesResponse} from '../model/GetAttributesResponse.js';
 import {GetMessagingActionsForOrderResponse} from '../model/GetMessagingActionsForOrderResponse.js';
 import {InvoiceRequest} from '../model/InvoiceRequest.js';
 import {InvoiceResponse} from '../model/InvoiceResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Messaging service.
@@ -42,6 +44,9 @@ import {InvoiceResponse} from '../model/InvoiceResponse.js';
 * @version v1
 */
 export class MessagingApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new MessagingApi. 
@@ -52,6 +57,56 @@ export class MessagingApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:messaging_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new MessagingApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'MessagingApi-confirmCustomizationDetails',
+            'MessagingApi-createAmazonMotors',
+            'MessagingApi-createConfirmDeliveryDetails',
+            'MessagingApi-createConfirmOrderDetails',
+            'MessagingApi-createConfirmServiceDetails',
+            'MessagingApi-createDigitalAccessKey',
+            'MessagingApi-createLegalDisclosure',
+            'MessagingApi-createNegativeFeedbackRemoval',
+            'MessagingApi-createUnexpectedProblem',
+            'MessagingApi-createWarranty',
+            'MessagingApi-getAttributes',
+            'MessagingApi-getMessagingActionsForOrder',
+            'MessagingApi-sendInvoice',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -100,7 +155,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-confirmCustomizationDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmCustomizationDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-confirmCustomizationDetails')
       );
     }
 
@@ -163,7 +218,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createAmazonMotors',
         '/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createAmazonMotors')
       );
     }
 
@@ -226,7 +281,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createConfirmDeliveryDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmDeliveryDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createConfirmDeliveryDetails')
       );
     }
 
@@ -289,7 +344,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createConfirmOrderDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmOrderDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createConfirmOrderDetails')
       );
     }
 
@@ -352,7 +407,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createConfirmServiceDetails',
         '/messaging/v1/orders/{amazonOrderId}/messages/confirmServiceDetails', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createConfirmServiceDetails')
       );
     }
 
@@ -415,7 +470,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createDigitalAccessKey',
         '/messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createDigitalAccessKey')
       );
     }
 
@@ -478,7 +533,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createLegalDisclosure',
         '/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createLegalDisclosure')
       );
     }
 
@@ -535,7 +590,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createNegativeFeedbackRemoval',
         '/messaging/v1/orders/{amazonOrderId}/messages/negativeFeedbackRemoval', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createNegativeFeedbackRemoval')
       );
     }
 
@@ -597,7 +652,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createUnexpectedProblem',
         '/messaging/v1/orders/{amazonOrderId}/messages/unexpectedProblem', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createUnexpectedProblem')
       );
     }
 
@@ -660,7 +715,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-createWarranty',
         '/messaging/v1/orders/{amazonOrderId}/messages/warranty', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createWarranty')
       );
     }
 
@@ -717,7 +772,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-getAttributes',
         '/messaging/v1/orders/{amazonOrderId}/attributes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-getAttributes')
       );
     }
 
@@ -773,7 +828,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-getMessagingActionsForOrder',
         '/messaging/v1/orders/{amazonOrderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-getMessagingActionsForOrder')
       );
     }
 
@@ -835,7 +890,7 @@ export class MessagingApi {
       return this.apiClient.callApi( 'MessagingApi-sendInvoice',
         '/messaging/v1/orders/{amazonOrderId}/messages/invoice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-sendInvoice')
       );
     }
 

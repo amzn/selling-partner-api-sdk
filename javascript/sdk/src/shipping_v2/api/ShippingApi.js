@@ -43,6 +43,8 @@ import {PurchaseShipmentResponse} from '../model/PurchaseShipmentResponse.js';
 import {SubmitNdrFeedbackRequest} from '../model/SubmitNdrFeedbackRequest.js';
 import {UnlinkCarrierAccountRequest} from '../model/UnlinkCarrierAccountRequest.js';
 import {UnlinkCarrierAccountResponse} from '../model/UnlinkCarrierAccountResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Shipping service.
@@ -50,6 +52,9 @@ import {UnlinkCarrierAccountResponse} from '../model/UnlinkCarrierAccountRespons
 * @version v2
 */
 export class ShippingApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ShippingApi. 
@@ -60,6 +65,63 @@ export class ShippingApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:shipping_v2/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new ShippingApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'ShippingApi-cancelShipment',
+            'ShippingApi-createClaim',
+            'ShippingApi-directPurchaseShipment',
+            'ShippingApi-generateCollectionForm',
+            'ShippingApi-getAccessPoints',
+            'ShippingApi-getAdditionalInputs',
+            'ShippingApi-getCarrierAccountFormInputs',
+            'ShippingApi-getCarrierAccounts',
+            'ShippingApi-getCollectionForm',
+            'ShippingApi-getCollectionFormHistory',
+            'ShippingApi-getRates',
+            'ShippingApi-getShipmentDocuments',
+            'ShippingApi-getTracking',
+            'ShippingApi-getUnmanifestedShipments',
+            'ShippingApi-linkCarrierAccount',
+            'ShippingApi-linkCarrierAccount_0',
+            'ShippingApi-oneClickShipment',
+            'ShippingApi-purchaseShipment',
+            'ShippingApi-submitNdrFeedback',
+            'ShippingApi-unlinkCarrierAccount',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -99,7 +161,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-cancelShipment',
         '/shipping/v2/shipments/{shipmentId}/cancel', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-cancelShipment')
       );
     }
 
@@ -152,7 +214,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-createClaim',
         '/shipping/v2/claims', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-createClaim')
       );
     }
 
@@ -209,7 +271,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-directPurchaseShipment',
         '/shipping/v2/shipments/directPurchase', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-directPurchaseShipment')
       );
     }
 
@@ -266,7 +328,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-generateCollectionForm',
         '/shipping/v2/collectionForms', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-generateCollectionForm')
       );
     }
 
@@ -335,7 +397,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getAccessPoints',
         '/shipping/v2/accessPoints', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAccessPoints')
       );
     }
 
@@ -398,7 +460,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getAdditionalInputs',
         '/shipping/v2/shipments/additionalInputs/schema', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAdditionalInputs')
       );
     }
 
@@ -446,7 +508,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getCarrierAccountFormInputs',
         '/shipping/v2/carrierAccountFormInputs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccountFormInputs')
       );
     }
 
@@ -498,7 +560,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getCarrierAccounts',
         '/shipping/v2/carrierAccounts', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccounts')
       );
     }
 
@@ -552,7 +614,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getCollectionForm',
         '/shipping/v2/collectionForms/{collectionFormId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionForm')
       );
     }
 
@@ -605,7 +667,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getCollectionFormHistory',
         '/shipping/v2/collectionForms/history', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionFormHistory')
       );
     }
 
@@ -658,7 +720,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getRates',
         '/shipping/v2/shipments/rates', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getRates')
       );
     }
 
@@ -723,7 +785,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getShipmentDocuments',
         '/shipping/v2/shipments/{shipmentId}/documents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getShipmentDocuments')
       );
     }
 
@@ -787,7 +849,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getTracking',
         '/shipping/v2/tracking', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getTracking')
       );
     }
 
@@ -841,7 +903,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-getUnmanifestedShipments',
         '/shipping/v2/unmanifestedShipments', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getUnmanifestedShipments')
       );
     }
 
@@ -901,7 +963,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount',
         '/shipping/v2/carrierAccounts/{carrierId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount')
       );
     }
 
@@ -962,7 +1024,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount_0',
         '/shipping/v2/carrierAccounts/{carrierId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount_0')
       );
     }
 
@@ -1016,7 +1078,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-oneClickShipment',
         '/shipping/v2/oneClickShipment', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-oneClickShipment')
       );
     }
 
@@ -1071,7 +1133,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-purchaseShipment',
         '/shipping/v2/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-purchaseShipment')
       );
     }
 
@@ -1125,7 +1187,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-submitNdrFeedback',
         '/shipping/v2/ndrFeedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-submitNdrFeedback')
       );
     }
 
@@ -1185,7 +1247,7 @@ export class ShippingApi {
       return this.apiClient.callApi( 'ShippingApi-unlinkCarrierAccount',
         '/shipping/v2/carrierAccounts/{carrierId}/unlink', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-unlinkCarrierAccount')
       );
     }
 

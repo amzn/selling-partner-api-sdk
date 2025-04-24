@@ -21,6 +21,8 @@ import {GetInvoicesDocumentResponse} from '../model/GetInvoicesDocumentResponse.
 import {GetInvoicesExportResponse} from '../model/GetInvoicesExportResponse.js';
 import {GetInvoicesExportsResponse} from '../model/GetInvoicesExportsResponse.js';
 import {GetInvoicesResponse} from '../model/GetInvoicesResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Invoices service.
@@ -28,6 +30,9 @@ import {GetInvoicesResponse} from '../model/GetInvoicesResponse.js';
 * @version 2024-06-19
 */
 export class InvoicesApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new InvoicesApi. 
@@ -38,6 +43,50 @@ export class InvoicesApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:invoices_v2024_06_19/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new InvoicesApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'InvoicesApi-createInvoicesExport',
+            'InvoicesApi-getInvoice',
+            'InvoicesApi-getInvoices',
+            'InvoicesApi-getInvoicesAttributes',
+            'InvoicesApi-getInvoicesDocument',
+            'InvoicesApi-getInvoicesExport',
+            'InvoicesApi-getInvoicesExports',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -72,7 +121,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-createInvoicesExport',
         '/tax/invoices/2024-06-19/exports', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-createInvoicesExport')
       );
     }
 
@@ -127,7 +176,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-getInvoice',
         '/tax/invoices/2024-06-19/invoices/{invoiceId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoice')
       );
     }
 
@@ -204,7 +253,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-getInvoices',
         '/tax/invoices/2024-06-19/invoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoices')
       );
     }
 
@@ -266,7 +315,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-getInvoicesAttributes',
         '/tax/invoices/2024-06-19/attributes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesAttributes')
       );
     }
 
@@ -314,7 +363,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-getInvoicesDocument',
         '/tax/invoices/2024-06-19/documents/{invoicesDocumentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesDocument')
       );
     }
 
@@ -362,7 +411,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-getInvoicesExport',
         '/tax/invoices/2024-06-19/exports/{exportId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesExport')
       );
     }
 
@@ -422,7 +471,7 @@ export class InvoicesApi {
       return this.apiClient.callApi( 'InvoicesApi-getInvoicesExports',
         '/tax/invoices/2024-06-19/exports', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesExports')
       );
     }
 

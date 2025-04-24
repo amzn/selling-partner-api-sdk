@@ -14,6 +14,8 @@
 import {ApiClient} from "../ApiClient.js";
 import {ListFinancialEventGroupsResponse} from '../model/ListFinancialEventGroupsResponse.js';
 import {ListFinancialEventsResponse} from '../model/ListFinancialEventsResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Default service.
@@ -21,6 +23,9 @@ import {ListFinancialEventsResponse} from '../model/ListFinancialEventsResponse.
 * @version v0
 */
 export class DefaultApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new DefaultApi. 
@@ -31,6 +36,47 @@ export class DefaultApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:finances_v0/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new DefaultApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'DefaultApi-listFinancialEventGroups',
+            'DefaultApi-listFinancialEvents',
+            'DefaultApi-listFinancialEventsByGroupId',
+            'DefaultApi-listFinancialEventsByOrderId',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -69,7 +115,7 @@ export class DefaultApi {
       return this.apiClient.callApi( 'DefaultApi-listFinancialEventGroups',
         '/finances/v0/financialEventGroups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEventGroups')
       );
     }
 
@@ -124,7 +170,7 @@ export class DefaultApi {
       return this.apiClient.callApi( 'DefaultApi-listFinancialEvents',
         '/finances/v0/financialEvents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEvents')
       );
     }
 
@@ -186,7 +232,7 @@ export class DefaultApi {
       return this.apiClient.callApi( 'DefaultApi-listFinancialEventsByGroupId',
         '/finances/v0/financialEventGroups/{eventGroupId}/financialEvents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEventsByGroupId')
       );
     }
 
@@ -245,7 +291,7 @@ export class DefaultApi {
       return this.apiClient.callApi( 'DefaultApi-listFinancialEventsByOrderId',
         '/finances/v0/orders/{orderId}/financialEvents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEventsByOrderId')
       );
     }
 

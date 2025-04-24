@@ -15,6 +15,8 @@ import {ApiClient} from "../ApiClient.js";
 import {ErrorList} from '../model/ErrorList.js';
 import {ProductTypeDefinition} from '../model/ProductTypeDefinition.js';
 import {ProductTypeList} from '../model/ProductTypeList.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Definitions service.
@@ -22,6 +24,9 @@ import {ProductTypeList} from '../model/ProductTypeList.js';
 * @version 2020-09-01
 */
 export class DefinitionsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new DefinitionsApi. 
@@ -32,6 +37,45 @@ export class DefinitionsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:producttypedefinitions_v2020_09_01/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new DefinitionsApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'DefinitionsApi-getDefinitionsProductType',
+            'DefinitionsApi-searchDefinitionsProductTypes',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -86,7 +130,7 @@ export class DefinitionsApi {
       return this.apiClient.callApi( 'DefinitionsApi-getDefinitionsProductType',
         '/definitions/2020-09-01/productTypes/{productType}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefinitionsApi-getDefinitionsProductType')
       );
     }
 
@@ -151,7 +195,7 @@ export class DefinitionsApi {
       return this.apiClient.callApi( 'DefinitionsApi-searchDefinitionsProductTypes',
         '/definitions/2020-09-01/productTypes', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefinitionsApi-searchDefinitionsProductTypes')
       );
     }
 

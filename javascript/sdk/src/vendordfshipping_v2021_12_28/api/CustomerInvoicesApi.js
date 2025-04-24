@@ -15,6 +15,8 @@ import {ApiClient} from "../ApiClient.js";
 import {CustomerInvoice} from '../model/CustomerInvoice.js';
 import {CustomerInvoiceList} from '../model/CustomerInvoiceList.js';
 import {ErrorList} from '../model/ErrorList.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * CustomerInvoices service.
@@ -22,6 +24,9 @@ import {ErrorList} from '../model/ErrorList.js';
 * @version 2021-12-28
 */
 export class CustomerInvoicesApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new CustomerInvoicesApi. 
@@ -32,6 +37,45 @@ export class CustomerInvoicesApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:vendordfshipping_v2021_12_28/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new CustomerInvoicesApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'CustomerInvoicesApi-getCustomerInvoice',
+            'CustomerInvoicesApi-getCustomerInvoices',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -68,7 +112,7 @@ export class CustomerInvoicesApi {
       return this.apiClient.callApi( 'CustomerInvoicesApi-getCustomerInvoice',
         '/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('CustomerInvoicesApi-getCustomerInvoice')
       );
     }
 
@@ -135,7 +179,7 @@ export class CustomerInvoicesApi {
       return this.apiClient.callApi( 'CustomerInvoicesApi-getCustomerInvoices',
         '/vendor/directFulfillment/shipping/2021-12-28/customerInvoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('CustomerInvoicesApi-getCustomerInvoices')
       );
     }
 

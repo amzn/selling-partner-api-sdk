@@ -17,6 +17,8 @@ import {ListOfferMetricsRequest} from '../model/ListOfferMetricsRequest.js';
 import {ListOfferMetricsResponse} from '../model/ListOfferMetricsResponse.js';
 import {ListOffersRequest} from '../model/ListOffersRequest.js';
 import {ListOffersResponse} from '../model/ListOffersResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Offers service.
@@ -24,6 +26,9 @@ import {ListOffersResponse} from '../model/ListOffersResponse.js';
 * @version 2022-11-07
 */
 export class OffersApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new OffersApi. 
@@ -34,6 +39,45 @@ export class OffersApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:replenishment_v2022_11_07/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new OffersApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'OffersApi-listOfferMetrics',
+            'OffersApi-listOffers',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -65,7 +109,7 @@ export class OffersApi {
       return this.apiClient.callApi( 'OffersApi-listOfferMetrics',
         '/replenishment/2022-11-07/offers/metrics/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOfferMetrics')
       );
     }
 
@@ -110,7 +154,7 @@ export class OffersApi {
       return this.apiClient.callApi( 'OffersApi-listOffers',
         '/replenishment/2022-11-07/offers/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOffers')
       );
     }
 

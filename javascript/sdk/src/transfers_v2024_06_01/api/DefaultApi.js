@@ -16,6 +16,8 @@ import {ErrorList} from '../model/ErrorList.js';
 import {GetPaymentMethodsResponse} from '../model/GetPaymentMethodsResponse.js';
 import {InitiatePayoutRequest} from '../model/InitiatePayoutRequest.js';
 import {InitiatePayoutResponse} from '../model/InitiatePayoutResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Default service.
@@ -23,6 +25,9 @@ import {InitiatePayoutResponse} from '../model/InitiatePayoutResponse.js';
 * @version 2024-06-01
 */
 export class DefaultApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new DefaultApi. 
@@ -33,6 +38,45 @@ export class DefaultApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:transfers_v2024_06_01/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new DefaultApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'DefaultApi-getPaymentMethods',
+            'DefaultApi-initiatePayout',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -72,7 +116,7 @@ export class DefaultApi {
       return this.apiClient.callApi( 'DefaultApi-getPaymentMethods',
         '/finances/transfers/2024-06-01/paymentMethods', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-getPaymentMethods')
       );
     }
 
@@ -121,7 +165,7 @@ export class DefaultApi {
       return this.apiClient.callApi( 'DefaultApi-initiatePayout',
         '/finances/transfers/2024-06-01/payouts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-initiatePayout')
       );
     }
 

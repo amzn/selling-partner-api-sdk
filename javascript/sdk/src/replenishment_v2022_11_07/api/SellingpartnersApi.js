@@ -15,6 +15,8 @@ import {ApiClient} from "../ApiClient.js";
 import {ErrorList} from '../model/ErrorList.js';
 import {GetSellingPartnerMetricsRequest} from '../model/GetSellingPartnerMetricsRequest.js';
 import {GetSellingPartnerMetricsResponse} from '../model/GetSellingPartnerMetricsResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Sellingpartners service.
@@ -22,6 +24,9 @@ import {GetSellingPartnerMetricsResponse} from '../model/GetSellingPartnerMetric
 * @version 2022-11-07
 */
 export class SellingpartnersApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new SellingpartnersApi. 
@@ -32,6 +37,44 @@ export class SellingpartnersApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:replenishment_v2022_11_07/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new SellingpartnersApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'SellingpartnersApi-getSellingPartnerMetrics',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -63,7 +106,7 @@ export class SellingpartnersApi {
       return this.apiClient.callApi( 'SellingpartnersApi-getSellingPartnerMetrics',
         '/replenishment/2022-11-07/sellingPartners/metrics/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SellingpartnersApi-getSellingPartnerMetrics')
       );
     }
 

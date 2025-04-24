@@ -17,6 +17,8 @@ import {CreateNotificationResponse} from '../model/CreateNotificationResponse.js
 import {DeleteNotificationsRequest} from '../model/DeleteNotificationsRequest.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {RecordActionFeedbackRequest} from '../model/RecordActionFeedbackRequest.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * AppIntegrations service.
@@ -24,6 +26,9 @@ import {RecordActionFeedbackRequest} from '../model/RecordActionFeedbackRequest.
 * @version 2024-04-01
 */
 export class AppIntegrationsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new AppIntegrationsApi. 
@@ -34,6 +39,46 @@ export class AppIntegrationsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:appintegrations_v2024_04_01/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new AppIntegrationsApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'AppIntegrationsApi-createNotification',
+            'AppIntegrationsApi-deleteNotifications',
+            'AppIntegrationsApi-recordActionFeedback',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -68,7 +113,7 @@ export class AppIntegrationsApi {
       return this.apiClient.callApi( 'AppIntegrationsApi-createNotification',
         '/appIntegrations/2024-04-01/notifications', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('AppIntegrationsApi-createNotification')
       );
     }
 
@@ -115,7 +160,7 @@ export class AppIntegrationsApi {
       return this.apiClient.callApi( 'AppIntegrationsApi-deleteNotifications',
         '/appIntegrations/2024-04-01/notifications/deletion', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('AppIntegrationsApi-deleteNotifications')
       );
     }
 
@@ -169,7 +214,7 @@ export class AppIntegrationsApi {
       return this.apiClient.callApi( 'AppIntegrationsApi-recordActionFeedback',
         '/appIntegrations/2024-04-01/notifications/{notificationId}/feedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('AppIntegrationsApi-recordActionFeedback')
       );
     }
 

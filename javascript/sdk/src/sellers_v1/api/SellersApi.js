@@ -14,6 +14,8 @@
 import {ApiClient} from "../ApiClient.js";
 import {GetAccountResponse} from '../model/GetAccountResponse.js';
 import {GetMarketplaceParticipationsResponse} from '../model/GetMarketplaceParticipationsResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Sellers service.
@@ -21,6 +23,9 @@ import {GetMarketplaceParticipationsResponse} from '../model/GetMarketplaceParti
 * @version v1
 */
 export class SellersApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new SellersApi. 
@@ -31,6 +36,45 @@ export class SellersApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:sellers_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new SellersApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'SellersApi-getAccount',
+            'SellersApi-getMarketplaceParticipations',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -59,7 +103,7 @@ export class SellersApi {
       return this.apiClient.callApi( 'SellersApi-getAccount',
         '/sellers/v1/account', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SellersApi-getAccount')
       );
     }
 
@@ -99,7 +143,7 @@ export class SellersApi {
       return this.apiClient.callApi( 'SellersApi-getMarketplaceParticipations',
         '/sellers/v1/marketplaceParticipations', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SellersApi-getMarketplaceParticipations')
       );
     }
 

@@ -14,6 +14,8 @@
 import {ApiClient} from "../ApiClient.js";
 import {SubmitInvoicesRequest} from '../model/SubmitInvoicesRequest.js';
 import {SubmitInvoicesResponse} from '../model/SubmitInvoicesResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * VendorPayments service.
@@ -21,6 +23,9 @@ import {SubmitInvoicesResponse} from '../model/SubmitInvoicesResponse.js';
 * @version v1
 */
 export class VendorPaymentsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new VendorPaymentsApi. 
@@ -31,6 +36,44 @@ export class VendorPaymentsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:vendorinvoices_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new VendorPaymentsApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'VendorPaymentsApi-submitInvoices',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -65,7 +108,7 @@ export class VendorPaymentsApi {
       return this.apiClient.callApi( 'VendorPaymentsApi-submitInvoices',
         '/vendor/payments/v1/invoices', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorPaymentsApi-submitInvoices')
       );
     }
 

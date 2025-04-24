@@ -18,6 +18,8 @@ import {ItemSearchResults} from '../model/ItemSearchResults.js';
 import {ListingsItemPatchRequest} from '../model/ListingsItemPatchRequest.js';
 import {ListingsItemPutRequest} from '../model/ListingsItemPutRequest.js';
 import {ListingsItemSubmissionResponse} from '../model/ListingsItemSubmissionResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Listings service.
@@ -25,6 +27,9 @@ import {ListingsItemSubmissionResponse} from '../model/ListingsItemSubmissionRes
 * @version 2021-08-01
 */
 export class ListingsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ListingsApi. 
@@ -35,6 +40,48 @@ export class ListingsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:listingsitems_v2021_08_01/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new ListingsApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'ListingsApi-deleteListingsItem',
+            'ListingsApi-getListingsItem',
+            'ListingsApi-patchListingsItem',
+            'ListingsApi-putListingsItem',
+            'ListingsApi-searchListingsItems',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -88,7 +135,7 @@ export class ListingsApi {
       return this.apiClient.callApi( 'ListingsApi-deleteListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-deleteListingsItem')
       );
     }
 
@@ -160,7 +207,7 @@ export class ListingsApi {
       return this.apiClient.callApi( 'ListingsApi-getListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-getListingsItem')
       );
     }
 
@@ -241,7 +288,7 @@ export class ListingsApi {
       return this.apiClient.callApi( 'ListingsApi-patchListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-patchListingsItem')
       );
     }
 
@@ -324,7 +371,7 @@ export class ListingsApi {
       return this.apiClient.callApi( 'ListingsApi-putListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-putListingsItem')
       );
     }
 
@@ -422,7 +469,7 @@ export class ListingsApi {
       return this.apiClient.callApi( 'ListingsApi-searchListingsItems',
         '/listings/2021-08-01/items/{sellerId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-searchListingsItems')
       );
     }
 

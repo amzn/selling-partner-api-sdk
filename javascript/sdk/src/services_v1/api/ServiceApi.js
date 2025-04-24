@@ -39,6 +39,8 @@ import {UpdateReservationRequest} from '../model/UpdateReservationRequest.js';
 import {UpdateReservationResponse} from '../model/UpdateReservationResponse.js';
 import {UpdateScheduleRequest} from '../model/UpdateScheduleRequest.js';
 import {UpdateScheduleResponse} from '../model/UpdateScheduleResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Service service.
@@ -46,6 +48,9 @@ import {UpdateScheduleResponse} from '../model/UpdateScheduleResponse.js';
 * @version v1
 */
 export class ServiceApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ServiceApi. 
@@ -56,6 +61,60 @@ export class ServiceApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:services_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new ServiceApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'ServiceApi-addAppointmentForServiceJobByServiceJobId',
+            'ServiceApi-assignAppointmentResources',
+            'ServiceApi-cancelReservation',
+            'ServiceApi-cancelServiceJobByServiceJobId',
+            'ServiceApi-completeServiceJobByServiceJobId',
+            'ServiceApi-createReservation',
+            'ServiceApi-createServiceDocumentUploadDestination',
+            'ServiceApi-getAppointmentSlots',
+            'ServiceApi-getAppointmmentSlotsByJobId',
+            'ServiceApi-getFixedSlotCapacity',
+            'ServiceApi-getRangeSlotCapacity',
+            'ServiceApi-getServiceJobByServiceJobId',
+            'ServiceApi-getServiceJobs',
+            'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId',
+            'ServiceApi-setAppointmentFulfillmentData',
+            'ServiceApi-updateReservation',
+            'ServiceApi-updateSchedule',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -97,7 +156,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-addAppointmentForServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/appointments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-addAppointmentForServiceJobByServiceJobId')
       );
     }
 
@@ -159,7 +218,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-assignAppointmentResources',
         '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-assignAppointmentResources')
       );
     }
 
@@ -216,7 +275,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-cancelReservation',
         '/service/v1/reservation/{reservationId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-cancelReservation')
       );
     }
 
@@ -272,7 +331,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-cancelServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/cancellations', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-cancelServiceJobByServiceJobId')
       );
     }
 
@@ -321,7 +380,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-completeServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/completions', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-completeServiceJobByServiceJobId')
       );
     }
 
@@ -375,7 +434,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-createReservation',
         '/service/v1/reservation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-createReservation')
       );
     }
 
@@ -423,7 +482,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-createServiceDocumentUploadDestination',
         '/service/v1/documents', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-createServiceDocumentUploadDestination')
       );
     }
 
@@ -491,7 +550,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-getAppointmentSlots',
         '/service/v1/appointmentSlots', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-getAppointmentSlots')
       );
     }
 
@@ -557,7 +616,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-getAppointmmentSlotsByJobId',
         '/service/v1/serviceJobs/{serviceJobId}/appointmentSlots', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-getAppointmmentSlotsByJobId')
       );
     }
 
@@ -626,7 +685,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-getFixedSlotCapacity',
         '/service/v1/serviceResources/{resourceId}/capacity/fixed', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-getFixedSlotCapacity')
       );
     }
 
@@ -695,7 +754,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-getRangeSlotCapacity',
         '/service/v1/serviceResources/{resourceId}/capacity/range', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-getRangeSlotCapacity')
       );
     }
 
@@ -747,7 +806,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-getServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-getServiceJobByServiceJobId')
       );
     }
 
@@ -827,7 +886,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-getServiceJobs',
         '/service/v1/serviceJobs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-getServiceJobs')
       );
     }
 
@@ -904,7 +963,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId',
         '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId')
       );
     }
 
@@ -967,7 +1026,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-setAppointmentFulfillmentData',
         '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-setAppointmentFulfillmentData')
       );
     }
 
@@ -1030,7 +1089,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-updateReservation',
         '/service/v1/reservation/{reservationId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-updateReservation')
       );
     }
 
@@ -1093,7 +1152,7 @@ export class ServiceApi {
       return this.apiClient.callApi( 'ServiceApi-updateSchedule',
         '/service/v1/serviceResources/{resourceId}/schedules', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ServiceApi-updateSchedule')
       );
     }
 

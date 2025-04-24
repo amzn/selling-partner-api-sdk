@@ -20,6 +20,8 @@ import {GetAdditionalSellerInputsResponse} from '../model/GetAdditionalSellerInp
 import {GetEligibleShipmentServicesRequest} from '../model/GetEligibleShipmentServicesRequest.js';
 import {GetEligibleShipmentServicesResponse} from '../model/GetEligibleShipmentServicesResponse.js';
 import {GetShipmentResponse} from '../model/GetShipmentResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * MerchantFulfillment service.
@@ -27,6 +29,9 @@ import {GetShipmentResponse} from '../model/GetShipmentResponse.js';
 * @version v0
 */
 export class MerchantFulfillmentApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new MerchantFulfillmentApi. 
@@ -37,6 +42,48 @@ export class MerchantFulfillmentApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:merchantfulfillment_v0/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new MerchantFulfillmentApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'MerchantFulfillmentApi-cancelShipment',
+            'MerchantFulfillmentApi-createShipment',
+            'MerchantFulfillmentApi-getAdditionalSellerInputs',
+            'MerchantFulfillmentApi-getEligibleShipmentServices',
+            'MerchantFulfillmentApi-getShipment',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -72,7 +119,7 @@ export class MerchantFulfillmentApi {
       return this.apiClient.callApi( 'MerchantFulfillmentApi-cancelShipment',
         '/mfn/v0/shipments/{shipmentId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-cancelShipment')
       );
     }
 
@@ -119,7 +166,7 @@ export class MerchantFulfillmentApi {
       return this.apiClient.callApi( 'MerchantFulfillmentApi-createShipment',
         '/mfn/v0/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-createShipment')
       );
     }
 
@@ -166,7 +213,7 @@ export class MerchantFulfillmentApi {
       return this.apiClient.callApi( 'MerchantFulfillmentApi-getAdditionalSellerInputs',
         '/mfn/v0/additionalSellerInputs', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getAdditionalSellerInputs')
       );
     }
 
@@ -213,7 +260,7 @@ export class MerchantFulfillmentApi {
       return this.apiClient.callApi( 'MerchantFulfillmentApi-getEligibleShipmentServices',
         '/mfn/v0/eligibleShippingServices', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getEligibleShipmentServices')
       );
     }
 
@@ -261,7 +308,7 @@ export class MerchantFulfillmentApi {
       return this.apiClient.callApi( 'MerchantFulfillmentApi-getShipment',
         '/mfn/v0/shipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getShipment')
       );
     }
 

@@ -15,6 +15,8 @@ import {ApiClient} from "../ApiClient.js";
 import {Error} from '../model/Error.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {TransactionStatus} from '../model/TransactionStatus.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * VendorTransaction service.
@@ -22,6 +24,9 @@ import {TransactionStatus} from '../model/TransactionStatus.js';
 * @version 2021-12-28
 */
 export class VendorTransactionApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new VendorTransactionApi. 
@@ -32,6 +37,44 @@ export class VendorTransactionApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:vendordftransactions_v2021_12_28/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new VendorTransactionApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'VendorTransactionApi-getTransactionStatus',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -67,7 +110,7 @@ export class VendorTransactionApi {
       return this.apiClient.callApi( 'VendorTransactionApi-getTransactionStatus',
         '/vendor/directFulfillment/transactions/2021-12-28/transactions/{transactionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorTransactionApi-getTransactionStatus')
       );
     }
 

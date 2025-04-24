@@ -15,6 +15,8 @@ import {ApiClient} from "../ApiClient.js";
 import {CreateRestrictedDataTokenRequest} from '../model/CreateRestrictedDataTokenRequest.js';
 import {CreateRestrictedDataTokenResponse} from '../model/CreateRestrictedDataTokenResponse.js';
 import {ErrorList} from '../model/ErrorList.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * Tokens service.
@@ -22,6 +24,9 @@ import {ErrorList} from '../model/ErrorList.js';
 * @version 2021-03-01
 */
 export class TokensApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new TokensApi. 
@@ -32,6 +37,44 @@ export class TokensApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:tokens_v2021_03_01/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new TokensApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'TokensApi-createRestrictedDataToken',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -66,7 +109,7 @@ export class TokensApi {
       return this.apiClient.callApi( 'TokensApi-createRestrictedDataToken',
         '/tokens/2021-03-01/restrictedDataToken', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('TokensApi-createRestrictedDataToken')
       );
     }
 

@@ -18,6 +18,8 @@ import {CreateInventoryItemRequest} from '../model/CreateInventoryItemRequest.js
 import {CreateInventoryItemResponse} from '../model/CreateInventoryItemResponse.js';
 import {DeleteInventoryItemResponse} from '../model/DeleteInventoryItemResponse.js';
 import {GetInventorySummariesResponse} from '../model/GetInventorySummariesResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * FbaInventory service.
@@ -25,6 +27,9 @@ import {GetInventorySummariesResponse} from '../model/GetInventorySummariesRespo
 * @version v1
 */
 export class FbaInventoryApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new FbaInventoryApi. 
@@ -35,6 +40,47 @@ export class FbaInventoryApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:fbainventory_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new FbaInventoryApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'FbaInventoryApi-addInventory',
+            'FbaInventoryApi-createInventoryItem',
+            'FbaInventoryApi-deleteInventoryItem',
+            'FbaInventoryApi-getInventorySummaries',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -76,7 +122,7 @@ export class FbaInventoryApi {
       return this.apiClient.callApi( 'FbaInventoryApi-addInventory',
         '/fba/inventory/v1/items/inventory', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-addInventory')
       );
     }
 
@@ -124,7 +170,7 @@ export class FbaInventoryApi {
       return this.apiClient.callApi( 'FbaInventoryApi-createInventoryItem',
         '/fba/inventory/v1/items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-createInventoryItem')
       );
     }
 
@@ -179,7 +225,7 @@ export class FbaInventoryApi {
       return this.apiClient.callApi( 'FbaInventoryApi-deleteInventoryItem',
         '/fba/inventory/v1/items/{sellerSku}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-deleteInventoryItem')
       );
     }
 
@@ -254,7 +300,7 @@ export class FbaInventoryApi {
       return this.apiClient.callApi( 'FbaInventoryApi-getInventorySummaries',
         '/fba/inventory/v1/summaries', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-getInventorySummaries')
       );
     }
 

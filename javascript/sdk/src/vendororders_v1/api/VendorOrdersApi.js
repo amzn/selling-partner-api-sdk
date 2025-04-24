@@ -17,6 +17,8 @@ import {GetPurchaseOrdersResponse} from '../model/GetPurchaseOrdersResponse.js';
 import {GetPurchaseOrdersStatusResponse} from '../model/GetPurchaseOrdersStatusResponse.js';
 import {SubmitAcknowledgementRequest} from '../model/SubmitAcknowledgementRequest.js';
 import {SubmitAcknowledgementResponse} from '../model/SubmitAcknowledgementResponse.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * VendorOrders service.
@@ -24,6 +26,9 @@ import {SubmitAcknowledgementResponse} from '../model/SubmitAcknowledgementRespo
 * @version v1
 */
 export class VendorOrdersApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new VendorOrdersApi. 
@@ -34,6 +39,47 @@ export class VendorOrdersApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:vendororders_v1/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new VendorOrdersApi(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'VendorOrdersApi-getPurchaseOrder',
+            'VendorOrdersApi-getPurchaseOrders',
+            'VendorOrdersApi-getPurchaseOrdersStatus',
+            'VendorOrdersApi-submitAcknowledgement',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -69,7 +115,7 @@ export class VendorOrdersApi {
       return this.apiClient.callApi( 'VendorOrdersApi-getPurchaseOrder',
         '/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrder')
       );
     }
 
@@ -136,7 +182,7 @@ export class VendorOrdersApi {
       return this.apiClient.callApi( 'VendorOrdersApi-getPurchaseOrders',
         '/vendor/orders/v1/purchaseOrders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrders')
       );
     }
 
@@ -217,7 +263,7 @@ export class VendorOrdersApi {
       return this.apiClient.callApi( 'VendorOrdersApi-getPurchaseOrdersStatus',
         '/vendor/orders/v1/purchaseOrdersStatus', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrdersStatus')
       );
     }
 
@@ -277,7 +323,7 @@ export class VendorOrdersApi {
       return this.apiClient.callApi( 'VendorOrdersApi-submitAcknowledgement',
         '/vendor/orders/v1/acknowledgements', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-submitAcknowledgement')
       );
     }
 

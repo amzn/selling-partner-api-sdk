@@ -23,6 +23,8 @@ import {GetOrderResponse} from '../model/GetOrderResponse.js';
 import {GetOrdersResponse} from '../model/GetOrdersResponse.js';
 import {UpdateVerificationStatusErrorResponse} from '../model/UpdateVerificationStatusErrorResponse.js';
 import {UpdateVerificationStatusRequest} from '../model/UpdateVerificationStatusRequest.js';
+import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
+import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
 
 /**
 * OrdersV0 service.
@@ -30,6 +32,9 @@ import {UpdateVerificationStatusRequest} from '../model/UpdateVerificationStatus
 * @version v0
 */
 export class OrdersV0Api {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new OrdersV0Api. 
@@ -40,6 +45,52 @@ export class OrdersV0Api {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.#defaultRateLimiterMap = new Map();
+    }
+
+    /**
+     * Creates a new instance of the API class with initialized rate limiters
+     * @param {module:orders_v0/ApiClient} [apiClient] Optional API client implementation to use
+     * @returns {Promise} A promise that resolves with the initialized API instance
+     */
+    static async create(apiClient) {
+        const apiInstance = new OrdersV0Api(apiClient);
+        await apiInstance.initializeDefaultRateLimiters();
+        return apiInstance;
+    }
+
+    /**
+     * Initialize rate limiters for all operations
+     * @private
+     */
+    async initializeDefaultRateLimiters() {
+        const operations = [
+            'OrdersV0Api-confirmShipment',
+            'OrdersV0Api-getOrder',
+            'OrdersV0Api-getOrderAddress',
+            'OrdersV0Api-getOrderBuyerInfo',
+            'OrdersV0Api-getOrderItems',
+            'OrdersV0Api-getOrderItemsBuyerInfo',
+            'OrdersV0Api-getOrderRegulatedInfo',
+            'OrdersV0Api-getOrders',
+            'OrdersV0Api-updateVerificationStatus',
+        ];
+
+        const defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     * @private
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -81,7 +132,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-confirmShipment',
         '/orders/v0/orders/{orderId}/shipmentConfirmation', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-confirmShipment')
       );
     }
 
@@ -130,7 +181,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrder',
         '/orders/v0/orders/{orderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrder')
       );
     }
 
@@ -178,7 +229,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrderAddress',
         '/orders/v0/orders/{orderId}/address', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderAddress')
       );
     }
 
@@ -226,7 +277,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrderBuyerInfo',
         '/orders/v0/orders/{orderId}/buyerInfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderBuyerInfo')
       );
     }
 
@@ -278,7 +329,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrderItems',
         '/orders/v0/orders/{orderId}/orderItems', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderItems')
       );
     }
 
@@ -332,7 +383,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrderItemsBuyerInfo',
         '/orders/v0/orders/{orderId}/orderItems/buyerInfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderItemsBuyerInfo')
       );
     }
 
@@ -382,7 +433,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrderRegulatedInfo',
         '/orders/v0/orders/{orderId}/regulatedInfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderRegulatedInfo')
       );
     }
 
@@ -474,7 +525,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-getOrders',
         '/orders/v0/orders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrders')
       );
     }
 
@@ -550,7 +601,7 @@ export class OrdersV0Api {
       return this.apiClient.callApi( 'OrdersV0Api-updateVerificationStatus',
         '/orders/v0/orders/{orderId}/regulatedInfo', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-updateVerificationStatus')
       );
     }
 

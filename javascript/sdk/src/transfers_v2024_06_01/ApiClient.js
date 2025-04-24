@@ -13,10 +13,9 @@
 
 import superagent from "superagent";
 import querystring from "querystring";
-import { URL } from 'node:url';
-import { RateLimitConfiguration } from "../../helper/RateLimitConfiguration.mjs";
-import { SuperagentRateLimiter } from "../../helper/SuperagentRateLimiter.mjs";
-import { DefaultRateLimitFetcher } from "../../helper/DefaultRateLimitFetcher.mjs";
+import {URL} from 'node:url';
+import {RateLimitConfiguration} from "../../helper/RateLimitConfiguration.mjs";
+import {SuperagentRateLimiter} from "../../helper/SuperagentRateLimiter.mjs";
 
 /**
 * @module transfers_v2024_06_01/ApiClient
@@ -193,9 +192,8 @@ export class ApiClient {
     #tokenForApiCall = null;
     #lwaClient = null;
     #rdtClient = null;
-    #defaultRateLimitFetcher = null;
-    #customizedRateLimiter = null;
-    #useDefaultRateLimiter = true;
+    #customizedRateLimiterMap = null;
+    #useRateLimiter = true;
 
     /**
     * Constructs a new ApiClient.
@@ -259,42 +257,54 @@ export class ApiClient {
          * Allow user to override superagent agent
          */
          this.requestAgent = null;
+
+         /*
+         * Initialize customized rate limiter map
+         */
+        this.#customizedRateLimiterMap = new Map();
     }
 
     /**
-    * Initialize #defaultRateLimitFetcher
-    */
-    async initializeDefaultRateLimit() {
-        try {
-            this.#defaultRateLimitFetcher = await DefaultRateLimitFetcher.getInstance();
-        } catch (err) {
-            throw new Error('Error reading default rate limit:', err);
-        } 
-    }
-
-    /**
-    * Enable default rate limiter
-    */
-    enableDefaultRateLimiter() {
-        this.#useDefaultRateLimiter = true;
-        this.#customizedRateLimiter = null;
-    }
-
-    /**
-    * Set customized rate limiter
+    * Set customized rate limiter for one operation
+    * For operations that customized rate limiter are not set
+    * Will use default rate limiter
+    * @param {String} operationName
     * @param {RateLimitConfiguration} config
     */
-    enableCustomizedRateLimiter(config) {
-        this.#customizedRateLimiter = new SuperagentRateLimiter(config);
-        this.#useDefaultRateLimiter = false;
+    setCustomizedRateLimiterForOperation(operationName, config) {
+        this.#customizedRateLimiterMap.set(operationName, new SuperagentRateLimiter(config));
     }
 
     /**
-    * Disable both customized and default rate limiter
+    * Disable customized rate limiter for one operation
+    * Fall back to default rate limiter
+    * @param {String} operationName
     */
-    disableRatelimiter() {
-        this.#customizedRateLimiter = null;
-        this.defaultRateLimiter = false;
+    disableCustomizedRatelimiterForOperation(operationName) {
+        this.#customizedRateLimiterMap.delete(operationName);
+    }
+
+    /**
+    * Clear customized rate limiter for all operations
+    * All operations will fall back to default rate limiter
+    * @param {String} operationName
+    */
+    disableCustomizedRatelimiterForAll() {
+        this.#customizedRateLimiterMap.clear();
+    }
+
+    /**
+    * Disable both default and customized rate limiter for all operations
+    */
+    disableRateLimiter() {
+        this.#useRateLimiter = false;
+    }
+
+    /**
+    * Enable default or customized rate limiter for all operations
+    */
+    enableRateLimiter() {
+        this.#useRateLimiter = true;
     }
 
     /**
@@ -597,11 +607,12 @@ export class ApiClient {
     * @param {Array<String>} accepts An array of acceptable response MIME types.
     * @param {(String|Array|ObjectFunction)} returnType The required type to return; can be a string for simple types or the
     * constructor for a complex type.
+    * @param {SuperagentRateLimiter} defaultRateLimiter The default rate limiter. 
     * @returns {Promise} A {@link https://www.promisejs.org/|Promise} object.
     */
     async callApi(operation, path, httpMethod, pathParams,
         queryParams, headerParams, formParams, bodyParam, contentTypes, accepts,
-        returnType) {
+        returnType, defaultRateLimiter) {
 
         var url = this.buildUrl(path, pathParams);
         var request = superagent(httpMethod, url);
@@ -609,15 +620,14 @@ export class ApiClient {
             throw new Error('none of accessToken, RDT token and auto-retrieval is set.');
         }
 
-        //Set rate limiter
-        if (this.#useDefaultRateLimiter) {
-            await this.initializeDefaultRateLimit();
-            const defaultRateLimiter = new SuperagentRateLimiter(this.#defaultRateLimitFetcher.getLimit(operation));
-            request.use(defaultRateLimiter.getPlugin());
-        } else if (this.#customizedRateLimiter) {
-            request.use(this.#customizedRateLimiter.getPlugin());
+        if (this.#useRateLimiter) {
+            //Set rate limiter
+            if (this.#customizedRateLimiterMap.get(operation)) {
+                request.use(this.#customizedRateLimiterMap.get(operation).getPlugin());
+            } else if (defaultRateLimiter) {
+                request.use(defaultRateLimiter.getPlugin());
+            }
         }
-        
 
         // set query parameters
         if (httpMethod.toUpperCase() === 'GET' && this.cache === false) {
