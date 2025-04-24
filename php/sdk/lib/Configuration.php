@@ -47,8 +47,8 @@ use SpApi\AuthAndAuth\LWAAuthorizationSigner;
  */
 class Configuration
 {
-    public const BOOLEAN_FORMAT_INT = 'int';
-    public const BOOLEAN_FORMAT_STRING = 'string';
+    public const string BOOLEAN_FORMAT_INT = 'int';
+    public const string BOOLEAN_FORMAT_STRING = 'string';
 
     /**
      * Required inputs for config array.
@@ -60,7 +60,7 @@ class Configuration
     /**
      * Boolean format for query string.
      */
-    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
+    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_STRING;
 
     /**
      * The host.
@@ -87,7 +87,7 @@ class Configuration
      */
     protected string $tempFolderPath;
 
-    private static Configuration $defaultConfiguration;
+    private static ?Configuration $defaultConfiguration = null;
 
     private LWAAuthorizationSigner $lwaAuthSigner;
 
