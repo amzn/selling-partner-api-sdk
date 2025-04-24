@@ -11,11 +11,11 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetAccountResponse} from '../model/GetAccountResponse.js';
 import {GetMarketplaceParticipationsResponse} from '../model/GetMarketplaceParticipationsResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Sellers service.

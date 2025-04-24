@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CancelFulfillmentOrderResponse} from '../model/CancelFulfillmentOrderResponse.js';
 import {CreateFulfillmentOrderRequest} from '../model/CreateFulfillmentOrderRequest.js';
 import {CreateFulfillmentOrderResponse} from '../model/CreateFulfillmentOrderResponse.js';
@@ -32,8 +32,8 @@ import {SubmitFulfillmentOrderStatusUpdateRequest} from '../model/SubmitFulfillm
 import {SubmitFulfillmentOrderStatusUpdateResponse} from '../model/SubmitFulfillmentOrderStatusUpdateResponse.js';
 import {UpdateFulfillmentOrderRequest} from '../model/UpdateFulfillmentOrderRequest.js';
 import {UpdateFulfillmentOrderResponse} from '../model/UpdateFulfillmentOrderResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * FbaOutbound service.

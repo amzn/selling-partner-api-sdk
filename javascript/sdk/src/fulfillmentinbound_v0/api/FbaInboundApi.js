@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetBillOfLadingResponse} from '../model/GetBillOfLadingResponse.js';
 import {GetLabelsResponse} from '../model/GetLabelsResponse.js';
 import {GetPrepInstructionsResponse} from '../model/GetPrepInstructionsResponse.js';
 import {GetShipmentItemsResponse} from '../model/GetShipmentItemsResponse.js';
 import {GetShipmentsResponse} from '../model/GetShipmentsResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * FbaInbound service.

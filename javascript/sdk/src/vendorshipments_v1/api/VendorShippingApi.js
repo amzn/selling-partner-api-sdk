@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetShipmentDetailsResponse} from '../model/GetShipmentDetailsResponse.js';
 import {GetShipmentLabels} from '../model/GetShipmentLabels.js';
 import {SubmitShipmentConfirmationsRequest} from '../model/SubmitShipmentConfirmationsRequest.js';
 import {SubmitShipmentConfirmationsResponse} from '../model/SubmitShipmentConfirmationsResponse.js';
 import {SubmitShipments} from '../model/SubmitShipments.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * VendorShipping service.

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ConfirmShipmentErrorResponse} from '../model/ConfirmShipmentErrorResponse.js';
 import {ConfirmShipmentRequest} from '../model/ConfirmShipmentRequest.js';
 import {GetOrderAddressResponse} from '../model/GetOrderAddressResponse.js';
@@ -23,8 +23,8 @@ import {GetOrderResponse} from '../model/GetOrderResponse.js';
 import {GetOrdersResponse} from '../model/GetOrdersResponse.js';
 import {UpdateVerificationStatusErrorResponse} from '../model/UpdateVerificationStatusErrorResponse.js';
 import {UpdateVerificationStatusRequest} from '../model/UpdateVerificationStatusRequest.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * OrdersV0 service.

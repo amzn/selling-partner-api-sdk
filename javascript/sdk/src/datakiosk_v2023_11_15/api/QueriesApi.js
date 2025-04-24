@@ -11,15 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateQueryResponse} from '../model/CreateQueryResponse.js';
 import {CreateQuerySpecification} from '../model/CreateQuerySpecification.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {GetDocumentResponse} from '../model/GetDocumentResponse.js';
 import {GetQueriesResponse} from '../model/GetQueriesResponse.js';
 import {Query} from '../model/Query.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Queries service.

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CancelShipmentResponse} from '../model/CancelShipmentResponse.js';
 import {CreateShipmentRequest} from '../model/CreateShipmentRequest.js';
 import {CreateShipmentResponse} from '../model/CreateShipmentResponse.js';
@@ -20,8 +20,8 @@ import {GetAdditionalSellerInputsResponse} from '../model/GetAdditionalSellerInp
 import {GetEligibleShipmentServicesRequest} from '../model/GetEligibleShipmentServicesRequest.js';
 import {GetEligibleShipmentServicesResponse} from '../model/GetEligibleShipmentServicesResponse.js';
 import {GetShipmentResponse} from '../model/GetShipmentResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * MerchantFulfillment service.

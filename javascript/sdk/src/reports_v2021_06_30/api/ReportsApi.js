@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateReportResponse} from '../model/CreateReportResponse.js';
 import {CreateReportScheduleResponse} from '../model/CreateReportScheduleResponse.js';
 import {CreateReportScheduleSpecification} from '../model/CreateReportScheduleSpecification.js';
@@ -22,8 +22,8 @@ import {Report} from '../model/Report.js';
 import {ReportDocument} from '../model/ReportDocument.js';
 import {ReportSchedule} from '../model/ReportSchedule.js';
 import {ReportScheduleList} from '../model/ReportScheduleList.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Reports service.

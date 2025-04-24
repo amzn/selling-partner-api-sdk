@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {InboundEligibility} from '../model/InboundEligibility.js';
 import {InboundOrder} from '../model/InboundOrder.js';
@@ -23,8 +23,8 @@ import {InventoryListing} from '../model/InventoryListing.js';
 import {ShipmentLabels} from '../model/ShipmentLabels.js';
 import {ShipmentListing} from '../model/ShipmentListing.js';
 import {TransportationDetails} from '../model/TransportationDetails.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Awd service.

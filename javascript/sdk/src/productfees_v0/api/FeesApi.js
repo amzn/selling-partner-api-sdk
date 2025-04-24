@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {FeesEstimateByIdRequest} from '../model/FeesEstimateByIdRequest.js';
 import {FeesEstimateResult} from '../model/FeesEstimateResult.js';
 import {GetMyFeesEstimateRequest} from '../model/GetMyFeesEstimateRequest.js';
 import {GetMyFeesEstimateResponse} from '../model/GetMyFeesEstimateResponse.js';
 import {GetMyFeesEstimatesErrorList} from '../model/GetMyFeesEstimatesErrorList.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Fees service.

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateFeedDocumentResponse} from '../model/CreateFeedDocumentResponse.js';
 import {CreateFeedDocumentSpecification} from '../model/CreateFeedDocumentSpecification.js';
 import {CreateFeedResponse} from '../model/CreateFeedResponse.js';
@@ -20,8 +20,8 @@ import {ErrorList} from '../model/ErrorList.js';
 import {Feed} from '../model/Feed.js';
 import {FeedDocument} from '../model/FeedDocument.js';
 import {GetFeedsResponse} from '../model/GetFeedsResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Feeds service.

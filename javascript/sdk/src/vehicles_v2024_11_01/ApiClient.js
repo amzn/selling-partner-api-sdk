@@ -11,11 +11,11 @@
  *
  */
 
-import superagent from "superagent";
-import querystring from "querystring";
+import superagent from 'superagent';
+import querystring from 'querystring';
 import {URL} from 'node:url';
-import {RateLimitConfiguration} from "../../helper/RateLimitConfiguration.mjs";
-import {SuperagentRateLimiter} from "../../helper/SuperagentRateLimiter.mjs";
+import {RateLimitConfiguration} from '../../helper/RateLimitConfiguration.mjs';
+import {SuperagentRateLimiter} from '../../helper/SuperagentRateLimiter.mjs';
 
 /**
 * @module vehicles_v2024_11_01/ApiClient

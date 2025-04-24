@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {GetContentDocumentResponse} from '../model/GetContentDocumentResponse.js';
 import {ListContentDocumentAsinRelationsResponse} from '../model/ListContentDocumentAsinRelationsResponse.js';
@@ -24,8 +24,8 @@ import {PostContentDocumentSuspendSubmissionResponse} from '../model/PostContent
 import {SearchContentDocumentsResponse} from '../model/SearchContentDocumentsResponse.js';
 import {SearchContentPublishRecordsResponse} from '../model/SearchContentPublishRecordsResponse.js';
 import {ValidateContentDocumentAsinRelationsResponse} from '../model/ValidateContentDocumentAsinRelationsResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * AplusContent service.

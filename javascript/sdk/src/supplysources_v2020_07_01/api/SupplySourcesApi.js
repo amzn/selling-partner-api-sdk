@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateSupplySourceRequest} from '../model/CreateSupplySourceRequest.js';
 import {CreateSupplySourceResponse} from '../model/CreateSupplySourceResponse.js';
 import {ErrorList} from '../model/ErrorList.js';
@@ -19,8 +19,8 @@ import {GetSupplySourcesResponse} from '../model/GetSupplySourcesResponse.js';
 import {SupplySource} from '../model/SupplySource.js';
 import {UpdateSupplySourceRequest} from '../model/UpdateSupplySourceRequest.js';
 import {UpdateSupplySourceStatusRequest} from '../model/UpdateSupplySourceStatusRequest.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * SupplySources service.

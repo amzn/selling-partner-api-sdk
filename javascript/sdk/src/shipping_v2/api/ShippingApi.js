@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CancelShipmentResponse} from '../model/CancelShipmentResponse.js';
 import {CreateClaimRequest} from '../model/CreateClaimRequest.js';
 import {CreateClaimResponse} from '../model/CreateClaimResponse.js';
@@ -43,8 +43,8 @@ import {PurchaseShipmentResponse} from '../model/PurchaseShipmentResponse.js';
 import {SubmitNdrFeedbackRequest} from '../model/SubmitNdrFeedbackRequest.js';
 import {UnlinkCarrierAccountRequest} from '../model/UnlinkCarrierAccountRequest.js';
 import {UnlinkCarrierAccountResponse} from '../model/UnlinkCarrierAccountResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Shipping service.

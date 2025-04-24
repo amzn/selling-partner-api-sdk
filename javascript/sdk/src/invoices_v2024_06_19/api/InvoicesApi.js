@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {ExportInvoicesRequest} from '../model/ExportInvoicesRequest.js';
 import {ExportInvoicesResponse} from '../model/ExportInvoicesResponse.js';
@@ -21,8 +21,8 @@ import {GetInvoicesDocumentResponse} from '../model/GetInvoicesDocumentResponse.
 import {GetInvoicesExportResponse} from '../model/GetInvoicesExportResponse.js';
 import {GetInvoicesExportsResponse} from '../model/GetInvoicesExportsResponse.js';
 import {GetInvoicesResponse} from '../model/GetInvoicesResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Invoices service.

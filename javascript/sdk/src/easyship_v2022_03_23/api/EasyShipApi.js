@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateScheduledPackageRequest} from '../model/CreateScheduledPackageRequest.js';
 import {CreateScheduledPackagesRequest} from '../model/CreateScheduledPackagesRequest.js';
 import {CreateScheduledPackagesResponse} from '../model/CreateScheduledPackagesResponse.js';
@@ -21,8 +21,8 @@ import {ListHandoverSlotsResponse} from '../model/ListHandoverSlotsResponse.js';
 import {Package} from '../model/Package.js';
 import {Packages} from '../model/Packages.js';
 import {UpdateScheduledPackagesRequest} from '../model/UpdateScheduledPackagesRequest.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * EasyShip service.

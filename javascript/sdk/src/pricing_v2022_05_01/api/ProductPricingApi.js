@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CompetitiveSummaryBatchRequest} from '../model/CompetitiveSummaryBatchRequest.js';
 import {CompetitiveSummaryBatchResponse} from '../model/CompetitiveSummaryBatchResponse.js';
 import {Errors} from '../model/Errors.js';
 import {GetFeaturedOfferExpectedPriceBatchRequest} from '../model/GetFeaturedOfferExpectedPriceBatchRequest.js';
 import {GetFeaturedOfferExpectedPriceBatchResponse} from '../model/GetFeaturedOfferExpectedPriceBatchResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * ProductPricing service.

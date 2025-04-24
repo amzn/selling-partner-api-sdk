@@ -11,13 +11,13 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {GetPaymentMethodsResponse} from '../model/GetPaymentMethodsResponse.js';
 import {InitiatePayoutRequest} from '../model/InitiatePayoutRequest.js';
 import {InitiatePayoutResponse} from '../model/InitiatePayoutResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Default service.

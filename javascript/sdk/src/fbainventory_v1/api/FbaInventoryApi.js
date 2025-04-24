@@ -11,15 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {AddInventoryRequest} from '../model/AddInventoryRequest.js';
 import {AddInventoryResponse} from '../model/AddInventoryResponse.js';
 import {CreateInventoryItemRequest} from '../model/CreateInventoryItemRequest.js';
 import {CreateInventoryItemResponse} from '../model/CreateInventoryItemResponse.js';
 import {DeleteInventoryItemResponse} from '../model/DeleteInventoryItemResponse.js';
 import {GetInventorySummariesResponse} from '../model/GetInventorySummariesResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * FbaInventory service.

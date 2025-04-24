@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateAmazonMotorsRequest} from '../model/CreateAmazonMotorsRequest.js';
 import {CreateAmazonMotorsResponse} from '../model/CreateAmazonMotorsResponse.js';
 import {CreateConfirmCustomizationDetailsRequest} from '../model/CreateConfirmCustomizationDetailsRequest.js';
@@ -35,8 +35,8 @@ import {GetAttributesResponse} from '../model/GetAttributesResponse.js';
 import {GetMessagingActionsForOrderResponse} from '../model/GetMessagingActionsForOrderResponse.js';
 import {InvoiceRequest} from '../model/InvoiceRequest.js';
 import {InvoiceResponse} from '../model/InvoiceResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Messaging service.

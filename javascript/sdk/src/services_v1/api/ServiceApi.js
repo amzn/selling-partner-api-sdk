@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {AddAppointmentRequest} from '../model/AddAppointmentRequest.js';
 import {AssignAppointmentResourcesRequest} from '../model/AssignAppointmentResourcesRequest.js';
 import {AssignAppointmentResourcesResponse} from '../model/AssignAppointmentResourcesResponse.js';
@@ -39,8 +39,8 @@ import {UpdateReservationRequest} from '../model/UpdateReservationRequest.js';
 import {UpdateReservationResponse} from '../model/UpdateReservationResponse.js';
 import {UpdateScheduleRequest} from '../model/UpdateScheduleRequest.js';
 import {UpdateScheduleResponse} from '../model/UpdateScheduleResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Service service.

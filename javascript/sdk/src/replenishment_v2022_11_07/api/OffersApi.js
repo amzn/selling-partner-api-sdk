@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {ListOfferMetricsRequest} from '../model/ListOfferMetricsRequest.js';
 import {ListOfferMetricsResponse} from '../model/ListOfferMetricsResponse.js';
 import {ListOffersRequest} from '../model/ListOffersRequest.js';
 import {ListOffersResponse} from '../model/ListOffersResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Offers service.

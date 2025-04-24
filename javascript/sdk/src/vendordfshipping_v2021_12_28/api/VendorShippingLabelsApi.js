@@ -11,15 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateShippingLabelsRequest} from '../model/CreateShippingLabelsRequest.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {ShippingLabel} from '../model/ShippingLabel.js';
 import {ShippingLabelList} from '../model/ShippingLabelList.js';
 import {SubmitShippingLabelsRequest} from '../model/SubmitShippingLabelsRequest.js';
 import {TransactionReference} from '../model/TransactionReference.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * VendorShippingLabels service.

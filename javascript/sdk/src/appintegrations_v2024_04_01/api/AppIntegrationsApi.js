@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateNotificationRequest} from '../model/CreateNotificationRequest.js';
 import {CreateNotificationResponse} from '../model/CreateNotificationResponse.js';
 import {DeleteNotificationsRequest} from '../model/DeleteNotificationsRequest.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {RecordActionFeedbackRequest} from '../model/RecordActionFeedbackRequest.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * AppIntegrations service.

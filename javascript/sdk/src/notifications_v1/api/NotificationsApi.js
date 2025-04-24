@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateDestinationRequest} from '../model/CreateDestinationRequest.js';
 import {CreateDestinationResponse} from '../model/CreateDestinationResponse.js';
 import {CreateSubscriptionRequest} from '../model/CreateSubscriptionRequest.js';
@@ -22,8 +22,8 @@ import {GetDestinationResponse} from '../model/GetDestinationResponse.js';
 import {GetDestinationsResponse} from '../model/GetDestinationsResponse.js';
 import {GetSubscriptionByIdResponse} from '../model/GetSubscriptionByIdResponse.js';
 import {GetSubscriptionResponse} from '../model/GetSubscriptionResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Notifications service.

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {Errors} from '../model/Errors.js';
 import {GetItemOffersBatchRequest} from '../model/GetItemOffersBatchRequest.js';
 import {GetItemOffersBatchResponse} from '../model/GetItemOffersBatchResponse.js';
@@ -19,8 +19,8 @@ import {GetListingOffersBatchRequest} from '../model/GetListingOffersBatchReques
 import {GetListingOffersBatchResponse} from '../model/GetListingOffersBatchResponse.js';
 import {GetOffersResponse} from '../model/GetOffersResponse.js';
 import {GetPricingResponse} from '../model/GetPricingResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * ProductPricing service.

@@ -1,5 +1,5 @@
 import Bottleneck from 'bottleneck';
-import { RateLimitConfiguration } from "./RateLimitConfiguration.mjs";
+import { RateLimitConfiguration } from './RateLimitConfiguration.mjs';
 
 export class SuperagentRateLimiter {
     /** @type {Bottleneck} */

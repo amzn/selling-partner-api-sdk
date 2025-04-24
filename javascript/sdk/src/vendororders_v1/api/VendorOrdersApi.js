@@ -11,14 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetPurchaseOrderResponse} from '../model/GetPurchaseOrderResponse.js';
 import {GetPurchaseOrdersResponse} from '../model/GetPurchaseOrdersResponse.js';
 import {GetPurchaseOrdersStatusResponse} from '../model/GetPurchaseOrdersStatusResponse.js';
 import {SubmitAcknowledgementRequest} from '../model/SubmitAcknowledgementRequest.js';
 import {SubmitAcknowledgementResponse} from '../model/SubmitAcknowledgementResponse.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * VendorOrders service.

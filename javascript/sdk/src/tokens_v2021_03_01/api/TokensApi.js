@@ -11,12 +11,12 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateRestrictedDataTokenRequest} from '../model/CreateRestrictedDataTokenRequest.js';
 import {CreateRestrictedDataTokenResponse} from '../model/CreateRestrictedDataTokenResponse.js';
 import {ErrorList} from '../model/ErrorList.js';
-import {SuperagentRateLimiter} from "../../../helper/SuperagentRateLimiter.mjs";
-import {DefaultRateLimitFetcher} from "../../../helper/DefaultRateLimitFetcher.mjs";
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Tokens service.
