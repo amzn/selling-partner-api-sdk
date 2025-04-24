@@ -1,6 +1,7 @@
 name: Test Python SDK
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
