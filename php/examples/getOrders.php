@@ -21,9 +21,6 @@ $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
 //Initialize config
 $config = new Configuration([], $lwaAuthorizationCredentials);
 
-// Set as a DefaultConfiguration
-Configuration::setDefaultConfiguration($config);
-
 // Setting SP-API endpoint region
 $config->setHost($_ENV['SP_API_ENDPOINT_HOST']);
 
