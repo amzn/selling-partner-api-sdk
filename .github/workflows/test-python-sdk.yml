@@ -13,6 +13,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - name: Run mock server
+        working-directory: ./test
+        run: |
+          npm install
+          npm start &
+          sleep 5
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
