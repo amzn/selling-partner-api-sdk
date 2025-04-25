@@ -37,7 +37,7 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
         {{#allParams}}{{#required}}{{paramName}} = {{#isArray}}[self._get_random_value("{{{dataType}}}") for _ in range(2)]{{/isArray}}{{^isArray}}self._get_random_value("{{dataType}}"){{/isArray}}
         {{/required}}{{/allParams}}
         self.instruct_backend_mock(self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
-        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}{{paramName}}={}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
         self.assertEqual({{responses.0.code}}, response[1])
         self.assert_valid_response_payload({{responses.0.code}}, response[0])
         pass
