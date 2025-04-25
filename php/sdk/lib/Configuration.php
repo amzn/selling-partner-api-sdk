@@ -438,7 +438,7 @@ class Configuration
     private static function getRateLimitValue(string $operationName, int $index)
     {
         if (!isset(self::$rateLimitConfiguration)) {
-            $data = Yaml::parseFile('../resources/rate-limits.yml');
+            $data = Yaml::parseFile(__DIR__.'/../resources/rate-limits.yml');
             self::$rateLimitConfiguration = get_object_vars($data);
         }
 
