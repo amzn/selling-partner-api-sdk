@@ -34,10 +34,10 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
 
    {{#operation}}
     def test_{{operationId}}(self):
-        {{#allParams}}{{#required}}{{paramName}} = {{#isListContainer}}[random.random() for _ in range(2)]{{/isListContainer}}{{^isListContainer}}random.random(){{/isListContainer}}
+        {{#allParams}}{{#required}}{{paramName}} = {{#isArray}}[self._get_random_value("{{{dataType}}}") for _ in range(2)]{{/isArray}}{{^isArray}}self._get_random_value("{{dataType}}"){{/isArray}}
         {{/required}}{{/allParams}}
         self.instruct_backend_mock(self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
-        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}{{paramName}}=None{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
         self.assertEqual({{responses.0.code}}, response[1])
         self.assert_valid_response_payload({{responses.0.code}}, response[0])
         pass
@@ -48,6 +48,19 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
     def instruct_backend_mock(self, response: str, code: str) -> None:
         url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
         requests.post(url)
+
+    def _get_random_value(self, data_type):
+        basic_types = {
+        'str': "test_string",
+        'string': "test_string",
+        'int': 123,
+        'integer': 123,
+        'float': 123.45,
+        'bool': True,
+        'boolean': True
+        }
+
+        return basic_types.get(data_type.lower(), {})
 
     def assert_valid_response_payload(self, status_code: int, body: any) -> None:
         if status_code != 204:

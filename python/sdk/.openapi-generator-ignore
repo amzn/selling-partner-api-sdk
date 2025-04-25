@@ -13,6 +13,6 @@ README.md
 **/api_response.py
 **/exceptions.py
 **/py.typed
-**/__init__.py
+spapi/__init__.py # only ignore package init
 test-requirements.txt
 .openapi-generator/FILES
