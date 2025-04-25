@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.productfees.v0.FeesEstimateByIdRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateRequest;
@@ -49,7 +48,6 @@ public class FeesApi {
      *
      * @param body (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -58,7 +56,6 @@ public class FeesApi {
     public okhttp3.Call getMyFeesEstimateForASINCall(
             GetMyFeesEstimateRequest body,
             String asin,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -82,17 +79,6 @@ public class FeesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -101,14 +87,12 @@ public class FeesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getMyFeesEstimateForASINValidateBeforeCall(
             GetMyFeesEstimateRequest body,
             String asin,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -122,7 +106,7 @@ public class FeesApi {
                     "Missing the required parameter 'asin' when calling getMyFeesEstimateForASIN(Async)");
         }
 
-        return getMyFeesEstimateForASINCall(body, asin, progressListener, progressRequestListener);
+        return getMyFeesEstimateForASINCall(body, asin, progressRequestListener);
     }
 
     /**
@@ -179,7 +163,7 @@ public class FeesApi {
      */
     public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForASINWithHttpInfo(
             GetMyFeesEstimateRequest body, String asin) throws ApiException, LWAException {
-        okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, null, null);
+        okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, null);
         Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -212,16 +196,13 @@ public class FeesApi {
             GetMyFeesEstimateRequest body, String asin, final ApiCallback<GetMyFeesEstimateResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getMyFeesEstimateForASINValidateBeforeCall(body, asin, progressListener, progressRequestListener);
+        okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -232,7 +213,6 @@ public class FeesApi {
      * @param body (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -241,7 +221,6 @@ public class FeesApi {
     public okhttp3.Call getMyFeesEstimateForSKUCall(
             GetMyFeesEstimateRequest body,
             String sellerSKU,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -265,17 +244,6 @@ public class FeesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -284,14 +252,12 @@ public class FeesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getMyFeesEstimateForSKUValidateBeforeCall(
             GetMyFeesEstimateRequest body,
             String sellerSKU,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -304,7 +270,7 @@ public class FeesApi {
                     "Missing the required parameter 'sellerSKU' when calling getMyFeesEstimateForSKU(Async)");
         }
 
-        return getMyFeesEstimateForSKUCall(body, sellerSKU, progressListener, progressRequestListener);
+        return getMyFeesEstimateForSKUCall(body, sellerSKU, progressRequestListener);
     }
 
     /**
@@ -367,7 +333,7 @@ public class FeesApi {
      */
     public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForSKUWithHttpInfo(
             GetMyFeesEstimateRequest body, String sellerSKU) throws ApiException, LWAException {
-        okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, null, null);
+        okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, null);
         Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -403,16 +369,13 @@ public class FeesApi {
             GetMyFeesEstimateRequest body, String sellerSKU, final ApiCallback<GetMyFeesEstimateResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, progressListener, progressRequestListener);
+        okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -421,7 +384,6 @@ public class FeesApi {
      * Build call for getMyFeesEstimates
      *
      * @param body (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -429,7 +391,6 @@ public class FeesApi {
      */
     public okhttp3.Call getMyFeesEstimatesCall(
             List<FeesEstimateByIdRequest> body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -452,17 +413,6 @@ public class FeesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -471,13 +421,11 @@ public class FeesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getMyFeesEstimatesValidateBeforeCall(
             List<FeesEstimateByIdRequest> body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -485,7 +433,7 @@ public class FeesApi {
             throw new ApiException("Missing the required parameter 'body' when calling getMyFeesEstimates(Async)");
         }
 
-        return getMyFeesEstimatesCall(body, progressListener, progressRequestListener);
+        return getMyFeesEstimatesCall(body, progressRequestListener);
     }
 
     /**
@@ -522,7 +470,7 @@ public class FeesApi {
      */
     public ApiResponse<GetMyFeesEstimatesResponse> getMyFeesEstimatesWithHttpInfo(List<FeesEstimateByIdRequest> body)
             throws ApiException, LWAException {
-        okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, null, null);
+        okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -545,15 +493,13 @@ public class FeesApi {
             List<FeesEstimateByIdRequest> body, final ApiCallback<GetMyFeesEstimatesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

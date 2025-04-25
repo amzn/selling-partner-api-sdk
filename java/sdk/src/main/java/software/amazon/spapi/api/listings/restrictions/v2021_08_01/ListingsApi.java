@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.listings.restrictions.v2021_08_01.RestrictionList;
 
@@ -52,7 +51,6 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -64,7 +62,6 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -95,17 +92,6 @@ public class ListingsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -114,7 +100,6 @@ public class ListingsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -124,7 +109,6 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'asin' is set
@@ -143,7 +127,7 @@ public class ListingsApi {
         }
 
         return getListingsRestrictionsCall(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressListener, progressRequestListener);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressRequestListener);
     }
 
     /**
@@ -198,7 +182,7 @@ public class ListingsApi {
             String asin, String sellerId, List<String> marketplaceIds, String conditionType, String reasonLocale)
             throws ApiException, LWAException {
         okhttp3.Call call = getListingsRestrictionsValidateBeforeCall(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, null, null);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, null);
         Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -233,16 +217,14 @@ public class ListingsApi {
             final ApiCallback<RestrictionList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getListingsRestrictionsValidateBeforeCall(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressListener, progressRequestListener);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressRequestListener);
         Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

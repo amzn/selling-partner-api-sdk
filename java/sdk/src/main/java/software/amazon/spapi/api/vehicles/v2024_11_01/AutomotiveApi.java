@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vehicles.v2024_11_01.VehiclesResponse;
 
@@ -49,7 +48,6 @@ public class AutomotiveApi {
      * @param pageToken A token to fetch a certain page when there are multiple pages worth of results. (optional)
      * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
      *     catalog after this date will be returned. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -60,7 +58,6 @@ public class AutomotiveApi {
             String vehicleType,
             String pageToken,
             String updatedAfter,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -89,17 +86,6 @@ public class AutomotiveApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -108,7 +94,6 @@ public class AutomotiveApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -117,7 +102,6 @@ public class AutomotiveApi {
             String vehicleType,
             String pageToken,
             String updatedAfter,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -129,8 +113,7 @@ public class AutomotiveApi {
             throw new ApiException("Missing the required parameter 'vehicleType' when calling getVehicles(Async)");
         }
 
-        return getVehiclesCall(
-                marketplaceId, vehicleType, pageToken, updatedAfter, progressListener, progressRequestListener);
+        return getVehiclesCall(marketplaceId, vehicleType, pageToken, updatedAfter, progressRequestListener);
     }
 
     /**
@@ -167,8 +150,7 @@ public class AutomotiveApi {
     public ApiResponse<VehiclesResponse> getVehiclesWithHttpInfo(
             String marketplaceId, String vehicleType, String pageToken, String updatedAfter)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getVehiclesValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null, null);
+        okhttp3.Call call = getVehiclesValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null);
         Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -194,16 +176,14 @@ public class AutomotiveApi {
             final ApiCallback<VehiclesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getVehiclesValidateBeforeCall(
-                marketplaceId, vehicleType, pageToken, updatedAfter, progressListener, progressRequestListener);
+                marketplaceId, vehicleType, pageToken, updatedAfter, progressRequestListener);
         Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

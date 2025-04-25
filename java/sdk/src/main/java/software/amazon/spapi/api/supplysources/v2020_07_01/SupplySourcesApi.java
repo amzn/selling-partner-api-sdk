@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceRequest;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceResponse;
@@ -52,16 +51,13 @@ public class SupplySourcesApi {
      * Build call for archiveSupplySource
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call archiveSupplySourceCall(
-            String supplySourceId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -85,17 +81,6 @@ public class SupplySourcesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -104,14 +89,11 @@ public class SupplySourcesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call archiveSupplySourceValidateBeforeCall(
-            String supplySourceId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'supplySourceId' is set
         if (supplySourceId == null) {
@@ -119,7 +101,7 @@ public class SupplySourcesApi {
                     "Missing the required parameter 'supplySourceId' when calling archiveSupplySource(Async)");
         }
 
-        return archiveSupplySourceCall(supplySourceId, progressListener, progressRequestListener);
+        return archiveSupplySourceCall(supplySourceId, progressRequestListener);
     }
 
     /**
@@ -145,7 +127,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<ErrorList> archiveSupplySourceWithHttpInfo(String supplySourceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, null, null);
+        okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, null);
         Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -162,16 +144,13 @@ public class SupplySourcesApi {
     public okhttp3.Call archiveSupplySourceAsync(String supplySourceId, final ApiCallback<ErrorList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                archiveSupplySourceValidateBeforeCall(supplySourceId, progressListener, progressRequestListener);
+        okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, progressRequestListener);
         Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -180,16 +159,13 @@ public class SupplySourcesApi {
      * Build call for createSupplySource
      *
      * @param body A request to create a supply source. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createSupplySourceCall(
-            CreateSupplySourceRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateSupplySourceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -211,17 +187,6 @@ public class SupplySourcesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -230,21 +195,18 @@ public class SupplySourcesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createSupplySourceValidateBeforeCall(
-            CreateSupplySourceRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateSupplySourceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createSupplySource(Async)");
         }
 
-        return createSupplySourceCall(body, progressListener, progressRequestListener);
+        return createSupplySourceCall(body, progressRequestListener);
     }
 
     /**
@@ -271,7 +233,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<CreateSupplySourceResponse> createSupplySourceWithHttpInfo(CreateSupplySourceRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createSupplySourceValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createSupplySourceValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -289,15 +251,13 @@ public class SupplySourcesApi {
             CreateSupplySourceRequest body, final ApiCallback<CreateSupplySourceResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createSupplySourceValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createSupplySourceValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -306,16 +266,13 @@ public class SupplySourcesApi {
      * Build call for getSupplySource
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getSupplySourceCall(
-            String supplySourceId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -339,17 +296,6 @@ public class SupplySourcesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -358,14 +304,11 @@ public class SupplySourcesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getSupplySourceValidateBeforeCall(
-            String supplySourceId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'supplySourceId' is set
         if (supplySourceId == null) {
@@ -373,7 +316,7 @@ public class SupplySourcesApi {
                     "Missing the required parameter 'supplySourceId' when calling getSupplySource(Async)");
         }
 
-        return getSupplySourceCall(supplySourceId, progressListener, progressRequestListener);
+        return getSupplySourceCall(supplySourceId, progressRequestListener);
     }
 
     /**
@@ -399,7 +342,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<SupplySource> getSupplySourceWithHttpInfo(String supplySourceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, null, null);
+        okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, null);
         Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -416,16 +359,13 @@ public class SupplySourcesApi {
     public okhttp3.Call getSupplySourceAsync(String supplySourceId, final ApiCallback<SupplySource> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getSupplySourceValidateBeforeCall(supplySourceId, progressListener, progressRequestListener);
+        okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, progressRequestListener);
         Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -435,7 +375,6 @@ public class SupplySourcesApi {
      *
      * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
      * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -444,7 +383,6 @@ public class SupplySourcesApi {
     public okhttp3.Call getSupplySourcesCall(
             String nextPageToken,
             BigDecimal pageSize,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -471,17 +409,6 @@ public class SupplySourcesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -490,18 +417,16 @@ public class SupplySourcesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getSupplySourcesValidateBeforeCall(
             String nextPageToken,
             BigDecimal pageSize,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return getSupplySourcesCall(nextPageToken, pageSize, progressListener, progressRequestListener);
+        return getSupplySourcesCall(nextPageToken, pageSize, progressRequestListener);
     }
 
     /**
@@ -530,7 +455,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<GetSupplySourcesResponse> getSupplySourcesWithHttpInfo(String nextPageToken, BigDecimal pageSize)
             throws ApiException, LWAException {
-        okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, null, null);
+        okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, null);
         Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -549,16 +474,13 @@ public class SupplySourcesApi {
             String nextPageToken, BigDecimal pageSize, final ApiCallback<GetSupplySourcesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, progressListener, progressRequestListener);
+        okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -568,7 +490,6 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identitier of a supply source. (required)
      * @param body (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -577,7 +498,6 @@ public class SupplySourcesApi {
     public okhttp3.Call updateSupplySourceCall(
             String supplySourceId,
             UpdateSupplySourceRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -601,17 +521,6 @@ public class SupplySourcesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -620,14 +529,12 @@ public class SupplySourcesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call updateSupplySourceValidateBeforeCall(
             String supplySourceId,
             UpdateSupplySourceRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'supplySourceId' is set
@@ -636,7 +543,7 @@ public class SupplySourcesApi {
                     "Missing the required parameter 'supplySourceId' when calling updateSupplySource(Async)");
         }
 
-        return updateSupplySourceCall(supplySourceId, body, progressListener, progressRequestListener);
+        return updateSupplySourceCall(supplySourceId, body, progressRequestListener);
     }
 
     /**
@@ -665,7 +572,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<ErrorList> updateSupplySourceWithHttpInfo(String supplySourceId, UpdateSupplySourceRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, null, null);
+        okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, null);
         Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -684,16 +591,13 @@ public class SupplySourcesApi {
             String supplySourceId, UpdateSupplySourceRequest body, final ApiCallback<ErrorList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                updateSupplySourceValidateBeforeCall(supplySourceId, body, progressListener, progressRequestListener);
+        okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, progressRequestListener);
         Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -703,7 +607,6 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param body (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -712,7 +615,6 @@ public class SupplySourcesApi {
     public okhttp3.Call updateSupplySourceStatusCall(
             String supplySourceId,
             UpdateSupplySourceStatusRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -736,17 +638,6 @@ public class SupplySourcesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -755,14 +646,12 @@ public class SupplySourcesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call updateSupplySourceStatusValidateBeforeCall(
             String supplySourceId,
             UpdateSupplySourceStatusRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'supplySourceId' is set
@@ -771,7 +660,7 @@ public class SupplySourcesApi {
                     "Missing the required parameter 'supplySourceId' when calling updateSupplySourceStatus(Async)");
         }
 
-        return updateSupplySourceStatusCall(supplySourceId, body, progressListener, progressRequestListener);
+        return updateSupplySourceStatusCall(supplySourceId, body, progressRequestListener);
     }
 
     /**
@@ -800,7 +689,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<ErrorList> updateSupplySourceStatusWithHttpInfo(
             String supplySourceId, UpdateSupplySourceStatusRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, null, null);
+        okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, null);
         Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -819,16 +708,13 @@ public class SupplySourcesApi {
             String supplySourceId, UpdateSupplySourceStatusRequest body, final ApiCallback<ErrorList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(
-                supplySourceId, body, progressListener, progressRequestListener);
+        okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, progressRequestListener);
         Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

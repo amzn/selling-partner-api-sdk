@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.merchantfulfillment.v0.CancelShipmentResponse;
 import software.amazon.spapi.models.merchantfulfillment.v0.CreateShipmentRequest;
@@ -52,16 +51,13 @@ public class MerchantFulfillmentApi {
      * Build call for cancelShipment
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelShipmentCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -85,17 +81,6 @@ public class MerchantFulfillmentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -104,21 +89,18 @@ public class MerchantFulfillmentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelShipmentValidateBeforeCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
             throw new ApiException("Missing the required parameter 'shipmentId' when calling cancelShipment(Async)");
         }
 
-        return cancelShipmentCall(shipmentId, progressListener, progressRequestListener);
+        return cancelShipmentCall(shipmentId, progressRequestListener);
     }
 
     /**
@@ -154,7 +136,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<CancelShipmentResponse> cancelShipmentWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, null, null);
+        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, null);
         Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -177,15 +159,13 @@ public class MerchantFulfillmentApi {
     public okhttp3.Call cancelShipmentAsync(String shipmentId, final ApiCallback<CancelShipmentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, progressListener, progressRequestListener);
+        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, progressRequestListener);
         Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -194,16 +174,13 @@ public class MerchantFulfillmentApi {
      * Build call for createShipment
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createShipmentCall(
-            CreateShipmentRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateShipmentRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -225,17 +202,6 @@ public class MerchantFulfillmentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -244,21 +210,18 @@ public class MerchantFulfillmentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createShipmentValidateBeforeCall(
-            CreateShipmentRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateShipmentRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createShipment(Async)");
         }
 
-        return createShipmentCall(body, progressListener, progressRequestListener);
+        return createShipmentCall(body, progressRequestListener);
     }
 
     /**
@@ -294,7 +257,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<CreateShipmentResponse> createShipmentWithHttpInfo(CreateShipmentRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createShipmentValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createShipmentValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -317,15 +280,13 @@ public class MerchantFulfillmentApi {
             CreateShipmentRequest body, final ApiCallback<CreateShipmentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createShipmentValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createShipmentValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -334,7 +295,6 @@ public class MerchantFulfillmentApi {
      * Build call for getAdditionalSellerInputs
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -342,7 +302,6 @@ public class MerchantFulfillmentApi {
      */
     public okhttp3.Call getAdditionalSellerInputsCall(
             GetAdditionalSellerInputsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -365,17 +324,6 @@ public class MerchantFulfillmentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -384,13 +332,11 @@ public class MerchantFulfillmentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getAdditionalSellerInputsValidateBeforeCall(
             GetAdditionalSellerInputsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -399,7 +345,7 @@ public class MerchantFulfillmentApi {
                     "Missing the required parameter 'body' when calling getAdditionalSellerInputs(Async)");
         }
 
-        return getAdditionalSellerInputsCall(body, progressListener, progressRequestListener);
+        return getAdditionalSellerInputsCall(body, progressRequestListener);
     }
 
     /**
@@ -438,7 +384,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<GetAdditionalSellerInputsResponse> getAdditionalSellerInputsWithHttpInfo(
             GetAdditionalSellerInputsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getAdditionalSellerInputsValidateBeforeCall(body, null, null);
+        okhttp3.Call call = getAdditionalSellerInputsValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -462,16 +408,13 @@ public class MerchantFulfillmentApi {
             GetAdditionalSellerInputsRequest body, final ApiCallback<GetAdditionalSellerInputsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getAdditionalSellerInputsValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = getAdditionalSellerInputsValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -480,7 +423,6 @@ public class MerchantFulfillmentApi {
      * Build call for getEligibleShipmentServices
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -488,7 +430,6 @@ public class MerchantFulfillmentApi {
      */
     public okhttp3.Call getEligibleShipmentServicesCall(
             GetEligibleShipmentServicesRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -511,17 +452,6 @@ public class MerchantFulfillmentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -530,13 +460,11 @@ public class MerchantFulfillmentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getEligibleShipmentServicesValidateBeforeCall(
             GetEligibleShipmentServicesRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -545,7 +473,7 @@ public class MerchantFulfillmentApi {
                     "Missing the required parameter 'body' when calling getEligibleShipmentServices(Async)");
         }
 
-        return getEligibleShipmentServicesCall(body, progressListener, progressRequestListener);
+        return getEligibleShipmentServicesCall(body, progressRequestListener);
     }
 
     /**
@@ -584,7 +512,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<GetEligibleShipmentServicesResponse> getEligibleShipmentServicesWithHttpInfo(
             GetEligibleShipmentServicesRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getEligibleShipmentServicesValidateBeforeCall(body, null, null);
+        okhttp3.Call call = getEligibleShipmentServicesValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -608,16 +536,13 @@ public class MerchantFulfillmentApi {
             GetEligibleShipmentServicesRequest body, final ApiCallback<GetEligibleShipmentServicesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getEligibleShipmentServicesValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = getEligibleShipmentServicesValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -626,16 +551,13 @@ public class MerchantFulfillmentApi {
      * Build call for getShipment
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getShipmentCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -659,17 +581,6 @@ public class MerchantFulfillmentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -678,21 +589,18 @@ public class MerchantFulfillmentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getShipmentValidateBeforeCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
             throw new ApiException("Missing the required parameter 'shipmentId' when calling getShipment(Async)");
         }
 
-        return getShipmentCall(shipmentId, progressListener, progressRequestListener);
+        return getShipmentCall(shipmentId, progressRequestListener);
     }
 
     /**
@@ -728,7 +636,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<GetShipmentResponse> getShipmentWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, null, null);
+        okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, null);
         Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -751,15 +659,13 @@ public class MerchantFulfillmentApi {
     public okhttp3.Call getShipmentAsync(String shipmentId, final ApiCallback<GetShipmentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, progressListener, progressRequestListener);
+        okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
