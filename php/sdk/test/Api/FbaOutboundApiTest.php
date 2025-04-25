@@ -47,7 +47,7 @@ class FbaOutboundApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('FbaOutboundApi', $this->getName());
-        $this->apiInstance = new FbaOutboundApi($this->config, null, null);
+        $this->apiInstance = new FbaOutboundApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FbaOutboundApi');
         if ($specificTimeFormat) {

@@ -47,7 +47,7 @@ class SolicitationsApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('SolicitationsApi', $this->getName());
-        $this->apiInstance = new SolicitationsApi($this->config, null, null);
+        $this->apiInstance = new SolicitationsApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SolicitationsApi');
         if ($specificTimeFormat) {

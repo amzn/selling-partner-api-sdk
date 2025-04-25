@@ -47,7 +47,7 @@ class UpdateInventoryApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('UpdateInventoryApi', $this->getName());
-        $this->apiInstance = new UpdateInventoryApi($this->config, null, null);
+        $this->apiInstance = new UpdateInventoryApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('UpdateInventoryApi');
         if ($specificTimeFormat) {

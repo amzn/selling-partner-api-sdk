@@ -47,7 +47,7 @@ class AplusContentApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('AplusContentApi', $this->getName());
-        $this->apiInstance = new AplusContentApi($this->config, null, null);
+        $this->apiInstance = new AplusContentApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AplusContentApi');
         if ($specificTimeFormat) {

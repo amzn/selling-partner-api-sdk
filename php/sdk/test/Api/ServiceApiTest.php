@@ -47,7 +47,7 @@ class ServiceApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('ServiceApi', $this->getName());
-        $this->apiInstance = new ServiceApi($this->config, null, null);
+        $this->apiInstance = new ServiceApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
         if ($specificTimeFormat) {
