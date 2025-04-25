@@ -86,8 +86,8 @@ class QueriesApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -97,15 +97,15 @@ class QueriesApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelQuery'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-cancelQuery'), $this->rateLimitStorage);
             $this->cancelQueryRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createQuery'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-createQuery'), $this->rateLimitStorage);
             $this->createQueryRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getDocument'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getDocument'), $this->rateLimitStorage);
             $this->getDocumentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getQueries'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQueries'), $this->rateLimitStorage);
             $this->getQueriesRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getQuery'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQuery'), $this->rateLimitStorage);
             $this->getQueryRateLimiter = $factory->create();
         }
 

@@ -80,8 +80,8 @@ class SolicitationsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -91,9 +91,9 @@ class SolicitationsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createProductReviewAndSellerFeedbackSolicitation'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation'), $this->rateLimitStorage);
             $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getSolicitationActionsForOrder'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SolicitationsApi-getSolicitationActionsForOrder'), $this->rateLimitStorage);
             $this->getSolicitationActionsForOrderRateLimiter = $factory->create();
         }
 

@@ -83,8 +83,8 @@ class AppIntegrationsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -94,11 +94,11 @@ class AppIntegrationsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createNotification'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-createNotification'), $this->rateLimitStorage);
             $this->createNotificationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('deleteNotifications'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-deleteNotifications'), $this->rateLimitStorage);
             $this->deleteNotificationsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('recordActionFeedback'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-recordActionFeedback'), $this->rateLimitStorage);
             $this->recordActionFeedbackRateLimiter = $factory->create();
         }
 

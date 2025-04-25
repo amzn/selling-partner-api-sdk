@@ -94,8 +94,8 @@ class NotificationsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -105,21 +105,21 @@ class NotificationsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createDestination'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-createDestination'), $this->rateLimitStorage);
             $this->createDestinationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createSubscription'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-createSubscription'), $this->rateLimitStorage);
             $this->createSubscriptionRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('deleteDestination'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-deleteDestination'), $this->rateLimitStorage);
             $this->deleteDestinationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('deleteSubscriptionById'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-deleteSubscriptionById'), $this->rateLimitStorage);
             $this->deleteSubscriptionByIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getDestination'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getDestination'), $this->rateLimitStorage);
             $this->getDestinationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getDestinations'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getDestinations'), $this->rateLimitStorage);
             $this->getDestinationsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getSubscription'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscription'), $this->rateLimitStorage);
             $this->getSubscriptionRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getSubscriptionById'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptionById'), $this->rateLimitStorage);
             $this->getSubscriptionByIdRateLimiter = $factory->create();
         }
 

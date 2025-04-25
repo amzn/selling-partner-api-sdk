@@ -78,8 +78,8 @@ class ListingsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -89,7 +89,7 @@ class ListingsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getListingsRestrictions'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsRestrictions'), $this->rateLimitStorage);
             $this->getListingsRestrictionsRateLimiter = $factory->create();
         }
 

@@ -88,8 +88,8 @@ class CustomerInvoicesApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -99,9 +99,9 @@ class CustomerInvoicesApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getCustomerInvoice"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CustomerInvoicesApi-getCustomerInvoice"), $this->rateLimitStorage);
             $this->getCustomerInvoiceRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getCustomerInvoices"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CustomerInvoicesApi-getCustomerInvoices"), $this->rateLimitStorage);
             $this->getCustomerInvoicesRateLimiter = $factory->create();
         }
 

@@ -79,8 +79,8 @@ class SellingpartnersApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -90,7 +90,7 @@ class SellingpartnersApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getSellingPartnerMetrics'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellingpartnersApi-getSellingPartnerMetrics'), $this->rateLimitStorage);
             $this->getSellingPartnerMetricsRateLimiter = $factory->create();
         }
 

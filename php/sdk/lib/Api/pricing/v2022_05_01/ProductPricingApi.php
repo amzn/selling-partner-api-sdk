@@ -82,8 +82,8 @@ class ProductPricingApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -93,9 +93,9 @@ class ProductPricingApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getCompetitiveSummary'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getCompetitiveSummary'), $this->rateLimitStorage);
             $this->getCompetitiveSummaryRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getFeaturedOfferExpectedPriceBatch'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getFeaturedOfferExpectedPriceBatch'), $this->rateLimitStorage);
             $this->getFeaturedOfferExpectedPriceBatchRateLimiter = $factory->create();
         }
 

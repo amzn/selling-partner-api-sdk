@@ -127,8 +127,8 @@ class ShippingApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -138,45 +138,45 @@ class ShippingApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelShipment'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-cancelShipment'), $this->rateLimitStorage);
             $this->cancelShipmentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createClaim'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-createClaim'), $this->rateLimitStorage);
             $this->createClaimRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('directPurchaseShipment'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-directPurchaseShipment'), $this->rateLimitStorage);
             $this->directPurchaseShipmentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('generateCollectionForm'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-generateCollectionForm'), $this->rateLimitStorage);
             $this->generateCollectionFormRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getAccessPoints'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getAccessPoints'), $this->rateLimitStorage);
             $this->getAccessPointsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getAdditionalInputs'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getAdditionalInputs'), $this->rateLimitStorage);
             $this->getAdditionalInputsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getCarrierAccountFormInputs'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCarrierAccountFormInputs'), $this->rateLimitStorage);
             $this->getCarrierAccountFormInputsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getCarrierAccounts'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCarrierAccounts'), $this->rateLimitStorage);
             $this->getCarrierAccountsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getCollectionForm'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCollectionForm'), $this->rateLimitStorage);
             $this->getCollectionFormRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getCollectionFormHistory'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCollectionFormHistory'), $this->rateLimitStorage);
             $this->getCollectionFormHistoryRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getRates'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getRates'), $this->rateLimitStorage);
             $this->getRatesRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipmentDocuments'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getShipmentDocuments'), $this->rateLimitStorage);
             $this->getShipmentDocumentsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getTracking'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getTracking'), $this->rateLimitStorage);
             $this->getTrackingRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getUnmanifestedShipments'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getUnmanifestedShipments'), $this->rateLimitStorage);
             $this->getUnmanifestedShipmentsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('linkCarrierAccount'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-linkCarrierAccount'), $this->rateLimitStorage);
             $this->linkCarrierAccountRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('linkCarrierAccount_0'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-linkCarrierAccount_0'), $this->rateLimitStorage);
             $this->linkCarrierAccount_0RateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('oneClickShipment'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-oneClickShipment'), $this->rateLimitStorage);
             $this->oneClickShipmentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('purchaseShipment'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-purchaseShipment'), $this->rateLimitStorage);
             $this->purchaseShipmentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('submitNdrFeedback'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-submitNdrFeedback'), $this->rateLimitStorage);
             $this->submitNdrFeedbackRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('unlinkCarrierAccount'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-unlinkCarrierAccount'), $this->rateLimitStorage);
             $this->unlinkCarrierAccountRateLimiter = $factory->create();
         }
 

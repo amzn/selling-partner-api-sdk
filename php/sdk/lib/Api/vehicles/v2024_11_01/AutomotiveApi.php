@@ -78,8 +78,8 @@ class AutomotiveApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -89,7 +89,7 @@ class AutomotiveApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getVehicles_0'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AutomotiveApi-getVehicles_0'), $this->rateLimitStorage);
             $this->getVehicles_0RateLimiter = $factory->create();
         }
 
