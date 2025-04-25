@@ -34,7 +34,7 @@ public class Configuration {
 
     private Integer getValue(String operation, Integer position) {
         if (rateLimitConfiguration.containsKey(operation)) {
-            if (rateLimitConfiguration.get(operation).contains(position)) {
+            if (rateLimitConfiguration.get(operation).size() > position) {
                 return rateLimitConfiguration.get(operation).get(position);
             }
         }
