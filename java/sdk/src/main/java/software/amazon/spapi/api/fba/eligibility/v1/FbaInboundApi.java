@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -36,25 +37,20 @@ import software.amazon.spapi.models.fba.eligibility.v1.GetItemEligibilityPreview
 
 public class FbaInboundApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public FbaInboundApi(ApiClient apiClient) {
+    public FbaInboundApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for getItemEligibilityPreview
-     *
-     * @param asin The ASIN of the item for which you want an eligibility preview. (required)
-     * @param program The program that you want to check eligibility against. (required)
-     * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
-     *     only when program&#x3D;INBOUND. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getItemEligibilityPreviewCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket getItemEligibilityPreviewBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaInboundApi-getItemEligibilityPreview"))
+            .build();
+
+    private okhttp3.Call getItemEligibilityPreviewCall(
             String asin,
             String program,
             List<String> marketplaceIds,
@@ -176,8 +172,10 @@ public class FbaInboundApi {
     public ApiResponse<GetItemEligibilityPreviewResponse> getItemEligibilityPreviewWithHttpInfo(
             String asin, String program, List<String> marketplaceIds) throws ApiException, LWAException {
         okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, null, null);
-        Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getItemEligibilityPreview operation exceeds rate limit");
     }
 
     /**
@@ -217,9 +215,11 @@ public class FbaInboundApi {
 
         okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(
                 asin, program, marketplaceIds, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getItemEligibilityPreview operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -227,7 +227,7 @@ public class FbaInboundApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -249,13 +249,8 @@ public class FbaInboundApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -278,10 +273,11 @@ public class FbaInboundApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FbaInboundApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new FbaInboundApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

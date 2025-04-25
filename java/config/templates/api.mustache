@@ -2,6 +2,7 @@
 
 package {{package}};
 
+import io.github.bucket4j.Bucket;
 import {{invokerPackage}}.ApiCallback;
 import {{invokerPackage}}.ApiClient;
 import {{invokerPackage}}.ApiException;
@@ -20,6 +21,7 @@ import java.io.IOException;
 {{/imports}}
 
 import java.lang.reflect.Type;
+import java.time.Duration;
 {{^fullJavaUtil}}
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,38 +33,32 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCache;
 import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 
 {{#operations}}
 public class {{classname}} {
     private ApiClient {{localVariablePrefix}}apiClient;
+    private Boolean disableRateLimiting;
 
-    public {{classname}}(ApiClient apiClient) {
+    public {{classname}}(ApiClient apiClient, Boolean disableRateLimiting) {
         this.{{localVariablePrefix}}apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
+    private final Configuration config = Configuration.get();
+
     {{#operation}}
-    /**
-     * Build call for {{operationId}}{{#allParams}}
-     * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     {{#isDeprecated}}
-     * @deprecated
-     {{/isDeprecated}}
-        {{#externalDocs}}
-     * {{description}}
-     * @see <a href="{{url}}">{{summary}} Documentation</a>
-        {{/externalDocs}}
-     */
+    public final Bucket {{operationId}}Bucket = Bucket.builder()
+        .addLimit(config.getLimit("{{classname}}-{{operationId}}"))
+        .build();
+
+    {{/operation}}
+
+    {{#operation}}
     {{#isDeprecated}}
     @Deprecated
     {{/isDeprecated}}
-    public okhttp3.Call {{operationId}}Call({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+    private okhttp3.Call {{operationId}}Call({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object {{localVariablePrefix}}localVarPostBody = {{#bodyParam}}{{paramName}}{{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
 
         // create path and map variables
@@ -164,8 +160,10 @@ public class {{classname}} {
     {{/isDeprecated}}
     public ApiResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{#useBeanValidation}}{{>beanValidationQueryParams}}{{/useBeanValidation}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}) throws ApiException,LWAException {
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}null, null);
-        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-        return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
+        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
+            {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+            return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
+        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
     }
 
     /**
@@ -198,9 +196,11 @@ public class {{classname}} {
         }
 
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}progressListener, progressRequestListener);
-        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-        {{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType, {{localVariablePrefix}}callback);{{/returnType}}{{^returnType}}{{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}callback);{{/returnType}}
-        return {{localVariablePrefix}}call;
+        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
+            {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+            {{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType, {{localVariablePrefix}}callback);{{/returnType}}{{^returnType}}{{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}callback);{{/returnType}}
+            return {{localVariablePrefix}}call;
+        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
     }
     {{/operation}}
 
@@ -209,8 +209,7 @@ public class {{classname}} {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
-
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -232,13 +231,8 @@ public class {{classname}} {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration){
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-        
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -264,8 +258,7 @@ public class {{classname}} {
 
             return new {{classname}}(new ApiClient()
                 .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                .setBasePath(endpoint)
-                .setRateLimiter(rateLimitConfiguration));
+                .setBasePath(endpoint), disableRateLimiting);
         }
     }
 }
