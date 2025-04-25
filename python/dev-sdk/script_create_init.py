@@ -5,16 +5,16 @@ def main():
 
     content = f'''__version__ = "1.0.0"
 
-    ## import api client and configuration
-    from {package_name}.configuration import Configuration
-    from {package_name}.api_client import ApiClient
-    from {package_name}.client import SPAPIClient
-    from {package_name}.rest import ApiException
+## import api client and configuration
+from {package_name}.configuration import Configuration
+from {package_name}.api_client import ApiClient
+from {package_name}.client import SPAPIClient
+from {package_name}.rest import ApiException
 
-    ## import Auth
-    from {package_name}.auth.credentials import SPAPIConfig
+## import Auth
+from {package_name}.auth.credentials import SPAPIConfig
     
-    ## import APIs
+## import APIs
     '''
 
     # Path to the generated SDK
@@ -23,23 +23,25 @@ def main():
     # Get all API directories
     api_dirs = [d for d in os.listdir(sdk_path) if os.path.isdir(os.path.join(sdk_path, d))]
 
-    # For each API directory, generate the import statement
+    # For each API directory, generate the import statements
     for api_dir in api_dirs:
-        class_name = get_api_class_name(api_dir)
-        content += f"\nfrom {package_name}.api.{api_dir}.{api_dir}_api import {class_name}"
+        api_files = [f for f in os.listdir(os.path.join(sdk_path, api_dir)) if f.endswith('_api.py')]
+        for api_file in api_files:
+            class_name = get_api_class_name(api_file)
+            content += f"\nfrom {package_name}.api.{api_dir}.{api_file[:-3]} import {class_name}"
 
     # Write the final __init__.py
     with open(f'./sdk/{package_name}/__init__.py', 'w') as f:
         f.write(content)
 
-def get_api_class_name(dir_name):
+def get_api_class_name(file_name):
     """
-    Convert directory name to OpenAPI Generator class name convention
-    Example: 'sellers_v1' -> 'SellersApi'
-            'catalog_items_v2022_04_01' -> 'CatalogItemsApi'
+    Extract class name from the API file name
+    Example: 'sellers_api.py' -> 'SellersApi'
+             'catalog_items_api.py' -> 'CatalogItemsApi'
     """
-    # Remove version suffix (e.g., '_v1', '_v2022_04_01')
-    base_name = dir_name.split('_v')[0]
+    # Remove '_api.py' suffix
+    base_name = file_name[:-7]
 
     # Convert to PascalCase and append 'Api'
     words = base_name.split('_')
