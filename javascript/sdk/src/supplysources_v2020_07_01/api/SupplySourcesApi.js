@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateSupplySourceRequest} from '../model/CreateSupplySourceRequest.js';
 import {CreateSupplySourceResponse} from '../model/CreateSupplySourceResponse.js';
 import {ErrorList} from '../model/ErrorList.js';
@@ -19,6 +19,8 @@ import {GetSupplySourcesResponse} from '../model/GetSupplySourcesResponse.js';
 import {SupplySource} from '../model/SupplySource.js';
 import {UpdateSupplySourceRequest} from '../model/UpdateSupplySourceRequest.js';
 import {UpdateSupplySourceStatusRequest} from '../model/UpdateSupplySourceStatusRequest.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * SupplySources service.
@@ -26,6 +28,9 @@ import {UpdateSupplySourceStatusRequest} from '../model/UpdateSupplySourceStatus
 * @version 2020-07-01
 */
 export class SupplySourcesApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new SupplySourcesApi. 
@@ -36,6 +41,36 @@ export class SupplySourcesApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'SupplySourcesApi-archiveSupplySource',
+            'SupplySourcesApi-createSupplySource',
+            'SupplySourcesApi-getSupplySource',
+            'SupplySourcesApi-getSupplySources',
+            'SupplySourcesApi-updateSupplySource',
+            'SupplySourcesApi-updateSupplySourceStatus',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -68,10 +103,10 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = ErrorList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-archiveSupplySource',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-archiveSupplySource')
       );
     }
 
@@ -115,10 +150,10 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = CreateSupplySourceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-createSupplySource',
         '/supplySources/2020-07-01/supplySources', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-createSupplySource')
       );
     }
 
@@ -163,10 +198,10 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = SupplySource;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-getSupplySource',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-getSupplySource')
       );
     }
 
@@ -210,10 +245,10 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = GetSupplySourcesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-getSupplySources',
         '/supplySources/2020-07-01/supplySources', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-getSupplySources')
       );
     }
 
@@ -263,10 +298,10 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = ErrorList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-updateSupplySource',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-updateSupplySource')
       );
     }
 
@@ -316,10 +351,10 @@ export class SupplySourcesApi {
       let accepts = ['application/json'];
       let returnType = ErrorList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SupplySourcesApi-updateSupplySourceStatus',
         '/supplySources/2020-07-01/supplySources/{supplySourceId}/status', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-updateSupplySourceStatus')
       );
     }
 

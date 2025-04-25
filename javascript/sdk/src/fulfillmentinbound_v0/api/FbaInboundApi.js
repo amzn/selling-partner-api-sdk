@@ -11,12 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetBillOfLadingResponse} from '../model/GetBillOfLadingResponse.js';
 import {GetLabelsResponse} from '../model/GetLabelsResponse.js';
 import {GetPrepInstructionsResponse} from '../model/GetPrepInstructionsResponse.js';
 import {GetShipmentItemsResponse} from '../model/GetShipmentItemsResponse.js';
 import {GetShipmentsResponse} from '../model/GetShipmentsResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * FbaInbound service.
@@ -24,6 +26,9 @@ import {GetShipmentsResponse} from '../model/GetShipmentsResponse.js';
 * @version v0
 */
 export class FbaInboundApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new FbaInboundApi. 
@@ -34,6 +39,36 @@ export class FbaInboundApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'FbaInboundApi-getBillOfLading',
+            'FbaInboundApi-getLabels',
+            'FbaInboundApi-getPrepInstructions',
+            'FbaInboundApi-getShipmentItems',
+            'FbaInboundApi-getShipmentItemsByShipmentId',
+            'FbaInboundApi-getShipments',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -66,10 +101,10 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetBillOfLadingResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getBillOfLading',
         '/fba/inbound/v0/shipments/{shipmentId}/billOfLading', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getBillOfLading')
       );
     }
 
@@ -140,10 +175,10 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetLabelsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getLabels',
         '/fba/inbound/v0/shipments/{shipmentId}/labels', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getLabels')
       );
     }
 
@@ -202,10 +237,10 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetPrepInstructionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getPrepInstructions',
         '/fba/inbound/v0/prepInstructions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getPrepInstructions')
       );
     }
 
@@ -268,10 +303,10 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipmentItems',
         '/fba/inbound/v0/shipmentItems', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItems')
       );
     }
 
@@ -325,10 +360,10 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentItemsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipmentItemsByShipmentId',
         '/fba/inbound/v0/shipments/{shipmentId}/items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItemsByShipmentId')
       );
     }
 
@@ -394,10 +429,10 @@ export class FbaInboundApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInboundApi-getShipments',
         '/fba/inbound/v0/shipments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipments')
       );
     }
 

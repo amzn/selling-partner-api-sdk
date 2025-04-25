@@ -11,12 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CompetitiveSummaryBatchRequest} from '../model/CompetitiveSummaryBatchRequest.js';
 import {CompetitiveSummaryBatchResponse} from '../model/CompetitiveSummaryBatchResponse.js';
 import {Errors} from '../model/Errors.js';
 import {GetFeaturedOfferExpectedPriceBatchRequest} from '../model/GetFeaturedOfferExpectedPriceBatchRequest.js';
 import {GetFeaturedOfferExpectedPriceBatchResponse} from '../model/GetFeaturedOfferExpectedPriceBatchResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * ProductPricing service.
@@ -24,6 +26,9 @@ import {GetFeaturedOfferExpectedPriceBatchResponse} from '../model/GetFeaturedOf
 * @version 2022-05-01
 */
 export class ProductPricingApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ProductPricingApi. 
@@ -34,6 +39,32 @@ export class ProductPricingApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'ProductPricingApi-getCompetitiveSummary',
+            'ProductPricingApi-getFeaturedOfferExpectedPriceBatch',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -65,10 +96,10 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = CompetitiveSummaryBatchResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getCompetitiveSummary',
         '/batches/products/pricing/2022-05-01/items/competitiveSummary', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getCompetitiveSummary')
       );
     }
 
@@ -112,10 +143,10 @@ export class ProductPricingApi {
       let accepts = ['application/json'];
       let returnType = GetFeaturedOfferExpectedPriceBatchResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ProductPricingApi-getFeaturedOfferExpectedPriceBatch',
         '/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getFeaturedOfferExpectedPriceBatch')
       );
     }
 

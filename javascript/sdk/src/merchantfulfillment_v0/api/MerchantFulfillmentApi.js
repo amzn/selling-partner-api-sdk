@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CancelShipmentResponse} from '../model/CancelShipmentResponse.js';
 import {CreateShipmentRequest} from '../model/CreateShipmentRequest.js';
 import {CreateShipmentResponse} from '../model/CreateShipmentResponse.js';
@@ -20,6 +20,8 @@ import {GetAdditionalSellerInputsResponse} from '../model/GetAdditionalSellerInp
 import {GetEligibleShipmentServicesRequest} from '../model/GetEligibleShipmentServicesRequest.js';
 import {GetEligibleShipmentServicesResponse} from '../model/GetEligibleShipmentServicesResponse.js';
 import {GetShipmentResponse} from '../model/GetShipmentResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * MerchantFulfillment service.
@@ -27,6 +29,9 @@ import {GetShipmentResponse} from '../model/GetShipmentResponse.js';
 * @version v0
 */
 export class MerchantFulfillmentApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new MerchantFulfillmentApi. 
@@ -37,6 +42,35 @@ export class MerchantFulfillmentApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'MerchantFulfillmentApi-cancelShipment',
+            'MerchantFulfillmentApi-createShipment',
+            'MerchantFulfillmentApi-getAdditionalSellerInputs',
+            'MerchantFulfillmentApi-getEligibleShipmentServices',
+            'MerchantFulfillmentApi-getShipment',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -69,10 +103,10 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = CancelShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-cancelShipment',
         '/mfn/v0/shipments/{shipmentId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-cancelShipment')
       );
     }
 
@@ -116,10 +150,10 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = CreateShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-createShipment',
         '/mfn/v0/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-createShipment')
       );
     }
 
@@ -163,10 +197,10 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = GetAdditionalSellerInputsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-getAdditionalSellerInputs',
         '/mfn/v0/additionalSellerInputs', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getAdditionalSellerInputs')
       );
     }
 
@@ -210,10 +244,10 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = GetEligibleShipmentServicesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-getEligibleShipmentServices',
         '/mfn/v0/eligibleShippingServices', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getEligibleShipmentServices')
       );
     }
 
@@ -258,10 +292,10 @@ export class MerchantFulfillmentApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'MerchantFulfillmentApi-getShipment',
         '/mfn/v0/shipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getShipment')
       );
     }
 

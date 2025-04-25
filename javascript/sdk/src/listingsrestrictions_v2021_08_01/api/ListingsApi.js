@@ -11,9 +11,11 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {Error} from '../model/Error.js';
 import {RestrictionList} from '../model/RestrictionList.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Listings service.
@@ -21,6 +23,9 @@ import {RestrictionList} from '../model/RestrictionList.js';
 * @version 2021-08-01
 */
 export class ListingsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ListingsApi. 
@@ -31,6 +36,31 @@ export class ListingsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'ListingsApi-getListingsRestrictions',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -83,10 +113,10 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = RestrictionList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-getListingsRestrictions',
         '/listings/2021-08-01/restrictions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-getListingsRestrictions')
       );
     }
 

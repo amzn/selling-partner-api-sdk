@@ -358,7 +358,8 @@ class SolicitationsApi
             'array', // openApiType
             'form', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
 
         // path params
@@ -646,7 +647,8 @@ class SolicitationsApi
             'array', // openApiType
             'form', // style
             false, // explode
-            true // required
+            true, // required
+            $this->config
         ) ?? []);
 
         // path params

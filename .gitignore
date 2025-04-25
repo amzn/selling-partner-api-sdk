@@ -16,3 +16,4 @@ php/sdk/composer.lock
 javascript/openapitools.json
 **/testreports/
 **/.openapi-generator/
+php/.idea

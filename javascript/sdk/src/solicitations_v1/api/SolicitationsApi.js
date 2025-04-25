@@ -11,9 +11,11 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateProductReviewAndSellerFeedbackSolicitationResponse} from '../model/CreateProductReviewAndSellerFeedbackSolicitationResponse.js';
 import {GetSolicitationActionsForOrderResponse} from '../model/GetSolicitationActionsForOrderResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Solicitations service.
@@ -21,6 +23,9 @@ import {GetSolicitationActionsForOrderResponse} from '../model/GetSolicitationAc
 * @version v1
 */
 export class SolicitationsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new SolicitationsApi. 
@@ -31,6 +36,32 @@ export class SolicitationsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation',
+            'SolicitationsApi-getSolicitationActionsForOrder',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -70,10 +101,10 @@ export class SolicitationsApi {
       let accepts = ['application/hal+json'];
       let returnType = CreateProductReviewAndSellerFeedbackSolicitationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation',
         '/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation')
       );
     }
 
@@ -126,10 +157,10 @@ export class SolicitationsApi {
       let accepts = ['application/hal+json'];
       let returnType = GetSolicitationActionsForOrderResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SolicitationsApi-getSolicitationActionsForOrder',
         '/solicitations/v1/orders/{amazonOrderId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SolicitationsApi-getSolicitationActionsForOrder')
       );
     }
 

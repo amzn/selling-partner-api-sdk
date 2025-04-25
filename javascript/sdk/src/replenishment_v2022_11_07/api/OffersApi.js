@@ -11,12 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {ListOfferMetricsRequest} from '../model/ListOfferMetricsRequest.js';
 import {ListOfferMetricsResponse} from '../model/ListOfferMetricsResponse.js';
 import {ListOffersRequest} from '../model/ListOffersRequest.js';
 import {ListOffersResponse} from '../model/ListOffersResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Offers service.
@@ -24,6 +26,9 @@ import {ListOffersResponse} from '../model/ListOffersResponse.js';
 * @version 2022-11-07
 */
 export class OffersApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new OffersApi. 
@@ -34,6 +39,32 @@ export class OffersApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'OffersApi-listOfferMetrics',
+            'OffersApi-listOffers',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -62,10 +93,10 @@ export class OffersApi {
       let accepts = ['application/json'];
       let returnType = ListOfferMetricsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OffersApi-listOfferMetrics',
         '/replenishment/2022-11-07/offers/metrics/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOfferMetrics')
       );
     }
 
@@ -107,10 +138,10 @@ export class OffersApi {
       let accepts = ['application/json'];
       let returnType = ListOffersResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'OffersApi-listOffers',
         '/replenishment/2022-11-07/offers/search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOffers')
       );
     }
 

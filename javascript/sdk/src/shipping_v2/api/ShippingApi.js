@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CancelShipmentResponse} from '../model/CancelShipmentResponse.js';
 import {CreateClaimRequest} from '../model/CreateClaimRequest.js';
 import {CreateClaimResponse} from '../model/CreateClaimResponse.js';
@@ -43,6 +43,8 @@ import {PurchaseShipmentResponse} from '../model/PurchaseShipmentResponse.js';
 import {SubmitNdrFeedbackRequest} from '../model/SubmitNdrFeedbackRequest.js';
 import {UnlinkCarrierAccountRequest} from '../model/UnlinkCarrierAccountRequest.js';
 import {UnlinkCarrierAccountResponse} from '../model/UnlinkCarrierAccountResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Shipping service.
@@ -50,6 +52,9 @@ import {UnlinkCarrierAccountResponse} from '../model/UnlinkCarrierAccountRespons
 * @version v2
 */
 export class ShippingApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ShippingApi. 
@@ -60,6 +65,50 @@ export class ShippingApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'ShippingApi-cancelShipment',
+            'ShippingApi-createClaim',
+            'ShippingApi-directPurchaseShipment',
+            'ShippingApi-generateCollectionForm',
+            'ShippingApi-getAccessPoints',
+            'ShippingApi-getAdditionalInputs',
+            'ShippingApi-getCarrierAccountFormInputs',
+            'ShippingApi-getCarrierAccounts',
+            'ShippingApi-getCollectionForm',
+            'ShippingApi-getCollectionFormHistory',
+            'ShippingApi-getRates',
+            'ShippingApi-getShipmentDocuments',
+            'ShippingApi-getTracking',
+            'ShippingApi-getUnmanifestedShipments',
+            'ShippingApi-linkCarrierAccount',
+            'ShippingApi-linkCarrierAccount_0',
+            'ShippingApi-oneClickShipment',
+            'ShippingApi-purchaseShipment',
+            'ShippingApi-submitNdrFeedback',
+            'ShippingApi-unlinkCarrierAccount',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -96,10 +145,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = CancelShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-cancelShipment',
         '/shipping/v2/shipments/{shipmentId}/cancel', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-cancelShipment')
       );
     }
 
@@ -149,10 +198,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = CreateClaimResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-createClaim',
         '/shipping/v2/claims', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-createClaim')
       );
     }
 
@@ -206,10 +255,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = DirectPurchaseResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-directPurchaseShipment',
         '/shipping/v2/shipments/directPurchase', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-directPurchaseShipment')
       );
     }
 
@@ -263,10 +312,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GenerateCollectionFormResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-generateCollectionForm',
         '/shipping/v2/collectionForms', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-generateCollectionForm')
       );
     }
 
@@ -332,10 +381,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetAccessPointsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getAccessPoints',
         '/shipping/v2/accessPoints', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAccessPoints')
       );
     }
 
@@ -395,10 +444,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetAdditionalInputsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getAdditionalInputs',
         '/shipping/v2/shipments/additionalInputs/schema', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAdditionalInputs')
       );
     }
 
@@ -443,10 +492,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCarrierAccountFormInputsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCarrierAccountFormInputs',
         '/shipping/v2/carrierAccountFormInputs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccountFormInputs')
       );
     }
 
@@ -495,10 +544,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCarrierAccountsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCarrierAccounts',
         '/shipping/v2/carrierAccounts', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccounts')
       );
     }
 
@@ -549,10 +598,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCollectionFormResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCollectionForm',
         '/shipping/v2/collectionForms/{collectionFormId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionForm')
       );
     }
 
@@ -602,10 +651,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetCollectionFormHistoryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getCollectionFormHistory',
         '/shipping/v2/collectionForms/history', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionFormHistory')
       );
     }
 
@@ -655,10 +704,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetRatesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getRates',
         '/shipping/v2/shipments/rates', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getRates')
       );
     }
 
@@ -720,10 +769,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentDocumentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getShipmentDocuments',
         '/shipping/v2/shipments/{shipmentId}/documents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getShipmentDocuments')
       );
     }
 
@@ -784,10 +833,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetTrackingResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getTracking',
         '/shipping/v2/tracking', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getTracking')
       );
     }
 
@@ -838,10 +887,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = GetUnmanifestedShipmentsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-getUnmanifestedShipments',
         '/shipping/v2/unmanifestedShipments', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getUnmanifestedShipments')
       );
     }
 
@@ -898,10 +947,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = LinkCarrierAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount',
         '/shipping/v2/carrierAccounts/{carrierId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount')
       );
     }
 
@@ -959,10 +1008,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = LinkCarrierAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount_0',
         '/shipping/v2/carrierAccounts/{carrierId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount_0')
       );
     }
 
@@ -1013,10 +1062,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = OneClickShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-oneClickShipment',
         '/shipping/v2/oneClickShipment', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-oneClickShipment')
       );
     }
 
@@ -1068,10 +1117,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = PurchaseShipmentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-purchaseShipment',
         '/shipping/v2/shipments', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-purchaseShipment')
       );
     }
 
@@ -1122,10 +1171,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-submitNdrFeedback',
         '/shipping/v2/ndrFeedback', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-submitNdrFeedback')
       );
     }
 
@@ -1182,10 +1231,10 @@ export class ShippingApi {
       let accepts = ['application/json'];
       let returnType = UnlinkCarrierAccountResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShippingApi-unlinkCarrierAccount',
         '/shipping/v2/carrierAccounts/{carrierId}/unlink', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-unlinkCarrierAccount')
       );
     }
 
