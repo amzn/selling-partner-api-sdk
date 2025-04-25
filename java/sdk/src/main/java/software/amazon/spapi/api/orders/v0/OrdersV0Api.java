@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.orders.v0.ConfirmShipmentRequest;
 import software.amazon.spapi.models.orders.v0.GetOrderAddressResponse;
@@ -54,7 +53,6 @@ public class OrdersV0Api {
      *
      * @param body Request body of &#x60;confirmShipment&#x60;. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -63,7 +61,6 @@ public class OrdersV0Api {
     public okhttp3.Call confirmShipmentCall(
             ConfirmShipmentRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -87,17 +84,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -106,14 +92,12 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call confirmShipmentValidateBeforeCall(
             ConfirmShipmentRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -125,7 +109,7 @@ public class OrdersV0Api {
             throw new ApiException("Missing the required parameter 'orderId' when calling confirmShipment(Async)");
         }
 
-        return confirmShipmentCall(body, orderId, progressListener, progressRequestListener);
+        return confirmShipmentCall(body, orderId, progressRequestListener);
     }
 
     /**
@@ -161,7 +145,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<Void> confirmShipmentWithHttpInfo(ConfirmShipmentRequest body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, null, null);
+        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, null);
         return apiClient.execute(call);
     }
 
@@ -185,15 +169,13 @@ public class OrdersV0Api {
             ConfirmShipmentRequest body, String orderId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -201,16 +183,13 @@ public class OrdersV0Api {
      * Build call for getOrder
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -234,17 +213,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -253,21 +221,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrder(Async)");
         }
 
-        return getOrderCall(orderId, progressListener, progressRequestListener);
+        return getOrderCall(orderId, progressRequestListener);
     }
 
     /**
@@ -302,7 +267,7 @@ public class OrdersV0Api {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetOrderResponse> getOrderWithHttpInfo(String orderId) throws ApiException, LWAException {
-        okhttp3.Call call = getOrderValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderValidateBeforeCall(orderId, null);
         Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -324,15 +289,13 @@ public class OrdersV0Api {
     public okhttp3.Call getOrderAsync(String orderId, final ApiCallback<GetOrderResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderValidateBeforeCall(orderId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -341,16 +304,13 @@ public class OrdersV0Api {
      * Build call for getOrderAddress
      *
      * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderAddressCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -374,17 +334,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -393,21 +342,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderAddressValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrderAddress(Async)");
         }
 
-        return getOrderAddressCall(orderId, progressListener, progressRequestListener);
+        return getOrderAddressCall(orderId, progressRequestListener);
     }
 
     /**
@@ -443,7 +389,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderAddressResponse> getOrderAddressWithHttpInfo(String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, null);
         Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -466,15 +412,13 @@ public class OrdersV0Api {
     public okhttp3.Call getOrderAddressAsync(String orderId, final ApiCallback<GetOrderAddressResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -483,16 +427,13 @@ public class OrdersV0Api {
      * Build call for getOrderBuyerInfo
      *
      * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderBuyerInfoCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -516,17 +457,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -535,21 +465,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderBuyerInfoValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrderBuyerInfo(Async)");
         }
 
-        return getOrderBuyerInfoCall(orderId, progressListener, progressRequestListener);
+        return getOrderBuyerInfoCall(orderId, progressRequestListener);
     }
 
     /**
@@ -585,7 +512,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderBuyerInfoResponse> getOrderBuyerInfoWithHttpInfo(String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, null);
         Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -607,15 +534,13 @@ public class OrdersV0Api {
     public okhttp3.Call getOrderBuyerInfoAsync(String orderId, final ApiCallback<GetOrderBuyerInfoResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -625,17 +550,13 @@ public class OrdersV0Api {
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderItemsCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -660,17 +581,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -679,22 +589,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderItemsValidateBeforeCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrderItems(Async)");
         }
 
-        return getOrderItemsCall(orderId, nextToken, progressListener, progressRequestListener);
+        return getOrderItemsCall(orderId, nextToken, progressRequestListener);
     }
 
     /**
@@ -746,7 +652,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderItemsResponse> getOrderItemsWithHttpInfo(String orderId, String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, null, null);
+        okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, null);
         Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -777,16 +683,13 @@ public class OrdersV0Api {
             String orderId, String nextToken, final ApiCallback<GetOrderItemsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getOrderItemsValidateBeforeCall(orderId, nextToken, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -796,17 +699,13 @@ public class OrdersV0Api {
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderItemsBuyerInfoCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -831,17 +730,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -850,15 +738,11 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderItemsBuyerInfoValidateBeforeCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -866,7 +750,7 @@ public class OrdersV0Api {
                     "Missing the required parameter 'orderId' when calling getOrderItemsBuyerInfo(Async)");
         }
 
-        return getOrderItemsBuyerInfoCall(orderId, nextToken, progressListener, progressRequestListener);
+        return getOrderItemsBuyerInfoCall(orderId, nextToken, progressRequestListener);
     }
 
     /**
@@ -905,7 +789,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderItemsBuyerInfoResponse> getOrderItemsBuyerInfoWithHttpInfo(
             String orderId, String nextToken) throws ApiException, LWAException {
-        okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, null, null);
+        okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, null);
         Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -930,16 +814,13 @@ public class OrdersV0Api {
             String orderId, String nextToken, final ApiCallback<GetOrderItemsBuyerInfoResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -948,16 +829,13 @@ public class OrdersV0Api {
      * Build call for getOrderRegulatedInfo
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderRegulatedInfoCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -981,17 +859,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1000,14 +867,11 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderRegulatedInfoValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -1015,7 +879,7 @@ public class OrdersV0Api {
                     "Missing the required parameter 'orderId' when calling getOrderRegulatedInfo(Async)");
         }
 
-        return getOrderRegulatedInfoCall(orderId, progressListener, progressRequestListener);
+        return getOrderRegulatedInfoCall(orderId, progressRequestListener);
     }
 
     /**
@@ -1051,7 +915,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderRegulatedInfoResponse> getOrderRegulatedInfoWithHttpInfo(String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, null);
         Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1075,15 +939,13 @@ public class OrdersV0Api {
             String orderId, final ApiCallback<GetOrderRegulatedInfoResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1184,7 +1046,6 @@ public class OrdersV0Api {
      * @param latestDeliveryDateAfter Use this date to select orders with a latest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1213,7 +1074,6 @@ public class OrdersV0Api {
             String earliestDeliveryDateAfter,
             String latestDeliveryDateBefore,
             String latestDeliveryDateAfter,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1283,17 +1143,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1302,7 +1151,6 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1329,7 +1177,6 @@ public class OrdersV0Api {
             String earliestDeliveryDateAfter,
             String latestDeliveryDateBefore,
             String latestDeliveryDateAfter,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -1360,7 +1207,6 @@ public class OrdersV0Api {
                 earliestDeliveryDateAfter,
                 latestDeliveryDateBefore,
                 latestDeliveryDateAfter,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -1679,7 +1525,6 @@ public class OrdersV0Api {
                 earliestDeliveryDateAfter,
                 latestDeliveryDateBefore,
                 latestDeliveryDateAfter,
-                null,
                 null);
         Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1821,11 +1666,9 @@ public class OrdersV0Api {
             final ApiCallback<GetOrdersResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -1852,7 +1695,6 @@ public class OrdersV0Api {
                 earliestDeliveryDateAfter,
                 latestDeliveryDateBefore,
                 latestDeliveryDateAfter,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1863,7 +1705,6 @@ public class OrdersV0Api {
      *
      * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1872,7 +1713,6 @@ public class OrdersV0Api {
     public okhttp3.Call updateVerificationStatusCall(
             UpdateVerificationStatusRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1896,17 +1736,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PATCH",
@@ -1915,14 +1744,12 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call updateVerificationStatusValidateBeforeCall(
             UpdateVerificationStatusRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1936,7 +1763,7 @@ public class OrdersV0Api {
                     "Missing the required parameter 'orderId' when calling updateVerificationStatus(Async)");
         }
 
-        return updateVerificationStatusCall(body, orderId, progressListener, progressRequestListener);
+        return updateVerificationStatusCall(body, orderId, progressRequestListener);
     }
 
     /**
@@ -1975,7 +1802,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<Void> updateVerificationStatusWithHttpInfo(UpdateVerificationStatusRequest body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateVerificationStatusValidateBeforeCall(body, orderId, null, null);
+        okhttp3.Call call = updateVerificationStatusValidateBeforeCall(body, orderId, null);
         return apiClient.execute(call);
     }
 
@@ -1999,16 +1826,13 @@ public class OrdersV0Api {
             UpdateVerificationStatusRequest body, String orderId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                updateVerificationStatusValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = updateVerificationStatusValidateBeforeCall(body, orderId, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sales.v1.GetOrderMetricsResponse;
 
@@ -80,7 +79,6 @@ public class SalesApi {
      * @param sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not
      *     include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you
      *     want the response to include order metrics for only SKU TestSKU. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -96,7 +94,6 @@ public class SalesApi {
             String firstDayOfWeek,
             String asin,
             String sku,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -133,17 +130,6 @@ public class SalesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -152,7 +138,6 @@ public class SalesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -166,7 +151,6 @@ public class SalesApi {
             String firstDayOfWeek,
             String asin,
             String sku,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -193,7 +177,6 @@ public class SalesApi {
                 firstDayOfWeek,
                 asin,
                 sku,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -340,7 +323,6 @@ public class SalesApi {
                 firstDayOfWeek,
                 asin,
                 sku,
-                null,
                 null);
         Type localVarReturnType = new TypeToken<GetOrderMetricsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -409,11 +391,9 @@ public class SalesApi {
             final ApiCallback<GetOrderMetricsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -427,7 +407,6 @@ public class SalesApi {
                 firstDayOfWeek,
                 asin,
                 sku,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetOrderMetricsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

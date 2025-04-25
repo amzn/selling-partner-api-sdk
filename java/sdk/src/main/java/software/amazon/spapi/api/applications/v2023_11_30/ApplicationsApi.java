@@ -28,7 +28,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 
 public class ApplicationsApi {
@@ -41,14 +40,12 @@ public class ApplicationsApi {
     /**
      * Build call for rotateApplicationClientSecret
      *
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call rotateApplicationClientSecretCall(
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -72,17 +69,6 @@ public class ApplicationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -91,16 +77,14 @@ public class ApplicationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call rotateApplicationClientSecretValidateBeforeCall(
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return rotateApplicationClientSecretCall(progressListener, progressRequestListener);
+        return rotateApplicationClientSecretCall(progressRequestListener);
     }
 
     /**
@@ -141,7 +125,7 @@ public class ApplicationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> rotateApplicationClientSecretWithHttpInfo() throws ApiException, LWAException {
-        okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(null, null);
+        okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(null);
         return apiClient.execute(call);
     }
 
@@ -166,15 +150,13 @@ public class ApplicationsApi {
     public okhttp3.Call rotateApplicationClientSecretAsync(final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(progressListener, progressRequestListener);
+        okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

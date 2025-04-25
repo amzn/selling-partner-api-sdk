@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.transfers.v2024_06_01.GetPaymentMethodsResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutRequest;
@@ -51,7 +50,6 @@ public class DefaultApi {
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
      *     (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -60,7 +58,6 @@ public class DefaultApi {
     public okhttp3.Call getPaymentMethodsCall(
             String marketplaceId,
             List<String> paymentMethodTypes,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -89,17 +86,6 @@ public class DefaultApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -108,14 +94,12 @@ public class DefaultApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getPaymentMethodsValidateBeforeCall(
             String marketplaceId,
             List<String> paymentMethodTypes,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -124,7 +108,7 @@ public class DefaultApi {
                     "Missing the required parameter 'marketplaceId' when calling getPaymentMethods(Async)");
         }
 
-        return getPaymentMethodsCall(marketplaceId, paymentMethodTypes, progressListener, progressRequestListener);
+        return getPaymentMethodsCall(marketplaceId, paymentMethodTypes, progressRequestListener);
     }
 
     /**
@@ -169,7 +153,7 @@ public class DefaultApi {
      */
     public ApiResponse<GetPaymentMethodsResponse> getPaymentMethodsWithHttpInfo(
             String marketplaceId, List<String> paymentMethodTypes) throws ApiException, LWAException {
-        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, null, null);
+        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, null);
         Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -199,16 +183,14 @@ public class DefaultApi {
             final ApiCallback<GetPaymentMethodsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(
-                marketplaceId, paymentMethodTypes, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -217,16 +199,13 @@ public class DefaultApi {
      * Build call for initiatePayout
      *
      * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call initiatePayoutCall(
-            InitiatePayoutRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            InitiatePayoutRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -248,17 +227,6 @@ public class DefaultApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -267,21 +235,18 @@ public class DefaultApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call initiatePayoutValidateBeforeCall(
-            InitiatePayoutRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            InitiatePayoutRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling initiatePayout(Async)");
         }
 
-        return initiatePayoutCall(body, progressListener, progressRequestListener);
+        return initiatePayoutCall(body, progressRequestListener);
     }
 
     /**
@@ -321,7 +286,7 @@ public class DefaultApi {
      */
     public ApiResponse<InitiatePayoutResponse> initiatePayoutWithHttpInfo(InitiatePayoutRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, null, null);
+        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -346,15 +311,13 @@ public class DefaultApi {
             InitiatePayoutRequest body, final ApiCallback<InitiatePayoutResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

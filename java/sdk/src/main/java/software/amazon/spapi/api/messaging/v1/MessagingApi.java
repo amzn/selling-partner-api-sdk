@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.messaging.v1.CreateAmazonMotorsRequest;
 import software.amazon.spapi.models.messaging.v1.CreateAmazonMotorsResponse;
@@ -71,7 +70,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -81,7 +79,6 @@ public class MessagingApi {
             CreateConfirmCustomizationDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -107,17 +104,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -126,7 +112,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -134,7 +119,6 @@ public class MessagingApi {
             CreateConfirmCustomizationDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -153,8 +137,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling confirmCustomizationDetails(Async)");
         }
 
-        return confirmCustomizationDetailsCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return confirmCustomizationDetailsCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -204,8 +187,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmCustomizationDetailsResponse> confirmCustomizationDetailsWithHttpInfo(
             CreateConfirmCustomizationDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                confirmCustomizationDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -236,16 +218,14 @@ public class MessagingApi {
             final ApiCallback<CreateConfirmCustomizationDetailsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+                body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -258,7 +238,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -268,7 +247,6 @@ public class MessagingApi {
             CreateAmazonMotorsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -294,17 +272,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -313,7 +280,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -321,7 +287,6 @@ public class MessagingApi {
             CreateAmazonMotorsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -339,7 +304,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createAmazonMotors(Async)");
         }
 
-        return createAmazonMotorsCall(body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createAmazonMotorsCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -389,7 +354,7 @@ public class MessagingApi {
     public ApiResponse<CreateAmazonMotorsResponse> createAmazonMotorsWithHttpInfo(
             CreateAmazonMotorsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -420,16 +385,14 @@ public class MessagingApi {
             final ApiCallback<CreateAmazonMotorsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createAmazonMotorsValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -442,7 +405,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -452,7 +414,6 @@ public class MessagingApi {
             CreateConfirmDeliveryDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -478,17 +439,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -497,7 +447,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -505,7 +454,6 @@ public class MessagingApi {
             CreateConfirmDeliveryDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -524,8 +472,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createConfirmDeliveryDetails(Async)");
         }
 
-        return createConfirmDeliveryDetailsCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createConfirmDeliveryDetailsCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -575,8 +522,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmDeliveryDetailsResponse> createConfirmDeliveryDetailsWithHttpInfo(
             CreateConfirmDeliveryDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                createConfirmDeliveryDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -607,16 +553,14 @@ public class MessagingApi {
             final ApiCallback<CreateConfirmDeliveryDetailsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+                body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -629,7 +573,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -639,7 +582,6 @@ public class MessagingApi {
             CreateConfirmOrderDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -665,17 +607,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -684,7 +615,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -692,7 +622,6 @@ public class MessagingApi {
             CreateConfirmOrderDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -711,8 +640,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createConfirmOrderDetails(Async)");
         }
 
-        return createConfirmOrderDetailsCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createConfirmOrderDetailsCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -760,8 +688,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmOrderDetailsResponse> createConfirmOrderDetailsWithHttpInfo(
             CreateConfirmOrderDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                createConfirmOrderDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -792,16 +719,14 @@ public class MessagingApi {
             final ApiCallback<CreateConfirmOrderDetailsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+                body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -814,7 +739,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -824,7 +748,6 @@ public class MessagingApi {
             CreateConfirmServiceDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -850,17 +773,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -869,7 +781,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -877,7 +788,6 @@ public class MessagingApi {
             CreateConfirmServiceDetailsRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -896,8 +806,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createConfirmServiceDetails(Async)");
         }
 
-        return createConfirmServiceDetailsCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createConfirmServiceDetailsCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -947,8 +856,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmServiceDetailsResponse> createConfirmServiceDetailsWithHttpInfo(
             CreateConfirmServiceDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                createConfirmServiceDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -979,16 +887,14 @@ public class MessagingApi {
             final ApiCallback<CreateConfirmServiceDetailsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+                body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1001,7 +907,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1011,7 +916,6 @@ public class MessagingApi {
             CreateDigitalAccessKeyRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1037,17 +941,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1056,7 +949,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1064,7 +956,6 @@ public class MessagingApi {
             CreateDigitalAccessKeyRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1082,8 +973,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createDigitalAccessKey(Async)");
         }
 
-        return createDigitalAccessKeyCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createDigitalAccessKeyCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -1133,7 +1023,7 @@ public class MessagingApi {
     public ApiResponse<CreateDigitalAccessKeyResponse> createDigitalAccessKeyWithHttpInfo(
             CreateDigitalAccessKeyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1164,16 +1054,14 @@ public class MessagingApi {
             final ApiCallback<CreateDigitalAccessKeyResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1186,7 +1074,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1196,7 +1083,6 @@ public class MessagingApi {
             CreateLegalDisclosureRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1222,17 +1108,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1241,7 +1116,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1249,7 +1123,6 @@ public class MessagingApi {
             CreateLegalDisclosureRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1267,8 +1140,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createLegalDisclosure(Async)");
         }
 
-        return createLegalDisclosureCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createLegalDisclosureCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -1318,7 +1190,7 @@ public class MessagingApi {
     public ApiResponse<CreateLegalDisclosureResponse> createLegalDisclosureWithHttpInfo(
             CreateLegalDisclosureRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1349,16 +1221,14 @@ public class MessagingApi {
             final ApiCallback<CreateLegalDisclosureResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createLegalDisclosureValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1370,7 +1240,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1379,7 +1248,6 @@ public class MessagingApi {
     public okhttp3.Call createNegativeFeedbackRemovalCall(
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1406,17 +1274,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1425,14 +1282,12 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createNegativeFeedbackRemovalValidateBeforeCall(
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'amazonOrderId' is set
@@ -1446,8 +1301,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createNegativeFeedbackRemoval(Async)");
         }
 
-        return createNegativeFeedbackRemovalCall(
-                amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createNegativeFeedbackRemovalCall(amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -1493,7 +1347,7 @@ public class MessagingApi {
      */
     public ApiResponse<CreateNegativeFeedbackRemovalResponse> createNegativeFeedbackRemovalWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1522,16 +1376,14 @@ public class MessagingApi {
             final ApiCallback<CreateNegativeFeedbackRemovalResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(
-                amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1544,7 +1396,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1554,7 +1405,6 @@ public class MessagingApi {
             CreateUnexpectedProblemRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1580,17 +1430,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1599,7 +1438,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1607,7 +1445,6 @@ public class MessagingApi {
             CreateUnexpectedProblemRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1625,8 +1462,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createUnexpectedProblem(Async)");
         }
 
-        return createUnexpectedProblemCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createUnexpectedProblemCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -1676,7 +1512,7 @@ public class MessagingApi {
     public ApiResponse<CreateUnexpectedProblemResponse> createUnexpectedProblemWithHttpInfo(
             CreateUnexpectedProblemRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1707,16 +1543,14 @@ public class MessagingApi {
             final ApiCallback<CreateUnexpectedProblemResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1729,7 +1563,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1739,7 +1572,6 @@ public class MessagingApi {
             CreateWarrantyRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1765,17 +1597,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1784,7 +1605,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1792,7 +1612,6 @@ public class MessagingApi {
             CreateWarrantyRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1809,7 +1628,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling createWarranty(Async)");
         }
 
-        return createWarrantyCall(body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return createWarrantyCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -1858,7 +1677,7 @@ public class MessagingApi {
     public ApiResponse<CreateWarrantyResponse> createWarrantyWithHttpInfo(
             CreateWarrantyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1889,16 +1708,14 @@ public class MessagingApi {
             final ApiCallback<CreateWarrantyResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createWarrantyValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1910,7 +1727,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1919,7 +1735,6 @@ public class MessagingApi {
     public okhttp3.Call getAttributesCall(
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1946,17 +1761,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1965,14 +1769,12 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getAttributesValidateBeforeCall(
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'amazonOrderId' is set
@@ -1984,7 +1786,7 @@ public class MessagingApi {
             throw new ApiException("Missing the required parameter 'marketplaceIds' when calling getAttributes(Async)");
         }
 
-        return getAttributesCall(amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return getAttributesCall(amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -2019,7 +1821,7 @@ public class MessagingApi {
      */
     public ApiResponse<GetAttributesResponse> getAttributesWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2041,16 +1843,13 @@ public class MessagingApi {
             String amazonOrderId, List<String> marketplaceIds, final ApiCallback<GetAttributesResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getAttributesValidateBeforeCall(
-                amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2062,7 +1861,6 @@ public class MessagingApi {
      *     message types. (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2071,7 +1869,6 @@ public class MessagingApi {
     public okhttp3.Call getMessagingActionsForOrderCall(
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -2098,17 +1895,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -2117,14 +1903,12 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getMessagingActionsForOrderValidateBeforeCall(
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'amazonOrderId' is set
@@ -2138,8 +1922,7 @@ public class MessagingApi {
                     "Missing the required parameter 'marketplaceIds' when calling getMessagingActionsForOrder(Async)");
         }
 
-        return getMessagingActionsForOrderCall(
-                amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return getMessagingActionsForOrderCall(amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -2187,7 +1970,7 @@ public class MessagingApi {
      */
     public ApiResponse<GetMessagingActionsForOrderResponse> getMessagingActionsForOrderWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2217,16 +2000,14 @@ public class MessagingApi {
             final ApiCallback<GetMessagingActionsForOrderResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(
-                amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2239,7 +2020,6 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2249,7 +2029,6 @@ public class MessagingApi {
             InvoiceRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -2275,17 +2054,6 @@ public class MessagingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -2294,7 +2062,6 @@ public class MessagingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -2302,7 +2069,6 @@ public class MessagingApi {
             InvoiceRequest body,
             String amazonOrderId,
             List<String> marketplaceIds,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -2318,7 +2084,7 @@ public class MessagingApi {
             throw new ApiException("Missing the required parameter 'marketplaceIds' when calling sendInvoice(Async)");
         }
 
-        return sendInvoiceCall(body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        return sendInvoiceCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
     }
 
     /**
@@ -2353,7 +2119,7 @@ public class MessagingApi {
      */
     public ApiResponse<InvoiceResponse> sendInvoiceWithHttpInfo(
             InvoiceRequest body, String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, null, null);
+        okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
         Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2378,16 +2144,13 @@ public class MessagingApi {
             final ApiCallback<InvoiceResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = sendInvoiceValidateBeforeCall(
-                body, amazonOrderId, marketplaceIds, progressListener, progressRequestListener);
+        okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
         Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

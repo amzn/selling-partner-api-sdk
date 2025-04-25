@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportResponse;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportScheduleResponse;
@@ -55,16 +54,13 @@ public class ReportsApi {
      *
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelReportCall(
-            String reportId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -88,17 +84,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -107,21 +92,18 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelReportValidateBeforeCall(
-            String reportId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportId' is set
         if (reportId == null) {
             throw new ApiException("Missing the required parameter 'reportId' when calling cancelReport(Async)");
         }
 
-        return cancelReportCall(reportId, progressListener, progressRequestListener);
+        return cancelReportCall(reportId, progressRequestListener);
     }
 
     /**
@@ -160,7 +142,7 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> cancelReportWithHttpInfo(String reportId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelReportValidateBeforeCall(reportId, null, null);
+        okhttp3.Call call = cancelReportValidateBeforeCall(reportId, null);
         return apiClient.execute(call);
     }
 
@@ -185,15 +167,13 @@ public class ReportsApi {
     public okhttp3.Call cancelReportAsync(String reportId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = cancelReportValidateBeforeCall(reportId, progressListener, progressRequestListener);
+        okhttp3.Call call = cancelReportValidateBeforeCall(reportId, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -202,16 +182,13 @@ public class ReportsApi {
      *
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelReportScheduleCall(
-            String reportScheduleId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -235,17 +212,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -254,14 +220,11 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelReportScheduleValidateBeforeCall(
-            String reportScheduleId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportScheduleId' is set
         if (reportScheduleId == null) {
@@ -269,7 +232,7 @@ public class ReportsApi {
                     "Missing the required parameter 'reportScheduleId' when calling cancelReportSchedule(Async)");
         }
 
-        return cancelReportScheduleCall(reportScheduleId, progressListener, progressRequestListener);
+        return cancelReportScheduleCall(reportScheduleId, progressRequestListener);
     }
 
     /**
@@ -305,7 +268,7 @@ public class ReportsApi {
      */
     public ApiResponse<Void> cancelReportScheduleWithHttpInfo(String reportScheduleId)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, null, null);
+        okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, null);
         return apiClient.execute(call);
     }
 
@@ -328,16 +291,13 @@ public class ReportsApi {
     public okhttp3.Call cancelReportScheduleAsync(String reportScheduleId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                cancelReportScheduleValidateBeforeCall(reportScheduleId, progressListener, progressRequestListener);
+        okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -345,16 +305,13 @@ public class ReportsApi {
      * Build call for createReport
      *
      * @param body Information required to create the report. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createReportCall(
-            CreateReportSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateReportSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -376,17 +333,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -395,21 +341,18 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createReportValidateBeforeCall(
-            CreateReportSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateReportSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createReport(Async)");
         }
 
-        return createReportCall(body, progressListener, progressRequestListener);
+        return createReportCall(body, progressRequestListener);
     }
 
     /**
@@ -445,7 +388,7 @@ public class ReportsApi {
      */
     public ApiResponse<CreateReportResponse> createReportWithHttpInfo(CreateReportSpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createReportValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createReportValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -468,15 +411,13 @@ public class ReportsApi {
             CreateReportSpecification body, final ApiCallback<CreateReportResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createReportValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createReportValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -485,7 +426,6 @@ public class ReportsApi {
      * Build call for createReportSchedule
      *
      * @param body Information required to create the report schedule. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -493,7 +433,6 @@ public class ReportsApi {
      */
     public okhttp3.Call createReportScheduleCall(
             CreateReportScheduleSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -516,17 +455,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -535,13 +463,11 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createReportScheduleValidateBeforeCall(
             CreateReportScheduleSpecification body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -549,7 +475,7 @@ public class ReportsApi {
             throw new ApiException("Missing the required parameter 'body' when calling createReportSchedule(Async)");
         }
 
-        return createReportScheduleCall(body, progressListener, progressRequestListener);
+        return createReportScheduleCall(body, progressRequestListener);
     }
 
     /**
@@ -588,7 +514,7 @@ public class ReportsApi {
      */
     public ApiResponse<CreateReportScheduleResponse> createReportScheduleWithHttpInfo(
             CreateReportScheduleSpecification body) throws ApiException, LWAException {
-        okhttp3.Call call = createReportScheduleValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createReportScheduleValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -613,15 +539,13 @@ public class ReportsApi {
             CreateReportScheduleSpecification body, final ApiCallback<CreateReportScheduleResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createReportScheduleValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createReportScheduleValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -631,16 +555,13 @@ public class ReportsApi {
      *
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportCall(
-            String reportId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -664,17 +585,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -683,21 +593,18 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getReportValidateBeforeCall(
-            String reportId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportId' is set
         if (reportId == null) {
             throw new ApiException("Missing the required parameter 'reportId' when calling getReport(Async)");
         }
 
-        return getReportCall(reportId, progressListener, progressRequestListener);
+        return getReportCall(reportId, progressRequestListener);
     }
 
     /**
@@ -736,7 +643,7 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Report> getReportWithHttpInfo(String reportId) throws ApiException, LWAException {
-        okhttp3.Call call = getReportValidateBeforeCall(reportId, null, null);
+        okhttp3.Call call = getReportValidateBeforeCall(reportId, null);
         Type localVarReturnType = new TypeToken<Report>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -760,15 +667,13 @@ public class ReportsApi {
     public okhttp3.Call getReportAsync(String reportId, final ApiCallback<Report> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getReportValidateBeforeCall(reportId, progressListener, progressRequestListener);
+        okhttp3.Call call = getReportValidateBeforeCall(reportId, progressRequestListener);
         Type localVarReturnType = new TypeToken<Report>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -777,16 +682,13 @@ public class ReportsApi {
      * Build call for getReportDocument
      *
      * @param reportDocumentId The identifier for the report document. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportDocumentCall(
-            String reportDocumentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -810,17 +712,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -829,14 +720,11 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getReportDocumentValidateBeforeCall(
-            String reportDocumentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportDocumentId' is set
         if (reportDocumentId == null) {
@@ -844,7 +732,7 @@ public class ReportsApi {
                     "Missing the required parameter 'reportDocumentId' when calling getReportDocument(Async)");
         }
 
-        return getReportDocumentCall(reportDocumentId, progressListener, progressRequestListener);
+        return getReportDocumentCall(reportDocumentId, progressRequestListener);
     }
 
     /**
@@ -882,7 +770,7 @@ public class ReportsApi {
      */
     public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(String reportDocumentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, null, null);
+        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, null);
         Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -905,16 +793,13 @@ public class ReportsApi {
     public okhttp3.Call getReportDocumentAsync(String reportDocumentId, final ApiCallback<ReportDocument> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getReportDocumentValidateBeforeCall(reportDocumentId, progressListener, progressRequestListener);
+        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, progressRequestListener);
         Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -924,16 +809,13 @@ public class ReportsApi {
      *
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportScheduleCall(
-            String reportScheduleId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -957,17 +839,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -976,14 +847,11 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getReportScheduleValidateBeforeCall(
-            String reportScheduleId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportScheduleId' is set
         if (reportScheduleId == null) {
@@ -991,7 +859,7 @@ public class ReportsApi {
                     "Missing the required parameter 'reportScheduleId' when calling getReportSchedule(Async)");
         }
 
-        return getReportScheduleCall(reportScheduleId, progressListener, progressRequestListener);
+        return getReportScheduleCall(reportScheduleId, progressRequestListener);
     }
 
     /**
@@ -1031,7 +899,7 @@ public class ReportsApi {
      */
     public ApiResponse<ReportSchedule> getReportScheduleWithHttpInfo(String reportScheduleId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, null, null);
+        okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, null);
         Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1055,16 +923,13 @@ public class ReportsApi {
     public okhttp3.Call getReportScheduleAsync(String reportScheduleId, final ApiCallback<ReportSchedule> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getReportScheduleValidateBeforeCall(reportScheduleId, progressListener, progressRequestListener);
+        okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, progressRequestListener);
         Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1074,16 +939,13 @@ public class ReportsApi {
      *
      * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
      *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportSchedulesCall(
-            List<String> reportTypes,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            List<String> reportTypes, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1108,17 +970,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1127,14 +978,11 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getReportSchedulesValidateBeforeCall(
-            List<String> reportTypes,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            List<String> reportTypes, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportTypes' is set
         if (reportTypes == null) {
@@ -1142,7 +990,7 @@ public class ReportsApi {
                     "Missing the required parameter 'reportTypes' when calling getReportSchedules(Async)");
         }
 
-        return getReportSchedulesCall(reportTypes, progressListener, progressRequestListener);
+        return getReportSchedulesCall(reportTypes, progressRequestListener);
     }
 
     /**
@@ -1182,7 +1030,7 @@ public class ReportsApi {
      */
     public ApiResponse<ReportScheduleList> getReportSchedulesWithHttpInfo(List<String> reportTypes)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, null, null);
+        okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, null);
         Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1207,16 +1055,13 @@ public class ReportsApi {
             List<String> reportTypes, final ApiCallback<ReportScheduleList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getReportSchedulesValidateBeforeCall(reportTypes, progressListener, progressRequestListener);
+        okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, progressRequestListener);
         Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1242,7 +1087,6 @@ public class ReportsApi {
      *     returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of
      *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
      *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1256,7 +1100,6 @@ public class ReportsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1291,17 +1134,6 @@ public class ReportsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1310,7 +1142,6 @@ public class ReportsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1322,7 +1153,6 @@ public class ReportsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
@@ -1334,7 +1164,6 @@ public class ReportsApi {
                 createdSince,
                 createdUntil,
                 nextToken,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -1424,15 +1253,7 @@ public class ReportsApi {
             String nextToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getReportsValidateBeforeCall(
-                reportTypes,
-                processingStatuses,
-                marketplaceIds,
-                pageSize,
-                createdSince,
-                createdUntil,
-                nextToken,
-                null,
-                null);
+                reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken, null);
         Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1480,11 +1301,9 @@ public class ReportsApi {
             final ApiCallback<GetReportsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -1496,7 +1315,6 @@ public class ReportsApi {
                 createdSince,
                 createdUntil,
                 nextToken,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

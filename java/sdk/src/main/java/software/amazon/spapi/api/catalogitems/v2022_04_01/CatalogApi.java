@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.Item;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemSearchResults;
@@ -52,7 +51,6 @@ public class CatalogApi {
      * @param includedData A comma-delimited list of datasets to include in the response. (optional)
      * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
      *     the marketplace. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -63,7 +61,6 @@ public class CatalogApi {
             List<String> marketplaceIds,
             List<String> includedData,
             String locale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -93,17 +90,6 @@ public class CatalogApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -112,7 +98,6 @@ public class CatalogApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -121,7 +106,6 @@ public class CatalogApi {
             List<String> marketplaceIds,
             List<String> includedData,
             String locale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'asin' is set
@@ -134,8 +118,7 @@ public class CatalogApi {
                     "Missing the required parameter 'marketplaceIds' when calling getCatalogItem(Async)");
         }
 
-        return getCatalogItemCall(
-                asin, marketplaceIds, includedData, locale, progressListener, progressRequestListener);
+        return getCatalogItemCall(asin, marketplaceIds, includedData, locale, progressRequestListener);
     }
 
     /**
@@ -185,7 +168,7 @@ public class CatalogApi {
     public ApiResponse<Item> getCatalogItemWithHttpInfo(
             String asin, List<String> marketplaceIds, List<String> includedData, String locale)
             throws ApiException, LWAException {
-        okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null, null);
+        okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null);
         Type localVarReturnType = new TypeToken<Item>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -218,16 +201,14 @@ public class CatalogApi {
             final ApiCallback<Item> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getCatalogItemValidateBeforeCall(
-                asin, marketplaceIds, includedData, locale, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, progressRequestListener);
         Type localVarReturnType = new TypeToken<Item>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -260,7 +241,6 @@ public class CatalogApi {
      * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
      *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
      *     (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -279,7 +259,6 @@ public class CatalogApi {
             Integer pageSize,
             String pageToken,
             String keywordsLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -324,17 +303,6 @@ public class CatalogApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -343,7 +311,6 @@ public class CatalogApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -360,7 +327,6 @@ public class CatalogApi {
             Integer pageSize,
             String pageToken,
             String keywordsLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -382,7 +348,6 @@ public class CatalogApi {
                 pageSize,
                 pageToken,
                 keywordsLocale,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -519,7 +484,6 @@ public class CatalogApi {
                 pageSize,
                 pageToken,
                 keywordsLocale,
-                null,
                 null);
         Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -580,11 +544,9 @@ public class CatalogApi {
             final ApiCallback<ItemSearchResults> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -601,7 +563,6 @@ public class CatalogApi {
                 pageSize,
                 pageToken,
                 keywordsLocale,
-                progressListener,
                 progressRequestListener);
         Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.uploads.v2020_11_01.CreateUploadDestinationResponse;
 
@@ -57,7 +56,6 @@ public class UploadsApi {
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
      * @param contentType The content type of the file you upload. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -68,7 +66,6 @@ public class UploadsApi {
             String contentMD5,
             String resource,
             String contentType,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -97,17 +94,6 @@ public class UploadsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -116,7 +102,6 @@ public class UploadsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -125,7 +110,6 @@ public class UploadsApi {
             String contentMD5,
             String resource,
             String contentType,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -145,7 +129,7 @@ public class UploadsApi {
         }
 
         return createUploadDestinationForResourceCall(
-                marketplaceIds, contentMD5, resource, contentType, progressListener, progressRequestListener);
+                marketplaceIds, contentMD5, resource, contentType, progressRequestListener);
     }
 
     /**
@@ -212,7 +196,7 @@ public class UploadsApi {
             List<String> marketplaceIds, String contentMD5, String resource, String contentType)
             throws ApiException, LWAException {
         okhttp3.Call call = createUploadDestinationForResourceValidateBeforeCall(
-                marketplaceIds, contentMD5, resource, contentType, null, null);
+                marketplaceIds, contentMD5, resource, contentType, null);
         Type localVarReturnType = new TypeToken<CreateUploadDestinationResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -252,16 +236,14 @@ public class UploadsApi {
             final ApiCallback<CreateUploadDestinationResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = createUploadDestinationForResourceValidateBeforeCall(
-                marketplaceIds, contentMD5, resource, contentType, progressListener, progressRequestListener);
+                marketplaceIds, contentMD5, resource, contentType, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateUploadDestinationResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

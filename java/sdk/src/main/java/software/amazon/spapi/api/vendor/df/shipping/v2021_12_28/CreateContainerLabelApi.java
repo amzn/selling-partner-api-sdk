@@ -30,7 +30,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateContainerLabelRequest;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateContainerLabelResponse;
@@ -46,16 +45,13 @@ public class CreateContainerLabelApi {
      * Build call for createContainerLabel
      *
      * @param body Request body containing the container label data. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createContainerLabelCall(
-            CreateContainerLabelRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateContainerLabelRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -77,17 +73,6 @@ public class CreateContainerLabelApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -96,21 +81,18 @@ public class CreateContainerLabelApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createContainerLabelValidateBeforeCall(
-            CreateContainerLabelRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateContainerLabelRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createContainerLabel(Async)");
         }
 
-        return createContainerLabelCall(body, progressListener, progressRequestListener);
+        return createContainerLabelCall(body, progressRequestListener);
     }
 
     /**
@@ -149,7 +131,7 @@ public class CreateContainerLabelApi {
      */
     public ApiResponse<CreateContainerLabelResponse> createContainerLabelWithHttpInfo(CreateContainerLabelRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createContainerLabelValidateBeforeCall(body, null, null);
+        okhttp3.Call call = createContainerLabelValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<CreateContainerLabelResponse>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -173,15 +155,13 @@ public class CreateContainerLabelApi {
             CreateContainerLabelRequest body, final ApiCallback<CreateContainerLabelResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createContainerLabelValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = createContainerLabelValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateContainerLabelResponse>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

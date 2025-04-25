@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.PackingSlip;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.PackingSlipList;
@@ -50,16 +49,13 @@ public class VendorShippingApi {
      * Build call for getPackingSlip
      *
      * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getPackingSlipCall(
-            String purchaseOrderNumber,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -84,17 +80,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -103,14 +88,11 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getPackingSlipValidateBeforeCall(
-            String purchaseOrderNumber,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'purchaseOrderNumber' is set
         if (purchaseOrderNumber == null) {
@@ -118,7 +100,7 @@ public class VendorShippingApi {
                     "Missing the required parameter 'purchaseOrderNumber' when calling getPackingSlip(Async)");
         }
 
-        return getPackingSlipCall(purchaseOrderNumber, progressListener, progressRequestListener);
+        return getPackingSlipCall(purchaseOrderNumber, progressRequestListener);
     }
 
     /**
@@ -156,7 +138,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<PackingSlip> getPackingSlipWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPackingSlipValidateBeforeCall(purchaseOrderNumber, null, null);
+        okhttp3.Call call = getPackingSlipValidateBeforeCall(purchaseOrderNumber, null);
         Type localVarReturnType = new TypeToken<PackingSlip>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -179,16 +161,13 @@ public class VendorShippingApi {
     public okhttp3.Call getPackingSlipAsync(String purchaseOrderNumber, final ApiCallback<PackingSlip> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getPackingSlipValidateBeforeCall(purchaseOrderNumber, progressListener, progressRequestListener);
+        okhttp3.Call call = getPackingSlipValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
         Type localVarReturnType = new TypeToken<PackingSlip>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -208,7 +187,6 @@ public class VendorShippingApi {
      *     default to ASC)
      * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
      *     token value is returned in the previous API call. (optional)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -221,7 +199,6 @@ public class VendorShippingApi {
             Integer limit,
             String sortOrder,
             String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -253,17 +230,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -272,7 +238,6 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -283,7 +248,6 @@ public class VendorShippingApi {
             Integer limit,
             String sortOrder,
             String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'createdAfter' is set
@@ -297,14 +261,7 @@ public class VendorShippingApi {
         }
 
         return getPackingSlipsCall(
-                createdAfter,
-                createdBefore,
-                shipFromPartyId,
-                limit,
-                sortOrder,
-                nextToken,
-                progressListener,
-                progressRequestListener);
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, progressRequestListener);
     }
 
     /**
@@ -379,7 +336,7 @@ public class VendorShippingApi {
             String nextToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getPackingSlipsValidateBeforeCall(
-                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null, null);
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
         Type localVarReturnType = new TypeToken<PackingSlipList>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -421,23 +378,14 @@ public class VendorShippingApi {
             final ApiCallback<PackingSlipList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getPackingSlipsValidateBeforeCall(
-                createdAfter,
-                createdBefore,
-                shipFromPartyId,
-                limit,
-                sortOrder,
-                nextToken,
-                progressListener,
-                progressRequestListener);
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, progressRequestListener);
         Type localVarReturnType = new TypeToken<PackingSlipList>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -446,7 +394,6 @@ public class VendorShippingApi {
      * Build call for submitShipmentConfirmations
      *
      * @param body Request body containing the shipment confirmations data. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -454,7 +401,6 @@ public class VendorShippingApi {
      */
     public okhttp3.Call submitShipmentConfirmationsCall(
             SubmitShipmentConfirmationsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -477,17 +423,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -496,13 +431,11 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitShipmentConfirmationsValidateBeforeCall(
             SubmitShipmentConfirmationsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -511,7 +444,7 @@ public class VendorShippingApi {
                     "Missing the required parameter 'body' when calling submitShipmentConfirmations(Async)");
         }
 
-        return submitShipmentConfirmationsCall(body, progressListener, progressRequestListener);
+        return submitShipmentConfirmationsCall(body, progressRequestListener);
     }
 
     /**
@@ -550,7 +483,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<TransactionReference> submitShipmentConfirmationsWithHttpInfo(
             SubmitShipmentConfirmationsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, null, null);
+        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -574,16 +507,13 @@ public class VendorShippingApi {
             SubmitShipmentConfirmationsRequest body, final ApiCallback<TransactionReference> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                submitShipmentConfirmationsValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -592,7 +522,6 @@ public class VendorShippingApi {
      * Build call for submitShipmentStatusUpdates
      *
      * @param body Request body containing the shipment status update data. (required)
-     * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -600,7 +529,6 @@ public class VendorShippingApi {
      */
     public okhttp3.Call submitShipmentStatusUpdatesCall(
             SubmitShipmentStatusUpdatesRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -623,17 +551,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -642,13 +559,11 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitShipmentStatusUpdatesValidateBeforeCall(
             SubmitShipmentStatusUpdatesRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -657,7 +572,7 @@ public class VendorShippingApi {
                     "Missing the required parameter 'body' when calling submitShipmentStatusUpdates(Async)");
         }
 
-        return submitShipmentStatusUpdatesCall(body, progressListener, progressRequestListener);
+        return submitShipmentStatusUpdatesCall(body, progressRequestListener);
     }
 
     /**
@@ -700,7 +615,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<TransactionReference> submitShipmentStatusUpdatesWithHttpInfo(
             SubmitShipmentStatusUpdatesRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitShipmentStatusUpdatesValidateBeforeCall(body, null, null);
+        okhttp3.Call call = submitShipmentStatusUpdatesValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -726,16 +641,13 @@ public class VendorShippingApi {
             SubmitShipmentStatusUpdatesRequest body, final ApiCallback<TransactionReference> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                submitShipmentStatusUpdatesValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = submitShipmentStatusUpdatesValidateBeforeCall(body, progressRequestListener);
         Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
