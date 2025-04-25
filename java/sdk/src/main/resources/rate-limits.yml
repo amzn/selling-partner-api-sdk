@@ -715,14 +715,17 @@ ServiceApi-createServiceDocumentUploadDestination:
   - 20
 # Shipment Invoicing API
 ShipmentInvoiceApi-getShipmentDetails:
-  - 1.133
+  - 17
   - 25
+  - 15
 ShipmentInvoiceApi-submitInvoice:
-  - 1.133
+  - 17
   - 25
+  - 15
 ShipmentInvoiceApi-getInvoiceStatus:
-  - 1.133
+  - 17
   - 25
+  - 15
 # Shipping V2 API
 ShippingApi-createShipment:
   - 5
