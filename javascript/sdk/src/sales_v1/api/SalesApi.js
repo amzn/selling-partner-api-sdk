@@ -11,8 +11,10 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetOrderMetricsResponse} from '../model/GetOrderMetricsResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Sales service.
@@ -20,6 +22,9 @@ import {GetOrderMetricsResponse} from '../model/GetOrderMetricsResponse.js';
 * @version v1
 */
 export class SalesApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new SalesApi. 
@@ -30,6 +35,31 @@ export class SalesApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'SalesApi-getOrderMetrics',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -90,10 +120,10 @@ export class SalesApi {
       let accepts = ['application/json', 'payload'];
       let returnType = GetOrderMetricsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'SalesApi-getOrderMetrics',
         '/sales/v1/orderMetrics', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('SalesApi-getOrderMetrics')
       );
     }
 

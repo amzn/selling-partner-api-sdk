@@ -11,8 +11,10 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateUploadDestinationResponse} from '../model/CreateUploadDestinationResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Uploads service.
@@ -20,6 +22,9 @@ import {CreateUploadDestinationResponse} from '../model/CreateUploadDestinationR
 * @version 2020-11-01
 */
 export class UploadsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new UploadsApi. 
@@ -30,6 +35,31 @@ export class UploadsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'UploadsApi-createUploadDestinationForResource',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -80,10 +110,10 @@ export class UploadsApi {
       let accepts = ['application/json'];
       let returnType = CreateUploadDestinationResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'UploadsApi-createUploadDestinationForResource',
         '/uploads/2020-11-01/uploadDestinations/{resource}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('UploadsApi-createUploadDestinationForResource')
       );
     }
 

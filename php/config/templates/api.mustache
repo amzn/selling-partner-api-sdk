@@ -540,7 +540,8 @@ use {{invokerPackage}}\ObjectSerializer;
             '{{#schema}}{{openApiType}}{{/schema}}', // openApiType
             '{{style}}', // style
             {{#isExplode}}true{{/isExplode}}{{^isExplode}}false{{/isExplode}}, // explode
-            {{required}} // required
+            {{required}}, // required
+            $this->config
         ) ?? []);
         {{/queryParams}}
 

@@ -11,13 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {AddInventoryRequest} from '../model/AddInventoryRequest.js';
 import {AddInventoryResponse} from '../model/AddInventoryResponse.js';
 import {CreateInventoryItemRequest} from '../model/CreateInventoryItemRequest.js';
 import {CreateInventoryItemResponse} from '../model/CreateInventoryItemResponse.js';
 import {DeleteInventoryItemResponse} from '../model/DeleteInventoryItemResponse.js';
 import {GetInventorySummariesResponse} from '../model/GetInventorySummariesResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * FbaInventory service.
@@ -25,6 +27,9 @@ import {GetInventorySummariesResponse} from '../model/GetInventorySummariesRespo
 * @version v1
 */
 export class FbaInventoryApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new FbaInventoryApi. 
@@ -35,6 +40,34 @@ export class FbaInventoryApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'FbaInventoryApi-addInventory',
+            'FbaInventoryApi-createInventoryItem',
+            'FbaInventoryApi-deleteInventoryItem',
+            'FbaInventoryApi-getInventorySummaries',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -73,10 +106,10 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = AddInventoryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-addInventory',
         '/fba/inventory/v1/items/inventory', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-addInventory')
       );
     }
 
@@ -121,10 +154,10 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = CreateInventoryItemResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-createInventoryItem',
         '/fba/inventory/v1/items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-createInventoryItem')
       );
     }
 
@@ -176,10 +209,10 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = DeleteInventoryItemResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-deleteInventoryItem',
         '/fba/inventory/v1/items/{sellerSku}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-deleteInventoryItem')
       );
     }
 
@@ -251,10 +284,10 @@ export class FbaInventoryApi {
       let accepts = ['application/json'];
       let returnType = GetInventorySummariesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FbaInventoryApi-getInventorySummaries',
         '/fba/inventory/v1/summaries', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-getInventorySummaries')
       );
     }
 

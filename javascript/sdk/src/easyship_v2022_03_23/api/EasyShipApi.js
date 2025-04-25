@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateScheduledPackageRequest} from '../model/CreateScheduledPackageRequest.js';
 import {CreateScheduledPackagesRequest} from '../model/CreateScheduledPackagesRequest.js';
 import {CreateScheduledPackagesResponse} from '../model/CreateScheduledPackagesResponse.js';
@@ -21,6 +21,8 @@ import {ListHandoverSlotsResponse} from '../model/ListHandoverSlotsResponse.js';
 import {Package} from '../model/Package.js';
 import {Packages} from '../model/Packages.js';
 import {UpdateScheduledPackagesRequest} from '../model/UpdateScheduledPackagesRequest.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * EasyShip service.
@@ -28,6 +30,9 @@ import {UpdateScheduledPackagesRequest} from '../model/UpdateScheduledPackagesRe
 * @version 2022-03-23
 */
 export class EasyShipApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new EasyShipApi. 
@@ -38,6 +43,35 @@ export class EasyShipApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'EasyShipApi-createScheduledPackage',
+            'EasyShipApi-createScheduledPackageBulk',
+            'EasyShipApi-getScheduledPackage',
+            'EasyShipApi-listHandoverSlots',
+            'EasyShipApi-updateScheduledPackages',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -69,10 +103,10 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = Package;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-createScheduledPackage',
         '/easyShip/2022-03-23/package', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-createScheduledPackage')
       );
     }
 
@@ -116,10 +150,10 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = CreateScheduledPackagesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-createScheduledPackageBulk',
         '/easyShip/2022-03-23/packages/bulk', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-createScheduledPackageBulk')
       );
     }
 
@@ -171,10 +205,10 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = Package;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-getScheduledPackage',
         '/easyShip/2022-03-23/package', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-getScheduledPackage')
       );
     }
 
@@ -216,10 +250,10 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = ListHandoverSlotsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-listHandoverSlots',
         '/easyShip/2022-03-23/timeSlot', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-listHandoverSlots')
       );
     }
 
@@ -261,10 +295,10 @@ export class EasyShipApi {
       let accepts = ['application/json'];
       let returnType = Packages;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'EasyShipApi-updateScheduledPackages',
         '/easyShip/2022-03-23/package', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-updateScheduledPackages')
       );
     }
 

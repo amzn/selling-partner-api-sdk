@@ -11,13 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {PackingSlip} from '../model/PackingSlip.js';
 import {PackingSlipList} from '../model/PackingSlipList.js';
 import {SubmitShipmentConfirmationsRequest} from '../model/SubmitShipmentConfirmationsRequest.js';
 import {SubmitShipmentStatusUpdatesRequest} from '../model/SubmitShipmentStatusUpdatesRequest.js';
 import {TransactionReference} from '../model/TransactionReference.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * VendorShipping service.
@@ -25,6 +27,9 @@ import {TransactionReference} from '../model/TransactionReference.js';
 * @version 2021-12-28
 */
 export class VendorShippingApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new VendorShippingApi. 
@@ -35,6 +40,34 @@ export class VendorShippingApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'VendorShippingApi-getPackingSlip',
+            'VendorShippingApi-getPackingSlips',
+            'VendorShippingApi-submitShipmentConfirmations',
+            'VendorShippingApi-submitShipmentStatusUpdates',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -68,10 +101,10 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = PackingSlip;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-getPackingSlip',
         '/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getPackingSlip')
       );
     }
 
@@ -135,10 +168,10 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = PackingSlipList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-getPackingSlips',
         '/vendor/directFulfillment/shipping/2021-12-28/packingSlips', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getPackingSlips')
       );
     }
 
@@ -190,10 +223,10 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = TransactionReference;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-submitShipmentConfirmations',
         '/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentConfirmations')
       );
     }
 
@@ -239,10 +272,10 @@ export class VendorShippingApi {
       let accepts = ['application/json'];
       let returnType = TransactionReference;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingApi-submitShipmentStatusUpdates',
         '/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentStatusUpdates')
       );
     }
 

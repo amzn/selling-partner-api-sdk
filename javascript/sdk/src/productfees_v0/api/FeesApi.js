@@ -11,12 +11,14 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {FeesEstimateByIdRequest} from '../model/FeesEstimateByIdRequest.js';
 import {FeesEstimateResult} from '../model/FeesEstimateResult.js';
 import {GetMyFeesEstimateRequest} from '../model/GetMyFeesEstimateRequest.js';
 import {GetMyFeesEstimateResponse} from '../model/GetMyFeesEstimateResponse.js';
 import {GetMyFeesEstimatesErrorList} from '../model/GetMyFeesEstimatesErrorList.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Fees service.
@@ -24,6 +26,9 @@ import {GetMyFeesEstimatesErrorList} from '../model/GetMyFeesEstimatesErrorList.
 * @version v0
 */
 export class FeesApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new FeesApi. 
@@ -34,6 +39,33 @@ export class FeesApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'FeesApi-getMyFeesEstimateForASIN',
+            'FeesApi-getMyFeesEstimateForSKU',
+            'FeesApi-getMyFeesEstimates',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -72,10 +104,10 @@ export class FeesApi {
       let accepts = ['application/json'];
       let returnType = GetMyFeesEstimateResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeesApi-getMyFeesEstimateForASIN',
         '/products/fees/v0/items/{Asin}/feesEstimate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimateForASIN')
       );
     }
 
@@ -127,10 +159,10 @@ export class FeesApi {
       let accepts = ['application/json'];
       let returnType = GetMyFeesEstimateResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeesApi-getMyFeesEstimateForSKU',
         '/products/fees/v0/listings/{SellerSKU}/feesEstimate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimateForSKU')
       );
     }
 
@@ -175,10 +207,10 @@ export class FeesApi {
       let accepts = ['application/json'];
       let returnType = [FeesEstimateResult];
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'FeesApi-getMyFeesEstimates',
         '/products/fees/v0/feesEstimate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimates')
       );
     }
 

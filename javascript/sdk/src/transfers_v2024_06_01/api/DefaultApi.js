@@ -11,11 +11,13 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {GetPaymentMethodsResponse} from '../model/GetPaymentMethodsResponse.js';
 import {InitiatePayoutRequest} from '../model/InitiatePayoutRequest.js';
 import {InitiatePayoutResponse} from '../model/InitiatePayoutResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Default service.
@@ -23,6 +25,9 @@ import {InitiatePayoutResponse} from '../model/InitiatePayoutResponse.js';
 * @version 2024-06-01
 */
 export class DefaultApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new DefaultApi. 
@@ -33,6 +38,32 @@ export class DefaultApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'DefaultApi-getPaymentMethods',
+            'DefaultApi-initiatePayout',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -69,10 +100,10 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = GetPaymentMethodsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-getPaymentMethods',
         '/finances/transfers/2024-06-01/paymentMethods', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-getPaymentMethods')
       );
     }
 
@@ -118,10 +149,10 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = InitiatePayoutResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-initiatePayout',
         '/finances/transfers/2024-06-01/payouts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-initiatePayout')
       );
     }
 
