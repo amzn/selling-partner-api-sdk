@@ -47,7 +47,7 @@ class ReportsApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('ReportsApi', $this->getName());
-        $this->apiInstance = new ReportsApi($this->config, null, null);
+        $this->apiInstance = new ReportsApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ReportsApi');
         if ($specificTimeFormat) {

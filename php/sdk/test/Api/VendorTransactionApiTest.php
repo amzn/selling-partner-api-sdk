@@ -47,7 +47,7 @@ class VendorTransactionApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('VendorTransactionApi', $this->getName());
-        $this->apiInstance = new VendorTransactionApi($this->config, null, null);
+        $this->apiInstance = new VendorTransactionApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('VendorTransactionApi');
         if ($specificTimeFormat) {

@@ -47,7 +47,7 @@ class ProductPricingApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('ProductPricingApi', $this->getName());
-        $this->apiInstance = new ProductPricingApi($this->config, null, null);
+        $this->apiInstance = new ProductPricingApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
         if ($specificTimeFormat) {

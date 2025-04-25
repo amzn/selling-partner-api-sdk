@@ -47,7 +47,7 @@ class CreateContainerLabelApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('CreateContainerLabelApi', $this->getName());
-        $this->apiInstance = new CreateContainerLabelApi($this->config, null, null);
+        $this->apiInstance = new CreateContainerLabelApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CreateContainerLabelApi');
         if ($specificTimeFormat) {

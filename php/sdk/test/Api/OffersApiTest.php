@@ -47,7 +47,7 @@ class OffersApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('OffersApi', $this->getName());
-        $this->apiInstance = new OffersApi($this->config, null, null);
+        $this->apiInstance = new OffersApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OffersApi');
         if ($specificTimeFormat) {

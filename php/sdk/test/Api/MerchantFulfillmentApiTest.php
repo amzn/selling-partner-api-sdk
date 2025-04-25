@@ -47,7 +47,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('MerchantFulfillmentApi', $this->getName());
-        $this->apiInstance = new MerchantFulfillmentApi($this->config, null, null);
+        $this->apiInstance = new MerchantFulfillmentApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
         if ($specificTimeFormat) {

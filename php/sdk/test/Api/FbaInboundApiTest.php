@@ -47,7 +47,7 @@ class FbaInboundApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('FbaInboundApi', $this->getName());
-        $this->apiInstance = new FbaInboundApi($this->config, null, null);
+        $this->apiInstance = new FbaInboundApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FbaInboundApi');
         if ($specificTimeFormat) {

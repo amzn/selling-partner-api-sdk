@@ -47,7 +47,7 @@ class DefinitionsApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('DefinitionsApi', $this->getName());
-        $this->apiInstance = new DefinitionsApi($this->config, null, null);
+        $this->apiInstance = new DefinitionsApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('DefinitionsApi');
         if ($specificTimeFormat) {

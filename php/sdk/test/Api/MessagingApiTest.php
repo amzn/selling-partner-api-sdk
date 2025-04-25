@@ -47,7 +47,7 @@ class MessagingApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('MessagingApi', $this->getName());
-        $this->apiInstance = new MessagingApi($this->config, null, null);
+        $this->apiInstance = new MessagingApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
         if ($specificTimeFormat) {
