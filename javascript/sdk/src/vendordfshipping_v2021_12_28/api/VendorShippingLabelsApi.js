@@ -11,13 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateShippingLabelsRequest} from '../model/CreateShippingLabelsRequest.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {ShippingLabel} from '../model/ShippingLabel.js';
 import {ShippingLabelList} from '../model/ShippingLabelList.js';
 import {SubmitShippingLabelsRequest} from '../model/SubmitShippingLabelsRequest.js';
 import {TransactionReference} from '../model/TransactionReference.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * VendorShippingLabels service.
@@ -25,6 +27,9 @@ import {TransactionReference} from '../model/TransactionReference.js';
 * @version 2021-12-28
 */
 export class VendorShippingLabelsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new VendorShippingLabelsApi. 
@@ -35,6 +40,34 @@ export class VendorShippingLabelsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'VendorShippingLabelsApi-createShippingLabels',
+            'VendorShippingLabelsApi-getShippingLabel',
+            'VendorShippingLabelsApi-getShippingLabels',
+            'VendorShippingLabelsApi-submitShippingLabelRequest',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -74,10 +107,10 @@ export class VendorShippingLabelsApi {
       let accepts = ['application/json'];
       let returnType = ShippingLabel;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingLabelsApi-createShippingLabels',
         '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-createShippingLabels')
       );
     }
 
@@ -125,10 +158,10 @@ export class VendorShippingLabelsApi {
       let accepts = ['application/json'];
       let returnType = ShippingLabel;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingLabelsApi-getShippingLabel',
         '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-getShippingLabel')
       );
     }
 
@@ -192,10 +225,10 @@ export class VendorShippingLabelsApi {
       let accepts = ['application/json', 'pagination', 'shippingLabels'];
       let returnType = ShippingLabelList;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingLabelsApi-getShippingLabels',
         '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-getShippingLabels')
       );
     }
 
@@ -247,10 +280,10 @@ export class VendorShippingLabelsApi {
       let accepts = ['application/json'];
       let returnType = TransactionReference;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorShippingLabelsApi-submitShippingLabelRequest',
         '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-submitShippingLabelRequest')
       );
     }
 

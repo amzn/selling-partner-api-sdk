@@ -11,13 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {Item} from '../model/Item.js';
 import {ItemSearchResults} from '../model/ItemSearchResults.js';
 import {ListingsItemPatchRequest} from '../model/ListingsItemPatchRequest.js';
 import {ListingsItemPutRequest} from '../model/ListingsItemPutRequest.js';
 import {ListingsItemSubmissionResponse} from '../model/ListingsItemSubmissionResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Listings service.
@@ -25,6 +27,9 @@ import {ListingsItemSubmissionResponse} from '../model/ListingsItemSubmissionRes
 * @version 2021-08-01
 */
 export class ListingsApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ListingsApi. 
@@ -35,6 +40,35 @@ export class ListingsApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'ListingsApi-deleteListingsItem',
+            'ListingsApi-getListingsItem',
+            'ListingsApi-patchListingsItem',
+            'ListingsApi-putListingsItem',
+            'ListingsApi-searchListingsItems',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -85,10 +119,10 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ListingsItemSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-deleteListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-deleteListingsItem')
       );
     }
 
@@ -157,10 +191,10 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = Item;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-getListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-getListingsItem')
       );
     }
 
@@ -238,10 +272,10 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ListingsItemSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-patchListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-patchListingsItem')
       );
     }
 
@@ -321,10 +355,10 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ListingsItemSubmissionResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-putListingsItem',
         '/listings/2021-08-01/items/{sellerId}/{sku}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-putListingsItem')
       );
     }
 
@@ -419,10 +453,10 @@ export class ListingsApi {
       let accepts = ['application/json'];
       let returnType = ItemSearchResults;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ListingsApi-searchListingsItems',
         '/listings/2021-08-01/items/{sellerId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-searchListingsItems')
       );
     }
 

@@ -11,13 +11,15 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {CreateQueryResponse} from '../model/CreateQueryResponse.js';
 import {CreateQuerySpecification} from '../model/CreateQuerySpecification.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {GetDocumentResponse} from '../model/GetDocumentResponse.js';
 import {GetQueriesResponse} from '../model/GetQueriesResponse.js';
 import {Query} from '../model/Query.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Queries service.
@@ -25,6 +27,9 @@ import {Query} from '../model/Query.js';
 * @version 2023-11-15
 */
 export class QueriesApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new QueriesApi. 
@@ -35,6 +40,35 @@ export class QueriesApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'QueriesApi-cancelQuery',
+            'QueriesApi-createQuery',
+            'QueriesApi-getDocument',
+            'QueriesApi-getQueries',
+            'QueriesApi-getQuery',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -67,10 +101,10 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = null;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-cancelQuery',
         '/dataKiosk/2023-11-15/queries/{queryId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-cancelQuery')
       );
     }
 
@@ -114,10 +148,10 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = CreateQueryResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-createQuery',
         '/dataKiosk/2023-11-15/queries', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-createQuery')
       );
     }
 
@@ -162,10 +196,10 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = GetDocumentResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-getDocument',
         '/dataKiosk/2023-11-15/documents/{documentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getDocument')
       );
     }
 
@@ -215,10 +249,10 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = GetQueriesResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-getQueries',
         '/dataKiosk/2023-11-15/queries', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getQueries')
       );
     }
 
@@ -268,10 +302,10 @@ export class QueriesApi {
       let accepts = ['application/json'];
       let returnType = Query;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'QueriesApi-getQuery',
         '/dataKiosk/2023-11-15/queries/{queryId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getQuery')
       );
     }
 

@@ -49,6 +49,10 @@ jobs:
         run: |
           npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
           echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
+      - name: Copy README.md file
+        working-directory: javascript
+        run: |
+          cp -R README.md sdk/
       - name: Install dependencies
         working-directory: javascript/sdk
         run: npm install

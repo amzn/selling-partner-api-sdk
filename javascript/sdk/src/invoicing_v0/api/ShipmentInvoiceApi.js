@@ -11,11 +11,13 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {GetInvoiceStatusResponse} from '../model/GetInvoiceStatusResponse.js';
 import {GetShipmentDetailsResponse} from '../model/GetShipmentDetailsResponse.js';
 import {SubmitInvoiceRequest} from '../model/SubmitInvoiceRequest.js';
 import {SubmitInvoiceResponse} from '../model/SubmitInvoiceResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * ShipmentInvoice service.
@@ -23,6 +25,9 @@ import {SubmitInvoiceResponse} from '../model/SubmitInvoiceResponse.js';
 * @version v0
 */
 export class ShipmentInvoiceApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new ShipmentInvoiceApi. 
@@ -33,6 +38,33 @@ export class ShipmentInvoiceApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'ShipmentInvoiceApi-getInvoiceStatus',
+            'ShipmentInvoiceApi-getShipmentDetails',
+            'ShipmentInvoiceApi-submitInvoice',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -65,10 +97,10 @@ export class ShipmentInvoiceApi {
       let accepts = ['application/json'];
       let returnType = GetInvoiceStatusResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentInvoiceApi-getInvoiceStatus',
         '/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShipmentInvoiceApi-getInvoiceStatus')
       );
     }
 
@@ -113,10 +145,10 @@ export class ShipmentInvoiceApi {
       let accepts = ['application/json'];
       let returnType = GetShipmentDetailsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentInvoiceApi-getShipmentDetails',
         '/fba/outbound/brazil/v0/shipments/{shipmentId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShipmentInvoiceApi-getShipmentDetails')
       );
     }
 
@@ -167,10 +199,10 @@ export class ShipmentInvoiceApi {
       let accepts = ['application/json'];
       let returnType = SubmitInvoiceResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'ShipmentInvoiceApi-submitInvoice',
         '/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('ShipmentInvoiceApi-submitInvoice')
       );
     }
 

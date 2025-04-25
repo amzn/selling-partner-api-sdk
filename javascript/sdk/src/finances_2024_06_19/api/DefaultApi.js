@@ -11,9 +11,11 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {ListTransactionsResponse} from '../model/ListTransactionsResponse.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * Default service.
@@ -21,6 +23,9 @@ import {ListTransactionsResponse} from '../model/ListTransactionsResponse.js';
 * @version 2024-06-19
 */
 export class DefaultApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new DefaultApi. 
@@ -31,6 +36,31 @@ export class DefaultApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'DefaultApi-listTransactions',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -71,10 +101,10 @@ export class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ListTransactionsResponse;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'DefaultApi-listTransactions',
         '/finances/2024-06-19/transactions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listTransactions')
       );
     }
 

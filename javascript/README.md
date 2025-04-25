@@ -49,42 +49,39 @@ Add the following line to the `dependencies` in your `package.json` file:
 
 In order to call one of the APIs included in the Selling Partner API, you need to:
 1. Configure credentials (Note: Use your individual credentials for `clientId`, `clientSecret` and `refreshToken`)
-2. Retrieve `accessToken` using our `LwaAuthClient` helper (Be aware for some APIs, you will need extra step to get `RDT Token`)
+2. Enable auto `accessToken` retrievel using our built in ApiClient function OR retrieve `accessToken` using our `LwaAuthClient` helper (Be aware for some APIs, you will need extra step to get `RDT Token`)
 2. Create an instance for a specific API and API client, then apply `accessToken` to it.
-3. Call an operation
+3. Call an API operation
 
 For an example, refer to the following sample code for connecting to Sellers API:
 
 ```javascript
-import { LwaAuthClient } from '@amazon-sp-api-release/amazon-sp-api-sdk-js';
-
 import {
   SellersSpApi
 } from '@amazon-sp-api-release/amazon-sp-api-sdk-js';
 
-(async () => {
-  const lwaClient = new LwaAuthClient(
-    '<YOUR_CLIENT_ID>',
-    '<YOUR_CLIENT_SECRET>',
-    '<YOUR_REFRESH_TOKEN>'
-  );
-  const sellerApiClient = new SellersSpApi.ApiClient(
-    'https://sellingpartnerapi-na.amazon.com'
-  );
+async function getMarketplaceParticipations() {
+  try {
+      //Configure Sellers ApiClient
+      const sellersApiClient = new SellersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
+      sellersApiClient.enableAutoRetrievalAccessToken('<YOUR_CLIENT_ID>','<YOUR_CLIENT_SECRET>', '<YOUR_REFRESH_TOKEN>' null);
+      const sellersApi = new SellersSpApi.SellersApi(sellersApiClient);
+      
+      //Call GetMarkerplaceParticipations API
+      const participations = await sellersApi.getMarketplaceParticipations();
+      console.log(
+        JSON.stringify(participations, null, ' ') + 
+          '\n**********************************'
+      )
+  } catch (error) {
+      console.error('Exception when calling getMarketplaceParticipations API', error.message);
+  }
+}
 
-  const sellerApi = new SellersSpApi.SellersApi(sellerApiClient);
-  sellerApiClient.applyXAmzAccessTokenToRequest(
-    await lwaClient.getAccessToken()
-  );
-  const participations = await sellerApi.getMarketplaceParticipations();
-  console.log(
-    JSON.stringify(participations, null, '  ') +
-      '\n**********************************'
-  );
-})();
+getMarketplaceParticipations();
 ```
 
-Alternatively, you can go to `@amazon-sp-api-release/amazon-sp-api-sdk-js/sample-node-app` and copy over and modify `index.js` and `app.config.mjs` files and give them a try.
+Alternatively, you can go to `@amazon-sp-api-release/amazon-sp-api-sdk-js/sample-node-app` and copy over and modify `index.js` and `app.config.mjs` files and give them a try. You can see multiple API operation call samples with various way of retrieving token, as well how to set up rate limiter and retry logic when making API calls. Note that the rate limiter is turned on by default to protect your API calls from 429 errors.
 
 ##### Additional Note: 
 This Amazon Selling Partner API JavaScript SDK is fully compatible with ECMAScript modules (ESM). You can use modern ES6+ import/export syntax as demonstrated in the example code:

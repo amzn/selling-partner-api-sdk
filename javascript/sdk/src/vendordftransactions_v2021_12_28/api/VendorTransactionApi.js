@@ -11,10 +11,12 @@
  *
  */
 
-import {ApiClient} from "../ApiClient.js";
+import {ApiClient} from '../ApiClient.js';
 import {Error} from '../model/Error.js';
 import {ErrorList} from '../model/ErrorList.js';
 import {TransactionStatus} from '../model/TransactionStatus.js';
+import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
+import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 /**
 * VendorTransaction service.
@@ -22,6 +24,9 @@ import {TransactionStatus} from '../model/TransactionStatus.js';
 * @version 2021-12-28
 */
 export class VendorTransactionApi {
+
+    // Private memeber stores the default rate limiters
+    #defaultRateLimiterMap;
 
     /**
     * Constructs a new VendorTransactionApi. 
@@ -32,6 +37,31 @@ export class VendorTransactionApi {
     */
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
+        this.initializeDefaultRateLimiterMap();
+    }
+
+    /**
+     * Initialize rate limiters for API operations
+     */
+    initializeDefaultRateLimiterMap() {
+        this.#defaultRateLimiterMap = new Map()
+        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
+        const operations = [
+            'VendorTransactionApi-getTransactionStatus',
+        ];
+
+        for (const operation of operations) {
+            const config = defaultRateLimitFetcher.getLimit(operation);
+            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
+        }
+    }
+
+    /**
+     * Get rate limiter for a specific operation
+     * @param {String} operation name
+     */
+    getRateLimiter(operation) {
+        return this.#defaultRateLimiterMap.get(operation);
     }
 
 
@@ -64,10 +94,10 @@ export class VendorTransactionApi {
       let accepts = ['application/json'];
       let returnType = TransactionStatus;
 
-      return this.apiClient.callApi(
+      return this.apiClient.callApi( 'VendorTransactionApi-getTransactionStatus',
         '/vendor/directFulfillment/transactions/2021-12-28/transactions/{transactionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType
+        contentTypes, accepts, returnType, this.getRateLimiter('VendorTransactionApi-getTransactionStatus')
       );
     }
 
