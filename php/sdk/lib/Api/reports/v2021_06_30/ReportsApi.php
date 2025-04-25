@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\reports\v2021_06_30\CreateReportResponse;
@@ -77,36 +76,53 @@ class ReportsApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $rateLimiter = null;
+    private ?LimiterInterface $cancelReportRateLimiter;
+    private ?LimiterInterface $cancelReportScheduleRateLimiter;
+    private ?LimiterInterface $createReportRateLimiter;
+    private ?LimiterInterface $createReportScheduleRateLimiter;
+    private ?LimiterInterface $getReportRateLimiter;
+    private ?LimiterInterface $getReportDocumentRateLimiter;
+    private ?LimiterInterface $getReportScheduleRateLimiter;
+    private ?LimiterInterface $getReportSchedulesRateLimiter;
+    private ?LimiterInterface $getReportsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
+        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelReport'), $this->rateLimitStorage);
+            $this->cancelReportRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelReportSchedule'), $this->rateLimitStorage);
+            $this->cancelReportScheduleRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createReport'), $this->rateLimitStorage);
+            $this->createReportRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createReportSchedule'), $this->rateLimitStorage);
+            $this->createReportScheduleRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getReport'), $this->rateLimitStorage);
+            $this->getReportRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getReportDocument'), $this->rateLimitStorage);
+            $this->getReportDocumentRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getReportSchedule'), $this->rateLimitStorage);
+            $this->getReportScheduleRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getReportSchedules'), $this->rateLimitStorage);
+            $this->getReportSchedulesRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getReports'), $this->rateLimitStorage);
+            $this->getReportsRateLimiter = $factory->create();
         }
 
         $this->client = $client ?: new Client();
@@ -175,7 +191,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelReportRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -255,7 +273,9 @@ class ReportsApi
         $returnType = '';
         $request = $this->cancelReportRequest($report_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelReportRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -402,7 +422,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelReportScheduleRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -482,7 +504,9 @@ class ReportsApi
         $returnType = '';
         $request = $this->cancelReportScheduleRequest($report_schedule_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelReportScheduleRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -631,7 +655,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createReportRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -723,7 +749,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
         $request = $this->createReportRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createReportRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -882,7 +910,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createReportScheduleRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -974,7 +1004,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
         $request = $this->createReportScheduleRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createReportScheduleRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1133,7 +1165,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getReportRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1225,7 +1259,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\Report';
         $request = $this->getReportRequest($report_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getReportRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1387,7 +1423,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getReportDocumentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1479,7 +1517,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
         $request = $this->getReportDocumentRequest($report_document_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getReportDocumentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1641,7 +1681,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getReportScheduleRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1733,7 +1775,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportSchedule';
         $request = $this->getReportScheduleRequest($report_schedule_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getReportScheduleRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1895,7 +1939,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getReportSchedulesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1987,7 +2033,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportScheduleList';
         $request = $this->getReportSchedulesRequest($report_types);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getReportSchedulesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2193,7 +2241,9 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getReportsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2321,7 +2371,9 @@ class ReportsApi
         $returnType = '\SpApi\Model\reports\v2021_06_30\GetReportsResponse';
         $request = $this->getReportsRequest($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getReportsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2541,21 +2593,6 @@ class ReportsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

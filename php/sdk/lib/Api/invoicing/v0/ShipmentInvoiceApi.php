@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\invoicing\v0\GetInvoiceStatusResponse;
@@ -72,36 +71,35 @@ class ShipmentInvoiceApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $rateLimiter = null;
+    private ?LimiterInterface $getInvoiceStatusRateLimiter;
+    private ?LimiterInterface $getShipmentDetailsRateLimiter;
+    private ?LimiterInterface $submitInvoiceRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
+        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getInvoiceStatus'), $this->rateLimitStorage);
+            $this->getInvoiceStatusRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipmentDetails'), $this->rateLimitStorage);
+            $this->getShipmentDetailsRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('submitInvoice'), $this->rateLimitStorage);
+            $this->submitInvoiceRateLimiter = $factory->create();
         }
 
         $this->client = $client ?: new Client();
@@ -172,7 +170,9 @@ class ShipmentInvoiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getInvoiceStatusRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -264,7 +264,9 @@ class ShipmentInvoiceApi
         $returnType = '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse';
         $request = $this->getInvoiceStatusRequest($shipment_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getInvoiceStatusRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -426,7 +428,9 @@ class ShipmentInvoiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -518,7 +522,9 @@ class ShipmentInvoiceApi
         $returnType = '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse';
         $request = $this->getShipmentDetailsRequest($shipment_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -686,7 +692,9 @@ class ShipmentInvoiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -784,7 +792,9 @@ class ShipmentInvoiceApi
         $returnType = '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($shipment_id, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -921,21 +931,6 @@ class ShipmentInvoiceApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

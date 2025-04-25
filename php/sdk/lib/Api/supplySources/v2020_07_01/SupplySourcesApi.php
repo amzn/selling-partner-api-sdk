@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest;
@@ -75,36 +74,44 @@ class SupplySourcesApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $rateLimiter = null;
+    private ?LimiterInterface $archiveSupplySourceRateLimiter;
+    private ?LimiterInterface $createSupplySourceRateLimiter;
+    private ?LimiterInterface $getSupplySourceRateLimiter;
+    private ?LimiterInterface $getSupplySourcesRateLimiter;
+    private ?LimiterInterface $updateSupplySourceRateLimiter;
+    private ?LimiterInterface $updateSupplySourceStatusRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
+        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('archiveSupplySource'), $this->rateLimitStorage);
+            $this->archiveSupplySourceRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createSupplySource'), $this->rateLimitStorage);
+            $this->createSupplySourceRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getSupplySource'), $this->rateLimitStorage);
+            $this->getSupplySourceRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getSupplySources'), $this->rateLimitStorage);
+            $this->getSupplySourcesRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateSupplySource'), $this->rateLimitStorage);
+            $this->updateSupplySourceRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateSupplySourceStatus'), $this->rateLimitStorage);
+            $this->updateSupplySourceStatusRateLimiter = $factory->create();
         }
 
         $this->client = $client ?: new Client();
@@ -175,7 +182,9 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->archiveSupplySourceRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -267,7 +276,9 @@ class SupplySourcesApi
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->archiveSupplySourceRequest($supply_source_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->archiveSupplySourceRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -429,7 +440,9 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createSupplySourceRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -521,7 +534,9 @@ class SupplySourcesApi
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse';
         $request = $this->createSupplySourceRequest($payload);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createSupplySourceRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -680,7 +695,9 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getSupplySourceRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -772,7 +789,9 @@ class SupplySourcesApi
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\SupplySource';
         $request = $this->getSupplySourceRequest($supply_source_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getSupplySourceRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -940,7 +959,9 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getSupplySourcesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1038,7 +1059,9 @@ class SupplySourcesApi
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse';
         $request = $this->getSupplySourcesRequest($next_page_token, $page_size);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getSupplySourcesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1214,7 +1237,9 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->updateSupplySourceRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1312,7 +1337,9 @@ class SupplySourcesApi
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->updateSupplySourceRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1489,7 +1516,9 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->updateSupplySourceStatusRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1587,7 +1616,9 @@ class SupplySourcesApi
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->updateSupplySourceStatusRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1718,21 +1749,6 @@ class SupplySourcesApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

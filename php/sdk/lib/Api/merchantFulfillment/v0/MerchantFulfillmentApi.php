@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\merchantFulfillment\v0\CancelShipmentResponse;
@@ -76,36 +75,41 @@ class MerchantFulfillmentApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $rateLimiter = null;
+    private ?LimiterInterface $cancelShipmentRateLimiter;
+    private ?LimiterInterface $createShipmentRateLimiter;
+    private ?LimiterInterface $getAdditionalSellerInputsRateLimiter;
+    private ?LimiterInterface $getEligibleShipmentServicesRateLimiter;
+    private ?LimiterInterface $getShipmentRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
+        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelShipment'), $this->rateLimitStorage);
+            $this->cancelShipmentRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createShipment'), $this->rateLimitStorage);
+            $this->createShipmentRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getAdditionalSellerInputs'), $this->rateLimitStorage);
+            $this->getAdditionalSellerInputsRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getEligibleShipmentServices'), $this->rateLimitStorage);
+            $this->getEligibleShipmentServicesRateLimiter = $factory->create();
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipment'), $this->rateLimitStorage);
+            $this->getShipmentRateLimiter = $factory->create();
         }
 
         $this->client = $client ?: new Client();
@@ -176,7 +180,9 @@ class MerchantFulfillmentApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -268,7 +274,9 @@ class MerchantFulfillmentApi
         $returnType = '\SpApi\Model\merchantFulfillment\v0\CancelShipmentResponse';
         $request = $this->cancelShipmentRequest($shipment_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -433,7 +441,9 @@ class MerchantFulfillmentApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -525,7 +535,9 @@ class MerchantFulfillmentApi
         $returnType = '\SpApi\Model\merchantFulfillment\v0\CreateShipmentResponse';
         $request = $this->createShipmentRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -684,7 +696,9 @@ class MerchantFulfillmentApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getAdditionalSellerInputsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -776,7 +790,9 @@ class MerchantFulfillmentApi
         $returnType = '\SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResponse';
         $request = $this->getAdditionalSellerInputsRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getAdditionalSellerInputsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -935,7 +951,9 @@ class MerchantFulfillmentApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getEligibleShipmentServicesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1027,7 +1045,9 @@ class MerchantFulfillmentApi
         $returnType = '\SpApi\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResponse';
         $request = $this->getEligibleShipmentServicesRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getEligibleShipmentServicesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1186,7 +1206,9 @@ class MerchantFulfillmentApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1278,7 +1300,9 @@ class MerchantFulfillmentApi
         $returnType = '\SpApi\Model\merchantFulfillment\v0\GetShipmentResponse';
         $request = $this->getShipmentRequest($shipment_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1403,21 +1427,6 @@ class MerchantFulfillmentApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**
