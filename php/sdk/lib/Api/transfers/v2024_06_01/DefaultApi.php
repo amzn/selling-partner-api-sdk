@@ -81,8 +81,8 @@ class DefaultApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -92,9 +92,9 @@ class DefaultApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getPaymentMethods'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-getPaymentMethods'), $this->rateLimitStorage);
             $this->getPaymentMethodsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('initiatePayout'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-initiatePayout'), $this->rateLimitStorage);
             $this->initiatePayoutRateLimiter = $factory->create();
         }
 

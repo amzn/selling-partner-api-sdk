@@ -90,8 +90,8 @@ class VendorOrdersApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -101,13 +101,13 @@ class VendorOrdersApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getPurchaseOrder"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrder"), $this->rateLimitStorage);
             $this->getPurchaseOrderRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getPurchaseOrders"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrders"), $this->rateLimitStorage);
             $this->getPurchaseOrdersRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getPurchaseOrdersStatus"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrdersStatus"), $this->rateLimitStorage);
             $this->getPurchaseOrdersStatusRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("submitAcknowledgement"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-submitAcknowledgement"), $this->rateLimitStorage);
             $this->submitAcknowledgementRateLimiter = $factory->create();
         }
 

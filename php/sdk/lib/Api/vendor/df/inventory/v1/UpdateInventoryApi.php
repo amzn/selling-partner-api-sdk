@@ -87,8 +87,8 @@ class UpdateInventoryApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -98,7 +98,7 @@ class UpdateInventoryApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("submitInventoryUpdate"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("UpdateInventoryApi-submitInventoryUpdate"), $this->rateLimitStorage);
             $this->submitInventoryUpdateRateLimiter = $factory->create();
         }
 

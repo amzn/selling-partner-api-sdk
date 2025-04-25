@@ -83,8 +83,8 @@ class FeesApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -94,11 +94,11 @@ class FeesApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getMyFeesEstimateForASIN'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeesApi-getMyFeesEstimateForASIN'), $this->rateLimitStorage);
             $this->getMyFeesEstimateForASINRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getMyFeesEstimateForSKU'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeesApi-getMyFeesEstimateForSKU'), $this->rateLimitStorage);
             $this->getMyFeesEstimateForSKURateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getMyFeesEstimates'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeesApi-getMyFeesEstimates'), $this->rateLimitStorage);
             $this->getMyFeesEstimatesRateLimiter = $factory->create();
         }
 

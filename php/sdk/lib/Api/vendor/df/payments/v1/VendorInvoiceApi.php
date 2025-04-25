@@ -87,8 +87,8 @@ class VendorInvoiceApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -98,7 +98,7 @@ class VendorInvoiceApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("submitInvoice"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorInvoiceApi-submitInvoice"), $this->rateLimitStorage);
             $this->submitInvoiceRateLimiter = $factory->create();
         }
 

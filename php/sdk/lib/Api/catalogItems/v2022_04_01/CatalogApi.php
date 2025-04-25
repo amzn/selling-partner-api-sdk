@@ -80,8 +80,8 @@ class CatalogApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -91,9 +91,9 @@ class CatalogApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getCatalogItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-getCatalogItem'), $this->rateLimitStorage);
             $this->getCatalogItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('searchCatalogItems'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-searchCatalogItems'), $this->rateLimitStorage);
             $this->searchCatalogItemsRateLimiter = $factory->create();
         }
 

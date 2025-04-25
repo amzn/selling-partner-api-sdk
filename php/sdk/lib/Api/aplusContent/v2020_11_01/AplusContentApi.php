@@ -97,8 +97,8 @@ class AplusContentApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -108,25 +108,25 @@ class AplusContentApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createContentDocument'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-createContentDocument'), $this->rateLimitStorage);
             $this->createContentDocumentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getContentDocument'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-getContentDocument'), $this->rateLimitStorage);
             $this->getContentDocumentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listContentDocumentAsinRelations'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-listContentDocumentAsinRelations'), $this->rateLimitStorage);
             $this->listContentDocumentAsinRelationsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('postContentDocumentApprovalSubmission'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-postContentDocumentApprovalSubmission'), $this->rateLimitStorage);
             $this->postContentDocumentApprovalSubmissionRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('postContentDocumentAsinRelations'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-postContentDocumentAsinRelations'), $this->rateLimitStorage);
             $this->postContentDocumentAsinRelationsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('postContentDocumentSuspendSubmission'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-postContentDocumentSuspendSubmission'), $this->rateLimitStorage);
             $this->postContentDocumentSuspendSubmissionRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('searchContentDocuments'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-searchContentDocuments'), $this->rateLimitStorage);
             $this->searchContentDocumentsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('searchContentPublishRecords'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-searchContentPublishRecords'), $this->rateLimitStorage);
             $this->searchContentPublishRecordsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateContentDocument'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-updateContentDocument'), $this->rateLimitStorage);
             $this->updateContentDocumentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('validateContentDocumentAsinRelations'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AplusContentApi-validateContentDocumentAsinRelations'), $this->rateLimitStorage);
             $this->validateContentDocumentAsinRelationsRateLimiter = $factory->create();
         }
 

@@ -97,8 +97,8 @@ class AwdApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -108,27 +108,27 @@ class AwdApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelInbound'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-cancelInbound'), $this->rateLimitStorage);
             $this->cancelInboundRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('checkInboundEligibility'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-checkInboundEligibility'), $this->rateLimitStorage);
             $this->checkInboundEligibilityRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('confirmInbound'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmInbound'), $this->rateLimitStorage);
             $this->confirmInboundRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createInbound'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createInbound'), $this->rateLimitStorage);
             $this->createInboundRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getInbound'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInbound'), $this->rateLimitStorage);
             $this->getInboundRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getInboundShipment'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInboundShipment'), $this->rateLimitStorage);
             $this->getInboundShipmentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getInboundShipmentLabels'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInboundShipmentLabels'), $this->rateLimitStorage);
             $this->getInboundShipmentLabelsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listInboundShipments'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listInboundShipments'), $this->rateLimitStorage);
             $this->listInboundShipmentsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listInventory'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listInventory'), $this->rateLimitStorage);
             $this->listInventoryRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateInbound'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateInbound'), $this->rateLimitStorage);
             $this->updateInboundRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateInboundShipmentTransportDetails'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateInboundShipmentTransportDetails'), $this->rateLimitStorage);
             $this->updateInboundShipmentTransportDetailsRateLimiter = $factory->create();
         }
 

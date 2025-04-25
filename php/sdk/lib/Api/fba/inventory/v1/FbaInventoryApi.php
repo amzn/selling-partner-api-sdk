@@ -86,8 +86,8 @@ class FbaInventoryApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -97,13 +97,13 @@ class FbaInventoryApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('addInventory'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-addInventory'), $this->rateLimitStorage);
             $this->addInventoryRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createInventoryItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-createInventoryItem'), $this->rateLimitStorage);
             $this->createInventoryItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('deleteInventoryItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-deleteInventoryItem'), $this->rateLimitStorage);
             $this->deleteInventoryItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getInventorySummaries'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-getInventorySummaries'), $this->rateLimitStorage);
             $this->getInventorySummariesRateLimiter = $factory->create();
         }
 

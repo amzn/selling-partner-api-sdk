@@ -77,8 +77,8 @@ class ApplicationsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -88,7 +88,7 @@ class ApplicationsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('rotateApplicationClientSecret'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ApplicationsApi-rotateApplicationClientSecret'), $this->rateLimitStorage);
             $this->rotateApplicationClientSecretRateLimiter = $factory->create();
         }
 

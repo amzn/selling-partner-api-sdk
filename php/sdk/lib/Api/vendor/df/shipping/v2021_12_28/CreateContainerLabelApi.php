@@ -87,8 +87,8 @@ class CreateContainerLabelApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -98,7 +98,7 @@ class CreateContainerLabelApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("createContainerLabel"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CreateContainerLabelApi-createContainerLabel"), $this->rateLimitStorage);
             $this->createContainerLabelRateLimiter = $factory->create();
         }
 

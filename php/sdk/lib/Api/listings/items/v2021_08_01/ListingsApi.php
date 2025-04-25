@@ -86,8 +86,8 @@ class ListingsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -97,15 +97,15 @@ class ListingsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('deleteListingsItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-deleteListingsItem'), $this->rateLimitStorage);
             $this->deleteListingsItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getListingsItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsItem'), $this->rateLimitStorage);
             $this->getListingsItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('patchListingsItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-patchListingsItem'), $this->rateLimitStorage);
             $this->patchListingsItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('putListingsItem'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-putListingsItem'), $this->rateLimitStorage);
             $this->putListingsItemRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('searchListingsItems'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-searchListingsItems'), $this->rateLimitStorage);
             $this->searchListingsItemsRateLimiter = $factory->create();
         }
 

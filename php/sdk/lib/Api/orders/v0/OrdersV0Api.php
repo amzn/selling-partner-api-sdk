@@ -94,8 +94,8 @@ class OrdersV0Api
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -105,23 +105,23 @@ class OrdersV0Api
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('confirmShipment'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-confirmShipment'), $this->rateLimitStorage);
             $this->confirmShipmentRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrder'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrder'), $this->rateLimitStorage);
             $this->getOrderRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrderAddress'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderAddress'), $this->rateLimitStorage);
             $this->getOrderAddressRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrderBuyerInfo'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderBuyerInfo'), $this->rateLimitStorage);
             $this->getOrderBuyerInfoRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrderItems'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderItems'), $this->rateLimitStorage);
             $this->getOrderItemsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrderItemsBuyerInfo'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderItemsBuyerInfo'), $this->rateLimitStorage);
             $this->getOrderItemsBuyerInfoRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrderRegulatedInfo'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderRegulatedInfo'), $this->rateLimitStorage);
             $this->getOrderRegulatedInfoRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getOrders'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrders'), $this->rateLimitStorage);
             $this->getOrdersRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateVerificationStatus'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-updateVerificationStatus'), $this->rateLimitStorage);
             $this->updateVerificationStatusRateLimiter = $factory->create();
         }
 

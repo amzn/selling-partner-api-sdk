@@ -80,8 +80,8 @@ class DefinitionsApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -91,9 +91,9 @@ class DefinitionsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getDefinitionsProductType'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-getDefinitionsProductType'), $this->rateLimitStorage);
             $this->getDefinitionsProductTypeRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('searchDefinitionsProductTypes'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-searchDefinitionsProductTypes'), $this->rateLimitStorage);
             $this->searchDefinitionsProductTypesRateLimiter = $factory->create();
         }
 

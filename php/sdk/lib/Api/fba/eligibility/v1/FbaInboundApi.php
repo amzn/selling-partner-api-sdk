@@ -78,8 +78,8 @@ class FbaInboundApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -89,7 +89,7 @@ class FbaInboundApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getItemEligibilityPreview'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getItemEligibilityPreview'), $this->rateLimitStorage);
             $this->getItemEligibilityPreviewRateLimiter = $factory->create();
         }
 

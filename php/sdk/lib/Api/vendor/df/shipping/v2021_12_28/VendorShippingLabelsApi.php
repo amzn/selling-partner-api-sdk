@@ -90,8 +90,8 @@ class VendorShippingLabelsApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -101,13 +101,13 @@ class VendorShippingLabelsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("createShippingLabels"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-createShippingLabels"), $this->rateLimitStorage);
             $this->createShippingLabelsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getShippingLabel"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabel"), $this->rateLimitStorage);
             $this->getShippingLabelRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getShippingLabels"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabels"), $this->rateLimitStorage);
             $this->getShippingLabelsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("submitShippingLabelRequest"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-submitShippingLabelRequest"), $this->rateLimitStorage);
             $this->submitShippingLabelRequestRateLimiter = $factory->create();
         }
 

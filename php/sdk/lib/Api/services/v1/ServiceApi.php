@@ -117,8 +117,8 @@ class ServiceApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -128,39 +128,39 @@ class ServiceApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('addAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-addAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
             $this->addAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('assignAppointmentResources'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-assignAppointmentResources'), $this->rateLimitStorage);
             $this->assignAppointmentResourcesRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelReservation'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-cancelReservation'), $this->rateLimitStorage);
             $this->cancelReservationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('cancelServiceJobByServiceJobId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-cancelServiceJobByServiceJobId'), $this->rateLimitStorage);
             $this->cancelServiceJobByServiceJobIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('completeServiceJobByServiceJobId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-completeServiceJobByServiceJobId'), $this->rateLimitStorage);
             $this->completeServiceJobByServiceJobIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createReservation'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-createReservation'), $this->rateLimitStorage);
             $this->createReservationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('createServiceDocumentUploadDestination'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-createServiceDocumentUploadDestination'), $this->rateLimitStorage);
             $this->createServiceDocumentUploadDestinationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getAppointmentSlots'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getAppointmentSlots'), $this->rateLimitStorage);
             $this->getAppointmentSlotsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getAppointmmentSlotsByJobId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getAppointmmentSlotsByJobId'), $this->rateLimitStorage);
             $this->getAppointmmentSlotsByJobIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getFixedSlotCapacity'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getFixedSlotCapacity'), $this->rateLimitStorage);
             $this->getFixedSlotCapacityRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getRangeSlotCapacity'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getRangeSlotCapacity'), $this->rateLimitStorage);
             $this->getRangeSlotCapacityRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getServiceJobByServiceJobId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getServiceJobByServiceJobId'), $this->rateLimitStorage);
             $this->getServiceJobByServiceJobIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getServiceJobs'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getServiceJobs'), $this->rateLimitStorage);
             $this->getServiceJobsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('rescheduleAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
             $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('setAppointmentFulfillmentData'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-setAppointmentFulfillmentData'), $this->rateLimitStorage);
             $this->setAppointmentFulfillmentDataRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateReservation'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-updateReservation'), $this->rateLimitStorage);
             $this->updateReservationRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('updateSchedule'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-updateSchedule'), $this->rateLimitStorage);
             $this->updateScheduleRateLimiter = $factory->create();
         }
 

@@ -89,8 +89,8 @@ class VendorOrdersApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -100,11 +100,11 @@ class VendorOrdersApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getOrder"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getOrder"), $this->rateLimitStorage);
             $this->getOrderRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getOrders"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getOrders"), $this->rateLimitStorage);
             $this->getOrdersRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("submitAcknowledgement"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-submitAcknowledgement"), $this->rateLimitStorage);
             $this->submitAcknowledgementRateLimiter = $factory->create();
         }
 

@@ -83,8 +83,8 @@ class ShipmentInvoiceApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -94,11 +94,11 @@ class ShipmentInvoiceApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getInvoiceStatus'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-getInvoiceStatus'), $this->rateLimitStorage);
             $this->getInvoiceStatusRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipmentDetails'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-getShipmentDetails'), $this->rateLimitStorage);
             $this->getShipmentDetailsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('submitInvoice'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-submitInvoice'), $this->rateLimitStorage);
             $this->submitInvoiceRateLimiter = $factory->create();
         }
 

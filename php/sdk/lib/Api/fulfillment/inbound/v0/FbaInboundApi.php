@@ -87,8 +87,8 @@ class FbaInboundApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -98,17 +98,17 @@ class FbaInboundApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getBillOfLading'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getBillOfLading'), $this->rateLimitStorage);
             $this->getBillOfLadingRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getLabels'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getLabels'), $this->rateLimitStorage);
             $this->getLabelsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getPrepInstructions'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getPrepInstructions'), $this->rateLimitStorage);
             $this->getPrepInstructionsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipmentItems'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipmentItems'), $this->rateLimitStorage);
             $this->getShipmentItemsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipmentItemsByShipmentId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipmentItemsByShipmentId'), $this->rateLimitStorage);
             $this->getShipmentItemsByShipmentIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('getShipments'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipments'), $this->rateLimitStorage);
             $this->getShipmentsRateLimiter = $factory->create();
         }
 

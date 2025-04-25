@@ -87,8 +87,8 @@ class VendorTransactionApi
      */
     public function __construct(
         Configuration $config,
-        ?Bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -98,7 +98,7 @@ class VendorTransactionApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("getTransactionStatus"), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorTransactionApi-getTransactionStatus"), $this->rateLimitStorage);
             $this->getTransactionStatusRateLimiter = $factory->create();
         }
 

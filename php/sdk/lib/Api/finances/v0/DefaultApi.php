@@ -82,8 +82,8 @@ class DefaultApi
      */
     public function __construct(
         Configuration $config,
-        ?bool $rateLimiterEnabled = true,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -93,13 +93,13 @@ class DefaultApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listFinancialEventGroups'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventGroups'), $this->rateLimitStorage);
             $this->listFinancialEventGroupsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listFinancialEvents'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEvents'), $this->rateLimitStorage);
             $this->listFinancialEventsRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listFinancialEventsByGroupId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventsByGroupId'), $this->rateLimitStorage);
             $this->listFinancialEventsByGroupIdRateLimiter = $factory->create();
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('listFinancialEventsByOrderId'), $this->rateLimitStorage);
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventsByOrderId'), $this->rateLimitStorage);
             $this->listFinancialEventsByOrderIdRateLimiter = $factory->create();
         }
 
