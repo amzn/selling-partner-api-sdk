@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentDetailsResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentLabels;
@@ -67,6 +66,73 @@ public class VendorShippingApi {
             .addLimit(config.getLimit("VendorShippingApi-submitShipments"))
             .build();
 
+    /**
+     * Build call for getShipmentDetails
+     *
+     * @param limit The limit to the number of records returned. Default value is 50 records. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there are more shipments than the specified result size limit.
+     *     (optional)
+     * @param createdAfter Get Shipment Details that became available after this timestamp will be included in the
+     *     result. Must be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param createdBefore Get Shipment Details that became available before this timestamp will be included in the
+     *     result. Must be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param shipmentConfirmedBefore Get Shipment Details by passing Shipment confirmed create Date Before. Must be in
+     *     &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt;
+     *     format. (optional)
+     * @param shipmentConfirmedAfter Get Shipment Details by passing Shipment confirmed create Date After. Must be in
+     *     &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt;
+     *     format. (optional)
+     * @param packageLabelCreatedBefore Get Shipment Details by passing Package label create Date by buyer. Must be in
+     *     &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt;
+     *     format. (optional)
+     * @param packageLabelCreatedAfter Get Shipment Details by passing Package label create Date After by buyer. Must be
+     *     in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt;
+     *     format. (optional)
+     * @param shippedBefore Get Shipment Details by passing Shipped Date Before. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param shippedAfter Get Shipment Details by passing Shipped Date After. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param shipmentDeliveryAfter Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param requestedPickUpBefore Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param requestedPickUpAfter Get Shipment Details by passing After Requested pickup date. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param scheduledPickUpBefore Get Shipment Details by passing Before scheduled pickup date. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param scheduledPickUpAfter Get Shipment Details by passing After Scheduled pickup date. Must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param currentShipmentStatus Get Shipment Details by passing Current shipment status. (optional)
+     * @param vendorShipmentIdentifier Get Shipment Details by passing Vendor Shipment ID (optional)
+     * @param buyerReferenceNumber Get Shipment Details by passing buyer Reference ID (optional)
+     * @param buyerWarehouseCode Get Shipping Details based on buyer warehouse code. This value should be same as
+     *     &#x27;shipToParty.partyId&#x27; in the Shipment. (optional)
+     * @param sellerWarehouseCode Get Shipping Details based on vendor warehouse code. This value should be same as
+     *     &#x27;sellingParty.partyId&#x27; in the Shipment. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getShipmentDetailsCall(
             Long limit,
             String sortOrder,
@@ -92,7 +158,6 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String buyerWarehouseCode,
             String sellerWarehouseCode,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -160,17 +225,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -179,7 +233,6 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -208,7 +261,6 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String buyerWarehouseCode,
             String sellerWarehouseCode,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
@@ -237,7 +289,6 @@ public class VendorShippingApi {
                 buyerReferenceNumber,
                 buyerWarehouseCode,
                 sellerWarehouseCode,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -492,7 +543,6 @@ public class VendorShippingApi {
                 buyerReferenceNumber,
                 buyerWarehouseCode,
                 sellerWarehouseCode,
-                null,
                 null);
         if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
@@ -602,11 +652,9 @@ public class VendorShippingApi {
             final ApiCallback<GetShipmentDetailsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -635,7 +683,6 @@ public class VendorShippingApi {
                 buyerReferenceNumber,
                 buyerWarehouseCode,
                 sellerWarehouseCode,
-                progressListener,
                 progressRequestListener);
         if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
@@ -643,7 +690,29 @@ public class VendorShippingApi {
             return call;
         } else throw new ApiException.RateLimitExceeded("getShipmentDetails operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getShipmentLabels
+     *
+     * @param limit The limit to the number of records returned. Default value is 50 records. (optional)
+     * @param sortOrder Sort the list by shipment label creation date in ascending or descending order. (optional)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the
+     *     next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param labelCreatedAfter Shipment labels created after this time will be included in the result. This field must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
+     * @param labelCreatedBefore Shipment labels created before this time will be included in the result. This field
+     *     must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
+     * @param buyerReferenceNumber Get Shipment labels by passing buyer reference number. (optional)
+     * @param vendorShipmentIdentifier Get Shipment labels by passing vendor shipment identifier. (optional)
+     * @param sellerWarehouseCode Get Shipping labels based on vendor warehouse code. This value must be same as the
+     *     &#x60;sellingParty.partyId&#x60; in the shipment. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getShipmentLabelsCall(
             Long limit,
             String sortOrder,
@@ -653,7 +722,6 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String vendorShipmentIdentifier,
             String sellerWarehouseCode,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -690,17 +758,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -709,7 +766,6 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -722,7 +778,6 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String vendorShipmentIdentifier,
             String sellerWarehouseCode,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
@@ -735,7 +790,6 @@ public class VendorShippingApi {
                 buyerReferenceNumber,
                 vendorShipmentIdentifier,
                 sellerWarehouseCode,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -834,7 +888,6 @@ public class VendorShippingApi {
                 buyerReferenceNumber,
                 vendorShipmentIdentifier,
                 sellerWarehouseCode,
-                null,
                 null);
         if (disableRateLimiting || getShipmentLabelsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentLabels>() {}.getType();
@@ -882,11 +935,9 @@ public class VendorShippingApi {
             final ApiCallback<GetShipmentLabels> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -899,7 +950,6 @@ public class VendorShippingApi {
                 buyerReferenceNumber,
                 vendorShipmentIdentifier,
                 sellerWarehouseCode,
-                progressListener,
                 progressRequestListener);
         if (disableRateLimiting || getShipmentLabelsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentLabels>() {}.getType();
@@ -907,10 +957,17 @@ public class VendorShippingApi {
             return call;
         } else throw new ApiException.RateLimitExceeded("getShipmentLabels operation exceeds rate limit");
     }
-
+    /**
+     * Build call for submitShipmentConfirmations
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call submitShipmentConfirmationsCall(
             SubmitShipmentConfirmationsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -933,17 +990,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -952,13 +998,11 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitShipmentConfirmationsValidateBeforeCall(
             SubmitShipmentConfirmationsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -967,7 +1011,7 @@ public class VendorShippingApi {
                     "Missing the required parameter 'body' when calling submitShipmentConfirmations(Async)");
         }
 
-        return submitShipmentConfirmationsCall(body, progressListener, progressRequestListener);
+        return submitShipmentConfirmationsCall(body, progressRequestListener);
     }
 
     /**
@@ -1006,7 +1050,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<SubmitShipmentConfirmationsResponse> submitShipmentConfirmationsWithHttpInfo(
             SubmitShipmentConfirmationsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, null, null);
+        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, null);
         if (disableRateLimiting || submitShipmentConfirmationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitShipmentConfirmationsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1032,27 +1076,30 @@ public class VendorShippingApi {
             SubmitShipmentConfirmationsRequest body, final ApiCallback<SubmitShipmentConfirmationsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                submitShipmentConfirmationsValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, progressRequestListener);
         if (disableRateLimiting || submitShipmentConfirmationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitShipmentConfirmationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("submitShipmentConfirmations operation exceeds rate limit");
     }
-
+    /**
+     * Build call for submitShipments
+     *
+     * @param body A request to submit shipment request. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call submitShipmentsCall(
-            SubmitShipments body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitShipments body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1074,17 +1121,6 @@ public class VendorShippingApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1093,21 +1129,18 @@ public class VendorShippingApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitShipmentsValidateBeforeCall(
-            SubmitShipments body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitShipments body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling submitShipments(Async)");
         }
 
-        return submitShipmentsCall(body, progressListener, progressRequestListener);
+        return submitShipmentsCall(body, progressRequestListener);
     }
 
     /**
@@ -1145,7 +1178,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<SubmitShipmentConfirmationsResponse> submitShipmentsWithHttpInfo(SubmitShipments body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitShipmentsValidateBeforeCall(body, null, null);
+        okhttp3.Call call = submitShipmentsValidateBeforeCall(body, null);
         if (disableRateLimiting || submitShipmentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitShipmentConfirmationsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1171,15 +1204,13 @@ public class VendorShippingApi {
             SubmitShipments body, final ApiCallback<SubmitShipmentConfirmationsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = submitShipmentsValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = submitShipmentsValidateBeforeCall(body, progressRequestListener);
         if (disableRateLimiting || submitShipmentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitShipmentConfirmationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

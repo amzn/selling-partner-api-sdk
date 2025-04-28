@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.replenishment.v2022_11_07.GetSellingPartnerMetricsRequest;
 import software.amazon.spapi.models.replenishment.v2022_11_07.GetSellingPartnerMetricsResponse;
@@ -51,9 +50,17 @@ public class SellingpartnersApi {
             .addLimit(config.getLimit("SellingpartnersApi-getSellingPartnerMetrics"))
             .build();
 
+    /**
+     * Build call for getSellingPartnerMetrics
+     *
+     * @param body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getSellingPartnerMetricsCall(
             GetSellingPartnerMetricsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -76,17 +83,6 @@ public class SellingpartnersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -95,17 +91,15 @@ public class SellingpartnersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getSellingPartnerMetricsValidateBeforeCall(
             GetSellingPartnerMetricsRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return getSellingPartnerMetricsCall(body, progressListener, progressRequestListener);
+        return getSellingPartnerMetricsCall(body, progressRequestListener);
     }
 
     /**
@@ -144,7 +138,7 @@ public class SellingpartnersApi {
      */
     public ApiResponse<GetSellingPartnerMetricsResponse> getSellingPartnerMetricsWithHttpInfo(
             GetSellingPartnerMetricsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, null, null);
+        okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, null);
         if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -170,15 +164,13 @@ public class SellingpartnersApi {
             GetSellingPartnerMetricsRequest body, final ApiCallback<GetSellingPartnerMetricsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, progressRequestListener);
         if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

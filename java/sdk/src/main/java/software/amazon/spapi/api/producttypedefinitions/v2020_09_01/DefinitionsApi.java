@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ProductTypeDefinition;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ProductTypeList;
@@ -55,6 +54,31 @@ public class DefinitionsApi {
             .addLimit(config.getLimit("DefinitionsApi-searchDefinitionsProductTypes"))
             .build();
 
+    /**
+     * Build call for getDefinitionsProductType
+     *
+     * @param productType The Amazon product type name. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This
+     *     parameter is limited to one marketplaceId at this time. (required)
+     * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
+     *     populated within the product type definition schema, such as brand names associated with the selling partner.
+     *     (optional)
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
+     *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
+     *     default to LATEST)
+     * @param requirements The name of the requirements set to retrieve requirements for. (optional, default to LISTING)
+     * @param requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the
+     *     product type definition schema. Non-enforced requirements enable structural validation of individual
+     *     attributes without all the required attributes being present (such as for partial updates). (optional,
+     *     default to ENFORCED)
+     * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
+     *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getDefinitionsProductTypeCall(
             String productType,
             List<String> marketplaceIds,
@@ -63,7 +87,6 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -97,17 +120,6 @@ public class DefinitionsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -116,7 +128,6 @@ public class DefinitionsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -128,7 +139,6 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'productType' is set
@@ -150,7 +160,6 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -243,7 +252,6 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
-                null,
                 null);
         if (disableRateLimiting || getDefinitionsProductTypeBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
@@ -292,11 +300,9 @@ public class DefinitionsApi {
             final ApiCallback<ProductTypeDefinition> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -308,7 +314,6 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
-                progressListener,
                 progressRequestListener);
         if (disableRateLimiting || getDefinitionsProductTypeBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
@@ -316,14 +321,29 @@ public class DefinitionsApi {
             return call;
         } else throw new ApiException.RateLimitExceeded("getDefinitionsProductType operation exceeds rate limit");
     }
-
+    /**
+     * Build call for searchDefinitionsProductTypes
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
+     *     &#x60;itemName&#x60;. (optional)
+     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     *     &#x60;keywords&#x60;. (optional)
+     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
+     *     marketplace. (optional)
+     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
+     *     the primary locale of the marketplace. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call searchDefinitionsProductTypesCall(
             List<String> marketplaceIds,
             List<String> keywords,
             String itemName,
             String locale,
             String searchLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -354,17 +374,6 @@ public class DefinitionsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -373,7 +382,6 @@ public class DefinitionsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -383,7 +391,6 @@ public class DefinitionsApi {
             String itemName,
             String locale,
             String searchLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -393,7 +400,7 @@ public class DefinitionsApi {
         }
 
         return searchDefinitionsProductTypesCall(
-                marketplaceIds, keywords, itemName, locale, searchLocale, progressListener, progressRequestListener);
+                marketplaceIds, keywords, itemName, locale, searchLocale, progressRequestListener);
     }
 
     /**
@@ -450,7 +457,7 @@ public class DefinitionsApi {
             List<String> marketplaceIds, List<String> keywords, String itemName, String locale, String searchLocale)
             throws ApiException, LWAException {
         okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
-                marketplaceIds, keywords, itemName, locale, searchLocale, null, null);
+                marketplaceIds, keywords, itemName, locale, searchLocale, null);
         if (disableRateLimiting || searchDefinitionsProductTypesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -488,16 +495,14 @@ public class DefinitionsApi {
             final ApiCallback<ProductTypeList> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
-                marketplaceIds, keywords, itemName, locale, searchLocale, progressListener, progressRequestListener);
+                marketplaceIds, keywords, itemName, locale, searchLocale, progressRequestListener);
         if (disableRateLimiting || searchDefinitionsProductTypesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
