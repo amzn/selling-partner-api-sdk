@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.inventory.v1.SubmitInventoryUpdateRequest;
 import software.amazon.spapi.models.vendor.df.inventory.v1.SubmitInventoryUpdateResponse;
@@ -51,10 +50,19 @@ public class UpdateInventoryApi {
             .addLimit(config.getLimit("UpdateInventoryApi-submitInventoryUpdate"))
             .build();
 
+    /**
+     * Build call for submitInventoryUpdate
+     *
+     * @param body The request body containing the inventory update data to submit. (required)
+     * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call submitInventoryUpdateCall(
             SubmitInventoryUpdateRequest body,
             String warehouseId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -78,17 +86,6 @@ public class UpdateInventoryApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -97,14 +94,12 @@ public class UpdateInventoryApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitInventoryUpdateValidateBeforeCall(
             SubmitInventoryUpdateRequest body,
             String warehouseId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -117,7 +112,7 @@ public class UpdateInventoryApi {
                     "Missing the required parameter 'warehouseId' when calling submitInventoryUpdate(Async)");
         }
 
-        return submitInventoryUpdateCall(body, warehouseId, progressListener, progressRequestListener);
+        return submitInventoryUpdateCall(body, warehouseId, progressRequestListener);
     }
 
     /**
@@ -158,7 +153,7 @@ public class UpdateInventoryApi {
      */
     public ApiResponse<SubmitInventoryUpdateResponse> submitInventoryUpdateWithHttpInfo(
             SubmitInventoryUpdateRequest body, String warehouseId) throws ApiException, LWAException {
-        okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, null, null);
+        okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, null);
         if (disableRateLimiting || submitInventoryUpdateBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -187,16 +182,13 @@ public class UpdateInventoryApi {
             final ApiCallback<SubmitInventoryUpdateResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                submitInventoryUpdateValidateBeforeCall(body, warehouseId, progressListener, progressRequestListener);
+        okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, progressRequestListener);
         if (disableRateLimiting || submitInventoryUpdateBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

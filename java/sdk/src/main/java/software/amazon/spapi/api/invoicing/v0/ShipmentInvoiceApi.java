@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.invoicing.v0.GetInvoiceStatusResponse;
 import software.amazon.spapi.models.invoicing.v0.GetShipmentDetailsResponse;
@@ -61,10 +60,17 @@ public class ShipmentInvoiceApi {
             .addLimit(config.getLimit("ShipmentInvoiceApi-submitInvoice"))
             .build();
 
+    /**
+     * Build call for getInvoiceStatus
+     *
+     * @param shipmentId The shipment identifier for the shipment. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getInvoiceStatusCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -88,17 +94,6 @@ public class ShipmentInvoiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -107,21 +102,18 @@ public class ShipmentInvoiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getInvoiceStatusValidateBeforeCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
             throw new ApiException("Missing the required parameter 'shipmentId' when calling getInvoiceStatus(Async)");
         }
 
-        return getInvoiceStatusCall(shipmentId, progressListener, progressRequestListener);
+        return getInvoiceStatusCall(shipmentId, progressRequestListener);
     }
 
     /**
@@ -157,7 +149,7 @@ public class ShipmentInvoiceApi {
      */
     public ApiResponse<GetInvoiceStatusResponse> getInvoiceStatusWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, null, null);
+        okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, null);
         if (disableRateLimiting || getInvoiceStatusBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetInvoiceStatusResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -181,26 +173,32 @@ public class ShipmentInvoiceApi {
     public okhttp3.Call getInvoiceStatusAsync(String shipmentId, final ApiCallback<GetInvoiceStatusResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, progressListener, progressRequestListener);
+        okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, progressRequestListener);
         if (disableRateLimiting || getInvoiceStatusBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetInvoiceStatusResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getInvoiceStatus operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getShipmentDetails
+     *
+     * @param shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus
+     *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
+     *     Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getShipmentDetailsCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -224,17 +222,6 @@ public class ShipmentInvoiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -243,14 +230,11 @@ public class ShipmentInvoiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getShipmentDetailsValidateBeforeCall(
-            String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
@@ -258,7 +242,7 @@ public class ShipmentInvoiceApi {
                     "Missing the required parameter 'shipmentId' when calling getShipmentDetails(Async)");
         }
 
-        return getShipmentDetailsCall(shipmentId, progressListener, progressRequestListener);
+        return getShipmentDetailsCall(shipmentId, progressRequestListener);
     }
 
     /**
@@ -298,7 +282,7 @@ public class ShipmentInvoiceApi {
      */
     public ApiResponse<GetShipmentDetailsResponse> getShipmentDetailsWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, null, null);
+        okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, null);
         if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -326,26 +310,32 @@ public class ShipmentInvoiceApi {
             String shipmentId, final ApiCallback<GetShipmentDetailsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, progressListener, progressRequestListener);
+        okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, progressRequestListener);
         if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getShipmentDetails operation exceeds rate limit");
     }
-
+    /**
+     * Build call for submitInvoice
+     *
+     * @param body (required)
+     * @param shipmentId The identifier for the shipment. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call submitInvoiceCall(
             SubmitInvoiceRequest body,
             String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -369,17 +359,6 @@ public class ShipmentInvoiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -388,14 +367,12 @@ public class ShipmentInvoiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitInvoiceValidateBeforeCall(
             SubmitInvoiceRequest body,
             String shipmentId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -407,7 +384,7 @@ public class ShipmentInvoiceApi {
             throw new ApiException("Missing the required parameter 'shipmentId' when calling submitInvoice(Async)");
         }
 
-        return submitInvoiceCall(body, shipmentId, progressListener, progressRequestListener);
+        return submitInvoiceCall(body, shipmentId, progressRequestListener);
     }
 
     /**
@@ -446,7 +423,7 @@ public class ShipmentInvoiceApi {
      */
     public ApiResponse<SubmitInvoiceResponse> submitInvoiceWithHttpInfo(SubmitInvoiceRequest body, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, shipmentId, null, null);
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, shipmentId, null);
         if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -472,16 +449,13 @@ public class ShipmentInvoiceApi {
             SubmitInvoiceRequest body, String shipmentId, final ApiCallback<SubmitInvoiceResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                submitInvoiceValidateBeforeCall(body, shipmentId, progressListener, progressRequestListener);
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, shipmentId, progressRequestListener);
         if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
