@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -37,21 +38,23 @@ import software.amazon.spapi.models.sellers.v1.GetMarketplaceParticipationsRespo
 
 public class SellersApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public SellersApi(ApiClient apiClient) {
+    public SellersApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for getAccount
-     *
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getAccountCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket getAccountBucket =
+            Bucket.builder().addLimit(config.getLimit("SellersApi-getAccount")).build();
+
+    public final Bucket getMarketplaceParticipationsBucket = Bucket.builder()
+            .addLimit(config.getLimit("SellersApi-getMarketplaceParticipations"))
+            .build();
+
+    private okhttp3.Call getAccountCall(
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -140,8 +143,10 @@ public class SellersApi {
      */
     public ApiResponse<GetAccountResponse> getAccountWithHttpInfo() throws ApiException, LWAException {
         okhttp3.Call call = getAccountValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
     }
 
     /**
@@ -170,20 +175,14 @@ public class SellersApi {
         }
 
         okhttp3.Call call = getAccountValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
     }
-    /**
-     * Build call for getMarketplaceParticipations
-     *
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getMarketplaceParticipationsCall(
+
+    private okhttp3.Call getMarketplaceParticipationsCall(
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -273,8 +272,10 @@ public class SellersApi {
     public ApiResponse<GetMarketplaceParticipationsResponse> getMarketplaceParticipationsWithHttpInfo()
             throws ApiException, LWAException {
         okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMarketplaceParticipations operation exceeds rate limit");
     }
 
     /**
@@ -304,9 +305,11 @@ public class SellersApi {
         }
 
         okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getMarketplaceParticipations operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -314,7 +317,7 @@ public class SellersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -336,13 +339,8 @@ public class SellersApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -365,10 +363,11 @@ public class SellersApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new SellersApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new SellersApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

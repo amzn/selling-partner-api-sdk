@@ -117,7 +117,7 @@ async function getOrdersWithRateLimiterAndRetry(retryCount) {
 
   /**
    * Option2: Use your customized rate limiter, you need to replace <RateLimit> and <BurstValue> with actual numbers.
-   * Then call setCustomizedRateLimiterForOperation(), please refer to helper/rate-limit.yml when specifying operation name.
+   * Then call setCustomizedRateLimiterForOperation(), please refer to 'helper/DefaultRateLimitMap.mjs' when specifying operation name.
    * Note that for other operations that you did not configure customized rate limiter, they still use default rate limiter.
    */
 

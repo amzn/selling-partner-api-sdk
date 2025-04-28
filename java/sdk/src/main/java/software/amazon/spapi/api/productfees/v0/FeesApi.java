@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -39,23 +40,28 @@ import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesResponse;
 
 public class FeesApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public FeesApi(ApiClient apiClient) {
+    public FeesApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for getMyFeesEstimateForASIN
-     *
-     * @param body (required)
-     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getMyFeesEstimateForASINCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket getMyFeesEstimateForASINBucket = Bucket.builder()
+            .addLimit(config.getLimit("FeesApi-getMyFeesEstimateForASIN"))
+            .build();
+
+    public final Bucket getMyFeesEstimateForSKUBucket = Bucket.builder()
+            .addLimit(config.getLimit("FeesApi-getMyFeesEstimateForSKU"))
+            .build();
+
+    public final Bucket getMyFeesEstimatesBucket = Bucket.builder()
+            .addLimit(config.getLimit("FeesApi-getMyFeesEstimates"))
+            .build();
+
+    private okhttp3.Call getMyFeesEstimateForASINCall(
             GetMyFeesEstimateRequest body,
             String asin,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -180,8 +186,10 @@ public class FeesApi {
     public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForASINWithHttpInfo(
             GetMyFeesEstimateRequest body, String asin) throws ApiException, LWAException {
         okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, null, null);
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getMyFeesEstimateForASINBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForASIN operation exceeds rate limit");
     }
 
     /**
@@ -222,23 +230,14 @@ public class FeesApi {
 
         okhttp3.Call call =
                 getMyFeesEstimateForASINValidateBeforeCall(body, asin, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getMyFeesEstimateForASINBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForASIN operation exceeds rate limit");
     }
-    /**
-     * Build call for getMyFeesEstimateForSKU
-     *
-     * @param body (required)
-     * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
-     *     SellerId, which is included with every operation that you submit. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getMyFeesEstimateForSKUCall(
+
+    private okhttp3.Call getMyFeesEstimateForSKUCall(
             GetMyFeesEstimateRequest body,
             String sellerSKU,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -368,8 +367,10 @@ public class FeesApi {
     public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForSKUWithHttpInfo(
             GetMyFeesEstimateRequest body, String sellerSKU) throws ApiException, LWAException {
         okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, null, null);
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getMyFeesEstimateForSKUBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForSKU operation exceeds rate limit");
     }
 
     /**
@@ -413,21 +414,14 @@ public class FeesApi {
 
         okhttp3.Call call =
                 getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getMyFeesEstimateForSKUBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForSKU operation exceeds rate limit");
     }
-    /**
-     * Build call for getMyFeesEstimates
-     *
-     * @param body (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getMyFeesEstimatesCall(
+
+    private okhttp3.Call getMyFeesEstimatesCall(
             List<FeesEstimateByIdRequest> body,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
@@ -523,8 +517,10 @@ public class FeesApi {
     public ApiResponse<GetMyFeesEstimatesResponse> getMyFeesEstimatesWithHttpInfo(List<FeesEstimateByIdRequest> body)
             throws ApiException, LWAException {
         okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getMyFeesEstimatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimates operation exceeds rate limit");
     }
 
     /**
@@ -554,9 +550,11 @@ public class FeesApi {
         }
 
         okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getMyFeesEstimatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimates operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -564,7 +562,7 @@ public class FeesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -586,13 +584,8 @@ public class FeesApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -615,10 +608,11 @@ public class FeesApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FeesApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new FeesApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }
