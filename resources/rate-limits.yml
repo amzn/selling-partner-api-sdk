@@ -715,14 +715,17 @@ ServiceApi-createServiceDocumentUploadDestination:
   - 20
 # Shipment Invoicing API
 ShipmentInvoiceApi-getShipmentDetails:
-  - 1.133
+  - 17
   - 25
+  - 15
 ShipmentInvoiceApi-submitInvoice:
-  - 1.133
+  - 17
   - 25
+  - 15
 ShipmentInvoiceApi-getInvoiceStatus:
-  - 1.133
+  - 17
   - 25
+  - 15
 # Shipping V2 API
 ShippingApi-createShipment:
   - 5
@@ -784,7 +787,10 @@ ShippingApi-getTracking:
 ShippingApi-getUnmanifestedShipments:
   - 80
   - 100
-ShippinhApi-linkCarrierAccount:
+ShippingApi-linkCarrierAccount:
+  - 80
+  - 100
+ShippingApi-linkCarrierAccount_0:
   - 80
   - 100
 ShippingApi-oneClickShipment:
@@ -794,6 +800,9 @@ ShippingApi-submitNdrFeedback:
   - 80
   - 100
 ShippingApi-unlinkCarrierAccount:
+  - 80
+  - 100
+ShippingApi-getCarrierAccountFormInputs:
   - 80
   - 100
 # Solicitations API
