@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,8 +29,10 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.CreateQueryResponse;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.CreateQuerySpecification;
@@ -40,23 +42,34 @@ import software.amazon.spapi.models.datakiosk.v2023_11_15.Query;
 
 public class QueriesApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public QueriesApi(ApiClient apiClient) {
+    public QueriesApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for cancelQuery
-     *
-     * @param queryId The identifier for the query. This identifier is unique only in combination with a selling partner
-     *     account ID. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelQueryCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private final Configuration config = Configuration.get();
+
+    public final Bucket cancelQueryBucket =
+            Bucket.builder().addLimit(config.getLimit("QueriesApi-cancelQuery")).build();
+
+    public final Bucket createQueryBucket =
+            Bucket.builder().addLimit(config.getLimit("QueriesApi-createQuery")).build();
+
+    public final Bucket getDocumentBucket =
+            Bucket.builder().addLimit(config.getLimit("QueriesApi-getDocument")).build();
+
+    public final Bucket getQueriesBucket =
+            Bucket.builder().addLimit(config.getLimit("QueriesApi-getQueries")).build();
+
+    public final Bucket getQueryBucket =
+            Bucket.builder().addLimit(config.getLimit("QueriesApi-getQuery")).build();
+
+    private okhttp3.Call cancelQueryCall(
+            String queryId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -80,6 +93,17 @@ public class QueriesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -88,18 +112,21 @@ public class QueriesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelQueryValidateBeforeCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String queryId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'queryId' is set
         if (queryId == null) {
             throw new ApiException("Missing the required parameter 'queryId' when calling cancelQuery(Async)");
         }
 
-        return cancelQueryCall(queryId, progressRequestListener);
+        return cancelQueryCall(queryId, progressListener, progressRequestListener);
     }
 
     /**
@@ -142,8 +169,10 @@ public class QueriesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> cancelQueryWithHttpInfo(String queryId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelQueryValidateBeforeCall(queryId, null);
-        return apiClient.execute(call);
+        okhttp3.Call call = cancelQueryValidateBeforeCall(queryId, null, null);
+        if (disableRateLimiting || cancelQueryBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelQuery operation exceeds rate limit");
     }
 
     /**
@@ -168,27 +197,25 @@ public class QueriesApi {
     public okhttp3.Call cancelQueryAsync(String queryId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = cancelQueryValidateBeforeCall(queryId, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call call = cancelQueryValidateBeforeCall(queryId, progressListener, progressRequestListener);
+        if (disableRateLimiting || cancelQueryBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelQuery operation exceeds rate limit");
     }
-    /**
-     * Build call for createQuery
-     *
-     * @param body The body of the request. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createQueryCall(
-            CreateQuerySpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call createQueryCall(
+            CreateQuerySpecification body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -210,6 +237,17 @@ public class QueriesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -218,18 +256,21 @@ public class QueriesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createQueryValidateBeforeCall(
-            CreateQuerySpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateQuerySpecification body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createQuery(Async)");
         }
 
-        return createQueryCall(body, progressRequestListener);
+        return createQueryCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -273,9 +314,11 @@ public class QueriesApi {
      */
     public ApiResponse<CreateQueryResponse> createQueryWithHttpInfo(CreateQuerySpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createQueryValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createQueryValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || createQueryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createQuery operation exceeds rate limit");
     }
 
     /**
@@ -300,28 +343,26 @@ public class QueriesApi {
     public okhttp3.Call createQueryAsync(CreateQuerySpecification body, final ApiCallback<CreateQueryResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createQueryValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = createQueryValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || createQueryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createQuery operation exceeds rate limit");
     }
-    /**
-     * Build call for getDocument
-     *
-     * @param documentId The identifier for the Data Kiosk document. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getDocumentCall(
-            String documentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call getDocumentCall(
+            String documentId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -345,6 +386,17 @@ public class QueriesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -353,18 +405,21 @@ public class QueriesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getDocumentValidateBeforeCall(
-            String documentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String documentId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'documentId' is set
         if (documentId == null) {
             throw new ApiException("Missing the required parameter 'documentId' when calling getDocument(Async)");
         }
 
-        return getDocumentCall(documentId, progressRequestListener);
+        return getDocumentCall(documentId, progressListener, progressRequestListener);
     }
 
     /**
@@ -404,9 +459,11 @@ public class QueriesApi {
      */
     public ApiResponse<GetDocumentResponse> getDocumentWithHttpInfo(String documentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getDocumentValidateBeforeCall(documentId, null);
-        Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getDocumentValidateBeforeCall(documentId, null, null);
+        if (disableRateLimiting || getDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDocument operation exceeds rate limit");
     }
 
     /**
@@ -428,43 +485,29 @@ public class QueriesApi {
     public okhttp3.Call getDocumentAsync(String documentId, final ApiCallback<GetDocumentResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getDocumentValidateBeforeCall(documentId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getDocumentValidateBeforeCall(documentId, progressListener, progressRequestListener);
+        if (disableRateLimiting || getDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getDocument operation exceeds rate limit");
     }
-    /**
-     * Build call for getQueries
-     *
-     * @param processingStatuses A list of processing statuses used to filter queries. (optional)
-     * @param pageSize The maximum number of queries to return in a single call. (optional, default to 10)
-     * @param createdSince The earliest query creation date and time for queries to include in the response, in ISO 8601
-     *     date time format. The default is 90 days ago. (optional)
-     * @param createdUntil The latest query creation date and time for queries to include in the response, in ISO 8601
-     *     date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)
-     * @param paginationToken A token to fetch a certain page of results when there are multiple pages of results
-     *     available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the
-     *     &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were
-     *     provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be
-     *     modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60;
-     *     returns the first page of results. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getQueriesCall(
+
+    private okhttp3.Call getQueriesCall(
             List<String> processingStatuses,
             Integer pageSize,
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String paginationToken,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -496,6 +539,17 @@ public class QueriesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -504,6 +558,7 @@ public class QueriesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -513,11 +568,18 @@ public class QueriesApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String paginationToken,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
         return getQueriesCall(
-                processingStatuses, pageSize, createdSince, createdUntil, paginationToken, progressRequestListener);
+                processingStatuses,
+                pageSize,
+                createdSince,
+                createdUntil,
+                paginationToken,
+                progressListener,
+                progressRequestListener);
     }
 
     /**
@@ -590,9 +652,11 @@ public class QueriesApi {
             String paginationToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getQueriesValidateBeforeCall(
-                processingStatuses, pageSize, createdSince, createdUntil, paginationToken, null);
-        Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+                processingStatuses, pageSize, createdSince, createdUntil, paginationToken, null, null);
+        if (disableRateLimiting || getQueriesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getQueries operation exceeds rate limit");
     }
 
     /**
@@ -631,29 +695,33 @@ public class QueriesApi {
             final ApiCallback<GetQueriesResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getQueriesValidateBeforeCall(
-                processingStatuses, pageSize, createdSince, createdUntil, paginationToken, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                processingStatuses,
+                pageSize,
+                createdSince,
+                createdUntil,
+                paginationToken,
+                progressListener,
+                progressRequestListener);
+        if (disableRateLimiting || getQueriesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getQueries operation exceeds rate limit");
     }
-    /**
-     * Build call for getQuery
-     *
-     * @param queryId The query identifier. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getQueryCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call getQueryCall(
+            String queryId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -677,6 +745,17 @@ public class QueriesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -685,18 +764,21 @@ public class QueriesApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getQueryValidateBeforeCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String queryId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'queryId' is set
         if (queryId == null) {
             throw new ApiException("Missing the required parameter 'queryId' when calling getQuery(Async)");
         }
 
-        return getQueryCall(queryId, progressRequestListener);
+        return getQueryCall(queryId, progressListener, progressRequestListener);
     }
 
     /**
@@ -735,9 +817,11 @@ public class QueriesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Query> getQueryWithHttpInfo(String queryId) throws ApiException, LWAException {
-        okhttp3.Call call = getQueryValidateBeforeCall(queryId, null);
-        Type localVarReturnType = new TypeToken<Query>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getQueryValidateBeforeCall(queryId, null, null);
+        if (disableRateLimiting || getQueryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Query>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getQuery operation exceeds rate limit");
     }
 
     /**
@@ -759,16 +843,20 @@ public class QueriesApi {
     public okhttp3.Call getQueryAsync(String queryId, final ApiCallback<Query> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getQueryValidateBeforeCall(queryId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Query>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getQueryValidateBeforeCall(queryId, progressListener, progressRequestListener);
+        if (disableRateLimiting || getQueryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Query>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getQuery operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -776,7 +864,7 @@ public class QueriesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -798,13 +886,8 @@ public class QueriesApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -827,10 +910,11 @@ public class QueriesApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new QueriesApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new QueriesApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

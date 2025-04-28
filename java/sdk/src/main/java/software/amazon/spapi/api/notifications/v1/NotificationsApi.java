@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +28,10 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.notifications.v1.CreateDestinationRequest;
 import software.amazon.spapi.models.notifications.v1.CreateDestinationResponse;
@@ -44,22 +46,51 @@ import software.amazon.spapi.models.notifications.v1.GetSubscriptionResponse;
 
 public class NotificationsApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public NotificationsApi(ApiClient apiClient) {
+    public NotificationsApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for createDestination
-     *
-     * @param body (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createDestinationCall(
-            CreateDestinationRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private final Configuration config = Configuration.get();
+
+    public final Bucket createDestinationBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-createDestination"))
+            .build();
+
+    public final Bucket createSubscriptionBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-createSubscription"))
+            .build();
+
+    public final Bucket deleteDestinationBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-deleteDestination"))
+            .build();
+
+    public final Bucket deleteSubscriptionByIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-deleteSubscriptionById"))
+            .build();
+
+    public final Bucket getDestinationBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-getDestination"))
+            .build();
+
+    public final Bucket getDestinationsBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-getDestinations"))
+            .build();
+
+    public final Bucket getSubscriptionBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-getSubscription"))
+            .build();
+
+    public final Bucket getSubscriptionByIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-getSubscriptionById"))
+            .build();
+
+    private okhttp3.Call createDestinationCall(
+            CreateDestinationRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -81,6 +112,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -89,18 +131,21 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createDestinationValidateBeforeCall(
-            CreateDestinationRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateDestinationRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createDestination(Async)");
         }
 
-        return createDestinationCall(body, progressRequestListener);
+        return createDestinationCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -143,9 +188,11 @@ public class NotificationsApi {
      */
     public ApiResponse<CreateDestinationResponse> createDestinationWithHttpInfo(CreateDestinationRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createDestinationValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createDestinationValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createDestination operation exceeds rate limit");
     }
 
     /**
@@ -169,32 +216,26 @@ public class NotificationsApi {
             CreateDestinationRequest body, final ApiCallback<CreateDestinationResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createDestinationValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = createDestinationValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createDestination operation exceeds rate limit");
     }
-    /**
-     * Build call for createSubscription
-     *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createSubscriptionCall(
+
+    private okhttp3.Call createSubscriptionCall(
             CreateSubscriptionRequest body,
             String notificationType,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -218,6 +259,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -226,12 +278,14 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createSubscriptionValidateBeforeCall(
             CreateSubscriptionRequest body,
             String notificationType,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -244,7 +298,7 @@ public class NotificationsApi {
                     "Missing the required parameter 'notificationType' when calling createSubscription(Async)");
         }
 
-        return createSubscriptionCall(body, notificationType, progressRequestListener);
+        return createSubscriptionCall(body, notificationType, progressListener, progressRequestListener);
     }
 
     /**
@@ -295,9 +349,11 @@ public class NotificationsApi {
      */
     public ApiResponse<CreateSubscriptionResponse> createSubscriptionWithHttpInfo(
             CreateSubscriptionRequest body, String notificationType) throws ApiException, LWAException {
-        okhttp3.Call call = createSubscriptionValidateBeforeCall(body, notificationType, null);
-        Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createSubscriptionValidateBeforeCall(body, notificationType, null, null);
+        if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createSubscription operation exceeds rate limit");
     }
 
     /**
@@ -327,28 +383,27 @@ public class NotificationsApi {
             final ApiCallback<CreateSubscriptionResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createSubscriptionValidateBeforeCall(body, notificationType, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call =
+                createSubscriptionValidateBeforeCall(body, notificationType, progressListener, progressRequestListener);
+        if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createSubscription operation exceeds rate limit");
     }
-    /**
-     * Build call for deleteDestination
-     *
-     * @param destinationId The identifier for the destination that you want to delete. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call deleteDestinationCall(
-            String destinationId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call deleteDestinationCall(
+            String destinationId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -372,6 +427,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -380,11 +446,14 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call deleteDestinationValidateBeforeCall(
-            String destinationId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String destinationId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'destinationId' is set
         if (destinationId == null) {
@@ -392,7 +461,7 @@ public class NotificationsApi {
                     "Missing the required parameter 'destinationId' when calling deleteDestination(Async)");
         }
 
-        return deleteDestinationCall(destinationId, progressRequestListener);
+        return deleteDestinationCall(destinationId, progressListener, progressRequestListener);
     }
 
     /**
@@ -432,9 +501,11 @@ public class NotificationsApi {
      */
     public ApiResponse<DeleteDestinationResponse> deleteDestinationWithHttpInfo(String destinationId)
             throws ApiException, LWAException {
-        okhttp3.Call call = deleteDestinationValidateBeforeCall(destinationId, null);
-        Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = deleteDestinationValidateBeforeCall(destinationId, null, null);
+        if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteDestination operation exceeds rate limit");
     }
 
     /**
@@ -458,32 +529,27 @@ public class NotificationsApi {
             String destinationId, final ApiCallback<DeleteDestinationResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = deleteDestinationValidateBeforeCall(destinationId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call =
+                deleteDestinationValidateBeforeCall(destinationId, progressListener, progressRequestListener);
+        if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("deleteDestination operation exceeds rate limit");
     }
-    /**
-     * Build call for deleteSubscriptionById
-     *
-     * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call deleteSubscriptionByIdCall(
+
+    private okhttp3.Call deleteSubscriptionByIdCall(
             String subscriptionId,
             String notificationType,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -509,6 +575,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -517,12 +594,14 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call deleteSubscriptionByIdValidateBeforeCall(
             String subscriptionId,
             String notificationType,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'subscriptionId' is set
@@ -536,7 +615,7 @@ public class NotificationsApi {
                     "Missing the required parameter 'notificationType' when calling deleteSubscriptionById(Async)");
         }
 
-        return deleteSubscriptionByIdCall(subscriptionId, notificationType, progressRequestListener);
+        return deleteSubscriptionByIdCall(subscriptionId, notificationType, progressListener, progressRequestListener);
     }
 
     /**
@@ -590,9 +669,11 @@ public class NotificationsApi {
      */
     public ApiResponse<DeleteSubscriptionByIdResponse> deleteSubscriptionByIdWithHttpInfo(
             String subscriptionId, String notificationType) throws ApiException, LWAException {
-        okhttp3.Call call = deleteSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null);
-        Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = deleteSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null, null);
+        if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteSubscriptionById operation exceeds rate limit");
     }
 
     /**
@@ -621,29 +702,27 @@ public class NotificationsApi {
             String subscriptionId, String notificationType, final ApiCallback<DeleteSubscriptionByIdResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                deleteSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, progressRequestListener);
-        Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = deleteSubscriptionByIdValidateBeforeCall(
+                subscriptionId, notificationType, progressListener, progressRequestListener);
+        if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("deleteSubscriptionById operation exceeds rate limit");
     }
-    /**
-     * Build call for getDestination
-     *
-     * @param destinationId The identifier generated when you created the destination. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getDestinationCall(
-            String destinationId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call getDestinationCall(
+            String destinationId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -667,6 +746,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -675,18 +765,21 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getDestinationValidateBeforeCall(
-            String destinationId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String destinationId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'destinationId' is set
         if (destinationId == null) {
             throw new ApiException("Missing the required parameter 'destinationId' when calling getDestination(Async)");
         }
 
-        return getDestinationCall(destinationId, progressRequestListener);
+        return getDestinationCall(destinationId, progressListener, progressRequestListener);
     }
 
     /**
@@ -728,9 +821,11 @@ public class NotificationsApi {
      */
     public ApiResponse<GetDestinationResponse> getDestinationWithHttpInfo(String destinationId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, null);
-        Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, null, null);
+        if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDestination operation exceeds rate limit");
     }
 
     /**
@@ -753,26 +848,25 @@ public class NotificationsApi {
     public okhttp3.Call getDestinationAsync(String destinationId, final ApiCallback<GetDestinationResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, progressListener, progressRequestListener);
+        if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getDestination operation exceeds rate limit");
     }
-    /**
-     * Build call for getDestinations
-     *
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getDestinationsCall(final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call getDestinationsCall(
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -795,6 +889,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -803,14 +908,16 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getDestinationsValidateBeforeCall(
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return getDestinationsCall(progressRequestListener);
+        return getDestinationsCall(progressListener, progressRequestListener);
     }
 
     /**
@@ -847,9 +954,11 @@ public class NotificationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetDestinationsResponse> getDestinationsWithHttpInfo() throws ApiException, LWAException {
-        okhttp3.Call call = getDestinationsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getDestinationsValidateBeforeCall(null, null);
+        if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDestinations operation exceeds rate limit");
     }
 
     /**
@@ -871,32 +980,26 @@ public class NotificationsApi {
     public okhttp3.Call getDestinationsAsync(final ApiCallback<GetDestinationsResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getDestinationsValidateBeforeCall(progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getDestinationsValidateBeforeCall(progressListener, progressRequestListener);
+        if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getDestinations operation exceeds rate limit");
     }
-    /**
-     * Build call for getSubscription
-     *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
-     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getSubscriptionCall(
+
+    private okhttp3.Call getSubscriptionCall(
             String notificationType,
             String payloadVersion,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -923,6 +1026,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -931,12 +1045,14 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getSubscriptionValidateBeforeCall(
             String notificationType,
             String payloadVersion,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'notificationType' is set
@@ -945,7 +1061,7 @@ public class NotificationsApi {
                     "Missing the required parameter 'notificationType' when calling getSubscription(Async)");
         }
 
-        return getSubscriptionCall(notificationType, payloadVersion, progressRequestListener);
+        return getSubscriptionCall(notificationType, payloadVersion, progressListener, progressRequestListener);
     }
 
     /**
@@ -996,9 +1112,11 @@ public class NotificationsApi {
      */
     public ApiResponse<GetSubscriptionResponse> getSubscriptionWithHttpInfo(
             String notificationType, String payloadVersion) throws ApiException, LWAException {
-        okhttp3.Call call = getSubscriptionValidateBeforeCall(notificationType, payloadVersion, null);
-        Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getSubscriptionValidateBeforeCall(notificationType, payloadVersion, null, null);
+        if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSubscription operation exceeds rate limit");
     }
 
     /**
@@ -1026,33 +1144,27 @@ public class NotificationsApi {
             String notificationType, String payloadVersion, final ApiCallback<GetSubscriptionResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getSubscriptionValidateBeforeCall(notificationType, payloadVersion, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getSubscriptionValidateBeforeCall(
+                notificationType, payloadVersion, progressListener, progressRequestListener);
+        if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getSubscription operation exceeds rate limit");
     }
-    /**
-     * Build call for getSubscriptionById
-     *
-     * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getSubscriptionByIdCall(
+
+    private okhttp3.Call getSubscriptionByIdCall(
             String subscriptionId,
             String notificationType,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1078,6 +1190,17 @@ public class NotificationsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1086,12 +1209,14 @@ public class NotificationsApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getSubscriptionByIdValidateBeforeCall(
             String subscriptionId,
             String notificationType,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'subscriptionId' is set
@@ -1105,7 +1230,7 @@ public class NotificationsApi {
                     "Missing the required parameter 'notificationType' when calling getSubscriptionById(Async)");
         }
 
-        return getSubscriptionByIdCall(subscriptionId, notificationType, progressRequestListener);
+        return getSubscriptionByIdCall(subscriptionId, notificationType, progressListener, progressRequestListener);
     }
 
     /**
@@ -1155,9 +1280,11 @@ public class NotificationsApi {
      */
     public ApiResponse<GetSubscriptionByIdResponse> getSubscriptionByIdWithHttpInfo(
             String subscriptionId, String notificationType) throws ApiException, LWAException {
-        okhttp3.Call call = getSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null);
-        Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null, null);
+        if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
     }
 
     /**
@@ -1184,17 +1311,21 @@ public class NotificationsApi {
             String subscriptionId, String notificationType, final ApiCallback<GetSubscriptionByIdResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getSubscriptionByIdValidateBeforeCall(
+                subscriptionId, notificationType, progressListener, progressRequestListener);
+        if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -1202,7 +1333,7 @@ public class NotificationsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1224,13 +1355,8 @@ public class NotificationsApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1253,10 +1379,11 @@ public class NotificationsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new NotificationsApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new NotificationsApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,30 +28,33 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceRequest;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceResponse;
 
 public class VendorInvoiceApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public VendorInvoiceApi(ApiClient apiClient) {
+    public VendorInvoiceApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for submitInvoice
-     *
-     * @param body The request body containing one or more invoices for vendor orders. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call submitInvoiceCall(
-            SubmitInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private final Configuration config = Configuration.get();
+
+    public final Bucket submitInvoiceBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorInvoiceApi-submitInvoice"))
+            .build();
+
+    private okhttp3.Call submitInvoiceCall(
+            SubmitInvoiceRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -73,6 +76,17 @@ public class VendorInvoiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -81,18 +95,21 @@ public class VendorInvoiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitInvoiceValidateBeforeCall(
-            SubmitInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitInvoiceRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling submitInvoice(Async)");
         }
 
-        return submitInvoiceCall(body, progressRequestListener);
+        return submitInvoiceCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -130,9 +147,11 @@ public class VendorInvoiceApi {
      */
     public ApiResponse<SubmitInvoiceResponse> submitInvoiceWithHttpInfo(SubmitInvoiceRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitInvoice operation exceeds rate limit");
     }
 
     /**
@@ -153,16 +172,20 @@ public class VendorInvoiceApi {
     public okhttp3.Call submitInvoiceAsync(SubmitInvoiceRequest body, final ApiCallback<SubmitInvoiceResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("submitInvoice operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -170,7 +193,7 @@ public class VendorInvoiceApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -192,13 +215,8 @@ public class VendorInvoiceApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -221,10 +239,11 @@ public class VendorInvoiceApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new VendorInvoiceApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new VendorInvoiceApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

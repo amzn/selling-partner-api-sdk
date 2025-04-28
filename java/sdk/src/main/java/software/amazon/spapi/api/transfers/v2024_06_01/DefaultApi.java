@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +28,10 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.transfers.v2024_06_01.GetPaymentMethodsResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutRequest;
@@ -37,27 +39,27 @@ import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutResponse
 
 public class DefaultApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public DefaultApi(ApiClient apiClient) {
+    public DefaultApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for getPaymentMethods
-     *
-     * @param marketplaceId The identifier of the marketplace from which you want to retrieve payment methods. For the
-     *     list of possible marketplace identifiers, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
-     *     (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getPaymentMethodsCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket getPaymentMethodsBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-getPaymentMethods"))
+            .build();
+
+    public final Bucket initiatePayoutBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-initiatePayout"))
+            .build();
+
+    private okhttp3.Call getPaymentMethodsCall(
             String marketplaceId,
             List<String> paymentMethodTypes,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -86,6 +88,17 @@ public class DefaultApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -94,12 +107,14 @@ public class DefaultApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getPaymentMethodsValidateBeforeCall(
             String marketplaceId,
             List<String> paymentMethodTypes,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -108,7 +123,7 @@ public class DefaultApi {
                     "Missing the required parameter 'marketplaceId' when calling getPaymentMethods(Async)");
         }
 
-        return getPaymentMethodsCall(marketplaceId, paymentMethodTypes, progressRequestListener);
+        return getPaymentMethodsCall(marketplaceId, paymentMethodTypes, progressListener, progressRequestListener);
     }
 
     /**
@@ -153,9 +168,11 @@ public class DefaultApi {
      */
     public ApiResponse<GetPaymentMethodsResponse> getPaymentMethodsWithHttpInfo(
             String marketplaceId, List<String> paymentMethodTypes) throws ApiException, LWAException {
-        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, null);
-        Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, null, null);
+        if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPaymentMethods operation exceeds rate limit");
     }
 
     /**
@@ -183,29 +200,27 @@ public class DefaultApi {
             final ApiCallback<GetPaymentMethodsResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(
+                marketplaceId, paymentMethodTypes, progressListener, progressRequestListener);
+        if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getPaymentMethods operation exceeds rate limit");
     }
-    /**
-     * Build call for initiatePayout
-     *
-     * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call initiatePayoutCall(
-            InitiatePayoutRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call initiatePayoutCall(
+            InitiatePayoutRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -227,6 +242,17 @@ public class DefaultApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -235,18 +261,21 @@ public class DefaultApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call initiatePayoutValidateBeforeCall(
-            InitiatePayoutRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            InitiatePayoutRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling initiatePayout(Async)");
         }
 
-        return initiatePayoutCall(body, progressRequestListener);
+        return initiatePayoutCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -286,9 +315,11 @@ public class DefaultApi {
      */
     public ApiResponse<InitiatePayoutResponse> initiatePayoutWithHttpInfo(InitiatePayoutRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
     }
 
     /**
@@ -311,16 +342,20 @@ public class DefaultApi {
             InitiatePayoutRequest body, final ApiCallback<InitiatePayoutResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -328,7 +363,7 @@ public class DefaultApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -350,13 +385,8 @@ public class DefaultApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -379,10 +409,11 @@ public class DefaultApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new DefaultApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new DefaultApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

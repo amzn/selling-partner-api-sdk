@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,8 +29,10 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.orders.v2021_12_28.Order;
 import software.amazon.spapi.models.vendor.df.orders.v2021_12_28.OrderList;
@@ -39,23 +41,31 @@ import software.amazon.spapi.models.vendor.df.orders.v2021_12_28.TransactionId;
 
 public class VendorOrdersApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public VendorOrdersApi(ApiClient apiClient) {
+    public VendorOrdersApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for getOrder
-     *
-     * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
-     *     alpha-numeric code. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getOrderCall(
-            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private final Configuration config = Configuration.get();
+
+    public final Bucket getOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorOrdersApi-getOrder"))
+            .build();
+
+    public final Bucket getOrdersBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorOrdersApi-getOrders"))
+            .build();
+
+    public final Bucket submitAcknowledgementBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorOrdersApi-submitAcknowledgement"))
+            .build();
+
+    private okhttp3.Call getOrderCall(
+            String purchaseOrderNumber,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -80,6 +90,17 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -88,18 +109,21 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderValidateBeforeCall(
-            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'purchaseOrderNumber' is set
         if (purchaseOrderNumber == null) {
             throw new ApiException("Missing the required parameter 'purchaseOrderNumber' when calling getOrder(Async)");
         }
 
-        return getOrderCall(purchaseOrderNumber, progressRequestListener);
+        return getOrderCall(purchaseOrderNumber, progressListener, progressRequestListener);
     }
 
     /**
@@ -136,9 +160,11 @@ public class VendorOrdersApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Order> getOrderWithHttpInfo(String purchaseOrderNumber) throws ApiException, LWAException {
-        okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, null);
-        Type localVarReturnType = new TypeToken<Order>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, null, null);
+        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Order>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
     }
 
     /**
@@ -160,40 +186,23 @@ public class VendorOrdersApi {
     public okhttp3.Call getOrderAsync(String purchaseOrderNumber, final ApiCallback<Order> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Order>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, progressListener, progressRequestListener);
+        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Order>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
     }
-    /**
-     * Build call for getOrders
-     *
-     * @param createdAfter Purchase orders that became available after this date and time will be included in the
-     *     result. Must be in ISO-8601 date/time format. (required)
-     * @param createdBefore Purchase orders that became available before this date and time will be included in the
-     *     result. Must be in ISO-8601 date/time format. (required)
-     * @param shipFromPartyId The vendor warehouse identifier for the fulfillment warehouse. If not specified, the
-     *     result will contain orders for all warehouses. (optional)
-     * @param status Returns only the purchase orders that match the specified status. If not specified, the result will
-     *     contain orders that match any status. (optional)
-     * @param limit The limit to the number of purchase orders returned. (optional)
-     * @param sortOrder Sort the list in ascending or descending order by order creation date. (optional)
-     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
-     *     value is returned in the previous API call. (optional)
-     * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
-     *     numbers are returned. (optional, default to true)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getOrdersCall(
+
+    private okhttp3.Call getOrdersCall(
             OffsetDateTime createdAfter,
             OffsetDateTime createdBefore,
             String shipFromPartyId,
@@ -202,6 +211,7 @@ public class VendorOrdersApi {
             String sortOrder,
             String nextToken,
             String includeDetails,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -236,6 +246,17 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -244,6 +265,7 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -256,6 +278,7 @@ public class VendorOrdersApi {
             String sortOrder,
             String nextToken,
             String includeDetails,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'createdAfter' is set
@@ -276,6 +299,7 @@ public class VendorOrdersApi {
                 sortOrder,
                 nextToken,
                 includeDetails,
+                progressListener,
                 progressRequestListener);
     }
 
@@ -373,9 +397,12 @@ public class VendorOrdersApi {
                 sortOrder,
                 nextToken,
                 includeDetails,
+                null,
                 null);
-        Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
     }
 
     /**
@@ -421,9 +448,11 @@ public class VendorOrdersApi {
             final ApiCallback<OrderList> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -436,22 +465,18 @@ public class VendorOrdersApi {
                 sortOrder,
                 nextToken,
                 includeDetails,
+                progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
     }
-    /**
-     * Build call for submitAcknowledgement
-     *
-     * @param body The request body containing the acknowledgement to an order (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call submitAcknowledgementCall(
+
+    private okhttp3.Call submitAcknowledgementCall(
             SubmitAcknowledgementRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -474,6 +499,17 @@ public class VendorOrdersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -482,11 +518,13 @@ public class VendorOrdersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitAcknowledgementValidateBeforeCall(
             SubmitAcknowledgementRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -494,7 +532,7 @@ public class VendorOrdersApi {
             throw new ApiException("Missing the required parameter 'body' when calling submitAcknowledgement(Async)");
         }
 
-        return submitAcknowledgementCall(body, progressRequestListener);
+        return submitAcknowledgementCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -530,9 +568,11 @@ public class VendorOrdersApi {
      */
     public ApiResponse<TransactionId> submitAcknowledgementWithHttpInfo(SubmitAcknowledgementRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitAcknowledgement operation exceeds rate limit");
     }
 
     /**
@@ -553,16 +593,20 @@ public class VendorOrdersApi {
             SubmitAcknowledgementRequest body, final ApiCallback<TransactionId> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("submitAcknowledgement operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -570,7 +614,7 @@ public class VendorOrdersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -592,13 +636,8 @@ public class VendorOrdersApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -621,10 +660,11 @@ public class VendorOrdersApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new VendorOrdersApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new VendorOrdersApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

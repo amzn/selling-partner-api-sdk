@@ -17,7 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
+import io.github.bucket4j.Bucket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,31 +26,32 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.orders.v0.UpdateShipmentStatusRequest;
 
 public class ShipmentApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public ShipmentApi(ApiClient apiClient) {
+    public ShipmentApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for updateShipmentStatus
-     *
-     * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateShipmentStatusCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket updateShipmentStatusBucket = Bucket.builder()
+            .addLimit(config.getLimit("ShipmentApi-updateShipmentStatus"))
+            .build();
+
+    private okhttp3.Call updateShipmentStatusCall(
             UpdateShipmentStatusRequest body,
             String orderId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -74,6 +75,17 @@ public class ShipmentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -82,12 +94,14 @@ public class ShipmentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call updateShipmentStatusValidateBeforeCall(
             UpdateShipmentStatusRequest body,
             String orderId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -99,7 +113,7 @@ public class ShipmentApi {
             throw new ApiException("Missing the required parameter 'orderId' when calling updateShipmentStatus(Async)");
         }
 
-        return updateShipmentStatusCall(body, orderId, progressRequestListener);
+        return updateShipmentStatusCall(body, orderId, progressListener, progressRequestListener);
     }
 
     /**
@@ -136,8 +150,10 @@ public class ShipmentApi {
      */
     public ApiResponse<Void> updateShipmentStatusWithHttpInfo(UpdateShipmentStatusRequest body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, null);
-        return apiClient.execute(call);
+        okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, null, null);
+        if (disableRateLimiting || updateShipmentStatusBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateShipmentStatus operation exceeds rate limit");
     }
 
     /**
@@ -159,15 +175,20 @@ public class ShipmentApi {
             UpdateShipmentStatusRequest body, String orderId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call call =
+                updateShipmentStatusValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
+        if (disableRateLimiting || updateShipmentStatusBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateShipmentStatus operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -175,7 +196,7 @@ public class ShipmentApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -197,13 +218,8 @@ public class ShipmentApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -226,10 +242,11 @@ public class ShipmentApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ShipmentApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new ShipmentApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

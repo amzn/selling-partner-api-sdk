@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +28,10 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.services.v1.AddAppointmentRequest;
 import software.amazon.spapi.models.services.v1.AssignAppointmentResourcesRequest;
@@ -58,24 +60,87 @@ import software.amazon.spapi.models.services.v1.UpdateScheduleResponse;
 
 public class ServiceApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public ServiceApi(ApiClient apiClient) {
+    public ServiceApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for addAppointmentForServiceJobByServiceJobId
-     *
-     * @param body Add appointment operation input details. (required)
-     * @param serviceJobId An Amazon defined service job identifier. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call addAppointmentForServiceJobByServiceJobIdCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket addAppointmentForServiceJobByServiceJobIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-addAppointmentForServiceJobByServiceJobId"))
+            .build();
+
+    public final Bucket assignAppointmentResourcesBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-assignAppointmentResources"))
+            .build();
+
+    public final Bucket cancelReservationBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-cancelReservation"))
+            .build();
+
+    public final Bucket cancelServiceJobByServiceJobIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-cancelServiceJobByServiceJobId"))
+            .build();
+
+    public final Bucket completeServiceJobByServiceJobIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-completeServiceJobByServiceJobId"))
+            .build();
+
+    public final Bucket createReservationBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-createReservation"))
+            .build();
+
+    public final Bucket createServiceDocumentUploadDestinationBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-createServiceDocumentUploadDestination"))
+            .build();
+
+    public final Bucket getAppointmentSlotsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-getAppointmentSlots"))
+            .build();
+
+    public final Bucket getAppointmmentSlotsByJobIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-getAppointmmentSlotsByJobId"))
+            .build();
+
+    public final Bucket getFixedSlotCapacityBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-getFixedSlotCapacity"))
+            .build();
+
+    public final Bucket getRangeSlotCapacityBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-getRangeSlotCapacity"))
+            .build();
+
+    public final Bucket getServiceJobByServiceJobIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-getServiceJobByServiceJobId"))
+            .build();
+
+    public final Bucket getServiceJobsBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-getServiceJobs"))
+            .build();
+
+    public final Bucket rescheduleAppointmentForServiceJobByServiceJobIdBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId"))
+            .build();
+
+    public final Bucket setAppointmentFulfillmentDataBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-setAppointmentFulfillmentData"))
+            .build();
+
+    public final Bucket updateReservationBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-updateReservation"))
+            .build();
+
+    public final Bucket updateScheduleBucket = Bucket.builder()
+            .addLimit(config.getLimit("ServiceApi-updateSchedule"))
+            .build();
+
+    private okhttp3.Call addAppointmentForServiceJobByServiceJobIdCall(
             AddAppointmentRequest body,
             String serviceJobId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -99,6 +164,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -107,12 +183,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
             AddAppointmentRequest body,
             String serviceJobId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -126,7 +204,8 @@ public class ServiceApi {
                     "Missing the required parameter 'serviceJobId' when calling addAppointmentForServiceJobByServiceJobId(Async)");
         }
 
-        return addAppointmentForServiceJobByServiceJobIdCall(body, serviceJobId, progressRequestListener);
+        return addAppointmentForServiceJobByServiceJobIdCall(
+                body, serviceJobId, progressListener, progressRequestListener);
     }
 
     /**
@@ -166,9 +245,13 @@ public class ServiceApi {
      */
     public ApiResponse<SetAppointmentResponse> addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
             AddAppointmentRequest body, String serviceJobId) throws ApiException, LWAException {
-        okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(body, serviceJobId, null);
-        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(body, serviceJobId, null, null);
+        if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "addAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -191,34 +274,30 @@ public class ServiceApi {
             AddAppointmentRequest body, String serviceJobId, final ApiCallback<SetAppointmentResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
-                body, serviceJobId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                body, serviceJobId, progressListener, progressRequestListener);
+        if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "addAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
     }
-    /**
-     * Build call for assignAppointmentResources
-     *
-     * @param body (required)
-     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
-     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call assignAppointmentResourcesCall(
+
+    private okhttp3.Call assignAppointmentResourcesCall(
             AssignAppointmentResourcesRequest body,
             String serviceJobId,
             String appointmentId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -243,6 +322,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -251,6 +341,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -258,6 +349,7 @@ public class ServiceApi {
             AssignAppointmentResourcesRequest body,
             String serviceJobId,
             String appointmentId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -276,7 +368,8 @@ public class ServiceApi {
                     "Missing the required parameter 'appointmentId' when calling assignAppointmentResources(Async)");
         }
 
-        return assignAppointmentResourcesCall(body, serviceJobId, appointmentId, progressRequestListener);
+        return assignAppointmentResourcesCall(
+                body, serviceJobId, appointmentId, progressListener, progressRequestListener);
     }
 
     /**
@@ -322,9 +415,11 @@ public class ServiceApi {
     public ApiResponse<AssignAppointmentResourcesResponse> assignAppointmentResourcesWithHttpInfo(
             AssignAppointmentResourcesRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(body, serviceJobId, appointmentId, null);
-        Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(body, serviceJobId, appointmentId, null, null);
+        if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("assignAppointmentResources operation exceeds rate limit");
     }
 
     /**
@@ -352,31 +447,27 @@ public class ServiceApi {
             final ApiCallback<AssignAppointmentResourcesResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(
-                body, serviceJobId, appointmentId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                body, serviceJobId, appointmentId, progressListener, progressRequestListener);
+        if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("assignAppointmentResources operation exceeds rate limit");
     }
-    /**
-     * Build call for cancelReservation
-     *
-     * @param reservationId Reservation Identifier (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelReservationCall(
+
+    private okhttp3.Call cancelReservationCall(
             String reservationId,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -403,6 +494,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "DELETE",
@@ -411,12 +513,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelReservationValidateBeforeCall(
             String reservationId,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reservationId' is set
@@ -430,7 +534,7 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling cancelReservation(Async)");
         }
 
-        return cancelReservationCall(reservationId, marketplaceIds, progressRequestListener);
+        return cancelReservationCall(reservationId, marketplaceIds, progressListener, progressRequestListener);
     }
 
     /**
@@ -469,9 +573,11 @@ public class ServiceApi {
      */
     public ApiResponse<CancelReservationResponse> cancelReservationWithHttpInfo(
             String reservationId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, null);
-        Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, null, null);
+        if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelReservation operation exceeds rate limit");
     }
 
     /**
@@ -493,31 +599,27 @@ public class ServiceApi {
             String reservationId, List<String> marketplaceIds, final ApiCallback<CancelReservationResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = cancelReservationValidateBeforeCall(
+                reservationId, marketplaceIds, progressListener, progressRequestListener);
+        if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelReservation operation exceeds rate limit");
     }
-    /**
-     * Build call for cancelServiceJobByServiceJobId
-     *
-     * @param serviceJobId An Amazon defined service job identifier. (required)
-     * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
-     *     (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call cancelServiceJobByServiceJobIdCall(
+
+    private okhttp3.Call cancelServiceJobByServiceJobIdCall(
             String serviceJobId,
             String cancellationReasonCode,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -544,6 +646,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -552,12 +665,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call cancelServiceJobByServiceJobIdValidateBeforeCall(
             String serviceJobId,
             String cancellationReasonCode,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'serviceJobId' is set
@@ -571,7 +686,8 @@ public class ServiceApi {
                     "Missing the required parameter 'cancellationReasonCode' when calling cancelServiceJobByServiceJobId(Async)");
         }
 
-        return cancelServiceJobByServiceJobIdCall(serviceJobId, cancellationReasonCode, progressRequestListener);
+        return cancelServiceJobByServiceJobIdCall(
+                serviceJobId, cancellationReasonCode, progressListener, progressRequestListener);
     }
 
     /**
@@ -614,9 +730,11 @@ public class ServiceApi {
     public ApiResponse<CancelServiceJobByServiceJobIdResponse> cancelServiceJobByServiceJobIdWithHttpInfo(
             String serviceJobId, String cancellationReasonCode) throws ApiException, LWAException {
         okhttp3.Call call =
-                cancelServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, cancellationReasonCode, null);
-        Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+                cancelServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, cancellationReasonCode, null, null);
+        if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -641,29 +759,27 @@ public class ServiceApi {
             final ApiCallback<CancelServiceJobByServiceJobIdResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = cancelServiceJobByServiceJobIdValidateBeforeCall(
-                serviceJobId, cancellationReasonCode, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                serviceJobId, cancellationReasonCode, progressListener, progressRequestListener);
+        if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("cancelServiceJobByServiceJobId operation exceeds rate limit");
     }
-    /**
-     * Build call for completeServiceJobByServiceJobId
-     *
-     * @param serviceJobId An Amazon defined service job identifier. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call completeServiceJobByServiceJobIdCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call completeServiceJobByServiceJobIdCall(
+            String serviceJobId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -687,6 +803,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -695,11 +822,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call completeServiceJobByServiceJobIdValidateBeforeCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String serviceJobId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'serviceJobId' is set
         if (serviceJobId == null) {
@@ -707,7 +837,7 @@ public class ServiceApi {
                     "Missing the required parameter 'serviceJobId' when calling completeServiceJobByServiceJobId(Async)");
         }
 
-        return completeServiceJobByServiceJobIdCall(serviceJobId, progressRequestListener);
+        return completeServiceJobByServiceJobIdCall(serviceJobId, progressListener, progressRequestListener);
     }
 
     /**
@@ -745,9 +875,12 @@ public class ServiceApi {
      */
     public ApiResponse<CompleteServiceJobByServiceJobIdResponse> completeServiceJobByServiceJobIdWithHttpInfo(
             String serviceJobId) throws ApiException, LWAException {
-        okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null);
-        Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null, null);
+        if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("completeServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -768,30 +901,28 @@ public class ServiceApi {
             String serviceJobId, final ApiCallback<CompleteServiceJobByServiceJobIdResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(
+                serviceJobId, progressListener, progressRequestListener);
+        if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else
+            throw new ApiException.RateLimitExceeded("completeServiceJobByServiceJobId operation exceeds rate limit");
     }
-    /**
-     * Build call for createReservation
-     *
-     * @param body Reservation details (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createReservationCall(
+
+    private okhttp3.Call createReservationCall(
             CreateReservationRequest body,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -816,6 +947,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -824,12 +966,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createReservationValidateBeforeCall(
             CreateReservationRequest body,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -842,7 +986,7 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling createReservation(Async)");
         }
 
-        return createReservationCall(body, marketplaceIds, progressRequestListener);
+        return createReservationCall(body, marketplaceIds, progressListener, progressRequestListener);
     }
 
     /**
@@ -881,9 +1025,11 @@ public class ServiceApi {
      */
     public ApiResponse<CreateReservationResponse> createReservationWithHttpInfo(
             CreateReservationRequest body, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = createReservationValidateBeforeCall(body, marketplaceIds, null);
-        Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createReservationValidateBeforeCall(body, marketplaceIds, null, null);
+        if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReservation operation exceeds rate limit");
     }
 
     /**
@@ -907,28 +1053,27 @@ public class ServiceApi {
             final ApiCallback<CreateReservationResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createReservationValidateBeforeCall(body, marketplaceIds, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call =
+                createReservationValidateBeforeCall(body, marketplaceIds, progressListener, progressRequestListener);
+        if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createReservation operation exceeds rate limit");
     }
-    /**
-     * Build call for createServiceDocumentUploadDestination
-     *
-     * @param body Upload document operation input details. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createServiceDocumentUploadDestinationCall(
-            ServiceUploadDocument body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call createServiceDocumentUploadDestinationCall(
+            ServiceUploadDocument body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -950,6 +1095,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -958,11 +1114,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createServiceDocumentUploadDestinationValidateBeforeCall(
-            ServiceUploadDocument body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ServiceUploadDocument body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -970,7 +1129,7 @@ public class ServiceApi {
                     "Missing the required parameter 'body' when calling createServiceDocumentUploadDestination(Async)");
         }
 
-        return createServiceDocumentUploadDestinationCall(body, progressRequestListener);
+        return createServiceDocumentUploadDestinationCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -1008,9 +1167,13 @@ public class ServiceApi {
      */
     public ApiResponse<CreateServiceDocumentUploadDestination> createServiceDocumentUploadDestinationWithHttpInfo(
             ServiceUploadDocument body) throws ApiException, LWAException {
-        okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "createServiceDocumentUploadDestination operation exceeds rate limit");
     }
 
     /**
@@ -1031,40 +1194,32 @@ public class ServiceApi {
             ServiceUploadDocument body, final ApiCallback<CreateServiceDocumentUploadDestination> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(
+                body, progressListener, progressRequestListener);
+        if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "createServiceDocumentUploadDestination operation exceeds rate limit");
     }
-    /**
-     * Build call for getAppointmentSlots
-     *
-     * @param asin ASIN associated with the service. (required)
-     * @param storeId Store identifier defining the region scope to retrive appointment slots. (required)
-     * @param marketplaceIds An identifier for the marketplace for which appointment slots are queried (required)
-     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
-     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
-     *     is as per business configuration. (optional)
-     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
-     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
-     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getAppointmentSlotsCall(
+
+    private okhttp3.Call getAppointmentSlotsCall(
             String asin,
             String storeId,
             List<String> marketplaceIds,
             String startTime,
             String endTime,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1094,6 +1249,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1102,6 +1268,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1111,6 +1278,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             String startTime,
             String endTime,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'asin' is set
@@ -1127,7 +1295,8 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling getAppointmentSlots(Async)");
         }
 
-        return getAppointmentSlotsCall(asin, storeId, marketplaceIds, startTime, endTime, progressRequestListener);
+        return getAppointmentSlotsCall(
+                asin, storeId, marketplaceIds, startTime, endTime, progressListener, progressRequestListener);
     }
 
     /**
@@ -1184,9 +1353,11 @@ public class ServiceApi {
             String asin, String storeId, List<String> marketplaceIds, String startTime, String endTime)
             throws ApiException, LWAException {
         okhttp3.Call call =
-                getAppointmentSlotsValidateBeforeCall(asin, storeId, marketplaceIds, startTime, endTime, null);
-        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+                getAppointmentSlotsValidateBeforeCall(asin, storeId, marketplaceIds, startTime, endTime, null, null);
+        if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAppointmentSlots operation exceeds rate limit");
     }
 
     /**
@@ -1220,39 +1391,29 @@ public class ServiceApi {
             final ApiCallback<GetAppointmentSlotsResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getAppointmentSlotsValidateBeforeCall(
-                asin, storeId, marketplaceIds, startTime, endTime, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                asin, storeId, marketplaceIds, startTime, endTime, progressListener, progressRequestListener);
+        if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getAppointmentSlots operation exceeds rate limit");
     }
-    /**
-     * Build call for getAppointmmentSlotsByJobId
-     *
-     * @param serviceJobId A service job identifier to retrive appointment slots for associated service. (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
-     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
-     *     is as per business configuration. (optional)
-     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
-     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
-     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getAppointmmentSlotsByJobIdCall(
+
+    private okhttp3.Call getAppointmmentSlotsByJobIdCall(
             String serviceJobId,
             List<String> marketplaceIds,
             String startTime,
             String endTime,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1281,6 +1442,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1289,6 +1461,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1297,6 +1470,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             String startTime,
             String endTime,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'serviceJobId' is set
@@ -1311,7 +1485,7 @@ public class ServiceApi {
         }
 
         return getAppointmmentSlotsByJobIdCall(
-                serviceJobId, marketplaceIds, startTime, endTime, progressRequestListener);
+                serviceJobId, marketplaceIds, startTime, endTime, progressListener, progressRequestListener);
     }
 
     /**
@@ -1365,10 +1539,12 @@ public class ServiceApi {
     public ApiResponse<GetAppointmentSlotsResponse> getAppointmmentSlotsByJobIdWithHttpInfo(
             String serviceJobId, List<String> marketplaceIds, String startTime, String endTime)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getAppointmmentSlotsByJobIdValidateBeforeCall(serviceJobId, marketplaceIds, startTime, endTime, null);
-        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getAppointmmentSlotsByJobIdValidateBeforeCall(
+                serviceJobId, marketplaceIds, startTime, endTime, null, null);
+        if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAppointmmentSlotsByJobId operation exceeds rate limit");
     }
 
     /**
@@ -1401,35 +1577,29 @@ public class ServiceApi {
             final ApiCallback<GetAppointmentSlotsResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getAppointmmentSlotsByJobIdValidateBeforeCall(
-                serviceJobId, marketplaceIds, startTime, endTime, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                serviceJobId, marketplaceIds, startTime, endTime, progressListener, progressRequestListener);
+        if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getAppointmmentSlotsByJobId operation exceeds rate limit");
     }
-    /**
-     * Build call for getFixedSlotCapacity
-     *
-     * @param body Request body. (required)
-     * @param resourceId Resource Identifier. (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getFixedSlotCapacityCall(
+
+    private okhttp3.Call getFixedSlotCapacityCall(
             FixedSlotCapacityQuery body,
             String resourceId,
             List<String> marketplaceIds,
             String nextPageToken,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1457,6 +1627,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1465,6 +1646,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1473,6 +1655,7 @@ public class ServiceApi {
             String resourceId,
             List<String> marketplaceIds,
             String nextPageToken,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1490,7 +1673,8 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling getFixedSlotCapacity(Async)");
         }
 
-        return getFixedSlotCapacityCall(body, resourceId, marketplaceIds, nextPageToken, progressRequestListener);
+        return getFixedSlotCapacityCall(
+                body, resourceId, marketplaceIds, nextPageToken, progressListener, progressRequestListener);
     }
 
     /**
@@ -1537,9 +1721,11 @@ public class ServiceApi {
             FixedSlotCapacityQuery body, String resourceId, List<String> marketplaceIds, String nextPageToken)
             throws ApiException, LWAException {
         okhttp3.Call call =
-                getFixedSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null);
-        Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+                getFixedSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null, null);
+        if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFixedSlotCapacity operation exceeds rate limit");
     }
 
     /**
@@ -1567,35 +1753,29 @@ public class ServiceApi {
             final ApiCallback<FixedSlotCapacity> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getFixedSlotCapacityValidateBeforeCall(
-                body, resourceId, marketplaceIds, nextPageToken, progressRequestListener);
-        Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                body, resourceId, marketplaceIds, nextPageToken, progressListener, progressRequestListener);
+        if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getFixedSlotCapacity operation exceeds rate limit");
     }
-    /**
-     * Build call for getRangeSlotCapacity
-     *
-     * @param body Request body. (required)
-     * @param resourceId Resource Identifier. (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getRangeSlotCapacityCall(
+
+    private okhttp3.Call getRangeSlotCapacityCall(
             RangeSlotCapacityQuery body,
             String resourceId,
             List<String> marketplaceIds,
             String nextPageToken,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1623,6 +1803,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1631,6 +1822,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1639,6 +1831,7 @@ public class ServiceApi {
             String resourceId,
             List<String> marketplaceIds,
             String nextPageToken,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1656,7 +1849,8 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling getRangeSlotCapacity(Async)");
         }
 
-        return getRangeSlotCapacityCall(body, resourceId, marketplaceIds, nextPageToken, progressRequestListener);
+        return getRangeSlotCapacityCall(
+                body, resourceId, marketplaceIds, nextPageToken, progressListener, progressRequestListener);
     }
 
     /**
@@ -1703,9 +1897,11 @@ public class ServiceApi {
             RangeSlotCapacityQuery body, String resourceId, List<String> marketplaceIds, String nextPageToken)
             throws ApiException, LWAException {
         okhttp3.Call call =
-                getRangeSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null);
-        Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+                getRangeSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null, null);
+        if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getRangeSlotCapacity operation exceeds rate limit");
     }
 
     /**
@@ -1733,29 +1929,27 @@ public class ServiceApi {
             final ApiCallback<RangeSlotCapacity> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getRangeSlotCapacityValidateBeforeCall(
-                body, resourceId, marketplaceIds, nextPageToken, progressRequestListener);
-        Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                body, resourceId, marketplaceIds, nextPageToken, progressListener, progressRequestListener);
+        if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getRangeSlotCapacity operation exceeds rate limit");
     }
-    /**
-     * Build call for getServiceJobByServiceJobId
-     *
-     * @param serviceJobId A service job identifier. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getServiceJobByServiceJobIdCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call getServiceJobByServiceJobIdCall(
+            String serviceJobId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1779,6 +1973,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1787,11 +1992,14 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getServiceJobByServiceJobIdValidateBeforeCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String serviceJobId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'serviceJobId' is set
         if (serviceJobId == null) {
@@ -1799,7 +2007,7 @@ public class ServiceApi {
                     "Missing the required parameter 'serviceJobId' when calling getServiceJobByServiceJobId(Async)");
         }
 
-        return getServiceJobByServiceJobIdCall(serviceJobId, progressRequestListener);
+        return getServiceJobByServiceJobIdCall(serviceJobId, progressListener, progressRequestListener);
     }
 
     /**
@@ -1836,9 +2044,11 @@ public class ServiceApi {
      */
     public ApiResponse<GetServiceJobByServiceJobIdResponse> getServiceJobByServiceJobIdWithHttpInfo(String serviceJobId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null);
-        Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null, null);
+        if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -1860,55 +2070,24 @@ public class ServiceApi {
             String serviceJobId, final ApiCallback<GetServiceJobByServiceJobIdResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call =
+                getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressListener, progressRequestListener);
+        if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getServiceJobByServiceJobId operation exceeds rate limit");
     }
-    /**
-     * Build call for getServiceJobs
-     *
-     * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
-     * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
-     *     (optional)
-     * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
-     * @param pageToken String returned in the response of your previous request. (optional)
-     * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
-     *     must be 1 - 20. Default 20. (optional, default to 20)
-     * @param sortField Sort fields on which you want to sort the output. (optional)
-     * @param sortOrder Sort order for the query you want to perform. (optional)
-     * @param createdAfter A date used for selecting jobs created at or after a specified time. Must be in ISO 8601
-     *     format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60;
-     *     and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param createdBefore A date used for selecting jobs created at or before a specified time. Must be in ISO 8601
-     *     format. (optional)
-     * @param lastUpdatedAfter A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601
-     *     format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and
-     *     &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param lastUpdatedBefore A date used for selecting jobs updated at or before a specified time. Must be in ISO
-     *     8601 format. (optional)
-     * @param scheduleStartDate A date used for filtering jobs schedules at or after a specified time. Must be in ISO
-     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param scheduleEndDate A date used for filtering jobs schedules at or before a specified time. Must be in ISO
-     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
-     *     (optional)
-     * @param requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work
-     *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
-     *     20. (optional)
-     * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getServiceJobsCall(
+
+    private okhttp3.Call getServiceJobsCall(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
             List<String> serviceJobStatus,
@@ -1925,6 +2104,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1975,6 +2155,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1983,6 +2174,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -2003,6 +2195,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -2028,6 +2221,7 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                progressListener,
                 progressRequestListener);
     }
 
@@ -2186,9 +2380,12 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                null,
                 null);
-        Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getServiceJobs operation exceeds rate limit");
     }
 
     /**
@@ -2253,9 +2450,11 @@ public class ServiceApi {
             final ApiCallback<GetServiceJobsResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -2276,26 +2475,20 @@ public class ServiceApi {
                 asins,
                 requiredSkills,
                 storeIds,
+                progressListener,
                 progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getServiceJobs operation exceeds rate limit");
     }
-    /**
-     * Build call for rescheduleAppointmentForServiceJobByServiceJobId
-     *
-     * @param body Reschedule appointment operation input details. (required)
-     * @param serviceJobId An Amazon defined service job identifier. (required)
-     * @param appointmentId An existing appointment identifier for the Service Job. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call rescheduleAppointmentForServiceJobByServiceJobIdCall(
+
+    private okhttp3.Call rescheduleAppointmentForServiceJobByServiceJobIdCall(
             RescheduleAppointmentRequest body,
             String serviceJobId,
             String appointmentId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -2320,6 +2513,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -2328,6 +2532,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -2335,6 +2540,7 @@ public class ServiceApi {
             RescheduleAppointmentRequest body,
             String serviceJobId,
             String appointmentId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -2354,7 +2560,7 @@ public class ServiceApi {
         }
 
         return rescheduleAppointmentForServiceJobByServiceJobIdCall(
-                body, serviceJobId, appointmentId, progressRequestListener);
+                body, serviceJobId, appointmentId, progressListener, progressRequestListener);
     }
 
     /**
@@ -2399,9 +2605,13 @@ public class ServiceApi {
             RescheduleAppointmentRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
         okhttp3.Call call = rescheduleAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
-                body, serviceJobId, appointmentId, null);
-        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+                body, serviceJobId, appointmentId, null, null);
+        if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "rescheduleAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -2428,34 +2638,30 @@ public class ServiceApi {
             final ApiCallback<SetAppointmentResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = rescheduleAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
-                body, serviceJobId, appointmentId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                body, serviceJobId, appointmentId, progressListener, progressRequestListener);
+        if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "rescheduleAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
     }
-    /**
-     * Build call for setAppointmentFulfillmentData
-     *
-     * @param body Appointment fulfillment data collection details. (required)
-     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
-     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call setAppointmentFulfillmentDataCall(
+
+    private okhttp3.Call setAppointmentFulfillmentDataCall(
             SetAppointmentFulfillmentDataRequest body,
             String serviceJobId,
             String appointmentId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -2480,6 +2686,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -2488,6 +2705,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -2495,6 +2713,7 @@ public class ServiceApi {
             SetAppointmentFulfillmentDataRequest body,
             String serviceJobId,
             String appointmentId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -2513,7 +2732,8 @@ public class ServiceApi {
                     "Missing the required parameter 'appointmentId' when calling setAppointmentFulfillmentData(Async)");
         }
 
-        return setAppointmentFulfillmentDataCall(body, serviceJobId, appointmentId, progressRequestListener);
+        return setAppointmentFulfillmentDataCall(
+                body, serviceJobId, appointmentId, progressListener, progressRequestListener);
     }
 
     /**
@@ -2560,9 +2780,12 @@ public class ServiceApi {
     public ApiResponse<String> setAppointmentFulfillmentDataWithHttpInfo(
             SetAppointmentFulfillmentDataRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = setAppointmentFulfillmentDataValidateBeforeCall(body, serviceJobId, appointmentId, null);
-        Type localVarReturnType = new TypeToken<String>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call =
+                setAppointmentFulfillmentDataValidateBeforeCall(body, serviceJobId, appointmentId, null, null);
+        if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<String>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("setAppointmentFulfillmentData operation exceeds rate limit");
     }
 
     /**
@@ -2590,33 +2813,28 @@ public class ServiceApi {
             final ApiCallback<String> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = setAppointmentFulfillmentDataValidateBeforeCall(
-                body, serviceJobId, appointmentId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+                body, serviceJobId, appointmentId, progressListener, progressRequestListener);
+        if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<String>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("setAppointmentFulfillmentData operation exceeds rate limit");
     }
-    /**
-     * Build call for updateReservation
-     *
-     * @param body Reservation details (required)
-     * @param reservationId Reservation Identifier (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateReservationCall(
+
+    private okhttp3.Call updateReservationCall(
             UpdateReservationRequest body,
             String reservationId,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -2642,6 +2860,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -2650,6 +2879,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -2657,6 +2887,7 @@ public class ServiceApi {
             UpdateReservationRequest body,
             String reservationId,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -2674,7 +2905,7 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling updateReservation(Async)");
         }
 
-        return updateReservationCall(body, reservationId, marketplaceIds, progressRequestListener);
+        return updateReservationCall(body, reservationId, marketplaceIds, progressListener, progressRequestListener);
     }
 
     /**
@@ -2718,9 +2949,11 @@ public class ServiceApi {
     public ApiResponse<UpdateReservationResponse> updateReservationWithHttpInfo(
             UpdateReservationRequest body, String reservationId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateReservationValidateBeforeCall(body, reservationId, marketplaceIds, null);
-        Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = updateReservationValidateBeforeCall(body, reservationId, marketplaceIds, null, null);
+        if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateReservation operation exceeds rate limit");
     }
 
     /**
@@ -2746,33 +2979,28 @@ public class ServiceApi {
             final ApiCallback<UpdateReservationResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                updateReservationValidateBeforeCall(body, reservationId, marketplaceIds, progressRequestListener);
-        Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = updateReservationValidateBeforeCall(
+                body, reservationId, marketplaceIds, progressListener, progressRequestListener);
+        if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateReservation operation exceeds rate limit");
     }
-    /**
-     * Build call for updateSchedule
-     *
-     * @param body Schedule details (required)
-     * @param resourceId Resource (store) Identifier (required)
-     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateScheduleCall(
+
+    private okhttp3.Call updateScheduleCall(
             UpdateScheduleRequest body,
             String resourceId,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -2798,6 +3026,17 @@ public class ServiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PUT",
@@ -2806,6 +3045,7 @@ public class ServiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -2813,6 +3053,7 @@ public class ServiceApi {
             UpdateScheduleRequest body,
             String resourceId,
             List<String> marketplaceIds,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -2829,7 +3070,7 @@ public class ServiceApi {
                     "Missing the required parameter 'marketplaceIds' when calling updateSchedule(Async)");
         }
 
-        return updateScheduleCall(body, resourceId, marketplaceIds, progressRequestListener);
+        return updateScheduleCall(body, resourceId, marketplaceIds, progressListener, progressRequestListener);
     }
 
     /**
@@ -2872,9 +3113,11 @@ public class ServiceApi {
     public ApiResponse<UpdateScheduleResponse> updateScheduleWithHttpInfo(
             UpdateScheduleRequest body, String resourceId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateScheduleValidateBeforeCall(body, resourceId, marketplaceIds, null);
-        Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = updateScheduleValidateBeforeCall(body, resourceId, marketplaceIds, null, null);
+        if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateSchedule operation exceeds rate limit");
     }
 
     /**
@@ -2900,16 +3143,21 @@ public class ServiceApi {
             final ApiCallback<UpdateScheduleResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = updateScheduleValidateBeforeCall(body, resourceId, marketplaceIds, progressRequestListener);
-        Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = updateScheduleValidateBeforeCall(
+                body, resourceId, marketplaceIds, progressListener, progressRequestListener);
+        if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateSchedule operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -2917,7 +3165,7 @@ public class ServiceApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2939,13 +3187,8 @@ public class ServiceApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -2968,10 +3211,11 @@ public class ServiceApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ServiceApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new ServiceApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }

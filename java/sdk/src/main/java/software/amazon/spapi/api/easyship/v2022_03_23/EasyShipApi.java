@@ -17,8 +17,8 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
+import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +28,10 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
+import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackageRequest;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackagesRequest;
@@ -42,22 +44,38 @@ import software.amazon.spapi.models.easyship.v2022_03_23.UpdateScheduledPackages
 
 public class EasyShipApi {
     private ApiClient apiClient;
+    private Boolean disableRateLimiting;
 
-    public EasyShipApi(ApiClient apiClient) {
+    public EasyShipApi(ApiClient apiClient, Boolean disableRateLimiting) {
         this.apiClient = apiClient;
+        this.disableRateLimiting = disableRateLimiting;
     }
 
-    /**
-     * Build call for createScheduledPackage
-     *
-     * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createScheduledPackageCall(
+    private final Configuration config = Configuration.get();
+
+    public final Bucket createScheduledPackageBucket = Bucket.builder()
+            .addLimit(config.getLimit("EasyShipApi-createScheduledPackage"))
+            .build();
+
+    public final Bucket createScheduledPackageBulkBucket = Bucket.builder()
+            .addLimit(config.getLimit("EasyShipApi-createScheduledPackageBulk"))
+            .build();
+
+    public final Bucket getScheduledPackageBucket = Bucket.builder()
+            .addLimit(config.getLimit("EasyShipApi-getScheduledPackage"))
+            .build();
+
+    public final Bucket listHandoverSlotsBucket = Bucket.builder()
+            .addLimit(config.getLimit("EasyShipApi-listHandoverSlots"))
+            .build();
+
+    public final Bucket updateScheduledPackagesBucket = Bucket.builder()
+            .addLimit(config.getLimit("EasyShipApi-updateScheduledPackages"))
+            .build();
+
+    private okhttp3.Call createScheduledPackageCall(
             CreateScheduledPackageRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -80,6 +98,17 @@ public class EasyShipApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -88,11 +117,13 @@ public class EasyShipApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createScheduledPackageValidateBeforeCall(
             CreateScheduledPackageRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -100,7 +131,7 @@ public class EasyShipApi {
             throw new ApiException("Missing the required parameter 'body' when calling createScheduledPackage(Async)");
         }
 
-        return createScheduledPackageCall(body, progressRequestListener);
+        return createScheduledPackageCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -154,9 +185,11 @@ public class EasyShipApi {
      */
     public ApiResponse<ModelPackage> createScheduledPackageWithHttpInfo(CreateScheduledPackageRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createScheduledPackage operation exceeds rate limit");
     }
 
     /**
@@ -187,28 +220,25 @@ public class EasyShipApi {
             CreateScheduledPackageRequest body, final ApiCallback<ModelPackage> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createScheduledPackage operation exceeds rate limit");
     }
-    /**
-     * Build call for createScheduledPackageBulk
-     *
-     * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call createScheduledPackageBulkCall(
+
+    private okhttp3.Call createScheduledPackageBulkCall(
             CreateScheduledPackagesRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -231,6 +261,17 @@ public class EasyShipApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -239,11 +280,13 @@ public class EasyShipApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createScheduledPackageBulkValidateBeforeCall(
             CreateScheduledPackagesRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -252,7 +295,7 @@ public class EasyShipApi {
                     "Missing the required parameter 'body' when calling createScheduledPackageBulk(Async)");
         }
 
-        return createScheduledPackageBulkCall(body, progressRequestListener);
+        return createScheduledPackageBulkCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -315,9 +358,11 @@ public class EasyShipApi {
      */
     public ApiResponse<CreateScheduledPackagesResponse> createScheduledPackageBulkWithHttpInfo(
             CreateScheduledPackagesRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = createScheduledPackageBulkValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = createScheduledPackageBulkValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createScheduledPackageBulk operation exceeds rate limit");
     }
 
     /**
@@ -351,31 +396,27 @@ public class EasyShipApi {
             CreateScheduledPackagesRequest body, final ApiCallback<CreateScheduledPackagesResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = createScheduledPackageBulkValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call =
+                createScheduledPackageBulkValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createScheduledPackageBulk operation exceeds rate limit");
     }
-    /**
-     * Build call for getScheduledPackage
-     *
-     * @param amazonOrderId An Amazon-defined order identifier. Identifies the order that the seller wants to deliver
-     *     using Amazon Easy Ship. (required)
-     * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call getScheduledPackageCall(
+
+    private okhttp3.Call getScheduledPackageCall(
             String amazonOrderId,
             String marketplaceId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -403,6 +444,17 @@ public class EasyShipApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -411,12 +463,14 @@ public class EasyShipApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getScheduledPackageValidateBeforeCall(
             String amazonOrderId,
             String marketplaceId,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'amazonOrderId' is set
@@ -430,7 +484,7 @@ public class EasyShipApi {
                     "Missing the required parameter 'marketplaceId' when calling getScheduledPackage(Async)");
         }
 
-        return getScheduledPackageCall(amazonOrderId, marketplaceId, progressRequestListener);
+        return getScheduledPackageCall(amazonOrderId, marketplaceId, progressListener, progressRequestListener);
     }
 
     /**
@@ -473,9 +527,11 @@ public class EasyShipApi {
      */
     public ApiResponse<ModelPackage> getScheduledPackageWithHttpInfo(String amazonOrderId, String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getScheduledPackageValidateBeforeCall(amazonOrderId, marketplaceId, null);
-        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = getScheduledPackageValidateBeforeCall(amazonOrderId, marketplaceId, null, null);
+        if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getScheduledPackage operation exceeds rate limit");
     }
 
     /**
@@ -499,29 +555,27 @@ public class EasyShipApi {
             String amazonOrderId, String marketplaceId, final ApiCallback<ModelPackage> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getScheduledPackageValidateBeforeCall(amazonOrderId, marketplaceId, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = getScheduledPackageValidateBeforeCall(
+                amazonOrderId, marketplaceId, progressListener, progressRequestListener);
+        if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getScheduledPackage operation exceeds rate limit");
     }
-    /**
-     * Build call for listHandoverSlots
-     *
-     * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call listHandoverSlotsCall(
-            ListHandoverSlotsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+
+    private okhttp3.Call listHandoverSlotsCall(
+            ListHandoverSlotsRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -543,6 +597,17 @@ public class EasyShipApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -551,14 +616,17 @@ public class EasyShipApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call listHandoverSlotsValidateBeforeCall(
-            ListHandoverSlotsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ListHandoverSlotsRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return listHandoverSlotsCall(body, progressRequestListener);
+        return listHandoverSlotsCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -607,9 +675,11 @@ public class EasyShipApi {
      */
     public ApiResponse<ListHandoverSlotsResponse> listHandoverSlotsWithHttpInfo(ListHandoverSlotsRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listHandoverSlots operation exceeds rate limit");
     }
 
     /**
@@ -636,28 +706,25 @@ public class EasyShipApi {
             ListHandoverSlotsRequest body, final ApiCallback<ListHandoverSlotsResponse> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listHandoverSlots operation exceeds rate limit");
     }
-    /**
-     * Build call for updateScheduledPackages
-     *
-     * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateScheduledPackagesCall(
+
+    private okhttp3.Call updateScheduledPackagesCall(
             UpdateScheduledPackagesRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -680,6 +747,17 @@ public class EasyShipApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PATCH",
@@ -688,15 +766,17 @@ public class EasyShipApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
+                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call updateScheduledPackagesValidateBeforeCall(
             UpdateScheduledPackagesRequest body,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return updateScheduledPackagesCall(body, progressRequestListener);
+        return updateScheduledPackagesCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -740,9 +820,11 @@ public class EasyShipApi {
      */
     public ApiResponse<Packages> updateScheduledPackagesWithHttpInfo(UpdateScheduledPackagesRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<Packages>() {}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, null, null);
+        if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Packages>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateScheduledPackages operation exceeds rate limit");
     }
 
     /**
@@ -767,16 +849,20 @@ public class EasyShipApi {
             UpdateScheduledPackagesRequest body, final ApiCallback<Packages> callback)
             throws ApiException, LWAException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
+            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Packages>() {}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, progressListener, progressRequestListener);
+        if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Packages>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateScheduledPackages operation exceeds rate limit");
     }
 
     public static class Builder {
@@ -784,7 +870,7 @@ public class EasyShipApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
+        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -806,13 +892,8 @@ public class EasyShipApi {
             return this;
         }
 
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
+        public Builder disableRateLimiting() {
+            this.disableRateLimiting = true;
             return this;
         }
 
@@ -835,10 +916,11 @@ public class EasyShipApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new EasyShipApi(new ApiClient()
-                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                    .setBasePath(endpoint)
-                    .setRateLimiter(rateLimitConfiguration));
+            return new EasyShipApi(
+                    new ApiClient()
+                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                            .setBasePath(endpoint),
+                    disableRateLimiting);
         }
     }
 }
