@@ -469,13 +469,13 @@ MessagingApi-createConfirmOrderDetails:
 MessagingApi-createConfirmServiceDetails:
   - 1
   - 5
-MessagingApi-CreateAmazonMotors:
+MessagingApi-createAmazonMotors:
   - 1
   - 5
-MessagingApi-CreateWarranty:
+MessagingApi-createWarranty:
   - 1
   - 5
-MessagingApi-GetAttributes:
+MessagingApi-getAttributes:
   - 1
   - 5
 MessagingApi-createDigitalAccessKey:
@@ -841,6 +841,9 @@ UploadsApi-createUploadDestinationForResource:
   - 5
 # Vehicles API
 AutomotiveApi-getVehicles:
+  - 20
+  - 5
+AutomotiveApi-getVehicles_0:
   - 20
   - 5
 VehiclesApi-getVehicles:
