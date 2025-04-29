@@ -76,8 +76,8 @@ class CustomerInvoicesApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $getCustomerInvoiceRateLimiter;
-    private ?LimiterInterface $getCustomerInvoicesRateLimiter;
+    public ?LimiterInterface $getCustomerInvoiceRateLimiter;
+    public ?LimiterInterface $getCustomerInvoicesRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -100,9 +100,9 @@ class CustomerInvoicesApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CustomerInvoicesApi-getCustomerInvoice"), $this->rateLimitStorage);
-            $this->getCustomerInvoiceRateLimiter = $factory->create();
+            $this->getCustomerInvoiceRateLimiter = $factory->create("CustomerInvoicesApi-getCustomerInvoice");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CustomerInvoicesApi-getCustomerInvoices"), $this->rateLimitStorage);
-            $this->getCustomerInvoicesRateLimiter = $factory->create();
+            $this->getCustomerInvoicesRateLimiter = $factory->create("CustomerInvoicesApi-getCustomerInvoices");
         }
 
         $this->client = $client ?: new Client();

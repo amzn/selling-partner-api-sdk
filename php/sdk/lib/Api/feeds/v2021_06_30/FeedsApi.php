@@ -63,6 +63,12 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FeedsApi
 {
+    public ?LimiterInterface $cancelFeedRateLimiter;
+    public ?LimiterInterface $createFeedRateLimiter;
+    public ?LimiterInterface $createFeedDocumentRateLimiter;
+    public ?LimiterInterface $getFeedRateLimiter;
+    public ?LimiterInterface $getFeedDocumentRateLimiter;
+    public ?LimiterInterface $getFeedsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -76,13 +82,6 @@ class FeedsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $cancelFeedRateLimiter;
-    private ?LimiterInterface $createFeedRateLimiter;
-    private ?LimiterInterface $createFeedDocumentRateLimiter;
-    private ?LimiterInterface $getFeedRateLimiter;
-    private ?LimiterInterface $getFeedDocumentRateLimiter;
-    private ?LimiterInterface $getFeedsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -101,17 +100,17 @@ class FeedsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-cancelFeed'), $this->rateLimitStorage);
-            $this->cancelFeedRateLimiter = $factory->create();
+            $this->cancelFeedRateLimiter = $factory->create('FeedsApi-cancelFeed');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeed'), $this->rateLimitStorage);
-            $this->createFeedRateLimiter = $factory->create();
+            $this->createFeedRateLimiter = $factory->create('FeedsApi-createFeed');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeedDocument'), $this->rateLimitStorage);
-            $this->createFeedDocumentRateLimiter = $factory->create();
+            $this->createFeedDocumentRateLimiter = $factory->create('FeedsApi-createFeedDocument');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeed'), $this->rateLimitStorage);
-            $this->getFeedRateLimiter = $factory->create();
+            $this->getFeedRateLimiter = $factory->create('FeedsApi-getFeed');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeedDocument'), $this->rateLimitStorage);
-            $this->getFeedDocumentRateLimiter = $factory->create();
+            $this->getFeedDocumentRateLimiter = $factory->create('FeedsApi-getFeedDocument');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeeds'), $this->rateLimitStorage);
-            $this->getFeedsRateLimiter = $factory->create();
+            $this->getFeedsRateLimiter = $factory->create('FeedsApi-getFeeds');
         }
 
         $this->client = $client ?: new Client();

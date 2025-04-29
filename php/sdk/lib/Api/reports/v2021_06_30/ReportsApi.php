@@ -65,6 +65,15 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ReportsApi
 {
+    public ?LimiterInterface $cancelReportRateLimiter;
+    public ?LimiterInterface $cancelReportScheduleRateLimiter;
+    public ?LimiterInterface $createReportRateLimiter;
+    public ?LimiterInterface $createReportScheduleRateLimiter;
+    public ?LimiterInterface $getReportRateLimiter;
+    public ?LimiterInterface $getReportDocumentRateLimiter;
+    public ?LimiterInterface $getReportScheduleRateLimiter;
+    public ?LimiterInterface $getReportSchedulesRateLimiter;
+    public ?LimiterInterface $getReportsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -78,16 +87,6 @@ class ReportsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $cancelReportRateLimiter;
-    private ?LimiterInterface $cancelReportScheduleRateLimiter;
-    private ?LimiterInterface $createReportRateLimiter;
-    private ?LimiterInterface $createReportScheduleRateLimiter;
-    private ?LimiterInterface $getReportRateLimiter;
-    private ?LimiterInterface $getReportDocumentRateLimiter;
-    private ?LimiterInterface $getReportScheduleRateLimiter;
-    private ?LimiterInterface $getReportSchedulesRateLimiter;
-    private ?LimiterInterface $getReportsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -106,23 +105,23 @@ class ReportsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-cancelReport'), $this->rateLimitStorage);
-            $this->cancelReportRateLimiter = $factory->create();
+            $this->cancelReportRateLimiter = $factory->create('ReportsApi-cancelReport');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-cancelReportSchedule'), $this->rateLimitStorage);
-            $this->cancelReportScheduleRateLimiter = $factory->create();
+            $this->cancelReportScheduleRateLimiter = $factory->create('ReportsApi-cancelReportSchedule');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-createReport'), $this->rateLimitStorage);
-            $this->createReportRateLimiter = $factory->create();
+            $this->createReportRateLimiter = $factory->create('ReportsApi-createReport');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-createReportSchedule'), $this->rateLimitStorage);
-            $this->createReportScheduleRateLimiter = $factory->create();
+            $this->createReportScheduleRateLimiter = $factory->create('ReportsApi-createReportSchedule');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReport'), $this->rateLimitStorage);
-            $this->getReportRateLimiter = $factory->create();
+            $this->getReportRateLimiter = $factory->create('ReportsApi-getReport');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportDocument'), $this->rateLimitStorage);
-            $this->getReportDocumentRateLimiter = $factory->create();
+            $this->getReportDocumentRateLimiter = $factory->create('ReportsApi-getReportDocument');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportSchedule'), $this->rateLimitStorage);
-            $this->getReportScheduleRateLimiter = $factory->create();
+            $this->getReportScheduleRateLimiter = $factory->create('ReportsApi-getReportSchedule');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportSchedules'), $this->rateLimitStorage);
-            $this->getReportSchedulesRateLimiter = $factory->create();
+            $this->getReportSchedulesRateLimiter = $factory->create('ReportsApi-getReportSchedules');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReports'), $this->rateLimitStorage);
-            $this->getReportsRateLimiter = $factory->create();
+            $this->getReportsRateLimiter = $factory->create('ReportsApi-getReports');
         }
 
         $this->client = $client ?: new Client();

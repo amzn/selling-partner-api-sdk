@@ -57,6 +57,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaInboundApi
 {
+    public ?LimiterInterface $getItemEligibilityPreviewRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,8 +71,6 @@ class FbaInboundApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getItemEligibilityPreviewRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -90,7 +89,7 @@ class FbaInboundApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getItemEligibilityPreview'), $this->rateLimitStorage);
-            $this->getItemEligibilityPreviewRateLimiter = $factory->create();
+            $this->getItemEligibilityPreviewRateLimiter = $factory->create('FbaInboundApi-getItemEligibilityPreview');
         }
 
         $this->client = $client ?: new Client();

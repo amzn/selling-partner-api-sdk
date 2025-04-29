@@ -62,6 +62,10 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaInventoryApi
 {
+    public ?LimiterInterface $addInventoryRateLimiter;
+    public ?LimiterInterface $createInventoryItemRateLimiter;
+    public ?LimiterInterface $deleteInventoryItemRateLimiter;
+    public ?LimiterInterface $getInventorySummariesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -75,11 +79,6 @@ class FbaInventoryApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $addInventoryRateLimiter;
-    private ?LimiterInterface $createInventoryItemRateLimiter;
-    private ?LimiterInterface $deleteInventoryItemRateLimiter;
-    private ?LimiterInterface $getInventorySummariesRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -98,13 +97,13 @@ class FbaInventoryApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-addInventory'), $this->rateLimitStorage);
-            $this->addInventoryRateLimiter = $factory->create();
+            $this->addInventoryRateLimiter = $factory->create('FbaInventoryApi-addInventory');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-createInventoryItem'), $this->rateLimitStorage);
-            $this->createInventoryItemRateLimiter = $factory->create();
+            $this->createInventoryItemRateLimiter = $factory->create('FbaInventoryApi-createInventoryItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-deleteInventoryItem'), $this->rateLimitStorage);
-            $this->deleteInventoryItemRateLimiter = $factory->create();
+            $this->deleteInventoryItemRateLimiter = $factory->create('FbaInventoryApi-deleteInventoryItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-getInventorySummaries'), $this->rateLimitStorage);
-            $this->getInventorySummariesRateLimiter = $factory->create();
+            $this->getInventorySummariesRateLimiter = $factory->create('FbaInventoryApi-getInventorySummaries');
         }
 
         $this->client = $client ?: new Client();

@@ -76,10 +76,10 @@ class VendorShippingApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $getShipmentDetailsRateLimiter;
-    private ?LimiterInterface $getShipmentLabelsRateLimiter;
-    private ?LimiterInterface $submitShipmentConfirmationsRateLimiter;
-    private ?LimiterInterface $submitShipmentsRateLimiter;
+    public ?LimiterInterface $getShipmentDetailsRateLimiter;
+    public ?LimiterInterface $getShipmentLabelsRateLimiter;
+    public ?LimiterInterface $submitShipmentConfirmationsRateLimiter;
+    public ?LimiterInterface $submitShipmentsRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -102,13 +102,13 @@ class VendorShippingApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-getShipmentDetails"), $this->rateLimitStorage);
-            $this->getShipmentDetailsRateLimiter = $factory->create();
+            $this->getShipmentDetailsRateLimiter = $factory->create("VendorShippingApi-getShipmentDetails");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-getShipmentLabels"), $this->rateLimitStorage);
-            $this->getShipmentLabelsRateLimiter = $factory->create();
+            $this->getShipmentLabelsRateLimiter = $factory->create("VendorShippingApi-getShipmentLabels");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-submitShipmentConfirmations"), $this->rateLimitStorage);
-            $this->submitShipmentConfirmationsRateLimiter = $factory->create();
+            $this->submitShipmentConfirmationsRateLimiter = $factory->create("VendorShippingApi-submitShipmentConfirmations");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-submitShipments"), $this->rateLimitStorage);
-            $this->submitShipmentsRateLimiter = $factory->create();
+            $this->submitShipmentsRateLimiter = $factory->create("VendorShippingApi-submitShipments");
         }
 
         $this->client = $client ?: new Client();

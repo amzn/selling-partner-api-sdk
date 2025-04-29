@@ -76,6 +76,20 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaOutboundApi
 {
+    public ?LimiterInterface $cancelFulfillmentOrderRateLimiter;
+    public ?LimiterInterface $createFulfillmentOrderRateLimiter;
+    public ?LimiterInterface $createFulfillmentReturnRateLimiter;
+    public ?LimiterInterface $deliveryOffersRateLimiter;
+    public ?LimiterInterface $getFeatureInventoryRateLimiter;
+    public ?LimiterInterface $getFeatureSKURateLimiter;
+    public ?LimiterInterface $getFeaturesRateLimiter;
+    public ?LimiterInterface $getFulfillmentOrderRateLimiter;
+    public ?LimiterInterface $getFulfillmentPreviewRateLimiter;
+    public ?LimiterInterface $getPackageTrackingDetailsRateLimiter;
+    public ?LimiterInterface $listAllFulfillmentOrdersRateLimiter;
+    public ?LimiterInterface $listReturnReasonCodesRateLimiter;
+    public ?LimiterInterface $submitFulfillmentOrderStatusUpdateRateLimiter;
+    public ?LimiterInterface $updateFulfillmentOrderRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -89,21 +103,6 @@ class FbaOutboundApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $cancelFulfillmentOrderRateLimiter;
-    private ?LimiterInterface $createFulfillmentOrderRateLimiter;
-    private ?LimiterInterface $createFulfillmentReturnRateLimiter;
-    private ?LimiterInterface $deliveryOffersRateLimiter;
-    private ?LimiterInterface $getFeatureInventoryRateLimiter;
-    private ?LimiterInterface $getFeatureSKURateLimiter;
-    private ?LimiterInterface $getFeaturesRateLimiter;
-    private ?LimiterInterface $getFulfillmentOrderRateLimiter;
-    private ?LimiterInterface $getFulfillmentPreviewRateLimiter;
-    private ?LimiterInterface $getPackageTrackingDetailsRateLimiter;
-    private ?LimiterInterface $listAllFulfillmentOrdersRateLimiter;
-    private ?LimiterInterface $listReturnReasonCodesRateLimiter;
-    private ?LimiterInterface $submitFulfillmentOrderStatusUpdateRateLimiter;
-    private ?LimiterInterface $updateFulfillmentOrderRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -122,33 +121,33 @@ class FbaOutboundApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-cancelFulfillmentOrder'), $this->rateLimitStorage);
-            $this->cancelFulfillmentOrderRateLimiter = $factory->create();
+            $this->cancelFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-cancelFulfillmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentOrder'), $this->rateLimitStorage);
-            $this->createFulfillmentOrderRateLimiter = $factory->create();
+            $this->createFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentReturn'), $this->rateLimitStorage);
-            $this->createFulfillmentReturnRateLimiter = $factory->create();
+            $this->createFulfillmentReturnRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentReturn');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-deliveryOffers'), $this->rateLimitStorage);
-            $this->deliveryOffersRateLimiter = $factory->create();
+            $this->deliveryOffersRateLimiter = $factory->create('FbaOutboundApi-deliveryOffers');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureInventory'), $this->rateLimitStorage);
-            $this->getFeatureInventoryRateLimiter = $factory->create();
+            $this->getFeatureInventoryRateLimiter = $factory->create('FbaOutboundApi-getFeatureInventory');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureSKU'), $this->rateLimitStorage);
-            $this->getFeatureSKURateLimiter = $factory->create();
+            $this->getFeatureSKURateLimiter = $factory->create('FbaOutboundApi-getFeatureSKU');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatures'), $this->rateLimitStorage);
-            $this->getFeaturesRateLimiter = $factory->create();
+            $this->getFeaturesRateLimiter = $factory->create('FbaOutboundApi-getFeatures');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFulfillmentOrder'), $this->rateLimitStorage);
-            $this->getFulfillmentOrderRateLimiter = $factory->create();
+            $this->getFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-getFulfillmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFulfillmentPreview'), $this->rateLimitStorage);
-            $this->getFulfillmentPreviewRateLimiter = $factory->create();
+            $this->getFulfillmentPreviewRateLimiter = $factory->create('FbaOutboundApi-getFulfillmentPreview');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getPackageTrackingDetails'), $this->rateLimitStorage);
-            $this->getPackageTrackingDetailsRateLimiter = $factory->create();
+            $this->getPackageTrackingDetailsRateLimiter = $factory->create('FbaOutboundApi-getPackageTrackingDetails');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-listAllFulfillmentOrders'), $this->rateLimitStorage);
-            $this->listAllFulfillmentOrdersRateLimiter = $factory->create();
+            $this->listAllFulfillmentOrdersRateLimiter = $factory->create('FbaOutboundApi-listAllFulfillmentOrders');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-listReturnReasonCodes'), $this->rateLimitStorage);
-            $this->listReturnReasonCodesRateLimiter = $factory->create();
+            $this->listReturnReasonCodesRateLimiter = $factory->create('FbaOutboundApi-listReturnReasonCodes');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-submitFulfillmentOrderStatusUpdate'), $this->rateLimitStorage);
-            $this->submitFulfillmentOrderStatusUpdateRateLimiter = $factory->create();
+            $this->submitFulfillmentOrderStatusUpdateRateLimiter = $factory->create('FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-updateFulfillmentOrder'), $this->rateLimitStorage);
-            $this->updateFulfillmentOrderRateLimiter = $factory->create();
+            $this->updateFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-updateFulfillmentOrder');
         }
 
         $this->client = $client ?: new Client();

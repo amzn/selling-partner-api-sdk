@@ -76,7 +76,7 @@ class UpdateInventoryApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $submitInventoryUpdateRateLimiter;
+    public ?LimiterInterface $submitInventoryUpdateRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -99,7 +99,7 @@ class UpdateInventoryApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("UpdateInventoryApi-submitInventoryUpdate"), $this->rateLimitStorage);
-            $this->submitInventoryUpdateRateLimiter = $factory->create();
+            $this->submitInventoryUpdateRateLimiter = $factory->create("UpdateInventoryApi-submitInventoryUpdate");
         }
 
         $this->client = $client ?: new Client();

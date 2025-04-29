@@ -57,6 +57,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class UploadsApi
 {
+    public ?LimiterInterface $createUploadDestinationForResourceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,8 +71,6 @@ class UploadsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createUploadDestinationForResourceRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -90,7 +89,7 @@ class UploadsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('UploadsApi-createUploadDestinationForResource'), $this->rateLimitStorage);
-            $this->createUploadDestinationForResourceRateLimiter = $factory->create();
+            $this->createUploadDestinationForResourceRateLimiter = $factory->create('UploadsApi-createUploadDestinationForResource');
         }
 
         $this->client = $client ?: new Client();

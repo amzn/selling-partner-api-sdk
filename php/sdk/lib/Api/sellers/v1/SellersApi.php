@@ -58,6 +58,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SellersApi
 {
+    public ?LimiterInterface $getAccountRateLimiter;
+    public ?LimiterInterface $getMarketplaceParticipationsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,9 +73,6 @@ class SellersApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getAccountRateLimiter;
-    private ?LimiterInterface $getMarketplaceParticipationsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -92,9 +91,9 @@ class SellersApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellersApi-getAccount'), $this->rateLimitStorage);
-            $this->getAccountRateLimiter = $factory->create();
+            $this->getAccountRateLimiter = $factory->create('SellersApi-getAccount');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellersApi-getMarketplaceParticipations'), $this->rateLimitStorage);
-            $this->getMarketplaceParticipationsRateLimiter = $factory->create();
+            $this->getMarketplaceParticipationsRateLimiter = $factory->create('SellersApi-getMarketplaceParticipations');
         }
 
         $this->client = $client ?: new Client();

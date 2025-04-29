@@ -57,6 +57,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class AutomotiveApi
 {
+    public ?LimiterInterface $getVehicles_0RateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,8 +71,6 @@ class AutomotiveApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getVehicles_0RateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -90,7 +89,7 @@ class AutomotiveApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AutomotiveApi-getVehicles_0'), $this->rateLimitStorage);
-            $this->getVehicles_0RateLimiter = $factory->create();
+            $this->getVehicles_0RateLimiter = $factory->create('AutomotiveApi-getVehicles_0');
         }
 
         $this->client = $client ?: new Client();

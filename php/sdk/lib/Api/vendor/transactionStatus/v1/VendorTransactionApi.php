@@ -76,7 +76,7 @@ class VendorTransactionApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $getTransactionRateLimiter;
+    public ?LimiterInterface $getTransactionRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -99,7 +99,7 @@ class VendorTransactionApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorTransactionApi-getTransaction"), $this->rateLimitStorage);
-            $this->getTransactionRateLimiter = $factory->create();
+            $this->getTransactionRateLimiter = $factory->create("VendorTransactionApi-getTransaction");
         }
 
         $this->client = $client ?: new Client();

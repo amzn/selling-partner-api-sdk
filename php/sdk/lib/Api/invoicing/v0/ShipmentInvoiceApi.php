@@ -60,6 +60,9 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShipmentInvoiceApi
 {
+    public ?LimiterInterface $getInvoiceStatusRateLimiter;
+    public ?LimiterInterface $getShipmentDetailsRateLimiter;
+    public ?LimiterInterface $submitInvoiceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,10 +76,6 @@ class ShipmentInvoiceApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getInvoiceStatusRateLimiter;
-    private ?LimiterInterface $getShipmentDetailsRateLimiter;
-    private ?LimiterInterface $submitInvoiceRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -95,11 +94,11 @@ class ShipmentInvoiceApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-getInvoiceStatus'), $this->rateLimitStorage);
-            $this->getInvoiceStatusRateLimiter = $factory->create();
+            $this->getInvoiceStatusRateLimiter = $factory->create('ShipmentInvoiceApi-getInvoiceStatus');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-getShipmentDetails'), $this->rateLimitStorage);
-            $this->getShipmentDetailsRateLimiter = $factory->create();
+            $this->getShipmentDetailsRateLimiter = $factory->create('ShipmentInvoiceApi-getShipmentDetails');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-submitInvoice'), $this->rateLimitStorage);
-            $this->submitInvoiceRateLimiter = $factory->create();
+            $this->submitInvoiceRateLimiter = $factory->create('ShipmentInvoiceApi-submitInvoice');
         }
 
         $this->client = $client ?: new Client();
