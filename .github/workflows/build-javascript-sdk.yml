@@ -97,6 +97,10 @@ jobs:
         run: |
           chmod +x scripts/generate-consolidated-index.sh
           ./scripts/generate-consolidated-index.sh
+      - name: Run linter
+        working-directory: ./selling-partner-api-sdk/javascript/sdk
+        continue-on-error: true
+        run: npm install standard --global && standard "src/**/*.js" --fix
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
