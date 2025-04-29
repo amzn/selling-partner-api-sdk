@@ -68,7 +68,7 @@ use {{invokerPackage}}\ObjectSerializer;
     private InMemoryStorage $rateLimitStorage;
 
     {{#operation}}
-    private ?LimiterInterface ${{operationId}}RateLimiter;
+    public ?LimiterInterface ${{operationId}}RateLimiter;
     {{/operation}}
 
     /**
@@ -93,7 +93,7 @@ use {{invokerPackage}}\ObjectSerializer;
 
             {{#operation}}
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("{{classname}}-{{operationId}}"), $this->rateLimitStorage);
-            $this->{{operationId}}RateLimiter = $factory->create();
+            $this->{{operationId}}RateLimiter = $factory->create("{{classname}}-{{operationId}}");
             {{/operation}}
         }
 
