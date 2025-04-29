@@ -49,6 +49,9 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
 
     def instruct_backend_mock(self, response: str, code: str) -> None:
         url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+        ## handle same api operation name exceptions
+        if "vendor" in {{apiPackage}} and response == "getOrder":
+            url += f"?qualifier=Vendor"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

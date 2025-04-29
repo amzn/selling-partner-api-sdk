@@ -23,8 +23,8 @@ jobs:
       - uses: actions/setup-node@v4  # needed for openapi-generator-cli
         with:
           node-version: '20'
-      - name: Pre-process OpenAPI schemas with missing or wrong tags
-        run: bash ./selling-partner-api-sdk/python/dev-sdk/tag-fixer.sh
+      - name: Pre-process OpenAPI schemas with duplicate/missings tags or other issues
+        run: bash ./selling-partner-api-sdk/python/dev-sdk/schema-fixer.sh
       - name: Install OpenAPI Generator
         run: npm install @openapitools/openapi-generator-cli -g
       - name: Remove old sdk files
