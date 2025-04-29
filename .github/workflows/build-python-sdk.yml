@@ -97,6 +97,6 @@ jobs:
           title: 'Update Python SDK'
           body: |
             Update Python SDK with latest changes from upstream.
-          branch: feature/update-python-sdk2
+          branch: feature/python-sdk-update
           assignees: jawheral
           path: ./selling-partner-api-sdk
