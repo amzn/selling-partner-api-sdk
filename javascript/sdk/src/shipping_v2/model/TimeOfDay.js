@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The TimeOfDay model module.
@@ -25,7 +25,7 @@ export class TimeOfDay {
    * @alias module:shipping_v2/model/TimeOfDay
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,28 +35,25 @@ export class TimeOfDay {
    * @param {module:shipping_v2/model/TimeOfDay} obj Optional instance to populate.
    * @return {module:shipping_v2/model/TimeOfDay} The populated <code>TimeOfDay</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new TimeOfDay();
-      if (data.hasOwnProperty('hourOfDay'))
-        obj.hourOfDay = ApiClient.convertToType(data['hourOfDay'], 'Number');
-      if (data.hasOwnProperty('minuteOfHour'))
-        obj.minuteOfHour = ApiClient.convertToType(data['minuteOfHour'], 'Number');
-      if (data.hasOwnProperty('secondOfMinute'))
-        obj.secondOfMinute = ApiClient.convertToType(data['secondOfMinute'], 'Number');
+      obj = obj || new TimeOfDay()
+      if (data.hasOwnProperty('hourOfDay')) { obj.hourOfDay = ApiClient.convertToType(data.hourOfDay, 'Number') }
+      if (data.hasOwnProperty('minuteOfHour')) { obj.minuteOfHour = ApiClient.convertToType(data.minuteOfHour, 'Number') }
+      if (data.hasOwnProperty('secondOfMinute')) { obj.secondOfMinute = ApiClient.convertToType(data.secondOfMinute, 'Number') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -64,18 +61,16 @@ export class TimeOfDay {
  * Denotes hour of the day, used for defining opening or closing time of access points
  * @member {Number} hourOfDay
  */
-TimeOfDay.prototype.hourOfDay = undefined;
+TimeOfDay.prototype.hourOfDay = undefined
 
 /**
  * Denotes minute of the hour, used for defining opening or closing time of access points
  * @member {Number} minuteOfHour
  */
-TimeOfDay.prototype.minuteOfHour = undefined;
+TimeOfDay.prototype.minuteOfHour = undefined
 
 /**
  * Denotes second of the minute, used for defining opening or closing time of access points
  * @member {Number} secondOfMinute
  */
-TimeOfDay.prototype.secondOfMinute = undefined;
-
-
+TimeOfDay.prototype.secondOfMinute = undefined

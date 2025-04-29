@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The DateRange model module.
@@ -25,7 +25,7 @@ export class DateRange {
    * @alias module:shipping_v2/model/DateRange
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class DateRange {
    * @param {module:shipping_v2/model/DateRange} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DateRange} The populated <code>DateRange</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DateRange();
-      if (data.hasOwnProperty('startDate'))
-        obj.startDate = ApiClient.convertToType(data['startDate'], 'String');
-      if (data.hasOwnProperty('endDate'))
-        obj.endDate = ApiClient.convertToType(data['endDate'], 'String');
+      obj = obj || new DateRange()
+      if (data.hasOwnProperty('startDate')) { obj.startDate = ApiClient.convertToType(data.startDate, 'String') }
+      if (data.hasOwnProperty('endDate')) { obj.endDate = ApiClient.convertToType(data.endDate, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class DateRange {
  * Start Date for query .
  * @member {String} startDate
  */
-DateRange.prototype.startDate = undefined;
+DateRange.prototype.startDate = undefined
 
 /**
  * end date for query.
  * @member {String} endDate
  */
-DateRange.prototype.endDate = undefined;
-
-
+DateRange.prototype.endDate = undefined

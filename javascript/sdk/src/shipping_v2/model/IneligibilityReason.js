@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {IneligibilityReasonCode} from './IneligibilityReasonCode.js';
+import { ApiClient } from '../ApiClient.js'
+import { IneligibilityReasonCode } from './IneligibilityReasonCode.js'
 
 /**
  * The IneligibilityReason model module.
@@ -25,12 +25,12 @@ export class IneligibilityReason {
    * The reason why a shipping service offering is ineligible.
    * @alias module:shipping_v2/model/IneligibilityReason
    * @class
-   * @param code {module:shipping_v2/model/IneligibilityReasonCode} 
+   * @param code {module:shipping_v2/model/IneligibilityReasonCode}
    * @param message {String} The ineligibility reason.
    */
-  constructor(code, message) {
-    this.code = code;
-    this.message = message;
+  constructor (code, message) {
+    this.code = code
+    this.message = message
   }
 
   /**
@@ -40,38 +40,34 @@ export class IneligibilityReason {
    * @param {module:shipping_v2/model/IneligibilityReason} obj Optional instance to populate.
    * @return {module:shipping_v2/model/IneligibilityReason} The populated <code>IneligibilityReason</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new IneligibilityReason();
-      if (data.hasOwnProperty('code'))
-        obj.code = IneligibilityReasonCode.constructFromObject(data['code']);
-      if (data.hasOwnProperty('message'))
-        obj.message = ApiClient.convertToType(data['message'], 'String');
+      obj = obj || new IneligibilityReason()
+      if (data.hasOwnProperty('code')) { obj.code = IneligibilityReasonCode.constructFromObject(data.code) }
+      if (data.hasOwnProperty('message')) { obj.message = ApiClient.convertToType(data.message, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/IneligibilityReasonCode} code
  */
-IneligibilityReason.prototype.code = undefined;
+IneligibilityReason.prototype.code = undefined
 
 /**
  * The ineligibility reason.
  * @member {String} message
  */
-IneligibilityReason.prototype.message = undefined;
-
-
+IneligibilityReason.prototype.message = undefined

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class GenerationStatus.
@@ -19,28 +19,24 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class GenerationStatus {
-    
-        /**
+  /**
          * value: "Completed"
          * @const
          */
-        "Completed" = "Completed";
+  'Completed' = 'Completed'
 
-    
-        /**
+  /**
          * value: "InProgress"
          * @const
          */
-        "InProgress" = "InProgress";
+  'InProgress' = 'InProgress'
 
-    
-
-    /**
+  /**
     * Returns a <code>GenerationStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/GenerationStatus} The enum <code>GenerationStatus</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

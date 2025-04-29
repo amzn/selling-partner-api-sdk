@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class TaxType.
@@ -19,21 +19,18 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class TaxType {
-    
-        /**
+  /**
          * value: "GST"
          * @const
          */
-        "GST" = "GST";
+  'GST' = 'GST'
 
-    
-
-    /**
+  /**
     * Returns a <code>TaxType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/TaxType} The enum <code>TaxType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

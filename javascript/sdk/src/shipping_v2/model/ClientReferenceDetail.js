@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The ClientReferenceDetail model module.
@@ -27,9 +27,9 @@ export class ClientReferenceDetail {
    * @param clientReferenceType {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum} Client Reference type.
    * @param clientReferenceId {String} The Client Reference Id.
    */
-  constructor(clientReferenceType, clientReferenceId) {
-    this.clientReferenceType = clientReferenceType;
-    this.clientReferenceId = clientReferenceId;
+  constructor (clientReferenceType, clientReferenceId) {
+    this.clientReferenceType = clientReferenceType
+    this.clientReferenceId = clientReferenceId
   }
 
   /**
@@ -39,26 +39,24 @@ export class ClientReferenceDetail {
    * @param {module:shipping_v2/model/ClientReferenceDetail} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ClientReferenceDetail} The populated <code>ClientReferenceDetail</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ClientReferenceDetail();
-      if (data.hasOwnProperty('clientReferenceType'))
-        obj.clientReferenceType = ApiClient.convertToType(data['clientReferenceType'], 'String');
-      if (data.hasOwnProperty('clientReferenceId'))
-        obj.clientReferenceId = ApiClient.convertToType(data['clientReferenceId'], 'String');
+      obj = obj || new ClientReferenceDetail()
+      if (data.hasOwnProperty('clientReferenceType')) { obj.clientReferenceType = ApiClient.convertToType(data.clientReferenceType, 'String') }
+      if (data.hasOwnProperty('clientReferenceId')) { obj.clientReferenceId = ApiClient.convertToType(data.clientReferenceId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -67,31 +65,29 @@ export class ClientReferenceDetail {
  * @enum {String}
  * @readonly
  */
-ClientReferenceDetail['ClientReferenceTypeEnum'] = {
+ClientReferenceDetail.ClientReferenceTypeEnum = {
 
-    /**
+  /**
      * value: "IntegratorShipperId"
      * @const
      */
-    "IntegratorShipperId": "IntegratorShipperId",
+  IntegratorShipperId: 'IntegratorShipperId',
 
-    /**
+  /**
      * value: "IntegratorMerchantId"
      * @const
      */
-    "IntegratorMerchantId": "IntegratorMerchantId"
-};
+  IntegratorMerchantId: 'IntegratorMerchantId'
+}
 
 /**
  * Client Reference type.
  * @member {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum} clientReferenceType
  */
-ClientReferenceDetail.prototype.clientReferenceType = undefined;
+ClientReferenceDetail.prototype.clientReferenceType = undefined
 
 /**
  * The Client Reference Id.
  * @member {String} clientReferenceId
  */
-ClientReferenceDetail.prototype.clientReferenceId = undefined;
-
-
+ClientReferenceDetail.prototype.clientReferenceId = undefined

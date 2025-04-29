@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {CollectOnDelivery} from './CollectOnDelivery.js';
+import { ApiClient } from '../ApiClient.js'
+import { CollectOnDelivery } from './CollectOnDelivery.js'
 
 /**
  * The ValueAddedServiceDetails model module.
@@ -26,7 +26,7 @@ export class ValueAddedServiceDetails {
    * @alias module:shipping_v2/model/ValueAddedServiceDetails
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class ValueAddedServiceDetails {
    * @param {module:shipping_v2/model/ValueAddedServiceDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ValueAddedServiceDetails} The populated <code>ValueAddedServiceDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ValueAddedServiceDetails();
-      if (data.hasOwnProperty('collectOnDelivery'))
-        obj.collectOnDelivery = CollectOnDelivery.constructFromObject(data['collectOnDelivery']);
+      obj = obj || new ValueAddedServiceDetails()
+      if (data.hasOwnProperty('collectOnDelivery')) { obj.collectOnDelivery = CollectOnDelivery.constructFromObject(data.collectOnDelivery) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/CollectOnDelivery} collectOnDelivery
  */
-ValueAddedServiceDetails.prototype.collectOnDelivery = undefined;
-
-
+ValueAddedServiceDetails.prototype.collectOnDelivery = undefined

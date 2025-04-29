@@ -11,40 +11,40 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {CancelShipmentResponse} from '../model/CancelShipmentResponse.js';
-import {CreateClaimRequest} from '../model/CreateClaimRequest.js';
-import {CreateClaimResponse} from '../model/CreateClaimResponse.js';
-import {DirectPurchaseRequest} from '../model/DirectPurchaseRequest.js';
-import {DirectPurchaseResponse} from '../model/DirectPurchaseResponse.js';
-import {ErrorList} from '../model/ErrorList.js';
-import {GenerateCollectionFormRequest} from '../model/GenerateCollectionFormRequest.js';
-import {GenerateCollectionFormResponse} from '../model/GenerateCollectionFormResponse.js';
-import {GetAccessPointsResponse} from '../model/GetAccessPointsResponse.js';
-import {GetAdditionalInputsResponse} from '../model/GetAdditionalInputsResponse.js';
-import {GetCarrierAccountFormInputsResponse} from '../model/GetCarrierAccountFormInputsResponse.js';
-import {GetCarrierAccountsRequest} from '../model/GetCarrierAccountsRequest.js';
-import {GetCarrierAccountsResponse} from '../model/GetCarrierAccountsResponse.js';
-import {GetCollectionFormHistoryRequest} from '../model/GetCollectionFormHistoryRequest.js';
-import {GetCollectionFormHistoryResponse} from '../model/GetCollectionFormHistoryResponse.js';
-import {GetCollectionFormResponse} from '../model/GetCollectionFormResponse.js';
-import {GetRatesRequest} from '../model/GetRatesRequest.js';
-import {GetRatesResponse} from '../model/GetRatesResponse.js';
-import {GetShipmentDocumentsResponse} from '../model/GetShipmentDocumentsResponse.js';
-import {GetTrackingResponse} from '../model/GetTrackingResponse.js';
-import {GetUnmanifestedShipmentsRequest} from '../model/GetUnmanifestedShipmentsRequest.js';
-import {GetUnmanifestedShipmentsResponse} from '../model/GetUnmanifestedShipmentsResponse.js';
-import {LinkCarrierAccountRequest} from '../model/LinkCarrierAccountRequest.js';
-import {LinkCarrierAccountResponse} from '../model/LinkCarrierAccountResponse.js';
-import {OneClickShipmentRequest} from '../model/OneClickShipmentRequest.js';
-import {OneClickShipmentResponse} from '../model/OneClickShipmentResponse.js';
-import {PurchaseShipmentRequest} from '../model/PurchaseShipmentRequest.js';
-import {PurchaseShipmentResponse} from '../model/PurchaseShipmentResponse.js';
-import {SubmitNdrFeedbackRequest} from '../model/SubmitNdrFeedbackRequest.js';
-import {UnlinkCarrierAccountRequest} from '../model/UnlinkCarrierAccountRequest.js';
-import {UnlinkCarrierAccountResponse} from '../model/UnlinkCarrierAccountResponse.js';
-import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
-import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
+import { ApiClient } from '../ApiClient.js'
+import { CancelShipmentResponse } from '../model/CancelShipmentResponse.js'
+import { CreateClaimRequest } from '../model/CreateClaimRequest.js'
+import { CreateClaimResponse } from '../model/CreateClaimResponse.js'
+import { DirectPurchaseRequest } from '../model/DirectPurchaseRequest.js'
+import { DirectPurchaseResponse } from '../model/DirectPurchaseResponse.js'
+import { ErrorList } from '../model/ErrorList.js'
+import { GenerateCollectionFormRequest } from '../model/GenerateCollectionFormRequest.js'
+import { GenerateCollectionFormResponse } from '../model/GenerateCollectionFormResponse.js'
+import { GetAccessPointsResponse } from '../model/GetAccessPointsResponse.js'
+import { GetAdditionalInputsResponse } from '../model/GetAdditionalInputsResponse.js'
+import { GetCarrierAccountFormInputsResponse } from '../model/GetCarrierAccountFormInputsResponse.js'
+import { GetCarrierAccountsRequest } from '../model/GetCarrierAccountsRequest.js'
+import { GetCarrierAccountsResponse } from '../model/GetCarrierAccountsResponse.js'
+import { GetCollectionFormHistoryRequest } from '../model/GetCollectionFormHistoryRequest.js'
+import { GetCollectionFormHistoryResponse } from '../model/GetCollectionFormHistoryResponse.js'
+import { GetCollectionFormResponse } from '../model/GetCollectionFormResponse.js'
+import { GetRatesRequest } from '../model/GetRatesRequest.js'
+import { GetRatesResponse } from '../model/GetRatesResponse.js'
+import { GetShipmentDocumentsResponse } from '../model/GetShipmentDocumentsResponse.js'
+import { GetTrackingResponse } from '../model/GetTrackingResponse.js'
+import { GetUnmanifestedShipmentsRequest } from '../model/GetUnmanifestedShipmentsRequest.js'
+import { GetUnmanifestedShipmentsResponse } from '../model/GetUnmanifestedShipmentsResponse.js'
+import { LinkCarrierAccountRequest } from '../model/LinkCarrierAccountRequest.js'
+import { LinkCarrierAccountResponse } from '../model/LinkCarrierAccountResponse.js'
+import { OneClickShipmentRequest } from '../model/OneClickShipmentRequest.js'
+import { OneClickShipmentResponse } from '../model/OneClickShipmentResponse.js'
+import { PurchaseShipmentRequest } from '../model/PurchaseShipmentRequest.js'
+import { PurchaseShipmentResponse } from '../model/PurchaseShipmentResponse.js'
+import { SubmitNdrFeedbackRequest } from '../model/SubmitNdrFeedbackRequest.js'
+import { UnlinkCarrierAccountRequest } from '../model/UnlinkCarrierAccountRequest.js'
+import { UnlinkCarrierAccountResponse } from '../model/UnlinkCarrierAccountResponse.js'
+import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
+import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Shipping service.
@@ -52,234 +52,225 @@ import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.m
 * @version v2
 */
 export class ShippingApi {
+  // Private memeber stores the default rate limiters
+  #defaultRateLimiterMap
 
-    // Private memeber stores the default rate limiters
-    #defaultRateLimiterMap;
-
-    /**
-    * Constructs a new ShippingApi. 
+  /**
+    * Constructs a new ShippingApi.
     * @alias module:shipping_v2/api/ShippingApi
     * @class
     * @param {module:shipping_v2/ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:shipping_v2/ApiClient#instance} if unspecified.
     */
-    constructor(apiClient) {
-        this.apiClient = apiClient || ApiClient.instance;
-        this.initializeDefaultRateLimiterMap();
-    }
+  constructor (apiClient) {
+    this.apiClient = apiClient || ApiClient.instance
+    this.initializeDefaultRateLimiterMap()
+  }
 
-    /**
+  /**
      * Initialize rate limiters for API operations
      */
-    initializeDefaultRateLimiterMap() {
-        this.#defaultRateLimiterMap = new Map()
-        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
-        const operations = [
-            'ShippingApi-cancelShipment',
-            'ShippingApi-createClaim',
-            'ShippingApi-directPurchaseShipment',
-            'ShippingApi-generateCollectionForm',
-            'ShippingApi-getAccessPoints',
-            'ShippingApi-getAdditionalInputs',
-            'ShippingApi-getCarrierAccountFormInputs',
-            'ShippingApi-getCarrierAccounts',
-            'ShippingApi-getCollectionForm',
-            'ShippingApi-getCollectionFormHistory',
-            'ShippingApi-getRates',
-            'ShippingApi-getShipmentDocuments',
-            'ShippingApi-getTracking',
-            'ShippingApi-getUnmanifestedShipments',
-            'ShippingApi-linkCarrierAccount',
-            'ShippingApi-linkCarrierAccount_0',
-            'ShippingApi-oneClickShipment',
-            'ShippingApi-purchaseShipment',
-            'ShippingApi-submitNdrFeedback',
-            'ShippingApi-unlinkCarrierAccount',
-        ];
+  initializeDefaultRateLimiterMap () {
+    this.#defaultRateLimiterMap = new Map()
+    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
+    const operations = [
+      'ShippingApi-cancelShipment',
+      'ShippingApi-createClaim',
+      'ShippingApi-directPurchaseShipment',
+      'ShippingApi-generateCollectionForm',
+      'ShippingApi-getAccessPoints',
+      'ShippingApi-getAdditionalInputs',
+      'ShippingApi-getCarrierAccountFormInputs',
+      'ShippingApi-getCarrierAccounts',
+      'ShippingApi-getCollectionForm',
+      'ShippingApi-getCollectionFormHistory',
+      'ShippingApi-getRates',
+      'ShippingApi-getShipmentDocuments',
+      'ShippingApi-getTracking',
+      'ShippingApi-getUnmanifestedShipments',
+      'ShippingApi-linkCarrierAccount',
+      'ShippingApi-linkCarrierAccount_0',
+      'ShippingApi-oneClickShipment',
+      'ShippingApi-purchaseShipment',
+      'ShippingApi-submitNdrFeedback',
+      'ShippingApi-unlinkCarrierAccount'
+    ]
 
-        for (const operation of operations) {
-            const config = defaultRateLimitFetcher.getLimit(operation);
-            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
-        }
+    for (const operation of operations) {
+      const config = defaultRateLimitFetcher.getLimit(operation)
+      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
     }
+  }
 
-    /**
+  /**
      * Get rate limiter for a specific operation
      * @param {String} operation name
      */
-    getRateLimiter(operation) {
-        return this.#defaultRateLimiterMap.get(operation);
-    }
+  getRateLimiter (operation) {
+    return this.#defaultRateLimiterMap.get(operation)
+  }
 
-
-
-    /**
+  /**
      * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/CancelShipmentResponse} and HTTP response
      */
-    cancelShipmentWithHttpInfo(shipmentId, opts) {
-      opts = opts || {};
-      let postBody = null;
+  cancelShipmentWithHttpInfo (shipmentId, opts) {
+    opts = opts || {}
+    const postBody = null
 
-      // verify the required parameter 'shipmentId' is set
-      if (shipmentId === undefined || shipmentId === null) {
-        throw new Error("Missing the required parameter 'shipmentId' when calling cancelShipment");
-      }
-
-
-      let pathParams = {
-        'shipmentId': shipmentId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = CancelShipmentResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-cancelShipment',
-        '/shipping/v2/shipments/{shipmentId}/cancel', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-cancelShipment')
-      );
+    // verify the required parameter 'shipmentId' is set
+    if (shipmentId === undefined || shipmentId === null) {
+      throw new Error("Missing the required parameter 'shipmentId' when calling cancelShipment")
     }
 
-    /**
+    const pathParams = {
+      shipmentId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = CancelShipmentResponse
+
+    return this.apiClient.callApi('ShippingApi-cancelShipment',
+      '/shipping/v2/shipments/{shipmentId}/cancel', 'PUT',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-cancelShipment')
+    )
+  }
+
+  /**
      * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/CancelShipmentResponse}
      */
-    cancelShipment(shipmentId, opts) {
-      return this.cancelShipmentWithHttpInfo(shipmentId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  cancelShipment (shipmentId, opts) {
+    return this.cancelShipmentWithHttpInfo(shipmentId, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/CreateClaimRequest} body Request body for the createClaim operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/CreateClaimResponse} and HTTP response
      */
-    createClaimWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  createClaimWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createClaim");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateClaimResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-createClaim',
-        '/shipping/v2/claims', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-createClaim')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling createClaim")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = CreateClaimResponse
+
+    return this.apiClient.callApi('ShippingApi-createClaim',
+      '/shipping/v2/claims', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-createClaim')
+    )
+  }
+
+  /**
      * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/CreateClaimRequest} body Request body for the createClaim operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/CreateClaimResponse}
      */
-    createClaim(body, opts) {
-      return this.createClaimWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  createClaim (body, opts) {
+    return this.createClaimWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/DirectPurchaseRequest} body DirectPurchaseRequest body
      * @param {Object} opts Optional parameters
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags. 
+     * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/DirectPurchaseResponse} and HTTP response
      */
-    directPurchaseShipmentWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  directPurchaseShipmentWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling directPurchaseShipment");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-IdempotencyKey': opts['xAmznIdempotencyKey'],
-        'locale': opts['locale'],
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = DirectPurchaseResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-directPurchaseShipment',
-        '/shipping/v2/shipments/directPurchase', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-directPurchaseShipment')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling directPurchaseShipment")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-IdempotencyKey': opts.xAmznIdempotencyKey,
+      locale: opts.locale,
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = DirectPurchaseResponse
+
+    return this.apiClient.callApi('ShippingApi-directPurchaseShipment',
+      '/shipping/v2/shipments/directPurchase', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-directPurchaseShipment')
+    )
+  }
+
+  /**
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/DirectPurchaseRequest} body DirectPurchaseRequest body
      * @param {Object} opts Optional parameters
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags. 
+     * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/DirectPurchaseResponse}
      */
-    directPurchaseShipment(body, opts) {
-      return this.directPurchaseShipmentWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  directPurchaseShipment (body, opts) {
+    return this.directPurchaseShipmentWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GenerateCollectionFormRequest} body GenerateCollectionFormRequest body
      * @param {Object} opts Optional parameters
@@ -287,39 +278,38 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GenerateCollectionFormResponse} and HTTP response
      */
-    generateCollectionFormWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  generateCollectionFormWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling generateCollectionForm");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-IdempotencyKey': opts['xAmznIdempotencyKey'],
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GenerateCollectionFormResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-generateCollectionForm',
-        '/shipping/v2/collectionForms', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-generateCollectionForm')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling generateCollectionForm")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-IdempotencyKey': opts.xAmznIdempotencyKey,
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = GenerateCollectionFormResponse
+
+    return this.apiClient.callApi('ShippingApi-generateCollectionForm',
+      '/shipping/v2/collectionForms', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-generateCollectionForm')
+    )
+  }
+
+  /**
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GenerateCollectionFormRequest} body GenerateCollectionFormRequest body
      * @param {Object} opts Optional parameters
@@ -327,15 +317,14 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GenerateCollectionFormResponse}
      */
-    generateCollectionForm(body, opts) {
-      return this.generateCollectionFormWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  generateCollectionForm (body, opts) {
+    return this.generateCollectionFormWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<module:shipping_v2/model/String>} accessPointTypes Access point types
      * @param {String} countryCode Country code for access point
@@ -344,51 +333,50 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetAccessPointsResponse} and HTTP response
      */
-    getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, opts) {
-      opts = opts || {};
-      let postBody = null;
+  getAccessPointsWithHttpInfo (accessPointTypes, countryCode, postalCode, opts) {
+    opts = opts || {}
+    const postBody = null
 
-      // verify the required parameter 'accessPointTypes' is set
-      if (accessPointTypes === undefined || accessPointTypes === null) {
-        throw new Error("Missing the required parameter 'accessPointTypes' when calling getAccessPoints");
-      }
-
-      // verify the required parameter 'countryCode' is set
-      if (countryCode === undefined || countryCode === null) {
-        throw new Error("Missing the required parameter 'countryCode' when calling getAccessPoints");
-      }
-
-      // verify the required parameter 'postalCode' is set
-      if (postalCode === undefined || postalCode === null) {
-        throw new Error("Missing the required parameter 'postalCode' when calling getAccessPoints");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'accessPointTypes': this.apiClient.buildCollectionParam(accessPointTypes, 'csv'),
-        'countryCode': countryCode,
-        'postalCode': postalCode
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetAccessPointsResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getAccessPoints',
-        '/shipping/v2/accessPoints', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAccessPoints')
-      );
+    // verify the required parameter 'accessPointTypes' is set
+    if (accessPointTypes === undefined || accessPointTypes === null) {
+      throw new Error("Missing the required parameter 'accessPointTypes' when calling getAccessPoints")
     }
 
-    /**
+    // verify the required parameter 'countryCode' is set
+    if (countryCode === undefined || countryCode === null) {
+      throw new Error("Missing the required parameter 'countryCode' when calling getAccessPoints")
+    }
+
+    // verify the required parameter 'postalCode' is set
+    if (postalCode === undefined || postalCode === null) {
+      throw new Error("Missing the required parameter 'postalCode' when calling getAccessPoints")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+      accessPointTypes: this.apiClient.buildCollectionParam(accessPointTypes, 'csv'),
+      countryCode,
+      postalCode
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetAccessPointsResponse
+
+    return this.apiClient.callApi('ShippingApi-getAccessPoints',
+      '/shipping/v2/accessPoints', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAccessPoints')
+    )
+  }
+
+  /**
      * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<module:shipping_v2/model/String>} accessPointTypes Access point types
      * @param {String} countryCode Country code for access point
@@ -397,15 +385,14 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetAccessPointsResponse}
      */
-    getAccessPoints(accessPointTypes, countryCode, postalCode, opts) {
-      return this.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getAccessPoints (accessPointTypes, countryCode, postalCode, opts) {
+    return this.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that additional inputs are required for the rate (shipping offering) that you want to purchase.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} requestToken The request token returned in the response to the getRates operation.
      * @param {String} rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates operation.
@@ -413,45 +400,44 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetAdditionalInputsResponse} and HTTP response
      */
-    getAdditionalInputsWithHttpInfo(requestToken, rateId, opts) {
-      opts = opts || {};
-      let postBody = null;
+  getAdditionalInputsWithHttpInfo (requestToken, rateId, opts) {
+    opts = opts || {}
+    const postBody = null
 
-      // verify the required parameter 'requestToken' is set
-      if (requestToken === undefined || requestToken === null) {
-        throw new Error("Missing the required parameter 'requestToken' when calling getAdditionalInputs");
-      }
-
-      // verify the required parameter 'rateId' is set
-      if (rateId === undefined || rateId === null) {
-        throw new Error("Missing the required parameter 'rateId' when calling getAdditionalInputs");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'requestToken': requestToken,
-        'rateId': rateId
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetAdditionalInputsResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getAdditionalInputs',
-        '/shipping/v2/shipments/additionalInputs/schema', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAdditionalInputs')
-      );
+    // verify the required parameter 'requestToken' is set
+    if (requestToken === undefined || requestToken === null) {
+      throw new Error("Missing the required parameter 'requestToken' when calling getAdditionalInputs")
     }
 
-    /**
+    // verify the required parameter 'rateId' is set
+    if (rateId === undefined || rateId === null) {
+      throw new Error("Missing the required parameter 'rateId' when calling getAdditionalInputs")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+      requestToken,
+      rateId
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetAdditionalInputsResponse
+
+    return this.apiClient.callApi('ShippingApi-getAdditionalInputs',
+      '/shipping/v2/shipments/additionalInputs/schema', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getAdditionalInputs')
+    )
+  }
+
+  /**
      * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that additional inputs are required for the rate (shipping offering) that you want to purchase.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} requestToken The request token returned in the response to the getRates operation.
      * @param {String} rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates operation.
@@ -459,274 +445,263 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetAdditionalInputsResponse}
      */
-    getAdditionalInputs(requestToken, rateId, opts) {
-      return this.getAdditionalInputsWithHttpInfo(requestToken, rateId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getAdditionalInputs (requestToken, rateId, opts) {
+    return this.getAdditionalInputsWithHttpInfo(requestToken, rateId, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCarrierAccountFormInputsResponse} and HTTP response
      */
-    getCarrierAccountFormInputsWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = null;
+  getCarrierAccountFormInputsWithHttpInfo (opts) {
+    opts = opts || {}
+    const postBody = null
 
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetCarrierAccountFormInputsResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getCarrierAccountFormInputs',
-        '/shipping/v2/carrierAccountFormInputs', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccountFormInputs')
-      );
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
     }
 
-    /**
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetCarrierAccountFormInputsResponse
+
+    return this.apiClient.callApi('ShippingApi-getCarrierAccountFormInputs',
+      '/shipping/v2/carrierAccountFormInputs', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccountFormInputs')
+    )
+  }
+
+  /**
      * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCarrierAccountFormInputsResponse}
      */
-    getCarrierAccountFormInputs(opts) {
-      return this.getCarrierAccountFormInputsWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getCarrierAccountFormInputs (opts) {
+    return this.getCarrierAccountFormInputsWithHttpInfo(opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetCarrierAccountsRequest} body GetCarrierAccountsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCarrierAccountsResponse} and HTTP response
      */
-    getCarrierAccountsWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  getCarrierAccountsWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling getCarrierAccounts");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GetCarrierAccountsResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getCarrierAccounts',
-        '/shipping/v2/carrierAccounts', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccounts')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling getCarrierAccounts")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = GetCarrierAccountsResponse
+
+    return this.apiClient.callApi('ShippingApi-getCarrierAccounts',
+      '/shipping/v2/carrierAccounts', 'PUT',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCarrierAccounts')
+    )
+  }
+
+  /**
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetCarrierAccountsRequest} body GetCarrierAccountsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCarrierAccountsResponse}
      */
-    getCarrierAccounts(body, opts) {
-      return this.getCarrierAccountsWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getCarrierAccounts (body, opts) {
+    return this.getCarrierAccountsWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API reprint a collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} collectionFormId collection form Id to reprint a collection.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCollectionFormResponse} and HTTP response
      */
-    getCollectionFormWithHttpInfo(collectionFormId, opts) {
-      opts = opts || {};
-      let postBody = null;
+  getCollectionFormWithHttpInfo (collectionFormId, opts) {
+    opts = opts || {}
+    const postBody = null
 
-      // verify the required parameter 'collectionFormId' is set
-      if (collectionFormId === undefined || collectionFormId === null) {
-        throw new Error("Missing the required parameter 'collectionFormId' when calling getCollectionForm");
-      }
-
-
-      let pathParams = {
-        'collectionFormId': collectionFormId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetCollectionFormResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getCollectionForm',
-        '/shipping/v2/collectionForms/{collectionFormId}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionForm')
-      );
+    // verify the required parameter 'collectionFormId' is set
+    if (collectionFormId === undefined || collectionFormId === null) {
+      throw new Error("Missing the required parameter 'collectionFormId' when calling getCollectionForm")
     }
 
-    /**
+    const pathParams = {
+      collectionFormId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetCollectionFormResponse
+
+    return this.apiClient.callApi('ShippingApi-getCollectionForm',
+      '/shipping/v2/collectionForms/{collectionFormId}', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionForm')
+    )
+  }
+
+  /**
      * This API reprint a collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} collectionFormId collection form Id to reprint a collection.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCollectionFormResponse}
      */
-    getCollectionForm(collectionFormId, opts) {
-      return this.getCollectionFormWithHttpInfo(collectionFormId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getCollectionForm (collectionFormId, opts) {
+    return this.getCollectionFormWithHttpInfo(collectionFormId, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetCollectionFormHistoryRequest} body GetCollectionFormHistoryRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCollectionFormHistoryResponse} and HTTP response
      */
-    getCollectionFormHistoryWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  getCollectionFormHistoryWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling getCollectionFormHistory");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GetCollectionFormHistoryResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getCollectionFormHistory',
-        '/shipping/v2/collectionForms/history', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionFormHistory')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling getCollectionFormHistory")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = GetCollectionFormHistoryResponse
+
+    return this.apiClient.callApi('ShippingApi-getCollectionFormHistory',
+      '/shipping/v2/collectionForms/history', 'PUT',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getCollectionFormHistory')
+    )
+  }
+
+  /**
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetCollectionFormHistoryRequest} body GetCollectionFormHistoryRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCollectionFormHistoryResponse}
      */
-    getCollectionFormHistory(body, opts) {
-      return this.getCollectionFormHistoryWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getCollectionFormHistory (body, opts) {
+    return this.getCollectionFormHistoryWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetRatesRequest} body GetRatesRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetRatesResponse} and HTTP response
      */
-    getRatesWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  getRatesWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling getRates");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GetRatesResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getRates',
-        '/shipping/v2/shipments/rates', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getRates')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling getRates")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = GetRatesResponse
+
+    return this.apiClient.callApi('ShippingApi-getRates',
+      '/shipping/v2/shipments/rates', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getRates')
+    )
+  }
+
+  /**
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetRatesRequest} body GetRatesRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetRatesResponse}
      */
-    getRates(body, opts) {
-      return this.getRatesWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getRates (body, opts) {
+    return this.getRatesWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Returns the shipping documents associated with a package in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {String} packageClientReferenceId The package client reference identifier originally provided in the request body parameter for the getRates operation.
@@ -736,47 +711,46 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetShipmentDocumentsResponse} and HTTP response
      */
-    getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, opts) {
-      opts = opts || {};
-      let postBody = null;
+  getShipmentDocumentsWithHttpInfo (shipmentId, packageClientReferenceId, opts) {
+    opts = opts || {}
+    const postBody = null
 
-      // verify the required parameter 'shipmentId' is set
-      if (shipmentId === undefined || shipmentId === null) {
-        throw new Error("Missing the required parameter 'shipmentId' when calling getShipmentDocuments");
-      }
-
-      // verify the required parameter 'packageClientReferenceId' is set
-      if (packageClientReferenceId === undefined || packageClientReferenceId === null) {
-        throw new Error("Missing the required parameter 'packageClientReferenceId' when calling getShipmentDocuments");
-      }
-
-
-      let pathParams = {
-        'shipmentId': shipmentId
-      };
-      let queryParams = {
-        'packageClientReferenceId': packageClientReferenceId,
-        'format': opts['format'],
-        'dpi': opts['dpi']
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetShipmentDocumentsResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getShipmentDocuments',
-        '/shipping/v2/shipments/{shipmentId}/documents', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getShipmentDocuments')
-      );
+    // verify the required parameter 'shipmentId' is set
+    if (shipmentId === undefined || shipmentId === null) {
+      throw new Error("Missing the required parameter 'shipmentId' when calling getShipmentDocuments")
     }
 
-    /**
+    // verify the required parameter 'packageClientReferenceId' is set
+    if (packageClientReferenceId === undefined || packageClientReferenceId === null) {
+      throw new Error("Missing the required parameter 'packageClientReferenceId' when calling getShipmentDocuments")
+    }
+
+    const pathParams = {
+      shipmentId
+    }
+    const queryParams = {
+      packageClientReferenceId,
+      format: opts.format,
+      dpi: opts.dpi
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetShipmentDocumentsResponse
+
+    return this.apiClient.callApi('ShippingApi-getShipmentDocuments',
+      '/shipping/v2/shipments/{shipmentId}/documents', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getShipmentDocuments')
+    )
+  }
+
+  /**
      * Returns the shipping documents associated with a package in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {String} packageClientReferenceId The package client reference identifier originally provided in the request body parameter for the getRates operation.
@@ -786,15 +760,14 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetShipmentDocumentsResponse}
      */
-    getShipmentDocuments(shipmentId, packageClientReferenceId, opts) {
-      return this.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getShipmentDocuments (shipmentId, packageClientReferenceId, opts) {
+    return this.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Returns tracking information for a purchased shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
      * @param {String} carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
@@ -802,45 +775,44 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetTrackingResponse} and HTTP response
      */
-    getTrackingWithHttpInfo(trackingId, carrierId, opts) {
-      opts = opts || {};
-      let postBody = null;
+  getTrackingWithHttpInfo (trackingId, carrierId, opts) {
+    opts = opts || {}
+    const postBody = null
 
-      // verify the required parameter 'trackingId' is set
-      if (trackingId === undefined || trackingId === null) {
-        throw new Error("Missing the required parameter 'trackingId' when calling getTracking");
-      }
-
-      // verify the required parameter 'carrierId' is set
-      if (carrierId === undefined || carrierId === null) {
-        throw new Error("Missing the required parameter 'carrierId' when calling getTracking");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'trackingId': trackingId,
-        'carrierId': carrierId
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetTrackingResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getTracking',
-        '/shipping/v2/tracking', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getTracking')
-      );
+    // verify the required parameter 'trackingId' is set
+    if (trackingId === undefined || trackingId === null) {
+      throw new Error("Missing the required parameter 'trackingId' when calling getTracking")
     }
 
-    /**
+    // verify the required parameter 'carrierId' is set
+    if (carrierId === undefined || carrierId === null) {
+      throw new Error("Missing the required parameter 'carrierId' when calling getTracking")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+      trackingId,
+      carrierId
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetTrackingResponse
+
+    return this.apiClient.callApi('ShippingApi-getTracking',
+      '/shipping/v2/tracking', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getTracking')
+    )
+  }
+
+  /**
      * Returns tracking information for a purchased shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
      * @param {String} carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
@@ -848,68 +820,65 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetTrackingResponse}
      */
-    getTracking(trackingId, carrierId, opts) {
-      return this.getTrackingWithHttpInfo(trackingId, carrierId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getTracking (trackingId, carrierId, opts) {
+    return this.getTrackingWithHttpInfo(trackingId, carrierId, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetUnmanifestedShipmentsRequest} body GetUmanifestedShipmentsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetUnmanifestedShipmentsResponse} and HTTP response
      */
-    getUnmanifestedShipmentsWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  getUnmanifestedShipmentsWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling getUnmanifestedShipments");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = GetUnmanifestedShipmentsResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-getUnmanifestedShipments',
-        '/shipping/v2/unmanifestedShipments', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getUnmanifestedShipments')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling getUnmanifestedShipments")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = GetUnmanifestedShipmentsResponse
+
+    return this.apiClient.callApi('ShippingApi-getUnmanifestedShipments',
+      '/shipping/v2/unmanifestedShipments', 'PUT',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-getUnmanifestedShipments')
+    )
+  }
+
+  /**
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/GetUnmanifestedShipmentsRequest} body GetUmanifestedShipmentsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetUnmanifestedShipmentsResponse}
      */
-    getUnmanifestedShipments(body, opts) {
-      return this.getUnmanifestedShipmentsWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  getUnmanifestedShipments (body, opts) {
+    return this.getUnmanifestedShipmentsWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
@@ -917,44 +886,43 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse} and HTTP response
      */
-    linkCarrierAccountWithHttpInfo(carrierId, body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  linkCarrierAccountWithHttpInfo (carrierId, body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'carrierId' is set
-      if (carrierId === undefined || carrierId === null) {
-        throw new Error("Missing the required parameter 'carrierId' when calling linkCarrierAccount");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling linkCarrierAccount");
-      }
-
-
-      let pathParams = {
-        'carrierId': carrierId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = LinkCarrierAccountResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount',
-        '/shipping/v2/carrierAccounts/{carrierId}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount')
-      );
+    // verify the required parameter 'carrierId' is set
+    if (carrierId === undefined || carrierId === null) {
+      throw new Error("Missing the required parameter 'carrierId' when calling linkCarrierAccount")
     }
 
-    /**
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling linkCarrierAccount")
+    }
+
+    const pathParams = {
+      carrierId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = LinkCarrierAccountResponse
+
+    return this.apiClient.callApi('ShippingApi-linkCarrierAccount',
+      '/shipping/v2/carrierAccounts/{carrierId}', 'PUT',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount')
+    )
+  }
+
+  /**
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
@@ -962,15 +930,14 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse}
      */
-    linkCarrierAccount(carrierId, body, opts) {
-      return this.linkCarrierAccountWithHttpInfo(carrierId, body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  linkCarrierAccount (carrierId, body, opts) {
+    return this.linkCarrierAccountWithHttpInfo(carrierId, body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
@@ -978,44 +945,43 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse} and HTTP response
      */
-    linkCarrierAccount_0WithHttpInfo(carrierId, body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  linkCarrierAccount_0WithHttpInfo (carrierId, body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'carrierId' is set
-      if (carrierId === undefined || carrierId === null) {
-        throw new Error("Missing the required parameter 'carrierId' when calling linkCarrierAccount_0");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling linkCarrierAccount_0");
-      }
-
-
-      let pathParams = {
-        'carrierId': carrierId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = LinkCarrierAccountResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-linkCarrierAccount_0',
-        '/shipping/v2/carrierAccounts/{carrierId}', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount_0')
-      );
+    // verify the required parameter 'carrierId' is set
+    if (carrierId === undefined || carrierId === null) {
+      throw new Error("Missing the required parameter 'carrierId' when calling linkCarrierAccount_0")
     }
 
-    /**
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling linkCarrierAccount_0")
+    }
+
+    const pathParams = {
+      carrierId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = LinkCarrierAccountResponse
+
+    return this.apiClient.callApi('ShippingApi-linkCarrierAccount_0',
+      '/shipping/v2/carrierAccounts/{carrierId}', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-linkCarrierAccount_0')
+    )
+  }
+
+  /**
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
@@ -1023,68 +989,65 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse}
      */
-    linkCarrierAccount_0(carrierId, body, opts) {
-      return this.linkCarrierAccount_0WithHttpInfo(carrierId, body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  linkCarrierAccount_0 (carrierId, body, opts) {
+    return this.linkCarrierAccount_0WithHttpInfo(carrierId, body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/OneClickShipmentRequest} body OneClickShipmentRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/OneClickShipmentResponse} and HTTP response
      */
-    oneClickShipmentWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  oneClickShipmentWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling oneClickShipment");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = OneClickShipmentResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-oneClickShipment',
-        '/shipping/v2/oneClickShipment', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-oneClickShipment')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling oneClickShipment")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = OneClickShipmentResponse
+
+    return this.apiClient.callApi('ShippingApi-oneClickShipment',
+      '/shipping/v2/oneClickShipment', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-oneClickShipment')
+    )
+  }
+
+  /**
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/OneClickShipmentRequest} body OneClickShipmentRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/OneClickShipmentResponse}
      */
-    oneClickShipment(body, opts) {
-      return this.oneClickShipmentWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  oneClickShipment (body, opts) {
+    return this.oneClickShipmentWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/PurchaseShipmentRequest} body PurchaseShipmentRequest body
      * @param {Object} opts Optional parameters
@@ -1092,39 +1055,38 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/PurchaseShipmentResponse} and HTTP response
      */
-    purchaseShipmentWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  purchaseShipmentWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling purchaseShipment");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-IdempotencyKey': opts['xAmznIdempotencyKey'],
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = PurchaseShipmentResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-purchaseShipment',
-        '/shipping/v2/shipments', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-purchaseShipment')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling purchaseShipment")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-IdempotencyKey': opts.xAmznIdempotencyKey,
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = PurchaseShipmentResponse
+
+    return this.apiClient.callApi('ShippingApi-purchaseShipment',
+      '/shipping/v2/shipments', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-purchaseShipment')
+    )
+  }
+
+  /**
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/PurchaseShipmentRequest} body PurchaseShipmentRequest body
      * @param {Object} opts Optional parameters
@@ -1132,68 +1094,65 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/PurchaseShipmentResponse}
      */
-    purchaseShipment(body, opts) {
-      return this.purchaseShipmentWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  purchaseShipment (body, opts) {
+    return this.purchaseShipmentWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/SubmitNdrFeedbackRequest} body Request body for ndrFeedback operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    submitNdrFeedbackWithHttpInfo(body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  submitNdrFeedbackWithHttpInfo (body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling submitNdrFeedback");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-
-      return this.apiClient.callApi( 'ShippingApi-submitNdrFeedback',
-        '/shipping/v2/ndrFeedback', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-submitNdrFeedback')
-      );
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling submitNdrFeedback")
     }
 
-    /**
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = null
+
+    return this.apiClient.callApi('ShippingApi-submitNdrFeedback',
+      '/shipping/v2/ndrFeedback', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-submitNdrFeedback')
+    )
+  }
+
+  /**
      * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:shipping_v2/model/SubmitNdrFeedbackRequest} body Request body for ndrFeedback operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    submitNdrFeedback(body, opts) {
-      return this.submitNdrFeedbackWithHttpInfo(body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+  submitNdrFeedback (body, opts) {
+    return this.submitNdrFeedbackWithHttpInfo(body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 
-
-    /**
+  /**
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId carrier Id to unlink with merchant.
      * @param {module:shipping_v2/model/UnlinkCarrierAccountRequest} body UnlinkCarrierAccountRequest body
@@ -1201,44 +1160,43 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/UnlinkCarrierAccountResponse} and HTTP response
      */
-    unlinkCarrierAccountWithHttpInfo(carrierId, body, opts) {
-      opts = opts || {};
-      let postBody = body;
+  unlinkCarrierAccountWithHttpInfo (carrierId, body, opts) {
+    opts = opts || {}
+    const postBody = body
 
-      // verify the required parameter 'carrierId' is set
-      if (carrierId === undefined || carrierId === null) {
-        throw new Error("Missing the required parameter 'carrierId' when calling unlinkCarrierAccount");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling unlinkCarrierAccount");
-      }
-
-
-      let pathParams = {
-        'carrierId': carrierId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-        'x-amzn-shipping-business-id': opts['xAmznShippingBusinessId']
-      };
-      let formParams = {
-      };
-
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = UnlinkCarrierAccountResponse;
-
-      return this.apiClient.callApi( 'ShippingApi-unlinkCarrierAccount',
-        '/shipping/v2/carrierAccounts/{carrierId}/unlink', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-unlinkCarrierAccount')
-      );
+    // verify the required parameter 'carrierId' is set
+    if (carrierId === undefined || carrierId === null) {
+      throw new Error("Missing the required parameter 'carrierId' when calling unlinkCarrierAccount")
     }
 
-    /**
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling unlinkCarrierAccount")
+    }
+
+    const pathParams = {
+      carrierId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+      'x-amzn-shipping-business-id': opts.xAmznShippingBusinessId
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = UnlinkCarrierAccountResponse
+
+    return this.apiClient.callApi('ShippingApi-unlinkCarrierAccount',
+      '/shipping/v2/carrierAccounts/{carrierId}/unlink', 'PUT',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('ShippingApi-unlinkCarrierAccount')
+    )
+  }
+
+  /**
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId carrier Id to unlink with merchant.
      * @param {module:shipping_v2/model/UnlinkCarrierAccountRequest} body UnlinkCarrierAccountRequest body
@@ -1246,12 +1204,10 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/UnlinkCarrierAccountResponse}
      */
-    unlinkCarrierAccount(carrierId, body, opts) {
-      return this.unlinkCarrierAccountWithHttpInfo(carrierId, body, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
+  unlinkCarrierAccount (carrierId, body, opts) {
+    return this.unlinkCarrierAccountWithHttpInfo(carrierId, body, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
 }

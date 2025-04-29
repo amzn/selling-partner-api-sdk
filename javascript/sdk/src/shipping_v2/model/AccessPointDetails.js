@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The AccessPointDetails model module.
@@ -25,7 +25,7 @@ export class AccessPointDetails {
    * @alias module:shipping_v2/model/AccessPointDetails
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,24 +35,23 @@ export class AccessPointDetails {
    * @param {module:shipping_v2/model/AccessPointDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/AccessPointDetails} The populated <code>AccessPointDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new AccessPointDetails();
-      if (data.hasOwnProperty('accessPointId'))
-        obj.accessPointId = ApiClient.convertToType(data['accessPointId'], 'String');
+      obj = obj || new AccessPointDetails()
+      if (data.hasOwnProperty('accessPointId')) { obj.accessPointId = ApiClient.convertToType(data.accessPointId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -60,6 +59,4 @@ export class AccessPointDetails {
  * Unique identifier for the access point
  * @member {String} accessPointId
  */
-AccessPointDetails.prototype.accessPointId = undefined;
-
-
+AccessPointDetails.prototype.accessPointId = undefined

@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Currency} from './Currency.js';
-import {RateItemID} from './RateItemID.js';
-import {RateItemType} from './RateItemType.js';
+import { ApiClient } from '../ApiClient.js'
+import { Currency } from './Currency.js'
+import { RateItemID } from './RateItemID.js'
+import { RateItemType } from './RateItemType.js'
 
 /**
  * The RateItem model module.
@@ -24,11 +24,11 @@ import {RateItemType} from './RateItemType.js';
 export class RateItem {
   /**
    * Constructs a new <code>RateItem</code>.
-   * Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: 
+   * Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition:
    * @alias module:shipping_v2/model/RateItem
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -38,52 +38,46 @@ export class RateItem {
    * @param {module:shipping_v2/model/RateItem} obj Optional instance to populate.
    * @return {module:shipping_v2/model/RateItem} The populated <code>RateItem</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new RateItem();
-      if (data.hasOwnProperty('rateItemID'))
-        obj.rateItemID = RateItemID.constructFromObject(data['rateItemID']);
-      if (data.hasOwnProperty('rateItemType'))
-        obj.rateItemType = RateItemType.constructFromObject(data['rateItemType']);
-      if (data.hasOwnProperty('rateItemCharge'))
-        obj.rateItemCharge = Currency.constructFromObject(data['rateItemCharge']);
-      if (data.hasOwnProperty('rateItemNameLocalization'))
-        obj.rateItemNameLocalization = ApiClient.convertToType(data['rateItemNameLocalization'], 'String');
+      obj = obj || new RateItem()
+      if (data.hasOwnProperty('rateItemID')) { obj.rateItemID = RateItemID.constructFromObject(data.rateItemID) }
+      if (data.hasOwnProperty('rateItemType')) { obj.rateItemType = RateItemType.constructFromObject(data.rateItemType) }
+      if (data.hasOwnProperty('rateItemCharge')) { obj.rateItemCharge = Currency.constructFromObject(data.rateItemCharge) }
+      if (data.hasOwnProperty('rateItemNameLocalization')) { obj.rateItemNameLocalization = ApiClient.convertToType(data.rateItemNameLocalization, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/RateItemID} rateItemID
  */
-RateItem.prototype.rateItemID = undefined;
+RateItem.prototype.rateItemID = undefined
 
 /**
  * @member {module:shipping_v2/model/RateItemType} rateItemType
  */
-RateItem.prototype.rateItemType = undefined;
+RateItem.prototype.rateItemType = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} rateItemCharge
  */
-RateItem.prototype.rateItemCharge = undefined;
+RateItem.prototype.rateItemCharge = undefined
 
 /**
  * Used for the localization.
  * @member {String} rateItemNameLocalization
  */
-RateItem.prototype.rateItemNameLocalization = undefined;
-
-
+RateItem.prototype.rateItemNameLocalization = undefined

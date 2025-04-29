@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {TimeWindow} from './TimeWindow.js';
+import { ApiClient } from '../ApiClient.js'
+import { TimeWindow } from './TimeWindow.js'
 
 /**
  * The Promise model module.
@@ -26,7 +26,7 @@ export class Promise {
    * @alias module:shipping_v2/model/Promise
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,37 +36,33 @@ export class Promise {
    * @param {module:shipping_v2/model/Promise} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Promise} The populated <code>Promise</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Promise();
-      if (data.hasOwnProperty('deliveryWindow'))
-        obj.deliveryWindow = TimeWindow.constructFromObject(data['deliveryWindow']);
-      if (data.hasOwnProperty('pickupWindow'))
-        obj.pickupWindow = TimeWindow.constructFromObject(data['pickupWindow']);
+      obj = obj || new Promise()
+      if (data.hasOwnProperty('deliveryWindow')) { obj.deliveryWindow = TimeWindow.constructFromObject(data.deliveryWindow) }
+      if (data.hasOwnProperty('pickupWindow')) { obj.pickupWindow = TimeWindow.constructFromObject(data.pickupWindow) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/TimeWindow} deliveryWindow
  */
-Promise.prototype.deliveryWindow = undefined;
+Promise.prototype.deliveryWindow = undefined
 
 /**
  * @member {module:shipping_v2/model/TimeWindow} pickupWindow
  */
-Promise.prototype.pickupWindow = undefined;
-
-
+Promise.prototype.pickupWindow = undefined

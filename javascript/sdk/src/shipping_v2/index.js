@@ -11,136 +11,135 @@
  *
  */
 
-import {ApiClient} from './ApiClient.js';
-import {AccessPoint} from './model/AccessPoint.js';
-import {AccessPointDetails} from './model/AccessPointDetails.js';
-import {AccessPointType} from './model/AccessPointType.js';
-import {AccessibilityAttributes} from './model/AccessibilityAttributes.js';
-import {AccountStatus} from './model/AccountStatus.js';
-import {AccountType} from './model/AccountType.js';
-import {ActiveAccount} from './model/ActiveAccount.js';
-import {Address} from './model/Address.js';
-import {AmazonOrderDetails} from './model/AmazonOrderDetails.js';
-import {AmazonShipmentDetails} from './model/AmazonShipmentDetails.js';
-import {AvailableValueAddedServiceGroup} from './model/AvailableValueAddedServiceGroup.js';
-import {Benefits} from './model/Benefits.js';
-import {CancelShipmentResponse} from './model/CancelShipmentResponse.js';
-import {Carrier} from './model/Carrier.js';
-import {CarrierAccount} from './model/CarrierAccount.js';
-import {CarrierAccountAttribute} from './model/CarrierAccountAttribute.js';
-import {CarrierAccountInput} from './model/CarrierAccountInput.js';
-import {ChannelDetails} from './model/ChannelDetails.js';
-import {ChannelType} from './model/ChannelType.js';
-import {ChargeComponent} from './model/ChargeComponent.js';
-import {ClaimReason} from './model/ClaimReason.js';
-import {ClientReferenceDetail} from './model/ClientReferenceDetail.js';
-import {CollectOnDelivery} from './model/CollectOnDelivery.js';
-import {CollectionFormsHistoryRecord} from './model/CollectionFormsHistoryRecord.js';
-import {CollectionsFormDocument} from './model/CollectionsFormDocument.js';
-import {CreateClaimRequest} from './model/CreateClaimRequest.js';
-import {CreateClaimResponse} from './model/CreateClaimResponse.js';
-import {Currency} from './model/Currency.js';
-import {DangerousGoodsDetails} from './model/DangerousGoodsDetails.js';
-import {DateRange} from './model/DateRange.js';
-import {DetailCodes} from './model/DetailCodes.js';
-import {Dimensions} from './model/Dimensions.js';
-import {DirectFulfillmentItemIdentifiers} from './model/DirectFulfillmentItemIdentifiers.js';
-import {DirectPurchaseRequest} from './model/DirectPurchaseRequest.js';
-import {DirectPurchaseResponse} from './model/DirectPurchaseResponse.js';
-import {DirectPurchaseResult} from './model/DirectPurchaseResult.js';
-import {DocumentFormat} from './model/DocumentFormat.js';
-import {DocumentSize} from './model/DocumentSize.js';
-import {DocumentType} from './model/DocumentType.js';
-import {Error} from './model/Error.js';
-import {ErrorList} from './model/ErrorList.js';
-import {Event} from './model/Event.js';
-import {EventCode} from './model/EventCode.js';
-import {ExceptionOperatingHours} from './model/ExceptionOperatingHours.js';
-import {ExcludedBenefit} from './model/ExcludedBenefit.js';
-import {GenerateCollectionFormRequest} from './model/GenerateCollectionFormRequest.js';
-import {GenerateCollectionFormResponse} from './model/GenerateCollectionFormResponse.js';
-import {GenerationStatus} from './model/GenerationStatus.js';
-import {Geocode} from './model/Geocode.js';
-import {GetAccessPointsResponse} from './model/GetAccessPointsResponse.js';
-import {GetAccessPointsResult} from './model/GetAccessPointsResult.js';
-import {GetAdditionalInputsResponse} from './model/GetAdditionalInputsResponse.js';
-import {GetCarrierAccountFormInputsResponse} from './model/GetCarrierAccountFormInputsResponse.js';
-import {GetCarrierAccountsRequest} from './model/GetCarrierAccountsRequest.js';
-import {GetCarrierAccountsResponse} from './model/GetCarrierAccountsResponse.js';
-import {GetCollectionFormHistoryRequest} from './model/GetCollectionFormHistoryRequest.js';
-import {GetCollectionFormHistoryResponse} from './model/GetCollectionFormHistoryResponse.js';
-import {GetCollectionFormResponse} from './model/GetCollectionFormResponse.js';
-import {GetRatesRequest} from './model/GetRatesRequest.js';
-import {GetRatesResponse} from './model/GetRatesResponse.js';
-import {GetRatesResult} from './model/GetRatesResult.js';
-import {GetShipmentDocumentsResponse} from './model/GetShipmentDocumentsResponse.js';
-import {GetShipmentDocumentsResult} from './model/GetShipmentDocumentsResult.js';
-import {GetTrackingResponse} from './model/GetTrackingResponse.js';
-import {GetTrackingResult} from './model/GetTrackingResult.js';
-import {GetUnmanifestedShipmentsRequest} from './model/GetUnmanifestedShipmentsRequest.js';
-import {GetUnmanifestedShipmentsResponse} from './model/GetUnmanifestedShipmentsResponse.js';
-import {GoodsOwner} from './model/GoodsOwner.js';
-import {IneligibilityReason} from './model/IneligibilityReason.js';
-import {IneligibilityReasonCode} from './model/IneligibilityReasonCode.js';
-import {IneligibleRate} from './model/IneligibleRate.js';
-import {InputType} from './model/InputType.js';
-import {InvoiceDetails} from './model/InvoiceDetails.js';
-import {Item} from './model/Item.js';
-import {LabelAttribute} from './model/LabelAttribute.js';
-import {LinkCarrierAccountRequest} from './model/LinkCarrierAccountRequest.js';
-import {LinkCarrierAccountResponse} from './model/LinkCarrierAccountResponse.js';
-import {LinkableAccountType} from './model/LinkableAccountType.js';
-import {LinkableCarrier} from './model/LinkableCarrier.js';
-import {LiquidVolume} from './model/LiquidVolume.js';
-import {Location} from './model/Location.js';
-import {NdrAction} from './model/NdrAction.js';
-import {NdrRequestData} from './model/NdrRequestData.js';
-import {OneClickShipmentRequest} from './model/OneClickShipmentRequest.js';
-import {OneClickShipmentResponse} from './model/OneClickShipmentResponse.js';
-import {OneClickShipmentResult} from './model/OneClickShipmentResult.js';
-import {OneClickShipmentValueAddedService} from './model/OneClickShipmentValueAddedService.js';
-import {OperatingHours} from './model/OperatingHours.js';
-import {Package} from './model/Package.js';
-import {PackageDocument} from './model/PackageDocument.js';
-import {PackageDocumentDetail} from './model/PackageDocumentDetail.js';
-import {PaymentType} from './model/PaymentType.js';
-import {PrintOption} from './model/PrintOption.js';
-import {Promise} from './model/Promise.js';
-import {PurchaseShipmentRequest} from './model/PurchaseShipmentRequest.js';
-import {PurchaseShipmentResponse} from './model/PurchaseShipmentResponse.js';
-import {PurchaseShipmentResult} from './model/PurchaseShipmentResult.js';
-import {Rate} from './model/Rate.js';
-import {RateItem} from './model/RateItem.js';
-import {RateItemID} from './model/RateItemID.js';
-import {RateItemType} from './model/RateItemType.js';
-import {RequestedDocumentSpecification} from './model/RequestedDocumentSpecification.js';
-import {RequestedLabelCustomization} from './model/RequestedLabelCustomization.js';
-import {RequestedValueAddedService} from './model/RequestedValueAddedService.js';
-import {Service} from './model/Service.js';
-import {ServiceSelection} from './model/ServiceSelection.js';
-import {SettlementType} from './model/SettlementType.js';
-import {ShipmentType} from './model/ShipmentType.js';
-import {ShipperInstruction} from './model/ShipperInstruction.js';
-import {Status} from './model/Status.js';
-import {SubmitNdrFeedbackRequest} from './model/SubmitNdrFeedbackRequest.js';
-import {SupportedDocumentDetail} from './model/SupportedDocumentDetail.js';
-import {SupportedDocumentSpecification} from './model/SupportedDocumentSpecification.js';
-import {TaxDetail} from './model/TaxDetail.js';
-import {TaxType} from './model/TaxType.js';
-import {TimeOfDay} from './model/TimeOfDay.js';
-import {TimeWindow} from './model/TimeWindow.js';
-import {TrackingDetailCodes} from './model/TrackingDetailCodes.js';
-import {TrackingSummary} from './model/TrackingSummary.js';
-import {UnlinkCarrierAccountRequest} from './model/UnlinkCarrierAccountRequest.js';
-import {UnlinkCarrierAccountResponse} from './model/UnlinkCarrierAccountResponse.js';
-import {UnmanifestedCarrierInformation} from './model/UnmanifestedCarrierInformation.js';
-import {UnmanifestedShipmentLocation} from './model/UnmanifestedShipmentLocation.js';
-import {ValidationMetadata} from './model/ValidationMetadata.js';
-import {ValueAddedService} from './model/ValueAddedService.js';
-import {ValueAddedServiceDetails} from './model/ValueAddedServiceDetails.js';
-import {Weight} from './model/Weight.js';
-import {ShippingApi} from './api/ShippingApi.js';
-
+import { ApiClient } from './ApiClient.js'
+import { AccessPoint } from './model/AccessPoint.js'
+import { AccessPointDetails } from './model/AccessPointDetails.js'
+import { AccessPointType } from './model/AccessPointType.js'
+import { AccessibilityAttributes } from './model/AccessibilityAttributes.js'
+import { AccountStatus } from './model/AccountStatus.js'
+import { AccountType } from './model/AccountType.js'
+import { ActiveAccount } from './model/ActiveAccount.js'
+import { Address } from './model/Address.js'
+import { AmazonOrderDetails } from './model/AmazonOrderDetails.js'
+import { AmazonShipmentDetails } from './model/AmazonShipmentDetails.js'
+import { AvailableValueAddedServiceGroup } from './model/AvailableValueAddedServiceGroup.js'
+import { Benefits } from './model/Benefits.js'
+import { CancelShipmentResponse } from './model/CancelShipmentResponse.js'
+import { Carrier } from './model/Carrier.js'
+import { CarrierAccount } from './model/CarrierAccount.js'
+import { CarrierAccountAttribute } from './model/CarrierAccountAttribute.js'
+import { CarrierAccountInput } from './model/CarrierAccountInput.js'
+import { ChannelDetails } from './model/ChannelDetails.js'
+import { ChannelType } from './model/ChannelType.js'
+import { ChargeComponent } from './model/ChargeComponent.js'
+import { ClaimReason } from './model/ClaimReason.js'
+import { ClientReferenceDetail } from './model/ClientReferenceDetail.js'
+import { CollectOnDelivery } from './model/CollectOnDelivery.js'
+import { CollectionFormsHistoryRecord } from './model/CollectionFormsHistoryRecord.js'
+import { CollectionsFormDocument } from './model/CollectionsFormDocument.js'
+import { CreateClaimRequest } from './model/CreateClaimRequest.js'
+import { CreateClaimResponse } from './model/CreateClaimResponse.js'
+import { Currency } from './model/Currency.js'
+import { DangerousGoodsDetails } from './model/DangerousGoodsDetails.js'
+import { DateRange } from './model/DateRange.js'
+import { DetailCodes } from './model/DetailCodes.js'
+import { Dimensions } from './model/Dimensions.js'
+import { DirectFulfillmentItemIdentifiers } from './model/DirectFulfillmentItemIdentifiers.js'
+import { DirectPurchaseRequest } from './model/DirectPurchaseRequest.js'
+import { DirectPurchaseResponse } from './model/DirectPurchaseResponse.js'
+import { DirectPurchaseResult } from './model/DirectPurchaseResult.js'
+import { DocumentFormat } from './model/DocumentFormat.js'
+import { DocumentSize } from './model/DocumentSize.js'
+import { DocumentType } from './model/DocumentType.js'
+import { Error } from './model/Error.js'
+import { ErrorList } from './model/ErrorList.js'
+import { Event } from './model/Event.js'
+import { EventCode } from './model/EventCode.js'
+import { ExceptionOperatingHours } from './model/ExceptionOperatingHours.js'
+import { ExcludedBenefit } from './model/ExcludedBenefit.js'
+import { GenerateCollectionFormRequest } from './model/GenerateCollectionFormRequest.js'
+import { GenerateCollectionFormResponse } from './model/GenerateCollectionFormResponse.js'
+import { GenerationStatus } from './model/GenerationStatus.js'
+import { Geocode } from './model/Geocode.js'
+import { GetAccessPointsResponse } from './model/GetAccessPointsResponse.js'
+import { GetAccessPointsResult } from './model/GetAccessPointsResult.js'
+import { GetAdditionalInputsResponse } from './model/GetAdditionalInputsResponse.js'
+import { GetCarrierAccountFormInputsResponse } from './model/GetCarrierAccountFormInputsResponse.js'
+import { GetCarrierAccountsRequest } from './model/GetCarrierAccountsRequest.js'
+import { GetCarrierAccountsResponse } from './model/GetCarrierAccountsResponse.js'
+import { GetCollectionFormHistoryRequest } from './model/GetCollectionFormHistoryRequest.js'
+import { GetCollectionFormHistoryResponse } from './model/GetCollectionFormHistoryResponse.js'
+import { GetCollectionFormResponse } from './model/GetCollectionFormResponse.js'
+import { GetRatesRequest } from './model/GetRatesRequest.js'
+import { GetRatesResponse } from './model/GetRatesResponse.js'
+import { GetRatesResult } from './model/GetRatesResult.js'
+import { GetShipmentDocumentsResponse } from './model/GetShipmentDocumentsResponse.js'
+import { GetShipmentDocumentsResult } from './model/GetShipmentDocumentsResult.js'
+import { GetTrackingResponse } from './model/GetTrackingResponse.js'
+import { GetTrackingResult } from './model/GetTrackingResult.js'
+import { GetUnmanifestedShipmentsRequest } from './model/GetUnmanifestedShipmentsRequest.js'
+import { GetUnmanifestedShipmentsResponse } from './model/GetUnmanifestedShipmentsResponse.js'
+import { GoodsOwner } from './model/GoodsOwner.js'
+import { IneligibilityReason } from './model/IneligibilityReason.js'
+import { IneligibilityReasonCode } from './model/IneligibilityReasonCode.js'
+import { IneligibleRate } from './model/IneligibleRate.js'
+import { InputType } from './model/InputType.js'
+import { InvoiceDetails } from './model/InvoiceDetails.js'
+import { Item } from './model/Item.js'
+import { LabelAttribute } from './model/LabelAttribute.js'
+import { LinkCarrierAccountRequest } from './model/LinkCarrierAccountRequest.js'
+import { LinkCarrierAccountResponse } from './model/LinkCarrierAccountResponse.js'
+import { LinkableAccountType } from './model/LinkableAccountType.js'
+import { LinkableCarrier } from './model/LinkableCarrier.js'
+import { LiquidVolume } from './model/LiquidVolume.js'
+import { Location } from './model/Location.js'
+import { NdrAction } from './model/NdrAction.js'
+import { NdrRequestData } from './model/NdrRequestData.js'
+import { OneClickShipmentRequest } from './model/OneClickShipmentRequest.js'
+import { OneClickShipmentResponse } from './model/OneClickShipmentResponse.js'
+import { OneClickShipmentResult } from './model/OneClickShipmentResult.js'
+import { OneClickShipmentValueAddedService } from './model/OneClickShipmentValueAddedService.js'
+import { OperatingHours } from './model/OperatingHours.js'
+import { Package } from './model/Package.js'
+import { PackageDocument } from './model/PackageDocument.js'
+import { PackageDocumentDetail } from './model/PackageDocumentDetail.js'
+import { PaymentType } from './model/PaymentType.js'
+import { PrintOption } from './model/PrintOption.js'
+import { Promise } from './model/Promise.js'
+import { PurchaseShipmentRequest } from './model/PurchaseShipmentRequest.js'
+import { PurchaseShipmentResponse } from './model/PurchaseShipmentResponse.js'
+import { PurchaseShipmentResult } from './model/PurchaseShipmentResult.js'
+import { Rate } from './model/Rate.js'
+import { RateItem } from './model/RateItem.js'
+import { RateItemID } from './model/RateItemID.js'
+import { RateItemType } from './model/RateItemType.js'
+import { RequestedDocumentSpecification } from './model/RequestedDocumentSpecification.js'
+import { RequestedLabelCustomization } from './model/RequestedLabelCustomization.js'
+import { RequestedValueAddedService } from './model/RequestedValueAddedService.js'
+import { Service } from './model/Service.js'
+import { ServiceSelection } from './model/ServiceSelection.js'
+import { SettlementType } from './model/SettlementType.js'
+import { ShipmentType } from './model/ShipmentType.js'
+import { ShipperInstruction } from './model/ShipperInstruction.js'
+import { Status } from './model/Status.js'
+import { SubmitNdrFeedbackRequest } from './model/SubmitNdrFeedbackRequest.js'
+import { SupportedDocumentDetail } from './model/SupportedDocumentDetail.js'
+import { SupportedDocumentSpecification } from './model/SupportedDocumentSpecification.js'
+import { TaxDetail } from './model/TaxDetail.js'
+import { TaxType } from './model/TaxType.js'
+import { TimeOfDay } from './model/TimeOfDay.js'
+import { TimeWindow } from './model/TimeWindow.js'
+import { TrackingDetailCodes } from './model/TrackingDetailCodes.js'
+import { TrackingSummary } from './model/TrackingSummary.js'
+import { UnlinkCarrierAccountRequest } from './model/UnlinkCarrierAccountRequest.js'
+import { UnlinkCarrierAccountResponse } from './model/UnlinkCarrierAccountResponse.js'
+import { UnmanifestedCarrierInformation } from './model/UnmanifestedCarrierInformation.js'
+import { UnmanifestedShipmentLocation } from './model/UnmanifestedShipmentLocation.js'
+import { ValidationMetadata } from './model/ValidationMetadata.js'
+import { ValueAddedService } from './model/ValueAddedService.js'
+import { ValueAddedServiceDetails } from './model/ValueAddedServiceDetails.js'
+import { Weight } from './model/Weight.js'
+import { ShippingApi } from './api/ShippingApi.js'
 
 /**
 * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments..<br>
@@ -149,777 +148,777 @@ import {ShippingApi} from './api/ShippingApi.js';
 * @version v2
 */
 export {
-    /**
+  /**
      * The ApiClient constructor.
      * @property {module:shipping_v2/ApiClient}
      */
-    ApiClient,
+  ApiClient,
 
-    /**
+  /**
      * The AccessPoint model constructor.
      * @property {module:shipping_v2/model/AccessPoint}
      */
-    AccessPoint,
+  AccessPoint,
 
-    /**
+  /**
      * The AccessPointDetails model constructor.
      * @property {module:shipping_v2/model/AccessPointDetails}
      */
-    AccessPointDetails,
+  AccessPointDetails,
 
-    /**
+  /**
      * The AccessPointType model constructor.
      * @property {module:shipping_v2/model/AccessPointType}
      */
-    AccessPointType,
+  AccessPointType,
 
-    /**
+  /**
      * The AccessibilityAttributes model constructor.
      * @property {module:shipping_v2/model/AccessibilityAttributes}
      */
-    AccessibilityAttributes,
+  AccessibilityAttributes,
 
-    /**
+  /**
      * The AccountStatus model constructor.
      * @property {module:shipping_v2/model/AccountStatus}
      */
-    AccountStatus,
+  AccountStatus,
 
-    /**
+  /**
      * The AccountType model constructor.
      * @property {module:shipping_v2/model/AccountType}
      */
-    AccountType,
+  AccountType,
 
-    /**
+  /**
      * The ActiveAccount model constructor.
      * @property {module:shipping_v2/model/ActiveAccount}
      */
-    ActiveAccount,
+  ActiveAccount,
 
-    /**
+  /**
      * The Address model constructor.
      * @property {module:shipping_v2/model/Address}
      */
-    Address,
+  Address,
 
-    /**
+  /**
      * The AmazonOrderDetails model constructor.
      * @property {module:shipping_v2/model/AmazonOrderDetails}
      */
-    AmazonOrderDetails,
+  AmazonOrderDetails,
 
-    /**
+  /**
      * The AmazonShipmentDetails model constructor.
      * @property {module:shipping_v2/model/AmazonShipmentDetails}
      */
-    AmazonShipmentDetails,
+  AmazonShipmentDetails,
 
-    /**
+  /**
      * The AvailableValueAddedServiceGroup model constructor.
      * @property {module:shipping_v2/model/AvailableValueAddedServiceGroup}
      */
-    AvailableValueAddedServiceGroup,
+  AvailableValueAddedServiceGroup,
 
-    /**
+  /**
      * The Benefits model constructor.
      * @property {module:shipping_v2/model/Benefits}
      */
-    Benefits,
+  Benefits,
 
-    /**
+  /**
      * The CancelShipmentResponse model constructor.
      * @property {module:shipping_v2/model/CancelShipmentResponse}
      */
-    CancelShipmentResponse,
+  CancelShipmentResponse,
 
-    /**
+  /**
      * The Carrier model constructor.
      * @property {module:shipping_v2/model/Carrier}
      */
-    Carrier,
+  Carrier,
 
-    /**
+  /**
      * The CarrierAccount model constructor.
      * @property {module:shipping_v2/model/CarrierAccount}
      */
-    CarrierAccount,
+  CarrierAccount,
 
-    /**
+  /**
      * The CarrierAccountAttribute model constructor.
      * @property {module:shipping_v2/model/CarrierAccountAttribute}
      */
-    CarrierAccountAttribute,
+  CarrierAccountAttribute,
 
-    /**
+  /**
      * The CarrierAccountInput model constructor.
      * @property {module:shipping_v2/model/CarrierAccountInput}
      */
-    CarrierAccountInput,
+  CarrierAccountInput,
 
-    /**
+  /**
      * The ChannelDetails model constructor.
      * @property {module:shipping_v2/model/ChannelDetails}
      */
-    ChannelDetails,
+  ChannelDetails,
 
-    /**
+  /**
      * The ChannelType model constructor.
      * @property {module:shipping_v2/model/ChannelType}
      */
-    ChannelType,
+  ChannelType,
 
-    /**
+  /**
      * The ChargeComponent model constructor.
      * @property {module:shipping_v2/model/ChargeComponent}
      */
-    ChargeComponent,
+  ChargeComponent,
 
-    /**
+  /**
      * The ClaimReason model constructor.
      * @property {module:shipping_v2/model/ClaimReason}
      */
-    ClaimReason,
+  ClaimReason,
 
-    /**
+  /**
      * The ClientReferenceDetail model constructor.
      * @property {module:shipping_v2/model/ClientReferenceDetail}
      */
-    ClientReferenceDetail,
+  ClientReferenceDetail,
 
-    /**
+  /**
      * The CollectOnDelivery model constructor.
      * @property {module:shipping_v2/model/CollectOnDelivery}
      */
-    CollectOnDelivery,
+  CollectOnDelivery,
 
-    /**
+  /**
      * The CollectionFormsHistoryRecord model constructor.
      * @property {module:shipping_v2/model/CollectionFormsHistoryRecord}
      */
-    CollectionFormsHistoryRecord,
+  CollectionFormsHistoryRecord,
 
-    /**
+  /**
      * The CollectionsFormDocument model constructor.
      * @property {module:shipping_v2/model/CollectionsFormDocument}
      */
-    CollectionsFormDocument,
+  CollectionsFormDocument,
 
-    /**
+  /**
      * The CreateClaimRequest model constructor.
      * @property {module:shipping_v2/model/CreateClaimRequest}
      */
-    CreateClaimRequest,
+  CreateClaimRequest,
 
-    /**
+  /**
      * The CreateClaimResponse model constructor.
      * @property {module:shipping_v2/model/CreateClaimResponse}
      */
-    CreateClaimResponse,
+  CreateClaimResponse,
 
-    /**
+  /**
      * The Currency model constructor.
      * @property {module:shipping_v2/model/Currency}
      */
-    Currency,
+  Currency,
 
-    /**
+  /**
      * The DangerousGoodsDetails model constructor.
      * @property {module:shipping_v2/model/DangerousGoodsDetails}
      */
-    DangerousGoodsDetails,
+  DangerousGoodsDetails,
 
-    /**
+  /**
      * The DateRange model constructor.
      * @property {module:shipping_v2/model/DateRange}
      */
-    DateRange,
+  DateRange,
 
-    /**
+  /**
      * The DetailCodes model constructor.
      * @property {module:shipping_v2/model/DetailCodes}
      */
-    DetailCodes,
+  DetailCodes,
 
-    /**
+  /**
      * The Dimensions model constructor.
      * @property {module:shipping_v2/model/Dimensions}
      */
-    Dimensions,
+  Dimensions,
 
-    /**
+  /**
      * The DirectFulfillmentItemIdentifiers model constructor.
      * @property {module:shipping_v2/model/DirectFulfillmentItemIdentifiers}
      */
-    DirectFulfillmentItemIdentifiers,
+  DirectFulfillmentItemIdentifiers,
 
-    /**
+  /**
      * The DirectPurchaseRequest model constructor.
      * @property {module:shipping_v2/model/DirectPurchaseRequest}
      */
-    DirectPurchaseRequest,
+  DirectPurchaseRequest,
 
-    /**
+  /**
      * The DirectPurchaseResponse model constructor.
      * @property {module:shipping_v2/model/DirectPurchaseResponse}
      */
-    DirectPurchaseResponse,
+  DirectPurchaseResponse,
 
-    /**
+  /**
      * The DirectPurchaseResult model constructor.
      * @property {module:shipping_v2/model/DirectPurchaseResult}
      */
-    DirectPurchaseResult,
+  DirectPurchaseResult,
 
-    /**
+  /**
      * The DocumentFormat model constructor.
      * @property {module:shipping_v2/model/DocumentFormat}
      */
-    DocumentFormat,
+  DocumentFormat,
 
-    /**
+  /**
      * The DocumentSize model constructor.
      * @property {module:shipping_v2/model/DocumentSize}
      */
-    DocumentSize,
+  DocumentSize,
 
-    /**
+  /**
      * The DocumentType model constructor.
      * @property {module:shipping_v2/model/DocumentType}
      */
-    DocumentType,
+  DocumentType,
 
-    /**
+  /**
      * The Error model constructor.
      * @property {module:shipping_v2/model/Error}
      */
-    Error,
+  Error,
 
-    /**
+  /**
      * The ErrorList model constructor.
      * @property {module:shipping_v2/model/ErrorList}
      */
-    ErrorList,
+  ErrorList,
 
-    /**
+  /**
      * The Event model constructor.
      * @property {module:shipping_v2/model/Event}
      */
-    Event,
+  Event,
 
-    /**
+  /**
      * The EventCode model constructor.
      * @property {module:shipping_v2/model/EventCode}
      */
-    EventCode,
+  EventCode,
 
-    /**
+  /**
      * The ExceptionOperatingHours model constructor.
      * @property {module:shipping_v2/model/ExceptionOperatingHours}
      */
-    ExceptionOperatingHours,
+  ExceptionOperatingHours,
 
-    /**
+  /**
      * The ExcludedBenefit model constructor.
      * @property {module:shipping_v2/model/ExcludedBenefit}
      */
-    ExcludedBenefit,
+  ExcludedBenefit,
 
-    /**
+  /**
      * The GenerateCollectionFormRequest model constructor.
      * @property {module:shipping_v2/model/GenerateCollectionFormRequest}
      */
-    GenerateCollectionFormRequest,
+  GenerateCollectionFormRequest,
 
-    /**
+  /**
      * The GenerateCollectionFormResponse model constructor.
      * @property {module:shipping_v2/model/GenerateCollectionFormResponse}
      */
-    GenerateCollectionFormResponse,
+  GenerateCollectionFormResponse,
 
-    /**
+  /**
      * The GenerationStatus model constructor.
      * @property {module:shipping_v2/model/GenerationStatus}
      */
-    GenerationStatus,
+  GenerationStatus,
 
-    /**
+  /**
      * The Geocode model constructor.
      * @property {module:shipping_v2/model/Geocode}
      */
-    Geocode,
+  Geocode,
 
-    /**
+  /**
      * The GetAccessPointsResponse model constructor.
      * @property {module:shipping_v2/model/GetAccessPointsResponse}
      */
-    GetAccessPointsResponse,
+  GetAccessPointsResponse,
 
-    /**
+  /**
      * The GetAccessPointsResult model constructor.
      * @property {module:shipping_v2/model/GetAccessPointsResult}
      */
-    GetAccessPointsResult,
+  GetAccessPointsResult,
 
-    /**
+  /**
      * The GetAdditionalInputsResponse model constructor.
      * @property {module:shipping_v2/model/GetAdditionalInputsResponse}
      */
-    GetAdditionalInputsResponse,
+  GetAdditionalInputsResponse,
 
-    /**
+  /**
      * The GetCarrierAccountFormInputsResponse model constructor.
      * @property {module:shipping_v2/model/GetCarrierAccountFormInputsResponse}
      */
-    GetCarrierAccountFormInputsResponse,
+  GetCarrierAccountFormInputsResponse,
 
-    /**
+  /**
      * The GetCarrierAccountsRequest model constructor.
      * @property {module:shipping_v2/model/GetCarrierAccountsRequest}
      */
-    GetCarrierAccountsRequest,
+  GetCarrierAccountsRequest,
 
-    /**
+  /**
      * The GetCarrierAccountsResponse model constructor.
      * @property {module:shipping_v2/model/GetCarrierAccountsResponse}
      */
-    GetCarrierAccountsResponse,
+  GetCarrierAccountsResponse,
 
-    /**
+  /**
      * The GetCollectionFormHistoryRequest model constructor.
      * @property {module:shipping_v2/model/GetCollectionFormHistoryRequest}
      */
-    GetCollectionFormHistoryRequest,
+  GetCollectionFormHistoryRequest,
 
-    /**
+  /**
      * The GetCollectionFormHistoryResponse model constructor.
      * @property {module:shipping_v2/model/GetCollectionFormHistoryResponse}
      */
-    GetCollectionFormHistoryResponse,
+  GetCollectionFormHistoryResponse,
 
-    /**
+  /**
      * The GetCollectionFormResponse model constructor.
      * @property {module:shipping_v2/model/GetCollectionFormResponse}
      */
-    GetCollectionFormResponse,
+  GetCollectionFormResponse,
 
-    /**
+  /**
      * The GetRatesRequest model constructor.
      * @property {module:shipping_v2/model/GetRatesRequest}
      */
-    GetRatesRequest,
+  GetRatesRequest,
 
-    /**
+  /**
      * The GetRatesResponse model constructor.
      * @property {module:shipping_v2/model/GetRatesResponse}
      */
-    GetRatesResponse,
+  GetRatesResponse,
 
-    /**
+  /**
      * The GetRatesResult model constructor.
      * @property {module:shipping_v2/model/GetRatesResult}
      */
-    GetRatesResult,
+  GetRatesResult,
 
-    /**
+  /**
      * The GetShipmentDocumentsResponse model constructor.
      * @property {module:shipping_v2/model/GetShipmentDocumentsResponse}
      */
-    GetShipmentDocumentsResponse,
+  GetShipmentDocumentsResponse,
 
-    /**
+  /**
      * The GetShipmentDocumentsResult model constructor.
      * @property {module:shipping_v2/model/GetShipmentDocumentsResult}
      */
-    GetShipmentDocumentsResult,
+  GetShipmentDocumentsResult,
 
-    /**
+  /**
      * The GetTrackingResponse model constructor.
      * @property {module:shipping_v2/model/GetTrackingResponse}
      */
-    GetTrackingResponse,
+  GetTrackingResponse,
 
-    /**
+  /**
      * The GetTrackingResult model constructor.
      * @property {module:shipping_v2/model/GetTrackingResult}
      */
-    GetTrackingResult,
+  GetTrackingResult,
 
-    /**
+  /**
      * The GetUnmanifestedShipmentsRequest model constructor.
      * @property {module:shipping_v2/model/GetUnmanifestedShipmentsRequest}
      */
-    GetUnmanifestedShipmentsRequest,
+  GetUnmanifestedShipmentsRequest,
 
-    /**
+  /**
      * The GetUnmanifestedShipmentsResponse model constructor.
      * @property {module:shipping_v2/model/GetUnmanifestedShipmentsResponse}
      */
-    GetUnmanifestedShipmentsResponse,
+  GetUnmanifestedShipmentsResponse,
 
-    /**
+  /**
      * The GoodsOwner model constructor.
      * @property {module:shipping_v2/model/GoodsOwner}
      */
-    GoodsOwner,
+  GoodsOwner,
 
-    /**
+  /**
      * The IneligibilityReason model constructor.
      * @property {module:shipping_v2/model/IneligibilityReason}
      */
-    IneligibilityReason,
+  IneligibilityReason,
 
-    /**
+  /**
      * The IneligibilityReasonCode model constructor.
      * @property {module:shipping_v2/model/IneligibilityReasonCode}
      */
-    IneligibilityReasonCode,
+  IneligibilityReasonCode,
 
-    /**
+  /**
      * The IneligibleRate model constructor.
      * @property {module:shipping_v2/model/IneligibleRate}
      */
-    IneligibleRate,
+  IneligibleRate,
 
-    /**
+  /**
      * The InputType model constructor.
      * @property {module:shipping_v2/model/InputType}
      */
-    InputType,
+  InputType,
 
-    /**
+  /**
      * The InvoiceDetails model constructor.
      * @property {module:shipping_v2/model/InvoiceDetails}
      */
-    InvoiceDetails,
+  InvoiceDetails,
 
-    /**
+  /**
      * The Item model constructor.
      * @property {module:shipping_v2/model/Item}
      */
-    Item,
+  Item,
 
-    /**
+  /**
      * The LabelAttribute model constructor.
      * @property {module:shipping_v2/model/LabelAttribute}
      */
-    LabelAttribute,
+  LabelAttribute,
 
-    /**
+  /**
      * The LinkCarrierAccountRequest model constructor.
      * @property {module:shipping_v2/model/LinkCarrierAccountRequest}
      */
-    LinkCarrierAccountRequest,
+  LinkCarrierAccountRequest,
 
-    /**
+  /**
      * The LinkCarrierAccountResponse model constructor.
      * @property {module:shipping_v2/model/LinkCarrierAccountResponse}
      */
-    LinkCarrierAccountResponse,
+  LinkCarrierAccountResponse,
 
-    /**
+  /**
      * The LinkableAccountType model constructor.
      * @property {module:shipping_v2/model/LinkableAccountType}
      */
-    LinkableAccountType,
+  LinkableAccountType,
 
-    /**
+  /**
      * The LinkableCarrier model constructor.
      * @property {module:shipping_v2/model/LinkableCarrier}
      */
-    LinkableCarrier,
+  LinkableCarrier,
 
-    /**
+  /**
      * The LiquidVolume model constructor.
      * @property {module:shipping_v2/model/LiquidVolume}
      */
-    LiquidVolume,
+  LiquidVolume,
 
-    /**
+  /**
      * The Location model constructor.
      * @property {module:shipping_v2/model/Location}
      */
-    Location,
+  Location,
 
-    /**
+  /**
      * The NdrAction model constructor.
      * @property {module:shipping_v2/model/NdrAction}
      */
-    NdrAction,
+  NdrAction,
 
-    /**
+  /**
      * The NdrRequestData model constructor.
      * @property {module:shipping_v2/model/NdrRequestData}
      */
-    NdrRequestData,
+  NdrRequestData,
 
-    /**
+  /**
      * The OneClickShipmentRequest model constructor.
      * @property {module:shipping_v2/model/OneClickShipmentRequest}
      */
-    OneClickShipmentRequest,
+  OneClickShipmentRequest,
 
-    /**
+  /**
      * The OneClickShipmentResponse model constructor.
      * @property {module:shipping_v2/model/OneClickShipmentResponse}
      */
-    OneClickShipmentResponse,
+  OneClickShipmentResponse,
 
-    /**
+  /**
      * The OneClickShipmentResult model constructor.
      * @property {module:shipping_v2/model/OneClickShipmentResult}
      */
-    OneClickShipmentResult,
+  OneClickShipmentResult,
 
-    /**
+  /**
      * The OneClickShipmentValueAddedService model constructor.
      * @property {module:shipping_v2/model/OneClickShipmentValueAddedService}
      */
-    OneClickShipmentValueAddedService,
+  OneClickShipmentValueAddedService,
 
-    /**
+  /**
      * The OperatingHours model constructor.
      * @property {module:shipping_v2/model/OperatingHours}
      */
-    OperatingHours,
+  OperatingHours,
 
-    /**
+  /**
      * The Package model constructor.
      * @property {module:shipping_v2/model/Package}
      */
-    Package,
+  Package,
 
-    /**
+  /**
      * The PackageDocument model constructor.
      * @property {module:shipping_v2/model/PackageDocument}
      */
-    PackageDocument,
+  PackageDocument,
 
-    /**
+  /**
      * The PackageDocumentDetail model constructor.
      * @property {module:shipping_v2/model/PackageDocumentDetail}
      */
-    PackageDocumentDetail,
+  PackageDocumentDetail,
 
-    /**
+  /**
      * The PaymentType model constructor.
      * @property {module:shipping_v2/model/PaymentType}
      */
-    PaymentType,
+  PaymentType,
 
-    /**
+  /**
      * The PrintOption model constructor.
      * @property {module:shipping_v2/model/PrintOption}
      */
-    PrintOption,
+  PrintOption,
 
-    /**
+  /**
      * The Promise model constructor.
      * @property {module:shipping_v2/model/Promise}
      */
-    Promise,
+  Promise,
 
-    /**
+  /**
      * The PurchaseShipmentRequest model constructor.
      * @property {module:shipping_v2/model/PurchaseShipmentRequest}
      */
-    PurchaseShipmentRequest,
+  PurchaseShipmentRequest,
 
-    /**
+  /**
      * The PurchaseShipmentResponse model constructor.
      * @property {module:shipping_v2/model/PurchaseShipmentResponse}
      */
-    PurchaseShipmentResponse,
+  PurchaseShipmentResponse,
 
-    /**
+  /**
      * The PurchaseShipmentResult model constructor.
      * @property {module:shipping_v2/model/PurchaseShipmentResult}
      */
-    PurchaseShipmentResult,
+  PurchaseShipmentResult,
 
-    /**
+  /**
      * The Rate model constructor.
      * @property {module:shipping_v2/model/Rate}
      */
-    Rate,
+  Rate,
 
-    /**
+  /**
      * The RateItem model constructor.
      * @property {module:shipping_v2/model/RateItem}
      */
-    RateItem,
+  RateItem,
 
-    /**
+  /**
      * The RateItemID model constructor.
      * @property {module:shipping_v2/model/RateItemID}
      */
-    RateItemID,
+  RateItemID,
 
-    /**
+  /**
      * The RateItemType model constructor.
      * @property {module:shipping_v2/model/RateItemType}
      */
-    RateItemType,
+  RateItemType,
 
-    /**
+  /**
      * The RequestedDocumentSpecification model constructor.
      * @property {module:shipping_v2/model/RequestedDocumentSpecification}
      */
-    RequestedDocumentSpecification,
+  RequestedDocumentSpecification,
 
-    /**
+  /**
      * The RequestedLabelCustomization model constructor.
      * @property {module:shipping_v2/model/RequestedLabelCustomization}
      */
-    RequestedLabelCustomization,
+  RequestedLabelCustomization,
 
-    /**
+  /**
      * The RequestedValueAddedService model constructor.
      * @property {module:shipping_v2/model/RequestedValueAddedService}
      */
-    RequestedValueAddedService,
+  RequestedValueAddedService,
 
-    /**
+  /**
      * The Service model constructor.
      * @property {module:shipping_v2/model/Service}
      */
-    Service,
+  Service,
 
-    /**
+  /**
      * The ServiceSelection model constructor.
      * @property {module:shipping_v2/model/ServiceSelection}
      */
-    ServiceSelection,
+  ServiceSelection,
 
-    /**
+  /**
      * The SettlementType model constructor.
      * @property {module:shipping_v2/model/SettlementType}
      */
-    SettlementType,
+  SettlementType,
 
-    /**
+  /**
      * The ShipmentType model constructor.
      * @property {module:shipping_v2/model/ShipmentType}
      */
-    ShipmentType,
+  ShipmentType,
 
-    /**
+  /**
      * The ShipperInstruction model constructor.
      * @property {module:shipping_v2/model/ShipperInstruction}
      */
-    ShipperInstruction,
+  ShipperInstruction,
 
-    /**
+  /**
      * The Status model constructor.
      * @property {module:shipping_v2/model/Status}
      */
-    Status,
+  Status,
 
-    /**
+  /**
      * The SubmitNdrFeedbackRequest model constructor.
      * @property {module:shipping_v2/model/SubmitNdrFeedbackRequest}
      */
-    SubmitNdrFeedbackRequest,
+  SubmitNdrFeedbackRequest,
 
-    /**
+  /**
      * The SupportedDocumentDetail model constructor.
      * @property {module:shipping_v2/model/SupportedDocumentDetail}
      */
-    SupportedDocumentDetail,
+  SupportedDocumentDetail,
 
-    /**
+  /**
      * The SupportedDocumentSpecification model constructor.
      * @property {module:shipping_v2/model/SupportedDocumentSpecification}
      */
-    SupportedDocumentSpecification,
+  SupportedDocumentSpecification,
 
-    /**
+  /**
      * The TaxDetail model constructor.
      * @property {module:shipping_v2/model/TaxDetail}
      */
-    TaxDetail,
+  TaxDetail,
 
-    /**
+  /**
      * The TaxType model constructor.
      * @property {module:shipping_v2/model/TaxType}
      */
-    TaxType,
+  TaxType,
 
-    /**
+  /**
      * The TimeOfDay model constructor.
      * @property {module:shipping_v2/model/TimeOfDay}
      */
-    TimeOfDay,
+  TimeOfDay,
 
-    /**
+  /**
      * The TimeWindow model constructor.
      * @property {module:shipping_v2/model/TimeWindow}
      */
-    TimeWindow,
+  TimeWindow,
 
-    /**
+  /**
      * The TrackingDetailCodes model constructor.
      * @property {module:shipping_v2/model/TrackingDetailCodes}
      */
-    TrackingDetailCodes,
+  TrackingDetailCodes,
 
-    /**
+  /**
      * The TrackingSummary model constructor.
      * @property {module:shipping_v2/model/TrackingSummary}
      */
-    TrackingSummary,
+  TrackingSummary,
 
-    /**
+  /**
      * The UnlinkCarrierAccountRequest model constructor.
      * @property {module:shipping_v2/model/UnlinkCarrierAccountRequest}
      */
-    UnlinkCarrierAccountRequest,
+  UnlinkCarrierAccountRequest,
 
-    /**
+  /**
      * The UnlinkCarrierAccountResponse model constructor.
      * @property {module:shipping_v2/model/UnlinkCarrierAccountResponse}
      */
-    UnlinkCarrierAccountResponse,
+  UnlinkCarrierAccountResponse,
 
-    /**
+  /**
      * The UnmanifestedCarrierInformation model constructor.
      * @property {module:shipping_v2/model/UnmanifestedCarrierInformation}
      */
-    UnmanifestedCarrierInformation,
+  UnmanifestedCarrierInformation,
 
-    /**
+  /**
      * The UnmanifestedShipmentLocation model constructor.
      * @property {module:shipping_v2/model/UnmanifestedShipmentLocation}
      */
-    UnmanifestedShipmentLocation,
+  UnmanifestedShipmentLocation,
 
-    /**
+  /**
      * The ValidationMetadata model constructor.
      * @property {module:shipping_v2/model/ValidationMetadata}
      */
-    ValidationMetadata,
+  ValidationMetadata,
 
-    /**
+  /**
      * The ValueAddedService model constructor.
      * @property {module:shipping_v2/model/ValueAddedService}
      */
-    ValueAddedService,
+  ValueAddedService,
 
-    /**
+  /**
      * The ValueAddedServiceDetails model constructor.
      * @property {module:shipping_v2/model/ValueAddedServiceDetails}
      */
-    ValueAddedServiceDetails,
+  ValueAddedServiceDetails,
 
-    /**
+  /**
      * The Weight model constructor.
      * @property {module:shipping_v2/model/Weight}
      */
-    Weight,
+  Weight,
 
-    /**
+  /**
     * The ShippingApi service constructor.
     * @property {module:shipping_v2/api/ShippingApi}
     */
-    ShippingApi
-};
+  ShippingApi
+}

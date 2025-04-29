@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DetailCodes} from './DetailCodes.js';
+import { ApiClient } from '../ApiClient.js'
+import { DetailCodes } from './DetailCodes.js'
 
 /**
  * The TrackingDetailCodes model module.
@@ -28,9 +28,9 @@ export class TrackingDetailCodes {
    * @param forward {Array.<module:shipping_v2/model/DetailCodes>} Contains detail codes that provide additional details related to the forward leg of the shipment.
    * @param returns {Array.<module:shipping_v2/model/DetailCodes>} Contains detail codes that provide additional details related to the return leg of the shipment.
    */
-  constructor(forward, returns) {
-    this.forward = forward;
-    this.returns = returns;
+  constructor (forward, returns) {
+    this.forward = forward
+    this.returns = returns
   }
 
   /**
@@ -40,26 +40,24 @@ export class TrackingDetailCodes {
    * @param {module:shipping_v2/model/TrackingDetailCodes} obj Optional instance to populate.
    * @return {module:shipping_v2/model/TrackingDetailCodes} The populated <code>TrackingDetailCodes</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new TrackingDetailCodes();
-      if (data.hasOwnProperty('forward'))
-        obj.forward = ApiClient.convertToType(data['forward'], [DetailCodes]);
-      if (data.hasOwnProperty('returns'))
-        obj.returns = ApiClient.convertToType(data['returns'], [DetailCodes]);
+      obj = obj || new TrackingDetailCodes()
+      if (data.hasOwnProperty('forward')) { obj.forward = ApiClient.convertToType(data.forward, [DetailCodes]) }
+      if (data.hasOwnProperty('returns')) { obj.returns = ApiClient.convertToType(data.returns, [DetailCodes]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -67,12 +65,10 @@ export class TrackingDetailCodes {
  * Contains detail codes that provide additional details related to the forward leg of the shipment.
  * @member {Array.<module:shipping_v2/model/DetailCodes>} forward
  */
-TrackingDetailCodes.prototype.forward = undefined;
+TrackingDetailCodes.prototype.forward = undefined
 
 /**
  * Contains detail codes that provide additional details related to the return leg of the shipment.
  * @member {Array.<module:shipping_v2/model/DetailCodes>} returns
  */
-TrackingDetailCodes.prototype.returns = undefined;
-
-
+TrackingDetailCodes.prototype.returns = undefined

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class IneligibilityReasonCode.
@@ -19,84 +19,72 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class IneligibilityReasonCode {
-    
-        /**
+  /**
          * value: "NO_COVERAGE"
          * @const
          */
-        "NO_COVERAGE" = "NO_COVERAGE";
+  'NO_COVERAGE' = 'NO_COVERAGE'
 
-    
-        /**
+  /**
          * value: "PICKUP_SLOT_RESTRICTION"
          * @const
          */
-        "PICKUP_SLOT_RESTRICTION" = "PICKUP_SLOT_RESTRICTION";
+  'PICKUP_SLOT_RESTRICTION' = 'PICKUP_SLOT_RESTRICTION'
 
-    
-        /**
+  /**
          * value: "UNSUPPORTED_VAS"
          * @const
          */
-        "UNSUPPORTED_VAS" = "UNSUPPORTED_VAS";
+  'UNSUPPORTED_VAS' = 'UNSUPPORTED_VAS'
 
-    
-        /**
+  /**
          * value: "VAS_COMBINATION_RESTRICTION"
          * @const
          */
-        "VAS_COMBINATION_RESTRICTION" = "VAS_COMBINATION_RESTRICTION";
+  'VAS_COMBINATION_RESTRICTION' = 'VAS_COMBINATION_RESTRICTION'
 
-    
-        /**
+  /**
          * value: "SIZE_RESTRICTIONS"
          * @const
          */
-        "SIZE_RESTRICTIONS" = "SIZE_RESTRICTIONS";
+  'SIZE_RESTRICTIONS' = 'SIZE_RESTRICTIONS'
 
-    
-        /**
+  /**
          * value: "WEIGHT_RESTRICTIONS"
          * @const
          */
-        "WEIGHT_RESTRICTIONS" = "WEIGHT_RESTRICTIONS";
+  'WEIGHT_RESTRICTIONS' = 'WEIGHT_RESTRICTIONS'
 
-    
-        /**
+  /**
          * value: "LATE_DELIVERY"
          * @const
          */
-        "LATE_DELIVERY" = "LATE_DELIVERY";
+  'LATE_DELIVERY' = 'LATE_DELIVERY'
 
-    
-        /**
+  /**
          * value: "PROGRAM_CONSTRAINTS"
          * @const
          */
-        "PROGRAM_CONSTRAINTS" = "PROGRAM_CONSTRAINTS";
+  'PROGRAM_CONSTRAINTS' = 'PROGRAM_CONSTRAINTS'
 
-    
-        /**
+  /**
          * value: "TERMS_AND_CONDITIONS_NOT_ACCEPTED"
          * @const
          */
-        "TERMS_AND_CONDITIONS_NOT_ACCEPTED" = "TERMS_AND_CONDITIONS_NOT_ACCEPTED";
+  'TERMS_AND_CONDITIONS_NOT_ACCEPTED' = 'TERMS_AND_CONDITIONS_NOT_ACCEPTED'
 
-    
-        /**
+  /**
          * value: "UNKNOWN"
          * @const
          */
-        "UNKNOWN" = "UNKNOWN";
+  'UNKNOWN' = 'UNKNOWN'
 
-    
-
-    /**
+  /**
     * Returns a <code>IneligibilityReasonCode</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/IneligibilityReasonCode} The enum <code>IneligibilityReasonCode</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

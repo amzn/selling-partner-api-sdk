@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The AccessibilityAttributes model module.
@@ -25,7 +25,7 @@ export class AccessibilityAttributes {
    * @alias module:shipping_v2/model/AccessibilityAttributes
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class AccessibilityAttributes {
    * @param {module:shipping_v2/model/AccessibilityAttributes} obj Optional instance to populate.
    * @return {module:shipping_v2/model/AccessibilityAttributes} The populated <code>AccessibilityAttributes</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new AccessibilityAttributes();
-      if (data.hasOwnProperty('distance'))
-        obj.distance = ApiClient.convertToType(data['distance'], 'String');
-      if (data.hasOwnProperty('driveTime'))
-        obj.driveTime = ApiClient.convertToType(data['driveTime'], 'Number');
+      obj = obj || new AccessibilityAttributes()
+      if (data.hasOwnProperty('distance')) { obj.distance = ApiClient.convertToType(data.distance, 'String') }
+      if (data.hasOwnProperty('driveTime')) { obj.driveTime = ApiClient.convertToType(data.driveTime, 'Number') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class AccessibilityAttributes {
  * The approximate distance of access point from input postalCode's centroid.
  * @member {String} distance
  */
-AccessibilityAttributes.prototype.distance = undefined;
+AccessibilityAttributes.prototype.distance = undefined
 
 /**
  * The approximate (static) drive time from input postal code's centroid.
  * @member {Number} driveTime
  */
-AccessibilityAttributes.prototype.driveTime = undefined;
-
-
+AccessibilityAttributes.prototype.driveTime = undefined

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The ExcludedBenefit model module.
@@ -26,8 +26,8 @@ export class ExcludedBenefit {
    * @class
    * @param benefit {String} benefit
    */
-  constructor(benefit) {
-    this.benefit = benefit;
+  constructor (benefit) {
+    this.benefit = benefit
   }
 
   /**
@@ -37,26 +37,24 @@ export class ExcludedBenefit {
    * @param {module:shipping_v2/model/ExcludedBenefit} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ExcludedBenefit} The populated <code>ExcludedBenefit</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ExcludedBenefit();
-      if (data.hasOwnProperty('benefit'))
-        obj.benefit = ApiClient.convertToType(data['benefit'], 'String');
-      if (data.hasOwnProperty('reasonCodes'))
-        obj.reasonCodes = ApiClient.convertToType(data['reasonCodes'], ['String']);
+      obj = obj || new ExcludedBenefit()
+      if (data.hasOwnProperty('benefit')) { obj.benefit = ApiClient.convertToType(data.benefit, 'String') }
+      if (data.hasOwnProperty('reasonCodes')) { obj.reasonCodes = ApiClient.convertToType(data.reasonCodes, ['String']) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -64,12 +62,10 @@ export class ExcludedBenefit {
  * benefit
  * @member {String} benefit
  */
-ExcludedBenefit.prototype.benefit = undefined;
+ExcludedBenefit.prototype.benefit = undefined
 
 /**
  * List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer.
  * @member {Array.<String>} reasonCodes
  */
-ExcludedBenefit.prototype.reasonCodes = undefined;
-
-
+ExcludedBenefit.prototype.reasonCodes = undefined

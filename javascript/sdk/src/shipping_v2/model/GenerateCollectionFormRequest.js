@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Address} from './Address.js';
-import {ClientReferenceDetail} from './ClientReferenceDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { Address } from './Address.js'
+import { ClientReferenceDetail } from './ClientReferenceDetail.js'
 
 /**
  * The GenerateCollectionFormRequest model module.
@@ -28,8 +28,8 @@ export class GenerateCollectionFormRequest {
    * @class
    * @param carrierId {String} The carrier identifier for the offering, provided by the carrier.
    */
-  constructor(carrierId) {
-    this.carrierId = carrierId;
+  constructor (carrierId) {
+    this.carrierId = carrierId
   }
 
   /**
@@ -39,28 +39,25 @@ export class GenerateCollectionFormRequest {
    * @param {module:shipping_v2/model/GenerateCollectionFormRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GenerateCollectionFormRequest} The populated <code>GenerateCollectionFormRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GenerateCollectionFormRequest();
-      if (data.hasOwnProperty('clientReferenceDetails'))
-        obj.clientReferenceDetails = ApiClient.convertToType(data['clientReferenceDetails'], [ClientReferenceDetail]);
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
-      if (data.hasOwnProperty('shipFromAddress'))
-        obj.shipFromAddress = Address.constructFromObject(data['shipFromAddress']);
+      obj = obj || new GenerateCollectionFormRequest()
+      if (data.hasOwnProperty('clientReferenceDetails')) { obj.clientReferenceDetails = ApiClient.convertToType(data.clientReferenceDetails, [ClientReferenceDetail]) }
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
+      if (data.hasOwnProperty('shipFromAddress')) { obj.shipFromAddress = Address.constructFromObject(data.shipFromAddress) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -68,17 +65,15 @@ export class GenerateCollectionFormRequest {
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
  */
-GenerateCollectionFormRequest.prototype.clientReferenceDetails = undefined;
+GenerateCollectionFormRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-GenerateCollectionFormRequest.prototype.carrierId = undefined;
+GenerateCollectionFormRequest.prototype.carrierId = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFromAddress
  */
-GenerateCollectionFormRequest.prototype.shipFromAddress = undefined;
-
-
+GenerateCollectionFormRequest.prototype.shipFromAddress = undefined

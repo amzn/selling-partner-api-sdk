@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The CarrierAccount model module.
@@ -27,9 +27,9 @@ export class CarrierAccount {
    * @param carrierAccountId {String} Identifier for the seller's carrier account.
    * @param carrierId {String} The carrier identifier for the offering, provided by the carrier.
    */
-  constructor(carrierAccountId, carrierId) {
-    this.carrierAccountId = carrierAccountId;
-    this.carrierId = carrierId;
+  constructor (carrierAccountId, carrierId) {
+    this.carrierAccountId = carrierAccountId
+    this.carrierId = carrierId
   }
 
   /**
@@ -39,26 +39,24 @@ export class CarrierAccount {
    * @param {module:shipping_v2/model/CarrierAccount} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CarrierAccount} The populated <code>CarrierAccount</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CarrierAccount();
-      if (data.hasOwnProperty('carrierAccountId'))
-        obj.carrierAccountId = ApiClient.convertToType(data['carrierAccountId'], 'String');
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
+      obj = obj || new CarrierAccount()
+      if (data.hasOwnProperty('carrierAccountId')) { obj.carrierAccountId = ApiClient.convertToType(data.carrierAccountId, 'String') }
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -66,12 +64,10 @@ export class CarrierAccount {
  * Identifier for the seller's carrier account.
  * @member {String} carrierAccountId
  */
-CarrierAccount.prototype.carrierAccountId = undefined;
+CarrierAccount.prototype.carrierAccountId = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-CarrierAccount.prototype.carrierId = undefined;
-
-
+CarrierAccount.prototype.carrierId = undefined

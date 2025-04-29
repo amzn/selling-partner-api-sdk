@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The ShipperInstruction model module.
@@ -25,7 +25,7 @@ export class ShipperInstruction {
    * @alias module:shipping_v2/model/ShipperInstruction
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,24 +35,23 @@ export class ShipperInstruction {
    * @param {module:shipping_v2/model/ShipperInstruction} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ShipperInstruction} The populated <code>ShipperInstruction</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ShipperInstruction();
-      if (data.hasOwnProperty('deliveryNotes'))
-        obj.deliveryNotes = ApiClient.convertToType(data['deliveryNotes'], 'String');
+      obj = obj || new ShipperInstruction()
+      if (data.hasOwnProperty('deliveryNotes')) { obj.deliveryNotes = ApiClient.convertToType(data.deliveryNotes, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -60,6 +59,4 @@ export class ShipperInstruction {
  * The delivery notes for the shipment
  * @member {String} deliveryNotes
  */
-ShipperInstruction.prototype.deliveryNotes = undefined;
-
-
+ShipperInstruction.prototype.deliveryNotes = undefined

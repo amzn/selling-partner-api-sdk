@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Currency} from './Currency.js';
+import { ApiClient } from '../ApiClient.js'
+import { Currency } from './Currency.js'
 
 /**
  * The OneClickShipmentValueAddedService model module.
@@ -27,8 +27,8 @@ export class OneClickShipmentValueAddedService {
    * @class
    * @param id {String} The identifier of the selected value-added service.
    */
-  constructor(id) {
-    this.id = id;
+  constructor (id) {
+    this.id = id
   }
 
   /**
@@ -38,26 +38,24 @@ export class OneClickShipmentValueAddedService {
    * @param {module:shipping_v2/model/OneClickShipmentValueAddedService} obj Optional instance to populate.
    * @return {module:shipping_v2/model/OneClickShipmentValueAddedService} The populated <code>OneClickShipmentValueAddedService</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new OneClickShipmentValueAddedService();
-      if (data.hasOwnProperty('id'))
-        obj.id = ApiClient.convertToType(data['id'], 'String');
-      if (data.hasOwnProperty('amount'))
-        obj.amount = Currency.constructFromObject(data['amount']);
+      obj = obj || new OneClickShipmentValueAddedService()
+      if (data.hasOwnProperty('id')) { obj.id = ApiClient.convertToType(data.id, 'String') }
+      if (data.hasOwnProperty('amount')) { obj.amount = Currency.constructFromObject(data.amount) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -65,11 +63,9 @@ export class OneClickShipmentValueAddedService {
  * The identifier of the selected value-added service.
  * @member {String} id
  */
-OneClickShipmentValueAddedService.prototype.id = undefined;
+OneClickShipmentValueAddedService.prototype.id = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} amount
  */
-OneClickShipmentValueAddedService.prototype.amount = undefined;
-
-
+OneClickShipmentValueAddedService.prototype.amount = undefined

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The CollectionsFormDocument model module.
@@ -25,7 +25,7 @@ export class CollectionsFormDocument {
    * @alias module:shipping_v2/model/CollectionsFormDocument
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class CollectionsFormDocument {
    * @param {module:shipping_v2/model/CollectionsFormDocument} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CollectionsFormDocument} The populated <code>CollectionsFormDocument</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CollectionsFormDocument();
-      if (data.hasOwnProperty('base64EncodedContent'))
-        obj.base64EncodedContent = ApiClient.convertToType(data['base64EncodedContent'], 'String');
-      if (data.hasOwnProperty('documentFormat'))
-        obj.documentFormat = ApiClient.convertToType(data['documentFormat'], 'String');
+      obj = obj || new CollectionsFormDocument()
+      if (data.hasOwnProperty('base64EncodedContent')) { obj.base64EncodedContent = ApiClient.convertToType(data.base64EncodedContent, 'String') }
+      if (data.hasOwnProperty('documentFormat')) { obj.documentFormat = ApiClient.convertToType(data.documentFormat, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class CollectionsFormDocument {
  * Base64 document Value of Collection.
  * @member {String} base64EncodedContent
  */
-CollectionsFormDocument.prototype.base64EncodedContent = undefined;
+CollectionsFormDocument.prototype.base64EncodedContent = undefined
 
 /**
  * Collection Document format is PDF.
  * @member {String} documentFormat
  */
-CollectionsFormDocument.prototype.documentFormat = undefined;
-
-
+CollectionsFormDocument.prototype.documentFormat = undefined

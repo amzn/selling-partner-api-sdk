@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The NdrRequestData model module.
@@ -21,11 +21,11 @@ import {ApiClient} from '../ApiClient.js';
 export class NdrRequestData {
   /**
    * Constructs a new <code>NdrRequestData</code>.
-   * Additional information required for the NDR action that has been filed. If the NDR Action is RESCHEDULE, rescheduleDate is a required field. Otherwise, if the NDR Action is REATTEMPT, additionalAddressNotes is a required field. 
+   * Additional information required for the NDR action that has been filed. If the NDR Action is RESCHEDULE, rescheduleDate is a required field. Otherwise, if the NDR Action is REATTEMPT, additionalAddressNotes is a required field.
    * @alias module:shipping_v2/model/NdrRequestData
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class NdrRequestData {
    * @param {module:shipping_v2/model/NdrRequestData} obj Optional instance to populate.
    * @return {module:shipping_v2/model/NdrRequestData} The populated <code>NdrRequestData</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new NdrRequestData();
-      if (data.hasOwnProperty('rescheduleDate'))
-        obj.rescheduleDate = ApiClient.convertToType(data['rescheduleDate'], 'Date');
-      if (data.hasOwnProperty('additionalAddressNotes'))
-        obj.additionalAddressNotes = ApiClient.convertToType(data['additionalAddressNotes'], 'String');
+      obj = obj || new NdrRequestData()
+      if (data.hasOwnProperty('rescheduleDate')) { obj.rescheduleDate = ApiClient.convertToType(data.rescheduleDate, 'Date') }
+      if (data.hasOwnProperty('additionalAddressNotes')) { obj.additionalAddressNotes = ApiClient.convertToType(data.additionalAddressNotes, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class NdrRequestData {
  * The date on which the Seller wants to reschedule shipment delivery, in ISO-8601 date/time format
  * @member {Date} rescheduleDate
  */
-NdrRequestData.prototype.rescheduleDate = undefined;
+NdrRequestData.prototype.rescheduleDate = undefined
 
 /**
  * Address notes to re-attempt delivery with.
  * @member {String} additionalAddressNotes
  */
-NdrRequestData.prototype.additionalAddressNotes = undefined;
-
-
+NdrRequestData.prototype.additionalAddressNotes = undefined

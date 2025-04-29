@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {PurchaseShipmentResult} from './PurchaseShipmentResult.js';
+import { ApiClient } from '../ApiClient.js'
+import { PurchaseShipmentResult } from './PurchaseShipmentResult.js'
 
 /**
  * The PurchaseShipmentResponse model module.
@@ -26,7 +26,7 @@ export class PurchaseShipmentResponse {
    * @alias module:shipping_v2/model/PurchaseShipmentResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class PurchaseShipmentResponse {
    * @param {module:shipping_v2/model/PurchaseShipmentResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/PurchaseShipmentResponse} The populated <code>PurchaseShipmentResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new PurchaseShipmentResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = PurchaseShipmentResult.constructFromObject(data['payload']);
+      obj = obj || new PurchaseShipmentResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = PurchaseShipmentResult.constructFromObject(data.payload) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/PurchaseShipmentResult} payload
  */
-PurchaseShipmentResponse.prototype.payload = undefined;
-
-
+PurchaseShipmentResponse.prototype.payload = undefined

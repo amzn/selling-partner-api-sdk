@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Address} from './Address.js';
+import { ApiClient } from '../ApiClient.js'
+import { Address } from './Address.js'
 
 /**
  * The UnmanifestedShipmentLocation model module.
@@ -22,11 +22,11 @@ import {Address} from './Address.js';
 export class UnmanifestedShipmentLocation {
   /**
    * Constructs a new <code>UnmanifestedShipmentLocation</code>.
-   * UnmanifestedShipmentLocation info 
+   * UnmanifestedShipmentLocation info
    * @alias module:shipping_v2/model/UnmanifestedShipmentLocation
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,38 +36,34 @@ export class UnmanifestedShipmentLocation {
    * @param {module:shipping_v2/model/UnmanifestedShipmentLocation} obj Optional instance to populate.
    * @return {module:shipping_v2/model/UnmanifestedShipmentLocation} The populated <code>UnmanifestedShipmentLocation</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new UnmanifestedShipmentLocation();
-      if (data.hasOwnProperty('address'))
-        obj.address = Address.constructFromObject(data['address']);
-      if (data.hasOwnProperty('lastManifestDate'))
-        obj.lastManifestDate = ApiClient.convertToType(data['lastManifestDate'], 'String');
+      obj = obj || new UnmanifestedShipmentLocation()
+      if (data.hasOwnProperty('address')) { obj.address = Address.constructFromObject(data.address) }
+      if (data.hasOwnProperty('lastManifestDate')) { obj.lastManifestDate = ApiClient.convertToType(data.lastManifestDate, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Address} address
  */
-UnmanifestedShipmentLocation.prototype.address = undefined;
+UnmanifestedShipmentLocation.prototype.address = undefined
 
 /**
  * Its Last Manifest Date.
  * @member {String} lastManifestDate
  */
-UnmanifestedShipmentLocation.prototype.lastManifestDate = undefined;
-
-
+UnmanifestedShipmentLocation.prototype.lastManifestDate = undefined

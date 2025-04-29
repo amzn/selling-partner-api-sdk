@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Carrier model module.
@@ -27,9 +27,9 @@ export class Carrier {
    * @param id {String} The carrier identifier for the offering, provided by the carrier.
    * @param name {String} The carrier name for the offering.
    */
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
+  constructor (id, name) {
+    this.id = id
+    this.name = name
   }
 
   /**
@@ -39,26 +39,24 @@ export class Carrier {
    * @param {module:shipping_v2/model/Carrier} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Carrier} The populated <code>Carrier</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Carrier();
-      if (data.hasOwnProperty('id'))
-        obj.id = ApiClient.convertToType(data['id'], 'String');
-      if (data.hasOwnProperty('name'))
-        obj.name = ApiClient.convertToType(data['name'], 'String');
+      obj = obj || new Carrier()
+      if (data.hasOwnProperty('id')) { obj.id = ApiClient.convertToType(data.id, 'String') }
+      if (data.hasOwnProperty('name')) { obj.name = ApiClient.convertToType(data.name, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -66,12 +64,10 @@ export class Carrier {
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} id
  */
-Carrier.prototype.id = undefined;
+Carrier.prototype.id = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} name
  */
-Carrier.prototype.name = undefined;
-
-
+Carrier.prototype.name = undefined

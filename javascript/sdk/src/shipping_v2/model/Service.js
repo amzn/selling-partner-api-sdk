@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Service model module.
@@ -27,9 +27,9 @@ export class Service {
    * @param id {String} An identifier for the shipping service.
    * @param name {String} The name of the shipping service.
    */
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
+  constructor (id, name) {
+    this.id = id
+    this.name = name
   }
 
   /**
@@ -39,26 +39,24 @@ export class Service {
    * @param {module:shipping_v2/model/Service} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Service} The populated <code>Service</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Service();
-      if (data.hasOwnProperty('id'))
-        obj.id = ApiClient.convertToType(data['id'], 'String');
-      if (data.hasOwnProperty('name'))
-        obj.name = ApiClient.convertToType(data['name'], 'String');
+      obj = obj || new Service()
+      if (data.hasOwnProperty('id')) { obj.id = ApiClient.convertToType(data.id, 'String') }
+      if (data.hasOwnProperty('name')) { obj.name = ApiClient.convertToType(data.name, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -66,12 +64,10 @@ export class Service {
  * An identifier for the shipping service.
  * @member {String} id
  */
-Service.prototype.id = undefined;
+Service.prototype.id = undefined
 
 /**
  * The name of the shipping service.
  * @member {String} name
  */
-Service.prototype.name = undefined;
-
-
+Service.prototype.name = undefined

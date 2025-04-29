@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AccessPointType.
@@ -19,70 +19,60 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class AccessPointType {
-    
-        /**
+  /**
          * value: "HELIX"
          * @const
          */
-        "HELIX" = "HELIX";
+  'HELIX' = 'HELIX'
 
-    
-        /**
+  /**
          * value: "CAMPUS_LOCKER"
          * @const
          */
-        "CAMPUS_LOCKER" = "CAMPUS_LOCKER";
+  'CAMPUS_LOCKER' = 'CAMPUS_LOCKER'
 
-    
-        /**
+  /**
          * value: "OMNI_LOCKER"
          * @const
          */
-        "OMNI_LOCKER" = "OMNI_LOCKER";
+  'OMNI_LOCKER' = 'OMNI_LOCKER'
 
-    
-        /**
+  /**
          * value: "ODIN_LOCKER"
          * @const
          */
-        "ODIN_LOCKER" = "ODIN_LOCKER";
+  'ODIN_LOCKER' = 'ODIN_LOCKER'
 
-    
-        /**
+  /**
          * value: "DOBBY_LOCKER"
          * @const
          */
-        "DOBBY_LOCKER" = "DOBBY_LOCKER";
+  'DOBBY_LOCKER' = 'DOBBY_LOCKER'
 
-    
-        /**
+  /**
          * value: "CORE_LOCKER"
          * @const
          */
-        "CORE_LOCKER" = "CORE_LOCKER";
+  'CORE_LOCKER' = 'CORE_LOCKER'
 
-    
-        /**
+  /**
          * value: "3P"
          * @const
          */
-        "3P" = "3P";
+  '3P' = '3P'
 
-    
-        /**
+  /**
          * value: "CAMPUS_ROOM"
          * @const
          */
-        "CAMPUS_ROOM" = "CAMPUS_ROOM";
+  'CAMPUS_ROOM' = 'CAMPUS_ROOM'
 
-    
-
-    /**
+  /**
     * Returns a <code>AccessPointType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/AccessPointType} The enum <code>AccessPointType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

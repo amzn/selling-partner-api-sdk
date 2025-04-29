@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The AmazonOrderDetails model module.
@@ -26,8 +26,8 @@ export class AmazonOrderDetails {
    * @class
    * @param orderId {String} The Amazon order ID associated with the Amazon order fulfilled by this shipment.
    */
-  constructor(orderId) {
-    this.orderId = orderId;
+  constructor (orderId) {
+    this.orderId = orderId
   }
 
   /**
@@ -37,24 +37,23 @@ export class AmazonOrderDetails {
    * @param {module:shipping_v2/model/AmazonOrderDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/AmazonOrderDetails} The populated <code>AmazonOrderDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new AmazonOrderDetails();
-      if (data.hasOwnProperty('orderId'))
-        obj.orderId = ApiClient.convertToType(data['orderId'], 'String');
+      obj = obj || new AmazonOrderDetails()
+      if (data.hasOwnProperty('orderId')) { obj.orderId = ApiClient.convertToType(data.orderId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,6 +61,4 @@ export class AmazonOrderDetails {
  * The Amazon order ID associated with the Amazon order fulfilled by this shipment.
  * @member {String} orderId
  */
-AmazonOrderDetails.prototype.orderId = undefined;
-
-
+AmazonOrderDetails.prototype.orderId = undefined

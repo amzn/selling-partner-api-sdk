@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {TimeOfDay} from './TimeOfDay.js';
+import { ApiClient } from '../ApiClient.js'
+import { TimeOfDay } from './TimeOfDay.js'
 
 /**
  * The OperatingHours model module.
@@ -26,7 +26,7 @@ export class OperatingHours {
    * @alias module:shipping_v2/model/OperatingHours
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,45 +36,40 @@ export class OperatingHours {
    * @param {module:shipping_v2/model/OperatingHours} obj Optional instance to populate.
    * @return {module:shipping_v2/model/OperatingHours} The populated <code>OperatingHours</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new OperatingHours();
-      if (data.hasOwnProperty('closingTime'))
-        obj.closingTime = TimeOfDay.constructFromObject(data['closingTime']);
-      if (data.hasOwnProperty('openingTime'))
-        obj.openingTime = TimeOfDay.constructFromObject(data['openingTime']);
-      if (data.hasOwnProperty('midDayClosures'))
-        obj.midDayClosures = ApiClient.convertToType(data['midDayClosures'], [TimeOfDay]);
+      obj = obj || new OperatingHours()
+      if (data.hasOwnProperty('closingTime')) { obj.closingTime = TimeOfDay.constructFromObject(data.closingTime) }
+      if (data.hasOwnProperty('openingTime')) { obj.openingTime = TimeOfDay.constructFromObject(data.openingTime) }
+      if (data.hasOwnProperty('midDayClosures')) { obj.midDayClosures = ApiClient.convertToType(data.midDayClosures, [TimeOfDay]) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/TimeOfDay} closingTime
  */
-OperatingHours.prototype.closingTime = undefined;
+OperatingHours.prototype.closingTime = undefined
 
 /**
  * @member {module:shipping_v2/model/TimeOfDay} openingTime
  */
-OperatingHours.prototype.openingTime = undefined;
+OperatingHours.prototype.openingTime = undefined
 
 /**
  * midDayClosures operating hours array
  * @member {Array.<module:shipping_v2/model/TimeOfDay>} midDayClosures
  */
-OperatingHours.prototype.midDayClosures = undefined;
-
-
+OperatingHours.prototype.midDayClosures = undefined

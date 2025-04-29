@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DocumentFormat.
@@ -19,35 +19,30 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class DocumentFormat {
-    
-        /**
+  /**
          * value: "PDF"
          * @const
          */
-        "PDF" = "PDF";
+  'PDF' = 'PDF'
 
-    
-        /**
+  /**
          * value: "PNG"
          * @const
          */
-        "PNG" = "PNG";
+  'PNG' = 'PNG'
 
-    
-        /**
+  /**
          * value: "ZPL"
          * @const
          */
-        "ZPL" = "ZPL";
+  'ZPL' = 'ZPL'
 
-    
-
-    /**
+  /**
     * Returns a <code>DocumentFormat</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/DocumentFormat} The enum <code>DocumentFormat</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }
