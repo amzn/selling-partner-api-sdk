@@ -60,6 +60,9 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FeesApi
 {
+    public ?LimiterInterface $getMyFeesEstimateForASINRateLimiter;
+    public ?LimiterInterface $getMyFeesEstimateForSKURateLimiter;
+    public ?LimiterInterface $getMyFeesEstimatesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,10 +76,6 @@ class FeesApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getMyFeesEstimateForASINRateLimiter;
-    private ?LimiterInterface $getMyFeesEstimateForSKURateLimiter;
-    private ?LimiterInterface $getMyFeesEstimatesRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -95,11 +94,11 @@ class FeesApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeesApi-getMyFeesEstimateForASIN'), $this->rateLimitStorage);
-            $this->getMyFeesEstimateForASINRateLimiter = $factory->create();
+            $this->getMyFeesEstimateForASINRateLimiter = $factory->create('FeesApi-getMyFeesEstimateForASIN');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeesApi-getMyFeesEstimateForSKU'), $this->rateLimitStorage);
-            $this->getMyFeesEstimateForSKURateLimiter = $factory->create();
+            $this->getMyFeesEstimateForSKURateLimiter = $factory->create('FeesApi-getMyFeesEstimateForSKU');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeesApi-getMyFeesEstimates'), $this->rateLimitStorage);
-            $this->getMyFeesEstimatesRateLimiter = $factory->create();
+            $this->getMyFeesEstimatesRateLimiter = $factory->create('FeesApi-getMyFeesEstimates');
         }
 
         $this->client = $client ?: new Client();

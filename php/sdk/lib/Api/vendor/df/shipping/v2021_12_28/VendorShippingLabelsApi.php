@@ -76,10 +76,10 @@ class VendorShippingLabelsApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $createShippingLabelsRateLimiter;
-    private ?LimiterInterface $getShippingLabelRateLimiter;
-    private ?LimiterInterface $getShippingLabelsRateLimiter;
-    private ?LimiterInterface $submitShippingLabelRequestRateLimiter;
+    public ?LimiterInterface $createShippingLabelsRateLimiter;
+    public ?LimiterInterface $getShippingLabelRateLimiter;
+    public ?LimiterInterface $getShippingLabelsRateLimiter;
+    public ?LimiterInterface $submitShippingLabelRequestRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -102,13 +102,13 @@ class VendorShippingLabelsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-createShippingLabels"), $this->rateLimitStorage);
-            $this->createShippingLabelsRateLimiter = $factory->create();
+            $this->createShippingLabelsRateLimiter = $factory->create("VendorShippingLabelsApi-createShippingLabels");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabel"), $this->rateLimitStorage);
-            $this->getShippingLabelRateLimiter = $factory->create();
+            $this->getShippingLabelRateLimiter = $factory->create("VendorShippingLabelsApi-getShippingLabel");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabels"), $this->rateLimitStorage);
-            $this->getShippingLabelsRateLimiter = $factory->create();
+            $this->getShippingLabelsRateLimiter = $factory->create("VendorShippingLabelsApi-getShippingLabels");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-submitShippingLabelRequest"), $this->rateLimitStorage);
-            $this->submitShippingLabelRequestRateLimiter = $factory->create();
+            $this->submitShippingLabelRequestRateLimiter = $factory->create("VendorShippingLabelsApi-submitShippingLabelRequest");
         }
 
         $this->client = $client ?: new Client();

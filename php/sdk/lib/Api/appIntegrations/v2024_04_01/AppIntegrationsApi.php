@@ -60,6 +60,9 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class AppIntegrationsApi
 {
+    public ?LimiterInterface $createNotificationRateLimiter;
+    public ?LimiterInterface $deleteNotificationsRateLimiter;
+    public ?LimiterInterface $recordActionFeedbackRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,10 +76,6 @@ class AppIntegrationsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createNotificationRateLimiter;
-    private ?LimiterInterface $deleteNotificationsRateLimiter;
-    private ?LimiterInterface $recordActionFeedbackRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -95,11 +94,11 @@ class AppIntegrationsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-createNotification'), $this->rateLimitStorage);
-            $this->createNotificationRateLimiter = $factory->create();
+            $this->createNotificationRateLimiter = $factory->create('AppIntegrationsApi-createNotification');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-deleteNotifications'), $this->rateLimitStorage);
-            $this->deleteNotificationsRateLimiter = $factory->create();
+            $this->deleteNotificationsRateLimiter = $factory->create('AppIntegrationsApi-deleteNotifications');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-recordActionFeedback'), $this->rateLimitStorage);
-            $this->recordActionFeedbackRateLimiter = $factory->create();
+            $this->recordActionFeedbackRateLimiter = $factory->create('AppIntegrationsApi-recordActionFeedback');
         }
 
         $this->client = $client ?: new Client();

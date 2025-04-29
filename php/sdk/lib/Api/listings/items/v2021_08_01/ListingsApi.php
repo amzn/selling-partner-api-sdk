@@ -61,6 +61,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ListingsApi
 {
+    public ?LimiterInterface $deleteListingsItemRateLimiter;
+    public ?LimiterInterface $getListingsItemRateLimiter;
+    public ?LimiterInterface $patchListingsItemRateLimiter;
+    public ?LimiterInterface $putListingsItemRateLimiter;
+    public ?LimiterInterface $searchListingsItemsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -74,12 +79,6 @@ class ListingsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $deleteListingsItemRateLimiter;
-    private ?LimiterInterface $getListingsItemRateLimiter;
-    private ?LimiterInterface $patchListingsItemRateLimiter;
-    private ?LimiterInterface $putListingsItemRateLimiter;
-    private ?LimiterInterface $searchListingsItemsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -98,15 +97,15 @@ class ListingsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-deleteListingsItem'), $this->rateLimitStorage);
-            $this->deleteListingsItemRateLimiter = $factory->create();
+            $this->deleteListingsItemRateLimiter = $factory->create('ListingsApi-deleteListingsItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsItem'), $this->rateLimitStorage);
-            $this->getListingsItemRateLimiter = $factory->create();
+            $this->getListingsItemRateLimiter = $factory->create('ListingsApi-getListingsItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-patchListingsItem'), $this->rateLimitStorage);
-            $this->patchListingsItemRateLimiter = $factory->create();
+            $this->patchListingsItemRateLimiter = $factory->create('ListingsApi-patchListingsItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-putListingsItem'), $this->rateLimitStorage);
-            $this->putListingsItemRateLimiter = $factory->create();
+            $this->putListingsItemRateLimiter = $factory->create('ListingsApi-putListingsItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-searchListingsItems'), $this->rateLimitStorage);
-            $this->searchListingsItemsRateLimiter = $factory->create();
+            $this->searchListingsItemsRateLimiter = $factory->create('ListingsApi-searchListingsItems');
         }
 
         $this->client = $client ?: new Client();

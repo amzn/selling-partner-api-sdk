@@ -58,6 +58,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class TokensApi
 {
+    public ?LimiterInterface $createRestrictedDataTokenRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,8 +72,6 @@ class TokensApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createRestrictedDataTokenRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -91,7 +90,7 @@ class TokensApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TokensApi-createRestrictedDataToken'), $this->rateLimitStorage);
-            $this->createRestrictedDataTokenRateLimiter = $factory->create();
+            $this->createRestrictedDataTokenRateLimiter = $factory->create('TokensApi-createRestrictedDataToken');
         }
 
         $this->client = $client ?: new Client();

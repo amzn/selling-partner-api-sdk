@@ -57,6 +57,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ListingsApi
 {
+    public ?LimiterInterface $getListingsRestrictionsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,8 +71,6 @@ class ListingsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getListingsRestrictionsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -90,7 +89,7 @@ class ListingsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsRestrictions'), $this->rateLimitStorage);
-            $this->getListingsRestrictionsRateLimiter = $factory->create();
+            $this->getListingsRestrictionsRateLimiter = $factory->create('ListingsApi-getListingsRestrictions');
         }
 
         $this->client = $client ?: new Client();

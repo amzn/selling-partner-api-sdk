@@ -76,7 +76,7 @@ class CreateContainerLabelApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $createContainerLabelRateLimiter;
+    public ?LimiterInterface $createContainerLabelRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -99,7 +99,7 @@ class CreateContainerLabelApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CreateContainerLabelApi-createContainerLabel"), $this->rateLimitStorage);
-            $this->createContainerLabelRateLimiter = $factory->create();
+            $this->createContainerLabelRateLimiter = $factory->create("CreateContainerLabelApi-createContainerLabel");
         }
 
         $this->client = $client ?: new Client();

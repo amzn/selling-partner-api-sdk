@@ -79,6 +79,19 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class MessagingApi
 {
+    public ?LimiterInterface $confirmCustomizationDetailsRateLimiter;
+    public ?LimiterInterface $createAmazonMotorsRateLimiter;
+    public ?LimiterInterface $createConfirmDeliveryDetailsRateLimiter;
+    public ?LimiterInterface $createConfirmOrderDetailsRateLimiter;
+    public ?LimiterInterface $createConfirmServiceDetailsRateLimiter;
+    public ?LimiterInterface $createDigitalAccessKeyRateLimiter;
+    public ?LimiterInterface $createLegalDisclosureRateLimiter;
+    public ?LimiterInterface $createNegativeFeedbackRemovalRateLimiter;
+    public ?LimiterInterface $createUnexpectedProblemRateLimiter;
+    public ?LimiterInterface $createWarrantyRateLimiter;
+    public ?LimiterInterface $getAttributesRateLimiter;
+    public ?LimiterInterface $getMessagingActionsForOrderRateLimiter;
+    public ?LimiterInterface $sendInvoiceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -92,20 +105,6 @@ class MessagingApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $confirmCustomizationDetailsRateLimiter;
-    private ?LimiterInterface $createAmazonMotorsRateLimiter;
-    private ?LimiterInterface $createConfirmDeliveryDetailsRateLimiter;
-    private ?LimiterInterface $createConfirmOrderDetailsRateLimiter;
-    private ?LimiterInterface $createConfirmServiceDetailsRateLimiter;
-    private ?LimiterInterface $createDigitalAccessKeyRateLimiter;
-    private ?LimiterInterface $createLegalDisclosureRateLimiter;
-    private ?LimiterInterface $createNegativeFeedbackRemovalRateLimiter;
-    private ?LimiterInterface $createUnexpectedProblemRateLimiter;
-    private ?LimiterInterface $createWarrantyRateLimiter;
-    private ?LimiterInterface $getAttributesRateLimiter;
-    private ?LimiterInterface $getMessagingActionsForOrderRateLimiter;
-    private ?LimiterInterface $sendInvoiceRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -124,31 +123,31 @@ class MessagingApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-confirmCustomizationDetails'), $this->rateLimitStorage);
-            $this->confirmCustomizationDetailsRateLimiter = $factory->create();
+            $this->confirmCustomizationDetailsRateLimiter = $factory->create('MessagingApi-confirmCustomizationDetails');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createAmazonMotors'), $this->rateLimitStorage);
-            $this->createAmazonMotorsRateLimiter = $factory->create();
+            $this->createAmazonMotorsRateLimiter = $factory->create('MessagingApi-createAmazonMotors');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmDeliveryDetails'), $this->rateLimitStorage);
-            $this->createConfirmDeliveryDetailsRateLimiter = $factory->create();
+            $this->createConfirmDeliveryDetailsRateLimiter = $factory->create('MessagingApi-createConfirmDeliveryDetails');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmOrderDetails'), $this->rateLimitStorage);
-            $this->createConfirmOrderDetailsRateLimiter = $factory->create();
+            $this->createConfirmOrderDetailsRateLimiter = $factory->create('MessagingApi-createConfirmOrderDetails');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmServiceDetails'), $this->rateLimitStorage);
-            $this->createConfirmServiceDetailsRateLimiter = $factory->create();
+            $this->createConfirmServiceDetailsRateLimiter = $factory->create('MessagingApi-createConfirmServiceDetails');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createDigitalAccessKey'), $this->rateLimitStorage);
-            $this->createDigitalAccessKeyRateLimiter = $factory->create();
+            $this->createDigitalAccessKeyRateLimiter = $factory->create('MessagingApi-createDigitalAccessKey');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createLegalDisclosure'), $this->rateLimitStorage);
-            $this->createLegalDisclosureRateLimiter = $factory->create();
+            $this->createLegalDisclosureRateLimiter = $factory->create('MessagingApi-createLegalDisclosure');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createNegativeFeedbackRemoval'), $this->rateLimitStorage);
-            $this->createNegativeFeedbackRemovalRateLimiter = $factory->create();
+            $this->createNegativeFeedbackRemovalRateLimiter = $factory->create('MessagingApi-createNegativeFeedbackRemoval');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createUnexpectedProblem'), $this->rateLimitStorage);
-            $this->createUnexpectedProblemRateLimiter = $factory->create();
+            $this->createUnexpectedProblemRateLimiter = $factory->create('MessagingApi-createUnexpectedProblem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createWarranty'), $this->rateLimitStorage);
-            $this->createWarrantyRateLimiter = $factory->create();
+            $this->createWarrantyRateLimiter = $factory->create('MessagingApi-createWarranty');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-getAttributes'), $this->rateLimitStorage);
-            $this->getAttributesRateLimiter = $factory->create();
+            $this->getAttributesRateLimiter = $factory->create('MessagingApi-getAttributes');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-getMessagingActionsForOrder'), $this->rateLimitStorage);
-            $this->getMessagingActionsForOrderRateLimiter = $factory->create();
+            $this->getMessagingActionsForOrderRateLimiter = $factory->create('MessagingApi-getMessagingActionsForOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-sendInvoice'), $this->rateLimitStorage);
-            $this->sendInvoiceRateLimiter = $factory->create();
+            $this->sendInvoiceRateLimiter = $factory->create('MessagingApi-sendInvoice');
         }
 
         $this->client = $client ?: new Client();

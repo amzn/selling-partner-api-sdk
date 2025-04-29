@@ -58,6 +58,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SolicitationsApi
 {
+    public ?LimiterInterface $createProductReviewAndSellerFeedbackSolicitationRateLimiter;
+    public ?LimiterInterface $getSolicitationActionsForOrderRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,9 +73,6 @@ class SolicitationsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createProductReviewAndSellerFeedbackSolicitationRateLimiter;
-    private ?LimiterInterface $getSolicitationActionsForOrderRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -92,9 +91,9 @@ class SolicitationsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation'), $this->rateLimitStorage);
-            $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter = $factory->create();
+            $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter = $factory->create('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SolicitationsApi-getSolicitationActionsForOrder'), $this->rateLimitStorage);
-            $this->getSolicitationActionsForOrderRateLimiter = $factory->create();
+            $this->getSolicitationActionsForOrderRateLimiter = $factory->create('SolicitationsApi-getSolicitationActionsForOrder');
         }
 
         $this->client = $client ?: new Client();

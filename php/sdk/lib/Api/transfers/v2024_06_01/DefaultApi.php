@@ -59,6 +59,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class DefaultApi
 {
+    public ?LimiterInterface $getPaymentMethodsRateLimiter;
+    public ?LimiterInterface $initiatePayoutRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -72,9 +74,6 @@ class DefaultApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getPaymentMethodsRateLimiter;
-    private ?LimiterInterface $initiatePayoutRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -93,9 +92,9 @@ class DefaultApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-getPaymentMethods'), $this->rateLimitStorage);
-            $this->getPaymentMethodsRateLimiter = $factory->create();
+            $this->getPaymentMethodsRateLimiter = $factory->create('DefaultApi-getPaymentMethods');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-initiatePayout'), $this->rateLimitStorage);
-            $this->initiatePayoutRateLimiter = $factory->create();
+            $this->initiatePayoutRateLimiter = $factory->create('DefaultApi-initiatePayout');
         }
 
         $this->client = $client ?: new Client();

@@ -60,6 +60,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ProductPricingApi
 {
+    public ?LimiterInterface $getCompetitiveSummaryRateLimiter;
+    public ?LimiterInterface $getFeaturedOfferExpectedPriceBatchRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,9 +75,6 @@ class ProductPricingApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getCompetitiveSummaryRateLimiter;
-    private ?LimiterInterface $getFeaturedOfferExpectedPriceBatchRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -94,9 +93,9 @@ class ProductPricingApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getCompetitiveSummary'), $this->rateLimitStorage);
-            $this->getCompetitiveSummaryRateLimiter = $factory->create();
+            $this->getCompetitiveSummaryRateLimiter = $factory->create('ProductPricingApi-getCompetitiveSummary');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getFeaturedOfferExpectedPriceBatch'), $this->rateLimitStorage);
-            $this->getFeaturedOfferExpectedPriceBatchRateLimiter = $factory->create();
+            $this->getFeaturedOfferExpectedPriceBatchRateLimiter = $factory->create('ProductPricingApi-getFeaturedOfferExpectedPriceBatch');
         }
 
         $this->client = $client ?: new Client();

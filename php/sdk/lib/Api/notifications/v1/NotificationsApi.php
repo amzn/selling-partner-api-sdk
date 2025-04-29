@@ -66,6 +66,14 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class NotificationsApi
 {
+    public ?LimiterInterface $createDestinationRateLimiter;
+    public ?LimiterInterface $createSubscriptionRateLimiter;
+    public ?LimiterInterface $deleteDestinationRateLimiter;
+    public ?LimiterInterface $deleteSubscriptionByIdRateLimiter;
+    public ?LimiterInterface $getDestinationRateLimiter;
+    public ?LimiterInterface $getDestinationsRateLimiter;
+    public ?LimiterInterface $getSubscriptionRateLimiter;
+    public ?LimiterInterface $getSubscriptionByIdRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -79,15 +87,6 @@ class NotificationsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createDestinationRateLimiter;
-    private ?LimiterInterface $createSubscriptionRateLimiter;
-    private ?LimiterInterface $deleteDestinationRateLimiter;
-    private ?LimiterInterface $deleteSubscriptionByIdRateLimiter;
-    private ?LimiterInterface $getDestinationRateLimiter;
-    private ?LimiterInterface $getDestinationsRateLimiter;
-    private ?LimiterInterface $getSubscriptionRateLimiter;
-    private ?LimiterInterface $getSubscriptionByIdRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -106,21 +105,21 @@ class NotificationsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-createDestination'), $this->rateLimitStorage);
-            $this->createDestinationRateLimiter = $factory->create();
+            $this->createDestinationRateLimiter = $factory->create('NotificationsApi-createDestination');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-createSubscription'), $this->rateLimitStorage);
-            $this->createSubscriptionRateLimiter = $factory->create();
+            $this->createSubscriptionRateLimiter = $factory->create('NotificationsApi-createSubscription');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-deleteDestination'), $this->rateLimitStorage);
-            $this->deleteDestinationRateLimiter = $factory->create();
+            $this->deleteDestinationRateLimiter = $factory->create('NotificationsApi-deleteDestination');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-deleteSubscriptionById'), $this->rateLimitStorage);
-            $this->deleteSubscriptionByIdRateLimiter = $factory->create();
+            $this->deleteSubscriptionByIdRateLimiter = $factory->create('NotificationsApi-deleteSubscriptionById');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getDestination'), $this->rateLimitStorage);
-            $this->getDestinationRateLimiter = $factory->create();
+            $this->getDestinationRateLimiter = $factory->create('NotificationsApi-getDestination');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getDestinations'), $this->rateLimitStorage);
-            $this->getDestinationsRateLimiter = $factory->create();
+            $this->getDestinationsRateLimiter = $factory->create('NotificationsApi-getDestinations');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscription'), $this->rateLimitStorage);
-            $this->getSubscriptionRateLimiter = $factory->create();
+            $this->getSubscriptionRateLimiter = $factory->create('NotificationsApi-getSubscription');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptionById'), $this->rateLimitStorage);
-            $this->getSubscriptionByIdRateLimiter = $factory->create();
+            $this->getSubscriptionByIdRateLimiter = $factory->create('NotificationsApi-getSubscriptionById');
         }
 
         $this->client = $client ?: new Client();

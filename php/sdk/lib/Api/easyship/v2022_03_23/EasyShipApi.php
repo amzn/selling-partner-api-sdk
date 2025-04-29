@@ -64,6 +64,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class EasyShipApi
 {
+    public ?LimiterInterface $createScheduledPackageRateLimiter;
+    public ?LimiterInterface $createScheduledPackageBulkRateLimiter;
+    public ?LimiterInterface $getScheduledPackageRateLimiter;
+    public ?LimiterInterface $listHandoverSlotsRateLimiter;
+    public ?LimiterInterface $updateScheduledPackagesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -77,12 +82,6 @@ class EasyShipApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createScheduledPackageRateLimiter;
-    private ?LimiterInterface $createScheduledPackageBulkRateLimiter;
-    private ?LimiterInterface $getScheduledPackageRateLimiter;
-    private ?LimiterInterface $listHandoverSlotsRateLimiter;
-    private ?LimiterInterface $updateScheduledPackagesRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -101,15 +100,15 @@ class EasyShipApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackage'), $this->rateLimitStorage);
-            $this->createScheduledPackageRateLimiter = $factory->create();
+            $this->createScheduledPackageRateLimiter = $factory->create('EasyShipApi-createScheduledPackage');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackageBulk'), $this->rateLimitStorage);
-            $this->createScheduledPackageBulkRateLimiter = $factory->create();
+            $this->createScheduledPackageBulkRateLimiter = $factory->create('EasyShipApi-createScheduledPackageBulk');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-getScheduledPackage'), $this->rateLimitStorage);
-            $this->getScheduledPackageRateLimiter = $factory->create();
+            $this->getScheduledPackageRateLimiter = $factory->create('EasyShipApi-getScheduledPackage');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-listHandoverSlots'), $this->rateLimitStorage);
-            $this->listHandoverSlotsRateLimiter = $factory->create();
+            $this->listHandoverSlotsRateLimiter = $factory->create('EasyShipApi-listHandoverSlots');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-updateScheduledPackages'), $this->rateLimitStorage);
-            $this->updateScheduledPackagesRateLimiter = $factory->create();
+            $this->updateScheduledPackagesRateLimiter = $factory->create('EasyShipApi-updateScheduledPackages');
         }
 
         $this->client = $client ?: new Client();
