@@ -76,9 +76,9 @@ class VendorOrdersApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $getOrderRateLimiter;
-    private ?LimiterInterface $getOrdersRateLimiter;
-    private ?LimiterInterface $submitAcknowledgementRateLimiter;
+    public ?LimiterInterface $getOrderRateLimiter;
+    public ?LimiterInterface $getOrdersRateLimiter;
+    public ?LimiterInterface $submitAcknowledgementRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -101,11 +101,11 @@ class VendorOrdersApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getOrder"), $this->rateLimitStorage);
-            $this->getOrderRateLimiter = $factory->create();
+            $this->getOrderRateLimiter = $factory->create("VendorOrdersApi-getOrder");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getOrders"), $this->rateLimitStorage);
-            $this->getOrdersRateLimiter = $factory->create();
+            $this->getOrdersRateLimiter = $factory->create("VendorOrdersApi-getOrders");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-submitAcknowledgement"), $this->rateLimitStorage);
-            $this->submitAcknowledgementRateLimiter = $factory->create();
+            $this->submitAcknowledgementRateLimiter = $factory->create("VendorOrdersApi-submitAcknowledgement");
         }
 
         $this->client = $client ?: new Client();

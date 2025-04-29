@@ -62,6 +62,12 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ProductPricingApi
 {
+    public ?LimiterInterface $getCompetitivePricingRateLimiter;
+    public ?LimiterInterface $getItemOffersRateLimiter;
+    public ?LimiterInterface $getItemOffersBatchRateLimiter;
+    public ?LimiterInterface $getListingOffersRateLimiter;
+    public ?LimiterInterface $getListingOffersBatchRateLimiter;
+    public ?LimiterInterface $getPricingRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -75,13 +81,6 @@ class ProductPricingApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getCompetitivePricingRateLimiter;
-    private ?LimiterInterface $getItemOffersRateLimiter;
-    private ?LimiterInterface $getItemOffersBatchRateLimiter;
-    private ?LimiterInterface $getListingOffersRateLimiter;
-    private ?LimiterInterface $getListingOffersBatchRateLimiter;
-    private ?LimiterInterface $getPricingRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -100,17 +99,17 @@ class ProductPricingApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getCompetitivePricing'), $this->rateLimitStorage);
-            $this->getCompetitivePricingRateLimiter = $factory->create();
+            $this->getCompetitivePricingRateLimiter = $factory->create('ProductPricingApi-getCompetitivePricing');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffers'), $this->rateLimitStorage);
-            $this->getItemOffersRateLimiter = $factory->create();
+            $this->getItemOffersRateLimiter = $factory->create('ProductPricingApi-getItemOffers');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffersBatch'), $this->rateLimitStorage);
-            $this->getItemOffersBatchRateLimiter = $factory->create();
+            $this->getItemOffersBatchRateLimiter = $factory->create('ProductPricingApi-getItemOffersBatch');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffers'), $this->rateLimitStorage);
-            $this->getListingOffersRateLimiter = $factory->create();
+            $this->getListingOffersRateLimiter = $factory->create('ProductPricingApi-getListingOffers');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffersBatch'), $this->rateLimitStorage);
-            $this->getListingOffersBatchRateLimiter = $factory->create();
+            $this->getListingOffersBatchRateLimiter = $factory->create('ProductPricingApi-getListingOffersBatch');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getPricing'), $this->rateLimitStorage);
-            $this->getPricingRateLimiter = $factory->create();
+            $this->getPricingRateLimiter = $factory->create('ProductPricingApi-getPricing');
         }
 
         $this->client = $client ?: new Client();

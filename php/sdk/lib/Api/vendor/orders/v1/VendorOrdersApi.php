@@ -76,10 +76,10 @@ class VendorOrdersApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $getPurchaseOrderRateLimiter;
-    private ?LimiterInterface $getPurchaseOrdersRateLimiter;
-    private ?LimiterInterface $getPurchaseOrdersStatusRateLimiter;
-    private ?LimiterInterface $submitAcknowledgementRateLimiter;
+    public ?LimiterInterface $getPurchaseOrderRateLimiter;
+    public ?LimiterInterface $getPurchaseOrdersRateLimiter;
+    public ?LimiterInterface $getPurchaseOrdersStatusRateLimiter;
+    public ?LimiterInterface $submitAcknowledgementRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -102,13 +102,13 @@ class VendorOrdersApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrder"), $this->rateLimitStorage);
-            $this->getPurchaseOrderRateLimiter = $factory->create();
+            $this->getPurchaseOrderRateLimiter = $factory->create("VendorOrdersApi-getPurchaseOrder");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrders"), $this->rateLimitStorage);
-            $this->getPurchaseOrdersRateLimiter = $factory->create();
+            $this->getPurchaseOrdersRateLimiter = $factory->create("VendorOrdersApi-getPurchaseOrders");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrdersStatus"), $this->rateLimitStorage);
-            $this->getPurchaseOrdersStatusRateLimiter = $factory->create();
+            $this->getPurchaseOrdersStatusRateLimiter = $factory->create("VendorOrdersApi-getPurchaseOrdersStatus");
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-submitAcknowledgement"), $this->rateLimitStorage);
-            $this->submitAcknowledgementRateLimiter = $factory->create();
+            $this->submitAcknowledgementRateLimiter = $factory->create("VendorOrdersApi-submitAcknowledgement");
         }
 
         $this->client = $client ?: new Client();

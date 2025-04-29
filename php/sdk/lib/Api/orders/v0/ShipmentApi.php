@@ -57,6 +57,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShipmentApi
 {
+    public ?LimiterInterface $updateShipmentStatusRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,8 +71,6 @@ class ShipmentApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $updateShipmentStatusRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -90,7 +89,7 @@ class ShipmentApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentApi-updateShipmentStatus'), $this->rateLimitStorage);
-            $this->updateShipmentStatusRateLimiter = $factory->create();
+            $this->updateShipmentStatusRateLimiter = $factory->create('ShipmentApi-updateShipmentStatus');
         }
 
         $this->client = $client ?: new Client();

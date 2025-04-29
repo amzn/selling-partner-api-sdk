@@ -58,6 +58,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class DefinitionsApi
 {
+    public ?LimiterInterface $getDefinitionsProductTypeRateLimiter;
+    public ?LimiterInterface $searchDefinitionsProductTypesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,9 +73,6 @@ class DefinitionsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getDefinitionsProductTypeRateLimiter;
-    private ?LimiterInterface $searchDefinitionsProductTypesRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -92,9 +91,9 @@ class DefinitionsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-getDefinitionsProductType'), $this->rateLimitStorage);
-            $this->getDefinitionsProductTypeRateLimiter = $factory->create();
+            $this->getDefinitionsProductTypeRateLimiter = $factory->create('DefinitionsApi-getDefinitionsProductType');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-searchDefinitionsProductTypes'), $this->rateLimitStorage);
-            $this->searchDefinitionsProductTypesRateLimiter = $factory->create();
+            $this->searchDefinitionsProductTypesRateLimiter = $factory->create('DefinitionsApi-searchDefinitionsProductTypes');
         }
 
         $this->client = $client ?: new Client();

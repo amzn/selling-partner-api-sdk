@@ -63,6 +63,12 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SupplySourcesApi
 {
+    public ?LimiterInterface $archiveSupplySourceRateLimiter;
+    public ?LimiterInterface $createSupplySourceRateLimiter;
+    public ?LimiterInterface $getSupplySourceRateLimiter;
+    public ?LimiterInterface $getSupplySourcesRateLimiter;
+    public ?LimiterInterface $updateSupplySourceRateLimiter;
+    public ?LimiterInterface $updateSupplySourceStatusRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -76,13 +82,6 @@ class SupplySourcesApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $archiveSupplySourceRateLimiter;
-    private ?LimiterInterface $createSupplySourceRateLimiter;
-    private ?LimiterInterface $getSupplySourceRateLimiter;
-    private ?LimiterInterface $getSupplySourcesRateLimiter;
-    private ?LimiterInterface $updateSupplySourceRateLimiter;
-    private ?LimiterInterface $updateSupplySourceStatusRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -101,17 +100,17 @@ class SupplySourcesApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-archiveSupplySource'), $this->rateLimitStorage);
-            $this->archiveSupplySourceRateLimiter = $factory->create();
+            $this->archiveSupplySourceRateLimiter = $factory->create('SupplySourcesApi-archiveSupplySource');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-createSupplySource'), $this->rateLimitStorage);
-            $this->createSupplySourceRateLimiter = $factory->create();
+            $this->createSupplySourceRateLimiter = $factory->create('SupplySourcesApi-createSupplySource');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-getSupplySource'), $this->rateLimitStorage);
-            $this->getSupplySourceRateLimiter = $factory->create();
+            $this->getSupplySourceRateLimiter = $factory->create('SupplySourcesApi-getSupplySource');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-getSupplySources'), $this->rateLimitStorage);
-            $this->getSupplySourcesRateLimiter = $factory->create();
+            $this->getSupplySourcesRateLimiter = $factory->create('SupplySourcesApi-getSupplySources');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-updateSupplySource'), $this->rateLimitStorage);
-            $this->updateSupplySourceRateLimiter = $factory->create();
+            $this->updateSupplySourceRateLimiter = $factory->create('SupplySourcesApi-updateSupplySource');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-updateSupplySourceStatus'), $this->rateLimitStorage);
-            $this->updateSupplySourceStatusRateLimiter = $factory->create();
+            $this->updateSupplySourceStatusRateLimiter = $factory->create('SupplySourcesApi-updateSupplySourceStatus');
         }
 
         $this->client = $client ?: new Client();

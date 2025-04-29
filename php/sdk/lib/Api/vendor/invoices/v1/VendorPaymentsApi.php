@@ -76,7 +76,7 @@ class VendorPaymentsApi
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
-    private ?LimiterInterface $submitInvoicesRateLimiter;
+    public ?LimiterInterface $submitInvoicesRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -99,7 +99,7 @@ class VendorPaymentsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorPaymentsApi-submitInvoices"), $this->rateLimitStorage);
-            $this->submitInvoicesRateLimiter = $factory->create();
+            $this->submitInvoicesRateLimiter = $factory->create("VendorPaymentsApi-submitInvoices");
         }
 
         $this->client = $client ?: new Client();

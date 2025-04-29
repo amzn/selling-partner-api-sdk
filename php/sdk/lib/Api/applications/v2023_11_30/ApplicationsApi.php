@@ -56,6 +56,7 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ApplicationsApi
 {
+    public ?LimiterInterface $rotateApplicationClientSecretRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -69,8 +70,6 @@ class ApplicationsApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $rotateApplicationClientSecretRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -89,7 +88,7 @@ class ApplicationsApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ApplicationsApi-rotateApplicationClientSecret'), $this->rateLimitStorage);
-            $this->rotateApplicationClientSecretRateLimiter = $factory->create();
+            $this->rotateApplicationClientSecretRateLimiter = $factory->create('ApplicationsApi-rotateApplicationClientSecret');
         }
 
         $this->client = $client ?: new Client();

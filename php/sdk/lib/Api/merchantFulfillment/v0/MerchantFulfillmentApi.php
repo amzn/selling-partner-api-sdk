@@ -64,6 +64,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class MerchantFulfillmentApi
 {
+    public ?LimiterInterface $cancelShipmentRateLimiter;
+    public ?LimiterInterface $createShipmentRateLimiter;
+    public ?LimiterInterface $getAdditionalSellerInputsRateLimiter;
+    public ?LimiterInterface $getEligibleShipmentServicesRateLimiter;
+    public ?LimiterInterface $getShipmentRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -77,12 +82,6 @@ class MerchantFulfillmentApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $cancelShipmentRateLimiter;
-    private ?LimiterInterface $createShipmentRateLimiter;
-    private ?LimiterInterface $getAdditionalSellerInputsRateLimiter;
-    private ?LimiterInterface $getEligibleShipmentServicesRateLimiter;
-    private ?LimiterInterface $getShipmentRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -101,15 +100,15 @@ class MerchantFulfillmentApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MerchantFulfillmentApi-cancelShipment'), $this->rateLimitStorage);
-            $this->cancelShipmentRateLimiter = $factory->create();
+            $this->cancelShipmentRateLimiter = $factory->create('MerchantFulfillmentApi-cancelShipment');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MerchantFulfillmentApi-createShipment'), $this->rateLimitStorage);
-            $this->createShipmentRateLimiter = $factory->create();
+            $this->createShipmentRateLimiter = $factory->create('MerchantFulfillmentApi-createShipment');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MerchantFulfillmentApi-getAdditionalSellerInputs'), $this->rateLimitStorage);
-            $this->getAdditionalSellerInputsRateLimiter = $factory->create();
+            $this->getAdditionalSellerInputsRateLimiter = $factory->create('MerchantFulfillmentApi-getAdditionalSellerInputs');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MerchantFulfillmentApi-getEligibleShipmentServices'), $this->rateLimitStorage);
-            $this->getEligibleShipmentServicesRateLimiter = $factory->create();
+            $this->getEligibleShipmentServicesRateLimiter = $factory->create('MerchantFulfillmentApi-getEligibleShipmentServices');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MerchantFulfillmentApi-getShipment'), $this->rateLimitStorage);
-            $this->getShipmentRateLimiter = $factory->create();
+            $this->getShipmentRateLimiter = $factory->create('MerchantFulfillmentApi-getShipment');
         }
 
         $this->client = $client ?: new Client();

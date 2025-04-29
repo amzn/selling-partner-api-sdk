@@ -58,6 +58,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class CatalogApi
 {
+    public ?LimiterInterface $getCatalogItemRateLimiter;
+    public ?LimiterInterface $searchCatalogItemsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,9 +73,6 @@ class CatalogApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $getCatalogItemRateLimiter;
-    private ?LimiterInterface $searchCatalogItemsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -92,9 +91,9 @@ class CatalogApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-getCatalogItem'), $this->rateLimitStorage);
-            $this->getCatalogItemRateLimiter = $factory->create();
+            $this->getCatalogItemRateLimiter = $factory->create('CatalogApi-getCatalogItem');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-searchCatalogItems'), $this->rateLimitStorage);
-            $this->searchCatalogItemsRateLimiter = $factory->create();
+            $this->searchCatalogItemsRateLimiter = $factory->create('CatalogApi-searchCatalogItems');
         }
 
         $this->client = $client ?: new Client();

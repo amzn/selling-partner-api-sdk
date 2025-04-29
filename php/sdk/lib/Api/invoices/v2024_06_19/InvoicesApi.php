@@ -64,6 +64,13 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class InvoicesApi
 {
+    public ?LimiterInterface $createInvoicesExportRateLimiter;
+    public ?LimiterInterface $getInvoiceRateLimiter;
+    public ?LimiterInterface $getInvoicesRateLimiter;
+    public ?LimiterInterface $getInvoicesAttributesRateLimiter;
+    public ?LimiterInterface $getInvoicesDocumentRateLimiter;
+    public ?LimiterInterface $getInvoicesExportRateLimiter;
+    public ?LimiterInterface $getInvoicesExportsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -77,14 +84,6 @@ class InvoicesApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $createInvoicesExportRateLimiter;
-    private ?LimiterInterface $getInvoiceRateLimiter;
-    private ?LimiterInterface $getInvoicesRateLimiter;
-    private ?LimiterInterface $getInvoicesAttributesRateLimiter;
-    private ?LimiterInterface $getInvoicesDocumentRateLimiter;
-    private ?LimiterInterface $getInvoicesExportRateLimiter;
-    private ?LimiterInterface $getInvoicesExportsRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -103,19 +102,19 @@ class InvoicesApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-createInvoicesExport'), $this->rateLimitStorage);
-            $this->createInvoicesExportRateLimiter = $factory->create();
+            $this->createInvoicesExportRateLimiter = $factory->create('InvoicesApi-createInvoicesExport');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoice'), $this->rateLimitStorage);
-            $this->getInvoiceRateLimiter = $factory->create();
+            $this->getInvoiceRateLimiter = $factory->create('InvoicesApi-getInvoice');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoices'), $this->rateLimitStorage);
-            $this->getInvoicesRateLimiter = $factory->create();
+            $this->getInvoicesRateLimiter = $factory->create('InvoicesApi-getInvoices');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesAttributes'), $this->rateLimitStorage);
-            $this->getInvoicesAttributesRateLimiter = $factory->create();
+            $this->getInvoicesAttributesRateLimiter = $factory->create('InvoicesApi-getInvoicesAttributes');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesDocument'), $this->rateLimitStorage);
-            $this->getInvoicesDocumentRateLimiter = $factory->create();
+            $this->getInvoicesDocumentRateLimiter = $factory->create('InvoicesApi-getInvoicesDocument');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesExport'), $this->rateLimitStorage);
-            $this->getInvoicesExportRateLimiter = $factory->create();
+            $this->getInvoicesExportRateLimiter = $factory->create('InvoicesApi-getInvoicesExport');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesExports'), $this->rateLimitStorage);
-            $this->getInvoicesExportsRateLimiter = $factory->create();
+            $this->getInvoicesExportsRateLimiter = $factory->create('InvoicesApi-getInvoicesExports');
         }
 
         $this->client = $client ?: new Client();

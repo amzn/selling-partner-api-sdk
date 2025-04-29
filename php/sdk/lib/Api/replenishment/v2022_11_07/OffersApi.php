@@ -60,6 +60,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class OffersApi
 {
+    public ?LimiterInterface $listOfferMetricsRateLimiter;
+    public ?LimiterInterface $listOffersRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,9 +75,6 @@ class OffersApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $listOfferMetricsRateLimiter;
-    private ?LimiterInterface $listOffersRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -94,9 +93,9 @@ class OffersApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OffersApi-listOfferMetrics'), $this->rateLimitStorage);
-            $this->listOfferMetricsRateLimiter = $factory->create();
+            $this->listOfferMetricsRateLimiter = $factory->create('OffersApi-listOfferMetrics');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OffersApi-listOffers'), $this->rateLimitStorage);
-            $this->listOffersRateLimiter = $factory->create();
+            $this->listOffersRateLimiter = $factory->create('OffersApi-listOffers');
         }
 
         $this->client = $client ?: new Client();

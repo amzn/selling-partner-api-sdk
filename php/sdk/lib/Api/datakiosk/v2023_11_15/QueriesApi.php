@@ -61,6 +61,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class QueriesApi
 {
+    public ?LimiterInterface $cancelQueryRateLimiter;
+    public ?LimiterInterface $createQueryRateLimiter;
+    public ?LimiterInterface $getDocumentRateLimiter;
+    public ?LimiterInterface $getQueriesRateLimiter;
+    public ?LimiterInterface $getQueryRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -74,12 +79,6 @@ class QueriesApi
 
     private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    private ?LimiterInterface $cancelQueryRateLimiter;
-    private ?LimiterInterface $createQueryRateLimiter;
-    private ?LimiterInterface $getDocumentRateLimiter;
-    private ?LimiterInterface $getQueriesRateLimiter;
-    private ?LimiterInterface $getQueryRateLimiter;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -98,15 +97,15 @@ class QueriesApi
             $this->rateLimitStorage = new InMemoryStorage();
 
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-cancelQuery'), $this->rateLimitStorage);
-            $this->cancelQueryRateLimiter = $factory->create();
+            $this->cancelQueryRateLimiter = $factory->create('QueriesApi-cancelQuery');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-createQuery'), $this->rateLimitStorage);
-            $this->createQueryRateLimiter = $factory->create();
+            $this->createQueryRateLimiter = $factory->create('QueriesApi-createQuery');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getDocument'), $this->rateLimitStorage);
-            $this->getDocumentRateLimiter = $factory->create();
+            $this->getDocumentRateLimiter = $factory->create('QueriesApi-getDocument');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQueries'), $this->rateLimitStorage);
-            $this->getQueriesRateLimiter = $factory->create();
+            $this->getQueriesRateLimiter = $factory->create('QueriesApi-getQueries');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQuery'), $this->rateLimitStorage);
-            $this->getQueryRateLimiter = $factory->create();
+            $this->getQueryRateLimiter = $factory->create('QueriesApi-getQuery');
         }
 
         $this->client = $client ?: new Client();
