@@ -276,10 +276,10 @@ class ApiClient(object):
                 return {k: self.__deserialize(v, sub_kls)
                         for k, v in six.iteritems(data)}
 
-            if klass.startswith('Dict['):
-                sub_kls = re.match(r'Dict\[([^,]), (.)\]', klass).group(2)
-                return {k: self.__deserialize(v, sub_kls)
-                        for k, v in six.iteritems(data)}
+            if klass.lower().startswith('list['):
+                sub_kls = re.match(r'[Ll]ist\[(.*)\]', klass).group(1)
+                return [self.__deserialize(sub_data, sub_kls)
+                        for sub_data in data]
 
             # convert str to class
             if klass in self.NATIVE_TYPES_MAPPING:

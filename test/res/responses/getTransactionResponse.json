@@ -1,1 +1,1 @@
-{"payload": {"transactionStatus": {"transactionId": "1234"}}}
+{"payload": {"transactionStatus": {"transactionId": "1234", "status": "Success"}}}
