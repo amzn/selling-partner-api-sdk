@@ -73,7 +73,6 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/sellers-api-model/sellers.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.sellers_v1,apiPackage=api.sellers_v1 --global-property modelTests=false,modelDocs=false,apiDocs=false
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/services-api-model/services.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.services_v1,apiPackage=api.services_v1 --global-property modelTests=false,modelDocs=false,apiDocs=false
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/shipment-invoicing-api-model/shipmentInvoicingV0.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.shipment_invoicing_v0,apiPackage=api.shipment_invoicing_v0 --global-property modelTests=false,modelDocs=false,apiDocs=false
-#          openapi-generator-cli generate -i ../../selling-partner-api-models/models/shipping-api-model/shippingV2.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.shipping_v2,apiPackage=api.shipping_v2 --global-property modelTests=false,modelDocs=false,apiDocs=false --skip-validate-spec
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/solicitations-api-model/solicitations.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.solicitations_v1,apiPackage=api.solicitations_v1 --global-property modelTests=false,modelDocs=false,apiDocs=false
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/supply-sources-api-model/supplySources_2020-07-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.supply_sources_v2020_07_01,apiPackage=api.supply_sources_v2020_07_01 --global-property modelTests=false,modelDocs=false,apiDocs=false
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/tokens-api-model/tokens_2021-03-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.tokens_v2021_03_01,apiPackage=api.tokens_v2021_03_01 --global-property modelTests=false,modelDocs=false,apiDocs=false
@@ -98,6 +97,6 @@ jobs:
           title: 'Update Python SDK'
           body: |
             Update Python SDK with latest changes from upstream.
-          branch: feature/update-python-sdk
+          branch: feature/update-python-sdk2
           assignees: jawheral
           path: ./selling-partner-api-sdk
