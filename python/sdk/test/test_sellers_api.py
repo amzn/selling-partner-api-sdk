@@ -4,7 +4,7 @@ from __future__ import absolute_import
 
 import unittest
 import requests
-import random
+import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
@@ -51,7 +51,26 @@ class TestSellersApi(unittest.TestCase):
 
     def instruct_backend_mock(self, response: str, code: str) -> None:
         url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+        ## handle same api operation name exceptions
+        if "vendor" in "api.sellers_v1" and response == "getOrder":
+            url += f"?qualifier=Vendor"
         requests.post(url)
+
+    def _get_random_value(self, data_type, pattern=None):
+        if pattern:
+            return rstr.xeger(pattern)
+
+        basic_types = {
+            'str': "test_string",
+            'string': "test_string",
+            'int': 123,
+            'integer': 123,
+            'float': 123.45,
+            'bool': True,
+            'boolean': True
+        }
+
+        return basic_types.get(data_type.lower(), {})
 
     def assert_valid_response_payload(self, status_code: int, body: any) -> None:
         if status_code != 204:

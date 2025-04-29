@@ -1,0 +1,18 @@
+# Skip generation of unnecessary files
+.github/**
+.travis.yml
+build.sbt
+git_push.sh
+.gitlab-ci.yml
+gradle.properties
+tox.ini
+setup.cfg
+pyproject.toml
+setup.py
+README.md
+**/api_response.py
+**/exceptions.py
+**/py.typed
+**/__init__.py
+test-requirements.txt
+.openapi-generator/FILES
