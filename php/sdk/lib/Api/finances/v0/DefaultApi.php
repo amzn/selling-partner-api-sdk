@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\finances\v0\ListFinancialEventGroupsResponse;
@@ -59,6 +58,10 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class DefaultApi
 {
+    public ?LimiterInterface $listFinancialEventGroupsRateLimiter;
+    public ?LimiterInterface $listFinancialEventsRateLimiter;
+    public ?LimiterInterface $listFinancialEventsByGroupIdRateLimiter;
+    public ?LimiterInterface $listFinancialEventsByOrderIdRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,36 +73,33 @@ class DefaultApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventGroups'), $this->rateLimitStorage);
+            $this->listFinancialEventGroupsRateLimiter = $factory->create('DefaultApi-listFinancialEventGroups');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEvents'), $this->rateLimitStorage);
+            $this->listFinancialEventsRateLimiter = $factory->create('DefaultApi-listFinancialEvents');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventsByGroupId'), $this->rateLimitStorage);
+            $this->listFinancialEventsByGroupIdRateLimiter = $factory->create('DefaultApi-listFinancialEventsByGroupId');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventsByOrderId'), $this->rateLimitStorage);
+            $this->listFinancialEventsByOrderIdRateLimiter = $factory->create('DefaultApi-listFinancialEventsByOrderId');
         }
 
         $this->client = $client ?: new Client();
@@ -188,7 +188,9 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listFinancialEventGroupsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -298,7 +300,9 @@ class DefaultApi
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse';
         $request = $this->listFinancialEventGroupsRequest($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listFinancialEventGroupsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -519,7 +523,9 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listFinancialEventsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -629,7 +635,9 @@ class DefaultApi
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsRequest($max_results_per_page, $posted_after, $posted_before, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listFinancialEventsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -856,7 +864,9 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listFinancialEventsByGroupIdRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -972,7 +982,9 @@ class DefaultApi
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByGroupIdRequest($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listFinancialEventsByGroupIdRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1205,7 +1217,9 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listFinancialEventsByOrderIdRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1309,7 +1323,9 @@ class DefaultApi
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByOrderIdRequest($order_id, $max_results_per_page, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listFinancialEventsByOrderIdRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1464,21 +1480,6 @@ class DefaultApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

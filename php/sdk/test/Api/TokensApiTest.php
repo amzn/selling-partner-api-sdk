@@ -47,7 +47,7 @@ class TokensApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('TokensApi', $this->getName());
-        $this->apiInstance = new TokensApi($this->config, null, null);
+        $this->apiInstance = new TokensApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('TokensApi');
         if ($specificTimeFormat) {

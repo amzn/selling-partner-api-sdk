@@ -47,7 +47,7 @@ class UploadsApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('UploadsApi', $this->getName());
-        $this->apiInstance = new UploadsApi($this->config, null, null);
+        $this->apiInstance = new UploadsApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('UploadsApi');
         if ($specificTimeFormat) {

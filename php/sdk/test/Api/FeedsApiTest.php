@@ -47,7 +47,7 @@ class FeedsApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('FeedsApi', $this->getName());
-        $this->apiInstance = new FeedsApi($this->config, null, null);
+        $this->apiInstance = new FeedsApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeedsApi');
         if ($specificTimeFormat) {

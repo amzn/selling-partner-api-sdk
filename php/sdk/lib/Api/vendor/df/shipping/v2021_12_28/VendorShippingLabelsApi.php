@@ -35,7 +35,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
@@ -74,15 +73,13 @@ class VendorShippingLabelsApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
-    private ?RateLimitConfiguration $rateLimitConfig = null;
+    private Bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
-    /**
-     * @var ?LimiterInterface
-     */
-    private ?LimiterInterface $rateLimiter = null;
+    public ?LimiterInterface $createShippingLabelsRateLimiter;
+    public ?LimiterInterface $getShippingLabelRateLimiter;
+    public ?LimiterInterface $getShippingLabelsRateLimiter;
+    public ?LimiterInterface $submitShippingLabelRequestRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -93,27 +90,25 @@ class VendorShippingLabelsApi
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-createShippingLabels"), $this->rateLimitStorage);
+            $this->createShippingLabelsRateLimiter = $factory->create("VendorShippingLabelsApi-createShippingLabels");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabel"), $this->rateLimitStorage);
+            $this->getShippingLabelRateLimiter = $factory->create("VendorShippingLabelsApi-getShippingLabel");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabels"), $this->rateLimitStorage);
+            $this->getShippingLabelsRateLimiter = $factory->create("VendorShippingLabelsApi-getShippingLabels");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-submitShippingLabelRequest"), $this->rateLimitStorage);
+            $this->submitShippingLabelRequestRateLimiter = $factory->create("VendorShippingLabelsApi-submitShippingLabelRequest");
         }
 
         $this->client = $client ?: new Client();
@@ -195,7 +190,9 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createShippingLabelsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -297,7 +294,9 @@ class VendorShippingLabelsApi
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel';
         $request = $this->createShippingLabelsRequest($purchase_order_number, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createShippingLabelsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -485,7 +484,9 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getShippingLabelRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -581,7 +582,9 @@ class VendorShippingLabelsApi
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel';
         $request = $this->getShippingLabelRequest($purchase_order_number);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getShippingLabelRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -784,7 +787,9 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getShippingLabelsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -910,7 +915,9 @@ class VendorShippingLabelsApi
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList';
         $request = $this->getShippingLabelsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getShippingLabelsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1159,7 +1166,9 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->submitShippingLabelRequestRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1255,7 +1264,9 @@ class VendorShippingLabelsApi
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShippingLabelRequestRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->submitShippingLabelRequestRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1399,22 +1410,5 @@ class VendorShippingLabelsApi
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

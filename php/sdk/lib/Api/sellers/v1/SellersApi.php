@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sellers\v1\GetAccountResponse;
@@ -59,6 +58,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SellersApi
 {
+    public ?LimiterInterface $getAccountRateLimiter;
+    public ?LimiterInterface $getMarketplaceParticipationsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,36 +71,29 @@ class SellersApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellersApi-getAccount'), $this->rateLimitStorage);
+            $this->getAccountRateLimiter = $factory->create('SellersApi-getAccount');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellersApi-getMarketplaceParticipations'), $this->rateLimitStorage);
+            $this->getMarketplaceParticipationsRateLimiter = $factory->create('SellersApi-getMarketplaceParticipations');
         }
 
         $this->client = $client ?: new Client();
@@ -162,7 +156,9 @@ class SellersApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getAccountRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -246,7 +242,9 @@ class SellersApi
         $returnType = '\SpApi\Model\sellers\v1\GetAccountResponse';
         $request = $this->getAccountRequest();
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getAccountRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -380,7 +378,9 @@ class SellersApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getMarketplaceParticipationsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -464,7 +464,9 @@ class SellersApi
         $returnType = '\SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse';
         $request = $this->getMarketplaceParticipationsRequest();
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getMarketplaceParticipationsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -566,21 +568,6 @@ class SellersApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

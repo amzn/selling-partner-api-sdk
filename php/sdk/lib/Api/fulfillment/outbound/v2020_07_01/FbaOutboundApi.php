@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse;
@@ -77,6 +76,20 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaOutboundApi
 {
+    public ?LimiterInterface $cancelFulfillmentOrderRateLimiter;
+    public ?LimiterInterface $createFulfillmentOrderRateLimiter;
+    public ?LimiterInterface $createFulfillmentReturnRateLimiter;
+    public ?LimiterInterface $deliveryOffersRateLimiter;
+    public ?LimiterInterface $getFeatureInventoryRateLimiter;
+    public ?LimiterInterface $getFeatureSKURateLimiter;
+    public ?LimiterInterface $getFeaturesRateLimiter;
+    public ?LimiterInterface $getFulfillmentOrderRateLimiter;
+    public ?LimiterInterface $getFulfillmentPreviewRateLimiter;
+    public ?LimiterInterface $getPackageTrackingDetailsRateLimiter;
+    public ?LimiterInterface $listAllFulfillmentOrdersRateLimiter;
+    public ?LimiterInterface $listReturnReasonCodesRateLimiter;
+    public ?LimiterInterface $submitFulfillmentOrderStatusUpdateRateLimiter;
+    public ?LimiterInterface $updateFulfillmentOrderRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -88,36 +101,53 @@ class FbaOutboundApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-cancelFulfillmentOrder'), $this->rateLimitStorage);
+            $this->cancelFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-cancelFulfillmentOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentOrder'), $this->rateLimitStorage);
+            $this->createFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentReturn'), $this->rateLimitStorage);
+            $this->createFulfillmentReturnRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentReturn');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-deliveryOffers'), $this->rateLimitStorage);
+            $this->deliveryOffersRateLimiter = $factory->create('FbaOutboundApi-deliveryOffers');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureInventory'), $this->rateLimitStorage);
+            $this->getFeatureInventoryRateLimiter = $factory->create('FbaOutboundApi-getFeatureInventory');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureSKU'), $this->rateLimitStorage);
+            $this->getFeatureSKURateLimiter = $factory->create('FbaOutboundApi-getFeatureSKU');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatures'), $this->rateLimitStorage);
+            $this->getFeaturesRateLimiter = $factory->create('FbaOutboundApi-getFeatures');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFulfillmentOrder'), $this->rateLimitStorage);
+            $this->getFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-getFulfillmentOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFulfillmentPreview'), $this->rateLimitStorage);
+            $this->getFulfillmentPreviewRateLimiter = $factory->create('FbaOutboundApi-getFulfillmentPreview');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getPackageTrackingDetails'), $this->rateLimitStorage);
+            $this->getPackageTrackingDetailsRateLimiter = $factory->create('FbaOutboundApi-getPackageTrackingDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-listAllFulfillmentOrders'), $this->rateLimitStorage);
+            $this->listAllFulfillmentOrdersRateLimiter = $factory->create('FbaOutboundApi-listAllFulfillmentOrders');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-listReturnReasonCodes'), $this->rateLimitStorage);
+            $this->listReturnReasonCodesRateLimiter = $factory->create('FbaOutboundApi-listReturnReasonCodes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-submitFulfillmentOrderStatusUpdate'), $this->rateLimitStorage);
+            $this->submitFulfillmentOrderStatusUpdateRateLimiter = $factory->create('FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-updateFulfillmentOrder'), $this->rateLimitStorage);
+            $this->updateFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-updateFulfillmentOrder');
         }
 
         $this->client = $client ?: new Client();
@@ -188,7 +218,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -280,7 +312,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse';
         $request = $this->cancelFulfillmentOrderRequest($seller_fulfillment_order_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -445,7 +479,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -537,7 +573,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse';
         $request = $this->createFulfillmentOrderRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -702,7 +740,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createFulfillmentReturnRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -800,7 +840,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse';
         $request = $this->createFulfillmentReturnRequest($seller_fulfillment_order_id, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createFulfillmentReturnRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -977,7 +1019,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->deliveryOffersRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1069,7 +1113,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse';
         $request = $this->deliveryOffersRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->deliveryOffersRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1246,7 +1292,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFeatureInventoryRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1356,7 +1404,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse';
         $request = $this->getFeatureInventoryRequest($marketplace_id, $feature_name, $next_token, $query_start_date);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFeatureInventoryRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1576,7 +1626,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFeatureSKURateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1680,7 +1732,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse';
         $request = $this->getFeatureSKURequest($marketplace_id, $feature_name, $seller_sku);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFeatureSKURateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1879,7 +1933,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFeaturesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1971,7 +2027,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse';
         $request = $this->getFeaturesRequest($marketplace_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFeaturesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2135,7 +2193,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2227,7 +2287,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse';
         $request = $this->getFulfillmentOrderRequest($seller_fulfillment_order_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2392,7 +2454,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFulfillmentPreviewRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2484,7 +2548,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse';
         $request = $this->getFulfillmentPreviewRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFulfillmentPreviewRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2643,7 +2709,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getPackageTrackingDetailsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2735,7 +2803,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse';
         $request = $this->getPackageTrackingDetailsRequest($package_number);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getPackageTrackingDetailsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2905,7 +2975,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listAllFulfillmentOrdersRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3003,7 +3075,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse';
         $request = $this->listAllFulfillmentOrdersRequest($query_start_date, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listAllFulfillmentOrdersRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3191,7 +3265,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listReturnReasonCodesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3301,7 +3377,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse';
         $request = $this->listReturnReasonCodesRequest($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listReturnReasonCodesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3510,7 +3588,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->submitFulfillmentOrderStatusUpdateRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3608,7 +3688,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse';
         $request = $this->submitFulfillmentOrderStatusUpdateRequest($seller_fulfillment_order_id, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->submitFulfillmentOrderStatusUpdateRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3795,7 +3877,9 @@ class FbaOutboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->updateFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3893,7 +3977,9 @@ class FbaOutboundApi
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse';
         $request = $this->updateFulfillmentOrderRequest($seller_fulfillment_order_id, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->updateFulfillmentOrderRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4034,21 +4120,6 @@ class FbaOutboundApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

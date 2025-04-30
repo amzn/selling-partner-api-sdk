@@ -47,7 +47,7 @@ class InvoicesApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('InvoicesApi', $this->getName());
-        $this->apiInstance = new InvoicesApi($this->config, null, null);
+        $this->apiInstance = new InvoicesApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
         if ($specificTimeFormat) {

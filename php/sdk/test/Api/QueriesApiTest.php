@@ -47,7 +47,7 @@ class QueriesApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('QueriesApi', $this->getName());
-        $this->apiInstance = new QueriesApi($this->config, null, null);
+        $this->apiInstance = new QueriesApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('QueriesApi');
         if ($specificTimeFormat) {

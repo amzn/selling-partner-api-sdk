@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse;
@@ -64,6 +63,12 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FeedsApi
 {
+    public ?LimiterInterface $cancelFeedRateLimiter;
+    public ?LimiterInterface $createFeedRateLimiter;
+    public ?LimiterInterface $createFeedDocumentRateLimiter;
+    public ?LimiterInterface $getFeedRateLimiter;
+    public ?LimiterInterface $getFeedDocumentRateLimiter;
+    public ?LimiterInterface $getFeedsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -75,36 +80,37 @@ class FeedsApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-cancelFeed'), $this->rateLimitStorage);
+            $this->cancelFeedRateLimiter = $factory->create('FeedsApi-cancelFeed');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeed'), $this->rateLimitStorage);
+            $this->createFeedRateLimiter = $factory->create('FeedsApi-createFeed');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeedDocument'), $this->rateLimitStorage);
+            $this->createFeedDocumentRateLimiter = $factory->create('FeedsApi-createFeedDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeed'), $this->rateLimitStorage);
+            $this->getFeedRateLimiter = $factory->create('FeedsApi-getFeed');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeedDocument'), $this->rateLimitStorage);
+            $this->getFeedDocumentRateLimiter = $factory->create('FeedsApi-getFeedDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeeds'), $this->rateLimitStorage);
+            $this->getFeedsRateLimiter = $factory->create('FeedsApi-getFeeds');
         }
 
         $this->client = $client ?: new Client();
@@ -173,7 +179,9 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelFeedRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -253,7 +261,9 @@ class FeedsApi
         $returnType = '';
         $request = $this->cancelFeedRequest($feed_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelFeedRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -402,7 +412,9 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createFeedRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -494,7 +506,9 @@ class FeedsApi
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse';
         $request = $this->createFeedRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createFeedRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -653,7 +667,9 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -745,7 +761,9 @@ class FeedsApi
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse';
         $request = $this->createFeedDocumentRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -904,7 +922,9 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFeedRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -996,7 +1016,9 @@ class FeedsApi
         $returnType = '\SpApi\Model\feeds\v2021_06_30\Feed';
         $request = $this->getFeedRequest($feed_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFeedRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1158,7 +1180,9 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1250,7 +1274,9 @@ class FeedsApi
         $returnType = '\SpApi\Model\feeds\v2021_06_30\FeedDocument';
         $request = $this->getFeedDocumentRequest($feed_document_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1448,7 +1474,9 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getFeedsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1576,7 +1604,9 @@ class FeedsApi
         $returnType = '\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse';
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getFeedsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1796,21 +1826,6 @@ class FeedsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

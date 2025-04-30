@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fba\inventory\v1\AddInventoryRequest;
@@ -63,6 +62,10 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaInventoryApi
 {
+    public ?LimiterInterface $addInventoryRateLimiter;
+    public ?LimiterInterface $createInventoryItemRateLimiter;
+    public ?LimiterInterface $deleteInventoryItemRateLimiter;
+    public ?LimiterInterface $getInventorySummariesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -74,36 +77,33 @@ class FbaInventoryApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-addInventory'), $this->rateLimitStorage);
+            $this->addInventoryRateLimiter = $factory->create('FbaInventoryApi-addInventory');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-createInventoryItem'), $this->rateLimitStorage);
+            $this->createInventoryItemRateLimiter = $factory->create('FbaInventoryApi-createInventoryItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-deleteInventoryItem'), $this->rateLimitStorage);
+            $this->deleteInventoryItemRateLimiter = $factory->create('FbaInventoryApi-deleteInventoryItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-getInventorySummaries'), $this->rateLimitStorage);
+            $this->getInventorySummariesRateLimiter = $factory->create('FbaInventoryApi-getInventorySummaries');
         }
 
         $this->client = $client ?: new Client();
@@ -180,7 +180,9 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->addInventoryRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -278,7 +280,9 @@ class FbaInventoryApi
         $returnType = '\SpApi\Model\fba\inventory\v1\AddInventoryResponse';
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->addInventoryRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -451,7 +455,9 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -543,7 +549,9 @@ class FbaInventoryApi
         $returnType = '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse';
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -708,7 +716,9 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -806,7 +816,9 @@ class FbaInventoryApi
         $returnType = '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse';
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1030,7 +1042,9 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1164,7 +1178,9 @@ class FbaInventoryApi
         $returnType = '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse';
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1398,21 +1414,6 @@ class FbaInventoryApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

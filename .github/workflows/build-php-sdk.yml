@@ -90,6 +90,9 @@ jobs:
         working-directory: ./selling-partner-api-sdk/php/sdk
         run: |
           sed -i "s/?bool \$include_details = 'true'/?bool \$include_details = true/g" lib/Api/vendor/df/orders/v2021_12_28/VendorOrdersApi.php
+      - name: Copy rate limit configuration
+        working-directory: ./selling-partner-api-sdk
+        run: cp -R resources php/sdk
       - name: Run composer install
         working-directory: ./selling-partner-api-sdk/php/sdk
         run: composer install

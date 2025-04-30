@@ -30,6 +30,7 @@
 
 namespace SpApi;
 
+use Dallgoot\Yaml\Yaml;
 use GuzzleHttp\Psr7\Request;
 use SpApi\AuthAndAuth\LWAAccessTokenCache;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
@@ -88,6 +89,8 @@ class Configuration
     protected string $tempFolderPath;
 
     private static ?Configuration $defaultConfiguration = null;
+
+    private static array $rateLimitConfiguration;
 
     private LWAAuthorizationSigner $lwaAuthSigner;
 
@@ -334,6 +337,23 @@ class Configuration
     }
 
     /**
+     * Get rate limit options.
+     *
+     * @param string $operationName Name of the operation to build rate limit options for
+     *
+     * @return array rate limit options
+     */
+    public static function getRateLimitOptions(string $operationName)
+    {
+        return [
+            'id' => 'spApi',
+            'policy' => 'token_bucket',
+            'limit' => Configuration::getRateLimitValue($operationName, 1),
+            'rate' => Configuration::getRateLimitValue($operationName, 0),
+        ];
+    }
+
+    /**
      * Gets the essential information for debugging.
      *
      * @return string The report for debugging
@@ -413,5 +433,33 @@ class Configuration
         }
 
         return $url;
+    }
+
+    private static function getRateLimitValue(string $operationName, int $index)
+    {
+        if (!isset(self::$rateLimitConfiguration)) {
+            $data = Yaml::parseFile(__DIR__.'/../resources/rate-limits.yml');
+            self::$rateLimitConfiguration = get_object_vars($data);
+        }
+
+        switch ($index) {
+            case 0:
+                if (array_key_exists(2, self::$rateLimitConfiguration[$operationName])) {
+                    return [
+                        'interval' => self::$rateLimitConfiguration[$operationName][2].' seconds',
+                        'amount' => self::$rateLimitConfiguration[$operationName][0],
+                    ];
+                }
+
+                return [
+                    'interval' => '1 second',
+                    'amount' => self::$rateLimitConfiguration[$operationName][0],
+                ];
+
+            case 1:
+                return self::$rateLimitConfiguration[$operationName][$index];
+        }
+
+        throw new ApiException('Invalid index for rate limit configuration');
     }
 }

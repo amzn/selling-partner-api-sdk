@@ -48,7 +48,7 @@ class ShippingApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('ShippingApi', $this->getName());
-        $this->apiInstance = new ShippingApi($this->config, null, null);
+        $this->apiInstance = new ShippingApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ShippingApi');
         if ($specificTimeFormat) {

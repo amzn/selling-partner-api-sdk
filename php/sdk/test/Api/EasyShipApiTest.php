@@ -47,7 +47,7 @@ class EasyShipApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('EasyShipApi', $this->getName());
-        $this->apiInstance = new EasyShipApi($this->config, null, null);
+        $this->apiInstance = new EasyShipApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
         if ($specificTimeFormat) {

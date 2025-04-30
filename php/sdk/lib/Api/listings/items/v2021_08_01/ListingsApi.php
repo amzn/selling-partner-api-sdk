@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\listings\items\v2021_08_01\Item;
@@ -62,6 +61,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ListingsApi
 {
+    public ?LimiterInterface $deleteListingsItemRateLimiter;
+    public ?LimiterInterface $getListingsItemRateLimiter;
+    public ?LimiterInterface $patchListingsItemRateLimiter;
+    public ?LimiterInterface $putListingsItemRateLimiter;
+    public ?LimiterInterface $searchListingsItemsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,36 +77,35 @@ class ListingsApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-deleteListingsItem'), $this->rateLimitStorage);
+            $this->deleteListingsItemRateLimiter = $factory->create('ListingsApi-deleteListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsItem'), $this->rateLimitStorage);
+            $this->getListingsItemRateLimiter = $factory->create('ListingsApi-getListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-patchListingsItem'), $this->rateLimitStorage);
+            $this->patchListingsItemRateLimiter = $factory->create('ListingsApi-patchListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-putListingsItem'), $this->rateLimitStorage);
+            $this->putListingsItemRateLimiter = $factory->create('ListingsApi-putListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-searchListingsItems'), $this->rateLimitStorage);
+            $this->searchListingsItemsRateLimiter = $factory->create('ListingsApi-searchListingsItems');
         }
 
         $this->client = $client ?: new Client();
@@ -191,7 +194,9 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->deleteListingsItemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -301,7 +306,9 @@ class ListingsApi
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->deleteListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->deleteListingsItemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -540,7 +547,9 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getListingsItemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -656,7 +665,9 @@ class ListingsApi
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\Item';
         $request = $this->getListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getListingsItemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -920,7 +931,9 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->patchListingsItemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1048,7 +1061,9 @@ class ListingsApi
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->patchListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->patchListingsItemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1341,7 +1356,9 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->putListingsItemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1469,7 +1486,9 @@ class ListingsApi
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->putListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->putListingsItemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1834,7 +1853,9 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->searchListingsItemsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2034,7 +2055,9 @@ class ListingsApi
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults';
         $request = $this->searchListingsItemsRequest($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->searchListingsItemsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2408,21 +2431,6 @@ class ListingsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

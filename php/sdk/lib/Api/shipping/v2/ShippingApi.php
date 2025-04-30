@@ -39,7 +39,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\shipping\v2\CancelShipmentResponse;
@@ -88,6 +87,26 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShippingApi
 {
+    public ?LimiterInterface $cancelShipmentRateLimiter;
+    public ?LimiterInterface $createClaimRateLimiter;
+    public ?LimiterInterface $directPurchaseShipmentRateLimiter;
+    public ?LimiterInterface $generateCollectionFormRateLimiter;
+    public ?LimiterInterface $getAccessPointsRateLimiter;
+    public ?LimiterInterface $getAdditionalInputsRateLimiter;
+    public ?LimiterInterface $getCarrierAccountFormInputsRateLimiter;
+    public ?LimiterInterface $getCarrierAccountsRateLimiter;
+    public ?LimiterInterface $getCollectionFormRateLimiter;
+    public ?LimiterInterface $getCollectionFormHistoryRateLimiter;
+    public ?LimiterInterface $getRatesRateLimiter;
+    public ?LimiterInterface $getShipmentDocumentsRateLimiter;
+    public ?LimiterInterface $getTrackingRateLimiter;
+    public ?LimiterInterface $getUnmanifestedShipmentsRateLimiter;
+    public ?LimiterInterface $linkCarrierAccountRateLimiter;
+    public ?LimiterInterface $linkCarrierAccount_0RateLimiter;
+    public ?LimiterInterface $oneClickShipmentRateLimiter;
+    public ?LimiterInterface $purchaseShipmentRateLimiter;
+    public ?LimiterInterface $submitNdrFeedbackRateLimiter;
+    public ?LimiterInterface $unlinkCarrierAccountRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -99,36 +118,65 @@ class ShippingApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-cancelShipment'), $this->rateLimitStorage);
+            $this->cancelShipmentRateLimiter = $factory->create('ShippingApi-cancelShipment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-createClaim'), $this->rateLimitStorage);
+            $this->createClaimRateLimiter = $factory->create('ShippingApi-createClaim');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-directPurchaseShipment'), $this->rateLimitStorage);
+            $this->directPurchaseShipmentRateLimiter = $factory->create('ShippingApi-directPurchaseShipment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-generateCollectionForm'), $this->rateLimitStorage);
+            $this->generateCollectionFormRateLimiter = $factory->create('ShippingApi-generateCollectionForm');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getAccessPoints'), $this->rateLimitStorage);
+            $this->getAccessPointsRateLimiter = $factory->create('ShippingApi-getAccessPoints');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getAdditionalInputs'), $this->rateLimitStorage);
+            $this->getAdditionalInputsRateLimiter = $factory->create('ShippingApi-getAdditionalInputs');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCarrierAccountFormInputs'), $this->rateLimitStorage);
+            $this->getCarrierAccountFormInputsRateLimiter = $factory->create('ShippingApi-getCarrierAccountFormInputs');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCarrierAccounts'), $this->rateLimitStorage);
+            $this->getCarrierAccountsRateLimiter = $factory->create('ShippingApi-getCarrierAccounts');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCollectionForm'), $this->rateLimitStorage);
+            $this->getCollectionFormRateLimiter = $factory->create('ShippingApi-getCollectionForm');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCollectionFormHistory'), $this->rateLimitStorage);
+            $this->getCollectionFormHistoryRateLimiter = $factory->create('ShippingApi-getCollectionFormHistory');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getRates'), $this->rateLimitStorage);
+            $this->getRatesRateLimiter = $factory->create('ShippingApi-getRates');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getShipmentDocuments'), $this->rateLimitStorage);
+            $this->getShipmentDocumentsRateLimiter = $factory->create('ShippingApi-getShipmentDocuments');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getTracking'), $this->rateLimitStorage);
+            $this->getTrackingRateLimiter = $factory->create('ShippingApi-getTracking');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getUnmanifestedShipments'), $this->rateLimitStorage);
+            $this->getUnmanifestedShipmentsRateLimiter = $factory->create('ShippingApi-getUnmanifestedShipments');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-linkCarrierAccount'), $this->rateLimitStorage);
+            $this->linkCarrierAccountRateLimiter = $factory->create('ShippingApi-linkCarrierAccount');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-linkCarrierAccount_0'), $this->rateLimitStorage);
+            $this->linkCarrierAccount_0RateLimiter = $factory->create('ShippingApi-linkCarrierAccount_0');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-oneClickShipment'), $this->rateLimitStorage);
+            $this->oneClickShipmentRateLimiter = $factory->create('ShippingApi-oneClickShipment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-purchaseShipment'), $this->rateLimitStorage);
+            $this->purchaseShipmentRateLimiter = $factory->create('ShippingApi-purchaseShipment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-submitNdrFeedback'), $this->rateLimitStorage);
+            $this->submitNdrFeedbackRateLimiter = $factory->create('ShippingApi-submitNdrFeedback');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-unlinkCarrierAccount'), $this->rateLimitStorage);
+            $this->unlinkCarrierAccountRateLimiter = $factory->create('ShippingApi-unlinkCarrierAccount');
         }
 
         $this->client = $client ?: new Client();
@@ -205,7 +253,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -303,7 +353,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\CancelShipmentResponse';
         $request = $this->cancelShipmentRequest($shipment_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -479,7 +531,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createClaimRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -577,7 +631,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\CreateClaimResponse';
         $request = $this->createClaimRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createClaimRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -762,7 +818,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->directPurchaseShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -872,7 +930,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\DirectPurchaseResponse';
         $request = $this->directPurchaseShipmentRequest($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->directPurchaseShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1065,7 +1125,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->generateCollectionFormRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1169,7 +1231,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GenerateCollectionFormResponse';
         $request = $this->generateCollectionFormRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->generateCollectionFormRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1361,7 +1425,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getAccessPointsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1471,7 +1537,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetAccessPointsResponse';
         $request = $this->getAccessPointsRequest($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getAccessPointsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1693,7 +1761,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getAdditionalInputsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1797,7 +1867,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetAdditionalInputsResponse';
         $request = $this->getAdditionalInputsRequest($request_token, $rate_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getAdditionalInputsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1988,7 +2060,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getCarrierAccountFormInputsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2080,7 +2154,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse';
         $request = $this->getCarrierAccountFormInputsRequest($x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getCarrierAccountFormInputsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2237,7 +2313,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getCarrierAccountsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2335,7 +2413,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountsResponse';
         $request = $this->getCarrierAccountsRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getCarrierAccountsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2508,7 +2588,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getCollectionFormRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2606,7 +2688,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormResponse';
         $request = $this->getCollectionFormRequest($collection_form_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getCollectionFormRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2782,7 +2866,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getCollectionFormHistoryRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2880,7 +2966,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse';
         $request = $this->getCollectionFormHistoryRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getCollectionFormHistoryRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3053,7 +3141,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getRatesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3151,7 +3241,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetRatesResponse';
         $request = $this->getRatesRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getRatesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3342,7 +3434,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getShipmentDocumentsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3458,7 +3552,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse';
         $request = $this->getShipmentDocumentsRequest($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getShipmentDocumentsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3686,7 +3782,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getTrackingRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3790,7 +3888,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetTrackingResponse';
         $request = $this->getTrackingRequest($tracking_id, $carrier_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getTrackingRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3987,7 +4087,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getUnmanifestedShipmentsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4085,7 +4187,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse';
         $request = $this->getUnmanifestedShipmentsRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getUnmanifestedShipmentsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4264,7 +4368,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->linkCarrierAccountRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4368,7 +4474,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
         $request = $this->linkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->linkCarrierAccountRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4565,7 +4673,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->linkCarrierAccount_0RateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4669,7 +4779,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
         $request = $this->linkCarrierAccount_0Request($carrier_id, $body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->linkCarrierAccount_0RateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4860,7 +4972,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->oneClickShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4958,7 +5072,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\OneClickShipmentResponse';
         $request = $this->oneClickShipmentRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->oneClickShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5137,7 +5253,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->purchaseShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5241,7 +5359,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\PurchaseShipmentResponse';
         $request = $this->purchaseShipmentRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->purchaseShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5419,7 +5539,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->submitNdrFeedbackRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5505,7 +5627,9 @@ class ShippingApi
         $returnType = '';
         $request = $this->submitNdrFeedbackRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->submitNdrFeedbackRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5671,7 +5795,9 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->unlinkCarrierAccountRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5775,7 +5901,9 @@ class ShippingApi
         $returnType = '\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse';
         $request = $this->unlinkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->unlinkCarrierAccountRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5920,21 +6048,6 @@ class ShippingApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

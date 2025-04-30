@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse;
@@ -62,6 +61,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class QueriesApi
 {
+    public ?LimiterInterface $cancelQueryRateLimiter;
+    public ?LimiterInterface $createQueryRateLimiter;
+    public ?LimiterInterface $getDocumentRateLimiter;
+    public ?LimiterInterface $getQueriesRateLimiter;
+    public ?LimiterInterface $getQueryRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,36 +77,35 @@ class QueriesApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-cancelQuery'), $this->rateLimitStorage);
+            $this->cancelQueryRateLimiter = $factory->create('QueriesApi-cancelQuery');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-createQuery'), $this->rateLimitStorage);
+            $this->createQueryRateLimiter = $factory->create('QueriesApi-createQuery');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getDocument'), $this->rateLimitStorage);
+            $this->getDocumentRateLimiter = $factory->create('QueriesApi-getDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQueries'), $this->rateLimitStorage);
+            $this->getQueriesRateLimiter = $factory->create('QueriesApi-getQueries');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQuery'), $this->rateLimitStorage);
+            $this->getQueryRateLimiter = $factory->create('QueriesApi-getQuery');
         }
 
         $this->client = $client ?: new Client();
@@ -171,7 +174,9 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->cancelQueryRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -251,7 +256,9 @@ class QueriesApi
         $returnType = '';
         $request = $this->cancelQueryRequest($query_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->cancelQueryRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -400,7 +407,9 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createQueryRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -492,7 +501,9 @@ class QueriesApi
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse';
         $request = $this->createQueryRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createQueryRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -651,7 +662,9 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getDocumentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -743,7 +756,9 @@ class QueriesApi
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse';
         $request = $this->getDocumentRequest($document_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getDocumentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -929,7 +944,9 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getQueriesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1045,7 +1062,9 @@ class QueriesApi
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse';
         $request = $this->getQueriesRequest($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getQueriesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1265,7 +1284,9 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getQueryRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1357,7 +1378,9 @@ class QueriesApi
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\Query';
         $request = $this->getQueryRequest($query_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getQueryRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1479,21 +1502,6 @@ class QueriesApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

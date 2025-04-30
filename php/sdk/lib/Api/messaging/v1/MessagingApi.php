@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\messaging\v1\CreateAmazonMotorsRequest;
@@ -80,6 +79,19 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class MessagingApi
 {
+    public ?LimiterInterface $confirmCustomizationDetailsRateLimiter;
+    public ?LimiterInterface $createAmazonMotorsRateLimiter;
+    public ?LimiterInterface $createConfirmDeliveryDetailsRateLimiter;
+    public ?LimiterInterface $createConfirmOrderDetailsRateLimiter;
+    public ?LimiterInterface $createConfirmServiceDetailsRateLimiter;
+    public ?LimiterInterface $createDigitalAccessKeyRateLimiter;
+    public ?LimiterInterface $createLegalDisclosureRateLimiter;
+    public ?LimiterInterface $createNegativeFeedbackRemovalRateLimiter;
+    public ?LimiterInterface $createUnexpectedProblemRateLimiter;
+    public ?LimiterInterface $createWarrantyRateLimiter;
+    public ?LimiterInterface $getAttributesRateLimiter;
+    public ?LimiterInterface $getMessagingActionsForOrderRateLimiter;
+    public ?LimiterInterface $sendInvoiceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -91,36 +103,51 @@ class MessagingApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-confirmCustomizationDetails'), $this->rateLimitStorage);
+            $this->confirmCustomizationDetailsRateLimiter = $factory->create('MessagingApi-confirmCustomizationDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createAmazonMotors'), $this->rateLimitStorage);
+            $this->createAmazonMotorsRateLimiter = $factory->create('MessagingApi-createAmazonMotors');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmDeliveryDetails'), $this->rateLimitStorage);
+            $this->createConfirmDeliveryDetailsRateLimiter = $factory->create('MessagingApi-createConfirmDeliveryDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmOrderDetails'), $this->rateLimitStorage);
+            $this->createConfirmOrderDetailsRateLimiter = $factory->create('MessagingApi-createConfirmOrderDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmServiceDetails'), $this->rateLimitStorage);
+            $this->createConfirmServiceDetailsRateLimiter = $factory->create('MessagingApi-createConfirmServiceDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createDigitalAccessKey'), $this->rateLimitStorage);
+            $this->createDigitalAccessKeyRateLimiter = $factory->create('MessagingApi-createDigitalAccessKey');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createLegalDisclosure'), $this->rateLimitStorage);
+            $this->createLegalDisclosureRateLimiter = $factory->create('MessagingApi-createLegalDisclosure');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createNegativeFeedbackRemoval'), $this->rateLimitStorage);
+            $this->createNegativeFeedbackRemovalRateLimiter = $factory->create('MessagingApi-createNegativeFeedbackRemoval');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createUnexpectedProblem'), $this->rateLimitStorage);
+            $this->createUnexpectedProblemRateLimiter = $factory->create('MessagingApi-createUnexpectedProblem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createWarranty'), $this->rateLimitStorage);
+            $this->createWarrantyRateLimiter = $factory->create('MessagingApi-createWarranty');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-getAttributes'), $this->rateLimitStorage);
+            $this->getAttributesRateLimiter = $factory->create('MessagingApi-getAttributes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-getMessagingActionsForOrder'), $this->rateLimitStorage);
+            $this->getMessagingActionsForOrderRateLimiter = $factory->create('MessagingApi-getMessagingActionsForOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-sendInvoice'), $this->rateLimitStorage);
+            $this->sendInvoiceRateLimiter = $factory->create('MessagingApi-sendInvoice');
         }
 
         $this->client = $client ?: new Client();
@@ -203,7 +230,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->confirmCustomizationDetailsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -307,7 +336,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
         $request = $this->confirmCustomizationDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->confirmCustomizationDetailsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -520,7 +551,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createAmazonMotorsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -624,7 +657,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse';
         $request = $this->createAmazonMotorsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createAmazonMotorsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -837,7 +872,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createConfirmDeliveryDetailsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -941,7 +978,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
         $request = $this->createConfirmDeliveryDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createConfirmDeliveryDetailsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1154,7 +1193,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createConfirmOrderDetailsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1258,7 +1299,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
         $request = $this->createConfirmOrderDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createConfirmOrderDetailsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1471,7 +1514,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createConfirmServiceDetailsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1575,7 +1620,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
         $request = $this->createConfirmServiceDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createConfirmServiceDetailsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1788,7 +1835,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createDigitalAccessKeyRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1892,7 +1941,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse';
         $request = $this->createDigitalAccessKeyRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createDigitalAccessKeyRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2105,7 +2156,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createLegalDisclosureRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2209,7 +2262,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse';
         $request = $this->createLegalDisclosureRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createLegalDisclosureRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2416,7 +2471,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createNegativeFeedbackRemovalRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2514,7 +2571,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
         $request = $this->createNegativeFeedbackRemovalRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createNegativeFeedbackRemovalRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2711,7 +2770,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createUnexpectedProblemRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2815,7 +2876,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse';
         $request = $this->createUnexpectedProblemRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createUnexpectedProblemRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3028,7 +3091,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createWarrantyRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3132,7 +3197,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\CreateWarrantyResponse';
         $request = $this->createWarrantyRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createWarrantyRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3339,7 +3406,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getAttributesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3437,7 +3506,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\GetAttributesResponse';
         $request = $this->getAttributesRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getAttributesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3628,7 +3699,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getMessagingActionsForOrderRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3726,7 +3799,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse';
         $request = $this->getMessagingActionsForOrderRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getMessagingActionsForOrderRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3923,7 +3998,9 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->sendInvoiceRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4027,7 +4104,9 @@ class MessagingApi
         $returnType = '\SpApi\Model\messaging\v1\InvoiceResponse';
         $request = $this->sendInvoiceRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->sendInvoiceRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4188,21 +4267,6 @@ class MessagingApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

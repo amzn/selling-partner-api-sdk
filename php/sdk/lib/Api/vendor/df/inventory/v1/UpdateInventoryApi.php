@@ -35,7 +35,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
@@ -74,15 +73,10 @@ class UpdateInventoryApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
-    private ?RateLimitConfiguration $rateLimitConfig = null;
+    private Bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
-    /**
-     * @var ?LimiterInterface
-     */
-    private ?LimiterInterface $rateLimiter = null;
+    public ?LimiterInterface $submitInventoryUpdateRateLimiter;
 
     /**
      * @param Configuration   $config
@@ -93,27 +87,19 @@ class UpdateInventoryApi
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("UpdateInventoryApi-submitInventoryUpdate"), $this->rateLimitStorage);
+            $this->submitInventoryUpdateRateLimiter = $factory->create("UpdateInventoryApi-submitInventoryUpdate");
         }
 
         $this->client = $client ?: new Client();
@@ -191,7 +177,9 @@ class UpdateInventoryApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->submitInventoryUpdateRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -289,7 +277,9 @@ class UpdateInventoryApi
         $returnType = '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->submitInventoryUpdateRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -450,22 +440,5 @@ class UpdateInventoryApi
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

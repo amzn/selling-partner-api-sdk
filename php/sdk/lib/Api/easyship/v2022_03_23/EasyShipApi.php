@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest;
@@ -65,6 +64,11 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class EasyShipApi
 {
+    public ?LimiterInterface $createScheduledPackageRateLimiter;
+    public ?LimiterInterface $createScheduledPackageBulkRateLimiter;
+    public ?LimiterInterface $getScheduledPackageRateLimiter;
+    public ?LimiterInterface $listHandoverSlotsRateLimiter;
+    public ?LimiterInterface $updateScheduledPackagesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -76,36 +80,35 @@ class EasyShipApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackage'), $this->rateLimitStorage);
+            $this->createScheduledPackageRateLimiter = $factory->create('EasyShipApi-createScheduledPackage');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackageBulk'), $this->rateLimitStorage);
+            $this->createScheduledPackageBulkRateLimiter = $factory->create('EasyShipApi-createScheduledPackageBulk');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-getScheduledPackage'), $this->rateLimitStorage);
+            $this->getScheduledPackageRateLimiter = $factory->create('EasyShipApi-getScheduledPackage');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-listHandoverSlots'), $this->rateLimitStorage);
+            $this->listHandoverSlotsRateLimiter = $factory->create('EasyShipApi-listHandoverSlots');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-updateScheduledPackages'), $this->rateLimitStorage);
+            $this->updateScheduledPackagesRateLimiter = $factory->create('EasyShipApi-updateScheduledPackages');
         }
 
         $this->client = $client ?: new Client();
@@ -176,7 +179,9 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -268,7 +273,9 @@ class EasyShipApi
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -427,7 +434,9 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -519,7 +528,9 @@ class EasyShipApi
         $returnType = '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -684,7 +695,9 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -782,7 +795,9 @@ class EasyShipApi
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -978,7 +993,9 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1070,7 +1087,9 @@ class EasyShipApi
         $returnType = '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1222,7 +1241,9 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1314,7 +1335,9 @@ class EasyShipApi
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Packages';
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1426,21 +1449,6 @@ class EasyShipApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

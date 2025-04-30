@@ -47,7 +47,7 @@ class AutomotiveApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('AutomotiveApi', $this->getName());
-        $this->apiInstance = new AutomotiveApi($this->config, null, null);
+        $this->apiInstance = new AutomotiveApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AutomotiveApi');
         if ($specificTimeFormat) {

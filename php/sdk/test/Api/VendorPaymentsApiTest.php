@@ -47,7 +47,7 @@ class VendorPaymentsApiTest extends BaseTestCase
         parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('VendorPaymentsApi', $this->getName());
-        $this->apiInstance = new VendorPaymentsApi($this->config, null, null);
+        $this->apiInstance = new VendorPaymentsApi($this->config, null);
         // Change Time Format if it requires
         $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('VendorPaymentsApi');
         if ($specificTimeFormat) {

@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\orders\v0\ConfirmShipmentRequest;
@@ -66,6 +65,15 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class OrdersV0Api
 {
+    public ?LimiterInterface $confirmShipmentRateLimiter;
+    public ?LimiterInterface $getOrderRateLimiter;
+    public ?LimiterInterface $getOrderAddressRateLimiter;
+    public ?LimiterInterface $getOrderBuyerInfoRateLimiter;
+    public ?LimiterInterface $getOrderItemsRateLimiter;
+    public ?LimiterInterface $getOrderItemsBuyerInfoRateLimiter;
+    public ?LimiterInterface $getOrderRegulatedInfoRateLimiter;
+    public ?LimiterInterface $getOrdersRateLimiter;
+    public ?LimiterInterface $updateVerificationStatusRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -77,36 +85,43 @@ class OrdersV0Api
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-confirmShipment'), $this->rateLimitStorage);
+            $this->confirmShipmentRateLimiter = $factory->create('OrdersV0Api-confirmShipment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrder'), $this->rateLimitStorage);
+            $this->getOrderRateLimiter = $factory->create('OrdersV0Api-getOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderAddress'), $this->rateLimitStorage);
+            $this->getOrderAddressRateLimiter = $factory->create('OrdersV0Api-getOrderAddress');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderBuyerInfo'), $this->rateLimitStorage);
+            $this->getOrderBuyerInfoRateLimiter = $factory->create('OrdersV0Api-getOrderBuyerInfo');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderItems'), $this->rateLimitStorage);
+            $this->getOrderItemsRateLimiter = $factory->create('OrdersV0Api-getOrderItems');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderItemsBuyerInfo'), $this->rateLimitStorage);
+            $this->getOrderItemsBuyerInfoRateLimiter = $factory->create('OrdersV0Api-getOrderItemsBuyerInfo');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderRegulatedInfo'), $this->rateLimitStorage);
+            $this->getOrderRegulatedInfoRateLimiter = $factory->create('OrdersV0Api-getOrderRegulatedInfo');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrders'), $this->rateLimitStorage);
+            $this->getOrdersRateLimiter = $factory->create('OrdersV0Api-getOrders');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-updateVerificationStatus'), $this->rateLimitStorage);
+            $this->updateVerificationStatusRateLimiter = $factory->create('OrdersV0Api-updateVerificationStatus');
         }
 
         $this->client = $client ?: new Client();
@@ -181,7 +196,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->confirmShipmentRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -267,7 +284,9 @@ class OrdersV0Api
         $returnType = '';
         $request = $this->confirmShipmentRequest($order_id, $payload);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->confirmShipmentRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -431,7 +450,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -523,7 +544,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrderResponse';
         $request = $this->getOrderRequest($order_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -685,7 +708,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderAddressRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -777,7 +802,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrderAddressResponse';
         $request = $this->getOrderAddressRequest($order_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderAddressRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -939,7 +966,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderBuyerInfoRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1031,7 +1060,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse';
         $request = $this->getOrderBuyerInfoRequest($order_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderBuyerInfoRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1199,7 +1230,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderItemsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1297,7 +1330,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrderItemsResponse';
         $request = $this->getOrderItemsRequest($order_id, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderItemsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1479,7 +1514,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderItemsBuyerInfoRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1577,7 +1614,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse';
         $request = $this->getOrderItemsBuyerInfoRequest($order_id, $next_token);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderItemsBuyerInfoRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1753,7 +1792,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderRegulatedInfoRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1845,7 +1886,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse';
         $request = $this->getOrderRegulatedInfoRequest($order_id);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderRegulatedInfoRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2133,7 +2176,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrdersRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2351,7 +2396,9 @@ class OrdersV0Api
         $returnType = '\SpApi\Model\orders\v0\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getOrdersRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2799,7 +2846,9 @@ class OrdersV0Api
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->updateVerificationStatusRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2885,7 +2934,9 @@ class OrdersV0Api
         $returnType = '';
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->updateVerificationStatusRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3009,21 +3060,6 @@ class OrdersV0Api
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

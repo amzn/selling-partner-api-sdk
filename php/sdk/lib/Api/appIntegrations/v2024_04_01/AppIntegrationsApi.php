@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest;
@@ -61,6 +60,9 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class AppIntegrationsApi
 {
+    public ?LimiterInterface $createNotificationRateLimiter;
+    public ?LimiterInterface $deleteNotificationsRateLimiter;
+    public ?LimiterInterface $recordActionFeedbackRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -72,36 +74,31 @@ class AppIntegrationsApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-createNotification'), $this->rateLimitStorage);
+            $this->createNotificationRateLimiter = $factory->create('AppIntegrationsApi-createNotification');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-deleteNotifications'), $this->rateLimitStorage);
+            $this->deleteNotificationsRateLimiter = $factory->create('AppIntegrationsApi-deleteNotifications');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-recordActionFeedback'), $this->rateLimitStorage);
+            $this->recordActionFeedbackRateLimiter = $factory->create('AppIntegrationsApi-recordActionFeedback');
         }
 
         $this->client = $client ?: new Client();
@@ -172,7 +169,9 @@ class AppIntegrationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->createNotificationRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -264,7 +263,9 @@ class AppIntegrationsApi
         $returnType = '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
         $request = $this->createNotificationRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->createNotificationRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -421,7 +422,9 @@ class AppIntegrationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -501,7 +504,9 @@ class AppIntegrationsApi
         $returnType = '';
         $request = $this->deleteNotificationsRequest($body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -651,7 +656,9 @@ class AppIntegrationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -737,7 +744,9 @@ class AppIntegrationsApi
         $returnType = '';
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -861,21 +870,6 @@ class AppIntegrationsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**

@@ -38,7 +38,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\pricing\v0\GetItemOffersBatchRequest;
@@ -63,6 +62,12 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ProductPricingApi
 {
+    public ?LimiterInterface $getCompetitivePricingRateLimiter;
+    public ?LimiterInterface $getItemOffersRateLimiter;
+    public ?LimiterInterface $getItemOffersBatchRateLimiter;
+    public ?LimiterInterface $getListingOffersRateLimiter;
+    public ?LimiterInterface $getListingOffersBatchRateLimiter;
+    public ?LimiterInterface $getPricingRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -74,36 +79,37 @@ class ProductPricingApi
      */
     protected int $hostIndex;
 
-    private ?RateLimitConfiguration $rateLimitConfig = null;
-
-    private ?LimiterInterface $rateLimiter = null;
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        ?RateLimitConfiguration $rateLimitConfig = null,
         ?ClientInterface $client = null,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimitConfig = $rateLimitConfig;
-        if ($rateLimitConfig) {
-            $type = $rateLimitConfig->getRateLimitType();
-            $rateLimitOptions = [
-                'id' => 'spApiCall',
-                'policy' => $type,
-                'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
-            ];
-            if ('fixed_window' === $type || 'sliding_window' === $type) {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
-            } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
-            }
-            $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
-            $this->rateLimiter = $factory->create();
+        $this->rateLimiterEnabled = $rateLimiterEnabled;
+
+        if ($rateLimiterEnabled) {
+            $this->rateLimitStorage = new InMemoryStorage();
+
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getCompetitivePricing'), $this->rateLimitStorage);
+            $this->getCompetitivePricingRateLimiter = $factory->create('ProductPricingApi-getCompetitivePricing');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffers'), $this->rateLimitStorage);
+            $this->getItemOffersRateLimiter = $factory->create('ProductPricingApi-getItemOffers');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffersBatch'), $this->rateLimitStorage);
+            $this->getItemOffersBatchRateLimiter = $factory->create('ProductPricingApi-getItemOffersBatch');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffers'), $this->rateLimitStorage);
+            $this->getListingOffersRateLimiter = $factory->create('ProductPricingApi-getListingOffers');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffersBatch'), $this->rateLimitStorage);
+            $this->getListingOffersBatchRateLimiter = $factory->create('ProductPricingApi-getListingOffersBatch');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getPricing'), $this->rateLimitStorage);
+            $this->getPricingRateLimiter = $factory->create('ProductPricingApi-getPricing');
         }
 
         $this->client = $client ?: new Client();
@@ -198,7 +204,9 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -314,7 +322,9 @@ class ProductPricingApi
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -561,7 +571,9 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getItemOffersRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -671,7 +683,9 @@ class ProductPricingApi
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getItemOffersRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -885,7 +899,9 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -977,7 +993,9 @@ class ProductPricingApi
         $returnType = '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse';
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1154,7 +1172,9 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getListingOffersRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1264,7 +1284,9 @@ class ProductPricingApi
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getListingOffersRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1478,7 +1500,9 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1570,7 +1594,9 @@ class ProductPricingApi
         $returnType = '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse';
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1759,7 +1785,9 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                $this->rateLimitWait();
+                if ($this->rateLimiterEnabled) {
+                    $this->getPricingRateLimiter->consume()->ensureAccepted();
+                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1881,7 +1909,9 @@ class ProductPricingApi
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
         $request = $this->config->sign($request);
-        $this->rateLimitWait();
+        if ($this->rateLimiterEnabled) {
+            $this->getPricingRateLimiter->consume()->ensureAccepted();
+        }
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2083,21 +2113,6 @@ class ProductPricingApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Rate Limiter waits for tokens.
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
-                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 
     /**
