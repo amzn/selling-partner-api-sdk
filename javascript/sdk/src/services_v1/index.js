@@ -34,6 +34,7 @@ import {CreateReservationRecord} from './model/CreateReservationRecord.js';
 import {CreateReservationRequest} from './model/CreateReservationRequest.js';
 import {CreateReservationResponse} from './model/CreateReservationResponse.js';
 import {CreateServiceDocumentUploadDestination} from './model/CreateServiceDocumentUploadDestination.js';
+import {DateTimeRange} from './model/DateTimeRange.js';
 import {DayOfWeek} from './model/DayOfWeek.js';
 import {EncryptionDetails} from './model/EncryptionDetails.js';
 import {Error} from './model/Error.js';
@@ -222,6 +223,12 @@ export {
      * @property {module:services_v1/model/CreateServiceDocumentUploadDestination}
      */
     CreateServiceDocumentUploadDestination,
+
+    /**
+     * The DateTimeRange model constructor.
+     * @property {module:services_v1/model/DateTimeRange}
+     */
+    DateTimeRange,
 
     /**
      * The DayOfWeek model constructor.
