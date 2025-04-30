@@ -105,7 +105,19 @@ RelatedIdentifier['RelatedIdentifierNameEnum'] = {
      * value: "TRANSFER_ID"
      * @const
      */
-    "TRANSFER_ID": "TRANSFER_ID"
+    "TRANSFER_ID": "TRANSFER_ID",
+
+    /**
+     * value: "DEFERRED_TRANSACTION_ID"
+     * @const
+     */
+    "DEFERRED_TRANSACTION_ID": "DEFERRED_TRANSACTION_ID",
+
+    /**
+     * value: "RELEASE_TRANSACTION_ID"
+     * @const
+     */
+    "RELEASE_TRANSACTION_ID": "RELEASE_TRANSACTION_ID"
 };
 
 /**

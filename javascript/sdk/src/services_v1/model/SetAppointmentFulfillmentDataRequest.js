@@ -13,6 +13,7 @@
 
 import {ApiClient} from '../ApiClient.js';
 import {AppointmentResource} from './AppointmentResource.js';
+import {DateTimeRange} from './DateTimeRange.js';
 import {FulfillmentDocument} from './FulfillmentDocument.js';
 import {FulfillmentTime} from './FulfillmentTime.js';
 
@@ -52,6 +53,8 @@ export class SetAppointmentFulfillmentDataRequest {
           break;
       }
       obj = obj || new SetAppointmentFulfillmentDataRequest();
+      if (data.hasOwnProperty('estimatedArrivalTime'))
+        obj.estimatedArrivalTime = DateTimeRange.constructFromObject(data['estimatedArrivalTime']);
       if (data.hasOwnProperty('fulfillmentTime'))
         obj.fulfillmentTime = FulfillmentTime.constructFromObject(data['fulfillmentTime']);
       if (data.hasOwnProperty('appointmentResources'))
@@ -62,6 +65,11 @@ export class SetAppointmentFulfillmentDataRequest {
     return obj;
   }
 }
+
+/**
+ * @member {module:services_v1/model/DateTimeRange} estimatedArrivalTime
+ */
+SetAppointmentFulfillmentDataRequest.prototype.estimatedArrivalTime = undefined;
 
 /**
  * @member {module:services_v1/model/FulfillmentTime} fulfillmentTime
