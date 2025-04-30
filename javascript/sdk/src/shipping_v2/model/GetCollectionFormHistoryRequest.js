@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Address} from './Address.js';
-import {ClientReferenceDetail} from './ClientReferenceDetail.js';
-import {DateRange} from './DateRange.js';
+import { ApiClient } from '../ApiClient.js'
+import { Address } from './Address.js'
+import { ClientReferenceDetail } from './ClientReferenceDetail.js'
+import { DateRange } from './DateRange.js'
 
 /**
  * The GetCollectionFormHistoryRequest model module.
@@ -28,7 +28,7 @@ export class GetCollectionFormHistoryRequest {
    * @alias module:shipping_v2/model/GetCollectionFormHistoryRequest
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -38,32 +38,27 @@ export class GetCollectionFormHistoryRequest {
    * @param {module:shipping_v2/model/GetCollectionFormHistoryRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetCollectionFormHistoryRequest} The populated <code>GetCollectionFormHistoryRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetCollectionFormHistoryRequest();
-      if (data.hasOwnProperty('clientReferenceDetails'))
-        obj.clientReferenceDetails = ApiClient.convertToType(data['clientReferenceDetails'], [ClientReferenceDetail]);
-      if (data.hasOwnProperty('maxResults'))
-        obj.maxResults = ApiClient.convertToType(data['maxResults'], 'Number');
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
-      if (data.hasOwnProperty('shipFromAddress'))
-        obj.shipFromAddress = Address.constructFromObject(data['shipFromAddress']);
-      if (data.hasOwnProperty('dateRange'))
-        obj.dateRange = DateRange.constructFromObject(data['dateRange']);
+      obj = obj || new GetCollectionFormHistoryRequest()
+      if (data.hasOwnProperty('clientReferenceDetails')) { obj.clientReferenceDetails = ApiClient.convertToType(data.clientReferenceDetails, [ClientReferenceDetail]) }
+      if (data.hasOwnProperty('maxResults')) { obj.maxResults = ApiClient.convertToType(data.maxResults, 'Number') }
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
+      if (data.hasOwnProperty('shipFromAddress')) { obj.shipFromAddress = Address.constructFromObject(data.shipFromAddress) }
+      if (data.hasOwnProperty('dateRange')) { obj.dateRange = DateRange.constructFromObject(data.dateRange) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -71,28 +66,26 @@ export class GetCollectionFormHistoryRequest {
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
  */
-GetCollectionFormHistoryRequest.prototype.clientReferenceDetails = undefined;
+GetCollectionFormHistoryRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * max Number of Results for query .
  * @member {Number} maxResults
  */
-GetCollectionFormHistoryRequest.prototype.maxResults = undefined;
+GetCollectionFormHistoryRequest.prototype.maxResults = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-GetCollectionFormHistoryRequest.prototype.carrierId = undefined;
+GetCollectionFormHistoryRequest.prototype.carrierId = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFromAddress
  */
-GetCollectionFormHistoryRequest.prototype.shipFromAddress = undefined;
+GetCollectionFormHistoryRequest.prototype.shipFromAddress = undefined
 
 /**
  * @member {module:shipping_v2/model/DateRange} dateRange
  */
-GetCollectionFormHistoryRequest.prototype.dateRange = undefined;
-
-
+GetCollectionFormHistoryRequest.prototype.dateRange = undefined

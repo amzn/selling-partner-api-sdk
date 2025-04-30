@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {SupportedDocumentDetail} from './SupportedDocumentDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { SupportedDocumentDetail } from './SupportedDocumentDetail.js'
 
 /**
  * The PrintOption model module.
@@ -29,10 +29,10 @@ export class PrintOption {
    * @param supportedFileJoiningOptions {Array.<Boolean>} A list of the supported needFileJoining boolean values for a document.
    * @param supportedDocumentDetails {Array.<module:shipping_v2/model/SupportedDocumentDetail>} A list of the supported documented details.
    */
-  constructor(supportedPageLayouts, supportedFileJoiningOptions, supportedDocumentDetails) {
-    this.supportedPageLayouts = supportedPageLayouts;
-    this.supportedFileJoiningOptions = supportedFileJoiningOptions;
-    this.supportedDocumentDetails = supportedDocumentDetails;
+  constructor (supportedPageLayouts, supportedFileJoiningOptions, supportedDocumentDetails) {
+    this.supportedPageLayouts = supportedPageLayouts
+    this.supportedFileJoiningOptions = supportedFileJoiningOptions
+    this.supportedDocumentDetails = supportedDocumentDetails
   }
 
   /**
@@ -42,30 +42,26 @@ export class PrintOption {
    * @param {module:shipping_v2/model/PrintOption} obj Optional instance to populate.
    * @return {module:shipping_v2/model/PrintOption} The populated <code>PrintOption</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new PrintOption();
-      if (data.hasOwnProperty('supportedDPIs'))
-        obj.supportedDPIs = ApiClient.convertToType(data['supportedDPIs'], ['Number']);
-      if (data.hasOwnProperty('supportedPageLayouts'))
-        obj.supportedPageLayouts = ApiClient.convertToType(data['supportedPageLayouts'], ['String']);
-      if (data.hasOwnProperty('supportedFileJoiningOptions'))
-        obj.supportedFileJoiningOptions = ApiClient.convertToType(data['supportedFileJoiningOptions'], ['Boolean']);
-      if (data.hasOwnProperty('supportedDocumentDetails'))
-        obj.supportedDocumentDetails = ApiClient.convertToType(data['supportedDocumentDetails'], [SupportedDocumentDetail]);
+      obj = obj || new PrintOption()
+      if (data.hasOwnProperty('supportedDPIs')) { obj.supportedDPIs = ApiClient.convertToType(data.supportedDPIs, ['Number']) }
+      if (data.hasOwnProperty('supportedPageLayouts')) { obj.supportedPageLayouts = ApiClient.convertToType(data.supportedPageLayouts, ['String']) }
+      if (data.hasOwnProperty('supportedFileJoiningOptions')) { obj.supportedFileJoiningOptions = ApiClient.convertToType(data.supportedFileJoiningOptions, ['Boolean']) }
+      if (data.hasOwnProperty('supportedDocumentDetails')) { obj.supportedDocumentDetails = ApiClient.convertToType(data.supportedDocumentDetails, [SupportedDocumentDetail]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -73,24 +69,22 @@ export class PrintOption {
  * A list of the supported DPI options for a document.
  * @member {Array.<Number>} supportedDPIs
  */
-PrintOption.prototype.supportedDPIs = undefined;
+PrintOption.prototype.supportedDPIs = undefined
 
 /**
  * A list of the supported page layout options for a document.
  * @member {Array.<String>} supportedPageLayouts
  */
-PrintOption.prototype.supportedPageLayouts = undefined;
+PrintOption.prototype.supportedPageLayouts = undefined
 
 /**
  * A list of the supported needFileJoining boolean values for a document.
  * @member {Array.<Boolean>} supportedFileJoiningOptions
  */
-PrintOption.prototype.supportedFileJoiningOptions = undefined;
+PrintOption.prototype.supportedFileJoiningOptions = undefined
 
 /**
  * A list of the supported documented details.
  * @member {Array.<module:shipping_v2/model/SupportedDocumentDetail>} supportedDocumentDetails
  */
-PrintOption.prototype.supportedDocumentDetails = undefined;
-
-
+PrintOption.prototype.supportedDocumentDetails = undefined

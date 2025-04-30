@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ClientReferenceDetail} from './ClientReferenceDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { ClientReferenceDetail } from './ClientReferenceDetail.js'
 
 /**
  * The GetCarrierAccountsRequest model module.
@@ -26,7 +26,7 @@ export class GetCarrierAccountsRequest {
    * @alias module:shipping_v2/model/GetCarrierAccountsRequest
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,24 +36,23 @@ export class GetCarrierAccountsRequest {
    * @param {module:shipping_v2/model/GetCarrierAccountsRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetCarrierAccountsRequest} The populated <code>GetCarrierAccountsRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetCarrierAccountsRequest();
-      if (data.hasOwnProperty('clientReferenceDetails'))
-        obj.clientReferenceDetails = ApiClient.convertToType(data['clientReferenceDetails'], [ClientReferenceDetail]);
+      obj = obj || new GetCarrierAccountsRequest()
+      if (data.hasOwnProperty('clientReferenceDetails')) { obj.clientReferenceDetails = ApiClient.convertToType(data.clientReferenceDetails, [ClientReferenceDetail]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -61,6 +60,4 @@ export class GetCarrierAccountsRequest {
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
  */
-GetCarrierAccountsRequest.prototype.clientReferenceDetails = undefined;
-
-
+GetCarrierAccountsRequest.prototype.clientReferenceDetails = undefined

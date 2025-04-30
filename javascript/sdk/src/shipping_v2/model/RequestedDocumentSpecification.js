@@ -11,11 +11,11 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DocumentFormat} from './DocumentFormat.js';
-import {DocumentSize} from './DocumentSize.js';
-import {DocumentType} from './DocumentType.js';
-import {RequestedLabelCustomization} from './RequestedLabelCustomization.js';
+import { ApiClient } from '../ApiClient.js'
+import { DocumentFormat } from './DocumentFormat.js'
+import { DocumentSize } from './DocumentSize.js'
+import { DocumentType } from './DocumentType.js'
+import { RequestedLabelCustomization } from './RequestedLabelCustomization.js'
 
 /**
  * The RequestedDocumentSpecification model module.
@@ -28,16 +28,16 @@ export class RequestedDocumentSpecification {
    * The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.
    * @alias module:shipping_v2/model/RequestedDocumentSpecification
    * @class
-   * @param format {module:shipping_v2/model/DocumentFormat} 
-   * @param size {module:shipping_v2/model/DocumentSize} 
+   * @param format {module:shipping_v2/model/DocumentFormat}
+   * @param size {module:shipping_v2/model/DocumentSize}
    * @param needFileJoining {Boolean} When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
    * @param requestedDocumentTypes {Array.<module:shipping_v2/model/DocumentType>} A list of the document types requested.
    */
-  constructor(format, size, needFileJoining, requestedDocumentTypes) {
-    this.format = format;
-    this.size = size;
-    this.needFileJoining = needFileJoining;
-    this.requestedDocumentTypes = requestedDocumentTypes;
+  constructor (format, size, needFileJoining, requestedDocumentTypes) {
+    this.format = format
+    this.size = size
+    this.needFileJoining = needFileJoining
+    this.requestedDocumentTypes = requestedDocumentTypes
   }
 
   /**
@@ -47,76 +47,67 @@ export class RequestedDocumentSpecification {
    * @param {module:shipping_v2/model/RequestedDocumentSpecification} obj Optional instance to populate.
    * @return {module:shipping_v2/model/RequestedDocumentSpecification} The populated <code>RequestedDocumentSpecification</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new RequestedDocumentSpecification();
-      if (data.hasOwnProperty('format'))
-        obj.format = DocumentFormat.constructFromObject(data['format']);
-      if (data.hasOwnProperty('size'))
-        obj.size = DocumentSize.constructFromObject(data['size']);
-      if (data.hasOwnProperty('dpi'))
-        obj.dpi = ApiClient.convertToType(data['dpi'], 'Number');
-      if (data.hasOwnProperty('pageLayout'))
-        obj.pageLayout = ApiClient.convertToType(data['pageLayout'], 'String');
-      if (data.hasOwnProperty('needFileJoining'))
-        obj.needFileJoining = ApiClient.convertToType(data['needFileJoining'], 'Boolean');
-      if (data.hasOwnProperty('requestedDocumentTypes'))
-        obj.requestedDocumentTypes = ApiClient.convertToType(data['requestedDocumentTypes'], [DocumentType]);
-      if (data.hasOwnProperty('requestedLabelCustomization'))
-        obj.requestedLabelCustomization = RequestedLabelCustomization.constructFromObject(data['requestedLabelCustomization']);
+      obj = obj || new RequestedDocumentSpecification()
+      if (data.hasOwnProperty('format')) { obj.format = DocumentFormat.constructFromObject(data.format) }
+      if (data.hasOwnProperty('size')) { obj.size = DocumentSize.constructFromObject(data.size) }
+      if (data.hasOwnProperty('dpi')) { obj.dpi = ApiClient.convertToType(data.dpi, 'Number') }
+      if (data.hasOwnProperty('pageLayout')) { obj.pageLayout = ApiClient.convertToType(data.pageLayout, 'String') }
+      if (data.hasOwnProperty('needFileJoining')) { obj.needFileJoining = ApiClient.convertToType(data.needFileJoining, 'Boolean') }
+      if (data.hasOwnProperty('requestedDocumentTypes')) { obj.requestedDocumentTypes = ApiClient.convertToType(data.requestedDocumentTypes, [DocumentType]) }
+      if (data.hasOwnProperty('requestedLabelCustomization')) { obj.requestedLabelCustomization = RequestedLabelCustomization.constructFromObject(data.requestedLabelCustomization) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/DocumentFormat} format
  */
-RequestedDocumentSpecification.prototype.format = undefined;
+RequestedDocumentSpecification.prototype.format = undefined
 
 /**
  * @member {module:shipping_v2/model/DocumentSize} size
  */
-RequestedDocumentSpecification.prototype.size = undefined;
+RequestedDocumentSpecification.prototype.size = undefined
 
 /**
  * The dots per inch (DPI) value used in printing. This value represents a measure of the resolution of the document.
  * @member {Number} dpi
  */
-RequestedDocumentSpecification.prototype.dpi = undefined;
+RequestedDocumentSpecification.prototype.dpi = undefined
 
 /**
  * Indicates the position of the label on the paper. Should be the same value as returned in getRates response.
  * @member {String} pageLayout
  */
-RequestedDocumentSpecification.prototype.pageLayout = undefined;
+RequestedDocumentSpecification.prototype.pageLayout = undefined
 
 /**
  * When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
  * @member {Boolean} needFileJoining
  */
-RequestedDocumentSpecification.prototype.needFileJoining = undefined;
+RequestedDocumentSpecification.prototype.needFileJoining = undefined
 
 /**
  * A list of the document types requested.
  * @member {Array.<module:shipping_v2/model/DocumentType>} requestedDocumentTypes
  */
-RequestedDocumentSpecification.prototype.requestedDocumentTypes = undefined;
+RequestedDocumentSpecification.prototype.requestedDocumentTypes = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedLabelCustomization} requestedLabelCustomization
  */
-RequestedDocumentSpecification.prototype.requestedLabelCustomization = undefined;
-
-
+RequestedDocumentSpecification.prototype.requestedLabelCustomization = undefined

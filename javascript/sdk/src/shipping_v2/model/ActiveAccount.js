@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The ActiveAccount model module.
@@ -25,7 +25,7 @@ export class ActiveAccount {
    * @alias module:shipping_v2/model/ActiveAccount
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class ActiveAccount {
    * @param {module:shipping_v2/model/ActiveAccount} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ActiveAccount} The populated <code>ActiveAccount</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ActiveAccount();
-      if (data.hasOwnProperty('accountId'))
-        obj.accountId = ApiClient.convertToType(data['accountId'], 'String');
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
+      obj = obj || new ActiveAccount()
+      if (data.hasOwnProperty('accountId')) { obj.accountId = ApiClient.convertToType(data.accountId, 'String') }
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class ActiveAccount {
  * Identifier for the seller's carrier account.
  * @member {String} accountId
  */
-ActiveAccount.prototype.accountId = undefined;
+ActiveAccount.prototype.accountId = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-ActiveAccount.prototype.carrierId = undefined;
-
-
+ActiveAccount.prototype.carrierId = undefined

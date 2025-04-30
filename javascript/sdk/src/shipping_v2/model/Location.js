@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Location model module.
@@ -25,7 +25,7 @@ export class Location {
    * @alias module:shipping_v2/model/Location
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,30 +35,26 @@ export class Location {
    * @param {module:shipping_v2/model/Location} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Location} The populated <code>Location</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Location();
-      if (data.hasOwnProperty('stateOrRegion'))
-        obj.stateOrRegion = ApiClient.convertToType(data['stateOrRegion'], 'String');
-      if (data.hasOwnProperty('city'))
-        obj.city = ApiClient.convertToType(data['city'], 'String');
-      if (data.hasOwnProperty('countryCode'))
-        obj.countryCode = ApiClient.convertToType(data['countryCode'], 'String');
-      if (data.hasOwnProperty('postalCode'))
-        obj.postalCode = ApiClient.convertToType(data['postalCode'], 'String');
+      obj = obj || new Location()
+      if (data.hasOwnProperty('stateOrRegion')) { obj.stateOrRegion = ApiClient.convertToType(data.stateOrRegion, 'String') }
+      if (data.hasOwnProperty('city')) { obj.city = ApiClient.convertToType(data.city, 'String') }
+      if (data.hasOwnProperty('countryCode')) { obj.countryCode = ApiClient.convertToType(data.countryCode, 'String') }
+      if (data.hasOwnProperty('postalCode')) { obj.postalCode = ApiClient.convertToType(data.postalCode, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -66,24 +62,22 @@ export class Location {
  * The state, county or region where the person, business or institution is located.
  * @member {String} stateOrRegion
  */
-Location.prototype.stateOrRegion = undefined;
+Location.prototype.stateOrRegion = undefined
 
 /**
  * The city or town where the person, business or institution is located.
  * @member {String} city
  */
-Location.prototype.city = undefined;
+Location.prototype.city = undefined
 
 /**
  * The two digit country code. Follows ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
  */
-Location.prototype.countryCode = undefined;
+Location.prototype.countryCode = undefined
 
 /**
  * The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
  * @member {String} postalCode
  */
-Location.prototype.postalCode = undefined;
-
-
+Location.prototype.postalCode = undefined

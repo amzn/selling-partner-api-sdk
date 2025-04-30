@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Currency} from './Currency.js';
+import { ApiClient } from '../ApiClient.js'
+import { Currency } from './Currency.js'
 
 /**
  * The ChargeComponent model module.
@@ -26,7 +26,7 @@ export class ChargeComponent {
    * @alias module:shipping_v2/model/ChargeComponent
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,58 +36,54 @@ export class ChargeComponent {
    * @param {module:shipping_v2/model/ChargeComponent} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ChargeComponent} The populated <code>ChargeComponent</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ChargeComponent();
-      if (data.hasOwnProperty('amount'))
-        obj.amount = Currency.constructFromObject(data['amount']);
-      if (data.hasOwnProperty('chargeType'))
-        obj.chargeType = ApiClient.convertToType(data['chargeType'], 'String');
+      obj = obj || new ChargeComponent()
+      if (data.hasOwnProperty('amount')) { obj.amount = Currency.constructFromObject(data.amount) }
+      if (data.hasOwnProperty('chargeType')) { obj.chargeType = ApiClient.convertToType(data.chargeType, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Currency} amount
  */
-ChargeComponent.prototype.amount = undefined;
+ChargeComponent.prototype.amount = undefined
 
 /**
  * Allowed values for the <code>chargeType</code> property.
  * @enum {String}
  * @readonly
  */
-ChargeComponent['ChargeTypeEnum'] = {
+ChargeComponent.ChargeTypeEnum = {
 
-    /**
+  /**
      * value: "TAX"
      * @const
      */
-    "TAX": "TAX",
+  TAX: 'TAX',
 
-    /**
+  /**
      * value: "DISCOUNT"
      * @const
      */
-    "DISCOUNT": "DISCOUNT"
-};
+  DISCOUNT: 'DISCOUNT'
+}
 
 /**
  * The type of charge.
  * @member {module:shipping_v2/model/ChargeComponent.ChargeTypeEnum} chargeType
  */
-ChargeComponent.prototype.chargeType = undefined;
-
-
+ChargeComponent.prototype.chargeType = undefined

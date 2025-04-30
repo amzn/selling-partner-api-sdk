@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {GetRatesResult} from './GetRatesResult.js';
+import { ApiClient } from '../ApiClient.js'
+import { GetRatesResult } from './GetRatesResult.js'
 
 /**
  * The GetRatesResponse model module.
@@ -26,7 +26,7 @@ export class GetRatesResponse {
    * @alias module:shipping_v2/model/GetRatesResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class GetRatesResponse {
    * @param {module:shipping_v2/model/GetRatesResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetRatesResponse} The populated <code>GetRatesResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetRatesResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = GetRatesResult.constructFromObject(data['payload']);
+      obj = obj || new GetRatesResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = GetRatesResult.constructFromObject(data.payload) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/GetRatesResult} payload
  */
-GetRatesResponse.prototype.payload = undefined;
-
-
+GetRatesResponse.prototype.payload = undefined

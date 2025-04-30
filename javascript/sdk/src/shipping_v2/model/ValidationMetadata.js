@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The ValidationMetadata model module.
@@ -25,7 +25,7 @@ export class ValidationMetadata {
    * @alias module:shipping_v2/model/ValidationMetadata
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,28 +35,25 @@ export class ValidationMetadata {
    * @param {module:shipping_v2/model/ValidationMetadata} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ValidationMetadata} The populated <code>ValidationMetadata</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ValidationMetadata();
-      if (data.hasOwnProperty('errorMessage'))
-        obj.errorMessage = ApiClient.convertToType(data['errorMessage'], 'String');
-      if (data.hasOwnProperty('validationStrategy'))
-        obj.validationStrategy = ApiClient.convertToType(data['validationStrategy'], 'String');
-      if (data.hasOwnProperty('value'))
-        obj.value = ApiClient.convertToType(data['value'], 'String');
+      obj = obj || new ValidationMetadata()
+      if (data.hasOwnProperty('errorMessage')) { obj.errorMessage = ApiClient.convertToType(data.errorMessage, 'String') }
+      if (data.hasOwnProperty('validationStrategy')) { obj.validationStrategy = ApiClient.convertToType(data.validationStrategy, 'String') }
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -64,18 +61,16 @@ export class ValidationMetadata {
  * errorMessage for the error.
  * @member {String} errorMessage
  */
-ValidationMetadata.prototype.errorMessage = undefined;
+ValidationMetadata.prototype.errorMessage = undefined
 
 /**
  * validationStrategy for the error.
  * @member {String} validationStrategy
  */
-ValidationMetadata.prototype.validationStrategy = undefined;
+ValidationMetadata.prototype.validationStrategy = undefined
 
 /**
  * Value.
  * @member {String} value
  */
-ValidationMetadata.prototype.value = undefined;
-
-
+ValidationMetadata.prototype.value = undefined

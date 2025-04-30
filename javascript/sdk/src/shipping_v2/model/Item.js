@@ -11,13 +11,13 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Currency} from './Currency.js';
-import {DangerousGoodsDetails} from './DangerousGoodsDetails.js';
-import {DirectFulfillmentItemIdentifiers} from './DirectFulfillmentItemIdentifiers.js';
-import {InvoiceDetails} from './InvoiceDetails.js';
-import {LiquidVolume} from './LiquidVolume.js';
-import {Weight} from './Weight.js';
+import { ApiClient } from '../ApiClient.js'
+import { Currency } from './Currency.js'
+import { DangerousGoodsDetails } from './DangerousGoodsDetails.js'
+import { DirectFulfillmentItemIdentifiers } from './DirectFulfillmentItemIdentifiers.js'
+import { InvoiceDetails } from './InvoiceDetails.js'
+import { LiquidVolume } from './LiquidVolume.js'
+import { Weight } from './Weight.js'
 
 /**
  * The Item model module.
@@ -32,8 +32,8 @@ export class Item {
    * @class
    * @param quantity {Number} The number of units. This value is required.
    */
-  constructor(quantity) {
-    this.quantity = quantity;
+  constructor (quantity) {
+    this.quantity = quantity
   }
 
   /**
@@ -43,113 +43,99 @@ export class Item {
    * @param {module:shipping_v2/model/Item} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Item} The populated <code>Item</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Item();
-      if (data.hasOwnProperty('itemValue'))
-        obj.itemValue = Currency.constructFromObject(data['itemValue']);
-      if (data.hasOwnProperty('description'))
-        obj.description = ApiClient.convertToType(data['description'], 'String');
-      if (data.hasOwnProperty('itemIdentifier'))
-        obj.itemIdentifier = ApiClient.convertToType(data['itemIdentifier'], 'String');
-      if (data.hasOwnProperty('quantity'))
-        obj.quantity = ApiClient.convertToType(data['quantity'], 'Number');
-      if (data.hasOwnProperty('weight'))
-        obj.weight = Weight.constructFromObject(data['weight']);
-      if (data.hasOwnProperty('liquidVolume'))
-        obj.liquidVolume = LiquidVolume.constructFromObject(data['liquidVolume']);
-      if (data.hasOwnProperty('isHazmat'))
-        obj.isHazmat = ApiClient.convertToType(data['isHazmat'], 'Boolean');
-      if (data.hasOwnProperty('dangerousGoodsDetails'))
-        obj.dangerousGoodsDetails = DangerousGoodsDetails.constructFromObject(data['dangerousGoodsDetails']);
-      if (data.hasOwnProperty('productType'))
-        obj.productType = ApiClient.convertToType(data['productType'], 'String');
-      if (data.hasOwnProperty('invoiceDetails'))
-        obj.invoiceDetails = InvoiceDetails.constructFromObject(data['invoiceDetails']);
-      if (data.hasOwnProperty('serialNumbers'))
-        obj.serialNumbers = ApiClient.convertToType(data['serialNumbers'], ['String']);
-      if (data.hasOwnProperty('directFulfillmentItemIdentifiers'))
-        obj.directFulfillmentItemIdentifiers = DirectFulfillmentItemIdentifiers.constructFromObject(data['directFulfillmentItemIdentifiers']);
+      obj = obj || new Item()
+      if (data.hasOwnProperty('itemValue')) { obj.itemValue = Currency.constructFromObject(data.itemValue) }
+      if (data.hasOwnProperty('description')) { obj.description = ApiClient.convertToType(data.description, 'String') }
+      if (data.hasOwnProperty('itemIdentifier')) { obj.itemIdentifier = ApiClient.convertToType(data.itemIdentifier, 'String') }
+      if (data.hasOwnProperty('quantity')) { obj.quantity = ApiClient.convertToType(data.quantity, 'Number') }
+      if (data.hasOwnProperty('weight')) { obj.weight = Weight.constructFromObject(data.weight) }
+      if (data.hasOwnProperty('liquidVolume')) { obj.liquidVolume = LiquidVolume.constructFromObject(data.liquidVolume) }
+      if (data.hasOwnProperty('isHazmat')) { obj.isHazmat = ApiClient.convertToType(data.isHazmat, 'Boolean') }
+      if (data.hasOwnProperty('dangerousGoodsDetails')) { obj.dangerousGoodsDetails = DangerousGoodsDetails.constructFromObject(data.dangerousGoodsDetails) }
+      if (data.hasOwnProperty('productType')) { obj.productType = ApiClient.convertToType(data.productType, 'String') }
+      if (data.hasOwnProperty('invoiceDetails')) { obj.invoiceDetails = InvoiceDetails.constructFromObject(data.invoiceDetails) }
+      if (data.hasOwnProperty('serialNumbers')) { obj.serialNumbers = ApiClient.convertToType(data.serialNumbers, ['String']) }
+      if (data.hasOwnProperty('directFulfillmentItemIdentifiers')) { obj.directFulfillmentItemIdentifiers = DirectFulfillmentItemIdentifiers.constructFromObject(data.directFulfillmentItemIdentifiers) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Currency} itemValue
  */
-Item.prototype.itemValue = undefined;
+Item.prototype.itemValue = undefined
 
 /**
  * The product description of the item.
  * @member {String} description
  */
-Item.prototype.description = undefined;
+Item.prototype.description = undefined
 
 /**
  * A unique identifier for an item provided by the client.
  * @member {String} itemIdentifier
  */
-Item.prototype.itemIdentifier = undefined;
+Item.prototype.itemIdentifier = undefined
 
 /**
  * The number of units. This value is required.
  * @member {Number} quantity
  */
-Item.prototype.quantity = undefined;
+Item.prototype.quantity = undefined
 
 /**
  * @member {module:shipping_v2/model/Weight} weight
  */
-Item.prototype.weight = undefined;
+Item.prototype.weight = undefined
 
 /**
  * @member {module:shipping_v2/model/LiquidVolume} liquidVolume
  */
-Item.prototype.liquidVolume = undefined;
+Item.prototype.liquidVolume = undefined
 
 /**
  * When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
  * @member {Boolean} isHazmat
  */
-Item.prototype.isHazmat = undefined;
+Item.prototype.isHazmat = undefined
 
 /**
  * @member {module:shipping_v2/model/DangerousGoodsDetails} dangerousGoodsDetails
  */
-Item.prototype.dangerousGoodsDetails = undefined;
+Item.prototype.dangerousGoodsDetails = undefined
 
 /**
  * The product type of the item.
  * @member {String} productType
  */
-Item.prototype.productType = undefined;
+Item.prototype.productType = undefined
 
 /**
  * @member {module:shipping_v2/model/InvoiceDetails} invoiceDetails
  */
-Item.prototype.invoiceDetails = undefined;
+Item.prototype.invoiceDetails = undefined
 
 /**
  * A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.
  * @member {Array.<String>} serialNumbers
  */
-Item.prototype.serialNumbers = undefined;
+Item.prototype.serialNumbers = undefined
 
 /**
  * @member {module:shipping_v2/model/DirectFulfillmentItemIdentifiers} directFulfillmentItemIdentifiers
  */
-Item.prototype.directFulfillmentItemIdentifiers = undefined;
-
-
+Item.prototype.directFulfillmentItemIdentifiers = undefined

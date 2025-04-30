@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The ServiceSelection model module.
@@ -26,8 +26,8 @@ export class ServiceSelection {
    * @class
    * @param serviceId {Array.<String>} A list of ServiceId.
    */
-  constructor(serviceId) {
-    this.serviceId = serviceId;
+  constructor (serviceId) {
+    this.serviceId = serviceId
   }
 
   /**
@@ -37,24 +37,23 @@ export class ServiceSelection {
    * @param {module:shipping_v2/model/ServiceSelection} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ServiceSelection} The populated <code>ServiceSelection</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ServiceSelection();
-      if (data.hasOwnProperty('serviceId'))
-        obj.serviceId = ApiClient.convertToType(data['serviceId'], ['String']);
+      obj = obj || new ServiceSelection()
+      if (data.hasOwnProperty('serviceId')) { obj.serviceId = ApiClient.convertToType(data.serviceId, ['String']) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,6 +61,4 @@ export class ServiceSelection {
  * A list of ServiceId.
  * @member {Array.<String>} serviceId
  */
-ServiceSelection.prototype.serviceId = undefined;
-
-
+ServiceSelection.prototype.serviceId = undefined

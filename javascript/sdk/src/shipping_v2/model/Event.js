@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {EventCode} from './EventCode.js';
-import {Location} from './Location.js';
-import {ShipmentType} from './ShipmentType.js';
+import { ApiClient } from '../ApiClient.js'
+import { EventCode } from './EventCode.js'
+import { Location } from './Location.js'
+import { ShipmentType } from './ShipmentType.js'
 
 /**
  * The Event model module.
@@ -27,12 +27,12 @@ export class Event {
    * A tracking event.
    * @alias module:shipping_v2/model/Event
    * @class
-   * @param eventCode {module:shipping_v2/model/EventCode} 
+   * @param eventCode {module:shipping_v2/model/EventCode}
    * @param eventTime {Date} The ISO 8601 formatted timestamp of the event.
    */
-  constructor(eventCode, eventTime) {
-    this.eventCode = eventCode;
-    this.eventTime = eventTime;
+  constructor (eventCode, eventTime) {
+    this.eventCode = eventCode
+    this.eventTime = eventTime
   }
 
   /**
@@ -42,52 +42,46 @@ export class Event {
    * @param {module:shipping_v2/model/Event} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Event} The populated <code>Event</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Event();
-      if (data.hasOwnProperty('eventCode'))
-        obj.eventCode = EventCode.constructFromObject(data['eventCode']);
-      if (data.hasOwnProperty('location'))
-        obj.location = Location.constructFromObject(data['location']);
-      if (data.hasOwnProperty('eventTime'))
-        obj.eventTime = ApiClient.convertToType(data['eventTime'], 'Date');
-      if (data.hasOwnProperty('shipmentType'))
-        obj.shipmentType = ShipmentType.constructFromObject(data['shipmentType']);
+      obj = obj || new Event()
+      if (data.hasOwnProperty('eventCode')) { obj.eventCode = EventCode.constructFromObject(data.eventCode) }
+      if (data.hasOwnProperty('location')) { obj.location = Location.constructFromObject(data.location) }
+      if (data.hasOwnProperty('eventTime')) { obj.eventTime = ApiClient.convertToType(data.eventTime, 'Date') }
+      if (data.hasOwnProperty('shipmentType')) { obj.shipmentType = ShipmentType.constructFromObject(data.shipmentType) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/EventCode} eventCode
  */
-Event.prototype.eventCode = undefined;
+Event.prototype.eventCode = undefined
 
 /**
  * @member {module:shipping_v2/model/Location} location
  */
-Event.prototype.location = undefined;
+Event.prototype.location = undefined
 
 /**
  * The ISO 8601 formatted timestamp of the event.
  * @member {Date} eventTime
  */
-Event.prototype.eventTime = undefined;
+Event.prototype.eventTime = undefined
 
 /**
  * @member {module:shipping_v2/model/ShipmentType} shipmentType
  */
-Event.prototype.shipmentType = undefined;
-
-
+Event.prototype.shipmentType = undefined

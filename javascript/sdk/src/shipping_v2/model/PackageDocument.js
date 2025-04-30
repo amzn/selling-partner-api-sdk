@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DocumentFormat} from './DocumentFormat.js';
-import {DocumentType} from './DocumentType.js';
+import { ApiClient } from '../ApiClient.js'
+import { DocumentFormat } from './DocumentFormat.js'
+import { DocumentType } from './DocumentType.js'
 
 /**
  * The PackageDocument model module.
@@ -26,14 +26,14 @@ export class PackageDocument {
    * A document related to a package.
    * @alias module:shipping_v2/model/PackageDocument
    * @class
-   * @param type {module:shipping_v2/model/DocumentType} 
-   * @param format {module:shipping_v2/model/DocumentFormat} 
+   * @param type {module:shipping_v2/model/DocumentType}
+   * @param format {module:shipping_v2/model/DocumentFormat}
    * @param contents {String} A Base64 encoded string of the file contents.
    */
-  constructor(type, format, contents) {
-    this.type = type;
-    this.format = format;
-    this.contents = contents;
+  constructor (type, format, contents) {
+    this.type = type
+    this.format = format
+    this.contents = contents
   }
 
   /**
@@ -43,45 +43,40 @@ export class PackageDocument {
    * @param {module:shipping_v2/model/PackageDocument} obj Optional instance to populate.
    * @return {module:shipping_v2/model/PackageDocument} The populated <code>PackageDocument</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new PackageDocument();
-      if (data.hasOwnProperty('type'))
-        obj.type = DocumentType.constructFromObject(data['type']);
-      if (data.hasOwnProperty('format'))
-        obj.format = DocumentFormat.constructFromObject(data['format']);
-      if (data.hasOwnProperty('contents'))
-        obj.contents = ApiClient.convertToType(data['contents'], 'String');
+      obj = obj || new PackageDocument()
+      if (data.hasOwnProperty('type')) { obj.type = DocumentType.constructFromObject(data.type) }
+      if (data.hasOwnProperty('format')) { obj.format = DocumentFormat.constructFromObject(data.format) }
+      if (data.hasOwnProperty('contents')) { obj.contents = ApiClient.convertToType(data.contents, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/DocumentType} type
  */
-PackageDocument.prototype.type = undefined;
+PackageDocument.prototype.type = undefined
 
 /**
  * @member {module:shipping_v2/model/DocumentFormat} format
  */
-PackageDocument.prototype.format = undefined;
+PackageDocument.prototype.format = undefined
 
 /**
  * A Base64 encoded string of the file contents.
  * @member {String} contents
  */
-PackageDocument.prototype.contents = undefined;
-
-
+PackageDocument.prototype.contents = undefined

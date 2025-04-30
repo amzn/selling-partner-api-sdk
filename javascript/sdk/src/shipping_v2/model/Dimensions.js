@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Dimensions model module.
@@ -29,11 +29,11 @@ export class Dimensions {
    * @param height {Number} The height of the package.
    * @param unit {module:shipping_v2/model/Dimensions.UnitEnum} The unit of measurement.
    */
-  constructor(length, width, height, unit) {
-    this.length = length;
-    this.width = width;
-    this.height = height;
-    this.unit = unit;
+  constructor (length, width, height, unit) {
+    this.length = length
+    this.width = width
+    this.height = height
+    this.unit = unit
   }
 
   /**
@@ -43,30 +43,26 @@ export class Dimensions {
    * @param {module:shipping_v2/model/Dimensions} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Dimensions} The populated <code>Dimensions</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Dimensions();
-      if (data.hasOwnProperty('length'))
-        obj.length = ApiClient.convertToType(data['length'], 'Number');
-      if (data.hasOwnProperty('width'))
-        obj.width = ApiClient.convertToType(data['width'], 'Number');
-      if (data.hasOwnProperty('height'))
-        obj.height = ApiClient.convertToType(data['height'], 'Number');
-      if (data.hasOwnProperty('unit'))
-        obj.unit = ApiClient.convertToType(data['unit'], 'String');
+      obj = obj || new Dimensions()
+      if (data.hasOwnProperty('length')) { obj.length = ApiClient.convertToType(data.length, 'Number') }
+      if (data.hasOwnProperty('width')) { obj.width = ApiClient.convertToType(data.width, 'Number') }
+      if (data.hasOwnProperty('height')) { obj.height = ApiClient.convertToType(data.height, 'Number') }
+      if (data.hasOwnProperty('unit')) { obj.unit = ApiClient.convertToType(data.unit, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -74,44 +70,42 @@ export class Dimensions {
  * The length of the package.
  * @member {Number} length
  */
-Dimensions.prototype.length = undefined;
+Dimensions.prototype.length = undefined
 
 /**
  * The width of the package.
  * @member {Number} width
  */
-Dimensions.prototype.width = undefined;
+Dimensions.prototype.width = undefined
 
 /**
  * The height of the package.
  * @member {Number} height
  */
-Dimensions.prototype.height = undefined;
+Dimensions.prototype.height = undefined
 
 /**
  * Allowed values for the <code>unit</code> property.
  * @enum {String}
  * @readonly
  */
-Dimensions['UnitEnum'] = {
+Dimensions.UnitEnum = {
 
-    /**
+  /**
      * value: "INCH"
      * @const
      */
-    "INCH": "INCH",
+  INCH: 'INCH',
 
-    /**
+  /**
      * value: "CENTIMETER"
      * @const
      */
-    "CENTIMETER": "CENTIMETER"
-};
+  CENTIMETER: 'CENTIMETER'
+}
 
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/Dimensions.UnitEnum} unit
  */
-Dimensions.prototype.unit = undefined;
-
-
+Dimensions.prototype.unit = undefined

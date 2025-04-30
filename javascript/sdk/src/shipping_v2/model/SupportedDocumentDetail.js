@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DocumentType} from './DocumentType.js';
+import { ApiClient } from '../ApiClient.js'
+import { DocumentType } from './DocumentType.js'
 
 /**
  * The SupportedDocumentDetail model module.
@@ -25,12 +25,12 @@ export class SupportedDocumentDetail {
    * The supported document types for a service offering.
    * @alias module:shipping_v2/model/SupportedDocumentDetail
    * @class
-   * @param name {module:shipping_v2/model/DocumentType} 
+   * @param name {module:shipping_v2/model/DocumentType}
    * @param isMandatory {Boolean} When true, the supported document type is required.
    */
-  constructor(name, isMandatory) {
-    this.name = name;
-    this.isMandatory = isMandatory;
+  constructor (name, isMandatory) {
+    this.name = name
+    this.isMandatory = isMandatory
   }
 
   /**
@@ -40,38 +40,34 @@ export class SupportedDocumentDetail {
    * @param {module:shipping_v2/model/SupportedDocumentDetail} obj Optional instance to populate.
    * @return {module:shipping_v2/model/SupportedDocumentDetail} The populated <code>SupportedDocumentDetail</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new SupportedDocumentDetail();
-      if (data.hasOwnProperty('name'))
-        obj.name = DocumentType.constructFromObject(data['name']);
-      if (data.hasOwnProperty('isMandatory'))
-        obj.isMandatory = ApiClient.convertToType(data['isMandatory'], 'Boolean');
+      obj = obj || new SupportedDocumentDetail()
+      if (data.hasOwnProperty('name')) { obj.name = DocumentType.constructFromObject(data.name) }
+      if (data.hasOwnProperty('isMandatory')) { obj.isMandatory = ApiClient.convertToType(data.isMandatory, 'Boolean') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/DocumentType} name
  */
-SupportedDocumentDetail.prototype.name = undefined;
+SupportedDocumentDetail.prototype.name = undefined
 
 /**
  * When true, the supported document type is required.
  * @member {Boolean} isMandatory
  */
-SupportedDocumentDetail.prototype.isMandatory = undefined;
-
-
+SupportedDocumentDetail.prototype.isMandatory = undefined

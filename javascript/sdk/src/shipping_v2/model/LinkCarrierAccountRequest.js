@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {CarrierAccountAttribute} from './CarrierAccountAttribute.js';
-import {ClientReferenceDetail} from './ClientReferenceDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { CarrierAccountAttribute } from './CarrierAccountAttribute.js'
+import { ClientReferenceDetail } from './ClientReferenceDetail.js'
 
 /**
  * The LinkCarrierAccountRequest model module.
@@ -29,9 +29,9 @@ export class LinkCarrierAccountRequest {
    * @param carrierAccountType {String} CarrierAccountType  associated with account.
    * @param carrierAccountAttributes {Array.<module:shipping_v2/model/CarrierAccountAttribute>} A list of all attributes required by the carrier in order to successfully link the merchant's account
    */
-  constructor(carrierAccountType, carrierAccountAttributes) {
-    this.carrierAccountType = carrierAccountType;
-    this.carrierAccountAttributes = carrierAccountAttributes;
+  constructor (carrierAccountType, carrierAccountAttributes) {
+    this.carrierAccountType = carrierAccountType
+    this.carrierAccountAttributes = carrierAccountAttributes
   }
 
   /**
@@ -41,30 +41,26 @@ export class LinkCarrierAccountRequest {
    * @param {module:shipping_v2/model/LinkCarrierAccountRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/LinkCarrierAccountRequest} The populated <code>LinkCarrierAccountRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new LinkCarrierAccountRequest();
-      if (data.hasOwnProperty('clientReferenceDetails'))
-        obj.clientReferenceDetails = ApiClient.convertToType(data['clientReferenceDetails'], [ClientReferenceDetail]);
-      if (data.hasOwnProperty('carrierAccountType'))
-        obj.carrierAccountType = ApiClient.convertToType(data['carrierAccountType'], 'String');
-      if (data.hasOwnProperty('carrierAccountAttributes'))
-        obj.carrierAccountAttributes = ApiClient.convertToType(data['carrierAccountAttributes'], [CarrierAccountAttribute]);
-      if (data.hasOwnProperty('encryptedCarrierAccountAttributes'))
-        obj.encryptedCarrierAccountAttributes = ApiClient.convertToType(data['encryptedCarrierAccountAttributes'], [CarrierAccountAttribute]);
+      obj = obj || new LinkCarrierAccountRequest()
+      if (data.hasOwnProperty('clientReferenceDetails')) { obj.clientReferenceDetails = ApiClient.convertToType(data.clientReferenceDetails, [ClientReferenceDetail]) }
+      if (data.hasOwnProperty('carrierAccountType')) { obj.carrierAccountType = ApiClient.convertToType(data.carrierAccountType, 'String') }
+      if (data.hasOwnProperty('carrierAccountAttributes')) { obj.carrierAccountAttributes = ApiClient.convertToType(data.carrierAccountAttributes, [CarrierAccountAttribute]) }
+      if (data.hasOwnProperty('encryptedCarrierAccountAttributes')) { obj.encryptedCarrierAccountAttributes = ApiClient.convertToType(data.encryptedCarrierAccountAttributes, [CarrierAccountAttribute]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -72,24 +68,22 @@ export class LinkCarrierAccountRequest {
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
  */
-LinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined;
+LinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * CarrierAccountType  associated with account.
  * @member {String} carrierAccountType
  */
-LinkCarrierAccountRequest.prototype.carrierAccountType = undefined;
+LinkCarrierAccountRequest.prototype.carrierAccountType = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
  * @member {Array.<module:shipping_v2/model/CarrierAccountAttribute>} carrierAccountAttributes
  */
-LinkCarrierAccountRequest.prototype.carrierAccountAttributes = undefined;
+LinkCarrierAccountRequest.prototype.carrierAccountAttributes = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
  * @member {Array.<module:shipping_v2/model/CarrierAccountAttribute>} encryptedCarrierAccountAttributes
  */
-LinkCarrierAccountRequest.prototype.encryptedCarrierAccountAttributes = undefined;
-
-
+LinkCarrierAccountRequest.prototype.encryptedCarrierAccountAttributes = undefined

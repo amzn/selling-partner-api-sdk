@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {OneClickShipmentResult} from './OneClickShipmentResult.js';
+import { ApiClient } from '../ApiClient.js'
+import { OneClickShipmentResult } from './OneClickShipmentResult.js'
 
 /**
  * The OneClickShipmentResponse model module.
@@ -26,7 +26,7 @@ export class OneClickShipmentResponse {
    * @alias module:shipping_v2/model/OneClickShipmentResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class OneClickShipmentResponse {
    * @param {module:shipping_v2/model/OneClickShipmentResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/OneClickShipmentResponse} The populated <code>OneClickShipmentResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new OneClickShipmentResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = OneClickShipmentResult.constructFromObject(data['payload']);
+      obj = obj || new OneClickShipmentResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = OneClickShipmentResult.constructFromObject(data.payload) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/OneClickShipmentResult} payload
  */
-OneClickShipmentResponse.prototype.payload = undefined;
-
-
+OneClickShipmentResponse.prototype.payload = undefined

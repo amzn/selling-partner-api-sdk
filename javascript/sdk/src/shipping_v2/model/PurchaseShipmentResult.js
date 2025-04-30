@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Benefits} from './Benefits.js';
-import {PackageDocumentDetail} from './PackageDocumentDetail.js';
-import {Promise} from './Promise.js';
+import { ApiClient } from '../ApiClient.js'
+import { Benefits } from './Benefits.js'
+import { PackageDocumentDetail } from './PackageDocumentDetail.js'
+import { Promise } from './Promise.js'
 
 /**
  * The PurchaseShipmentResult model module.
@@ -29,12 +29,12 @@ export class PurchaseShipmentResult {
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
    * @param packageDocumentDetails {Array.<module:shipping_v2/model/PackageDocumentDetail>} A list of post-purchase details about a package that will be shipped using a shipping service.
-   * @param promise {module:shipping_v2/model/Promise} 
+   * @param promise {module:shipping_v2/model/Promise}
    */
-  constructor(shipmentId, packageDocumentDetails, promise) {
-    this.shipmentId = shipmentId;
-    this.packageDocumentDetails = packageDocumentDetails;
-    this.promise = promise;
+  constructor (shipmentId, packageDocumentDetails, promise) {
+    this.shipmentId = shipmentId
+    this.packageDocumentDetails = packageDocumentDetails
+    this.promise = promise
   }
 
   /**
@@ -44,30 +44,26 @@ export class PurchaseShipmentResult {
    * @param {module:shipping_v2/model/PurchaseShipmentResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/PurchaseShipmentResult} The populated <code>PurchaseShipmentResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new PurchaseShipmentResult();
-      if (data.hasOwnProperty('shipmentId'))
-        obj.shipmentId = ApiClient.convertToType(data['shipmentId'], 'String');
-      if (data.hasOwnProperty('packageDocumentDetails'))
-        obj.packageDocumentDetails = ApiClient.convertToType(data['packageDocumentDetails'], [PackageDocumentDetail]);
-      if (data.hasOwnProperty('promise'))
-        obj.promise = Promise.constructFromObject(data['promise']);
-      if (data.hasOwnProperty('benefits'))
-        obj.benefits = Benefits.constructFromObject(data['benefits']);
+      obj = obj || new PurchaseShipmentResult()
+      if (data.hasOwnProperty('shipmentId')) { obj.shipmentId = ApiClient.convertToType(data.shipmentId, 'String') }
+      if (data.hasOwnProperty('packageDocumentDetails')) { obj.packageDocumentDetails = ApiClient.convertToType(data.packageDocumentDetails, [PackageDocumentDetail]) }
+      if (data.hasOwnProperty('promise')) { obj.promise = Promise.constructFromObject(data.promise) }
+      if (data.hasOwnProperty('benefits')) { obj.benefits = Benefits.constructFromObject(data.benefits) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -75,22 +71,20 @@ export class PurchaseShipmentResult {
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
  */
-PurchaseShipmentResult.prototype.shipmentId = undefined;
+PurchaseShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
  * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetails
  */
-PurchaseShipmentResult.prototype.packageDocumentDetails = undefined;
+PurchaseShipmentResult.prototype.packageDocumentDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/Promise} promise
  */
-PurchaseShipmentResult.prototype.promise = undefined;
+PurchaseShipmentResult.prototype.promise = undefined
 
 /**
  * @member {module:shipping_v2/model/Benefits} benefits
  */
-PurchaseShipmentResult.prototype.benefits = undefined;
-
-
+PurchaseShipmentResult.prototype.benefits = undefined

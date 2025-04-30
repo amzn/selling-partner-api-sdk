@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Event} from './Event.js';
-import {TrackingSummary} from './TrackingSummary.js';
+import { ApiClient } from '../ApiClient.js'
+import { Event } from './Event.js'
+import { TrackingSummary } from './TrackingSummary.js'
 
 /**
  * The GetTrackingResult model module.
@@ -30,14 +30,14 @@ export class GetTrackingResult {
    * @param alternateLegTrackingId {String} The carrier generated reverse identifier for a returned package in a purchased shipment.
    * @param eventHistory {Array.<module:shipping_v2/model/Event>} A list of tracking events.
    * @param promisedDeliveryDate {Date} The date and time by which the shipment is promised to be delivered.
-   * @param summary {module:shipping_v2/model/TrackingSummary} 
+   * @param summary {module:shipping_v2/model/TrackingSummary}
    */
-  constructor(trackingId, alternateLegTrackingId, eventHistory, promisedDeliveryDate, summary) {
-    this.trackingId = trackingId;
-    this.alternateLegTrackingId = alternateLegTrackingId;
-    this.eventHistory = eventHistory;
-    this.promisedDeliveryDate = promisedDeliveryDate;
-    this.summary = summary;
+  constructor (trackingId, alternateLegTrackingId, eventHistory, promisedDeliveryDate, summary) {
+    this.trackingId = trackingId
+    this.alternateLegTrackingId = alternateLegTrackingId
+    this.eventHistory = eventHistory
+    this.promisedDeliveryDate = promisedDeliveryDate
+    this.summary = summary
   }
 
   /**
@@ -47,32 +47,27 @@ export class GetTrackingResult {
    * @param {module:shipping_v2/model/GetTrackingResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetTrackingResult} The populated <code>GetTrackingResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetTrackingResult();
-      if (data.hasOwnProperty('trackingId'))
-        obj.trackingId = ApiClient.convertToType(data['trackingId'], 'String');
-      if (data.hasOwnProperty('alternateLegTrackingId'))
-        obj.alternateLegTrackingId = ApiClient.convertToType(data['alternateLegTrackingId'], 'String');
-      if (data.hasOwnProperty('eventHistory'))
-        obj.eventHistory = ApiClient.convertToType(data['eventHistory'], [Event]);
-      if (data.hasOwnProperty('promisedDeliveryDate'))
-        obj.promisedDeliveryDate = ApiClient.convertToType(data['promisedDeliveryDate'], 'Date');
-      if (data.hasOwnProperty('summary'))
-        obj.summary = TrackingSummary.constructFromObject(data['summary']);
+      obj = obj || new GetTrackingResult()
+      if (data.hasOwnProperty('trackingId')) { obj.trackingId = ApiClient.convertToType(data.trackingId, 'String') }
+      if (data.hasOwnProperty('alternateLegTrackingId')) { obj.alternateLegTrackingId = ApiClient.convertToType(data.alternateLegTrackingId, 'String') }
+      if (data.hasOwnProperty('eventHistory')) { obj.eventHistory = ApiClient.convertToType(data.eventHistory, [Event]) }
+      if (data.hasOwnProperty('promisedDeliveryDate')) { obj.promisedDeliveryDate = ApiClient.convertToType(data.promisedDeliveryDate, 'Date') }
+      if (data.hasOwnProperty('summary')) { obj.summary = TrackingSummary.constructFromObject(data.summary) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -80,29 +75,27 @@ export class GetTrackingResult {
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
  */
-GetTrackingResult.prototype.trackingId = undefined;
+GetTrackingResult.prototype.trackingId = undefined
 
 /**
  * The carrier generated reverse identifier for a returned package in a purchased shipment.
  * @member {String} alternateLegTrackingId
  */
-GetTrackingResult.prototype.alternateLegTrackingId = undefined;
+GetTrackingResult.prototype.alternateLegTrackingId = undefined
 
 /**
  * A list of tracking events.
  * @member {Array.<module:shipping_v2/model/Event>} eventHistory
  */
-GetTrackingResult.prototype.eventHistory = undefined;
+GetTrackingResult.prototype.eventHistory = undefined
 
 /**
  * The date and time by which the shipment is promised to be delivered.
  * @member {Date} promisedDeliveryDate
  */
-GetTrackingResult.prototype.promisedDeliveryDate = undefined;
+GetTrackingResult.prototype.promisedDeliveryDate = undefined
 
 /**
  * @member {module:shipping_v2/model/TrackingSummary} summary
  */
-GetTrackingResult.prototype.summary = undefined;
-
-
+GetTrackingResult.prototype.summary = undefined

@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Currency} from './Currency.js';
+import { ApiClient } from '../ApiClient.js'
+import { Currency } from './Currency.js'
 
 /**
  * The CollectOnDelivery model module.
@@ -25,10 +25,10 @@ export class CollectOnDelivery {
    * The amount to collect on delivery.
    * @alias module:shipping_v2/model/CollectOnDelivery
    * @class
-   * @param amount {module:shipping_v2/model/Currency} 
+   * @param amount {module:shipping_v2/model/Currency}
    */
-  constructor(amount) {
-    this.amount = amount;
+  constructor (amount) {
+    this.amount = amount
   }
 
   /**
@@ -38,30 +38,27 @@ export class CollectOnDelivery {
    * @param {module:shipping_v2/model/CollectOnDelivery} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CollectOnDelivery} The populated <code>CollectOnDelivery</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CollectOnDelivery();
-      if (data.hasOwnProperty('amount'))
-        obj.amount = Currency.constructFromObject(data['amount']);
+      obj = obj || new CollectOnDelivery()
+      if (data.hasOwnProperty('amount')) { obj.amount = Currency.constructFromObject(data.amount) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Currency} amount
  */
-CollectOnDelivery.prototype.amount = undefined;
-
-
+CollectOnDelivery.prototype.amount = undefined

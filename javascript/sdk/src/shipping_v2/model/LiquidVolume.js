@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The LiquidVolume model module.
@@ -27,9 +27,9 @@ export class LiquidVolume {
    * @param unit {module:shipping_v2/model/LiquidVolume.UnitEnum} The unit of measurement.
    * @param value {Number} The measurement value.
    */
-  constructor(unit, value) {
-    this.unit = unit;
-    this.value = value;
+  constructor (unit, value) {
+    this.unit = unit
+    this.value = value
   }
 
   /**
@@ -39,26 +39,24 @@ export class LiquidVolume {
    * @param {module:shipping_v2/model/LiquidVolume} obj Optional instance to populate.
    * @return {module:shipping_v2/model/LiquidVolume} The populated <code>LiquidVolume</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new LiquidVolume();
-      if (data.hasOwnProperty('unit'))
-        obj.unit = ApiClient.convertToType(data['unit'], 'String');
-      if (data.hasOwnProperty('value'))
-        obj.value = ApiClient.convertToType(data['value'], 'Number');
+      obj = obj || new LiquidVolume()
+      if (data.hasOwnProperty('unit')) { obj.unit = ApiClient.convertToType(data.unit, 'String') }
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'Number') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -67,61 +65,59 @@ export class LiquidVolume {
  * @enum {String}
  * @readonly
  */
-LiquidVolume['UnitEnum'] = {
+LiquidVolume.UnitEnum = {
 
-    /**
+  /**
      * value: "ML"
      * @const
      */
-    "ML": "ML",
+  ML: 'ML',
 
-    /**
+  /**
      * value: "L"
      * @const
      */
-    "L": "L",
+  L: 'L',
 
-    /**
+  /**
      * value: "FL_OZ"
      * @const
      */
-    "FL_OZ": "FL_OZ",
+  FL_OZ: 'FL_OZ',
 
-    /**
+  /**
      * value: "GAL"
      * @const
      */
-    "GAL": "GAL",
+  GAL: 'GAL',
 
-    /**
+  /**
      * value: "PT"
      * @const
      */
-    "PT": "PT",
+  PT: 'PT',
 
-    /**
+  /**
      * value: "QT"
      * @const
      */
-    "QT": "QT",
+  QT: 'QT',
 
-    /**
+  /**
      * value: "C"
      * @const
      */
-    "C": "C"
-};
+  C: 'C'
+}
 
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/LiquidVolume.UnitEnum} unit
  */
-LiquidVolume.prototype.unit = undefined;
+LiquidVolume.prototype.unit = undefined
 
 /**
  * The measurement value.
  * @member {Number} value
  */
-LiquidVolume.prototype.value = undefined;
-
-
+LiquidVolume.prototype.value = undefined

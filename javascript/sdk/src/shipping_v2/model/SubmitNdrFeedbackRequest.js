@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {NdrAction} from './NdrAction.js';
-import {NdrRequestData} from './NdrRequestData.js';
+import { ApiClient } from '../ApiClient.js'
+import { NdrAction } from './NdrAction.js'
+import { NdrRequestData } from './NdrRequestData.js'
 
 /**
  * The SubmitNdrFeedbackRequest model module.
@@ -27,11 +27,11 @@ export class SubmitNdrFeedbackRequest {
    * @alias module:shipping_v2/model/SubmitNdrFeedbackRequest
    * @class
    * @param trackingId {String} The carrier generated identifier for a package in a purchased shipment.
-   * @param ndrAction {module:shipping_v2/model/NdrAction} 
+   * @param ndrAction {module:shipping_v2/model/NdrAction}
    */
-  constructor(trackingId, ndrAction) {
-    this.trackingId = trackingId;
-    this.ndrAction = ndrAction;
+  constructor (trackingId, ndrAction) {
+    this.trackingId = trackingId
+    this.ndrAction = ndrAction
   }
 
   /**
@@ -41,28 +41,25 @@ export class SubmitNdrFeedbackRequest {
    * @param {module:shipping_v2/model/SubmitNdrFeedbackRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/SubmitNdrFeedbackRequest} The populated <code>SubmitNdrFeedbackRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new SubmitNdrFeedbackRequest();
-      if (data.hasOwnProperty('trackingId'))
-        obj.trackingId = ApiClient.convertToType(data['trackingId'], 'String');
-      if (data.hasOwnProperty('ndrAction'))
-        obj.ndrAction = NdrAction.constructFromObject(data['ndrAction']);
-      if (data.hasOwnProperty('ndrRequestData'))
-        obj.ndrRequestData = NdrRequestData.constructFromObject(data['ndrRequestData']);
+      obj = obj || new SubmitNdrFeedbackRequest()
+      if (data.hasOwnProperty('trackingId')) { obj.trackingId = ApiClient.convertToType(data.trackingId, 'String') }
+      if (data.hasOwnProperty('ndrAction')) { obj.ndrAction = NdrAction.constructFromObject(data.ndrAction) }
+      if (data.hasOwnProperty('ndrRequestData')) { obj.ndrRequestData = NdrRequestData.constructFromObject(data.ndrRequestData) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -70,16 +67,14 @@ export class SubmitNdrFeedbackRequest {
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
  */
-SubmitNdrFeedbackRequest.prototype.trackingId = undefined;
+SubmitNdrFeedbackRequest.prototype.trackingId = undefined
 
 /**
  * @member {module:shipping_v2/model/NdrAction} ndrAction
  */
-SubmitNdrFeedbackRequest.prototype.ndrAction = undefined;
+SubmitNdrFeedbackRequest.prototype.ndrAction = undefined
 
 /**
  * @member {module:shipping_v2/model/NdrRequestData} ndrRequestData
  */
-SubmitNdrFeedbackRequest.prototype.ndrRequestData = undefined;
-
-
+SubmitNdrFeedbackRequest.prototype.ndrRequestData = undefined

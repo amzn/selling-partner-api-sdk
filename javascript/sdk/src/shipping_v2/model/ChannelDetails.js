@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {AmazonOrderDetails} from './AmazonOrderDetails.js';
-import {AmazonShipmentDetails} from './AmazonShipmentDetails.js';
-import {ChannelType} from './ChannelType.js';
+import { ApiClient } from '../ApiClient.js'
+import { AmazonOrderDetails } from './AmazonOrderDetails.js'
+import { AmazonShipmentDetails } from './AmazonShipmentDetails.js'
+import { ChannelType } from './ChannelType.js'
 
 /**
  * The ChannelDetails model module.
@@ -27,10 +27,10 @@ export class ChannelDetails {
    * Shipment source channel related information.
    * @alias module:shipping_v2/model/ChannelDetails
    * @class
-   * @param channelType {module:shipping_v2/model/ChannelType} 
+   * @param channelType {module:shipping_v2/model/ChannelType}
    */
-  constructor(channelType) {
-    this.channelType = channelType;
+  constructor (channelType) {
+    this.channelType = channelType
   }
 
   /**
@@ -40,44 +40,39 @@ export class ChannelDetails {
    * @param {module:shipping_v2/model/ChannelDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ChannelDetails} The populated <code>ChannelDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ChannelDetails();
-      if (data.hasOwnProperty('channelType'))
-        obj.channelType = ChannelType.constructFromObject(data['channelType']);
-      if (data.hasOwnProperty('amazonOrderDetails'))
-        obj.amazonOrderDetails = AmazonOrderDetails.constructFromObject(data['amazonOrderDetails']);
-      if (data.hasOwnProperty('amazonShipmentDetails'))
-        obj.amazonShipmentDetails = AmazonShipmentDetails.constructFromObject(data['amazonShipmentDetails']);
+      obj = obj || new ChannelDetails()
+      if (data.hasOwnProperty('channelType')) { obj.channelType = ChannelType.constructFromObject(data.channelType) }
+      if (data.hasOwnProperty('amazonOrderDetails')) { obj.amazonOrderDetails = AmazonOrderDetails.constructFromObject(data.amazonOrderDetails) }
+      if (data.hasOwnProperty('amazonShipmentDetails')) { obj.amazonShipmentDetails = AmazonShipmentDetails.constructFromObject(data.amazonShipmentDetails) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/ChannelType} channelType
  */
-ChannelDetails.prototype.channelType = undefined;
+ChannelDetails.prototype.channelType = undefined
 
 /**
  * @member {module:shipping_v2/model/AmazonOrderDetails} amazonOrderDetails
  */
-ChannelDetails.prototype.amazonOrderDetails = undefined;
+ChannelDetails.prototype.amazonOrderDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/AmazonShipmentDetails} amazonShipmentDetails
  */
-ChannelDetails.prototype.amazonShipmentDetails = undefined;
-
-
+ChannelDetails.prototype.amazonShipmentDetails = undefined

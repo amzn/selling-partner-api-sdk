@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ClaimReason} from './ClaimReason.js';
-import {Currency} from './Currency.js';
-import {SettlementType} from './SettlementType.js';
+import { ApiClient } from '../ApiClient.js'
+import { ClaimReason } from './ClaimReason.js'
+import { Currency } from './Currency.js'
+import { SettlementType } from './SettlementType.js'
 
 /**
  * The CreateClaimRequest model module.
@@ -28,13 +28,13 @@ export class CreateClaimRequest {
    * @alias module:shipping_v2/model/CreateClaimRequest
    * @class
    * @param trackingId {String} The carrier generated identifier for a package in a purchased shipment.
-   * @param claimReason {module:shipping_v2/model/ClaimReason} 
-   * @param settlementType {module:shipping_v2/model/SettlementType} 
+   * @param claimReason {module:shipping_v2/model/ClaimReason}
+   * @param settlementType {module:shipping_v2/model/SettlementType}
    */
-  constructor(trackingId, claimReason, settlementType) {
-    this.trackingId = trackingId;
-    this.claimReason = claimReason;
-    this.settlementType = settlementType;
+  constructor (trackingId, claimReason, settlementType) {
+    this.trackingId = trackingId
+    this.claimReason = claimReason
+    this.settlementType = settlementType
   }
 
   /**
@@ -44,34 +44,28 @@ export class CreateClaimRequest {
    * @param {module:shipping_v2/model/CreateClaimRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CreateClaimRequest} The populated <code>CreateClaimRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CreateClaimRequest();
-      if (data.hasOwnProperty('trackingId'))
-        obj.trackingId = ApiClient.convertToType(data['trackingId'], 'String');
-      if (data.hasOwnProperty('declaredValue'))
-        obj.declaredValue = Currency.constructFromObject(data['declaredValue']);
-      if (data.hasOwnProperty('claimReason'))
-        obj.claimReason = ClaimReason.constructFromObject(data['claimReason']);
-      if (data.hasOwnProperty('isReplacementPackageSent'))
-        obj.isReplacementPackageSent = ApiClient.convertToType(data['isReplacementPackageSent'], 'Boolean');
-      if (data.hasOwnProperty('proofs'))
-        obj.proofs = ApiClient.convertToType(data['proofs'], ['String']);
-      if (data.hasOwnProperty('settlementType'))
-        obj.settlementType = SettlementType.constructFromObject(data['settlementType']);
+      obj = obj || new CreateClaimRequest()
+      if (data.hasOwnProperty('trackingId')) { obj.trackingId = ApiClient.convertToType(data.trackingId, 'String') }
+      if (data.hasOwnProperty('declaredValue')) { obj.declaredValue = Currency.constructFromObject(data.declaredValue) }
+      if (data.hasOwnProperty('claimReason')) { obj.claimReason = ClaimReason.constructFromObject(data.claimReason) }
+      if (data.hasOwnProperty('isReplacementPackageSent')) { obj.isReplacementPackageSent = ApiClient.convertToType(data.isReplacementPackageSent, 'Boolean') }
+      if (data.hasOwnProperty('proofs')) { obj.proofs = ApiClient.convertToType(data.proofs, ['String']) }
+      if (data.hasOwnProperty('settlementType')) { obj.settlementType = SettlementType.constructFromObject(data.settlementType) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -79,33 +73,31 @@ export class CreateClaimRequest {
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
  */
-CreateClaimRequest.prototype.trackingId = undefined;
+CreateClaimRequest.prototype.trackingId = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} declaredValue
  */
-CreateClaimRequest.prototype.declaredValue = undefined;
+CreateClaimRequest.prototype.declaredValue = undefined
 
 /**
  * @member {module:shipping_v2/model/ClaimReason} claimReason
  */
-CreateClaimRequest.prototype.claimReason = undefined;
+CreateClaimRequest.prototype.claimReason = undefined
 
 /**
  * Applicable for only On Amazon shipments to identify if replacement was sent
  * @member {Boolean} isReplacementPackageSent
  */
-CreateClaimRequest.prototype.isReplacementPackageSent = undefined;
+CreateClaimRequest.prototype.isReplacementPackageSent = undefined
 
 /**
  * A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
  * @member {Array.<String>} proofs
  */
-CreateClaimRequest.prototype.proofs = undefined;
+CreateClaimRequest.prototype.proofs = undefined
 
 /**
  * @member {module:shipping_v2/model/SettlementType} settlementType
  */
-CreateClaimRequest.prototype.settlementType = undefined;
-
-
+CreateClaimRequest.prototype.settlementType = undefined

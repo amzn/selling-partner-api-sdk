@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The CreateClaimResponse model module.
@@ -25,7 +25,7 @@ export class CreateClaimResponse {
    * @alias module:shipping_v2/model/CreateClaimResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,24 +35,23 @@ export class CreateClaimResponse {
    * @param {module:shipping_v2/model/CreateClaimResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CreateClaimResponse} The populated <code>CreateClaimResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CreateClaimResponse();
-      if (data.hasOwnProperty('claimId'))
-        obj.claimId = ApiClient.convertToType(data['claimId'], 'String');
+      obj = obj || new CreateClaimResponse()
+      if (data.hasOwnProperty('claimId')) { obj.claimId = ApiClient.convertToType(data.claimId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -60,6 +59,4 @@ export class CreateClaimResponse {
  * The claim identifier originally returned by the createClaim operation.
  * @member {String} claimId
  */
-CreateClaimResponse.prototype.claimId = undefined;
-
-
+CreateClaimResponse.prototype.claimId = undefined

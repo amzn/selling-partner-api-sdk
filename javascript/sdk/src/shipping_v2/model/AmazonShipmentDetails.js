@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The AmazonShipmentDetails model module.
@@ -26,8 +26,8 @@ export class AmazonShipmentDetails {
    * @class
    * @param shipmentId {String} This attribute is required only for a Direct Fulfillment shipment. This is the encrypted shipment ID.
    */
-  constructor(shipmentId) {
-    this.shipmentId = shipmentId;
+  constructor (shipmentId) {
+    this.shipmentId = shipmentId
   }
 
   /**
@@ -37,24 +37,23 @@ export class AmazonShipmentDetails {
    * @param {module:shipping_v2/model/AmazonShipmentDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/AmazonShipmentDetails} The populated <code>AmazonShipmentDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new AmazonShipmentDetails();
-      if (data.hasOwnProperty('shipmentId'))
-        obj.shipmentId = ApiClient.convertToType(data['shipmentId'], 'String');
+      obj = obj || new AmazonShipmentDetails()
+      if (data.hasOwnProperty('shipmentId')) { obj.shipmentId = ApiClient.convertToType(data.shipmentId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,6 +61,4 @@ export class AmazonShipmentDetails {
  * This attribute is required only for a Direct Fulfillment shipment. This is the encrypted shipment ID.
  * @member {String} shipmentId
  */
-AmazonShipmentDetails.prototype.shipmentId = undefined;
-
-
+AmazonShipmentDetails.prototype.shipmentId = undefined

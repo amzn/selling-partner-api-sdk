@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The InvoiceDetails model module.
@@ -25,7 +25,7 @@ export class InvoiceDetails {
    * @alias module:shipping_v2/model/InvoiceDetails
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class InvoiceDetails {
    * @param {module:shipping_v2/model/InvoiceDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/InvoiceDetails} The populated <code>InvoiceDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new InvoiceDetails();
-      if (data.hasOwnProperty('invoiceNumber'))
-        obj.invoiceNumber = ApiClient.convertToType(data['invoiceNumber'], 'String');
-      if (data.hasOwnProperty('invoiceDate'))
-        obj.invoiceDate = ApiClient.convertToType(data['invoiceDate'], 'Date');
+      obj = obj || new InvoiceDetails()
+      if (data.hasOwnProperty('invoiceNumber')) { obj.invoiceNumber = ApiClient.convertToType(data.invoiceNumber, 'String') }
+      if (data.hasOwnProperty('invoiceDate')) { obj.invoiceDate = ApiClient.convertToType(data.invoiceDate, 'Date') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class InvoiceDetails {
  * The invoice number of the item.
  * @member {String} invoiceNumber
  */
-InvoiceDetails.prototype.invoiceNumber = undefined;
+InvoiceDetails.prototype.invoiceNumber = undefined
 
 /**
  * The invoice date of the item in ISO 8061 format.
  * @member {Date} invoiceDate
  */
-InvoiceDetails.prototype.invoiceDate = undefined;
-
-
+InvoiceDetails.prototype.invoiceDate = undefined

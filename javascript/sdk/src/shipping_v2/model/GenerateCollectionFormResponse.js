@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {CollectionsFormDocument} from './CollectionsFormDocument.js';
+import { ApiClient } from '../ApiClient.js'
+import { CollectionsFormDocument } from './CollectionsFormDocument.js'
 
 /**
  * The GenerateCollectionFormResponse model module.
@@ -26,7 +26,7 @@ export class GenerateCollectionFormResponse {
    * @alias module:shipping_v2/model/GenerateCollectionFormResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class GenerateCollectionFormResponse {
    * @param {module:shipping_v2/model/GenerateCollectionFormResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GenerateCollectionFormResponse} The populated <code>GenerateCollectionFormResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GenerateCollectionFormResponse();
-      if (data.hasOwnProperty('collectionsFormDocument'))
-        obj.collectionsFormDocument = CollectionsFormDocument.constructFromObject(data['collectionsFormDocument']);
+      obj = obj || new GenerateCollectionFormResponse()
+      if (data.hasOwnProperty('collectionsFormDocument')) { obj.collectionsFormDocument = CollectionsFormDocument.constructFromObject(data.collectionsFormDocument) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/CollectionsFormDocument} collectionsFormDocument
  */
-GenerateCollectionFormResponse.prototype.collectionsFormDocument = undefined;
-
-
+GenerateCollectionFormResponse.prototype.collectionsFormDocument = undefined

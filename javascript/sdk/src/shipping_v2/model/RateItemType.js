@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class RateItemType.
@@ -19,35 +19,30 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class RateItemType {
-    
-        /**
+  /**
          * value: "MANDATORY"
          * @const
          */
-        "MANDATORY" = "MANDATORY";
+  'MANDATORY' = 'MANDATORY'
 
-    
-        /**
+  /**
          * value: "OPTIONAL"
          * @const
          */
-        "OPTIONAL" = "OPTIONAL";
+  'OPTIONAL' = 'OPTIONAL'
 
-    
-        /**
+  /**
          * value: "INCLUDED"
          * @const
          */
-        "INCLUDED" = "INCLUDED";
+  'INCLUDED' = 'INCLUDED'
 
-    
-
-    /**
+  /**
     * Returns a <code>RateItemType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/RateItemType} The enum <code>RateItemType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

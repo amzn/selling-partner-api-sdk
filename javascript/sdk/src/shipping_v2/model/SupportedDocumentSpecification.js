@@ -11,10 +11,10 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DocumentFormat} from './DocumentFormat.js';
-import {DocumentSize} from './DocumentSize.js';
-import {PrintOption} from './PrintOption.js';
+import { ApiClient } from '../ApiClient.js'
+import { DocumentFormat } from './DocumentFormat.js'
+import { DocumentSize } from './DocumentSize.js'
+import { PrintOption } from './PrintOption.js'
 
 /**
  * The SupportedDocumentSpecification model module.
@@ -27,14 +27,14 @@ export class SupportedDocumentSpecification {
    * Document specification that is supported for a service offering.
    * @alias module:shipping_v2/model/SupportedDocumentSpecification
    * @class
-   * @param format {module:shipping_v2/model/DocumentFormat} 
-   * @param size {module:shipping_v2/model/DocumentSize} 
+   * @param format {module:shipping_v2/model/DocumentFormat}
+   * @param size {module:shipping_v2/model/DocumentSize}
    * @param printOptions {Array.<module:shipping_v2/model/PrintOption>} A list of the format options for a label.
    */
-  constructor(format, size, printOptions) {
-    this.format = format;
-    this.size = size;
-    this.printOptions = printOptions;
+  constructor (format, size, printOptions) {
+    this.format = format
+    this.size = size
+    this.printOptions = printOptions
   }
 
   /**
@@ -44,45 +44,40 @@ export class SupportedDocumentSpecification {
    * @param {module:shipping_v2/model/SupportedDocumentSpecification} obj Optional instance to populate.
    * @return {module:shipping_v2/model/SupportedDocumentSpecification} The populated <code>SupportedDocumentSpecification</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new SupportedDocumentSpecification();
-      if (data.hasOwnProperty('format'))
-        obj.format = DocumentFormat.constructFromObject(data['format']);
-      if (data.hasOwnProperty('size'))
-        obj.size = DocumentSize.constructFromObject(data['size']);
-      if (data.hasOwnProperty('printOptions'))
-        obj.printOptions = ApiClient.convertToType(data['printOptions'], [PrintOption]);
+      obj = obj || new SupportedDocumentSpecification()
+      if (data.hasOwnProperty('format')) { obj.format = DocumentFormat.constructFromObject(data.format) }
+      if (data.hasOwnProperty('size')) { obj.size = DocumentSize.constructFromObject(data.size) }
+      if (data.hasOwnProperty('printOptions')) { obj.printOptions = ApiClient.convertToType(data.printOptions, [PrintOption]) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/DocumentFormat} format
  */
-SupportedDocumentSpecification.prototype.format = undefined;
+SupportedDocumentSpecification.prototype.format = undefined
 
 /**
  * @member {module:shipping_v2/model/DocumentSize} size
  */
-SupportedDocumentSpecification.prototype.size = undefined;
+SupportedDocumentSpecification.prototype.size = undefined
 
 /**
  * A list of the format options for a label.
  * @member {Array.<module:shipping_v2/model/PrintOption>} printOptions
  */
-SupportedDocumentSpecification.prototype.printOptions = undefined;
-
-
+SupportedDocumentSpecification.prototype.printOptions = undefined

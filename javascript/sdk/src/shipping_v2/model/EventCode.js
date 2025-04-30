@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class EventCode.
@@ -19,112 +19,96 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class EventCode {
-    
-        /**
+  /**
          * value: "ReadyForReceive"
          * @const
          */
-        "ReadyForReceive" = "ReadyForReceive";
+  'ReadyForReceive' = 'ReadyForReceive'
 
-    
-        /**
+  /**
          * value: "PickupDone"
          * @const
          */
-        "PickupDone" = "PickupDone";
+  'PickupDone' = 'PickupDone'
 
-    
-        /**
+  /**
          * value: "Delivered"
          * @const
          */
-        "Delivered" = "Delivered";
+  'Delivered' = 'Delivered'
 
-    
-        /**
+  /**
          * value: "Departed"
          * @const
          */
-        "Departed" = "Departed";
+  'Departed' = 'Departed'
 
-    
-        /**
+  /**
          * value: "DeliveryAttempted"
          * @const
          */
-        "DeliveryAttempted" = "DeliveryAttempted";
+  'DeliveryAttempted' = 'DeliveryAttempted'
 
-    
-        /**
+  /**
          * value: "Lost"
          * @const
          */
-        "Lost" = "Lost";
+  'Lost' = 'Lost'
 
-    
-        /**
+  /**
          * value: "OutForDelivery"
          * @const
          */
-        "OutForDelivery" = "OutForDelivery";
+  'OutForDelivery' = 'OutForDelivery'
 
-    
-        /**
+  /**
          * value: "ArrivedAtCarrierFacility"
          * @const
          */
-        "ArrivedAtCarrierFacility" = "ArrivedAtCarrierFacility";
+  'ArrivedAtCarrierFacility' = 'ArrivedAtCarrierFacility'
 
-    
-        /**
+  /**
          * value: "Rejected"
          * @const
          */
-        "Rejected" = "Rejected";
+  'Rejected' = 'Rejected'
 
-    
-        /**
+  /**
          * value: "Undeliverable"
          * @const
          */
-        "Undeliverable" = "Undeliverable";
+  'Undeliverable' = 'Undeliverable'
 
-    
-        /**
+  /**
          * value: "PickupCancelled"
          * @const
          */
-        "PickupCancelled" = "PickupCancelled";
+  'PickupCancelled' = 'PickupCancelled'
 
-    
-        /**
+  /**
          * value: "ReturnInitiated"
          * @const
          */
-        "ReturnInitiated" = "ReturnInitiated";
+  'ReturnInitiated' = 'ReturnInitiated'
 
-    
-        /**
+  /**
          * value: "AvailableForPickup"
          * @const
          */
-        "AvailableForPickup" = "AvailableForPickup";
+  'AvailableForPickup' = 'AvailableForPickup'
 
-    
-        /**
+  /**
          * value: "RecipientRequestedAlternateDeliveryTiming"
          * @const
          */
-        "RecipientRequestedAlternateDeliveryTiming" = "RecipientRequestedAlternateDeliveryTiming";
+  'RecipientRequestedAlternateDeliveryTiming' = 'RecipientRequestedAlternateDeliveryTiming'
 
-    
-
-    /**
+  /**
     * Returns a <code>EventCode</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/EventCode} The enum <code>EventCode</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {InputType} from './InputType.js';
-import {ValidationMetadata} from './ValidationMetadata.js';
+import { ApiClient } from '../ApiClient.js'
+import { InputType } from './InputType.js'
+import { ValidationMetadata } from './ValidationMetadata.js'
 
 /**
  * The CarrierAccountInput model module.
@@ -27,7 +27,7 @@ export class CarrierAccountInput {
    * @alias module:shipping_v2/model/CarrierAccountInput
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -37,38 +37,30 @@ export class CarrierAccountInput {
    * @param {module:shipping_v2/model/CarrierAccountInput} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CarrierAccountInput} The populated <code>CarrierAccountInput</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CarrierAccountInput();
-      if (data.hasOwnProperty('descriptionLocalizationKey'))
-        obj.descriptionLocalizationKey = ApiClient.convertToType(data['descriptionLocalizationKey'], 'String');
-      if (data.hasOwnProperty('name'))
-        obj.name = ApiClient.convertToType(data['name'], 'String');
-      if (data.hasOwnProperty('groupName'))
-        obj.groupName = ApiClient.convertToType(data['groupName'], 'String');
-      if (data.hasOwnProperty('inputType'))
-        obj.inputType = InputType.constructFromObject(data['inputType']);
-      if (data.hasOwnProperty('isMandatory'))
-        obj.isMandatory = ApiClient.convertToType(data['isMandatory'], 'Boolean');
-      if (data.hasOwnProperty('isConfidential'))
-        obj.isConfidential = ApiClient.convertToType(data['isConfidential'], 'Boolean');
-      if (data.hasOwnProperty('isHidden'))
-        obj.isHidden = ApiClient.convertToType(data['isHidden'], 'Boolean');
-      if (data.hasOwnProperty('validationMetadata'))
-        obj.validationMetadata = ApiClient.convertToType(data['validationMetadata'], [ValidationMetadata]);
+      obj = obj || new CarrierAccountInput()
+      if (data.hasOwnProperty('descriptionLocalizationKey')) { obj.descriptionLocalizationKey = ApiClient.convertToType(data.descriptionLocalizationKey, 'String') }
+      if (data.hasOwnProperty('name')) { obj.name = ApiClient.convertToType(data.name, 'String') }
+      if (data.hasOwnProperty('groupName')) { obj.groupName = ApiClient.convertToType(data.groupName, 'String') }
+      if (data.hasOwnProperty('inputType')) { obj.inputType = InputType.constructFromObject(data.inputType) }
+      if (data.hasOwnProperty('isMandatory')) { obj.isMandatory = ApiClient.convertToType(data.isMandatory, 'Boolean') }
+      if (data.hasOwnProperty('isConfidential')) { obj.isConfidential = ApiClient.convertToType(data.isConfidential, 'Boolean') }
+      if (data.hasOwnProperty('isHidden')) { obj.isHidden = ApiClient.convertToType(data.isHidden, 'Boolean') }
+      if (data.hasOwnProperty('validationMetadata')) { obj.validationMetadata = ApiClient.convertToType(data.validationMetadata, [ValidationMetadata]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -76,47 +68,45 @@ export class CarrierAccountInput {
  * descriptionLocalizationKey value .
  * @member {String} descriptionLocalizationKey
  */
-CarrierAccountInput.prototype.descriptionLocalizationKey = undefined;
+CarrierAccountInput.prototype.descriptionLocalizationKey = undefined
 
 /**
  * name value .
  * @member {String} name
  */
-CarrierAccountInput.prototype.name = undefined;
+CarrierAccountInput.prototype.name = undefined
 
 /**
  * groupName value .
  * @member {String} groupName
  */
-CarrierAccountInput.prototype.groupName = undefined;
+CarrierAccountInput.prototype.groupName = undefined
 
 /**
  * @member {module:shipping_v2/model/InputType} inputType
  */
-CarrierAccountInput.prototype.inputType = undefined;
+CarrierAccountInput.prototype.inputType = undefined
 
 /**
  * mandatory or not  value .
  * @member {Boolean} isMandatory
  */
-CarrierAccountInput.prototype.isMandatory = undefined;
+CarrierAccountInput.prototype.isMandatory = undefined
 
 /**
  * is value is Confidential .
  * @member {Boolean} isConfidential
  */
-CarrierAccountInput.prototype.isConfidential = undefined;
+CarrierAccountInput.prototype.isConfidential = undefined
 
 /**
  * is value is hidden .
  * @member {Boolean} isHidden
  */
-CarrierAccountInput.prototype.isHidden = undefined;
+CarrierAccountInput.prototype.isHidden = undefined
 
 /**
  * A list of ValidationMetadata
  * @member {Array.<module:shipping_v2/model/ValidationMetadata>} validationMetadata
  */
-CarrierAccountInput.prototype.validationMetadata = undefined;
-
-
+CarrierAccountInput.prototype.validationMetadata = undefined

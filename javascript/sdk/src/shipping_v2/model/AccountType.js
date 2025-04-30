@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AccountType.
@@ -19,35 +19,30 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class AccountType {
-    
-        /**
+  /**
          * value: "SHIPPER_ACCOUNT"
          * @const
          */
-        "SHIPPER_ACCOUNT" = "SHIPPER_ACCOUNT";
+  'SHIPPER_ACCOUNT' = 'SHIPPER_ACCOUNT'
 
-    
-        /**
+  /**
          * value: "SHIPPER_ACCOUNT_WITH_INVOICE"
          * @const
          */
-        "SHIPPER_ACCOUNT_WITH_INVOICE" = "SHIPPER_ACCOUNT_WITH_INVOICE";
+  'SHIPPER_ACCOUNT_WITH_INVOICE' = 'SHIPPER_ACCOUNT_WITH_INVOICE'
 
-    
-        /**
+  /**
          * value: "AMAZON_ACCOUNT"
          * @const
          */
-        "AMAZON_ACCOUNT" = "AMAZON_ACCOUNT";
+  'AMAZON_ACCOUNT' = 'AMAZON_ACCOUNT'
 
-    
-
-    /**
+  /**
     * Returns a <code>AccountType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/AccountType} The enum <code>AccountType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {LabelAttribute} from './LabelAttribute.js';
+import { ApiClient } from '../ApiClient.js'
+import { LabelAttribute } from './LabelAttribute.js'
 
 /**
  * The RequestedLabelCustomization model module.
@@ -26,7 +26,7 @@ export class RequestedLabelCustomization {
    * @alias module:shipping_v2/model/RequestedLabelCustomization
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,24 +36,23 @@ export class RequestedLabelCustomization {
    * @param {module:shipping_v2/model/RequestedLabelCustomization} obj Optional instance to populate.
    * @return {module:shipping_v2/model/RequestedLabelCustomization} The populated <code>RequestedLabelCustomization</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new RequestedLabelCustomization();
-      if (data.hasOwnProperty('requestAttributes'))
-        obj.requestAttributes = ApiClient.convertToType(data['requestAttributes'], [LabelAttribute]);
+      obj = obj || new RequestedLabelCustomization()
+      if (data.hasOwnProperty('requestAttributes')) { obj.requestAttributes = ApiClient.convertToType(data.requestAttributes, [LabelAttribute]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -61,6 +60,4 @@ export class RequestedLabelCustomization {
  * Specify the type of attributes to be added on a label.
  * @member {Array.<module:shipping_v2/model/LabelAttribute>} requestAttributes
  */
-RequestedLabelCustomization.prototype.requestAttributes = undefined;
-
-
+RequestedLabelCustomization.prototype.requestAttributes = undefined

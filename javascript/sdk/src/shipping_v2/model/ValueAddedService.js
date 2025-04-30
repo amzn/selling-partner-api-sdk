@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Currency} from './Currency.js';
+import { ApiClient } from '../ApiClient.js'
+import { Currency } from './Currency.js'
 
 /**
  * The ValueAddedService model module.
@@ -27,12 +27,12 @@ export class ValueAddedService {
    * @class
    * @param id {String} The identifier for the value-added service.
    * @param name {String} The name of the value-added service.
-   * @param cost {module:shipping_v2/model/Currency} 
+   * @param cost {module:shipping_v2/model/Currency}
    */
-  constructor(id, name, cost) {
-    this.id = id;
-    this.name = name;
-    this.cost = cost;
+  constructor (id, name, cost) {
+    this.id = id
+    this.name = name
+    this.cost = cost
   }
 
   /**
@@ -42,28 +42,25 @@ export class ValueAddedService {
    * @param {module:shipping_v2/model/ValueAddedService} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ValueAddedService} The populated <code>ValueAddedService</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ValueAddedService();
-      if (data.hasOwnProperty('id'))
-        obj.id = ApiClient.convertToType(data['id'], 'String');
-      if (data.hasOwnProperty('name'))
-        obj.name = ApiClient.convertToType(data['name'], 'String');
-      if (data.hasOwnProperty('cost'))
-        obj.cost = Currency.constructFromObject(data['cost']);
+      obj = obj || new ValueAddedService()
+      if (data.hasOwnProperty('id')) { obj.id = ApiClient.convertToType(data.id, 'String') }
+      if (data.hasOwnProperty('name')) { obj.name = ApiClient.convertToType(data.name, 'String') }
+      if (data.hasOwnProperty('cost')) { obj.cost = Currency.constructFromObject(data.cost) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -71,17 +68,15 @@ export class ValueAddedService {
  * The identifier for the value-added service.
  * @member {String} id
  */
-ValueAddedService.prototype.id = undefined;
+ValueAddedService.prototype.id = undefined
 
 /**
  * The name of the value-added service.
  * @member {String} name
  */
-ValueAddedService.prototype.name = undefined;
+ValueAddedService.prototype.name = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} cost
  */
-ValueAddedService.prototype.cost = undefined;
-
-
+ValueAddedService.prototype.cost = undefined

@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Address} from './Address.js';
-import {GenerationStatus} from './GenerationStatus.js';
+import { ApiClient } from '../ApiClient.js'
+import { Address } from './Address.js'
+import { GenerationStatus } from './GenerationStatus.js'
 
 /**
  * The CollectionFormsHistoryRecord model module.
@@ -27,7 +27,7 @@ export class CollectionFormsHistoryRecord {
    * @alias module:shipping_v2/model/CollectionFormsHistoryRecord
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -37,32 +37,27 @@ export class CollectionFormsHistoryRecord {
    * @param {module:shipping_v2/model/CollectionFormsHistoryRecord} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CollectionFormsHistoryRecord} The populated <code>CollectionFormsHistoryRecord</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CollectionFormsHistoryRecord();
-      if (data.hasOwnProperty('carrierName'))
-        obj.carrierName = ApiClient.convertToType(data['carrierName'], 'String');
-      if (data.hasOwnProperty('creationDate'))
-        obj.creationDate = ApiClient.convertToType(data['creationDate'], 'String');
-      if (data.hasOwnProperty('generationStatus'))
-        obj.generationStatus = GenerationStatus.constructFromObject(data['generationStatus']);
-      if (data.hasOwnProperty('collectionFormId'))
-        obj.collectionFormId = ApiClient.convertToType(data['collectionFormId'], 'String');
-      if (data.hasOwnProperty('shipFromAddress'))
-        obj.shipFromAddress = Address.constructFromObject(data['shipFromAddress']);
+      obj = obj || new CollectionFormsHistoryRecord()
+      if (data.hasOwnProperty('carrierName')) { obj.carrierName = ApiClient.convertToType(data.carrierName, 'String') }
+      if (data.hasOwnProperty('creationDate')) { obj.creationDate = ApiClient.convertToType(data.creationDate, 'String') }
+      if (data.hasOwnProperty('generationStatus')) { obj.generationStatus = GenerationStatus.constructFromObject(data.generationStatus) }
+      if (data.hasOwnProperty('collectionFormId')) { obj.collectionFormId = ApiClient.convertToType(data.collectionFormId, 'String') }
+      if (data.hasOwnProperty('shipFromAddress')) { obj.shipFromAddress = Address.constructFromObject(data.shipFromAddress) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -70,28 +65,26 @@ export class CollectionFormsHistoryRecord {
  * The carrier name for the offering.
  * @member {String} carrierName
  */
-CollectionFormsHistoryRecord.prototype.carrierName = undefined;
+CollectionFormsHistoryRecord.prototype.carrierName = undefined
 
 /**
  * Creation Time for this account.
  * @member {String} creationDate
  */
-CollectionFormsHistoryRecord.prototype.creationDate = undefined;
+CollectionFormsHistoryRecord.prototype.creationDate = undefined
 
 /**
  * @member {module:shipping_v2/model/GenerationStatus} generationStatus
  */
-CollectionFormsHistoryRecord.prototype.generationStatus = undefined;
+CollectionFormsHistoryRecord.prototype.generationStatus = undefined
 
 /**
  * Collection Form Id for Reprint .
  * @member {String} collectionFormId
  */
-CollectionFormsHistoryRecord.prototype.collectionFormId = undefined;
+CollectionFormsHistoryRecord.prototype.collectionFormId = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFromAddress
  */
-CollectionFormsHistoryRecord.prototype.shipFromAddress = undefined;
-
-
+CollectionFormsHistoryRecord.prototype.shipFromAddress = undefined

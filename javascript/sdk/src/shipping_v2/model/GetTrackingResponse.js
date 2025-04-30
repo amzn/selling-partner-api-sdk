@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {GetTrackingResult} from './GetTrackingResult.js';
+import { ApiClient } from '../ApiClient.js'
+import { GetTrackingResult } from './GetTrackingResult.js'
 
 /**
  * The GetTrackingResponse model module.
@@ -26,7 +26,7 @@ export class GetTrackingResponse {
    * @alias module:shipping_v2/model/GetTrackingResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class GetTrackingResponse {
    * @param {module:shipping_v2/model/GetTrackingResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetTrackingResponse} The populated <code>GetTrackingResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetTrackingResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = GetTrackingResult.constructFromObject(data['payload']);
+      obj = obj || new GetTrackingResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = GetTrackingResult.constructFromObject(data.payload) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/GetTrackingResult} payload
  */
-GetTrackingResponse.prototype.payload = undefined;
-
-
+GetTrackingResponse.prototype.payload = undefined

@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {IneligibilityReason} from './IneligibilityReason.js';
+import { ApiClient } from '../ApiClient.js'
+import { IneligibilityReason } from './IneligibilityReason.js'
 
 /**
  * The IneligibleRate model module.
@@ -31,12 +31,12 @@ export class IneligibleRate {
    * @param carrierId {String} The carrier identifier for the offering, provided by the carrier.
    * @param ineligibilityReasons {Array.<module:shipping_v2/model/IneligibilityReason>} A list of reasons why a shipping service offering is ineligible.
    */
-  constructor(serviceId, serviceName, carrierName, carrierId, ineligibilityReasons) {
-    this.serviceId = serviceId;
-    this.serviceName = serviceName;
-    this.carrierName = carrierName;
-    this.carrierId = carrierId;
-    this.ineligibilityReasons = ineligibilityReasons;
+  constructor (serviceId, serviceName, carrierName, carrierId, ineligibilityReasons) {
+    this.serviceId = serviceId
+    this.serviceName = serviceName
+    this.carrierName = carrierName
+    this.carrierId = carrierId
+    this.ineligibilityReasons = ineligibilityReasons
   }
 
   /**
@@ -46,32 +46,27 @@ export class IneligibleRate {
    * @param {module:shipping_v2/model/IneligibleRate} obj Optional instance to populate.
    * @return {module:shipping_v2/model/IneligibleRate} The populated <code>IneligibleRate</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new IneligibleRate();
-      if (data.hasOwnProperty('serviceId'))
-        obj.serviceId = ApiClient.convertToType(data['serviceId'], 'String');
-      if (data.hasOwnProperty('serviceName'))
-        obj.serviceName = ApiClient.convertToType(data['serviceName'], 'String');
-      if (data.hasOwnProperty('carrierName'))
-        obj.carrierName = ApiClient.convertToType(data['carrierName'], 'String');
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
-      if (data.hasOwnProperty('ineligibilityReasons'))
-        obj.ineligibilityReasons = ApiClient.convertToType(data['ineligibilityReasons'], [IneligibilityReason]);
+      obj = obj || new IneligibleRate()
+      if (data.hasOwnProperty('serviceId')) { obj.serviceId = ApiClient.convertToType(data.serviceId, 'String') }
+      if (data.hasOwnProperty('serviceName')) { obj.serviceName = ApiClient.convertToType(data.serviceName, 'String') }
+      if (data.hasOwnProperty('carrierName')) { obj.carrierName = ApiClient.convertToType(data.carrierName, 'String') }
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
+      if (data.hasOwnProperty('ineligibilityReasons')) { obj.ineligibilityReasons = ApiClient.convertToType(data.ineligibilityReasons, [IneligibilityReason]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -79,30 +74,28 @@ export class IneligibleRate {
  * An identifier for the shipping service.
  * @member {String} serviceId
  */
-IneligibleRate.prototype.serviceId = undefined;
+IneligibleRate.prototype.serviceId = undefined
 
 /**
  * The name of the shipping service.
  * @member {String} serviceName
  */
-IneligibleRate.prototype.serviceName = undefined;
+IneligibleRate.prototype.serviceName = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
  */
-IneligibleRate.prototype.carrierName = undefined;
+IneligibleRate.prototype.carrierName = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-IneligibleRate.prototype.carrierId = undefined;
+IneligibleRate.prototype.carrierId = undefined
 
 /**
  * A list of reasons why a shipping service offering is ineligible.
  * @member {Array.<module:shipping_v2/model/IneligibilityReason>} ineligibilityReasons
  */
-IneligibleRate.prototype.ineligibilityReasons = undefined;
-
-
+IneligibleRate.prototype.ineligibilityReasons = undefined

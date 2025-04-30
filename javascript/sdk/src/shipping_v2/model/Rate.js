@@ -11,15 +11,15 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {AvailableValueAddedServiceGroup} from './AvailableValueAddedServiceGroup.js';
-import {Benefits} from './Benefits.js';
-import {Currency} from './Currency.js';
-import {PaymentType} from './PaymentType.js';
-import {Promise} from './Promise.js';
-import {RateItem} from './RateItem.js';
-import {SupportedDocumentSpecification} from './SupportedDocumentSpecification.js';
-import {Weight} from './Weight.js';
+import { ApiClient } from '../ApiClient.js'
+import { AvailableValueAddedServiceGroup } from './AvailableValueAddedServiceGroup.js'
+import { Benefits } from './Benefits.js'
+import { Currency } from './Currency.js'
+import { PaymentType } from './PaymentType.js'
+import { Promise } from './Promise.js'
+import { RateItem } from './RateItem.js'
+import { SupportedDocumentSpecification } from './SupportedDocumentSpecification.js'
+import { Weight } from './Weight.js'
 
 /**
  * The Rate model module.
@@ -37,21 +37,21 @@ export class Rate {
    * @param carrierName {String} The carrier name for the offering.
    * @param serviceId {String} An identifier for the shipping service.
    * @param serviceName {String} The name of the shipping service.
-   * @param totalCharge {module:shipping_v2/model/Currency} 
-   * @param promise {module:shipping_v2/model/Promise} 
+   * @param totalCharge {module:shipping_v2/model/Currency}
+   * @param promise {module:shipping_v2/model/Promise}
    * @param supportedDocumentSpecifications {Array.<module:shipping_v2/model/SupportedDocumentSpecification>} A list of the document specifications supported for a shipment service offering.
    * @param requiresAdditionalInputs {Boolean} When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
    */
-  constructor(rateId, carrierId, carrierName, serviceId, serviceName, totalCharge, promise, supportedDocumentSpecifications, requiresAdditionalInputs) {
-    this.rateId = rateId;
-    this.carrierId = carrierId;
-    this.carrierName = carrierName;
-    this.serviceId = serviceId;
-    this.serviceName = serviceName;
-    this.totalCharge = totalCharge;
-    this.promise = promise;
-    this.supportedDocumentSpecifications = supportedDocumentSpecifications;
-    this.requiresAdditionalInputs = requiresAdditionalInputs;
+  constructor (rateId, carrierId, carrierName, serviceId, serviceName, totalCharge, promise, supportedDocumentSpecifications, requiresAdditionalInputs) {
+    this.rateId = rateId
+    this.carrierId = carrierId
+    this.carrierName = carrierName
+    this.serviceId = serviceId
+    this.serviceName = serviceName
+    this.totalCharge = totalCharge
+    this.promise = promise
+    this.supportedDocumentSpecifications = supportedDocumentSpecifications
+    this.requiresAdditionalInputs = requiresAdditionalInputs
   }
 
   /**
@@ -61,50 +61,36 @@ export class Rate {
    * @param {module:shipping_v2/model/Rate} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Rate} The populated <code>Rate</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Rate();
-      if (data.hasOwnProperty('rateId'))
-        obj.rateId = ApiClient.convertToType(data['rateId'], 'String');
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
-      if (data.hasOwnProperty('carrierName'))
-        obj.carrierName = ApiClient.convertToType(data['carrierName'], 'String');
-      if (data.hasOwnProperty('serviceId'))
-        obj.serviceId = ApiClient.convertToType(data['serviceId'], 'String');
-      if (data.hasOwnProperty('serviceName'))
-        obj.serviceName = ApiClient.convertToType(data['serviceName'], 'String');
-      if (data.hasOwnProperty('billedWeight'))
-        obj.billedWeight = Weight.constructFromObject(data['billedWeight']);
-      if (data.hasOwnProperty('totalCharge'))
-        obj.totalCharge = Currency.constructFromObject(data['totalCharge']);
-      if (data.hasOwnProperty('promise'))
-        obj.promise = Promise.constructFromObject(data['promise']);
-      if (data.hasOwnProperty('supportedDocumentSpecifications'))
-        obj.supportedDocumentSpecifications = ApiClient.convertToType(data['supportedDocumentSpecifications'], [SupportedDocumentSpecification]);
-      if (data.hasOwnProperty('availableValueAddedServiceGroups'))
-        obj.availableValueAddedServiceGroups = ApiClient.convertToType(data['availableValueAddedServiceGroups'], [AvailableValueAddedServiceGroup]);
-      if (data.hasOwnProperty('requiresAdditionalInputs'))
-        obj.requiresAdditionalInputs = ApiClient.convertToType(data['requiresAdditionalInputs'], 'Boolean');
-      if (data.hasOwnProperty('rateItemList'))
-        obj.rateItemList = ApiClient.convertToType(data['rateItemList'], [RateItem]);
-      if (data.hasOwnProperty('paymentType'))
-        obj.paymentType = PaymentType.constructFromObject(data['paymentType']);
-      if (data.hasOwnProperty('benefits'))
-        obj.benefits = Benefits.constructFromObject(data['benefits']);
+      obj = obj || new Rate()
+      if (data.hasOwnProperty('rateId')) { obj.rateId = ApiClient.convertToType(data.rateId, 'String') }
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
+      if (data.hasOwnProperty('carrierName')) { obj.carrierName = ApiClient.convertToType(data.carrierName, 'String') }
+      if (data.hasOwnProperty('serviceId')) { obj.serviceId = ApiClient.convertToType(data.serviceId, 'String') }
+      if (data.hasOwnProperty('serviceName')) { obj.serviceName = ApiClient.convertToType(data.serviceName, 'String') }
+      if (data.hasOwnProperty('billedWeight')) { obj.billedWeight = Weight.constructFromObject(data.billedWeight) }
+      if (data.hasOwnProperty('totalCharge')) { obj.totalCharge = Currency.constructFromObject(data.totalCharge) }
+      if (data.hasOwnProperty('promise')) { obj.promise = Promise.constructFromObject(data.promise) }
+      if (data.hasOwnProperty('supportedDocumentSpecifications')) { obj.supportedDocumentSpecifications = ApiClient.convertToType(data.supportedDocumentSpecifications, [SupportedDocumentSpecification]) }
+      if (data.hasOwnProperty('availableValueAddedServiceGroups')) { obj.availableValueAddedServiceGroups = ApiClient.convertToType(data.availableValueAddedServiceGroups, [AvailableValueAddedServiceGroup]) }
+      if (data.hasOwnProperty('requiresAdditionalInputs')) { obj.requiresAdditionalInputs = ApiClient.convertToType(data.requiresAdditionalInputs, 'Boolean') }
+      if (data.hasOwnProperty('rateItemList')) { obj.rateItemList = ApiClient.convertToType(data.rateItemList, [RateItem]) }
+      if (data.hasOwnProperty('paymentType')) { obj.paymentType = PaymentType.constructFromObject(data.paymentType) }
+      if (data.hasOwnProperty('benefits')) { obj.benefits = Benefits.constructFromObject(data.benefits) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -112,79 +98,77 @@ export class Rate {
  * An identifier for the rate (shipment offering) provided by a shipping service provider.
  * @member {String} rateId
  */
-Rate.prototype.rateId = undefined;
+Rate.prototype.rateId = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-Rate.prototype.carrierId = undefined;
+Rate.prototype.carrierId = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
  */
-Rate.prototype.carrierName = undefined;
+Rate.prototype.carrierName = undefined
 
 /**
  * An identifier for the shipping service.
  * @member {String} serviceId
  */
-Rate.prototype.serviceId = undefined;
+Rate.prototype.serviceId = undefined
 
 /**
  * The name of the shipping service.
  * @member {String} serviceName
  */
-Rate.prototype.serviceName = undefined;
+Rate.prototype.serviceName = undefined
 
 /**
  * @member {module:shipping_v2/model/Weight} billedWeight
  */
-Rate.prototype.billedWeight = undefined;
+Rate.prototype.billedWeight = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} totalCharge
  */
-Rate.prototype.totalCharge = undefined;
+Rate.prototype.totalCharge = undefined
 
 /**
  * @member {module:shipping_v2/model/Promise} promise
  */
-Rate.prototype.promise = undefined;
+Rate.prototype.promise = undefined
 
 /**
  * A list of the document specifications supported for a shipment service offering.
  * @member {Array.<module:shipping_v2/model/SupportedDocumentSpecification>} supportedDocumentSpecifications
  */
-Rate.prototype.supportedDocumentSpecifications = undefined;
+Rate.prototype.supportedDocumentSpecifications = undefined
 
 /**
  * A list of value-added services available for a shipping service offering.
  * @member {Array.<module:shipping_v2/model/AvailableValueAddedServiceGroup>} availableValueAddedServiceGroups
  */
-Rate.prototype.availableValueAddedServiceGroups = undefined;
+Rate.prototype.availableValueAddedServiceGroups = undefined
 
 /**
  * When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
  * @member {Boolean} requiresAdditionalInputs
  */
-Rate.prototype.requiresAdditionalInputs = undefined;
+Rate.prototype.requiresAdditionalInputs = undefined
 
 /**
  * A list of RateItem
  * @member {Array.<module:shipping_v2/model/RateItem>} rateItemList
  */
-Rate.prototype.rateItemList = undefined;
+Rate.prototype.rateItemList = undefined
 
 /**
  * @member {module:shipping_v2/model/PaymentType} paymentType
  */
-Rate.prototype.paymentType = undefined;
+Rate.prototype.paymentType = undefined
 
 /**
  * @member {module:shipping_v2/model/Benefits} benefits
  */
-Rate.prototype.benefits = undefined;
-
-
+Rate.prototype.benefits = undefined

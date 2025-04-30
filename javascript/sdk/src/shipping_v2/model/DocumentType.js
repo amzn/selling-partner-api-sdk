@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DocumentType.
@@ -19,42 +19,36 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class DocumentType {
-    
-        /**
+  /**
          * value: "PACKSLIP"
          * @const
          */
-        "PACKSLIP" = "PACKSLIP";
+  'PACKSLIP' = 'PACKSLIP'
 
-    
-        /**
+  /**
          * value: "LABEL"
          * @const
          */
-        "LABEL" = "LABEL";
+  'LABEL' = 'LABEL'
 
-    
-        /**
+  /**
          * value: "RECEIPT"
          * @const
          */
-        "RECEIPT" = "RECEIPT";
+  'RECEIPT' = 'RECEIPT'
 
-    
-        /**
+  /**
          * value: "CUSTOM_FORM"
          * @const
          */
-        "CUSTOM_FORM" = "CUSTOM_FORM";
+  'CUSTOM_FORM' = 'CUSTOM_FORM'
 
-    
-
-    /**
+  /**
     * Returns a <code>DocumentType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/DocumentType} The enum <code>DocumentType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

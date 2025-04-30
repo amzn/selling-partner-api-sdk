@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ClientReferenceDetail} from './ClientReferenceDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { ClientReferenceDetail } from './ClientReferenceDetail.js'
 
 /**
  * The UnlinkCarrierAccountRequest model module.
@@ -26,7 +26,7 @@ export class UnlinkCarrierAccountRequest {
    * @alias module:shipping_v2/model/UnlinkCarrierAccountRequest
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,26 +36,24 @@ export class UnlinkCarrierAccountRequest {
    * @param {module:shipping_v2/model/UnlinkCarrierAccountRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/UnlinkCarrierAccountRequest} The populated <code>UnlinkCarrierAccountRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new UnlinkCarrierAccountRequest();
-      if (data.hasOwnProperty('clientReferenceDetails'))
-        obj.clientReferenceDetails = ApiClient.convertToType(data['clientReferenceDetails'], [ClientReferenceDetail]);
-      if (data.hasOwnProperty('accountId'))
-        obj.accountId = ApiClient.convertToType(data['accountId'], 'String');
+      obj = obj || new UnlinkCarrierAccountRequest()
+      if (data.hasOwnProperty('clientReferenceDetails')) { obj.clientReferenceDetails = ApiClient.convertToType(data.clientReferenceDetails, [ClientReferenceDetail]) }
+      if (data.hasOwnProperty('accountId')) { obj.accountId = ApiClient.convertToType(data.accountId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -63,12 +61,10 @@ export class UnlinkCarrierAccountRequest {
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
  */
-UnlinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined;
+UnlinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * Identifier for the seller's carrier account.
  * @member {String} accountId
  */
-UnlinkCarrierAccountRequest.prototype.accountId = undefined;
-
-
+UnlinkCarrierAccountRequest.prototype.accountId = undefined

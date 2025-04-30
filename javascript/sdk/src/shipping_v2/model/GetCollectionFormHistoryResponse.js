@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {CollectionFormsHistoryRecord} from './CollectionFormsHistoryRecord.js';
+import { ApiClient } from '../ApiClient.js'
+import { CollectionFormsHistoryRecord } from './CollectionFormsHistoryRecord.js'
 
 /**
  * The GetCollectionFormHistoryResponse model module.
@@ -26,7 +26,7 @@ export class GetCollectionFormHistoryResponse {
    * @alias module:shipping_v2/model/GetCollectionFormHistoryResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,26 +36,24 @@ export class GetCollectionFormHistoryResponse {
    * @param {module:shipping_v2/model/GetCollectionFormHistoryResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetCollectionFormHistoryResponse} The populated <code>GetCollectionFormHistoryResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetCollectionFormHistoryResponse();
-      if (data.hasOwnProperty('collectionFormsHistoryRecordList'))
-        obj.collectionFormsHistoryRecordList = ApiClient.convertToType(data['collectionFormsHistoryRecordList'], [CollectionFormsHistoryRecord]);
-      if (data.hasOwnProperty('lastRefreshedDate'))
-        obj.lastRefreshedDate = ApiClient.convertToType(data['lastRefreshedDate'], 'String');
+      obj = obj || new GetCollectionFormHistoryResponse()
+      if (data.hasOwnProperty('collectionFormsHistoryRecordList')) { obj.collectionFormsHistoryRecordList = ApiClient.convertToType(data.collectionFormsHistoryRecordList, [CollectionFormsHistoryRecord]) }
+      if (data.hasOwnProperty('lastRefreshedDate')) { obj.lastRefreshedDate = ApiClient.convertToType(data.lastRefreshedDate, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -63,12 +61,10 @@ export class GetCollectionFormHistoryResponse {
  * A list of CollectionFormsHistoryRecord
  * @member {Array.<module:shipping_v2/model/CollectionFormsHistoryRecord>} collectionFormsHistoryRecordList
  */
-GetCollectionFormHistoryResponse.prototype.collectionFormsHistoryRecordList = undefined;
+GetCollectionFormHistoryResponse.prototype.collectionFormsHistoryRecordList = undefined
 
 /**
  * Last Refereshed Date of collection
  * @member {String} lastRefreshedDate
  */
-GetCollectionFormHistoryResponse.prototype.lastRefreshedDate = undefined;
-
-
+GetCollectionFormHistoryResponse.prototype.lastRefreshedDate = undefined

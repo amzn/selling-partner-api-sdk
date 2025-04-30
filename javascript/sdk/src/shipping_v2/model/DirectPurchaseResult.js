@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {PackageDocumentDetail} from './PackageDocumentDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { PackageDocumentDetail } from './PackageDocumentDetail.js'
 
 /**
  * The DirectPurchaseResult model module.
@@ -27,8 +27,8 @@ export class DirectPurchaseResult {
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
    */
-  constructor(shipmentId) {
-    this.shipmentId = shipmentId;
+  constructor (shipmentId) {
+    this.shipmentId = shipmentId
   }
 
   /**
@@ -38,26 +38,24 @@ export class DirectPurchaseResult {
    * @param {module:shipping_v2/model/DirectPurchaseResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DirectPurchaseResult} The populated <code>DirectPurchaseResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DirectPurchaseResult();
-      if (data.hasOwnProperty('shipmentId'))
-        obj.shipmentId = ApiClient.convertToType(data['shipmentId'], 'String');
-      if (data.hasOwnProperty('packageDocumentDetailList'))
-        obj.packageDocumentDetailList = ApiClient.convertToType(data['packageDocumentDetailList'], [PackageDocumentDetail]);
+      obj = obj || new DirectPurchaseResult()
+      if (data.hasOwnProperty('shipmentId')) { obj.shipmentId = ApiClient.convertToType(data.shipmentId, 'String') }
+      if (data.hasOwnProperty('packageDocumentDetailList')) { obj.packageDocumentDetailList = ApiClient.convertToType(data.packageDocumentDetailList, [PackageDocumentDetail]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -65,12 +63,10 @@ export class DirectPurchaseResult {
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
  */
-DirectPurchaseResult.prototype.shipmentId = undefined;
+DirectPurchaseResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
  * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetailList
  */
-DirectPurchaseResult.prototype.packageDocumentDetailList = undefined;
-
-
+DirectPurchaseResult.prototype.packageDocumentDetailList = undefined
