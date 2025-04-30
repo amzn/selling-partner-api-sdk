@@ -21,10 +21,10 @@ let instance;
 
 beforeEach(() => {
   try {
-    instance = new SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest();
+    instance = new SellingPartnerApiForServices.DateTimeRange();
   } catch (e) {
     //Handle the cases when this model extends another model by using Model.call(this);
-    instance = Object.create(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest.prototype);
+    instance = Object.create(SellingPartnerApiForServices.DateTimeRange.prototype);
   }
 });
 
@@ -32,49 +32,29 @@ afterEach(() => {
   instance = null;
 });
 
-describe('SetAppointmentFulfillmentDataRequest', () => {
-  it('should create an instance of SetAppointmentFulfillmentDataRequest', () => {
-    expect(instance).to.be.a(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest);
+describe('DateTimeRange', () => {
+  it('should create an instance of DateTimeRange', () => {
+    expect(instance).to.be.a(SellingPartnerApiForServices.DateTimeRange);
   });
 
-  it('should have the property estimatedArrivalTime', () => {
+  it('should have the property startTime', () => {
     // verify property exists
-    expect(instance).to.have.property('estimatedArrivalTime');
+    expect(instance).to.have.property('startTime');
 
     // set and verify value
-    const expectedValue = generateMockData('DateTimeRange');
-    instance.estimatedArrivalTime = expectedValue;
-    expect(instance.estimatedArrivalTime).to.equal(expectedValue);
+    const expectedValue = generateMockData('Date');
+    instance.startTime = expectedValue;
+    expect(instance.startTime).to.equal(expectedValue);
   });
 
-  it('should have the property fulfillmentTime', () => {
+  it('should have the property endTime', () => {
     // verify property exists
-    expect(instance).to.have.property('fulfillmentTime');
+    expect(instance).to.have.property('endTime');
 
     // set and verify value
-    const expectedValue = generateMockData('FulfillmentTime');
-    instance.fulfillmentTime = expectedValue;
-    expect(instance.fulfillmentTime).to.equal(expectedValue);
-  });
-
-  it('should have the property appointmentResources', () => {
-    // verify property exists
-    expect(instance).to.have.property('appointmentResources');
-
-    // set and verify value
-    const expectedValue = generateMockData('AppointmentResource', true);
-    instance.appointmentResources = expectedValue;
-    expect(instance.appointmentResources).to.equal(expectedValue);
-  });
-
-  it('should have the property fulfillmentDocuments', () => {
-    // verify property exists
-    expect(instance).to.have.property('fulfillmentDocuments');
-
-    // set and verify value
-    const expectedValue = generateMockData('FulfillmentDocument', true);
-    instance.fulfillmentDocuments = expectedValue;
-    expect(instance.fulfillmentDocuments).to.equal(expectedValue);
+    const expectedValue = generateMockData('Date');
+    instance.endTime = expectedValue;
+    expect(instance.endTime).to.equal(expectedValue);
   });
 
 });

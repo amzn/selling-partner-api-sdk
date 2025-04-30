@@ -167,16 +167,6 @@ describe('Context', () => {
     expect(instance.maturityDate).to.equal(expectedValue);
   });
 
-  it('should have the property deferralStatus', () => {
-    // verify property exists
-    expect(instance).to.have.property('deferralStatus');
-
-    // set and verify value
-    const expectedValue = generateMockData('String');
-    instance.deferralStatus = expectedValue;
-    expect(instance.deferralStatus).to.equal(expectedValue);
-  });
-
   it('should have the property startTime', () => {
     // verify property exists
     expect(instance).to.have.property('startTime');

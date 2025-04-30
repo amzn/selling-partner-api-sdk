@@ -53,15 +53,13 @@ export class DeferredContext {
         obj.deferralReason = ApiClient.convertToType(data['deferralReason'], 'String');
       if (data.hasOwnProperty('maturityDate'))
         obj.maturityDate = ApiClient.convertToType(data['maturityDate'], 'Date');
-      if (data.hasOwnProperty('deferralStatus'))
-        obj.deferralStatus = ApiClient.convertToType(data['deferralStatus'], 'String');
     }
     return obj;
   }
 }
 
 /**
- * Deferral policy applied on the transaction.  Example: 'B2B','DD7'
+ * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
  * @member {String} deferralReason
  */
 DeferredContext.prototype.deferralReason = undefined;
@@ -71,11 +69,5 @@ DeferredContext.prototype.deferralReason = undefined;
  * @member {Date} maturityDate
  */
 DeferredContext.prototype.maturityDate = undefined;
-
-/**
- * Status of the transaction.   Example: 'HOLD','RELEASE'
- * @member {String} deferralStatus
- */
-DeferredContext.prototype.deferralStatus = undefined;
 
 

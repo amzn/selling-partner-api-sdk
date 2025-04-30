@@ -97,8 +97,6 @@ export class Context {
         obj.deferralReason = ApiClient.convertToType(data['deferralReason'], 'String');
       if (data.hasOwnProperty('maturityDate'))
         obj.maturityDate = ApiClient.convertToType(data['maturityDate'], 'Date');
-      if (data.hasOwnProperty('deferralStatus'))
-        obj.deferralStatus = ApiClient.convertToType(data['deferralStatus'], 'String');
       if (data.hasOwnProperty('startTime'))
         obj.startTime = ApiClient.convertToType(data['startTime'], 'Date');
       if (data.hasOwnProperty('endTime'))
@@ -177,7 +175,7 @@ Context.prototype.paymentReference = undefined;
 Context.prototype.paymentDate = undefined;
 
 /**
- * Deferral policy applied on the transaction.  Example: 'B2B','DD7'
+ * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
  * @member {String} deferralReason
  */
 Context.prototype.deferralReason = undefined;
@@ -187,12 +185,6 @@ Context.prototype.deferralReason = undefined;
  * @member {Date} maturityDate
  */
 Context.prototype.maturityDate = undefined;
-
-/**
- * Status of the transaction.   Example: 'HOLD','RELEASE'
- * @member {String} deferralStatus
- */
-Context.prototype.deferralStatus = undefined;
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
@@ -282,7 +274,7 @@ PaymentsContext.prototype.paymentDate = undefined;
 
 // Implement DeferredContext interface:
 /**
- * Deferral policy applied on the transaction.  Example: 'B2B','DD7'
+ * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
  * @member {String} deferralReason
  */
 DeferredContext.prototype.deferralReason = undefined;
@@ -292,12 +284,6 @@ DeferredContext.prototype.deferralReason = undefined;
  * @member {Date} maturityDate
  */
 DeferredContext.prototype.maturityDate = undefined;
-
-/**
- * Status of the transaction.   Example: 'HOLD','RELEASE'
- * @member {String} deferralStatus
- */
-DeferredContext.prototype.deferralStatus = undefined;
 
 // Implement TimeRangeContext interface:
 /**

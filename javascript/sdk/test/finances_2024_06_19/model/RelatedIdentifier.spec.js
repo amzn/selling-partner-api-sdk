@@ -42,7 +42,7 @@ describe('RelatedIdentifier', () => {
     expect(instance).to.have.property('relatedIdentifierName');
 
     // set and verify value
-    const expectedValue = ['ORDER_ID', 'SHIPMENT_ID', 'EVENT_GROUP_ID', 'REFUND_ID', 'INVOICE_ID', 'DISBURSEMENT_ID', 'TRANSFER_ID', ][0];
+    const expectedValue = ['ORDER_ID', 'SHIPMENT_ID', 'EVENT_GROUP_ID', 'REFUND_ID', 'INVOICE_ID', 'DISBURSEMENT_ID', 'TRANSFER_ID', 'DEFERRED_TRANSACTION_ID', 'RELEASE_TRANSACTION_ID', ][0];
     instance.relatedIdentifierName = expectedValue;
     expect(instance.relatedIdentifierName).to.equal(expectedValue);
   });
