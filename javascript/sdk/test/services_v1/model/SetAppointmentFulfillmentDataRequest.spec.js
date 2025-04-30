@@ -37,6 +37,16 @@ describe('SetAppointmentFulfillmentDataRequest', () => {
     expect(instance).to.be.a(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest);
   });
 
+  it('should have the property estimatedArrivalTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('estimatedArrivalTime');
+
+    // set and verify value
+    const expectedValue = generateMockData('DateTimeRange');
+    instance.estimatedArrivalTime = expectedValue;
+    expect(instance.estimatedArrivalTime).to.equal(expectedValue);
+  });
+
   it('should have the property fulfillmentTime', () => {
     // verify property exists
     expect(instance).to.have.property('fulfillmentTime');
