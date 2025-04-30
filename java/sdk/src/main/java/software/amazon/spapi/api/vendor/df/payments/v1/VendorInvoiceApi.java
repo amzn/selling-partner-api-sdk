@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceRequest;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceResponse;
@@ -51,10 +50,17 @@ public class VendorInvoiceApi {
             .addLimit(config.getLimit("VendorInvoiceApi-submitInvoice"))
             .build();
 
+    /**
+     * Build call for submitInvoice
+     *
+     * @param body The request body containing one or more invoices for vendor orders. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call submitInvoiceCall(
-            SubmitInvoiceRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -76,17 +82,6 @@ public class VendorInvoiceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -95,21 +90,18 @@ public class VendorInvoiceApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call submitInvoiceValidateBeforeCall(
-            SubmitInvoiceRequest body,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling submitInvoice(Async)");
         }
 
-        return submitInvoiceCall(body, progressListener, progressRequestListener);
+        return submitInvoiceCall(body, progressRequestListener);
     }
 
     /**
@@ -147,7 +139,7 @@ public class VendorInvoiceApi {
      */
     public ApiResponse<SubmitInvoiceResponse> submitInvoiceWithHttpInfo(SubmitInvoiceRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, null, null);
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, null);
         if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -172,15 +164,13 @@ public class VendorInvoiceApi {
     public okhttp3.Call submitInvoiceAsync(SubmitInvoiceRequest body, final ApiCallback<SubmitInvoiceResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, progressListener, progressRequestListener);
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, progressRequestListener);
         if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
