@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DetailCodes.
@@ -19,224 +19,192 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class DetailCodes {
-    
-        /**
+  /**
          * value: "BusinessClosed"
          * @const
          */
-        "BusinessClosed" = "BusinessClosed";
+  'BusinessClosed' = 'BusinessClosed'
 
-    
-        /**
+  /**
          * value: "CustomerUnavailable"
          * @const
          */
-        "CustomerUnavailable" = "CustomerUnavailable";
+  'CustomerUnavailable' = 'CustomerUnavailable'
 
-    
-        /**
+  /**
          * value: "PaymentNotReady"
          * @const
          */
-        "PaymentNotReady" = "PaymentNotReady";
+  'PaymentNotReady' = 'PaymentNotReady'
 
-    
-        /**
+  /**
          * value: "OtpNotAvailable"
          * @const
          */
-        "OtpNotAvailable" = "OtpNotAvailable";
+  'OtpNotAvailable' = 'OtpNotAvailable'
 
-    
-        /**
+  /**
          * value: "DeliveryAttempted"
          * @const
          */
-        "DeliveryAttempted" = "DeliveryAttempted";
+  'DeliveryAttempted' = 'DeliveryAttempted'
 
-    
-        /**
+  /**
          * value: "UnableToAccess"
          * @const
          */
-        "UnableToAccess" = "UnableToAccess";
+  'UnableToAccess' = 'UnableToAccess'
 
-    
-        /**
+  /**
          * value: "UnableToContactRecipient"
          * @const
          */
-        "UnableToContactRecipient" = "UnableToContactRecipient";
+  'UnableToContactRecipient' = 'UnableToContactRecipient'
 
-    
-        /**
+  /**
          * value: "DeliveredToBehindWheelieBin"
          * @const
          */
-        "DeliveredToBehindWheelieBin" = "DeliveredToBehindWheelieBin";
+  'DeliveredToBehindWheelieBin' = 'DeliveredToBehindWheelieBin'
 
-    
-        /**
+  /**
          * value: "DeliveredToPorch"
          * @const
          */
-        "DeliveredToPorch" = "DeliveredToPorch";
+  'DeliveredToPorch' = 'DeliveredToPorch'
 
-    
-        /**
+  /**
          * value: "DeliveredToGarage"
          * @const
          */
-        "DeliveredToGarage" = "DeliveredToGarage";
+  'DeliveredToGarage' = 'DeliveredToGarage'
 
-    
-        /**
+  /**
          * value: "DeliveredToGarden"
          * @const
          */
-        "DeliveredToGarden" = "DeliveredToGarden";
+  'DeliveredToGarden' = 'DeliveredToGarden'
 
-    
-        /**
+  /**
          * value: "DeliveredToGreenhouse"
          * @const
          */
-        "DeliveredToGreenhouse" = "DeliveredToGreenhouse";
+  'DeliveredToGreenhouse' = 'DeliveredToGreenhouse'
 
-    
-        /**
+  /**
          * value: "DeliveredToMailSlot"
          * @const
          */
-        "DeliveredToMailSlot" = "DeliveredToMailSlot";
+  'DeliveredToMailSlot' = 'DeliveredToMailSlot'
 
-    
-        /**
+  /**
          * value: "DeliveredToMailRoom"
          * @const
          */
-        "DeliveredToMailRoom" = "DeliveredToMailRoom";
+  'DeliveredToMailRoom' = 'DeliveredToMailRoom'
 
-    
-        /**
+  /**
          * value: "DeliveredToNeighbor"
          * @const
          */
-        "DeliveredToNeighbor" = "DeliveredToNeighbor";
+  'DeliveredToNeighbor' = 'DeliveredToNeighbor'
 
-    
-        /**
+  /**
          * value: "DeliveredToRearDoor"
          * @const
          */
-        "DeliveredToRearDoor" = "DeliveredToRearDoor";
+  'DeliveredToRearDoor' = 'DeliveredToRearDoor'
 
-    
-        /**
+  /**
          * value: "DeliveredToReceptionist"
          * @const
          */
-        "DeliveredToReceptionist" = "DeliveredToReceptionist";
+  'DeliveredToReceptionist' = 'DeliveredToReceptionist'
 
-    
-        /**
+  /**
          * value: "DeliveredToShed"
          * @const
          */
-        "DeliveredToShed" = "DeliveredToShed";
+  'DeliveredToShed' = 'DeliveredToShed'
 
-    
-        /**
+  /**
          * value: "DeliveredWithOTP"
          * @const
          */
-        "DeliveredWithOTP" = "DeliveredWithOTP";
+  'DeliveredWithOTP' = 'DeliveredWithOTP'
 
-    
-        /**
+  /**
          * value: "Signed"
          * @const
          */
-        "Signed" = "Signed";
+  'Signed' = 'Signed'
 
-    
-        /**
+  /**
          * value: "Damaged"
          * @const
          */
-        "Damaged" = "Damaged";
+  'Damaged' = 'Damaged'
 
-    
-        /**
+  /**
          * value: "IncorrectItems"
          * @const
          */
-        "IncorrectItems" = "IncorrectItems";
+  'IncorrectItems' = 'IncorrectItems'
 
-    
-        /**
+  /**
          * value: "NotRequired"
          * @const
          */
-        "NotRequired" = "NotRequired";
+  'NotRequired' = 'NotRequired'
 
-    
-        /**
+  /**
          * value: "Rejected"
          * @const
          */
-        "Rejected" = "Rejected";
+  'Rejected' = 'Rejected'
 
-    
-        /**
+  /**
          * value: "RejectedByRecipientWithVerification"
          * @const
          */
-        "RejectedByRecipientWithVerification" = "RejectedByRecipientWithVerification";
+  'RejectedByRecipientWithVerification' = 'RejectedByRecipientWithVerification'
 
-    
-        /**
+  /**
          * value: "CancelledByRecipient"
          * @const
          */
-        "CancelledByRecipient" = "CancelledByRecipient";
+  'CancelledByRecipient' = 'CancelledByRecipient'
 
-    
-        /**
+  /**
          * value: "AddressNotFound"
          * @const
          */
-        "AddressNotFound" = "AddressNotFound";
+  'AddressNotFound' = 'AddressNotFound'
 
-    
-        /**
+  /**
          * value: "HazmatShipment"
          * @const
          */
-        "HazmatShipment" = "HazmatShipment";
+  'HazmatShipment' = 'HazmatShipment'
 
-    
-        /**
+  /**
          * value: "Undeliverable"
          * @const
          */
-        "Undeliverable" = "Undeliverable";
+  'Undeliverable' = 'Undeliverable'
 
-    
-        /**
+  /**
          * value: "ArrivedAtLocalFacility"
          * @const
          */
-        "ArrivedAtLocalFacility" = "ArrivedAtLocalFacility";
+  'ArrivedAtLocalFacility' = 'ArrivedAtLocalFacility'
 
-    
-
-    /**
+  /**
     * Returns a <code>DetailCodes</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/DetailCodes} The enum <code>DetailCodes</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

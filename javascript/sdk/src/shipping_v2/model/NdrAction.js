@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class NdrAction.
@@ -19,35 +19,30 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class NdrAction {
-    
-        /**
+  /**
          * value: "RESCHEDULE"
          * @const
          */
-        "RESCHEDULE" = "RESCHEDULE";
+  'RESCHEDULE' = 'RESCHEDULE'
 
-    
-        /**
+  /**
          * value: "REATTEMPT"
          * @const
          */
-        "REATTEMPT" = "REATTEMPT";
+  'REATTEMPT' = 'REATTEMPT'
 
-    
-        /**
+  /**
          * value: "RTO"
          * @const
          */
-        "RTO" = "RTO";
+  'RTO' = 'RTO'
 
-    
-
-    /**
+  /**
     * Returns a <code>NdrAction</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/NdrAction} The enum <code>NdrAction</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

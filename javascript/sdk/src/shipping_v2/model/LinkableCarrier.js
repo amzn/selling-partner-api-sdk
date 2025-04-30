@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {LinkableAccountType} from './LinkableAccountType.js';
+import { ApiClient } from '../ApiClient.js'
+import { LinkableAccountType } from './LinkableAccountType.js'
 
 /**
  * The LinkableCarrier model module.
@@ -26,7 +26,7 @@ export class LinkableCarrier {
    * @alias module:shipping_v2/model/LinkableCarrier
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,26 +36,24 @@ export class LinkableCarrier {
    * @param {module:shipping_v2/model/LinkableCarrier} obj Optional instance to populate.
    * @return {module:shipping_v2/model/LinkableCarrier} The populated <code>LinkableCarrier</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new LinkableCarrier();
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
-      if (data.hasOwnProperty('linkableAccountTypes'))
-        obj.linkableAccountTypes = ApiClient.convertToType(data['linkableAccountTypes'], [LinkableAccountType]);
+      obj = obj || new LinkableCarrier()
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
+      if (data.hasOwnProperty('linkableAccountTypes')) { obj.linkableAccountTypes = ApiClient.convertToType(data.linkableAccountTypes, [LinkableAccountType]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -63,12 +61,10 @@ export class LinkableCarrier {
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-LinkableCarrier.prototype.carrierId = undefined;
+LinkableCarrier.prototype.carrierId = undefined
 
 /**
  * A list of LinkableAccountType
  * @member {Array.<module:shipping_v2/model/LinkableAccountType>} linkableAccountTypes
  */
-LinkableCarrier.prototype.linkableAccountTypes = undefined;
-
-
+LinkableCarrier.prototype.linkableAccountTypes = undefined

@@ -11,12 +11,12 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Carrier} from './Carrier.js';
-import {Currency} from './Currency.js';
-import {PackageDocumentDetail} from './PackageDocumentDetail.js';
-import {Promise} from './Promise.js';
-import {Service} from './Service.js';
+import { ApiClient } from '../ApiClient.js'
+import { Carrier } from './Carrier.js'
+import { Currency } from './Currency.js'
+import { PackageDocumentDetail } from './PackageDocumentDetail.js'
+import { Promise } from './Promise.js'
+import { Service } from './Service.js'
 
 /**
  * The OneClickShipmentResult model module.
@@ -31,18 +31,18 @@ export class OneClickShipmentResult {
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
    * @param packageDocumentDetails {Array.<module:shipping_v2/model/PackageDocumentDetail>} A list of post-purchase details about a package that will be shipped using a shipping service.
-   * @param promise {module:shipping_v2/model/Promise} 
-   * @param carrier {module:shipping_v2/model/Carrier} 
-   * @param service {module:shipping_v2/model/Service} 
-   * @param totalCharge {module:shipping_v2/model/Currency} 
+   * @param promise {module:shipping_v2/model/Promise}
+   * @param carrier {module:shipping_v2/model/Carrier}
+   * @param service {module:shipping_v2/model/Service}
+   * @param totalCharge {module:shipping_v2/model/Currency}
    */
-  constructor(shipmentId, packageDocumentDetails, promise, carrier, service, totalCharge) {
-    this.shipmentId = shipmentId;
-    this.packageDocumentDetails = packageDocumentDetails;
-    this.promise = promise;
-    this.carrier = carrier;
-    this.service = service;
-    this.totalCharge = totalCharge;
+  constructor (shipmentId, packageDocumentDetails, promise, carrier, service, totalCharge) {
+    this.shipmentId = shipmentId
+    this.packageDocumentDetails = packageDocumentDetails
+    this.promise = promise
+    this.carrier = carrier
+    this.service = service
+    this.totalCharge = totalCharge
   }
 
   /**
@@ -52,34 +52,28 @@ export class OneClickShipmentResult {
    * @param {module:shipping_v2/model/OneClickShipmentResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/OneClickShipmentResult} The populated <code>OneClickShipmentResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new OneClickShipmentResult();
-      if (data.hasOwnProperty('shipmentId'))
-        obj.shipmentId = ApiClient.convertToType(data['shipmentId'], 'String');
-      if (data.hasOwnProperty('packageDocumentDetails'))
-        obj.packageDocumentDetails = ApiClient.convertToType(data['packageDocumentDetails'], [PackageDocumentDetail]);
-      if (data.hasOwnProperty('promise'))
-        obj.promise = Promise.constructFromObject(data['promise']);
-      if (data.hasOwnProperty('carrier'))
-        obj.carrier = Carrier.constructFromObject(data['carrier']);
-      if (data.hasOwnProperty('service'))
-        obj.service = Service.constructFromObject(data['service']);
-      if (data.hasOwnProperty('totalCharge'))
-        obj.totalCharge = Currency.constructFromObject(data['totalCharge']);
+      obj = obj || new OneClickShipmentResult()
+      if (data.hasOwnProperty('shipmentId')) { obj.shipmentId = ApiClient.convertToType(data.shipmentId, 'String') }
+      if (data.hasOwnProperty('packageDocumentDetails')) { obj.packageDocumentDetails = ApiClient.convertToType(data.packageDocumentDetails, [PackageDocumentDetail]) }
+      if (data.hasOwnProperty('promise')) { obj.promise = Promise.constructFromObject(data.promise) }
+      if (data.hasOwnProperty('carrier')) { obj.carrier = Carrier.constructFromObject(data.carrier) }
+      if (data.hasOwnProperty('service')) { obj.service = Service.constructFromObject(data.service) }
+      if (data.hasOwnProperty('totalCharge')) { obj.totalCharge = Currency.constructFromObject(data.totalCharge) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -87,32 +81,30 @@ export class OneClickShipmentResult {
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
  */
-OneClickShipmentResult.prototype.shipmentId = undefined;
+OneClickShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
  * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetails
  */
-OneClickShipmentResult.prototype.packageDocumentDetails = undefined;
+OneClickShipmentResult.prototype.packageDocumentDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/Promise} promise
  */
-OneClickShipmentResult.prototype.promise = undefined;
+OneClickShipmentResult.prototype.promise = undefined
 
 /**
  * @member {module:shipping_v2/model/Carrier} carrier
  */
-OneClickShipmentResult.prototype.carrier = undefined;
+OneClickShipmentResult.prototype.carrier = undefined
 
 /**
  * @member {module:shipping_v2/model/Service} service
  */
-OneClickShipmentResult.prototype.service = undefined;
+OneClickShipmentResult.prototype.service = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} totalCharge
  */
-OneClickShipmentResult.prototype.totalCharge = undefined;
-
-
+OneClickShipmentResult.prototype.totalCharge = undefined

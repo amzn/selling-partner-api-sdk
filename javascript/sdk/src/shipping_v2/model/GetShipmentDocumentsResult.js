@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Benefits} from './Benefits.js';
-import {PackageDocumentDetail} from './PackageDocumentDetail.js';
+import { ApiClient } from '../ApiClient.js'
+import { Benefits } from './Benefits.js'
+import { PackageDocumentDetail } from './PackageDocumentDetail.js'
 
 /**
  * The GetShipmentDocumentsResult model module.
@@ -27,11 +27,11 @@ export class GetShipmentDocumentsResult {
    * @alias module:shipping_v2/model/GetShipmentDocumentsResult
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-   * @param packageDocumentDetail {module:shipping_v2/model/PackageDocumentDetail} 
+   * @param packageDocumentDetail {module:shipping_v2/model/PackageDocumentDetail}
    */
-  constructor(shipmentId, packageDocumentDetail) {
-    this.shipmentId = shipmentId;
-    this.packageDocumentDetail = packageDocumentDetail;
+  constructor (shipmentId, packageDocumentDetail) {
+    this.shipmentId = shipmentId
+    this.packageDocumentDetail = packageDocumentDetail
   }
 
   /**
@@ -41,28 +41,25 @@ export class GetShipmentDocumentsResult {
    * @param {module:shipping_v2/model/GetShipmentDocumentsResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetShipmentDocumentsResult} The populated <code>GetShipmentDocumentsResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetShipmentDocumentsResult();
-      if (data.hasOwnProperty('shipmentId'))
-        obj.shipmentId = ApiClient.convertToType(data['shipmentId'], 'String');
-      if (data.hasOwnProperty('packageDocumentDetail'))
-        obj.packageDocumentDetail = PackageDocumentDetail.constructFromObject(data['packageDocumentDetail']);
-      if (data.hasOwnProperty('benefits'))
-        obj.benefits = Benefits.constructFromObject(data['benefits']);
+      obj = obj || new GetShipmentDocumentsResult()
+      if (data.hasOwnProperty('shipmentId')) { obj.shipmentId = ApiClient.convertToType(data.shipmentId, 'String') }
+      if (data.hasOwnProperty('packageDocumentDetail')) { obj.packageDocumentDetail = PackageDocumentDetail.constructFromObject(data.packageDocumentDetail) }
+      if (data.hasOwnProperty('benefits')) { obj.benefits = Benefits.constructFromObject(data.benefits) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -70,16 +67,14 @@ export class GetShipmentDocumentsResult {
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
  */
-GetShipmentDocumentsResult.prototype.shipmentId = undefined;
+GetShipmentDocumentsResult.prototype.shipmentId = undefined
 
 /**
  * @member {module:shipping_v2/model/PackageDocumentDetail} packageDocumentDetail
  */
-GetShipmentDocumentsResult.prototype.packageDocumentDetail = undefined;
+GetShipmentDocumentsResult.prototype.packageDocumentDetail = undefined
 
 /**
  * @member {module:shipping_v2/model/Benefits} benefits
  */
-GetShipmentDocumentsResult.prototype.benefits = undefined;
-
-
+GetShipmentDocumentsResult.prototype.benefits = undefined

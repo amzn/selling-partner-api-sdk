@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The UnlinkCarrierAccountResponse model module.
@@ -25,7 +25,7 @@ export class UnlinkCarrierAccountResponse {
    * @alias module:shipping_v2/model/UnlinkCarrierAccountResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,24 +35,23 @@ export class UnlinkCarrierAccountResponse {
    * @param {module:shipping_v2/model/UnlinkCarrierAccountResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/UnlinkCarrierAccountResponse} The populated <code>UnlinkCarrierAccountResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new UnlinkCarrierAccountResponse();
-      if (data.hasOwnProperty('isUnlinked'))
-        obj.isUnlinked = ApiClient.convertToType(data['isUnlinked'], 'Boolean');
+      obj = obj || new UnlinkCarrierAccountResponse()
+      if (data.hasOwnProperty('isUnlinked')) { obj.isUnlinked = ApiClient.convertToType(data.isUnlinked, 'Boolean') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -60,6 +59,4 @@ export class UnlinkCarrierAccountResponse {
  * Is Carrier unlinked from Merchant
  * @member {Boolean} isUnlinked
  */
-UnlinkCarrierAccountResponse.prototype.isUnlinked = undefined;
-
-
+UnlinkCarrierAccountResponse.prototype.isUnlinked = undefined

@@ -11,11 +11,11 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Address} from './Address.js';
-import {ChannelDetails} from './ChannelDetails.js';
-import {Package} from './Package.js';
-import {RequestedDocumentSpecification} from './RequestedDocumentSpecification.js';
+import { ApiClient } from '../ApiClient.js'
+import { Address } from './Address.js'
+import { ChannelDetails } from './ChannelDetails.js'
+import { Package } from './Package.js'
+import { RequestedDocumentSpecification } from './RequestedDocumentSpecification.js'
 
 /**
  * The DirectPurchaseRequest model module.
@@ -28,10 +28,10 @@ export class DirectPurchaseRequest {
    * The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.
    * @alias module:shipping_v2/model/DirectPurchaseRequest
    * @class
-   * @param channelDetails {module:shipping_v2/model/ChannelDetails} 
+   * @param channelDetails {module:shipping_v2/model/ChannelDetails}
    */
-  constructor(channelDetails) {
-    this.channelDetails = channelDetails;
+  constructor (channelDetails) {
+    this.channelDetails = channelDetails
   }
 
   /**
@@ -41,66 +41,58 @@ export class DirectPurchaseRequest {
    * @param {module:shipping_v2/model/DirectPurchaseRequest} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DirectPurchaseRequest} The populated <code>DirectPurchaseRequest</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DirectPurchaseRequest();
-      if (data.hasOwnProperty('shipTo'))
-        obj.shipTo = Address.constructFromObject(data['shipTo']);
-      if (data.hasOwnProperty('shipFrom'))
-        obj.shipFrom = Address.constructFromObject(data['shipFrom']);
-      if (data.hasOwnProperty('returnTo'))
-        obj.returnTo = Address.constructFromObject(data['returnTo']);
-      if (data.hasOwnProperty('packages'))
-        obj.packages = ApiClient.convertToType(data['packages'], [Package]);
-      if (data.hasOwnProperty('channelDetails'))
-        obj.channelDetails = ChannelDetails.constructFromObject(data['channelDetails']);
-      if (data.hasOwnProperty('labelSpecifications'))
-        obj.labelSpecifications = RequestedDocumentSpecification.constructFromObject(data['labelSpecifications']);
+      obj = obj || new DirectPurchaseRequest()
+      if (data.hasOwnProperty('shipTo')) { obj.shipTo = Address.constructFromObject(data.shipTo) }
+      if (data.hasOwnProperty('shipFrom')) { obj.shipFrom = Address.constructFromObject(data.shipFrom) }
+      if (data.hasOwnProperty('returnTo')) { obj.returnTo = Address.constructFromObject(data.returnTo) }
+      if (data.hasOwnProperty('packages')) { obj.packages = ApiClient.convertToType(data.packages, [Package]) }
+      if (data.hasOwnProperty('channelDetails')) { obj.channelDetails = ChannelDetails.constructFromObject(data.channelDetails) }
+      if (data.hasOwnProperty('labelSpecifications')) { obj.labelSpecifications = RequestedDocumentSpecification.constructFromObject(data.labelSpecifications) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Address} shipTo
  */
-DirectPurchaseRequest.prototype.shipTo = undefined;
+DirectPurchaseRequest.prototype.shipTo = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFrom
  */
-DirectPurchaseRequest.prototype.shipFrom = undefined;
+DirectPurchaseRequest.prototype.shipFrom = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} returnTo
  */
-DirectPurchaseRequest.prototype.returnTo = undefined;
+DirectPurchaseRequest.prototype.returnTo = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
  * @member {Array.<module:shipping_v2/model/Package>} packages
  */
-DirectPurchaseRequest.prototype.packages = undefined;
+DirectPurchaseRequest.prototype.packages = undefined
 
 /**
  * @member {module:shipping_v2/model/ChannelDetails} channelDetails
  */
-DirectPurchaseRequest.prototype.channelDetails = undefined;
+DirectPurchaseRequest.prototype.channelDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedDocumentSpecification} labelSpecifications
  */
-DirectPurchaseRequest.prototype.labelSpecifications = undefined;
-
-
+DirectPurchaseRequest.prototype.labelSpecifications = undefined

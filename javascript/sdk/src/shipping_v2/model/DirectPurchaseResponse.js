@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DirectPurchaseResult} from './DirectPurchaseResult.js';
+import { ApiClient } from '../ApiClient.js'
+import { DirectPurchaseResult } from './DirectPurchaseResult.js'
 
 /**
  * The DirectPurchaseResponse model module.
@@ -26,7 +26,7 @@ export class DirectPurchaseResponse {
    * @alias module:shipping_v2/model/DirectPurchaseResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class DirectPurchaseResponse {
    * @param {module:shipping_v2/model/DirectPurchaseResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DirectPurchaseResponse} The populated <code>DirectPurchaseResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DirectPurchaseResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = DirectPurchaseResult.constructFromObject(data['payload']);
+      obj = obj || new DirectPurchaseResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = DirectPurchaseResult.constructFromObject(data.payload) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/DirectPurchaseResult} payload
  */
-DirectPurchaseResponse.prototype.payload = undefined;
-
-
+DirectPurchaseResponse.prototype.payload = undefined

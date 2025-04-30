@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {DateRange} from './DateRange.js';
-import {OperatingHours} from './OperatingHours.js';
+import { ApiClient } from '../ApiClient.js'
+import { DateRange } from './DateRange.js'
+import { OperatingHours } from './OperatingHours.js'
 
 /**
  * The ExceptionOperatingHours model module.
@@ -27,7 +27,7 @@ export class ExceptionOperatingHours {
    * @alias module:shipping_v2/model/ExceptionOperatingHours
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -37,37 +37,33 @@ export class ExceptionOperatingHours {
    * @param {module:shipping_v2/model/ExceptionOperatingHours} obj Optional instance to populate.
    * @return {module:shipping_v2/model/ExceptionOperatingHours} The populated <code>ExceptionOperatingHours</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new ExceptionOperatingHours();
-      if (data.hasOwnProperty('dateRange'))
-        obj.dateRange = DateRange.constructFromObject(data['dateRange']);
-      if (data.hasOwnProperty('operatingHours'))
-        obj.operatingHours = OperatingHours.constructFromObject(data['operatingHours']);
+      obj = obj || new ExceptionOperatingHours()
+      if (data.hasOwnProperty('dateRange')) { obj.dateRange = DateRange.constructFromObject(data.dateRange) }
+      if (data.hasOwnProperty('operatingHours')) { obj.operatingHours = OperatingHours.constructFromObject(data.operatingHours) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/DateRange} dateRange
  */
-ExceptionOperatingHours.prototype.dateRange = undefined;
+ExceptionOperatingHours.prototype.dateRange = undefined
 
 /**
  * @member {module:shipping_v2/model/OperatingHours} operatingHours
  */
-ExceptionOperatingHours.prototype.operatingHours = undefined;
-
-
+ExceptionOperatingHours.prototype.operatingHours = undefined

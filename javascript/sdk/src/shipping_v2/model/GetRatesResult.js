@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {IneligibleRate} from './IneligibleRate.js';
-import {Rate} from './Rate.js';
+import { ApiClient } from '../ApiClient.js'
+import { IneligibleRate } from './IneligibleRate.js'
+import { Rate } from './Rate.js'
 
 /**
  * The GetRatesResult model module.
@@ -29,9 +29,9 @@ export class GetRatesResult {
    * @param requestToken {String} A unique token generated to identify a getRates operation.
    * @param rates {Array.<module:shipping_v2/model/Rate>} A list of eligible shipping service offerings.
    */
-  constructor(requestToken, rates) {
-    this.requestToken = requestToken;
-    this.rates = rates;
+  constructor (requestToken, rates) {
+    this.requestToken = requestToken
+    this.rates = rates
   }
 
   /**
@@ -41,28 +41,25 @@ export class GetRatesResult {
    * @param {module:shipping_v2/model/GetRatesResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetRatesResult} The populated <code>GetRatesResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetRatesResult();
-      if (data.hasOwnProperty('requestToken'))
-        obj.requestToken = ApiClient.convertToType(data['requestToken'], 'String');
-      if (data.hasOwnProperty('rates'))
-        obj.rates = ApiClient.convertToType(data['rates'], [Rate]);
-      if (data.hasOwnProperty('ineligibleRates'))
-        obj.ineligibleRates = ApiClient.convertToType(data['ineligibleRates'], [IneligibleRate]);
+      obj = obj || new GetRatesResult()
+      if (data.hasOwnProperty('requestToken')) { obj.requestToken = ApiClient.convertToType(data.requestToken, 'String') }
+      if (data.hasOwnProperty('rates')) { obj.rates = ApiClient.convertToType(data.rates, [Rate]) }
+      if (data.hasOwnProperty('ineligibleRates')) { obj.ineligibleRates = ApiClient.convertToType(data.ineligibleRates, [IneligibleRate]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -70,18 +67,16 @@ export class GetRatesResult {
  * A unique token generated to identify a getRates operation.
  * @member {String} requestToken
  */
-GetRatesResult.prototype.requestToken = undefined;
+GetRatesResult.prototype.requestToken = undefined
 
 /**
  * A list of eligible shipping service offerings.
  * @member {Array.<module:shipping_v2/model/Rate>} rates
  */
-GetRatesResult.prototype.rates = undefined;
+GetRatesResult.prototype.rates = undefined
 
 /**
  * A list of ineligible shipping service offerings.
  * @member {Array.<module:shipping_v2/model/IneligibleRate>} ineligibleRates
  */
-GetRatesResult.prototype.ineligibleRates = undefined;
-
-
+GetRatesResult.prototype.ineligibleRates = undefined

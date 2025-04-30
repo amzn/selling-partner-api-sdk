@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Weight model module.
@@ -27,9 +27,9 @@ export class Weight {
    * @param unit {module:shipping_v2/model/Weight.UnitEnum} The unit of measurement.
    * @param value {Number} The measurement value.
    */
-  constructor(unit, value) {
-    this.unit = unit;
-    this.value = value;
+  constructor (unit, value) {
+    this.unit = unit
+    this.value = value
   }
 
   /**
@@ -39,26 +39,24 @@ export class Weight {
    * @param {module:shipping_v2/model/Weight} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Weight} The populated <code>Weight</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Weight();
-      if (data.hasOwnProperty('unit'))
-        obj.unit = ApiClient.convertToType(data['unit'], 'String');
-      if (data.hasOwnProperty('value'))
-        obj.value = ApiClient.convertToType(data['value'], 'Number');
+      obj = obj || new Weight()
+      if (data.hasOwnProperty('unit')) { obj.unit = ApiClient.convertToType(data.unit, 'String') }
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'Number') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -67,43 +65,41 @@ export class Weight {
  * @enum {String}
  * @readonly
  */
-Weight['UnitEnum'] = {
+Weight.UnitEnum = {
 
-    /**
+  /**
      * value: "GRAM"
      * @const
      */
-    "GRAM": "GRAM",
+  GRAM: 'GRAM',
 
-    /**
+  /**
      * value: "KILOGRAM"
      * @const
      */
-    "KILOGRAM": "KILOGRAM",
+  KILOGRAM: 'KILOGRAM',
 
-    /**
+  /**
      * value: "OUNCE"
      * @const
      */
-    "OUNCE": "OUNCE",
+  OUNCE: 'OUNCE',
 
-    /**
+  /**
      * value: "POUND"
      * @const
      */
-    "POUND": "POUND"
-};
+  POUND: 'POUND'
+}
 
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/Weight.UnitEnum} unit
  */
-Weight.prototype.unit = undefined;
+Weight.prototype.unit = undefined
 
 /**
  * The measurement value.
  * @member {Number} value
  */
-Weight.prototype.value = undefined;
-
-
+Weight.prototype.value = undefined

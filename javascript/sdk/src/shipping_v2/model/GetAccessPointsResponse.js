@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {GetAccessPointsResult} from './GetAccessPointsResult.js';
+import { ApiClient } from '../ApiClient.js'
+import { GetAccessPointsResult } from './GetAccessPointsResult.js'
 
 /**
  * The GetAccessPointsResponse model module.
@@ -26,7 +26,7 @@ export class GetAccessPointsResponse {
    * @alias module:shipping_v2/model/GetAccessPointsResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class GetAccessPointsResponse {
    * @param {module:shipping_v2/model/GetAccessPointsResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetAccessPointsResponse} The populated <code>GetAccessPointsResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetAccessPointsResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = GetAccessPointsResult.constructFromObject(data['payload']);
+      obj = obj || new GetAccessPointsResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = GetAccessPointsResult.constructFromObject(data.payload) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/GetAccessPointsResult} payload
  */
-GetAccessPointsResponse.prototype.payload = undefined;
-
-
+GetAccessPointsResponse.prototype.payload = undefined

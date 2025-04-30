@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {AccountType} from './AccountType.js';
-import {CarrierAccountInput} from './CarrierAccountInput.js';
+import { ApiClient } from '../ApiClient.js'
+import { AccountType } from './AccountType.js'
+import { CarrierAccountInput } from './CarrierAccountInput.js'
 
 /**
  * The LinkableAccountType model module.
@@ -27,7 +27,7 @@ export class LinkableAccountType {
    * @alias module:shipping_v2/model/LinkableAccountType
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -37,38 +37,34 @@ export class LinkableAccountType {
    * @param {module:shipping_v2/model/LinkableAccountType} obj Optional instance to populate.
    * @return {module:shipping_v2/model/LinkableAccountType} The populated <code>LinkableAccountType</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new LinkableAccountType();
-      if (data.hasOwnProperty('accountType'))
-        obj.accountType = AccountType.constructFromObject(data['accountType']);
-      if (data.hasOwnProperty('carrierAccountInputs'))
-        obj.carrierAccountInputs = ApiClient.convertToType(data['carrierAccountInputs'], [CarrierAccountInput]);
+      obj = obj || new LinkableAccountType()
+      if (data.hasOwnProperty('accountType')) { obj.accountType = AccountType.constructFromObject(data.accountType) }
+      if (data.hasOwnProperty('carrierAccountInputs')) { obj.carrierAccountInputs = ApiClient.convertToType(data.carrierAccountInputs, [CarrierAccountInput]) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/AccountType} accountType
  */
-LinkableAccountType.prototype.accountType = undefined;
+LinkableAccountType.prototype.accountType = undefined
 
 /**
  * A list of CarrierAccountInput
  * @member {Array.<module:shipping_v2/model/CarrierAccountInput>} carrierAccountInputs
  */
-LinkableAccountType.prototype.carrierAccountInputs = undefined;
-
-
+LinkableAccountType.prototype.carrierAccountInputs = undefined

@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {AccessPoint} from './AccessPoint.js';
+import { ApiClient } from '../ApiClient.js'
+import { AccessPoint } from './AccessPoint.js'
 
 /**
  * The GetAccessPointsResult model module.
@@ -27,8 +27,8 @@ export class GetAccessPointsResult {
    * @class
    * @param accessPointsMap {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>} Map of type of access point to list of access points
    */
-  constructor(accessPointsMap) {
-    this.accessPointsMap = accessPointsMap;
+  constructor (accessPointsMap) {
+    this.accessPointsMap = accessPointsMap
   }
 
   /**
@@ -38,24 +38,23 @@ export class GetAccessPointsResult {
    * @param {module:shipping_v2/model/GetAccessPointsResult} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetAccessPointsResult} The populated <code>GetAccessPointsResult</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetAccessPointsResult();
-      if (data.hasOwnProperty('accessPointsMap'))
-        obj.accessPointsMap = ApiClient.convertToType(data['accessPointsMap'], {'String': Array});
+      obj = obj || new GetAccessPointsResult()
+      if (data.hasOwnProperty('accessPointsMap')) { obj.accessPointsMap = ApiClient.convertToType(data.accessPointsMap, { String: Array }) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -63,6 +62,4 @@ export class GetAccessPointsResult {
  * Map of type of access point to list of access points
  * @member {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>} accessPointsMap
  */
-GetAccessPointsResult.prototype.accessPointsMap = undefined;
-
-
+GetAccessPointsResult.prototype.accessPointsMap = undefined

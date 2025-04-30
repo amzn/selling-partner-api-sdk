@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Geocode model module.
@@ -25,7 +25,7 @@ export class Geocode {
    * @alias module:shipping_v2/model/Geocode
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class Geocode {
    * @param {module:shipping_v2/model/Geocode} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Geocode} The populated <code>Geocode</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Geocode();
-      if (data.hasOwnProperty('latitude'))
-        obj.latitude = ApiClient.convertToType(data['latitude'], 'String');
-      if (data.hasOwnProperty('longitude'))
-        obj.longitude = ApiClient.convertToType(data['longitude'], 'String');
+      obj = obj || new Geocode()
+      if (data.hasOwnProperty('latitude')) { obj.latitude = ApiClient.convertToType(data.latitude, 'String') }
+      if (data.hasOwnProperty('longitude')) { obj.longitude = ApiClient.convertToType(data.longitude, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class Geocode {
  * The latitude of access point.
  * @member {String} latitude
  */
-Geocode.prototype.latitude = undefined;
+Geocode.prototype.latitude = undefined
 
 /**
  * The longitude of access point.
  * @member {String} longitude
  */
-Geocode.prototype.longitude = undefined;
-
-
+Geocode.prototype.longitude = undefined

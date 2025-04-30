@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ActiveAccount} from './ActiveAccount.js';
+import { ApiClient } from '../ApiClient.js'
+import { ActiveAccount } from './ActiveAccount.js'
 
 /**
  * The GetCarrierAccountsResponse model module.
@@ -27,8 +27,8 @@ export class GetCarrierAccountsResponse {
    * @class
    * @param activeAccounts {Array.<module:shipping_v2/model/ActiveAccount>} A list of ActiveAccount
    */
-  constructor(activeAccounts) {
-    this.activeAccounts = activeAccounts;
+  constructor (activeAccounts) {
+    this.activeAccounts = activeAccounts
   }
 
   /**
@@ -38,24 +38,23 @@ export class GetCarrierAccountsResponse {
    * @param {module:shipping_v2/model/GetCarrierAccountsResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetCarrierAccountsResponse} The populated <code>GetCarrierAccountsResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetCarrierAccountsResponse();
-      if (data.hasOwnProperty('activeAccounts'))
-        obj.activeAccounts = ApiClient.convertToType(data['activeAccounts'], [ActiveAccount]);
+      obj = obj || new GetCarrierAccountsResponse()
+      if (data.hasOwnProperty('activeAccounts')) { obj.activeAccounts = ApiClient.convertToType(data.activeAccounts, [ActiveAccount]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -63,6 +62,4 @@ export class GetCarrierAccountsResponse {
  * A list of ActiveAccount
  * @member {Array.<module:shipping_v2/model/ActiveAccount>} activeAccounts
  */
-GetCarrierAccountsResponse.prototype.activeAccounts = undefined;
-
-
+GetCarrierAccountsResponse.prototype.activeAccounts = undefined

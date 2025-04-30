@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {TaxType} from './TaxType.js';
+import { ApiClient } from '../ApiClient.js'
+import { TaxType } from './TaxType.js'
 
 /**
  * The TaxDetail model module.
@@ -25,12 +25,12 @@ export class TaxDetail {
    * Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions.
    * @alias module:shipping_v2/model/TaxDetail
    * @class
-   * @param taxType {module:shipping_v2/model/TaxType} 
+   * @param taxType {module:shipping_v2/model/TaxType}
    * @param taxRegistrationNumber {String} The shipper's tax registration number associated with the shipment for customs compliance purposes in certain regions.
    */
-  constructor(taxType, taxRegistrationNumber) {
-    this.taxType = taxType;
-    this.taxRegistrationNumber = taxRegistrationNumber;
+  constructor (taxType, taxRegistrationNumber) {
+    this.taxType = taxType
+    this.taxRegistrationNumber = taxRegistrationNumber
   }
 
   /**
@@ -40,38 +40,34 @@ export class TaxDetail {
    * @param {module:shipping_v2/model/TaxDetail} obj Optional instance to populate.
    * @return {module:shipping_v2/model/TaxDetail} The populated <code>TaxDetail</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new TaxDetail();
-      if (data.hasOwnProperty('taxType'))
-        obj.taxType = TaxType.constructFromObject(data['taxType']);
-      if (data.hasOwnProperty('taxRegistrationNumber'))
-        obj.taxRegistrationNumber = ApiClient.convertToType(data['taxRegistrationNumber'], 'String');
+      obj = obj || new TaxDetail()
+      if (data.hasOwnProperty('taxType')) { obj.taxType = TaxType.constructFromObject(data.taxType) }
+      if (data.hasOwnProperty('taxRegistrationNumber')) { obj.taxRegistrationNumber = ApiClient.convertToType(data.taxRegistrationNumber, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/TaxType} taxType
  */
-TaxDetail.prototype.taxType = undefined;
+TaxDetail.prototype.taxType = undefined
 
 /**
  * The shipper's tax registration number associated with the shipment for customs compliance purposes in certain regions.
  * @member {String} taxRegistrationNumber
  */
-TaxDetail.prototype.taxRegistrationNumber = undefined;
-
-
+TaxDetail.prototype.taxRegistrationNumber = undefined

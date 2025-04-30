@@ -11,12 +11,12 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {AccessPointType} from './AccessPointType.js';
-import {AccessibilityAttributes} from './AccessibilityAttributes.js';
-import {Address} from './Address.js';
-import {ExceptionOperatingHours} from './ExceptionOperatingHours.js';
-import {OperatingHours} from './OperatingHours.js';
+import { ApiClient } from '../ApiClient.js'
+import { AccessPointType } from './AccessPointType.js'
+import { AccessibilityAttributes } from './AccessibilityAttributes.js'
+import { Address } from './Address.js'
+import { ExceptionOperatingHours } from './ExceptionOperatingHours.js'
+import { OperatingHours } from './OperatingHours.js'
 
 /**
  * The AccessPoint model module.
@@ -30,7 +30,7 @@ export class AccessPoint {
    * @alias module:shipping_v2/model/AccessPoint
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -40,42 +40,32 @@ export class AccessPoint {
    * @param {module:shipping_v2/model/AccessPoint} obj Optional instance to populate.
    * @return {module:shipping_v2/model/AccessPoint} The populated <code>AccessPoint</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new AccessPoint();
-      if (data.hasOwnProperty('accessPointId'))
-        obj.accessPointId = ApiClient.convertToType(data['accessPointId'], 'String');
-      if (data.hasOwnProperty('name'))
-        obj.name = ApiClient.convertToType(data['name'], 'String');
-      if (data.hasOwnProperty('timezone'))
-        obj.timezone = ApiClient.convertToType(data['timezone'], 'String');
-      if (data.hasOwnProperty('type'))
-        obj.type = AccessPointType.constructFromObject(data['type']);
-      if (data.hasOwnProperty('accessibilityAttributes'))
-        obj.accessibilityAttributes = AccessibilityAttributes.constructFromObject(data['accessibilityAttributes']);
-      if (data.hasOwnProperty('address'))
-        obj.address = Address.constructFromObject(data['address']);
-      if (data.hasOwnProperty('exceptionOperatingHours'))
-        obj.exceptionOperatingHours = ApiClient.convertToType(data['exceptionOperatingHours'], [ExceptionOperatingHours]);
-      if (data.hasOwnProperty('assistanceType'))
-        obj.assistanceType = ApiClient.convertToType(data['assistanceType'], 'String');
-      if (data.hasOwnProperty('score'))
-        obj.score = ApiClient.convertToType(data['score'], 'String');
-      if (data.hasOwnProperty('standardOperatingHours'))
-        obj.standardOperatingHours = ApiClient.convertToType(data['standardOperatingHours'], {'String': OperatingHours});
+      obj = obj || new AccessPoint()
+      if (data.hasOwnProperty('accessPointId')) { obj.accessPointId = ApiClient.convertToType(data.accessPointId, 'String') }
+      if (data.hasOwnProperty('name')) { obj.name = ApiClient.convertToType(data.name, 'String') }
+      if (data.hasOwnProperty('timezone')) { obj.timezone = ApiClient.convertToType(data.timezone, 'String') }
+      if (data.hasOwnProperty('type')) { obj.type = AccessPointType.constructFromObject(data.type) }
+      if (data.hasOwnProperty('accessibilityAttributes')) { obj.accessibilityAttributes = AccessibilityAttributes.constructFromObject(data.accessibilityAttributes) }
+      if (data.hasOwnProperty('address')) { obj.address = Address.constructFromObject(data.address) }
+      if (data.hasOwnProperty('exceptionOperatingHours')) { obj.exceptionOperatingHours = ApiClient.convertToType(data.exceptionOperatingHours, [ExceptionOperatingHours]) }
+      if (data.hasOwnProperty('assistanceType')) { obj.assistanceType = ApiClient.convertToType(data.assistanceType, 'String') }
+      if (data.hasOwnProperty('score')) { obj.score = ApiClient.convertToType(data.score, 'String') }
+      if (data.hasOwnProperty('standardOperatingHours')) { obj.standardOperatingHours = ApiClient.convertToType(data.standardOperatingHours, { String: OperatingHours }) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -83,77 +73,75 @@ export class AccessPoint {
  * Unique identifier for the access point
  * @member {String} accessPointId
  */
-AccessPoint.prototype.accessPointId = undefined;
+AccessPoint.prototype.accessPointId = undefined
 
 /**
  * Name of entity (store/hub etc) where this access point is located
  * @member {String} name
  */
-AccessPoint.prototype.name = undefined;
+AccessPoint.prototype.name = undefined
 
 /**
  * Timezone of access point
  * @member {String} timezone
  */
-AccessPoint.prototype.timezone = undefined;
+AccessPoint.prototype.timezone = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessPointType} type
  */
-AccessPoint.prototype.type = undefined;
+AccessPoint.prototype.type = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessibilityAttributes} accessibilityAttributes
  */
-AccessPoint.prototype.accessibilityAttributes = undefined;
+AccessPoint.prototype.accessibilityAttributes = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} address
  */
-AccessPoint.prototype.address = undefined;
+AccessPoint.prototype.address = undefined
 
 /**
  * Exception operating hours for Access Point
  * @member {Array.<module:shipping_v2/model/ExceptionOperatingHours>} exceptionOperatingHours
  */
-AccessPoint.prototype.exceptionOperatingHours = undefined;
+AccessPoint.prototype.exceptionOperatingHours = undefined
 
 /**
  * Allowed values for the <code>assistanceType</code> property.
  * @enum {String}
  * @readonly
  */
-AccessPoint['AssistanceTypeEnum'] = {
+AccessPoint.AssistanceTypeEnum = {
 
-    /**
+  /**
      * value: "STAFF_ASSISTED"
      * @const
      */
-    "STAFF_ASSISTED": "STAFF_ASSISTED",
+  STAFF_ASSISTED: 'STAFF_ASSISTED',
 
-    /**
+  /**
      * value: "SELF_ASSISTED"
      * @const
      */
-    "SELF_ASSISTED": "SELF_ASSISTED"
-};
+  SELF_ASSISTED: 'SELF_ASSISTED'
+}
 
 /**
  * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
  * @member {module:shipping_v2/model/AccessPoint.AssistanceTypeEnum} assistanceType
  */
-AccessPoint.prototype.assistanceType = undefined;
+AccessPoint.prototype.assistanceType = undefined
 
 /**
  * The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper's end.
  * @member {String} score
  */
-AccessPoint.prototype.score = undefined;
+AccessPoint.prototype.score = undefined
 
 /**
  * Map of day of the week to operating hours of that day
  * @member {Object.<String, module:shipping_v2/model/OperatingHours>} standardOperatingHours
  */
-AccessPoint.prototype.standardOperatingHours = undefined;
-
-
+AccessPoint.prototype.standardOperatingHours = undefined

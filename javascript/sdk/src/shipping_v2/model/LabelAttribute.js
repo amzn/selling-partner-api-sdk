@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class LabelAttribute.
@@ -19,35 +19,30 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class LabelAttribute {
-    
-        /**
+  /**
          * value: "PACKAGE_CLIENT_REFERENCE_ID"
          * @const
          */
-        "PACKAGE_CLIENT_REFERENCE_ID" = "PACKAGE_CLIENT_REFERENCE_ID";
+  'PACKAGE_CLIENT_REFERENCE_ID' = 'PACKAGE_CLIENT_REFERENCE_ID'
 
-    
-        /**
+  /**
          * value: "SELLER_DISPLAY_NAME"
          * @const
          */
-        "SELLER_DISPLAY_NAME" = "SELLER_DISPLAY_NAME";
+  'SELLER_DISPLAY_NAME' = 'SELLER_DISPLAY_NAME'
 
-    
-        /**
+  /**
          * value: "COLLECT_ON_DELIVERY_AMOUNT"
          * @const
          */
-        "COLLECT_ON_DELIVERY_AMOUNT" = "COLLECT_ON_DELIVERY_AMOUNT";
+  'COLLECT_ON_DELIVERY_AMOUNT' = 'COLLECT_ON_DELIVERY_AMOUNT'
 
-    
-
-    /**
+  /**
     * Returns a <code>LabelAttribute</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/LabelAttribute} The enum <code>LabelAttribute</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

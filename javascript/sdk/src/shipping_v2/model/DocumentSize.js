@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The DocumentSize model module.
@@ -28,10 +28,10 @@ export class DocumentSize {
    * @param length {Number} The length of the document measured in the units specified.
    * @param unit {module:shipping_v2/model/DocumentSize.UnitEnum} The unit of measurement.
    */
-  constructor(width, length, unit) {
-    this.width = width;
-    this.length = length;
-    this.unit = unit;
+  constructor (width, length, unit) {
+    this.width = width
+    this.length = length
+    this.unit = unit
   }
 
   /**
@@ -41,28 +41,25 @@ export class DocumentSize {
    * @param {module:shipping_v2/model/DocumentSize} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DocumentSize} The populated <code>DocumentSize</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DocumentSize();
-      if (data.hasOwnProperty('width'))
-        obj.width = ApiClient.convertToType(data['width'], 'Number');
-      if (data.hasOwnProperty('length'))
-        obj.length = ApiClient.convertToType(data['length'], 'Number');
-      if (data.hasOwnProperty('unit'))
-        obj.unit = ApiClient.convertToType(data['unit'], 'String');
+      obj = obj || new DocumentSize()
+      if (data.hasOwnProperty('width')) { obj.width = ApiClient.convertToType(data.width, 'Number') }
+      if (data.hasOwnProperty('length')) { obj.length = ApiClient.convertToType(data.length, 'Number') }
+      if (data.hasOwnProperty('unit')) { obj.unit = ApiClient.convertToType(data.unit, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -70,38 +67,36 @@ export class DocumentSize {
  * The width of the document measured in the units specified.
  * @member {Number} width
  */
-DocumentSize.prototype.width = undefined;
+DocumentSize.prototype.width = undefined
 
 /**
  * The length of the document measured in the units specified.
  * @member {Number} length
  */
-DocumentSize.prototype.length = undefined;
+DocumentSize.prototype.length = undefined
 
 /**
  * Allowed values for the <code>unit</code> property.
  * @enum {String}
  * @readonly
  */
-DocumentSize['UnitEnum'] = {
+DocumentSize.UnitEnum = {
 
-    /**
+  /**
      * value: "INCH"
      * @const
      */
-    "INCH": "INCH",
+  INCH: 'INCH',
 
-    /**
+  /**
      * value: "CENTIMETER"
      * @const
      */
-    "CENTIMETER": "CENTIMETER"
-};
+  CENTIMETER: 'CENTIMETER'
+}
 
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/DocumentSize.UnitEnum} unit
  */
-DocumentSize.prototype.unit = undefined;
-
-
+DocumentSize.prototype.unit = undefined

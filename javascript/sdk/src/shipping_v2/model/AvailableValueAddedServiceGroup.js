@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ValueAddedService} from './ValueAddedService.js';
+import { ApiClient } from '../ApiClient.js'
+import { ValueAddedService } from './ValueAddedService.js'
 
 /**
  * The AvailableValueAddedServiceGroup model module.
@@ -29,10 +29,10 @@ export class AvailableValueAddedServiceGroup {
    * @param groupDescription {String} The name of the value-added service group.
    * @param isRequired {Boolean} When true, one or more of the value-added services listed must be specified.
    */
-  constructor(groupId, groupDescription, isRequired) {
-    this.groupId = groupId;
-    this.groupDescription = groupDescription;
-    this.isRequired = isRequired;
+  constructor (groupId, groupDescription, isRequired) {
+    this.groupId = groupId
+    this.groupDescription = groupDescription
+    this.isRequired = isRequired
   }
 
   /**
@@ -42,30 +42,26 @@ export class AvailableValueAddedServiceGroup {
    * @param {module:shipping_v2/model/AvailableValueAddedServiceGroup} obj Optional instance to populate.
    * @return {module:shipping_v2/model/AvailableValueAddedServiceGroup} The populated <code>AvailableValueAddedServiceGroup</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new AvailableValueAddedServiceGroup();
-      if (data.hasOwnProperty('groupId'))
-        obj.groupId = ApiClient.convertToType(data['groupId'], 'String');
-      if (data.hasOwnProperty('groupDescription'))
-        obj.groupDescription = ApiClient.convertToType(data['groupDescription'], 'String');
-      if (data.hasOwnProperty('isRequired'))
-        obj.isRequired = ApiClient.convertToType(data['isRequired'], 'Boolean');
-      if (data.hasOwnProperty('valueAddedServices'))
-        obj.valueAddedServices = ApiClient.convertToType(data['valueAddedServices'], [ValueAddedService]);
+      obj = obj || new AvailableValueAddedServiceGroup()
+      if (data.hasOwnProperty('groupId')) { obj.groupId = ApiClient.convertToType(data.groupId, 'String') }
+      if (data.hasOwnProperty('groupDescription')) { obj.groupDescription = ApiClient.convertToType(data.groupDescription, 'String') }
+      if (data.hasOwnProperty('isRequired')) { obj.isRequired = ApiClient.convertToType(data.isRequired, 'Boolean') }
+      if (data.hasOwnProperty('valueAddedServices')) { obj.valueAddedServices = ApiClient.convertToType(data.valueAddedServices, [ValueAddedService]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -73,24 +69,22 @@ export class AvailableValueAddedServiceGroup {
  * The type of the value-added service group.
  * @member {String} groupId
  */
-AvailableValueAddedServiceGroup.prototype.groupId = undefined;
+AvailableValueAddedServiceGroup.prototype.groupId = undefined
 
 /**
  * The name of the value-added service group.
  * @member {String} groupDescription
  */
-AvailableValueAddedServiceGroup.prototype.groupDescription = undefined;
+AvailableValueAddedServiceGroup.prototype.groupDescription = undefined
 
 /**
  * When true, one or more of the value-added services listed must be specified.
  * @member {Boolean} isRequired
  */
-AvailableValueAddedServiceGroup.prototype.isRequired = undefined;
+AvailableValueAddedServiceGroup.prototype.isRequired = undefined
 
 /**
  * A list of optional value-added services available for purchase with a shipping service offering.
  * @member {Array.<module:shipping_v2/model/ValueAddedService>} valueAddedServices
  */
-AvailableValueAddedServiceGroup.prototype.valueAddedServices = undefined;
-
-
+AvailableValueAddedServiceGroup.prototype.valueAddedServices = undefined

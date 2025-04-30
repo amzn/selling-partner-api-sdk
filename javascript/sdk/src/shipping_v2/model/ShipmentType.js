@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ShipmentType.
@@ -19,28 +19,24 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class ShipmentType {
-    
-        /**
+  /**
          * value: "FORWARD"
          * @const
          */
-        "FORWARD" = "FORWARD";
+  'FORWARD' = 'FORWARD'
 
-    
-        /**
+  /**
          * value: "RETURNS"
          * @const
          */
-        "RETURNS" = "RETURNS";
+  'RETURNS' = 'RETURNS'
 
-    
-
-    /**
+  /**
     * Returns a <code>ShipmentType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/ShipmentType} The enum <code>ShipmentType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

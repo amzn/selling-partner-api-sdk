@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The CarrierAccountAttribute model module.
@@ -25,7 +25,7 @@ export class CarrierAccountAttribute {
    * @alias module:shipping_v2/model/CarrierAccountAttribute
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,28 +35,25 @@ export class CarrierAccountAttribute {
    * @param {module:shipping_v2/model/CarrierAccountAttribute} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CarrierAccountAttribute} The populated <code>CarrierAccountAttribute</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CarrierAccountAttribute();
-      if (data.hasOwnProperty('attributeName'))
-        obj.attributeName = ApiClient.convertToType(data['attributeName'], 'String');
-      if (data.hasOwnProperty('propertyGroup'))
-        obj.propertyGroup = ApiClient.convertToType(data['propertyGroup'], 'String');
-      if (data.hasOwnProperty('value'))
-        obj.value = ApiClient.convertToType(data['value'], 'String');
+      obj = obj || new CarrierAccountAttribute()
+      if (data.hasOwnProperty('attributeName')) { obj.attributeName = ApiClient.convertToType(data.attributeName, 'String') }
+      if (data.hasOwnProperty('propertyGroup')) { obj.propertyGroup = ApiClient.convertToType(data.propertyGroup, 'String') }
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -64,18 +61,16 @@ export class CarrierAccountAttribute {
  * Attribute Name .
  * @member {String} attributeName
  */
-CarrierAccountAttribute.prototype.attributeName = undefined;
+CarrierAccountAttribute.prototype.attributeName = undefined
 
 /**
  * Property Group.
  * @member {String} propertyGroup
  */
-CarrierAccountAttribute.prototype.propertyGroup = undefined;
+CarrierAccountAttribute.prototype.propertyGroup = undefined
 
 /**
  * Value .
  * @member {String} value
  */
-CarrierAccountAttribute.prototype.value = undefined;
-
-
+CarrierAccountAttribute.prototype.value = undefined

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The RequestedValueAddedService model module.
@@ -26,8 +26,8 @@ export class RequestedValueAddedService {
    * @class
    * @param id {String} The identifier of the selected value-added service. Must be among those returned in the response to the getRates operation.
    */
-  constructor(id) {
-    this.id = id;
+  constructor (id) {
+    this.id = id
   }
 
   /**
@@ -37,24 +37,23 @@ export class RequestedValueAddedService {
    * @param {module:shipping_v2/model/RequestedValueAddedService} obj Optional instance to populate.
    * @return {module:shipping_v2/model/RequestedValueAddedService} The populated <code>RequestedValueAddedService</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new RequestedValueAddedService();
-      if (data.hasOwnProperty('id'))
-        obj.id = ApiClient.convertToType(data['id'], 'String');
+      obj = obj || new RequestedValueAddedService()
+      if (data.hasOwnProperty('id')) { obj.id = ApiClient.convertToType(data.id, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,6 +61,4 @@ export class RequestedValueAddedService {
  * The identifier of the selected value-added service. Must be among those returned in the response to the getRates operation.
  * @member {String} id
  */
-RequestedValueAddedService.prototype.id = undefined;
-
-
+RequestedValueAddedService.prototype.id = undefined

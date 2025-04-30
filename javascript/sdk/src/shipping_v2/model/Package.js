@@ -11,12 +11,12 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ChargeComponent} from './ChargeComponent.js';
-import {Currency} from './Currency.js';
-import {Dimensions} from './Dimensions.js';
-import {Item} from './Item.js';
-import {Weight} from './Weight.js';
+import { ApiClient } from '../ApiClient.js'
+import { ChargeComponent } from './ChargeComponent.js'
+import { Currency } from './Currency.js'
+import { Dimensions } from './Dimensions.js'
+import { Item } from './Item.js'
+import { Weight } from './Weight.js'
 
 /**
  * The Package model module.
@@ -29,18 +29,18 @@ export class Package {
    * A package to be shipped through a shipping service offering.
    * @alias module:shipping_v2/model/Package
    * @class
-   * @param dimensions {module:shipping_v2/model/Dimensions} 
-   * @param weight {module:shipping_v2/model/Weight} 
-   * @param insuredValue {module:shipping_v2/model/Currency} 
+   * @param dimensions {module:shipping_v2/model/Dimensions}
+   * @param weight {module:shipping_v2/model/Weight}
+   * @param insuredValue {module:shipping_v2/model/Currency}
    * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
    * @param items {Array.<module:shipping_v2/model/Item>} A list of items.
    */
-  constructor(dimensions, weight, insuredValue, packageClientReferenceId, items) {
-    this.dimensions = dimensions;
-    this.weight = weight;
-    this.insuredValue = insuredValue;
-    this.packageClientReferenceId = packageClientReferenceId;
-    this.items = items;
+  constructor (dimensions, weight, insuredValue, packageClientReferenceId, items) {
+    this.dimensions = dimensions
+    this.weight = weight
+    this.insuredValue = insuredValue
+    this.packageClientReferenceId = packageClientReferenceId
+    this.items = items
   }
 
   /**
@@ -50,84 +50,74 @@ export class Package {
    * @param {module:shipping_v2/model/Package} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Package} The populated <code>Package</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Package();
-      if (data.hasOwnProperty('dimensions'))
-        obj.dimensions = Dimensions.constructFromObject(data['dimensions']);
-      if (data.hasOwnProperty('weight'))
-        obj.weight = Weight.constructFromObject(data['weight']);
-      if (data.hasOwnProperty('insuredValue'))
-        obj.insuredValue = Currency.constructFromObject(data['insuredValue']);
-      if (data.hasOwnProperty('isHazmat'))
-        obj.isHazmat = ApiClient.convertToType(data['isHazmat'], 'Boolean');
-      if (data.hasOwnProperty('sellerDisplayName'))
-        obj.sellerDisplayName = ApiClient.convertToType(data['sellerDisplayName'], 'String');
-      if (data.hasOwnProperty('charges'))
-        obj.charges = ApiClient.convertToType(data['charges'], [ChargeComponent]);
-      if (data.hasOwnProperty('packageClientReferenceId'))
-        obj.packageClientReferenceId = ApiClient.convertToType(data['packageClientReferenceId'], 'String');
-      if (data.hasOwnProperty('items'))
-        obj.items = ApiClient.convertToType(data['items'], [Item]);
+      obj = obj || new Package()
+      if (data.hasOwnProperty('dimensions')) { obj.dimensions = Dimensions.constructFromObject(data.dimensions) }
+      if (data.hasOwnProperty('weight')) { obj.weight = Weight.constructFromObject(data.weight) }
+      if (data.hasOwnProperty('insuredValue')) { obj.insuredValue = Currency.constructFromObject(data.insuredValue) }
+      if (data.hasOwnProperty('isHazmat')) { obj.isHazmat = ApiClient.convertToType(data.isHazmat, 'Boolean') }
+      if (data.hasOwnProperty('sellerDisplayName')) { obj.sellerDisplayName = ApiClient.convertToType(data.sellerDisplayName, 'String') }
+      if (data.hasOwnProperty('charges')) { obj.charges = ApiClient.convertToType(data.charges, [ChargeComponent]) }
+      if (data.hasOwnProperty('packageClientReferenceId')) { obj.packageClientReferenceId = ApiClient.convertToType(data.packageClientReferenceId, 'String') }
+      if (data.hasOwnProperty('items')) { obj.items = ApiClient.convertToType(data.items, [Item]) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Dimensions} dimensions
  */
-Package.prototype.dimensions = undefined;
+Package.prototype.dimensions = undefined
 
 /**
  * @member {module:shipping_v2/model/Weight} weight
  */
-Package.prototype.weight = undefined;
+Package.prototype.weight = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} insuredValue
  */
-Package.prototype.insuredValue = undefined;
+Package.prototype.insuredValue = undefined
 
 /**
  * When true, the package contains hazardous materials. Defaults to false.
  * @member {Boolean} isHazmat
  */
-Package.prototype.isHazmat = undefined;
+Package.prototype.isHazmat = undefined
 
 /**
  * The seller name displayed on the label.
  * @member {String} sellerDisplayName
  */
-Package.prototype.sellerDisplayName = undefined;
+Package.prototype.sellerDisplayName = undefined
 
 /**
  * A list of charges based on the shipping service charges applied on a package.
  * @member {Array.<module:shipping_v2/model/ChargeComponent>} charges
  */
-Package.prototype.charges = undefined;
+Package.prototype.charges = undefined
 
 /**
  * A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
  * @member {String} packageClientReferenceId
  */
-Package.prototype.packageClientReferenceId = undefined;
+Package.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of items.
  * @member {Array.<module:shipping_v2/model/Item>} items
  */
-Package.prototype.items = undefined;
-
-
+Package.prototype.items = undefined

@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {AccountStatus} from './AccountStatus.js';
+import { ApiClient } from '../ApiClient.js'
+import { AccountStatus } from './AccountStatus.js'
 
 /**
  * The LinkCarrierAccountResponse model module.
@@ -26,7 +26,7 @@ export class LinkCarrierAccountResponse {
    * @alias module:shipping_v2/model/LinkCarrierAccountResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,38 +36,34 @@ export class LinkCarrierAccountResponse {
    * @param {module:shipping_v2/model/LinkCarrierAccountResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/LinkCarrierAccountResponse} The populated <code>LinkCarrierAccountResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new LinkCarrierAccountResponse();
-      if (data.hasOwnProperty('registrationStatus'))
-        obj.registrationStatus = AccountStatus.constructFromObject(data['registrationStatus']);
-      if (data.hasOwnProperty('accountId'))
-        obj.accountId = ApiClient.convertToType(data['accountId'], 'String');
+      obj = obj || new LinkCarrierAccountResponse()
+      if (data.hasOwnProperty('registrationStatus')) { obj.registrationStatus = AccountStatus.constructFromObject(data.registrationStatus) }
+      if (data.hasOwnProperty('accountId')) { obj.accountId = ApiClient.convertToType(data.accountId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/AccountStatus} registrationStatus
  */
-LinkCarrierAccountResponse.prototype.registrationStatus = undefined;
+LinkCarrierAccountResponse.prototype.registrationStatus = undefined
 
 /**
  * Identifier for the seller's carrier account.
  * @member {String} accountId
  */
-LinkCarrierAccountResponse.prototype.accountId = undefined;
-
-
+LinkCarrierAccountResponse.prototype.accountId = undefined

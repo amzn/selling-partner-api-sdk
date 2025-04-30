@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The CancelShipmentResponse model module.
@@ -25,7 +25,7 @@ export class CancelShipmentResponse {
    * @alias module:shipping_v2/model/CancelShipmentResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,24 +35,23 @@ export class CancelShipmentResponse {
    * @param {module:shipping_v2/model/CancelShipmentResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/CancelShipmentResponse} The populated <code>CancelShipmentResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new CancelShipmentResponse();
-      if (data.hasOwnProperty('payload'))
-        obj.payload = ApiClient.convertToType(data['payload'], {'String': Object});
+      obj = obj || new CancelShipmentResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = ApiClient.convertToType(data.payload, { String: Object }) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -60,6 +59,4 @@ export class CancelShipmentResponse {
  * The payload for the cancelShipment operation.
  * @member {Object.<String, Object>} payload
  */
-CancelShipmentResponse.prototype.payload = undefined;
-
-
+CancelShipmentResponse.prototype.payload = undefined

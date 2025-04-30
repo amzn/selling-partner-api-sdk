@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {PackageDocument} from './PackageDocument.js';
+import { ApiClient } from '../ApiClient.js'
+import { PackageDocument } from './PackageDocument.js'
 
 /**
  * The PackageDocumentDetail model module.
@@ -28,9 +28,9 @@ export class PackageDocumentDetail {
    * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
    * @param packageDocuments {Array.<module:shipping_v2/model/PackageDocument>} A list of documents related to a package.
    */
-  constructor(packageClientReferenceId, packageDocuments) {
-    this.packageClientReferenceId = packageClientReferenceId;
-    this.packageDocuments = packageDocuments;
+  constructor (packageClientReferenceId, packageDocuments) {
+    this.packageClientReferenceId = packageClientReferenceId
+    this.packageDocuments = packageDocuments
   }
 
   /**
@@ -40,28 +40,25 @@ export class PackageDocumentDetail {
    * @param {module:shipping_v2/model/PackageDocumentDetail} obj Optional instance to populate.
    * @return {module:shipping_v2/model/PackageDocumentDetail} The populated <code>PackageDocumentDetail</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new PackageDocumentDetail();
-      if (data.hasOwnProperty('packageClientReferenceId'))
-        obj.packageClientReferenceId = ApiClient.convertToType(data['packageClientReferenceId'], 'String');
-      if (data.hasOwnProperty('packageDocuments'))
-        obj.packageDocuments = ApiClient.convertToType(data['packageDocuments'], [PackageDocument]);
-      if (data.hasOwnProperty('trackingId'))
-        obj.trackingId = ApiClient.convertToType(data['trackingId'], 'String');
+      obj = obj || new PackageDocumentDetail()
+      if (data.hasOwnProperty('packageClientReferenceId')) { obj.packageClientReferenceId = ApiClient.convertToType(data.packageClientReferenceId, 'String') }
+      if (data.hasOwnProperty('packageDocuments')) { obj.packageDocuments = ApiClient.convertToType(data.packageDocuments, [PackageDocument]) }
+      if (data.hasOwnProperty('trackingId')) { obj.trackingId = ApiClient.convertToType(data.trackingId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -69,18 +66,16 @@ export class PackageDocumentDetail {
  * A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
  * @member {String} packageClientReferenceId
  */
-PackageDocumentDetail.prototype.packageClientReferenceId = undefined;
+PackageDocumentDetail.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of documents related to a package.
  * @member {Array.<module:shipping_v2/model/PackageDocument>} packageDocuments
  */
-PackageDocumentDetail.prototype.packageDocuments = undefined;
+PackageDocumentDetail.prototype.packageDocuments = undefined
 
 /**
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
  */
-PackageDocumentDetail.prototype.trackingId = undefined;
-
-
+PackageDocumentDetail.prototype.trackingId = undefined

@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {ExcludedBenefit} from './ExcludedBenefit.js';
+import { ApiClient } from '../ApiClient.js'
+import { ExcludedBenefit } from './ExcludedBenefit.js'
 
 /**
  * The Benefits model module.
@@ -28,9 +28,9 @@ export class Benefits {
    * @param includedBenefits {Array.<String>} A list of included benefits.
    * @param excludedBenefits {Array.<module:shipping_v2/model/ExcludedBenefit>} A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
    */
-  constructor(includedBenefits, excludedBenefits) {
-    this.includedBenefits = includedBenefits;
-    this.excludedBenefits = excludedBenefits;
+  constructor (includedBenefits, excludedBenefits) {
+    this.includedBenefits = includedBenefits
+    this.excludedBenefits = excludedBenefits
   }
 
   /**
@@ -40,26 +40,24 @@ export class Benefits {
    * @param {module:shipping_v2/model/Benefits} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Benefits} The populated <code>Benefits</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Benefits();
-      if (data.hasOwnProperty('includedBenefits'))
-        obj.includedBenefits = ApiClient.convertToType(data['includedBenefits'], ['String']);
-      if (data.hasOwnProperty('excludedBenefits'))
-        obj.excludedBenefits = ApiClient.convertToType(data['excludedBenefits'], [ExcludedBenefit]);
+      obj = obj || new Benefits()
+      if (data.hasOwnProperty('includedBenefits')) { obj.includedBenefits = ApiClient.convertToType(data.includedBenefits, ['String']) }
+      if (data.hasOwnProperty('excludedBenefits')) { obj.excludedBenefits = ApiClient.convertToType(data.excludedBenefits, [ExcludedBenefit]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -67,12 +65,10 @@ export class Benefits {
  * A list of included benefits.
  * @member {Array.<String>} includedBenefits
  */
-Benefits.prototype.includedBenefits = undefined;
+Benefits.prototype.includedBenefits = undefined
 
 /**
  * A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
  * @member {Array.<module:shipping_v2/model/ExcludedBenefit>} excludedBenefits
  */
-Benefits.prototype.excludedBenefits = undefined;
-
-
+Benefits.prototype.excludedBenefits = undefined

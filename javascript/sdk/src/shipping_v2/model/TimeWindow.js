@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The TimeWindow model module.
@@ -25,7 +25,7 @@ export class TimeWindow {
    * @alias module:shipping_v2/model/TimeWindow
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,26 +35,24 @@ export class TimeWindow {
    * @param {module:shipping_v2/model/TimeWindow} obj Optional instance to populate.
    * @return {module:shipping_v2/model/TimeWindow} The populated <code>TimeWindow</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new TimeWindow();
-      if (data.hasOwnProperty('start'))
-        obj.start = ApiClient.convertToType(data['start'], 'Date');
-      if (data.hasOwnProperty('end'))
-        obj.end = ApiClient.convertToType(data['end'], 'Date');
+      obj = obj || new TimeWindow()
+      if (data.hasOwnProperty('start')) { obj.start = ApiClient.convertToType(data.start, 'Date') }
+      if (data.hasOwnProperty('end')) { obj.end = ApiClient.convertToType(data.end, 'Date') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -62,12 +60,10 @@ export class TimeWindow {
  * The start time of the time window.
  * @member {Date} start
  */
-TimeWindow.prototype.start = undefined;
+TimeWindow.prototype.start = undefined
 
 /**
  * The end time of the time window.
  * @member {Date} end
  */
-TimeWindow.prototype.end = undefined;
-
-
+TimeWindow.prototype.end = undefined

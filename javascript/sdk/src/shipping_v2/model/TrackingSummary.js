@@ -11,9 +11,9 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {Status} from './Status.js';
-import {TrackingDetailCodes} from './TrackingDetailCodes.js';
+import { ApiClient } from '../ApiClient.js'
+import { Status } from './Status.js'
+import { TrackingDetailCodes } from './TrackingDetailCodes.js'
 
 /**
  * The TrackingSummary model module.
@@ -27,7 +27,7 @@ export class TrackingSummary {
    * @alias module:shipping_v2/model/TrackingSummary
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -37,37 +37,33 @@ export class TrackingSummary {
    * @param {module:shipping_v2/model/TrackingSummary} obj Optional instance to populate.
    * @return {module:shipping_v2/model/TrackingSummary} The populated <code>TrackingSummary</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new TrackingSummary();
-      if (data.hasOwnProperty('status'))
-        obj.status = Status.constructFromObject(data['status']);
-      if (data.hasOwnProperty('trackingDetailCodes'))
-        obj.trackingDetailCodes = TrackingDetailCodes.constructFromObject(data['trackingDetailCodes']);
+      obj = obj || new TrackingSummary()
+      if (data.hasOwnProperty('status')) { obj.status = Status.constructFromObject(data.status) }
+      if (data.hasOwnProperty('trackingDetailCodes')) { obj.trackingDetailCodes = TrackingDetailCodes.constructFromObject(data.trackingDetailCodes) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/Status} status
  */
-TrackingSummary.prototype.status = undefined;
+TrackingSummary.prototype.status = undefined
 
 /**
  * @member {module:shipping_v2/model/TrackingDetailCodes} trackingDetailCodes
  */
-TrackingSummary.prototype.trackingDetailCodes = undefined;
-
-
+TrackingSummary.prototype.trackingDetailCodes = undefined

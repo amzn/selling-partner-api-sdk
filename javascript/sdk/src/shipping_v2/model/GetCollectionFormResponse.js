@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {CollectionsFormDocument} from './CollectionsFormDocument.js';
+import { ApiClient } from '../ApiClient.js'
+import { CollectionsFormDocument } from './CollectionsFormDocument.js'
 
 /**
  * The GetCollectionFormResponse model module.
@@ -26,7 +26,7 @@ export class GetCollectionFormResponse {
    * @alias module:shipping_v2/model/GetCollectionFormResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,30 +36,27 @@ export class GetCollectionFormResponse {
    * @param {module:shipping_v2/model/GetCollectionFormResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetCollectionFormResponse} The populated <code>GetCollectionFormResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetCollectionFormResponse();
-      if (data.hasOwnProperty('collectionsFormDocument'))
-        obj.collectionsFormDocument = CollectionsFormDocument.constructFromObject(data['collectionsFormDocument']);
+      obj = obj || new GetCollectionFormResponse()
+      if (data.hasOwnProperty('collectionsFormDocument')) { obj.collectionsFormDocument = CollectionsFormDocument.constructFromObject(data.collectionsFormDocument) }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
  * @member {module:shipping_v2/model/CollectionsFormDocument} collectionsFormDocument
  */
-GetCollectionFormResponse.prototype.collectionsFormDocument = undefined;
-
-
+GetCollectionFormResponse.prototype.collectionsFormDocument = undefined

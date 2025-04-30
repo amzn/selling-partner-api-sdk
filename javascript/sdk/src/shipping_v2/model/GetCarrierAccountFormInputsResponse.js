@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {LinkableCarrier} from './LinkableCarrier.js';
+import { ApiClient } from '../ApiClient.js'
+import { LinkableCarrier } from './LinkableCarrier.js'
 
 /**
  * The GetCarrierAccountFormInputsResponse model module.
@@ -26,7 +26,7 @@ export class GetCarrierAccountFormInputsResponse {
    * @alias module:shipping_v2/model/GetCarrierAccountFormInputsResponse
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,24 +36,23 @@ export class GetCarrierAccountFormInputsResponse {
    * @param {module:shipping_v2/model/GetCarrierAccountFormInputsResponse} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GetCarrierAccountFormInputsResponse} The populated <code>GetCarrierAccountFormInputsResponse</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GetCarrierAccountFormInputsResponse();
-      if (data.hasOwnProperty('linkableCarriersList'))
-        obj.linkableCarriersList = ApiClient.convertToType(data['linkableCarriersList'], [LinkableCarrier]);
+      obj = obj || new GetCarrierAccountFormInputsResponse()
+      if (data.hasOwnProperty('linkableCarriersList')) { obj.linkableCarriersList = ApiClient.convertToType(data.linkableCarriersList, [LinkableCarrier]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -61,6 +60,4 @@ export class GetCarrierAccountFormInputsResponse {
  * A list of LinkableCarrier
  * @member {Array.<module:shipping_v2/model/LinkableCarrier>} linkableCarriersList
  */
-GetCarrierAccountFormInputsResponse.prototype.linkableCarriersList = undefined;
-
-
+GetCarrierAccountFormInputsResponse.prototype.linkableCarriersList = undefined

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The Currency model module.
@@ -27,9 +27,9 @@ export class Currency {
    * @param value {Number} The monetary value.
    * @param unit {String} The ISO 4217 format 3-character currency code.
    */
-  constructor(value, unit) {
-    this.value = value;
-    this.unit = unit;
+  constructor (value, unit) {
+    this.value = value
+    this.unit = unit
   }
 
   /**
@@ -39,26 +39,24 @@ export class Currency {
    * @param {module:shipping_v2/model/Currency} obj Optional instance to populate.
    * @return {module:shipping_v2/model/Currency} The populated <code>Currency</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new Currency();
-      if (data.hasOwnProperty('value'))
-        obj.value = ApiClient.convertToType(data['value'], 'Number');
-      if (data.hasOwnProperty('unit'))
-        obj.unit = ApiClient.convertToType(data['unit'], 'String');
+      obj = obj || new Currency()
+      if (data.hasOwnProperty('value')) { obj.value = ApiClient.convertToType(data.value, 'Number') }
+      if (data.hasOwnProperty('unit')) { obj.unit = ApiClient.convertToType(data.unit, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -66,12 +64,10 @@ export class Currency {
  * The monetary value.
  * @member {Number} value
  */
-Currency.prototype.value = undefined;
+Currency.prototype.value = undefined
 
 /**
  * The ISO 4217 format 3-character currency code.
  * @member {String} unit
  */
-Currency.prototype.unit = undefined;
-
-
+Currency.prototype.unit = undefined

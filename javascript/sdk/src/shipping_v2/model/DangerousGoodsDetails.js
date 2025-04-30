@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The DangerousGoodsDetails model module.
@@ -25,7 +25,7 @@ export class DangerousGoodsDetails {
    * @alias module:shipping_v2/model/DangerousGoodsDetails
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -35,30 +35,26 @@ export class DangerousGoodsDetails {
    * @param {module:shipping_v2/model/DangerousGoodsDetails} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DangerousGoodsDetails} The populated <code>DangerousGoodsDetails</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DangerousGoodsDetails();
-      if (data.hasOwnProperty('unitedNationsRegulatoryId'))
-        obj.unitedNationsRegulatoryId = ApiClient.convertToType(data['unitedNationsRegulatoryId'], 'String');
-      if (data.hasOwnProperty('transportationRegulatoryClass'))
-        obj.transportationRegulatoryClass = ApiClient.convertToType(data['transportationRegulatoryClass'], 'String');
-      if (data.hasOwnProperty('packingGroup'))
-        obj.packingGroup = ApiClient.convertToType(data['packingGroup'], 'String');
-      if (data.hasOwnProperty('packingInstruction'))
-        obj.packingInstruction = ApiClient.convertToType(data['packingInstruction'], 'String');
+      obj = obj || new DangerousGoodsDetails()
+      if (data.hasOwnProperty('unitedNationsRegulatoryId')) { obj.unitedNationsRegulatoryId = ApiClient.convertToType(data.unitedNationsRegulatoryId, 'String') }
+      if (data.hasOwnProperty('transportationRegulatoryClass')) { obj.transportationRegulatoryClass = ApiClient.convertToType(data.transportationRegulatoryClass, 'String') }
+      if (data.hasOwnProperty('packingGroup')) { obj.packingGroup = ApiClient.convertToType(data.packingGroup, 'String') }
+      if (data.hasOwnProperty('packingInstruction')) { obj.packingInstruction = ApiClient.convertToType(data.packingInstruction, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -66,136 +62,134 @@ export class DangerousGoodsDetails {
  * The specific UNID of the item being shipped.
  * @member {String} unitedNationsRegulatoryId
  */
-DangerousGoodsDetails.prototype.unitedNationsRegulatoryId = undefined;
+DangerousGoodsDetails.prototype.unitedNationsRegulatoryId = undefined
 
 /**
  * The specific regulatory class  of the item being shipped.
  * @member {String} transportationRegulatoryClass
  */
-DangerousGoodsDetails.prototype.transportationRegulatoryClass = undefined;
+DangerousGoodsDetails.prototype.transportationRegulatoryClass = undefined
 
 /**
  * Allowed values for the <code>packingGroup</code> property.
  * @enum {String}
  * @readonly
  */
-DangerousGoodsDetails['PackingGroupEnum'] = {
+DangerousGoodsDetails.PackingGroupEnum = {
 
-    /**
+  /**
      * value: "I"
      * @const
      */
-    "I": "I",
+  I: 'I',
 
-    /**
+  /**
      * value: "II"
      * @const
      */
-    "II": "II",
+  II: 'II',
 
-    /**
+  /**
      * value: "III"
      * @const
      */
-    "III": "III"
-};
+  III: 'III'
+}
 
 /**
  * The specific packaging group of the item being shipped.
  * @member {module:shipping_v2/model/DangerousGoodsDetails.PackingGroupEnum} packingGroup
  */
-DangerousGoodsDetails.prototype.packingGroup = undefined;
+DangerousGoodsDetails.prototype.packingGroup = undefined
 
 /**
  * Allowed values for the <code>packingInstruction</code> property.
  * @enum {String}
  * @readonly
  */
-DangerousGoodsDetails['PackingInstructionEnum'] = {
+DangerousGoodsDetails.PackingInstructionEnum = {
 
-    /**
+  /**
      * value: "PI965_SECTION_IA"
      * @const
      */
-    "PI965_SECTION_IA": "PI965_SECTION_IA",
+  PI965_SECTION_IA: 'PI965_SECTION_IA',
 
-    /**
+  /**
      * value: "PI965_SECTION_IB"
      * @const
      */
-    "PI965_SECTION_IB": "PI965_SECTION_IB",
+  PI965_SECTION_IB: 'PI965_SECTION_IB',
 
-    /**
+  /**
      * value: "PI965_SECTION_II"
      * @const
      */
-    "PI965_SECTION_II": "PI965_SECTION_II",
+  PI965_SECTION_II: 'PI965_SECTION_II',
 
-    /**
+  /**
      * value: "PI966_SECTION_I"
      * @const
      */
-    "PI966_SECTION_I": "PI966_SECTION_I",
+  PI966_SECTION_I: 'PI966_SECTION_I',
 
-    /**
+  /**
      * value: "PI966_SECTION_II"
      * @const
      */
-    "PI966_SECTION_II": "PI966_SECTION_II",
+  PI966_SECTION_II: 'PI966_SECTION_II',
 
-    /**
+  /**
      * value: "PI967_SECTION_I"
      * @const
      */
-    "PI967_SECTION_I": "PI967_SECTION_I",
+  PI967_SECTION_I: 'PI967_SECTION_I',
 
-    /**
+  /**
      * value: "PI967_SECTION_II"
      * @const
      */
-    "PI967_SECTION_II": "PI967_SECTION_II",
+  PI967_SECTION_II: 'PI967_SECTION_II',
 
-    /**
+  /**
      * value: "PI968_SECTION_IA"
      * @const
      */
-    "PI968_SECTION_IA": "PI968_SECTION_IA",
+  PI968_SECTION_IA: 'PI968_SECTION_IA',
 
-    /**
+  /**
      * value: "PI968_SECTION_IB"
      * @const
      */
-    "PI968_SECTION_IB": "PI968_SECTION_IB",
+  PI968_SECTION_IB: 'PI968_SECTION_IB',
 
-    /**
+  /**
      * value: "PI969_SECTION_I"
      * @const
      */
-    "PI969_SECTION_I": "PI969_SECTION_I",
+  PI969_SECTION_I: 'PI969_SECTION_I',
 
-    /**
+  /**
      * value: "PI969_SECTION_II"
      * @const
      */
-    "PI969_SECTION_II": "PI969_SECTION_II",
+  PI969_SECTION_II: 'PI969_SECTION_II',
 
-    /**
+  /**
      * value: "PI970_SECTION_I"
      * @const
      */
-    "PI970_SECTION_I": "PI970_SECTION_I",
+  PI970_SECTION_I: 'PI970_SECTION_I',
 
-    /**
+  /**
      * value: "PI970_SECTION_II"
      * @const
      */
-    "PI970_SECTION_II": "PI970_SECTION_II"
-};
+  PI970_SECTION_II: 'PI970_SECTION_II'
+}
 
 /**
  * The specific packing instruction of the item being shipped.
  * @member {module:shipping_v2/model/DangerousGoodsDetails.PackingInstructionEnum} packingInstruction
  */
-DangerousGoodsDetails.prototype.packingInstruction = undefined;
-
-
+DangerousGoodsDetails.prototype.packingInstruction = undefined

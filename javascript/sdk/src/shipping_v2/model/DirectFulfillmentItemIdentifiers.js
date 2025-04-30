@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The DirectFulfillmentItemIdentifiers model module.
@@ -26,8 +26,8 @@ export class DirectFulfillmentItemIdentifiers {
    * @class
    * @param lineItemID {String} A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated for direct fulfillment multi-piece shipments. It is required if a vendor wants to change the configuration of the packages in which the purchase order is shipped.
    */
-  constructor(lineItemID) {
-    this.lineItemID = lineItemID;
+  constructor (lineItemID) {
+    this.lineItemID = lineItemID
   }
 
   /**
@@ -37,26 +37,24 @@ export class DirectFulfillmentItemIdentifiers {
    * @param {module:shipping_v2/model/DirectFulfillmentItemIdentifiers} obj Optional instance to populate.
    * @return {module:shipping_v2/model/DirectFulfillmentItemIdentifiers} The populated <code>DirectFulfillmentItemIdentifiers</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new DirectFulfillmentItemIdentifiers();
-      if (data.hasOwnProperty('lineItemID'))
-        obj.lineItemID = ApiClient.convertToType(data['lineItemID'], 'String');
-      if (data.hasOwnProperty('pieceNumber'))
-        obj.pieceNumber = ApiClient.convertToType(data['pieceNumber'], 'String');
+      obj = obj || new DirectFulfillmentItemIdentifiers()
+      if (data.hasOwnProperty('lineItemID')) { obj.lineItemID = ApiClient.convertToType(data.lineItemID, 'String') }
+      if (data.hasOwnProperty('pieceNumber')) { obj.pieceNumber = ApiClient.convertToType(data.pieceNumber, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -64,12 +62,10 @@ export class DirectFulfillmentItemIdentifiers {
  * A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated for direct fulfillment multi-piece shipments. It is required if a vendor wants to change the configuration of the packages in which the purchase order is shipped.
  * @member {String} lineItemID
  */
-DirectFulfillmentItemIdentifiers.prototype.lineItemID = undefined;
+DirectFulfillmentItemIdentifiers.prototype.lineItemID = undefined
 
 /**
  * A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated if a single line item has multiple pieces. Defaults to 1.
  * @member {String} pieceNumber
  */
-DirectFulfillmentItemIdentifiers.prototype.pieceNumber = undefined;
-
-
+DirectFulfillmentItemIdentifiers.prototype.pieceNumber = undefined

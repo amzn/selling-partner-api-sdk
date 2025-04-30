@@ -11,8 +11,8 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
-import {UnmanifestedShipmentLocation} from './UnmanifestedShipmentLocation.js';
+import { ApiClient } from '../ApiClient.js'
+import { UnmanifestedShipmentLocation } from './UnmanifestedShipmentLocation.js'
 
 /**
  * The UnmanifestedCarrierInformation model module.
@@ -26,7 +26,7 @@ export class UnmanifestedCarrierInformation {
    * @alias module:shipping_v2/model/UnmanifestedCarrierInformation
    * @class
    */
-  constructor() {
+  constructor () {
   }
 
   /**
@@ -36,28 +36,25 @@ export class UnmanifestedCarrierInformation {
    * @param {module:shipping_v2/model/UnmanifestedCarrierInformation} obj Optional instance to populate.
    * @return {module:shipping_v2/model/UnmanifestedCarrierInformation} The populated <code>UnmanifestedCarrierInformation</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new UnmanifestedCarrierInformation();
-      if (data.hasOwnProperty('carrierId'))
-        obj.carrierId = ApiClient.convertToType(data['carrierId'], 'String');
-      if (data.hasOwnProperty('carrierName'))
-        obj.carrierName = ApiClient.convertToType(data['carrierName'], 'String');
-      if (data.hasOwnProperty('unmanifestedShipmentLocationList'))
-        obj.unmanifestedShipmentLocationList = ApiClient.convertToType(data['unmanifestedShipmentLocationList'], [UnmanifestedShipmentLocation]);
+      obj = obj || new UnmanifestedCarrierInformation()
+      if (data.hasOwnProperty('carrierId')) { obj.carrierId = ApiClient.convertToType(data.carrierId, 'String') }
+      if (data.hasOwnProperty('carrierName')) { obj.carrierName = ApiClient.convertToType(data.carrierName, 'String') }
+      if (data.hasOwnProperty('unmanifestedShipmentLocationList')) { obj.unmanifestedShipmentLocationList = ApiClient.convertToType(data.unmanifestedShipmentLocationList, [UnmanifestedShipmentLocation]) }
     }
-    return obj;
+    return obj
   }
 }
 
@@ -65,18 +62,16 @@ export class UnmanifestedCarrierInformation {
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
  */
-UnmanifestedCarrierInformation.prototype.carrierId = undefined;
+UnmanifestedCarrierInformation.prototype.carrierId = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
  */
-UnmanifestedCarrierInformation.prototype.carrierName = undefined;
+UnmanifestedCarrierInformation.prototype.carrierName = undefined
 
 /**
  * A list of UnmanifestedShipmentLocation
  * @member {Array.<module:shipping_v2/model/UnmanifestedShipmentLocation>} unmanifestedShipmentLocationList
  */
-UnmanifestedCarrierInformation.prototype.unmanifestedShipmentLocationList = undefined;
-
-
+UnmanifestedCarrierInformation.prototype.unmanifestedShipmentLocationList = undefined

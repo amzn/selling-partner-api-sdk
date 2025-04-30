@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class Status.
@@ -19,84 +19,72 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class Status {
-    
-        /**
+  /**
          * value: "PreTransit"
          * @const
          */
-        "PreTransit" = "PreTransit";
+  'PreTransit' = 'PreTransit'
 
-    
-        /**
+  /**
          * value: "InTransit"
          * @const
          */
-        "InTransit" = "InTransit";
+  'InTransit' = 'InTransit'
 
-    
-        /**
+  /**
          * value: "Delivered"
          * @const
          */
-        "Delivered" = "Delivered";
+  'Delivered' = 'Delivered'
 
-    
-        /**
+  /**
          * value: "Lost"
          * @const
          */
-        "Lost" = "Lost";
+  'Lost' = 'Lost'
 
-    
-        /**
+  /**
          * value: "OutForDelivery"
          * @const
          */
-        "OutForDelivery" = "OutForDelivery";
+  'OutForDelivery' = 'OutForDelivery'
 
-    
-        /**
+  /**
          * value: "Rejected"
          * @const
          */
-        "Rejected" = "Rejected";
+  'Rejected' = 'Rejected'
 
-    
-        /**
+  /**
          * value: "Undeliverable"
          * @const
          */
-        "Undeliverable" = "Undeliverable";
+  'Undeliverable' = 'Undeliverable'
 
-    
-        /**
+  /**
          * value: "DeliveryAttempted"
          * @const
          */
-        "DeliveryAttempted" = "DeliveryAttempted";
+  'DeliveryAttempted' = 'DeliveryAttempted'
 
-    
-        /**
+  /**
          * value: "PickupCancelled"
          * @const
          */
-        "PickupCancelled" = "PickupCancelled";
+  'PickupCancelled' = 'PickupCancelled'
 
-    
-        /**
+  /**
          * value: "AwaitingCustomerPickup"
          * @const
          */
-        "AwaitingCustomerPickup" = "AwaitingCustomerPickup";
+  'AwaitingCustomerPickup' = 'AwaitingCustomerPickup'
 
-    
-
-    /**
+  /**
     * Returns a <code>Status</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/Status} The enum <code>Status</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ChannelType.
@@ -19,28 +19,24 @@ import {ApiClient} from '../ApiClient.js';
 * @readonly
 */
 export class ChannelType {
-    
-        /**
+  /**
          * value: "AMAZON"
          * @const
          */
-        "AMAZON" = "AMAZON";
+  'AMAZON' = 'AMAZON'
 
-    
-        /**
+  /**
          * value: "EXTERNAL"
          * @const
          */
-        "EXTERNAL" = "EXTERNAL";
+  'EXTERNAL' = 'EXTERNAL'
 
-    
-
-    /**
+  /**
     * Returns a <code>ChannelType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {module:shipping_v2/model/ChannelType} The enum <code>ChannelType</code> value.
     */
-    static constructFromObject(object) {
-        return object;
-    }
+  static constructFromObject (object) {
+    return object
+  }
 }

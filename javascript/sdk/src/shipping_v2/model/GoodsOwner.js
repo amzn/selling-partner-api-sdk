@@ -11,7 +11,7 @@
  *
  */
 
-import {ApiClient} from '../ApiClient.js';
+import { ApiClient } from '../ApiClient.js'
 
 /**
  * The GoodsOwner model module.
@@ -24,10 +24,10 @@ export class GoodsOwner {
    * The seller owning the goods before handing them over to the carrier
    * @alias module:shipping_v2/model/GoodsOwner
    * @class
-   * @param merchantId {String} merchant Id of provided merchant 
+   * @param merchantId {String} merchant Id of provided merchant
    */
-  constructor(merchantId) {
-    this.merchantId = merchantId;
+  constructor (merchantId) {
+    this.merchantId = merchantId
   }
 
   /**
@@ -37,31 +37,28 @@ export class GoodsOwner {
    * @param {module:shipping_v2/model/GoodsOwner} obj Optional instance to populate.
    * @return {module:shipping_v2/model/GoodsOwner} The populated <code>GoodsOwner</code> instance.
    */
-  static constructFromObject(data, obj) {
+  static constructFromObject (data, obj) {
     if (data) {
-      switch(typeof data) {
+      switch (typeof data) {
         case 'string':
-          obj = String(data);
-          break;
+          obj = String(data)
+          break
         case 'number':
-          obj = Number(data);
-          break;
+          obj = Number(data)
+          break
         case 'boolean':
-          obj = Boolean(data);
-          break;
+          obj = Boolean(data)
+          break
       }
-      obj = obj || new GoodsOwner();
-      if (data.hasOwnProperty('merchantId'))
-        obj.merchantId = ApiClient.convertToType(data['merchantId'], 'String');
+      obj = obj || new GoodsOwner()
+      if (data.hasOwnProperty('merchantId')) { obj.merchantId = ApiClient.convertToType(data.merchantId, 'String') }
     }
-    return obj;
+    return obj
   }
 }
 
 /**
- * merchant Id of provided merchant 
+ * merchant Id of provided merchant
  * @member {String} merchantId
  */
-GoodsOwner.prototype.merchantId = undefined;
-
-
+GoodsOwner.prototype.merchantId = undefined
