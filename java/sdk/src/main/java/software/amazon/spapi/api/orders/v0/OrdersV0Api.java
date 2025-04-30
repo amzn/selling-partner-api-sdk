@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.orders.v0.ConfirmShipmentRequest;
 import software.amazon.spapi.models.orders.v0.GetOrderAddressResponse;
@@ -88,10 +87,19 @@ public class OrdersV0Api {
             .addLimit(config.getLimit("OrdersV0Api-updateVerificationStatus"))
             .build();
 
+    /**
+     * Build call for confirmShipment
+     *
+     * @param body Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call confirmShipmentCall(
             ConfirmShipmentRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -115,17 +123,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -134,14 +131,12 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call confirmShipmentValidateBeforeCall(
             ConfirmShipmentRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -153,7 +148,7 @@ public class OrdersV0Api {
             throw new ApiException("Missing the required parameter 'orderId' when calling confirmShipment(Async)");
         }
 
-        return confirmShipmentCall(body, orderId, progressListener, progressRequestListener);
+        return confirmShipmentCall(body, orderId, progressRequestListener);
     }
 
     /**
@@ -189,7 +184,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<Void> confirmShipmentWithHttpInfo(ConfirmShipmentRequest body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, null, null);
+        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, null);
         if (disableRateLimiting || confirmShipmentBucket.tryConsume(1)) {
             return apiClient.execute(call);
         } else throw new ApiException.RateLimitExceeded("confirmShipment operation exceeds rate limit");
@@ -215,25 +210,29 @@ public class OrdersV0Api {
             ConfirmShipmentRequest body, String orderId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = confirmShipmentValidateBeforeCall(body, orderId, progressRequestListener);
         if (disableRateLimiting || confirmShipmentBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("confirmShipment operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrder
+     *
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrderCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -257,17 +256,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -276,21 +264,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrder(Async)");
         }
 
-        return getOrderCall(orderId, progressListener, progressRequestListener);
+        return getOrderCall(orderId, progressRequestListener);
     }
 
     /**
@@ -325,7 +310,7 @@ public class OrdersV0Api {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetOrderResponse> getOrderWithHttpInfo(String orderId) throws ApiException, LWAException {
-        okhttp3.Call call = getOrderValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderValidateBeforeCall(orderId, null);
         if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -349,26 +334,30 @@ public class OrdersV0Api {
     public okhttp3.Call getOrderAsync(String orderId, final ApiCallback<GetOrderResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderValidateBeforeCall(orderId, progressRequestListener);
         if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrderAddress
+     *
+     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrderAddressCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -392,17 +381,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -411,21 +389,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderAddressValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrderAddress(Async)");
         }
 
-        return getOrderAddressCall(orderId, progressListener, progressRequestListener);
+        return getOrderAddressCall(orderId, progressRequestListener);
     }
 
     /**
@@ -461,7 +436,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderAddressResponse> getOrderAddressWithHttpInfo(String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, null);
         if (disableRateLimiting || getOrderAddressBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -486,26 +461,30 @@ public class OrdersV0Api {
     public okhttp3.Call getOrderAddressAsync(String orderId, final ApiCallback<GetOrderAddressResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, progressRequestListener);
         if (disableRateLimiting || getOrderAddressBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrderAddress operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrderBuyerInfo
+     *
+     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrderBuyerInfoCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -529,17 +508,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -548,21 +516,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderBuyerInfoValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrderBuyerInfo(Async)");
         }
 
-        return getOrderBuyerInfoCall(orderId, progressListener, progressRequestListener);
+        return getOrderBuyerInfoCall(orderId, progressRequestListener);
     }
 
     /**
@@ -598,7 +563,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderBuyerInfoResponse> getOrderBuyerInfoWithHttpInfo(String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, null);
         if (disableRateLimiting || getOrderBuyerInfoBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -622,27 +587,31 @@ public class OrdersV0Api {
     public okhttp3.Call getOrderBuyerInfoAsync(String orderId, final ApiCallback<GetOrderBuyerInfoResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, progressRequestListener);
         if (disableRateLimiting || getOrderBuyerInfoBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrderBuyerInfo operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrderItems
+     *
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrderItemsCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -667,17 +636,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -686,22 +644,18 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderItemsValidateBeforeCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
             throw new ApiException("Missing the required parameter 'orderId' when calling getOrderItems(Async)");
         }
 
-        return getOrderItemsCall(orderId, nextToken, progressListener, progressRequestListener);
+        return getOrderItemsCall(orderId, nextToken, progressRequestListener);
     }
 
     /**
@@ -753,7 +707,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderItemsResponse> getOrderItemsWithHttpInfo(String orderId, String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, null, null);
+        okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, null);
         if (disableRateLimiting || getOrderItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -786,28 +740,31 @@ public class OrdersV0Api {
             String orderId, String nextToken, final ApiCallback<GetOrderItemsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getOrderItemsValidateBeforeCall(orderId, nextToken, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, progressRequestListener);
         if (disableRateLimiting || getOrderItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrderItems operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrderItemsBuyerInfo
+     *
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrderItemsBuyerInfoCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -832,17 +789,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -851,15 +797,11 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderItemsBuyerInfoValidateBeforeCall(
-            String orderId,
-            String nextToken,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -867,7 +809,7 @@ public class OrdersV0Api {
                     "Missing the required parameter 'orderId' when calling getOrderItemsBuyerInfo(Async)");
         }
 
-        return getOrderItemsBuyerInfoCall(orderId, nextToken, progressListener, progressRequestListener);
+        return getOrderItemsBuyerInfoCall(orderId, nextToken, progressRequestListener);
     }
 
     /**
@@ -906,7 +848,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderItemsBuyerInfoResponse> getOrderItemsBuyerInfoWithHttpInfo(
             String orderId, String nextToken) throws ApiException, LWAException {
-        okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, null, null);
+        okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, null);
         if (disableRateLimiting || getOrderItemsBuyerInfoBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -933,27 +875,30 @@ public class OrdersV0Api {
             String orderId, String nextToken, final ApiCallback<GetOrderItemsBuyerInfoResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, progressRequestListener);
         if (disableRateLimiting || getOrderItemsBuyerInfoBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrderItemsBuyerInfo operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrderRegulatedInfo
+     *
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrderRegulatedInfoCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -977,17 +922,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -996,14 +930,11 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getOrderRegulatedInfoValidateBeforeCall(
-            String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -1011,7 +942,7 @@ public class OrdersV0Api {
                     "Missing the required parameter 'orderId' when calling getOrderRegulatedInfo(Async)");
         }
 
-        return getOrderRegulatedInfoCall(orderId, progressListener, progressRequestListener);
+        return getOrderRegulatedInfoCall(orderId, progressRequestListener);
     }
 
     /**
@@ -1047,7 +978,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<GetOrderRegulatedInfoResponse> getOrderRegulatedInfoWithHttpInfo(String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, null, null);
+        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, null);
         if (disableRateLimiting || getOrderRegulatedInfoBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1073,22 +1004,120 @@ public class OrdersV0Api {
             String orderId, final ApiCallback<GetOrderRegulatedInfoResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = getOrderRegulatedInfoValidateBeforeCall(orderId, progressRequestListener);
         if (disableRateLimiting || getOrderRegulatedInfoBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrderRegulatedInfo operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getOrders
+     *
+     * @param marketplaceIds A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the
+     *     specified marketplaces. Refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of
+     *     &#x60;marketplaceId&#x60; values. (required)
+     * @param createdAfter Use this date to select orders created after (or at) a specified time. Only orders placed
+     *     after the specified time are returned. The date must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. **Note**: Either the
+     *     &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be
+     *     empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when
+     *     &#x60;CreatedAfter&#x60; is set. (optional)
+     * @param createdBefore Use this date to select orders created before (or at) a specified time. Only orders placed
+     *     before the specified time are returned. The date must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. **Note**: &#x60;CreatedBefore&#x60; is
+     *     optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or
+     *     after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param lastUpdatedAfter Use this date to select orders that were last updated after (or at) a specified time. An
+     *     update is defined as any change in order status, including the creation of a new order. Includes updates made
+     *     by Amazon and by the seller. The date must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. **Note**: Either the
+     *     &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be
+     *     empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60;
+     *     is set. (optional)
+     * @param lastUpdatedBefore Use this date to select orders that were last updated before (or at) a specified time.
+     *     An update is defined as any change in order status, including the creation of a new order. Includes updates
+     *     made by Amazon and by the seller. The date must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. **Note**: &#x60;LastUpdatedBefore&#x60;
+     *     is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be
+     *     equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time.
+     *     (optional)
+     * @param orderStatuses A list of &#x60;OrderStatus&#x60; values used to filter the results. **Possible values:** -
+     *     &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed,
+     *     payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60;
+     *     (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been
+     *     authorized and the order is ready for shipment, but no items in the order have been shipped.) -
+     *     &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) -
+     *     &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items
+     *     in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been
+     *     shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The
+     *     order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
+     * @param fulfillmentChannels A list that indicates how an order was fulfilled. Filters the results by fulfillment
+     *     channel. **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller).
+     *     (optional)
+     * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
+     *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
+     *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
+     * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
+     *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and
+     *     &#x60;BuyerEmail&#x60; cannot be specified. (optional)
+     * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
+     *     Value must be 1 - 100. Default 100. (optional)
+     * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
+     *     orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified,
+     *     only Amazon Easy Ship orders are returned. **Possible values:** - &#x60;PendingSchedule&#x60; (The package is
+     *     awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package
+     *     from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) -
+     *     &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the
+     *     package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) -
+     *     &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The
+     *     package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.)
+     *     - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The
+     *     package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being
+     *     returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to
+     *     the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for
+     *     delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
+     * @param electronicInvoiceStatuses A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with
+     *     electronic invoice statuses that match the specified values. **Possible values:** - &#x60;NotRequired&#x60;
+     *     (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic
+     *     invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being
+     *     processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this
+     *     order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
+     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param amazonOrderIds A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an
+     *     Amazon-defined order identifier, in 3-7-7 format. (optional)
+     * @param actualFulfillmentSupplySourceId The &#x60;sourceId&#x60; of the location from where you want the order
+     *     fulfilled. (optional)
+     * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
+     * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
+     *     (optional)
+     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
+     *     format. (optional)
+     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
+     *     format. (optional)
+     * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
+     *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
+     *     format. (optional)
+     * @param latestDeliveryDateAfter Use this date to select orders with a latest delivery date after (or at) a
+     *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
+     *     format. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getOrdersCall(
             List<String> marketplaceIds,
             String createdAfter,
@@ -1112,7 +1141,6 @@ public class OrdersV0Api {
             String earliestDeliveryDateAfter,
             String latestDeliveryDateBefore,
             String latestDeliveryDateAfter,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1182,17 +1210,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1201,7 +1218,6 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1228,7 +1244,6 @@ public class OrdersV0Api {
             String earliestDeliveryDateAfter,
             String latestDeliveryDateBefore,
             String latestDeliveryDateAfter,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -1259,7 +1274,6 @@ public class OrdersV0Api {
                 earliestDeliveryDateAfter,
                 latestDeliveryDateBefore,
                 latestDeliveryDateAfter,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -1578,7 +1592,6 @@ public class OrdersV0Api {
                 earliestDeliveryDateAfter,
                 latestDeliveryDateBefore,
                 latestDeliveryDateAfter,
-                null,
                 null);
         if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
@@ -1722,11 +1735,9 @@ public class OrdersV0Api {
             final ApiCallback<GetOrdersResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -1753,7 +1764,6 @@ public class OrdersV0Api {
                 earliestDeliveryDateAfter,
                 latestDeliveryDateBefore,
                 latestDeliveryDateAfter,
-                progressListener,
                 progressRequestListener);
         if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
@@ -1761,11 +1771,19 @@ public class OrdersV0Api {
             return call;
         } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
     }
-
+    /**
+     * Build call for updateVerificationStatus
+     *
+     * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call updateVerificationStatusCall(
             UpdateVerificationStatusRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1789,17 +1807,6 @@ public class OrdersV0Api {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "PATCH",
@@ -1808,14 +1815,12 @@ public class OrdersV0Api {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call updateVerificationStatusValidateBeforeCall(
             UpdateVerificationStatusRequest body,
             String orderId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1829,7 +1834,7 @@ public class OrdersV0Api {
                     "Missing the required parameter 'orderId' when calling updateVerificationStatus(Async)");
         }
 
-        return updateVerificationStatusCall(body, orderId, progressListener, progressRequestListener);
+        return updateVerificationStatusCall(body, orderId, progressRequestListener);
     }
 
     /**
@@ -1868,7 +1873,7 @@ public class OrdersV0Api {
      */
     public ApiResponse<Void> updateVerificationStatusWithHttpInfo(UpdateVerificationStatusRequest body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateVerificationStatusValidateBeforeCall(body, orderId, null, null);
+        okhttp3.Call call = updateVerificationStatusValidateBeforeCall(body, orderId, null);
         if (disableRateLimiting || updateVerificationStatusBucket.tryConsume(1)) {
             return apiClient.execute(call);
         } else throw new ApiException.RateLimitExceeded("updateVerificationStatus operation exceeds rate limit");
@@ -1894,16 +1899,13 @@ public class OrdersV0Api {
             UpdateVerificationStatusRequest body, String orderId, final ApiCallback<Void> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                updateVerificationStatusValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
+        okhttp3.Call call = updateVerificationStatusValidateBeforeCall(body, orderId, progressRequestListener);
         if (disableRateLimiting || updateVerificationStatusBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;

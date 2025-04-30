@@ -16,7 +16,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLConnection;
@@ -28,20 +27,13 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.net.ssl.*;
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
-import okhttp3.logging.HttpLoggingInterceptor;
-import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.BufferedSink;
 import okio.Okio;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
-import software.amazon.spapi.auth.ApiKeyAuth;
-import software.amazon.spapi.auth.Authentication;
-import software.amazon.spapi.auth.HttpBasicAuth;
-import software.amazon.spapi.auth.OAuth;
 
 public class ApiClient {
 
@@ -50,20 +42,8 @@ public class ApiClient {
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
-    private Map<String, Authentication> authentications;
-
-    private DateFormat dateFormat;
-    private DateFormat datetimeFormat;
-    private boolean lenientDatetimeFormat;
-    private int dateLength;
-
-    private InputStream sslCaCert;
-    private KeyManager[] keyManagers;
-
     private OkHttpClient httpClient;
     private JSON json;
-
-    private HttpLoggingInterceptor loggingInterceptor;
 
     private LWAAuthorizationSigner lwaAuthorizationSigner;
 
@@ -77,11 +57,6 @@ public class ApiClient {
 
         // Set default User-Agent.
         setUserAgent("amazon-selling-partner-api-sdk/1.0.0/Java");
-
-        // Setup authentications (key: authentication name, value: authentication).
-        authentications = new HashMap<String, Authentication>();
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
     }
 
     /**
@@ -144,10 +119,6 @@ public class ApiClient {
         return this;
     }
 
-    public DateFormat getDateFormat() {
-        return dateFormat;
-    }
-
     public ApiClient setDateFormat(DateFormat dateFormat) {
         this.json.setDateFormat(dateFormat);
         return this;
@@ -171,100 +142,6 @@ public class ApiClient {
     public ApiClient setLenientOnJson(boolean lenientOnJson) {
         this.json.setLenientOnJson(lenientOnJson);
         return this;
-    }
-
-    /**
-     * Get authentications (key: authentication name, value: authentication).
-     *
-     * @return Map of authentication objects
-     */
-    public Map<String, Authentication> getAuthentications() {
-        return authentications;
-    }
-
-    /**
-     * Get authentication for the given name.
-     *
-     * @param authName The authentication name
-     * @return The authentication, null if not found
-     */
-    public Authentication getAuthentication(String authName) {
-        return authentications.get(authName);
-    }
-
-    /**
-     * Helper method to set username for the first HTTP basic authentication.
-     *
-     * @param username Username
-     */
-    public void setUsername(String username) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setUsername(username);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
-
-    /**
-     * Helper method to set password for the first HTTP basic authentication.
-     *
-     * @param password Password
-     */
-    public void setPassword(String password) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setPassword(password);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
-
-    /**
-     * Helper method to set API key value for the first API key authentication.
-     *
-     * @param apiKey API key
-     */
-    public void setApiKey(String apiKey) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKey(apiKey);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
-     * Helper method to set API key prefix for the first API key authentication.
-     *
-     * @param apiKeyPrefix API key prefix
-     */
-    public void setApiKeyPrefix(String apiKeyPrefix) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKeyPrefix(apiKeyPrefix);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
-     * Helper method to set access token for the first OAuth2 authentication.
-     *
-     * @param accessToken Access token
-     */
-    public void setAccessToken(String accessToken) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof OAuth) {
-                ((OAuth) auth).setAccessToken(accessToken);
-                return;
-            }
-        }
-        throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
     /**
@@ -297,27 +174,6 @@ public class ApiClient {
      */
     public boolean isDebugging() {
         return debugging;
-    }
-
-    /**
-     * Enable/disable debugging for this API client.
-     *
-     * @param debugging To enable (true) or disable (false) debugging
-     * @return ApiClient
-     */
-    public ApiClient setDebugging(boolean debugging) {
-        if (debugging != this.debugging) {
-            if (debugging) {
-                loggingInterceptor = new HttpLoggingInterceptor();
-                loggingInterceptor.setLevel(Level.BODY);
-                httpClient.interceptors().add(loggingInterceptor);
-            } else {
-                httpClient.interceptors().remove(loggingInterceptor);
-                loggingInterceptor = null;
-            }
-        }
-        this.debugging = debugging;
-        return this;
     }
 
     /**
@@ -828,7 +684,6 @@ public class ApiClient {
      * @param body The request body object
      * @param headerParams The header parameters
      * @param formParams The form parameters
-     * @param authNames The authentications to apply
      * @param progressRequestListener Progress request listener
      * @return The HTTP call
      * @throws ApiException If fail to serialize the request body object
@@ -842,7 +697,6 @@ public class ApiClient {
             Object body,
             Map<String, String> headerParams,
             Map<String, Object> formParams,
-            String[] authNames,
             ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Request request = buildRequest(
@@ -853,7 +707,6 @@ public class ApiClient {
                 body,
                 headerParams,
                 formParams,
-                authNames,
                 progressRequestListener);
 
         return httpClient.newCall(request);
@@ -869,7 +722,6 @@ public class ApiClient {
      * @param body The request body object
      * @param headerParams The header parameters
      * @param formParams The form parameters
-     * @param authNames The authentications to apply
      * @param progressRequestListener Progress request listener
      * @return The HTTP request
      * @throws ApiException If fail to serialize the request body object
@@ -883,10 +735,8 @@ public class ApiClient {
             Object body,
             Map<String, String> headerParams,
             Map<String, Object> formParams,
-            String[] authNames,
             ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
-        updateParamsForAuth(authNames, queryParams, headerParams);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
@@ -994,21 +844,6 @@ public class ApiClient {
             if (!headerParams.containsKey(header.getKey())) {
                 reqBuilder.header(header.getKey(), parameterToString(header.getValue()));
             }
-        }
-    }
-
-    /**
-     * Update query and header parameters based on authentication settings.
-     *
-     * @param authNames The authentications to apply
-     * @param queryParams List of query parameters
-     * @param headerParams Map of header parameters
-     */
-    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams) {
-        for (String authName : authNames) {
-            Authentication auth = authentications.get(authName);
-            if (auth == null) throw new RuntimeException("Authentication undefined: " + authName);
-            auth.applyToParams(queryParams, headerParams);
         }
     }
 

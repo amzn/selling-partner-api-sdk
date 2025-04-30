@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.GetContentDocumentResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.ListContentDocumentAsinRelationsResponse;
@@ -96,10 +95,21 @@ public class AplusContentApi {
             .addLimit(config.getLimit("AplusContentApi-validateContentDocumentAsinRelations"))
             .build();
 
+    /**
+     * Build call for createContentDocument
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call createContentDocumentCall(
             PostContentDocumentRequest body,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -124,17 +134,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -143,14 +142,12 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call createContentDocumentValidateBeforeCall(
             PostContentDocumentRequest body,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -163,7 +160,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling createContentDocument(Async)");
         }
 
-        return createContentDocumentCall(body, marketplaceId, progressListener, progressRequestListener);
+        return createContentDocumentCall(body, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -206,7 +203,7 @@ public class AplusContentApi {
      */
     public ApiResponse<PostContentDocumentResponse> createContentDocumentWithHttpInfo(
             PostContentDocumentRequest body, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call = createContentDocumentValidateBeforeCall(body, marketplaceId, null, null);
+        okhttp3.Call call = createContentDocumentValidateBeforeCall(body, marketplaceId, null);
         if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -236,28 +233,38 @@ public class AplusContentApi {
             final ApiCallback<PostContentDocumentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                createContentDocumentValidateBeforeCall(body, marketplaceId, progressListener, progressRequestListener);
+        okhttp3.Call call = createContentDocumentValidateBeforeCall(body, marketplaceId, progressRequestListener);
         if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("createContentDocument operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getContentDocument
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getContentDocumentCall(
             String contentReferenceKey,
             String marketplaceId,
             List<String> includedDataSet,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -287,17 +294,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -306,7 +302,6 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -314,7 +309,6 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             List<String> includedDataSet,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'contentReferenceKey' is set
@@ -333,8 +327,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'includedDataSet' when calling getContentDocument(Async)");
         }
 
-        return getContentDocumentCall(
-                contentReferenceKey, marketplaceId, includedDataSet, progressListener, progressRequestListener);
+        return getContentDocumentCall(contentReferenceKey, marketplaceId, includedDataSet, progressRequestListener);
     }
 
     /**
@@ -387,7 +380,7 @@ public class AplusContentApi {
             String contentReferenceKey, String marketplaceId, List<String> includedDataSet)
             throws ApiException, LWAException {
         okhttp3.Call call =
-                getContentDocumentValidateBeforeCall(contentReferenceKey, marketplaceId, includedDataSet, null, null);
+                getContentDocumentValidateBeforeCall(contentReferenceKey, marketplaceId, includedDataSet, null);
         if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -421,30 +414,45 @@ public class AplusContentApi {
             final ApiCallback<GetContentDocumentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getContentDocumentValidateBeforeCall(
-                contentReferenceKey, marketplaceId, includedDataSet, progressListener, progressRequestListener);
+                contentReferenceKey, marketplaceId, includedDataSet, progressRequestListener);
         if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getContentDocument operation exceeds rate limit");
     }
-
+    /**
+     * Build call for listContentDocumentAsinRelations
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. If you don&#x27;t include
+     *     this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param asinSet The set of ASINs. (optional)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call listContentDocumentAsinRelationsCall(
             String contentReferenceKey,
             String marketplaceId,
             List<String> includedDataSet,
             List<String> asinSet,
             String pageToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -477,17 +485,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -496,7 +493,6 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -506,7 +502,6 @@ public class AplusContentApi {
             List<String> includedDataSet,
             List<String> asinSet,
             String pageToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'contentReferenceKey' is set
@@ -521,13 +516,7 @@ public class AplusContentApi {
         }
 
         return listContentDocumentAsinRelationsCall(
-                contentReferenceKey,
-                marketplaceId,
-                includedDataSet,
-                asinSet,
-                pageToken,
-                progressListener,
-                progressRequestListener);
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, progressRequestListener);
     }
 
     /**
@@ -600,7 +589,7 @@ public class AplusContentApi {
             String pageToken)
             throws ApiException, LWAException {
         okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
-                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, null, null);
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, null);
         if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -643,22 +632,14 @@ public class AplusContentApi {
             final ApiCallback<ListContentDocumentAsinRelationsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
-                contentReferenceKey,
-                marketplaceId,
-                includedDataSet,
-                asinSet,
-                pageToken,
-                progressListener,
-                progressRequestListener);
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, progressRequestListener);
         if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -666,11 +647,23 @@ public class AplusContentApi {
         } else
             throw new ApiException.RateLimitExceeded("listContentDocumentAsinRelations operation exceeds rate limit");
     }
-
+    /**
+     * Build call for postContentDocumentApprovalSubmission
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call postContentDocumentApprovalSubmissionCall(
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -698,17 +691,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -717,14 +699,12 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call postContentDocumentApprovalSubmissionValidateBeforeCall(
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'contentReferenceKey' is set
@@ -738,8 +718,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling postContentDocumentApprovalSubmission(Async)");
         }
 
-        return postContentDocumentApprovalSubmissionCall(
-                contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+        return postContentDocumentApprovalSubmissionCall(contentReferenceKey, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -788,7 +767,7 @@ public class AplusContentApi {
     public ApiResponse<PostContentDocumentApprovalSubmissionResponse> postContentDocumentApprovalSubmissionWithHttpInfo(
             String contentReferenceKey, String marketplaceId) throws ApiException, LWAException {
         okhttp3.Call call =
-                postContentDocumentApprovalSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null, null);
+                postContentDocumentApprovalSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null);
         if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -822,16 +801,14 @@ public class AplusContentApi {
             final ApiCallback<PostContentDocumentApprovalSubmissionResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = postContentDocumentApprovalSubmissionValidateBeforeCall(
-                contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+                contentReferenceKey, marketplaceId, progressRequestListener);
         if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -840,12 +817,25 @@ public class AplusContentApi {
             throw new ApiException.RateLimitExceeded(
                     "postContentDocumentApprovalSubmission operation exceeds rate limit");
     }
-
+    /**
+     * Build call for postContentDocumentAsinRelations
+     *
+     * @param body The request details for the content document ASIN relations. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call postContentDocumentAsinRelationsCall(
             PostContentDocumentAsinRelationsRequest body,
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -872,17 +862,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -891,7 +870,6 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -899,7 +877,6 @@ public class AplusContentApi {
             PostContentDocumentAsinRelationsRequest body,
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -918,8 +895,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling postContentDocumentAsinRelations(Async)");
         }
 
-        return postContentDocumentAsinRelationsCall(
-                body, contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+        return postContentDocumentAsinRelationsCall(body, contentReferenceKey, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -975,8 +951,8 @@ public class AplusContentApi {
     public ApiResponse<PostContentDocumentAsinRelationsResponse> postContentDocumentAsinRelationsWithHttpInfo(
             PostContentDocumentAsinRelationsRequest body, String contentReferenceKey, String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = postContentDocumentAsinRelationsValidateBeforeCall(
-                body, contentReferenceKey, marketplaceId, null, null);
+        okhttp3.Call call =
+                postContentDocumentAsinRelationsValidateBeforeCall(body, contentReferenceKey, marketplaceId, null);
         if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1013,16 +989,14 @@ public class AplusContentApi {
             final ApiCallback<PostContentDocumentAsinRelationsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = postContentDocumentAsinRelationsValidateBeforeCall(
-                body, contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+                body, contentReferenceKey, marketplaceId, progressRequestListener);
         if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1030,11 +1004,23 @@ public class AplusContentApi {
         } else
             throw new ApiException.RateLimitExceeded("postContentDocumentAsinRelations operation exceeds rate limit");
     }
-
+    /**
+     * Build call for postContentDocumentSuspendSubmission
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call postContentDocumentSuspendSubmissionCall(
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1062,17 +1048,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1081,14 +1056,12 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call postContentDocumentSuspendSubmissionValidateBeforeCall(
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'contentReferenceKey' is set
@@ -1102,8 +1075,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling postContentDocumentSuspendSubmission(Async)");
         }
 
-        return postContentDocumentSuspendSubmissionCall(
-                contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+        return postContentDocumentSuspendSubmissionCall(contentReferenceKey, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -1154,7 +1126,7 @@ public class AplusContentApi {
     public ApiResponse<PostContentDocumentSuspendSubmissionResponse> postContentDocumentSuspendSubmissionWithHttpInfo(
             String contentReferenceKey, String marketplaceId) throws ApiException, LWAException {
         okhttp3.Call call =
-                postContentDocumentSuspendSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null, null);
+                postContentDocumentSuspendSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null);
         if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1189,16 +1161,14 @@ public class AplusContentApi {
             final ApiCallback<PostContentDocumentSuspendSubmissionResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = postContentDocumentSuspendSubmissionValidateBeforeCall(
-                contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+                contentReferenceKey, marketplaceId, progressRequestListener);
         if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1207,11 +1177,22 @@ public class AplusContentApi {
             throw new ApiException.RateLimitExceeded(
                     "postContentDocumentSuspendSubmission operation exceeds rate limit");
     }
-
+    /**
+     * Build call for searchContentDocuments
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call searchContentDocumentsCall(
             String marketplaceId,
             String pageToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1238,17 +1219,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1257,14 +1227,12 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call searchContentDocumentsValidateBeforeCall(
             String marketplaceId,
             String pageToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -1273,7 +1241,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling searchContentDocuments(Async)");
         }
 
-        return searchContentDocumentsCall(marketplaceId, pageToken, progressListener, progressRequestListener);
+        return searchContentDocumentsCall(marketplaceId, pageToken, progressRequestListener);
     }
 
     /**
@@ -1322,7 +1290,7 @@ public class AplusContentApi {
      */
     public ApiResponse<SearchContentDocumentsResponse> searchContentDocumentsWithHttpInfo(
             String marketplaceId, String pageToken) throws ApiException, LWAException {
-        okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, null, null);
+        okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, null);
         if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1353,28 +1321,38 @@ public class AplusContentApi {
             String marketplaceId, String pageToken, final ApiCallback<SearchContentDocumentsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = searchContentDocumentsValidateBeforeCall(
-                marketplaceId, pageToken, progressListener, progressRequestListener);
+        okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, progressRequestListener);
         if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("searchContentDocuments operation exceeds rate limit");
     }
-
+    /**
+     * Build call for searchContentPublishRecords
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a
+     *     marketplace. (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call searchContentPublishRecordsCall(
             String marketplaceId,
             String asin,
             String pageToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -1402,17 +1380,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -1421,7 +1388,6 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1429,7 +1395,6 @@ public class AplusContentApi {
             String marketplaceId,
             String asin,
             String pageToken,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceId' is set
@@ -1443,8 +1408,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'asin' when calling searchContentPublishRecords(Async)");
         }
 
-        return searchContentPublishRecordsCall(
-                marketplaceId, asin, pageToken, progressListener, progressRequestListener);
+        return searchContentPublishRecordsCall(marketplaceId, asin, pageToken, progressRequestListener);
     }
 
     /**
@@ -1494,7 +1458,7 @@ public class AplusContentApi {
      */
     public ApiResponse<SearchContentPublishRecordsResponse> searchContentPublishRecordsWithHttpInfo(
             String marketplaceId, String asin, String pageToken) throws ApiException, LWAException {
-        okhttp3.Call call = searchContentPublishRecordsValidateBeforeCall(marketplaceId, asin, pageToken, null, null);
+        okhttp3.Call call = searchContentPublishRecordsValidateBeforeCall(marketplaceId, asin, pageToken, null);
         if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1528,28 +1492,39 @@ public class AplusContentApi {
             final ApiCallback<SearchContentPublishRecordsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = searchContentPublishRecordsValidateBeforeCall(
-                marketplaceId, asin, pageToken, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                searchContentPublishRecordsValidateBeforeCall(marketplaceId, asin, pageToken, progressRequestListener);
         if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("searchContentPublishRecords operation exceeds rate limit");
     }
-
+    /**
+     * Build call for updateContentDocument
+     *
+     * @param body The content document request details. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call updateContentDocumentCall(
             PostContentDocumentRequest body,
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1576,17 +1551,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1595,7 +1559,6 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1603,7 +1566,6 @@ public class AplusContentApi {
             PostContentDocumentRequest body,
             String contentReferenceKey,
             String marketplaceId,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1621,8 +1583,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling updateContentDocument(Async)");
         }
 
-        return updateContentDocumentCall(
-                body, contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+        return updateContentDocumentCall(body, contentReferenceKey, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -1674,8 +1635,7 @@ public class AplusContentApi {
     public ApiResponse<PostContentDocumentResponse> updateContentDocumentWithHttpInfo(
             PostContentDocumentRequest body, String contentReferenceKey, String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                updateContentDocumentValidateBeforeCall(body, contentReferenceKey, marketplaceId, null, null);
+        okhttp3.Call call = updateContentDocumentValidateBeforeCall(body, contentReferenceKey, marketplaceId, null);
         if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1709,28 +1669,37 @@ public class AplusContentApi {
             final ApiCallback<PostContentDocumentResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = updateContentDocumentValidateBeforeCall(
-                body, contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
+                body, contentReferenceKey, marketplaceId, progressRequestListener);
         if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("updateContentDocument operation exceeds rate limit");
     }
-
+    /**
+     * Build call for validateContentDocumentAsinRelations
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asinSet The set of ASINs. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call validateContentDocumentAsinRelationsCall(
             PostContentDocumentRequest body,
             String marketplaceId,
             List<String> asinSet,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -1757,17 +1726,6 @@ public class AplusContentApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "POST",
@@ -1776,7 +1734,6 @@ public class AplusContentApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -1784,7 +1741,6 @@ public class AplusContentApi {
             PostContentDocumentRequest body,
             String marketplaceId,
             List<String> asinSet,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -1798,8 +1754,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling validateContentDocumentAsinRelations(Async)");
         }
 
-        return validateContentDocumentAsinRelationsCall(
-                body, marketplaceId, asinSet, progressListener, progressRequestListener);
+        return validateContentDocumentAsinRelationsCall(body, marketplaceId, asinSet, progressRequestListener);
     }
 
     /**
@@ -1847,8 +1802,7 @@ public class AplusContentApi {
     public ApiResponse<ValidateContentDocumentAsinRelationsResponse> validateContentDocumentAsinRelationsWithHttpInfo(
             PostContentDocumentRequest body, String marketplaceId, List<String> asinSet)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                validateContentDocumentAsinRelationsValidateBeforeCall(body, marketplaceId, asinSet, null, null);
+        okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(body, marketplaceId, asinSet, null);
         if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -1882,16 +1836,14 @@ public class AplusContentApi {
             final ApiCallback<ValidateContentDocumentAsinRelationsResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(
-                body, marketplaceId, asinSet, progressListener, progressRequestListener);
+                body, marketplaceId, asinSet, progressRequestListener);
         if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

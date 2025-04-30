@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellers.v1.GetAccountResponse;
 import software.amazon.spapi.models.sellers.v1.GetMarketplaceParticipationsResponse;
@@ -54,9 +53,15 @@ public class SellersApi {
             .addLimit(config.getLimit("SellersApi-getMarketplaceParticipations"))
             .build();
 
-    private okhttp3.Call getAccountCall(
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    /**
+     * Build call for getAccount
+     *
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getAccountCall(final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -79,17 +84,6 @@ public class SellersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -98,16 +92,14 @@ public class SellersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getAccountValidateBeforeCall(
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return getAccountCall(progressListener, progressRequestListener);
+        return getAccountCall(progressRequestListener);
     }
 
     /**
@@ -142,7 +134,7 @@ public class SellersApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetAccountResponse> getAccountWithHttpInfo() throws ApiException, LWAException {
-        okhttp3.Call call = getAccountValidateBeforeCall(null, null);
+        okhttp3.Call call = getAccountValidateBeforeCall(null);
         if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -166,24 +158,28 @@ public class SellersApi {
     public okhttp3.Call getAccountAsync(final ApiCallback<GetAccountResponse> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getAccountValidateBeforeCall(progressListener, progressRequestListener);
+        okhttp3.Call call = getAccountValidateBeforeCall(progressRequestListener);
         if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
     }
-
+    /**
+     * Build call for getMarketplaceParticipations
+     *
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getMarketplaceParticipationsCall(
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -207,17 +203,6 @@ public class SellersApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -226,16 +211,14 @@ public class SellersApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
     private okhttp3.Call getMarketplaceParticipationsValidateBeforeCall(
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        return getMarketplaceParticipationsCall(progressListener, progressRequestListener);
+        return getMarketplaceParticipationsCall(progressRequestListener);
     }
 
     /**
@@ -271,7 +254,7 @@ public class SellersApi {
      */
     public ApiResponse<GetMarketplaceParticipationsResponse> getMarketplaceParticipationsWithHttpInfo()
             throws ApiException, LWAException {
-        okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(null, null);
+        okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(null);
         if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -296,15 +279,13 @@ public class SellersApi {
     public okhttp3.Call getMarketplaceParticipationsAsync(
             final ApiCallback<GetMarketplaceParticipationsResponse> callback) throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(progressListener, progressRequestListener);
+        okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(progressRequestListener);
         if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

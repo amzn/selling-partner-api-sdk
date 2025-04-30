@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
-import software.amazon.spapi.ProgressResponseBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.Item;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemSearchResults;
@@ -55,12 +54,26 @@ public class CatalogApi {
             .addLimit(config.getLimit("CatalogApi-searchCatalogItems"))
             .build();
 
+    /**
+     * Build call for getCatalogItem
+     *
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call getCatalogItemCall(
             String asin,
             List<String> marketplaceIds,
             List<String> includedData,
             String locale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -90,17 +103,6 @@ public class CatalogApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -109,7 +111,6 @@ public class CatalogApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -118,7 +119,6 @@ public class CatalogApi {
             List<String> marketplaceIds,
             List<String> includedData,
             String locale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'asin' is set
@@ -131,8 +131,7 @@ public class CatalogApi {
                     "Missing the required parameter 'marketplaceIds' when calling getCatalogItem(Async)");
         }
 
-        return getCatalogItemCall(
-                asin, marketplaceIds, includedData, locale, progressListener, progressRequestListener);
+        return getCatalogItemCall(asin, marketplaceIds, includedData, locale, progressRequestListener);
     }
 
     /**
@@ -182,7 +181,7 @@ public class CatalogApi {
     public ApiResponse<Item> getCatalogItemWithHttpInfo(
             String asin, List<String> marketplaceIds, List<String> includedData, String locale)
             throws ApiException, LWAException {
-        okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null, null);
+        okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null);
         if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Item>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
@@ -217,23 +216,53 @@ public class CatalogApi {
             final ApiCallback<Item> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getCatalogItemValidateBeforeCall(
-                asin, marketplaceIds, includedData, locale, progressListener, progressRequestListener);
+        okhttp3.Call call =
+                getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, progressRequestListener);
         if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Item>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
     }
-
+    /**
+     * Build call for searchCatalogItems
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog.
+     *     **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param identifiersType The type of product identifiers that you can use to search the Amazon catalog. **Note:**
+     *     &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param sellerId A selling partner identifier, such as a seller account or vendor code. **Note:** Required when
+     *     &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param keywords A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You
+     *     cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param brandNames A comma-delimited list of brand names that you can use to limit the search in queries based on
+     *     &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param classificationIds A comma-delimited list of classification identifiers that you can use to limit the
+     *     search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param pageSize The number of results to include on each page. (optional, default to 10)
+     * @param pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
+     *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
     private okhttp3.Call searchCatalogItemsCall(
             List<String> marketplaceIds,
             List<String> identifiers,
@@ -247,7 +276,6 @@ public class CatalogApi {
             Integer pageSize,
             String pageToken,
             String keywordsLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -292,17 +320,6 @@ public class CatalogApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(chain -> {
-                okhttp3.Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                        .build();
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(
                 localVarPath,
                 "GET",
@@ -311,7 +328,6 @@ public class CatalogApi {
                 localVarPostBody,
                 localVarHeaderParams,
                 localVarFormParams,
-                localVarAuthNames,
                 progressRequestListener);
     }
 
@@ -328,7 +344,6 @@ public class CatalogApi {
             Integer pageSize,
             String pageToken,
             String keywordsLocale,
-            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -350,7 +365,6 @@ public class CatalogApi {
                 pageSize,
                 pageToken,
                 keywordsLocale,
-                progressListener,
                 progressRequestListener);
     }
 
@@ -487,7 +501,6 @@ public class CatalogApi {
                 pageSize,
                 pageToken,
                 keywordsLocale,
-                null,
                 null);
         if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
@@ -550,11 +563,9 @@ public class CatalogApi {
             final ApiCallback<ItemSearchResults> callback)
             throws ApiException, LWAException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = callback::onDownloadProgress;
             progressRequestListener = callback::onUploadProgress;
         }
 
@@ -571,7 +582,6 @@ public class CatalogApi {
                 pageSize,
                 pageToken,
                 keywordsLocale,
-                progressListener,
                 progressRequestListener);
         if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
