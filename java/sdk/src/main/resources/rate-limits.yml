@@ -106,19 +106,19 @@ QueriesApi-getDocument:
   - 15
   - 60
 # Easy Ship API
-EasyShip-listHandoverSlots:
+EasyShipApi-listHandoverSlots:
   - 1
   - 5
-EasyShip-getScheduledPackage:
+EasyShipApi-getScheduledPackage:
   - 1
   - 5
-EasyShip-createScheduledPackage:
+EasyShipApi-createScheduledPackage:
   - 1
   - 5
-EasyShip-updateScheduledPackages:
+EasyShipApi-updateScheduledPackages:
   - 1
   - 5
-EasyShip-createScheduledPackageBulk:
+EasyShipApi-createScheduledPackageBulk:
   - 1
   - 5
 # FBA Inbound Eligibility API
@@ -469,13 +469,13 @@ MessagingApi-createConfirmOrderDetails:
 MessagingApi-createConfirmServiceDetails:
   - 1
   - 5
-MessagingApi-CreateAmazonMotors:
+MessagingApi-createAmazonMotors:
   - 1
   - 5
-MessagingApi-CreateWarranty:
+MessagingApi-createWarranty:
   - 1
   - 5
-MessagingApi-GetAttributes:
+MessagingApi-getAttributes:
   - 1
   - 5
 MessagingApi-createDigitalAccessKey:
@@ -754,6 +754,57 @@ ShippingApi-getAccount:
 ShippingApi-getTrackingInformation:
   - 1
   - 1
+ShippingApi-createClaim:
+  - 80
+  - 100
+ShippingApi-directPurchaseShipment:
+  - 80
+  - 100
+ShippingApi-generateCollectionForm:
+  - 80
+  - 100
+ShippingApi-getAccessPoints:
+  - 80
+  - 100
+ShippingApi-getAdditionalInputs:
+  - 80
+  - 100
+ShippingApi-getCarrierAccounts:
+  - 80
+  - 100
+ShippingApi-getCollectionForm:
+  - 80
+  - 100
+ShippingApi-getCollectionFormHistory:
+  - 80
+  - 100
+ShippingApi-getShipmentDocuments:
+  - 80
+  - 100
+ShippingApi-getTracking:
+  - 80
+  - 100
+ShippingApi-getUnmanifestedShipments:
+  - 80
+  - 100
+ShippingApi-linkCarrierAccount:
+  - 80
+  - 100
+ShippingApi-linkCarrierAccount_0:
+  - 80
+  - 100
+ShippingApi-oneClickShipment:
+  - 80
+  - 100
+ShippingApi-submitNdrFeedback:
+  - 80
+  - 100
+ShippingApi-unlinkCarrierAccount:
+  - 80
+  - 100
+ShippingApi-getCarrierAccountFormInputs:
+  - 80
+  - 100
 # Solicitations API
 SolicitationsApi-getSolicitationActionsForOrder:
   - 1
@@ -790,6 +841,9 @@ UploadsApi-createUploadDestinationForResource:
   - 5
 # Vehicles API
 AutomotiveApi-getVehicles:
+  - 20
+  - 5
+AutomotiveApi-getVehicles_0:
   - 20
   - 5
 VehiclesApi-getVehicles:
@@ -873,5 +927,8 @@ VendorShippingApi-GetShipmentLabels:
   - 10
   - 10
 VendorTransactionApi-getTransaction:
+  - 10
+  - 10
+VendorTransactionApi-getTransactionStatus:
   - 10
   - 10
