@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools >= 80.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amazon-spapi"
+version = "0.0.1"
+authors = [
+    { name="Jawher A.", email="sp-api-python-sdk-support@amazon.com" },
+]
+description = "The Selling Partner API Python SDK enables you to easily connect to and work with Amazon SP-API."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+keywords = ["spapi", "spapi sdk", "sp-api sdk", "selling partner api sdk", "amazon-spapi", "amazon selling partner api"]
+
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = [
+    "urllib3 >= 2.1.0, < 3.0.0",
+    "certifi >= 2025.1.31",
+    "requests >= 2.32.3"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spapi", "spapi.*"]
+exclude = ["test", "test.*"]
+
+[project.urls]
+Homepage = "https://developer-docs.amazon.com/sp-api/"
+Documentation = "https://developer-docs.amazon.com/sp-api/docs/sp-api-sdks"
+Repository = "https://github.com/amzn/selling-partner-api-sdk"
+Issues = "https://github.com/amzn/selling-partner-api-sdk/issues"

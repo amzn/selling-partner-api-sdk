@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - name: Run mock server
+      - name: Strat tests mock server
         working-directory: ./test
         run: |
           npm install
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.9'
           cache: 'pip'
       - name: Install dependencies
         working-directory: ./python/sdk

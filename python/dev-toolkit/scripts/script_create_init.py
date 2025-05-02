@@ -3,8 +3,7 @@ import os
 def main():
     package_name = "spapi"
 
-    content = f'''__version__ = "1.0.0"
-
+    content = f'''
 ## import api client and configuration
 from {package_name}.configuration import Configuration
 from {package_name}.api_client import ApiClient
@@ -20,6 +19,21 @@ from {package_name}.auth.credentials import SPAPIConfig
     # Path to the generated SDK
     sdk_path = f'./sdk/{package_name}/api'
 
+    # Create empty init files (modules) for auth/, models/, and api/
+    init_folders = [
+        f'./sdk/{package_name}/auth',
+        f'./sdk/{package_name}/models',
+        f'./sdk/{package_name}/api'
+    ]
+
+    # Create empty __init__.py files
+    for folder in init_folders:
+        os.makedirs(folder, exist_ok=True)
+        init_file = os.path.join(folder, '__init__.py')
+        with open(init_file, 'w') as f:
+            pass  # Creates an empty file
+
+    # Create main package __init__.py file
     # Get all API directories
     api_dirs = [d for d in os.listdir(sdk_path) if os.path.isdir(os.path.join(sdk_path, d))]
 

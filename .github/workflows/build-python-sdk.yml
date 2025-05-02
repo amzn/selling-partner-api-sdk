@@ -19,12 +19,12 @@ jobs:
           path: selling-partner-api-models
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.9'
       - uses: actions/setup-node@v4  # needed for openapi-generator-cli
         with:
           node-version: '20'
       - name: Pre-process OpenAPI schemas with duplicate/missings tags or other issues
-        run: bash ./selling-partner-api-sdk/python/dev-toolkit/schema-fixer.sh
+        run: bash ./selling-partner-api-sdk/python/dev-toolkit/scripts/schema-fixer.sh
       - name: Install OpenAPI Generator
         run: npm install @openapitools/openapi-generator-cli -g
       - name: Remove old sdk files
@@ -89,7 +89,7 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.vehicles_v2024_11_01,apiPackage=api.vehicles_v2024_11_01 --global-property modelTests=false,modelDocs=false,apiDocs=false
       - name: Create SDK python package __init__.py file
         working-directory: ./selling-partner-api-sdk/python
-        run: python3 dev-toolkit/script_create_init.py
+        run: python3 dev-toolkit/scripts/script_create_init.py
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:

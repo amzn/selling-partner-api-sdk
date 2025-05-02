@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from __future__ import absolute_import
+from importlib.metadata import version
 
 import copy
 import logging
@@ -267,8 +268,13 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
+        pyproject_package = "amazon-spapi"
+        try:
+            sdk_version = version(pyproject_package)
+        except Exception:
+            sdk_version = "development"
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "SDK Package Version: {{packageVersion}}".\
-               format(env=sys.platform, pyversion=sys.version)
+               "SDK Package Version: {sdk_version}".\
+               format(env=sys.platform, pyversion=sys.version, sdk_version=sdk_version)
