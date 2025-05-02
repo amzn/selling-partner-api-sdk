@@ -21,9 +21,6 @@ if __name__ == "__main__":
         response = sellers_api.get_marketplace_participations()
     except ApiException as e:
         print(f"API Exception occurred: {str(e)}")
-        print(f"Error status code: {e.status}")
-        print(f"Error reason: {e.reason}")
-        print(f"Error body: {e.body}")
 
     if response is not None:
         print("Sellers API Response:")
