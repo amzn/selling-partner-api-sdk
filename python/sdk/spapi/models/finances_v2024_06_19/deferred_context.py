@@ -36,16 +36,14 @@ class DeferredContext(object):
     swagger_types = {
         'deferral_reason': 'str',
         'maturity_date': 'datetime',
-        'deferral_status': 'str',
     }
 
     attribute_map = {
         'deferral_reason': 'deferralReason',
         'maturity_date': 'maturityDate',
-        'deferral_status': 'deferralStatus',
     }
 
-    def __init__(self, deferral_reason=None, maturity_date=None, deferral_status=None, _configuration=None):  # noqa: E501
+    def __init__(self, deferral_reason=None, maturity_date=None, _configuration=None):  # noqa: E501
         """DeferredContext - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -53,21 +51,18 @@ class DeferredContext(object):
 
         self._deferral_reason = None
         self._maturity_date = None
-        self._deferral_status = None
         self.discriminator = None
 
         if deferral_reason is not None:
             self.deferral_reason = deferral_reason
         if maturity_date is not None:
             self.maturity_date = maturity_date
-        if deferral_status is not None:
-            self.deferral_status = deferral_status
 
     @property
     def deferral_reason(self):
         """Gets the deferral_reason of this DeferredContext.  # noqa: E501
 
-        Deferral policy applied on the transaction.  Example: 'B2B','DD7'  # noqa: E501
+        The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)  # noqa: E501
 
         :return: The deferral_reason of this DeferredContext.  # noqa: E501
         :rtype: str
@@ -78,7 +73,7 @@ class DeferredContext(object):
     def deferral_reason(self, deferral_reason):
         """Sets the deferral_reason of this DeferredContext.
 
-        Deferral policy applied on the transaction.  Example: 'B2B','DD7'  # noqa: E501
+        The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)  # noqa: E501
 
         :param deferral_reason: The deferral_reason of this DeferredContext.  # noqa: E501
         :type: str
@@ -108,29 +103,6 @@ class DeferredContext(object):
         """
 
         self._maturity_date = maturity_date
-
-    @property
-    def deferral_status(self):
-        """Gets the deferral_status of this DeferredContext.  # noqa: E501
-
-        Status of the transaction.   Example: 'HOLD','RELEASE'  # noqa: E501
-
-        :return: The deferral_status of this DeferredContext.  # noqa: E501
-        :rtype: str
-        """
-        return self._deferral_status
-
-    @deferral_status.setter
-    def deferral_status(self, deferral_status):
-        """Sets the deferral_status of this DeferredContext.
-
-        Status of the transaction.   Example: 'HOLD','RELEASE'  # noqa: E501
-
-        :param deferral_status: The deferral_status of this DeferredContext.  # noqa: E501
-        :type: str
-        """
-
-        self._deferral_status = deferral_status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

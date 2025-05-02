@@ -47,7 +47,6 @@ class Context(object):
         'payment_date': 'datetime',
         'deferral_reason': 'str',
         'maturity_date': 'datetime',
-        'deferral_status': 'str',
         'start_time': 'datetime',
         'end_time': 'datetime',
         'context_type': 'str',
@@ -67,13 +66,12 @@ class Context(object):
         'payment_date': 'paymentDate',
         'deferral_reason': 'deferralReason',
         'maturity_date': 'maturityDate',
-        'deferral_status': 'deferralStatus',
         'start_time': 'startTime',
         'end_time': 'endTime',
         'context_type': 'contextType',
     }
 
-    def __init__(self, store_name=None, order_type=None, channel=None, asin=None, sku=None, quantity_shipped=None, fulfillment_network=None, payment_type=None, payment_method=None, payment_reference=None, payment_date=None, deferral_reason=None, maturity_date=None, deferral_status=None, start_time=None, end_time=None, context_type=None, _configuration=None):  # noqa: E501
+    def __init__(self, store_name=None, order_type=None, channel=None, asin=None, sku=None, quantity_shipped=None, fulfillment_network=None, payment_type=None, payment_method=None, payment_reference=None, payment_date=None, deferral_reason=None, maturity_date=None, start_time=None, end_time=None, context_type=None, _configuration=None):  # noqa: E501
         """Context - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -92,7 +90,6 @@ class Context(object):
         self._payment_date = None
         self._deferral_reason = None
         self._maturity_date = None
-        self._deferral_status = None
         self._start_time = None
         self._end_time = None
         self._context_type = None
@@ -124,8 +121,6 @@ class Context(object):
             self.deferral_reason = deferral_reason
         if maturity_date is not None:
             self.maturity_date = maturity_date
-        if deferral_status is not None:
-            self.deferral_status = deferral_status
         if start_time is not None:
             self.start_time = start_time
         if end_time is not None:
@@ -389,7 +384,7 @@ class Context(object):
     def deferral_reason(self):
         """Gets the deferral_reason of this Context.  # noqa: E501
 
-        Deferral policy applied on the transaction.  Example: 'B2B','DD7'  # noqa: E501
+        The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)  # noqa: E501
 
         :return: The deferral_reason of this Context.  # noqa: E501
         :rtype: str
@@ -400,7 +395,7 @@ class Context(object):
     def deferral_reason(self, deferral_reason):
         """Sets the deferral_reason of this Context.
 
-        Deferral policy applied on the transaction.  Example: 'B2B','DD7'  # noqa: E501
+        The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)  # noqa: E501
 
         :param deferral_reason: The deferral_reason of this Context.  # noqa: E501
         :type: str
@@ -430,29 +425,6 @@ class Context(object):
         """
 
         self._maturity_date = maturity_date
-
-    @property
-    def deferral_status(self):
-        """Gets the deferral_status of this Context.  # noqa: E501
-
-        Status of the transaction.   Example: 'HOLD','RELEASE'  # noqa: E501
-
-        :return: The deferral_status of this Context.  # noqa: E501
-        :rtype: str
-        """
-        return self._deferral_status
-
-    @deferral_status.setter
-    def deferral_status(self, deferral_status):
-        """Sets the deferral_status of this Context.
-
-        Status of the transaction.   Example: 'HOLD','RELEASE'  # noqa: E501
-
-        :param deferral_status: The deferral_status of this Context.  # noqa: E501
-        :type: str
-        """
-
-        self._deferral_status = deferral_status
 
     @property
     def start_time(self):

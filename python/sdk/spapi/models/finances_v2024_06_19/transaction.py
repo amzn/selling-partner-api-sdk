@@ -202,7 +202,7 @@ class Transaction(object):
     def transaction_status(self):
         """Gets the transaction_status of this Transaction.  # noqa: E501
 
-        The status for the transaction.   Possible values:  * Deferred *Released  # noqa: E501
+        The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. Deferred transactions will have their status updated to `DEFERRED_RELEASED` when released.  # noqa: E501
 
         :return: The transaction_status of this Transaction.  # noqa: E501
         :rtype: str
@@ -213,7 +213,7 @@ class Transaction(object):
     def transaction_status(self, transaction_status):
         """Sets the transaction_status of this Transaction.
 
-        The status for the transaction.   Possible values:  * Deferred *Released  # noqa: E501
+        The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. Deferred transactions will have their status updated to `DEFERRED_RELEASED` when released.  # noqa: E501
 
         :param transaction_status: The transaction_status of this Transaction.  # noqa: E501
         :type: str

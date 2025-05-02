@@ -10,6 +10,7 @@ import os
 import re
 import tempfile
 import importlib
+from importlib.metadata import version
 
 # python 2 and python 3 compatibility library
 import six
@@ -67,7 +68,12 @@ class ApiClient(object):
         if self.configuration.access_token:
             self.default_headers['x-amz-access-token'] = self.configuration.access_token
         # Set default User-Agent.
-        self.user_agent = 'Swagger-Codegen/1.0.0/python'
+        pyproject_package = "amazon-spapi"
+        try:
+            sdk_version = version(pyproject_package)
+        except Exception:
+            sdk_version = "development"
+        self.user_agent = 'amazon-spapi-sdk/{}/python'.format(sdk_version)
         self.client_side_validation = configuration.client_side_validation
 
     def __del__(self):

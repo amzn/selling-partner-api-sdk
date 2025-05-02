@@ -1,4 +1,3 @@
-__version__ = "1.0.0"
 
 ## import api client and configuration
 from spapi.configuration import Configuration
