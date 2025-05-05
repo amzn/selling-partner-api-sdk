@@ -110,6 +110,10 @@ class ApiClient(object):
 
         # header parameters
         header_params = header_params or {}
+        if config.access_token_cache:
+            self.default_headers['x-amz-access-token'] = self.configuration.access_token_cache.get_lwa_access_token()
+        else:
+            raise Exception("Unable to retrieve access token")
         header_params.update(self.default_headers)
         if self.cookie:
             header_params['Cookie'] = self.cookie
