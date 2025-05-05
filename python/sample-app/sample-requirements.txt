@@ -1,1 +1,1 @@
-amazon-spapi >= 0.1.0
+amazon-spapi >= 0.0.1
