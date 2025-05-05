@@ -62,3 +62,4 @@ from spapi.api.vendor_direct_fulfillment_payments_v1.vendor_invoice_api import V
 from spapi.api.datakiosk_v2023_11_15.queries_api import QueriesApi
 from spapi.api.vendor_orders_v1.vendor_orders_api import VendorOrdersApi
 from spapi.api.solicitations_v1.solicitations_api import SolicitationsApi
+from spapi.api.shipping_v2.shipping_api import ShippingApi

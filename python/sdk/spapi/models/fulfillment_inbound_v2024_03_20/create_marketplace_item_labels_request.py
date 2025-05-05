@@ -53,7 +53,7 @@ class CreateMarketplaceItemLabelsRequest(object):
         'width': 'width',
     }
 
-    def __init__(self, height=None, label_type=None, locale_code='en_US', marketplace_id=None, msku_quantities=None, page_type=None, width=None, _configuration=None):  # noqa: E501
+    def __init__(self, height=None, label_type=None, locale_code=None, marketplace_id=None, msku_quantities=None, page_type=None, width=None, _configuration=None):  # noqa: E501
         """CreateMarketplaceItemLabelsRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
