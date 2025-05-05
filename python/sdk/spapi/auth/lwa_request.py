@@ -9,14 +9,20 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class AccessTokenCache:
-    def __init__(self, max_retries=3):
+    def __init__(self, client_id, client_secret, refresh_token=None, grant_type="refresh_token", scope=None, oauth_endpoint="https://api.amazon.com/auth/o2/token", max_retries=3):
         self.token_info = None
         self.max_retries = max_retries
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.refresh_token = refresh_token
+        self.grant_type = grant_type
+        self.scope = scope
+        self.oauth_endpoint = oauth_endpoint
 
-    def get_lwa_access_token(self, client_id, client_secret, refresh_token=None, grant_type="refresh_token", scope=None, oauth_endpoint="https://api.amazon.com/auth/o2/token"):
+    def get_lwa_access_token(self):
         if self.token_info and time.time() < self.token_info["expires_at"]:
             return self.token_info["access_token"]
-        return self.request_new_token(client_id, client_secret, refresh_token, grant_type, scope, oauth_endpoint)
+        return self.request_new_token(self.client_id, self.client_secret, self.refresh_token, self.grant_type, self.scope, self.oauth_endpoint)
 
 
     def request_new_token(self, client_id, client_secret, refresh_token, grant_type, scope, oauth_endpoint):

@@ -65,8 +65,8 @@ class ApiClient(object):
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
-        if self.configuration.access_token:
-            self.default_headers['x-amz-access-token'] = self.configuration.access_token
+        if self.configuration.access_token_cache:
+            self.default_headers['x-amz-access-token'] = self.configuration.access_token_cache.get_lwa_access_token()
         # Set default User-Agent.
         pyproject_package = "amazon-spapi"
         try:

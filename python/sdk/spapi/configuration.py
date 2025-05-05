@@ -30,7 +30,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "https://sellingpartnerapi-eu.amazon.com"
+        self.host = ""
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
