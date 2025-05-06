@@ -21,6 +21,8 @@ jobs:
       TWINE_PASSWORD: ${{ secrets.PYTHON_PYPI_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MAFGE_PAT }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
@@ -41,10 +43,7 @@ jobs:
           # Copy the updated files back to dev-toolkit/distribution
           cp python/sdk/.bumpversion.cfg python/dev-toolkit/distribution/
           cp python/sdk/pyproject.toml python/dev-toolkit/distribution/
-          
-          # Configure git and commit
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          # Persist new version
           git add python/dev-toolkit/distribution/.bumpversion.cfg python/dev-toolkit/distribution/pyproject.toml
           git commit -m "chore: bump python version to ${{ github.event.inputs.newVersionNumber }}"
           git push

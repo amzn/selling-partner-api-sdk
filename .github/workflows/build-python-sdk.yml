@@ -101,3 +101,4 @@ jobs:
           branch: feature/python-sdk-update
           assignees: jawheral
           path: ./selling-partner-api-sdk
+          token: ${{ secrets.MAFGE_PAT }}
