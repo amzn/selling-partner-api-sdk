@@ -26,7 +26,7 @@ To run the SDK you need Python version 3.9 or higher.
 #### Install the SDK
 
 1. Find the latest version number [here](https://github.com/amzn/selling-partner-api-sdk/releases).
-2. Add the dependency to your project (see instructions for [npm](#using-npm), [yarn](#using-yarn) and [Add as an package dependency](#add-as-an-package-dependency) below).
+2. Add the dependency to your project
 
 
 ##### Using pip:
@@ -34,7 +34,7 @@ To run the SDK you need Python version 3.9 or higher.
 pip install amazon-spapi
 ```
 
-##### Add as a package dependency
+##### Add to your project requirements.txt
 Add the following line to the `requirements.txt` file if needed:
 ```
 amazon-spapi >= "1.0.0"
