@@ -65,7 +65,7 @@ class TestServiceApi(unittest.TestCase):
 
     def test_cancel_service_job_by_service_job_id(self):
         service_job_id = self._get_random_value("str", None)
-        cancellation_reason_code = self._get_random_value("str", "^[A-Z0-9_]*$")
+        cancellation_reason_code = self._get_random_value("str", "^[A-Z0-9_]*$".replace("*$", "{"+ "1,100" + "}$"))
         
         self.instruct_backend_mock(self.to_camel_case("cancel_service_job_by_service_job_id"), "200")
         response = self.api.cancel_service_job_by_service_job_id_with_http_info(service_job_id, cancellation_reason_code, )
@@ -212,6 +212,8 @@ class TestServiceApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.services_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.services_v1" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

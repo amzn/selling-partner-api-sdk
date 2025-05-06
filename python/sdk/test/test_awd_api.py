@@ -129,6 +129,8 @@ class TestAwdApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.awd_v2024_05_09" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.awd_v2024_05_09" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

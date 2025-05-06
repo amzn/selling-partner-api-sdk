@@ -8,12 +8,12 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.invoices_v2024_06_19.invoices_api import InvoicesApi
+from spapi.api.fulfillment_inbound_v0.fba_inbound_v0_api import FbaInboundV0Api
 
-import spapi.models.invoices_v2024_06_19 as models
+import spapi.models.fulfillment_inbound_v0 as models
 
-class TestInvoicesApi(unittest.TestCase):
-    """InvoicesApi unit test stubs"""
+class TestFbaInboundV0Api(unittest.TestCase):
+    """FbaInboundV0Api unit test stubs"""
 
     def setUp(self):
         # Tests Mock Server
@@ -27,71 +27,65 @@ class TestInvoicesApi(unittest.TestCase):
             scope = None
         )
         client = SPAPIClient(config, self.mock_server_endpoint_oauth, self.mock_server_endpoint)
-        self.api = InvoicesApi(client.api_client)
+        self.api = FbaInboundV0Api(client.api_client)
 
     def tearDown(self):
         pass
 
-    def test_create_invoices_export(self):
-        body = self._get_random_value("ExportInvoicesRequest", None)
+    def test_get_bill_of_lading(self):
+        shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_invoices_export"), "202")
-        response = self.api.create_invoices_export_with_http_info(body, )
-        self.assertEqual(202, response[1])
-        self.assert_valid_response_payload(202, response[0])
-        pass
-
-    def test_get_invoice(self):
-        marketplace_id = self._get_random_value("str", None)
-        invoice_id = self._get_random_value("str", None)
-        
-        self.instruct_backend_mock(self.to_camel_case("get_invoice"), "200")
-        response = self.api.get_invoice_with_http_info(marketplace_id, invoice_id, )
+        self.instruct_backend_mock(self.to_camel_case("get_bill_of_lading"), "200")
+        response = self.api.get_bill_of_lading_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_get_invoices(self):
-        marketplace_id = self._get_random_value("str", None)
+    def test_get_labels(self):
+        shipment_id = self._get_random_value("str", None)
+        page_type = self._get_random_value("str", None)
+        label_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices"), "200")
-        response = self.api.get_invoices_with_http_info(marketplace_id, )
+        self.instruct_backend_mock(self.to_camel_case("get_labels"), "200")
+        response = self.api.get_labels_with_http_info(shipment_id, page_type, label_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_get_invoices_attributes(self):
-        marketplace_id = self._get_random_value("str", None)
+    def test_get_prep_instructions(self):
+        ship_to_country_code = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_attributes"), "200")
-        response = self.api.get_invoices_attributes_with_http_info(marketplace_id, )
+        self.instruct_backend_mock(self.to_camel_case("get_prep_instructions"), "200")
+        response = self.api.get_prep_instructions_with_http_info(ship_to_country_code, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_get_invoices_document(self):
-        invoices_document_id = self._get_random_value("str", None)
-        
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_document"), "200")
-        response = self.api.get_invoices_document_with_http_info(invoices_document_id, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
-    def test_get_invoices_export(self):
-        export_id = self._get_random_value("str", None)
-        
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_export"), "200")
-        response = self.api.get_invoices_export_with_http_info(export_id, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
-    def test_get_invoices_exports(self):
+    def test_get_shipment_items(self):
+        query_type = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_exports"), "200")
-        response = self.api.get_invoices_exports_with_http_info(marketplace_id, )
+        self.instruct_backend_mock(self.to_camel_case("get_shipment_items"), "200")
+        response = self.api.get_shipment_items_with_http_info(query_type, marketplace_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_get_shipment_items_by_shipment_id(self):
+        shipment_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock(self.to_camel_case("get_shipment_items_by_shipment_id"), "200")
+        response = self.api.get_shipment_items_by_shipment_id_with_http_info(shipment_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_get_shipments(self):
+        query_type = self._get_random_value("str", None)
+        marketplace_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock(self.to_camel_case("get_shipments"), "200")
+        response = self.api.get_shipments_with_http_info(query_type, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
@@ -100,9 +94,9 @@ class TestInvoicesApi(unittest.TestCase):
     def instruct_backend_mock(self, response: str, code: str) -> None:
         url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
         ## handle same api operation name exceptions
-        if "vendor" in "api.invoices_v2024_06_19" and response == "getOrder":
+        if "vendor" in "api.fulfillment_inbound_v0" and response == "getOrder":
             url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.invoices_v2024_06_19" and response == "getShipment":
+        if "fulfillment_inbound" in "api.fulfillment_inbound_v0" and response == "getShipment":
             url += f"?qualifier=FbaInbound"
         requests.post(url)
 

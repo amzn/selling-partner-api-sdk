@@ -46,6 +46,8 @@ class TestShipmentApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.orders_v0" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.orders_v0" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

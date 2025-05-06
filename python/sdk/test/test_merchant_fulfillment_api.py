@@ -33,7 +33,7 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
         pass
 
     def test_cancel_shipment(self):
-        shipment_id = self._get_random_value("str", "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}")
+        shipment_id = self._get_random_value("str", "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}".replace("*$", "{"+ "0" + "}$"))
         
         self.instruct_backend_mock(self.to_camel_case("cancel_shipment"), "200")
         response = self.api.cancel_shipment_with_http_info(shipment_id, )
@@ -69,7 +69,7 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
         pass
 
     def test_get_shipment(self):
-        shipment_id = self._get_random_value("str", "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}")
+        shipment_id = self._get_random_value("str", "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}".replace("*$", "{"+ "0" + "}$"))
         
         self.instruct_backend_mock(self.to_camel_case("get_shipment"), "200")
         response = self.api.get_shipment_with_http_info(shipment_id, )
@@ -83,6 +83,8 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.merchant_fulfillment_v0" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.merchant_fulfillment_v0" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

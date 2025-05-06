@@ -82,6 +82,8 @@ class TestEasyShipApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.easyship_v2022_03_23" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.easyship_v2022_03_23" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

@@ -18,7 +18,7 @@ from spapi.api.tokens_v2021_03_01.tokens_api import TokensApi
 from spapi.api.vendor_direct_fulfillment_transactions_v2021_12_28.vendor_df_transaction_api import VendorDfTransactionApi
 from spapi.api.vendor_invoices_v1.vendor_payments_api import VendorPaymentsApi
 from spapi.api.finances_v0.finances_v0_api import FinancesV0Api
-from spapi.api.fba_eligibility_v1.fba_inbound_api import FbaInboundApi
+from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
 from spapi.api.services_v1.service_api import ServiceApi
 from spapi.api.shipment_invoicing_v0.shipment_invoice_api import ShipmentInvoiceApi
 from spapi.api.vendor_transaction_status_v1.vendor_transaction_api import VendorTransactionApi
@@ -49,7 +49,7 @@ from spapi.api.product_type_definitions_v2020_09_01.definitions_api import Defin
 from spapi.api.awd_v2024_05_09.awd_api import AwdApi
 from spapi.api.uploads_v2020_11_01.uploads_api import UploadsApi
 from spapi.api.listings_items_v2021_08_01.listings_api import ListingsApi
-from spapi.api.fulfillment_inbound_v0.fba_inbound_api import FbaInboundApi
+from spapi.api.fulfillment_inbound_v0.fba_inbound_v0_api import FbaInboundV0Api
 from spapi.api.vehicles_v2024_11_01.vehicles_api import VehiclesApi
 from spapi.api.vehicles_v2024_11_01.automotive_api import AutomotiveApi
 from spapi.api.orders_v0.shipment_api import ShipmentApi

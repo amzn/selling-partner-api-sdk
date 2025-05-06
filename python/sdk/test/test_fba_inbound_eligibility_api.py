@@ -8,12 +8,12 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.product_fees_v0.fees_api import FeesApi
+from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
 
-import spapi.models.product_fees_v0 as models
+import spapi.models.fba_eligibility_v1 as models
 
-class TestFeesApi(unittest.TestCase):
-    """FeesApi unit test stubs"""
+class TestFbaInboundEligibilityApi(unittest.TestCase):
+    """FbaInboundEligibilityApi unit test stubs"""
 
     def setUp(self):
         # Tests Mock Server
@@ -27,36 +27,17 @@ class TestFeesApi(unittest.TestCase):
             scope = None
         )
         client = SPAPIClient(config, self.mock_server_endpoint_oauth, self.mock_server_endpoint)
-        self.api = FeesApi(client.api_client)
+        self.api = FbaInboundEligibilityApi(client.api_client)
 
     def tearDown(self):
         pass
 
-    def test_get_my_fees_estimate_for_asin(self):
+    def test_get_item_eligibility_preview(self):
         asin = self._get_random_value("str", None)
-        body = self._get_random_value("GetMyFeesEstimateRequest", None)
+        program = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_my_fees_estimate_for_asin"), "200")
-        response = self.api.get_my_fees_estimate_for_asin_with_http_info(asin, body, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
-    def test_get_my_fees_estimate_for_sku(self):
-        seller_sku = self._get_random_value("str", None)
-        body = self._get_random_value("GetMyFeesEstimateRequest", None)
-        
-        self.instruct_backend_mock(self.to_camel_case("get_my_fees_estimate_for_sku"), "200")
-        response = self.api.get_my_fees_estimate_for_sku_with_http_info(seller_sku, body, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
-    def test_get_my_fees_estimates(self):
-        body = [self._get_random_value("List[FeesEstimateByIdRequest]") for _ in range(1)]
-        
-        self.instruct_backend_mock(self.to_camel_case("get_my_fees_estimates"), "200")
-        response = self.api.get_my_fees_estimates_with_http_info(body, )
+        self.instruct_backend_mock(self.to_camel_case("get_item_eligibility_preview"), "200")
+        response = self.api.get_item_eligibility_preview_with_http_info(asin, program, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
@@ -65,9 +46,9 @@ class TestFeesApi(unittest.TestCase):
     def instruct_backend_mock(self, response: str, code: str) -> None:
         url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
         ## handle same api operation name exceptions
-        if "vendor" in "api.product_fees_v0" and response == "getOrder":
+        if "vendor" in "api.fba_eligibility_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.product_fees_v0" and response == "getShipment":
+        if "fulfillment_inbound" in "api.fba_eligibility_v1" and response == "getShipment":
             url += f"?qualifier=FbaInbound"
         requests.post(url)
 

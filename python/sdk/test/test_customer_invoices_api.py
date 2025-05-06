@@ -33,7 +33,7 @@ class TestCustomerInvoicesApi(unittest.TestCase):
         pass
 
     def test_get_customer_invoice(self):
-        purchase_order_number = self._get_random_value("str", "^[a-zA-Z0-9]+$")
+        purchase_order_number = self._get_random_value("str", "^[a-zA-Z0-9]+$".replace("*$", "{"+ "0" + "}$"))
         
         self.instruct_backend_mock(self.to_camel_case("get_customer_invoice"), "200")
         response = self.api.get_customer_invoice_with_http_info(purchase_order_number, )
@@ -57,6 +57,8 @@ class TestCustomerInvoicesApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

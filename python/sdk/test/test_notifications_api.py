@@ -112,6 +112,8 @@ class TestNotificationsApi(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "api.notifications_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "api.notifications_v1" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
