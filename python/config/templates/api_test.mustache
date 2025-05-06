@@ -2,7 +2,6 @@
 
 from __future__ import absolute_import
 
-import unittest
 import requests
 import rstr
 
@@ -34,7 +33,7 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
 
    {{#operation}}
     def test_{{operationId}}(self):
-        {{#allParams}}{{#required}}{{paramName}} = {{#isArray}}[self._get_random_value("{{{dataType}}}") for _ in range(1)]{{/isArray}}{{^isArray}}self._get_random_value("{{dataType}}", {{#pattern}}"{{{vendorExtensions.x-regex}}}"{{/pattern}}{{^pattern}}None{{/pattern}}){{/isArray}}
+        {{#allParams}}{{#required}}{{paramName}} = {{#isArray}}[self._get_random_value("{{{dataType}}}") for _ in range(1)]{{/isArray}}{{^isArray}}self._get_random_value("{{dataType}}", {{#pattern}}"{{{vendorExtensions.x-regex}}}".replace("*$", "{"+ "{{#minLength}}{{{minLength}}}{{/minLength}}{{^minLength}}0{{/minLength}}{{#maxLength}},{{{maxLength}}}{{/maxLength}}" + "}$"){{/pattern}}{{^pattern}}None{{/pattern}}){{/isArray}}
         {{/required}}{{/allParams}}
         self.instruct_backend_mock(self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
         response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}})
@@ -52,6 +51,8 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
         ## handle same api operation name exceptions
         if "vendor" in "{{apiPackage}}" and response == "getOrder":
             url += f"?qualifier=Vendor"
+        if "fulfillment_inbound" in "{{apiPackage}}" and response == "getShipment":
+            url += f"?qualifier=FbaInbound"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
