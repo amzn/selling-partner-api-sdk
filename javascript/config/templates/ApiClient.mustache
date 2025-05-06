@@ -1,5 +1,6 @@
 {{>licenseInfo}}
 import superagent from 'superagent';
+import pkg from '../../package.json' with { type: 'json' }
 import querystring from 'querystring';
 import {URL} from 'node:url';
 import {RateLimitConfiguration} from '../../helper/RateLimitConfiguration.mjs';
@@ -213,13 +214,15 @@ export class ApiClient {
             {{/authMethods}}
         }
 
+        const version = pkg.version ? pkg.version : 'undefined';
+
         {{#emitJSDoc}}/**
          * The default HTTP headers to be included for all API calls.
          * @type {Array<String>}
          * @default {}
          */{{/emitJSDoc}}
         this.defaultHeaders = {
-            'User-Agent': 'amazon-selling-partner-api-sdk/{{{artifactVersion}}}{{^artifactVersion}}1.0.0{{/artifactVersion}}/JavaScript'
+          'User-Agent': `amazon-selling-partner-api-sdk/${version}/JavaScript`
         };
 
         /**
