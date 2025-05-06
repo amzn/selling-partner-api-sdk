@@ -88,6 +88,12 @@ sourceSets {
     }
 }
 
+jar {
+	manifest {
+		attributes("Implementation-Version": project.version)
+	}
+}
+
 node {
     download = true
     version = "18.20.2"
