@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "amazon-sp-api"
 version = "0.0.1"
 authors = [
-    { name="Jawher A." },
+    { name="Amazon" },
 ]
 description = "The Selling Partner API Python SDK enables you to easily connect to and work with Amazon SP-API."
 readme = "README.md"
