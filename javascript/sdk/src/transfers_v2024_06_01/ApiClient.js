@@ -13,6 +13,7 @@
 
 import superagent from 'superagent'
 import querystring from 'querystring'
+import { readFileSync } from 'node:fs'
 import { URL } from 'node:url'
 import { RateLimitConfiguration } from '../../helper/RateLimitConfiguration.mjs'
 import { SuperagentRateLimiter } from '../../helper/SuperagentRateLimiter.mjs'
@@ -214,13 +215,16 @@ export class ApiClient {
     this.authentications = {
     }
 
+    const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url)))
+    const version = pkg.version ? pkg.version : 'undefined'
+
     /**
          * The default HTTP headers to be included for all API calls.
          * @type {Array<String>}
          * @default {}
          */
     this.defaultHeaders = {
-      'User-Agent': 'amazon-selling-partner-api-sdk/1.0.0/JavaScript'
+      'User-Agent': `amazon-selling-partner-api-sdk/${version}/JavaScript`
     }
 
     /**
