@@ -1,7 +1,7 @@
 {{>licenseInfo}}
 import superagent from 'superagent';
-import pkg from '../../package.json' with { type: 'json' };
 import querystring from 'querystring';
+import { readFileSync } from 'node:fs';
 import {URL} from 'node:url';
 import {RateLimitConfiguration} from '../../helper/RateLimitConfiguration.mjs';
 import {SuperagentRateLimiter} from '../../helper/SuperagentRateLimiter.mjs';
@@ -214,6 +214,7 @@ export class ApiClient {
             {{/authMethods}}
         }
 
+        const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url)));
         const version = pkg.version ? pkg.version : 'undefined';
 
         {{#emitJSDoc}}/**
@@ -222,7 +223,7 @@ export class ApiClient {
          * @default {}
          */{{/emitJSDoc}}
         this.defaultHeaders = {
-            'User-Agent': 'amazon-selling-partner-api-sdk/${version}/JavaScript'
+            'User-Agent': `amazon-selling-partner-api-sdk/${version}/JavaScript`
         };
 
         /**
