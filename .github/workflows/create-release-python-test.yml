@@ -36,6 +36,7 @@ jobs:
       - name: Build SP-API Python SDK
         working-directory: python/sdk
         run: |
+          ls
           bump2version --new-version ${{ github.event.inputs.newVersionNumber }} --allow-dirty --no-tag patch
           python -m build
       - name: Copy back and commit version files
