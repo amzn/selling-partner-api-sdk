@@ -239,7 +239,7 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
-        pyproject_package = "amazon-spapi"
+        pyproject_package = "amazon-sp-api"
         try:
             sdk_version = version(pyproject_package)
         except Exception:

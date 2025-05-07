@@ -68,7 +68,7 @@ class ApiClient(object):
         if self.configuration.access_token_cache:
             self.default_headers['x-amz-access-token'] = self.configuration.access_token_cache.get_lwa_access_token()
         # Set default User-Agent.
-        pyproject_package = "amazon-spapi"
+        pyproject_package = "amazon-sp-api"
         try:
             sdk_version = version(pyproject_package)
         except Exception:
