@@ -31,7 +31,7 @@ jobs:
         run: |
           cp ../dev-toolkit/distribution/** .
           cp ../../LICENSE .
-          cp ../README .
+          cp ../README.md .
           pip install -r build-requirements.txt
       - name: Build SP-API Python SDK
         working-directory: python/sdk
