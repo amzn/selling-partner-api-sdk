@@ -2,17 +2,16 @@
 
 /**
  * Configuration
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API.
+ * Selling Partner API
  *
  * The Selling Partner API enables developers to programmatically retrieve information from various domains.
  * These APIs provide tools for building fast, flexible, and custom applications,
@@ -30,72 +29,85 @@
 
 namespace SpApi;
 
+use Composer\InstalledVersions;
 use Dallgoot\Yaml\Yaml;
 use GuzzleHttp\Psr7\Request;
+use InvalidArgumentException;
 use SpApi\AuthAndAuth\LWAAccessTokenCache;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
 
 /**
  * Configuration Class Doc Comment
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class Configuration
 {
     public const string BOOLEAN_FORMAT_INT = 'int';
     public const string BOOLEAN_FORMAT_STRING = 'string';
 
+    private static ?Configuration $defaultConfiguration = null;
+
+    private static array $rateLimitConfiguration;
+
     /**
-     * Required inputs for config array.
+     * Boolean format for query string
+     *
+     * @var string
+     */
+    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_STRING;
+
+    /**
+     * The host
+     *
+     * @var string
+     */
+    protected string $host = 'https://sellingpartnerapi-na.amazon.com';
+
+    /**
+     * User agent of the HTTP request, set to "amazon-selling-partner-api-sdk/{version}/PHP" in the constructor
+     *
+     * @var string
+     */
+    protected string $userAgent;
+
+    /**
+     * Debug switch (default set to false)
+     *
+     * @var bool
+     */
+    protected bool $debug = false;
+
+    /**
+     * Debug file location (log to STDOUT by default)
+     *
+     * @var string
+     */
+    protected string $debugFile = 'php://output';
+
+    /**
+     * Debug file location (log to STDOUT by default)
+     *
+     * @var string
+     */
+    protected string $tempFolderPath;
+
+    private LWAAuthorizationSigner $lwaAuthSigner;
+
+    /**
+     * Required inputs for config array
      *
      * @var array
      */
     private const REQUIRED_INPUTS = ['clientId', 'clientSecret', 'endpoint', 'region'];
 
     /**
-     * Boolean format for query string.
-     */
-    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_STRING;
-
-    /**
-     * The host.
-     */
-    protected string $host = 'https://sellingpartnerapi-na.amazon.com';
-
-    /**
-     * User agent of the HTTP request, set to "selling-partner-api-sdk/{version}/PHP" by default.
-     */
-    protected string $userAgent = 'amazon-selling-partner-api-sdk/1.0.0/PHP';
-
-    /**
-     * Debug switch (default set to false).
-     */
-    protected bool $debug = false;
-
-    /**
-     * Debug file location (log to STDOUT by default).
-     */
-    protected string $debugFile = 'php://output';
-
-    /**
-     * Debug file location (log to STDOUT by default).
-     */
-    protected string $tempFolderPath;
-
-    private static ?Configuration $defaultConfiguration = null;
-
-    private static array $rateLimitConfiguration;
-
-    private LWAAuthorizationSigner $lwaAuthSigner;
-
-    /**
-     * Constructor.
+     * Constructor
      */
     public function __construct(
         array $config = [],
@@ -103,6 +115,8 @@ class Configuration
         bool $disableAccessTokenCache = false,
         ?LWAAccessTokenCache $lwaTokenCache = null
     ) {
+        $version = InstalledVersions::getPrettyVersion('amzn-spapi/sdk');
+        $this->userAgent = "amazon-selling-partner-api-sdk/{${}[$version ?? "undefined"]}/PHP";
         $this->tempFolderPath = sys_get_temp_dir();
         if ($lwaAuthorizationCredentials) {
             if ($disableAccessTokenCache) {
@@ -121,8 +135,8 @@ class Configuration
                 }
             }
             if (!empty($missing_variables)) {
-                throw new \InvalidArgumentException(
-                    'The following variables are missing: '.implode(' ', $missing_variables)
+                throw new InvalidArgumentException(
+                    "The following variables are missing: " . implode(" ", $missing_variables)
                 );
             }
 
@@ -131,7 +145,7 @@ class Configuration
                 'clientSecret' => $config['clientSecret'],
                 'endpoint' => $config['endpoint'],
                 'refreshToken' => $config['refreshToken'] ?? null,
-                'scopes' => $config['scopes'] ?? null,
+                'scopes' => $config['scopes'] ?? null
             ]);
 
             $lwaTokenCache = $config['lwaTokenCache'] ?? null;
@@ -145,8 +159,8 @@ class Configuration
                 $this->lwaAuthSigner = new LWAAuthorizationSigner($lwaCredentials, $lwaTokenCache);
             }
         } else {
-            throw new \InvalidArgumentException(
-                'Configuration must have valid config array or credential objects'
+            throw new InvalidArgumentException(
+                "Configuration must have valid config array or credential objects"
             );
         }
     }
@@ -165,7 +179,8 @@ class Configuration
 
     public function sign(Request $request): Request
     {
-        return $this->lwaAuthSigner->sign($request);
+        $request = $this->lwaAuthSigner->sign($request);
+        return $request;
     }
 
     /**
@@ -193,7 +208,7 @@ class Configuration
     }
 
     /**
-     * Sets the host.
+     * Sets the host
      *
      * @param string $host Host
      *
@@ -202,12 +217,11 @@ class Configuration
     public function setHost(string $host): Configuration
     {
         $this->host = $host;
-
         return $this;
     }
 
     /**
-     * Gets the host.
+     * Gets the host
      *
      * @return string Host
      */
@@ -217,13 +231,12 @@ class Configuration
     }
 
     /**
-     * Sets the user agent of the api client.
+     * Sets the user agent of the api client
      *
      * @param string $userAgent the user agent of the api client
      *
-     * @return $this
-     *
      * @throws \InvalidArgumentException
+     * @return $this
      */
     public function setUserAgent(string $userAgent): Configuration
     {
@@ -232,12 +245,11 @@ class Configuration
         }
 
         $this->userAgent = $userAgent;
-
         return $this;
     }
 
     /**
-     * Gets the user agent of the api client.
+     * Gets the user agent of the api client
      *
      * @return string user agent
      */
@@ -247,7 +259,7 @@ class Configuration
     }
 
     /**
-     * Sets debug flag.
+     * Sets debug flag
      *
      * @param bool $debug Debug flag
      *
@@ -256,12 +268,13 @@ class Configuration
     public function setDebug(bool $debug): Configuration
     {
         $this->debug = $debug;
-
         return $this;
     }
 
     /**
-     * Gets the debug flag.
+     * Gets the debug flag
+     *
+     * @return bool
      */
     public function getDebug(): bool
     {
@@ -269,7 +282,7 @@ class Configuration
     }
 
     /**
-     * Sets the debug file.
+     * Sets the debug file
      *
      * @param string $debugFile Debug file
      *
@@ -278,12 +291,13 @@ class Configuration
     public function setDebugFile(string $debugFile): Configuration
     {
         $this->debugFile = $debugFile;
-
         return $this;
     }
 
     /**
-     * Gets the debug file.
+     * Gets the debug file
+     *
+     * @return string
      */
     public function getDebugFile(): string
     {
@@ -291,7 +305,7 @@ class Configuration
     }
 
     /**
-     * Sets the temp folder path.
+     * Sets the temp folder path
      *
      * @param string $tempFolderPath Temp folder path
      *
@@ -300,12 +314,11 @@ class Configuration
     public function setTempFolderPath(string $tempFolderPath): Configuration
     {
         $this->tempFolderPath = $tempFolderPath;
-
         return $this;
     }
 
     /**
-     * Gets the temp folder path.
+     * Gets the temp folder path
      *
      * @return string Temp folder path
      */
@@ -315,11 +328,13 @@ class Configuration
     }
 
     /**
-     * Gets the default configuration instance.
+     * Gets the default configuration instance
+     *
+     * @return Configuration
      */
     public static function getDefaultConfiguration(): Configuration
     {
-        if (null === self::$defaultConfiguration) {
+        if (self::$defaultConfiguration === null) {
             self::$defaultConfiguration = new Configuration();
         }
 
@@ -327,9 +342,11 @@ class Configuration
     }
 
     /**
-     * Sets the default configuration instance.
+     * Sets the default configuration instance
      *
      * @param Configuration $config An instance of the Configuration Object
+     *
+     * @return void
      */
     public static function setDefaultConfiguration(Configuration $config)
     {
@@ -343,34 +360,59 @@ class Configuration
      *
      * @return array rate limit options
      */
-    public static function getRateLimitOptions(string $operationName)
-    {
+    public static function getRateLimitOptions(string $operationName) {
         return [
             'id' => 'spApi',
             'policy' => 'token_bucket',
             'limit' => Configuration::getRateLimitValue($operationName, 1),
-            'rate' => Configuration::getRateLimitValue($operationName, 0),
+            'rate' => Configuration::getRateLimitValue($operationName, 0)
         ];
     }
 
+    private static function getRateLimitValue(string $operationName, int $index) {
+        if (!isset(self::$rateLimitConfiguration)) {
+            $data = Yaml::parseFile(__DIR__.'/../resources/rate-limits.yml');
+            self::$rateLimitConfiguration = get_object_vars($data);
+        }
+
+        switch ($index) {
+            case 0:
+                if (array_key_exists(2, self::$rateLimitConfiguration[$operationName])) {
+                    return [
+                        'interval' => self::$rateLimitConfiguration[$operationName][2].' seconds',
+                        'amount' => self::$rateLimitConfiguration[$operationName][0]
+                    ];
+                }
+
+                return [
+                    'interval' => '1 second',
+                    'amount' => self::$rateLimitConfiguration[$operationName][0]
+                ];
+            case 1:
+                return self::$rateLimitConfiguration[$operationName][$index];
+        }
+
+        throw new ApiException("Invalid index for rate limit configuration");
+    }
+
     /**
-     * Gets the essential information for debugging.
+     * Gets the essential information for debugging
      *
      * @return string The report for debugging
      */
     public static function toDebugReport(): string
     {
-        $report = 'PHP SDK (SpApi) Debug Report:'.PHP_EOL;
-        $report .= '    OS: '.php_uname().PHP_EOL;
-        $report .= '    PHP Version: '.PHP_VERSION.PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 2024-11-01'.PHP_EOL;
-        $report .= '    Temp Folder Path: '.self::getDefaultConfiguration()->getTempFolderPath().PHP_EOL;
+        $report  = 'PHP SDK (SpApi) Debug Report:' . PHP_EOL;
+        $report .= '    OS: ' . php_uname() . PHP_EOL;
+        $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
+        $report .= '    The version of the OpenAPI document: 2024-11-01' . PHP_EOL;
+        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
     }
 
     /**
-     * Returns an array of host settings.
+     * Returns an array of host settings
      *
      * @return array an array of host settings
      */
@@ -378,18 +420,17 @@ class Configuration
     {
         return [
             [
-                'url' => 'https://sellingpartnerapi-na.amazon.com',
-                'description' => 'No description provided',
-            ],
+                "url" => "https://sellingpartnerapi-na.amazon.com",
+                "description" => "No description provided",
+            ]
         ];
     }
 
     /**
-     * Returns URL based on the index and variables.
+     * Returns URL based on the index and variables
      *
-     * @param int        $index     index of the host settings
-     * @param null|array $variables hash of variable and the corresponding value (optional)
-     *
+     * @param int $index index of the host settings
+     * @param array|null $variables hash of variable and the corresponding value (optional)
      * @return string URL based on host settings
      */
     public function getHostFromSettings(int $index, ?array $variables = null): string
@@ -403,63 +444,35 @@ class Configuration
         // check array index out of bound
         if ($index < 0 || $index >= sizeof($hosts)) {
             throw new \InvalidArgumentException(
-                "Invalid index {$index} when selecting the host. Must be less than ".sizeof($hosts)
+            "Invalid index $index when selecting the host. Must be less than ".sizeof($hosts)
             );
         }
 
         $host = $hosts[$index];
-        $url = $host['url'];
+        $url = $host["url"];
 
         // go through variable and assign a value
-        foreach ($host['variables'] ?? [] as $name => $variable) {
+        foreach ($host["variables"] ?? [] as $name => $variable) {
             // check to see if it's in the variables provided by the user
             if (array_key_exists($name, $variables)) {
                 // check to see if the value is in the enum
-                if (in_array($variables[$name], $variable['enum_values'], true)) {
-                    $url = str_replace('{'.$name.'}', $variables[$name], $url);
+                if (in_array($variables[$name], $variable["enum_values"], true)) {
+                    $url = str_replace("{" . $name . "}", $variables[$name], $url);
                 } else {
                     throw new \InvalidArgumentException(
-                        "The variable `{$name}` in the host URL has invalid value "
-                        .$variables[$name]
-                        .'. Must be '
-                        .join(',', $variable['enum_values'])
-                        .'.'
+                        "The variable `$name` in the host URL has invalid value "
+                        . $variables[$name]
+                        . ". Must be "
+                        . join(',', $variable["enum_values"])
+                        . "."
                     );
                 }
             } else {
                 // use default value
-                $url = str_replace('{'.$name.'}', $variable['default_value'], $url);
+                $url = str_replace("{" . $name . "}", $variable["default_value"], $url);
             }
         }
 
         return $url;
-    }
-
-    private static function getRateLimitValue(string $operationName, int $index)
-    {
-        if (!isset(self::$rateLimitConfiguration)) {
-            $data = Yaml::parseFile(__DIR__.'/../resources/rate-limits.yml');
-            self::$rateLimitConfiguration = get_object_vars($data);
-        }
-
-        switch ($index) {
-            case 0:
-                if (array_key_exists(2, self::$rateLimitConfiguration[$operationName])) {
-                    return [
-                        'interval' => self::$rateLimitConfiguration[$operationName][2].' seconds',
-                        'amount' => self::$rateLimitConfiguration[$operationName][0],
-                    ];
-                }
-
-                return [
-                    'interval' => '1 second',
-                    'amount' => self::$rateLimitConfiguration[$operationName][0],
-                ];
-
-            case 1:
-                return self::$rateLimitConfiguration[$operationName][$index];
-        }
-
-        throw new ApiException('Invalid index for rate limit configuration');
     }
 }
