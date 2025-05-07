@@ -933,50 +933,50 @@ VendorTransactionApi-getTransactionStatus:
   - 10
   - 10
 # Seller Wallet API
-SellerWalletApi-listAccounts:
+AccountsApi-listAccounts:
   - 1
   - 15
   - 2
-SellerWalletApi-getAccount:
+AccountsApi-getAccount:
   - 1
   - 15
   - 2
-SellerWalletApi-listAccountBalances:
+AccountsApi-listAccountBalances:
   - 1
   - 15
   - 2
-SellerWalletApi-getTransferPreview:
+TransferPreviewApi-getTransferPreview:
   - 1
   - 10
   - 2
-SellerWalletApi-listAccountTransactions:
+TransactionsApi-listAccountTransactions:
   - 1
   - 15
   - 2
-SellerWalletApi-createTransaction:
+TransactionsApi-createTransaction:
   - 1
   - 10
-SellerWalletApi-getTransaction:
-  - 1
-  - 10
-  - 2
-SellerWalletApi-listTransferSchedules:
+TransactionsApi-getTransaction:
   - 1
   - 10
   - 2
-SellerWalletApi-createTransferSchedule:
+TransferScheduleApi-listTransferSchedules:
   - 1
   - 10
   - 2
-SellerWalletApi-updateTransferSchedule:
+TransferScheduleApi-createTransferSchedule:
   - 1
   - 10
   - 2
-SellerWalletApi-getTransferSchedule:
+TransferScheduleApi-updateTransferSchedule:
   - 1
   - 10
   - 2
-SellerWalletApi-deleteScheduleTransaction:
+TransferScheduleApi-getTransferSchedule:
+  - 1
+  - 10
+  - 2
+TransferScheduleApi-deleteScheduleTransaction:
   - 1
   - 10
   - 2
