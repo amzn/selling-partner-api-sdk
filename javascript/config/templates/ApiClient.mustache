@@ -1,6 +1,6 @@
 {{>licenseInfo}}
 import superagent from 'superagent';
-import pkg from '../../package.json' with { type: 'json' }
+import pkg from '../../package.json' with { type: 'json' };
 import querystring from 'querystring';
 import {URL} from 'node:url';
 import {RateLimitConfiguration} from '../../helper/RateLimitConfiguration.mjs';
@@ -222,7 +222,7 @@ export class ApiClient {
          * @default {}
          */{{/emitJSDoc}}
         this.defaultHeaders = {
-          'User-Agent': `amazon-selling-partner-api-sdk/${version}/JavaScript`
+            'User-Agent': 'amazon-selling-partner-api-sdk/${version}/JavaScript'
         };
 
         /**
