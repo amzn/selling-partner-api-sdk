@@ -30,8 +30,9 @@ jobs:
         working-directory: python/sdk
         run: |
           cp ../dev-toolkit/distribution/** .
+          cp ../dev-toolkit/distribution/.bumpversion.cfg .
           cp ../../LICENSE .
-          cp ../README .
+          cp ../README.md .
           pip install -r build-requirements.txt
       - name: Build SP-API Python SDK
         working-directory: python/sdk
@@ -43,6 +44,11 @@ jobs:
           # Copy the updated files back to dev-toolkit/distribution
           cp python/sdk/.bumpversion.cfg python/dev-toolkit/distribution/
           cp python/sdk/pyproject.toml python/dev-toolkit/distribution/
+          
+          # Set identity
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
           # Persist new version
           git add python/dev-toolkit/distribution/.bumpversion.cfg python/dev-toolkit/distribution/pyproject.toml
           git commit -m "chore: bump python version to ${{ github.event.inputs.newVersionNumber }}"

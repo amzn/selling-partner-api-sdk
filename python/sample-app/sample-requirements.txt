@@ -1,1 +1,1 @@
-amazon-spapi >= 0.0.1
+amazon-sp-api >= 1.0.0
