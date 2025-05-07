@@ -68,6 +68,10 @@ class TestShipmentInvoiceApi(unittest.TestCase):
             url += f"?qualifier=Vendor"
         if "fulfillment_inbound" in "api.shipment_invoicing_v0" and response == "getShipment":
             url += f"?qualifier=FbaInbound"
+        if "seller_wallet" in "api.shipment_invoicing_v0" and response == "getAccount":
+            url += f"?qualifier=SellerWallet"
+        if "seller_wallet" in "api.shipment_invoicing_v0" and response == "getTransaction":
+            url += f"?qualifier=SellerWallet"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
