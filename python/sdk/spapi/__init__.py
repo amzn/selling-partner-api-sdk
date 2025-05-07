@@ -1,0 +1,65 @@
+
+## import api client and configuration
+from spapi.configuration import Configuration
+from spapi.api_client import ApiClient
+from spapi.client import SPAPIClient
+from spapi.rest import ApiException
+
+## import Auth
+from spapi.auth.credentials import SPAPIConfig
+    
+## import APIs
+    
+from spapi.api.applications_v2023_11_30.applications_api import ApplicationsApi
+from spapi.api.vendor_shipments_v1.vendor_shipment_api import VendorShipmentApi
+from spapi.api.feeds_v2021_06_30.feeds_api import FeedsApi
+from spapi.api.finances_v2024_06_19.finances_v2024_api import FinancesV2024Api
+from spapi.api.tokens_v2021_03_01.tokens_api import TokensApi
+from spapi.api.vendor_direct_fulfillment_transactions_v2021_12_28.vendor_df_transaction_api import VendorDfTransactionApi
+from spapi.api.vendor_invoices_v1.vendor_payments_api import VendorPaymentsApi
+from spapi.api.finances_v0.finances_v0_api import FinancesV0Api
+from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
+from spapi.api.services_v1.service_api import ServiceApi
+from spapi.api.shipment_invoicing_v0.shipment_invoice_api import ShipmentInvoiceApi
+from spapi.api.vendor_transaction_status_v1.vendor_transaction_api import VendorTransactionApi
+from spapi.api.transfers_v2024_06_01.transfers_api import TransfersApi
+from spapi.api.vendor_direct_fulfillment_inventory_v1.update_inventory_api import UpdateInventoryApi
+from spapi.api.sellers_v1.sellers_api import SellersApi
+from spapi.api.easyship_v2022_03_23.easy_ship_api import EasyShipApi
+from spapi.api.fulfillment_outbound_v2020_07_01.fba_outbound_api import FbaOutboundApi
+from spapi.api.invoices_v2024_06_19.invoices_api import InvoicesApi
+from spapi.api.notifications_v1.notifications_api import NotificationsApi
+from spapi.api.sales_v1.sales_api import SalesApi
+from spapi.api.product_fees_v0.fees_api import FeesApi
+from spapi.api.product_pricing_v0.product_pricing_api import ProductPricingApi
+from spapi.api.reports_v2021_06_30.reports_api import ReportsApi
+from spapi.api.fba_inventory_v1.fba_inventory_api import FbaInventoryApi
+from spapi.api.apluscontent_v2020_11_01.aplus_content_api import AplusContentApi
+from spapi.api.listings_restrictions_v2021_08_01.listings_api import ListingsApi
+from spapi.api.fulfillment_inbound_v2024_03_20.fba_inbound_api import FbaInboundApi
+from spapi.api.messaging_v1.messaging_api import MessagingApi
+from spapi.api.merchant_fulfillment_v0.merchant_fulfillment_api import MerchantFulfillmentApi
+from spapi.api.vendor_direct_fulfillment_orders_v2021_12_28.vendor_df_orders_api import VendorDfOrdersApi
+from spapi.api.supply_sources_v2020_07_01.supply_sources_api import SupplySourcesApi
+from spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.create_container_label_api import CreateContainerLabelApi
+from spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.vendor_shipping_api import VendorShippingApi
+from spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.customer_invoices_api import CustomerInvoicesApi
+from spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.vendor_shipping_labels_api import VendorShippingLabelsApi
+from spapi.api.product_type_definitions_v2020_09_01.definitions_api import DefinitionsApi
+from spapi.api.awd_v2024_05_09.awd_api import AwdApi
+from spapi.api.uploads_v2020_11_01.uploads_api import UploadsApi
+from spapi.api.listings_items_v2021_08_01.listings_api import ListingsApi
+from spapi.api.fulfillment_inbound_v0.fba_inbound_v0_api import FbaInboundV0Api
+from spapi.api.vehicles_v2024_11_01.vehicles_api import VehiclesApi
+from spapi.api.vehicles_v2024_11_01.automotive_api import AutomotiveApi
+from spapi.api.orders_v0.shipment_api import ShipmentApi
+from spapi.api.orders_v0.orders_v0_api import OrdersV0Api
+from spapi.api.replenishment_v2022_11_07.replenishment_api import ReplenishmentApi
+from spapi.api.appintegrations_v2024_04_01.app_integrations_api import AppIntegrationsApi
+from spapi.api.product_pricing_v2022_05_01.product_pricing_v2022_api import ProductPricingV2022Api
+from spapi.api.catalogitems_v2022_04_01.catalog_api import CatalogApi
+from spapi.api.vendor_direct_fulfillment_payments_v1.vendor_invoice_api import VendorInvoiceApi
+from spapi.api.datakiosk_v2023_11_15.queries_api import QueriesApi
+from spapi.api.vendor_orders_v1.vendor_orders_api import VendorOrdersApi
+from spapi.api.solicitations_v1.solicitations_api import SolicitationsApi
+from spapi.api.shipping_v2.shipping_api import ShippingApi

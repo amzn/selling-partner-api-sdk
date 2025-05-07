@@ -1,0 +1,1 @@
+{"inboundPlanId": "wf1234abcd-1234-abcd-5678-1234abcd5678", "placementOptionId": "pl1234abcd-1234-abcd-5678-1234abcd5678", "shipmentId": "sh1234abcd-1234-abcd-5678-1234abcd5678", "source": {"sourceType": "SELLER_FACILITY"}, "destination": {"destinationType": "AMAZON_OPTIMIZED"}}
