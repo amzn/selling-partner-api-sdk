@@ -27,6 +27,7 @@ export * as ProducttypedefinitionsSpApi from './src/producttypedefinitions_v2020
 export * as ReplenishmentSpApi from './src/replenishment_v2022_11_07/index.js';
 export * as ReportsSpApi from './src/reports_v2021_06_30/index.js';
 export * as SalesSpApi from './src/sales_v1/index.js';
+export * as SellerWallet20240301SpApi from './src/sellerWallet_2024_03_01/index.js';
 export * as SellersSpApi from './src/sellers_v1/index.js';
 export * as ServicesSpApi from './src/services_v1/index.js';
 export * as ShippingSpApi from './src/shipping_v2/index.js';
