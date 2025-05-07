@@ -280,6 +280,18 @@ export const defaultRateLimitMap = {
   "VendorShippingApi-GetShipmentDetails": [10, 10],
   "VendorShippingApi-GetShipmentLabels": [10, 10],
   "VendorTransactionApi-getTransaction": [10, 10],
-  "VendorTransactionApi-getTransactionStatus": [10, 10]
+  "VendorTransactionApi-getTransactionStatus": [10, 10],
+  "SellerWalletApi-listAccounts": [1, 15, 2],
+  "SellerWalletApi-getAccount": [1, 15, 2],
+  "SellerWalletApi-listAccountBalances": [1, 15, 2],
+  "SellerWalletApi-getTransferPreview": [1, 10, 2],
+  "SellerWalletApi-listAccountTransactions": [1, 15, 2],
+  "SellerWalletApi-createTransaction": [1, 10],
+  "SellerWalletApi-getTransaction": [1, 10, 2],
+  "SellerWalletApi-listTransferSchedules": [1, 10, 2],
+  "SellerWalletApi-createTransferSchedule": [1, 10, 2],
+  "SellerWalletApi-updateTransferSchedule": [1, 10, 2],
+  "SellerWalletApi-getTransferSchedule": [1, 10, 2],
+  "SellerWalletApi-deleteScheduleTransaction": [1, 10, 2]
 }
 
