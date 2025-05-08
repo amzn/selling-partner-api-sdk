@@ -50,6 +50,10 @@ class TestFbaInboundEligibilityApi(unittest.TestCase):
             url += f"?qualifier=Vendor"
         if "fulfillment_inbound" in "api.fba_eligibility_v1" and response == "getShipment":
             url += f"?qualifier=FbaInbound"
+        if "seller_wallet" in "api.fba_eligibility_v1" and response == "getAccount":
+            url += f"?qualifier=SellerWallet"
+        if "seller_wallet" in "api.fba_eligibility_v1" and response == "getTransaction":
+            url += f"?qualifier=SellerWallet"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

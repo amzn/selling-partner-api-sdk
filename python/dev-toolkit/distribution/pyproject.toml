@@ -3,10 +3,10 @@ requires = ["setuptools >= 80.1.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "amazon-sp-api"
+name = "amzn-sp-api"
 version = "1.0.0"
 authors = [
-    { name="Jawher A." },
+    { name="Amazon" },
 ]
 description = "The Selling Partner API Python SDK enables you to easily connect to and work with Amazon SP-API."
 readme = "README.md"

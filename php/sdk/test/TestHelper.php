@@ -557,6 +557,10 @@ class TestHelper
         // There is critical bug in swagger and API class can not be compiled. need revisit testing.
         'VendorOrdersApi',
         'VendorShipmentsApi',
+        'AccountsApi', // API in beta
+        'TransactionsApi', // API in beta
+        'TransferPreviewApi', // API in beta
+        'TransferScheduleApi', // API in beta
 
         // Definition of individual case which is unable to test
         // Order API

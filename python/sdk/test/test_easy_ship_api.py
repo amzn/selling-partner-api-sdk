@@ -84,6 +84,10 @@ class TestEasyShipApi(unittest.TestCase):
             url += f"?qualifier=Vendor"
         if "fulfillment_inbound" in "api.easyship_v2022_03_23" and response == "getShipment":
             url += f"?qualifier=FbaInbound"
+        if "seller_wallet" in "api.easyship_v2022_03_23" and response == "getAccount":
+            url += f"?qualifier=SellerWallet"
+        if "seller_wallet" in "api.easyship_v2022_03_23" and response == "getTransaction":
+            url += f"?qualifier=SellerWallet"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

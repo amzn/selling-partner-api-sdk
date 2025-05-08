@@ -1,4 +1,4 @@
-# Rate limits for SP-API (rate, burst)
+# Rate limits for SP-API (rate, burst, interval)
 # AWD API
 AwdApi-getInboundShipment:
   - 2
@@ -932,3 +932,12 @@ VendorTransactionApi-getTransaction:
 VendorTransactionApi-getTransactionStatus:
   - 10
   - 10
+# Seller Wallet API
+AccountsApi-getAccount:
+  - 1
+  - 15
+  - 2
+TransactionsApi-getTransaction:
+  - 1
+  - 10
+  - 2

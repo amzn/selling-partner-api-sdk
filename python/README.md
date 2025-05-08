@@ -1,5 +1,5 @@
 ## Python SDK for Selling Partner API
-[![PyPI version](https://img.shields.io/pypi/v/amazon-sp-api)](https://pypi.org/project/amazon-sp-api/)
+[![PyPI version](https://img.shields.io/pypi/v/amzn-sp-api)](https://pypi.org/project/amzn-sp-api/)
 
 <!-- youtube video is under creating -->
 <!-- [![Video Thumbnail](docs/video-thumbnail.png)]()
@@ -31,13 +31,13 @@ To run the SDK you need Python version 3.9 or higher.
 
 ##### Using pip:
 ```bash
-pip install amazon-sp-api
+pip install amzn-sp-api
 ```
 
 ##### Add to your project requirements.txt
 Add the following line to the `requirements.txt` file if needed:
 ```
-amazon-sp-api >= "1.0.0"
+amzn-sp-api >= "1.0.0"
 ```
 
 ### Use the SDK

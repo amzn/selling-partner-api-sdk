@@ -48,7 +48,8 @@ const models = [
     "../../selling-partner-api-models/models/vendor-orders-api-model/vendorOrders.json",
     "../../selling-partner-api-models/models/vendor-shipments-api-model/vendorShipments.json",
     "../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json",
-    "../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json"
+    "../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json",
+    "../../selling-partner-api-models/models/seller-wallet-api-model/sellerWallet_2024-03-01.json"
 ]
 
 for (const path of models) {
