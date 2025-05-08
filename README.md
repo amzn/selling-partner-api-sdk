@@ -23,6 +23,7 @@ You can get started with the SDK in minutes following the instructions for your 
 * [Java](https://github.com/amzn/selling-partner-api-sdk/tree/main/java)
 * [PHP](https://github.com/amzn/selling-partner-api-sdk/tree/main/php)
 * [JavaScript](https://github.com/amzn/selling-partner-api-sdk/tree/main/javascript)
+* [Python](https://github.com/amzn/selling-partner-api-sdk/tree/main/python)
 
 ### Giving Feedback
 
