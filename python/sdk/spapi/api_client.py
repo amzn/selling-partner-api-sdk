@@ -73,7 +73,7 @@ class ApiClient(object):
             sdk_version = version(pyproject_package)
         except Exception:
             sdk_version = "development"
-        self.user_agent = 'amazon-spapi-sdk/{}/python'.format(sdk_version)
+        self.user_agent = 'amazon-selling-partner-api-sdk/{}/python'.format(sdk_version)
         self.client_side_validation = configuration.client_side_validation
 
     def __del__(self):
