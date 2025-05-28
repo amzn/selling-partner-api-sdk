@@ -341,7 +341,7 @@ class ListingsApiTest extends BaseTestCase
           &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ]
         }, {
           &quot;code&quot; : &quot;18027&quot;,
-          &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
+          &quot;message&quot; : &quot;We believe the main image has text, logo, graphic, or watermark that is not permitted for this product type. Submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
           &quot;severity&quot; : &quot;ERROR&quot;,
           &quot;categories&quot; : [ &quot;INVALID_IMAGE&quot; ],
           &quot;enforcements&quot; : {
@@ -368,7 +368,7 @@ class ListingsApiTest extends BaseTestCase
           }
         }, {
           &quot;code&quot; : &quot;18155&quot;,
-          &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Please review and update your price and/or minimum price.&quot;,
+          &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Review and update your price and/or minimum price.&quot;,
           &quot;severity&quot; : &quot;ERROR&quot;,
           &quot;categories&quot; : [ &quot;INVALID_PRICE&quot; ],
           &quot;enforcements&quot; : {
@@ -444,7 +444,7 @@ class ListingsApiTest extends BaseTestCase
           &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ]
         }, {
           &quot;code&quot; : &quot;18027&quot;,
-          &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
+          &quot;message&quot; : &quot;We believe the main image has text, logo, graphic, or watermark that is not permitted for this product type. Submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
           &quot;severity&quot; : &quot;ERROR&quot;,
           &quot;categories&quot; : [ &quot;INVALID_IMAGE&quot; ],
           &quot;enforcements&quot; : {
@@ -471,7 +471,7 @@ class ListingsApiTest extends BaseTestCase
           }
         }, {
           &quot;code&quot; : &quot;18155&quot;,
-          &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Please review and update your price and/or minimum price.&quot;,
+          &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Review and update your price and/or minimum price.&quot;,
           &quot;severity&quot; : &quot;ERROR&quot;,
           &quot;categories&quot; : [ &quot;INVALID_PRICE&quot; ],
           &quot;enforcements&quot; : {
@@ -1313,7 +1313,7 @@ class ListingsApiTest extends BaseTestCase
               &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
             }, {
               &quot;language_tag&quot; : &quot;en_US&quot;,
-              &quot;value&quot; : &quot;100% COLOR VOLUME WITH QUANTUM DOTS: Powered by Quantum dots, Samsung’s 4K QLED TV offers over a billion shades of brilliant color and 100% color volume for exceptional depth of detail that will draw you in to the picture for the best 4K TV experience&quot;,
+              &quot;value&quot; : &quot;100% COLOR VOLUME WITH QUANTUM DOTS: Powered by Quantum dots, Samsung’s 4K QLED TV offers over a billion shades of brilliant color and 100% color volume for exceptional depth of detail that can draw you in to the picture for the best 4K TV experience&quot;,
               &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
             }, {
               &quot;language_tag&quot; : &quot;en_US&quot;,
@@ -1686,7 +1686,7 @@ class ListingsApiTest extends BaseTestCase
             &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ]
           }, {
             &quot;code&quot; : &quot;18027&quot;,
-            &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
+            &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
             &quot;severity&quot; : &quot;ERROR&quot;,
             &quot;categories&quot; : [ &quot;INVALID_IMAGE&quot; ],
             &quot;enforcements&quot; : {
@@ -1713,7 +1713,7 @@ class ListingsApiTest extends BaseTestCase
             }
           }, {
             &quot;code&quot; : &quot;18155&quot;,
-            &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Please review and update your price and/or minimum price.&quot;,
+            &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Review and update your price and/or minimum price.&quot;,
             &quot;severity&quot; : &quot;ERROR&quot;,
             &quot;categories&quot; : [ &quot;INVALID_PRICE&quot; ],
             &quot;enforcements&quot; : {
@@ -1806,7 +1806,7 @@ class ListingsApiTest extends BaseTestCase
             &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ]
           }, {
             &quot;code&quot; : &quot;18027&quot;,
-            &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
+            &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
             &quot;severity&quot; : &quot;ERROR&quot;,
             &quot;categories&quot; : [ &quot;INVALID_IMAGE&quot; ],
             &quot;enforcements&quot; : {
