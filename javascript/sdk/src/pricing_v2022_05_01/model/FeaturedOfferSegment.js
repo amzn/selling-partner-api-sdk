@@ -78,7 +78,13 @@ FeaturedOfferSegment.CustomerMembershipEnum = {
      * value: "NON_PRIME"
      * @const
      */
-  NON_PRIME: 'NON_PRIME'
+  NON_PRIME: 'NON_PRIME',
+
+  /**
+     * value: "DEFAULT"
+     * @const
+     */
+  DEFAULT: 'DEFAULT'
 }
 
 /**

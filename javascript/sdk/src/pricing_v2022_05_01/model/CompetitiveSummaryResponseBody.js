@@ -29,7 +29,7 @@ export class CompetitiveSummaryResponseBody {
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody
    * @class
    * @param asin {String} The ASIN of the item.
-   * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which data is returned.
+   * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    */
   constructor (asin, marketplaceId) {
     this.asin = asin
@@ -75,7 +75,7 @@ export class CompetitiveSummaryResponseBody {
 CompetitiveSummaryResponseBody.prototype.asin = undefined
 
 /**
- * A marketplace identifier. Specifies the marketplace for which data is returned.
+ * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  */
 CompetitiveSummaryResponseBody.prototype.marketplaceId = undefined

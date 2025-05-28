@@ -42,7 +42,7 @@ describe('FeaturedOfferSegment', () => {
     expect(instance).to.have.property('customerMembership');
 
     // set and verify value
-    const expectedValue = ['PRIME', 'NON_PRIME', ][0];
+    const expectedValue = ['PRIME', 'NON_PRIME', 'DEFAULT', ][0];
     instance.customerMembership = expectedValue;
     expect(instance.customerMembership).to.equal(expectedValue);
   });

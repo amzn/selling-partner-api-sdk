@@ -52,7 +52,7 @@ describe('LowestPricedOffersInput', () => {
     expect(instance).to.have.property('offerType');
 
     // set and verify value
-    const expectedValue = ['CONSUMER', ][0];
+    const expectedValue = ['Consumer', ][0];
     instance.offerType = expectedValue;
     expect(instance.offerType).to.equal(expectedValue);
   });
