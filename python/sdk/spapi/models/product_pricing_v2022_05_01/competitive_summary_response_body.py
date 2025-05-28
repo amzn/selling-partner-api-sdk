@@ -105,7 +105,7 @@ class CompetitiveSummaryResponseBody(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this CompetitiveSummaryResponseBody.  # noqa: E501
 
-        A marketplace identifier. Specifies the marketplace for which data is returned.  # noqa: E501
+        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
 
         :return: The marketplace_id of this CompetitiveSummaryResponseBody.  # noqa: E501
         :rtype: str
@@ -116,7 +116,7 @@ class CompetitiveSummaryResponseBody(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this CompetitiveSummaryResponseBody.
 
-        A marketplace identifier. Specifies the marketplace for which data is returned.  # noqa: E501
+        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this CompetitiveSummaryResponseBody.  # noqa: E501
         :type: str

@@ -65,7 +65,7 @@ class PatchOperation(object):
     def op(self):
         """Gets the op of this PatchOperation.  # noqa: E501
 
-        Type of JSON Patch operation. Supported JSON Patch operations include add, replace, and delete. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.  # noqa: E501
+        Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.  # noqa: E501
 
         :return: The op of this PatchOperation.  # noqa: E501
         :rtype: str
@@ -76,14 +76,14 @@ class PatchOperation(object):
     def op(self, op):
         """Sets the op of this PatchOperation.
 
-        Type of JSON Patch operation. Supported JSON Patch operations include add, replace, and delete. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.  # noqa: E501
+        Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.  # noqa: E501
 
         :param op: The op of this PatchOperation.  # noqa: E501
         :type: str
         """
         if self._configuration.client_side_validation and op is None:
             raise ValueError("Invalid value for `op`, must not be `None`")  # noqa: E501
-        allowed_values = ["add", "replace", "delete"]  # noqa: E501
+        allowed_values = ["add", "replace", "merge", "delete"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 op not in allowed_values):
             raise ValueError(
@@ -122,7 +122,7 @@ class PatchOperation(object):
     def value(self):
         """Gets the value of this PatchOperation.  # noqa: E501
 
-        JSON value to add, replace, or delete.  # noqa: E501
+        JSON value to `add`, `replace`, `merge` or `delete`.  # noqa: E501
 
         :return: The value of this PatchOperation.  # noqa: E501
         :rtype: List[Dict[str, object]]
@@ -133,7 +133,7 @@ class PatchOperation(object):
     def value(self, value):
         """Sets the value of this PatchOperation.
 
-        JSON value to add, replace, or delete.  # noqa: E501
+        JSON value to `add`, `replace`, `merge` or `delete`.  # noqa: E501
 
         :param value: The value of this PatchOperation.  # noqa: E501
         :type: List[Dict[str, object]]
