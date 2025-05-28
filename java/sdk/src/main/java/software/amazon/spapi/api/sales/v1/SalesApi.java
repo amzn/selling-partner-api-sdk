@@ -88,6 +88,9 @@ public class SalesApi {
      * @param sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not
      *     include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you
      *     want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param amazonProgram Filters the results by the Amazon program that you specify. Do not include this filter if
+     *     you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns
+     *     order metrics for the Amazon Haul program only. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -103,6 +106,7 @@ public class SalesApi {
             String firstDayOfWeek,
             String asin,
             String sku,
+            String amazonProgram,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -125,6 +129,8 @@ public class SalesApi {
             localVarQueryParams.addAll(apiClient.parameterToPair("firstDayOfWeek", firstDayOfWeek));
         if (asin != null) localVarQueryParams.addAll(apiClient.parameterToPair("asin", asin));
         if (sku != null) localVarQueryParams.addAll(apiClient.parameterToPair("sku", sku));
+        if (amazonProgram != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("amazonProgram", amazonProgram));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -160,6 +166,7 @@ public class SalesApi {
             String firstDayOfWeek,
             String asin,
             String sku,
+            String amazonProgram,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'marketplaceIds' is set
@@ -186,6 +193,7 @@ public class SalesApi {
                 firstDayOfWeek,
                 asin,
                 sku,
+                amazonProgram,
                 progressRequestListener);
     }
 
@@ -234,6 +242,9 @@ public class SalesApi {
      * @param sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not
      *     include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you
      *     want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param amazonProgram Filters the results by the Amazon program that you specify. Do not include this filter if
+     *     you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns
+     *     order metrics for the Amazon Haul program only. (optional)
      * @return GetOrderMetricsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -247,7 +258,8 @@ public class SalesApi {
             String fulfillmentNetwork,
             String firstDayOfWeek,
             String asin,
-            String sku)
+            String sku,
+            String amazonProgram)
             throws ApiException, LWAException {
         ApiResponse<GetOrderMetricsResponse> resp = getOrderMetricsWithHttpInfo(
                 marketplaceIds,
@@ -258,7 +270,8 @@ public class SalesApi {
                 fulfillmentNetwork,
                 firstDayOfWeek,
                 asin,
-                sku);
+                sku,
+                amazonProgram);
         return resp.getData();
     }
 
@@ -307,6 +320,9 @@ public class SalesApi {
      * @param sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not
      *     include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you
      *     want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param amazonProgram Filters the results by the Amazon program that you specify. Do not include this filter if
+     *     you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns
+     *     order metrics for the Amazon Haul program only. (optional)
      * @return ApiResponse&lt;GetOrderMetricsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -320,7 +336,8 @@ public class SalesApi {
             String fulfillmentNetwork,
             String firstDayOfWeek,
             String asin,
-            String sku)
+            String sku,
+            String amazonProgram)
             throws ApiException, LWAException {
         okhttp3.Call call = getOrderMetricsValidateBeforeCall(
                 marketplaceIds,
@@ -332,6 +349,7 @@ public class SalesApi {
                 firstDayOfWeek,
                 asin,
                 sku,
+                amazonProgram,
                 null);
         if (disableRateLimiting || getOrderMetricsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderMetricsResponse>() {}.getType();
@@ -384,6 +402,9 @@ public class SalesApi {
      * @param sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not
      *     include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you
      *     want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param amazonProgram Filters the results by the Amazon program that you specify. Do not include this filter if
+     *     you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns
+     *     order metrics for the Amazon Haul program only. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -399,6 +420,7 @@ public class SalesApi {
             String firstDayOfWeek,
             String asin,
             String sku,
+            String amazonProgram,
             final ApiCallback<GetOrderMetricsResponse> callback)
             throws ApiException, LWAException {
 
@@ -418,6 +440,7 @@ public class SalesApi {
                 firstDayOfWeek,
                 asin,
                 sku,
+                amazonProgram,
                 progressRequestListener);
         if (disableRateLimiting || getOrderMetricsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderMetricsResponse>() {}.getType();

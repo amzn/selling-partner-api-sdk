@@ -58,7 +58,7 @@ public class SalesApiTest {
         String granularity = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderMetricsResponse> response = api.getOrderMetricsWithHttpInfo(
-                marketplaceIds, interval, granularity, null, null, null, null, null, null);
+                marketplaceIds, interval, granularity, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
