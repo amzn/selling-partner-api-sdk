@@ -42,7 +42,7 @@ describe('PatchOperation', () => {
     expect(instance).to.have.property('op');
 
     // set and verify value
-    const expectedValue = ['add', 'replace', 'delete', ][0];
+    const expectedValue = ['add', 'replace', 'merge', 'delete', ][0];
     instance.op = expectedValue;
     expect(instance.op).to.equal(expectedValue);
   });

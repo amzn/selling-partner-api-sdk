@@ -24,7 +24,7 @@ export class FulfillmentAvailability {
    * The fulfillment availability details for the listings item.
    * @alias module:listingsitems_v2021_08_01/model/FulfillmentAvailability
    * @class
-   * @param fulfillmentChannelCode {String} The code of the fulfillment network that will be used.
+   * @param fulfillmentChannelCode {String} Designates which fulfillment network is used.
    */
   constructor (fulfillmentChannelCode) {
     this.fulfillmentChannelCode = fulfillmentChannelCode
@@ -59,7 +59,7 @@ export class FulfillmentAvailability {
 }
 
 /**
- * The code of the fulfillment network that will be used.
+ * Designates which fulfillment network is used.
  * @member {String} fulfillmentChannelCode
  */
 FulfillmentAvailability.prototype.fulfillmentChannelCode = undefined
