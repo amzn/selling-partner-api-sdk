@@ -268,7 +268,7 @@ class FeaturedOfferExpectedPriceRequestParams implements ModelInterface, \ArrayA
     /**
      * Sets marketplace_id.
      *
-     * @param string $marketplace_id A marketplace identifier. Specifies the marketplace for which data is returned.
+     * @param string $marketplace_id The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      */
     public function setMarketplaceId(string $marketplace_id): self
     {

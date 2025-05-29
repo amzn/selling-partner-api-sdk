@@ -52,6 +52,7 @@ class FeaturedOfferSegment implements ModelInterface, \ArrayAccess, \JsonSeriali
 
     public const CUSTOMER_MEMBERSHIP_PRIME = 'PRIME';
     public const CUSTOMER_MEMBERSHIP_NON_PRIME = 'NON_PRIME';
+    public const CUSTOMER_MEMBERSHIP__DEFAULT = 'DEFAULT';
 
     /**
      * The original name of the model.
@@ -233,6 +234,7 @@ class FeaturedOfferSegment implements ModelInterface, \ArrayAccess, \JsonSeriali
         return [
             self::CUSTOMER_MEMBERSHIP_PRIME,
             self::CUSTOMER_MEMBERSHIP_NON_PRIME,
+            self::CUSTOMER_MEMBERSHIP__DEFAULT,
         ];
     }
 
