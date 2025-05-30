@@ -183,7 +183,7 @@ class Issue(object):
     def categories(self):
         """Gets the categories of this Issue.  # noqa: E501
 
-        List of issue categories.   Possible vales:   * `INVALID_ATTRIBUTE` - Indicating an invalid attribute in the listing.   * `MISSING_ATTRIBUTE` - Highlighting a missing attribute in the listing.   * `INVALID_IMAGE` - Signifying an invalid image in the listing.   * `MISSING_IMAGE` - Noting the absence of an image in the listing.   * `INVALID_PRICE` - Pertaining to issues with the listing's price-related attributes.   * `MISSING_PRICE` - Pointing out the absence of a price attribute in the listing.   * `DUPLICATE` - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * `QUALIFICATION_REQUIRED` - Indicating that the listing requires qualification-related approval.  # noqa: E501
+        List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.  # noqa: E501
 
         :return: The categories of this Issue.  # noqa: E501
         :rtype: List[str]
@@ -194,7 +194,7 @@ class Issue(object):
     def categories(self, categories):
         """Sets the categories of this Issue.
 
-        List of issue categories.   Possible vales:   * `INVALID_ATTRIBUTE` - Indicating an invalid attribute in the listing.   * `MISSING_ATTRIBUTE` - Highlighting a missing attribute in the listing.   * `INVALID_IMAGE` - Signifying an invalid image in the listing.   * `MISSING_IMAGE` - Noting the absence of an image in the listing.   * `INVALID_PRICE` - Pertaining to issues with the listing's price-related attributes.   * `MISSING_PRICE` - Pointing out the absence of a price attribute in the listing.   * `DUPLICATE` - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * `QUALIFICATION_REQUIRED` - Indicating that the listing requires qualification-related approval.  # noqa: E501
+        List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.  # noqa: E501
 
         :param categories: The categories of this Issue.  # noqa: E501
         :type: List[str]

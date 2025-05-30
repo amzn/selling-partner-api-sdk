@@ -55,6 +55,7 @@ class SalesApi(object):
         :param str first_day_of_week: Specifies the day that the week starts on when granularity=Week, either Monday or Sunday. Default: Monday. Example: Sunday, if you want the week to start on a Sunday.
         :param str asin: Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN.
         :param str sku: Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU.
+        :param str amazon_program: Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** `AmazonHaul` returns order metrics for the Amazon Haul program only.
         :return: GetOrderMetricsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -85,12 +86,13 @@ class SalesApi(object):
         :param str first_day_of_week: Specifies the day that the week starts on when granularity=Week, either Monday or Sunday. Default: Monday. Example: Sunday, if you want the week to start on a Sunday.
         :param str asin: Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN.
         :param str sku: Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU.
+        :param str amazon_program: Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** `AmazonHaul` returns order metrics for the Amazon Haul program only.
         :return: GetOrderMetricsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['marketplace_ids', 'interval', 'granularity', 'granularity_time_zone', 'buyer_type', 'fulfillment_network', 'first_day_of_week', 'asin', 'sku']  # noqa: E501
+        all_params = ['marketplace_ids', 'interval', 'granularity', 'granularity_time_zone', 'buyer_type', 'fulfillment_network', 'first_day_of_week', 'asin', 'sku', 'amazon_program']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -142,6 +144,8 @@ class SalesApi(object):
             query_params.append(('asin', params['asin']))  # noqa: E501
         if 'sku' in params:
             query_params.append(('sku', params['sku']))  # noqa: E501
+        if 'amazon_program' in params:
+            query_params.append(('amazonProgram', params['amazon_program']))  # noqa: E501
 
         header_params = {}
 
