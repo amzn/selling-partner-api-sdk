@@ -1,0 +1,547 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Selling Partner API Developer Support
+    url: https://sellercentral.amazon.com/gp/mws/contactus.html
+  description: The Selling Partner API for Automotive provides programmatic access
+    to information needed by selling partners to provide compatibility information
+    about their listed products.
+  license:
+    name: Apache License 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  title: The Selling Partner API for Automotive.
+  version: 2024-11-01
+servers:
+- url: https://sellingpartnerapi-na.amazon.com/
+paths:
+  /catalog/2024-11-01/automotive/vehicles:
+    get:
+      description: Get the latest collection of vehicles
+      operationId: getVehicles
+      parameters:
+      - description: A token to fetch a certain page when there are multiple pages
+          worth of results.
+        example: sdlkj234lkj234lksjdflkjwdflkjsfdlkj234234234234
+        in: query
+        name: pageToken
+        schema:
+          type: string
+      - description: An identifier for the marketplace in which the resource operates.
+        example: A1PA6795UKMFR9
+        in: query
+        name: marketplaceId
+        required: true
+        schema:
+          type: string
+      - description: An identifier for vehicle type.
+        example: CAR
+        in: query
+        name: vehicleType
+        required: true
+        schema:
+          enum:
+          - CAR
+          - MOTORBIKE
+          type: string
+          x-docgen-enum-table-extension:
+          - description: Selecting this will return the list of cars.
+            value: CAR
+          - description: Selecting this will return the list of motorbikes/motorcycles.
+            value: MOTORBIKE
+        x-docgen-enum-table-extension:
+        - description: Selecting this will return the list of cars.
+          value: CAR
+        - description: Selecting this will return the list of motorbikes/motorcycles.
+          value: MOTORBIKE
+      - description: "Date in ISO 8601 format, if provided only vehicles which are\
+          \ modified/added to Amazon's catalog after this date will be returned."
+        example: 2024-01-05T18:00:03+00:00
+        in: query
+        name: updatedAfter
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                pagination:
+                  nextToken: xsdflkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjl234
+                  previousToken: mmkjsdflkj234lkjds234234lkjl234lksjdflkj234234lkjsfsdflkj333d
+                vehicles:
+                - make: Chevrolet
+                  model: Aveo
+                  variantName: "1.2"
+                  bodyStyle: Schrägheck
+                  driveType: Frontantrieb
+                  energy: Benzin
+                  engineOutput:
+                  - value: 51
+                    unit: KILOWATT
+                  - value: 69
+                    unit: HORSEPOWER
+                  manufacturingStartDate:
+                    year: 2011
+                    month: 3
+                  manufacturingStopDate: {}
+                  lastProcessedDate: 2024-09-01T18:00:03+00:00
+                  status: DELETED
+                  identifiers:
+                  - standard: KTYPE
+                    value: "9997"
+              schema:
+                $ref: '#/components/schemas/VehiclesResponse'
+          description: Success.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+            x-amzn-RateLimit-Limit:
+              description: Your rate limit (requests per second) for this operation.
+              schema:
+                type: string
+          x-amzn-api-sandbox:
+            static:
+            - request:
+                parameters:
+                  pageToken:
+                    value: urldwkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjq130
+                  marketplaceId:
+                    value: A1PA6795UKMFR9
+                  vehicleType:
+                    value: MOTORBIKE
+                  updatedAfter:
+                    value: 2024-01-05T18:00:03+00:00
+              response:
+                pagination:
+                  nextToken: xsdflkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjl234
+                  previousToken: ilkjsdflkj234lkjds234234lkjl234lksjdflkj234234lkjsfsdflkj333d
+                vehicles:
+                - make: Chevrolet
+                  model: Avalanche
+                  variantName: 5.3 Flex-fuel
+                  bodyStyle: Pick-up
+                  driveType: Heckantrieb
+                  energy: Benzin/Ethanol
+                  engineOutput:
+                  - value: 235
+                    unit: KILOWATT
+                  - value: 320
+                    unit: HORSEPOWER
+                  manufacturingStartDate:
+                    year: 2005
+                    month: 6
+                  manufacturingStopDate:
+                    year: 2007
+                    month: 7
+                  lastProcessedDate: 2024-09-01T18:00:03+00:00
+                  status: ACTIVE
+                  identifiers:
+                  - standard: KTYPE
+                    value: "27566"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: Request has missing or invalid parameters and cannot be parsed.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+            x-amzn-RateLimit-Limit:
+              description: Your rate limit (requests per second) for this operation.
+              schema:
+                type: string
+          x-amzn-api-sandbox:
+            static:
+            - request:
+                parameters: {}
+              response:
+                errors:
+                - code: BAD_REQUEST
+                  message: Invalid input
+                  details: Invalid input
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: "Indicates that access to the resource is forbidden. Possible\
+            \ reasons include Access Denied, Unauthorized, Expired Token, or Invalid\
+            \ Signature."
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: The resource specified does not exist.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+            x-amzn-RateLimit-Limit:
+              description: Your rate limit (requests per second) for this operation.
+              schema:
+                type: string
+        "413":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: The request size exceeded the maximum accepted size.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: The request payload is in an unsupported format.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: The frequency of requests was greater than allowed.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: An unexpected condition occurred that prevented the server
+            from fulfilling the request.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+          description: Temporary overloading or maintenance of the server.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+      tags:
+      - vehicles
+      - automotive
+components:
+  schemas:
+    VehiclesResponse:
+      description: Get paginated list of vehicle from Amazon's catalog
+      example:
+        pagination:
+          previousToken: previousToken
+          nextToken: nextToken
+        vehicles:
+        - manufacturingStopDate:
+            month: 11
+            year: 2004
+          driveType: driveType
+          engineOutput:
+          - unit: KILOWATT
+            value: 0.8008281904610115
+          - unit: KILOWATT
+            value: 0.8008281904610115
+          manufacturingStartDate:
+            month: 11
+            year: 2004
+          identifiers:
+          - standard: KTYPE
+            value: value
+          - standard: KTYPE
+            value: value
+          bodyStyle: bodyStyle
+          model: model
+          variantName: variantName
+          make: make
+          lastProcessedDate: lastProcessedDate
+          energy: energy
+          status: ACTIVE
+        - manufacturingStopDate:
+            month: 11
+            year: 2004
+          driveType: driveType
+          engineOutput:
+          - unit: KILOWATT
+            value: 0.8008281904610115
+          - unit: KILOWATT
+            value: 0.8008281904610115
+          manufacturingStartDate:
+            month: 11
+            year: 2004
+          identifiers:
+          - standard: KTYPE
+            value: value
+          - standard: KTYPE
+            value: value
+          bodyStyle: bodyStyle
+          model: model
+          variantName: variantName
+          make: make
+          lastProcessedDate: lastProcessedDate
+          energy: energy
+          status: ACTIVE
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        vehicles:
+          description: List of vehicles from Amazon's catalog.
+          items:
+            $ref: '#/components/schemas/Vehicle'
+          type: array
+      required:
+      - vehicles
+      type: object
+    Pagination:
+      description: "When a request produces a response that exceeds the `pageSize`,\
+        \ pagination occurs. This means the response is divided into individual pages.\
+        \ To retrieve the next page or the previous page, you must pass the `nextToken`\
+        \ value or the `previousToken` value as the `pageToken` parameter in the next\
+        \ request. When you receive the last page, there will be no `nextToken` key\
+        \ in the pagination object."
+      example:
+        previousToken: previousToken
+        nextToken: nextToken
+      properties:
+        nextToken:
+          description: A token that can be used to fetch the next page.
+          type: string
+        previousToken:
+          description: A token that can be used to fetch the previous page.
+          type: string
+      type: object
+    Vehicle:
+      description: Combinations of attributes and unique identifier that represents
+        a vehicle in vehicle list.
+      example:
+        manufacturingStopDate:
+          month: 11
+          year: 2004
+        driveType: driveType
+        engineOutput:
+        - unit: KILOWATT
+          value: 0.8008281904610115
+        - unit: KILOWATT
+          value: 0.8008281904610115
+        manufacturingStartDate:
+          month: 11
+          year: 2004
+        identifiers:
+        - standard: KTYPE
+          value: value
+        - standard: KTYPE
+          value: value
+        bodyStyle: bodyStyle
+        model: model
+        variantName: variantName
+        make: make
+        lastProcessedDate: lastProcessedDate
+        energy: energy
+        status: ACTIVE
+      properties:
+        make:
+          description: Vehicle Brand.
+          type: string
+        model:
+          description: Specific model of a vehicle.
+          type: string
+        variantName:
+          description: Name of the vehicle variant.
+          type: string
+        bodyStyle:
+          description: "Body style of vehicle (example: Hatchback, Cabriolet)."
+          type: string
+        driveType:
+          description: "Drive type of vehicle(example: Rear wheel drive)."
+          type: string
+        energy:
+          description: "Energy Source for the vehicle(example: Petrol)"
+          type: string
+        engineOutput:
+          description: Engine output of vehicle.
+          items:
+            $ref: '#/components/schemas/EngineOutput'
+          minItems: 1
+          type: array
+        manufacturingStartDate:
+          $ref: '#/components/schemas/MonthAndYear'
+        manufacturingStopDate:
+          $ref: '#/components/schemas/MonthAndYear'
+        lastProcessedDate:
+          description: "The date on which the vehicle was last updated, in ISO-8601\
+            \ date/time format."
+          type: string
+        status:
+          $ref: '#/components/schemas/VehicleStatusInCatalog'
+        identifiers:
+          description: Identifiers that can be used to identify the vehicle uniquely
+          items:
+            $ref: '#/components/schemas/VehicleIdentifiers'
+          minItems: 1
+          type: array
+      required:
+      - identifiers
+      - make
+      - model
+      type: object
+    EngineOutput:
+      description: Engine power output of vehicle.
+      example:
+        unit: KILOWATT
+        value: 0.8008281904610115
+      properties:
+        value:
+          description: Engine power value in specified unit.
+          type: number
+        unit:
+          $ref: '#/components/schemas/EngineOutputUnit'
+      required:
+      - unit
+      - value
+      type: object
+    VehicleIdentifiers:
+      description: Combination of vehicle standard and id that can uniquely identify
+        a vehicle from Amazon's catalog.
+      example:
+        standard: KTYPE
+        value: value
+      properties:
+        standard:
+          $ref: '#/components/schemas/VehicleStandard'
+        value:
+          description: Id that can uniquely identify a vehicle based the vehicle identification
+            standard.
+          type: string
+      required:
+      - standard
+      - value
+      type: object
+    VehicleStandard:
+      description: Standard followed to uniquely identify a vehicle.
+      enum:
+      - KTYPE
+      - AMAZON_ID
+      type: string
+      x-docgen-enum-table-extension:
+      - description: Unique vehicle identification standard as provided by TecDoc
+        value: KTYPE
+      - description: Unique vehicle identification standard as provided by Amazon
+        value: AMAZON_ID
+    EngineOutputUnit:
+      description: Unit for measuring engine power.
+      enum:
+      - KILOWATT
+      - HORSEPOWER
+      type: string
+      x-docgen-enum-table-extension:
+      - value: KILOWATT
+        description: KILOWATT or kW is a unit used to measure engine power output.
+      - value: HORSEPOWER
+        description: HORSEPOWER or HP is a unit used to measure engine power output.
+    ErrorList:
+      description: A list of error responses returned when a request is unsuccessful.
+      example:
+        errors:
+        - code: code
+          details: details
+          message: message
+        - code: code
+          details: details
+          message: message
+      properties:
+        errors:
+          description: array of errors
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+      required:
+      - errors
+      type: object
+    Error:
+      description: Error response returned when the request is unsuccessful.
+      example:
+        code: code
+        details: details
+        message: message
+      properties:
+        code:
+          description: An error code that identifies the type of error that occurred.
+          type: string
+        message:
+          description: A message that describes the error condition.
+          type: string
+        details:
+          description: Additional details that can help the caller understand or fix
+            the issue.
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    MonthAndYear:
+      description: Represents a month in a specific year.
+      example:
+        month: 11
+        year: 2004
+      properties:
+        year:
+          description: Year in YYYY format
+          example: 2004
+          pattern: "^[0-9]{4}$"
+          type: number
+        month:
+          description: Month in MM format
+          example: 11
+          pattern: "^(0?[1-9]|1[012])$"
+          type: number
+      type: object
+    Year:
+      description: Year in YYYY format
+      example: 2004
+      pattern: "^[0-9]{4}$"
+      type: number
+    Month:
+      description: Month in MM format
+      example: 11
+      pattern: "^(0?[1-9]|1[012])$"
+      type: number
+    VehicleStatusInCatalog:
+      description: Status of vehicle in Amazon's catalog.
+      enum:
+      - ACTIVE
+      - DELETED
+      type: string
+      x-docgen-enum-table-extension:
+      - description: Vehicle is active in Amazon's catalog.
+        value: ACTIVE
+      - description: Vehicle is deleted from Amazon's catalog.
+        value: DELETED
+x-original-swagger-version: "2.0"
+
