@@ -28,8 +28,8 @@ import java.util.Objects;
 @Schema(description = "Individual JSON Patch operation for an HTTP PATCH request.")
 public class PatchOperation {
     /**
-     * Type of JSON Patch operation. Supported JSON Patch operations include add, replace, and delete. Refer to
-     * [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.
+     * Type of JSON Patch operation. Supported JSON Patch operations include &#x60;add&#x60;, &#x60;replace&#x60;,
+     * &#x60;merge&#x60; and &#x60;delete&#x60;. Refer to &lt;https://tools.ietf.org/html/rfc6902&gt;.
      */
     @JsonAdapter(OpEnum.Adapter.class)
     public enum OpEnum {
@@ -37,6 +37,8 @@ public class PatchOperation {
         ADD("add"),
         @SerializedName("replace")
         REPLACE("replace"),
+        @SerializedName("merge")
+        MERGE("merge"),
         @SerializedName("delete")
         DELETE("delete");
 
@@ -93,15 +95,15 @@ public class PatchOperation {
     }
 
     /**
-     * Type of JSON Patch operation. Supported JSON Patch operations include add, replace, and delete. Refer to
-     * [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.
+     * Type of JSON Patch operation. Supported JSON Patch operations include &#x60;add&#x60;, &#x60;replace&#x60;,
+     * &#x60;merge&#x60; and &#x60;delete&#x60;. Refer to &lt;https://tools.ietf.org/html/rfc6902&gt;.
      *
      * @return op
      */
     @Schema(
             required = true,
             description =
-                    "Type of JSON Patch operation. Supported JSON Patch operations include add, replace, and delete. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.")
+                    "Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.")
     public OpEnum getOp() {
         return op;
     }
@@ -147,11 +149,11 @@ public class PatchOperation {
     }
 
     /**
-     * JSON value to add, replace, or delete.
+     * JSON value to &#x60;add&#x60;, &#x60;replace&#x60;, &#x60;merge&#x60; or &#x60;delete&#x60;.
      *
      * @return value
      */
-    @Schema(description = "JSON value to add, replace, or delete.")
+    @Schema(description = "JSON value to `add`, `replace`, `merge` or `delete`.")
     public List<Map<String, Object>> getValue() {
         return value;
     }

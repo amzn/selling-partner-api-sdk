@@ -187,13 +187,13 @@ public class Issue {
     }
 
     /**
-     * List of issue categories. Possible vales: * &#x60;INVALID_ATTRIBUTE&#x60; - Indicating an invalid attribute in
-     * the listing. * &#x60;MISSING_ATTRIBUTE&#x60; - Highlighting a missing attribute in the listing. *
-     * &#x60;INVALID_IMAGE&#x60; - Signifying an invalid image in the listing. * &#x60;MISSING_IMAGE&#x60; - Noting the
-     * absence of an image in the listing. * &#x60;INVALID_PRICE&#x60; - Pertaining to issues with the listing&#x27;s
-     * price-related attributes. * &#x60;MISSING_PRICE&#x60; - Pointing out the absence of a price attribute in the
-     * listing. * &#x60;DUPLICATE&#x60; - Identifying listings with potential duplicate problems, such as this ASIN
-     * potentially being a duplicate of another ASIN. * &#x60;QUALIFICATION_REQUIRED&#x60; - Indicating that the listing
+     * List of issue categories. Possible values: * &#x27;INVALID_ATTRIBUTE&#x27; - Indicating an invalid attribute in
+     * the listing. * &#x27;MISSING_ATTRIBUTE&#x27; - Highlighting a missing attribute in the listing. *
+     * &#x27;INVALID_IMAGE&#x27; - Signifying an invalid image in the listing. * &#x27;MISSING_IMAGE&#x27; - Noting the
+     * absence of an image in the listing. * &#x27;INVALID_PRICE&#x27; - Pertaining to issues with the listing&#x27;s
+     * price-related attributes. * &#x27;MISSING_PRICE&#x27; - Pointing out the absence of a price attribute in the
+     * listing. * &#x27;DUPLICATE&#x27; - Identifying listings with potential duplicate problems, such as this ASIN
+     * potentially being a duplicate of another ASIN. * &#x27;QUALIFICATION_REQUIRED&#x27; - Indicating that the listing
      * requires qualification-related approval.
      *
      * @return categories
@@ -202,7 +202,7 @@ public class Issue {
             example = "[\"INVALID_ATTRIBUTE\"]",
             required = true,
             description =
-                    "List of issue categories.   Possible vales:   * `INVALID_ATTRIBUTE` - Indicating an invalid attribute in the listing.   * `MISSING_ATTRIBUTE` - Highlighting a missing attribute in the listing.   * `INVALID_IMAGE` - Signifying an invalid image in the listing.   * `MISSING_IMAGE` - Noting the absence of an image in the listing.   * `INVALID_PRICE` - Pertaining to issues with the listing's price-related attributes.   * `MISSING_PRICE` - Pointing out the absence of a price attribute in the listing.   * `DUPLICATE` - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * `QUALIFICATION_REQUIRED` - Indicating that the listing requires qualification-related approval.")
+                    "List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.")
     public List<String> getCategories() {
         return categories;
     }
