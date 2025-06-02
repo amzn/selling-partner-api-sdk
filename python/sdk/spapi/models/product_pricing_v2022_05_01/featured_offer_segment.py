@@ -78,7 +78,7 @@ class FeaturedOfferSegment(object):
         """
         if self._configuration.client_side_validation and customer_membership is None:
             raise ValueError("Invalid value for `customer_membership`, must not be `None`")  # noqa: E501
-        allowed_values = ["PRIME", "NON_PRIME"]  # noqa: E501
+        allowed_values = ["PRIME", "NON_PRIME", "DEFAULT"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 customer_membership not in allowed_values):
             raise ValueError(

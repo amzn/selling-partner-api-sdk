@@ -65,7 +65,7 @@ class ItemSearchResults(object):
     def number_of_results(self):
         """Gets the number_of_results of this ItemSearchResults.  # noqa: E501
 
-        The total number of selling partner listings items found for the search criteria (only results up to the page count limit will be returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.  # noqa: E501
+        The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.  # noqa: E501
 
         :return: The number_of_results of this ItemSearchResults.  # noqa: E501
         :rtype: int
@@ -76,7 +76,7 @@ class ItemSearchResults(object):
     def number_of_results(self, number_of_results):
         """Sets the number_of_results of this ItemSearchResults.
 
-        The total number of selling partner listings items found for the search criteria (only results up to the page count limit will be returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.  # noqa: E501
+        The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.  # noqa: E501
 
         :param number_of_results: The number_of_results of this ItemSearchResults.  # noqa: E501
         :type: int

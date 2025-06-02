@@ -61,7 +61,7 @@ class FulfillmentAvailability(object):
     def fulfillment_channel_code(self):
         """Gets the fulfillment_channel_code of this FulfillmentAvailability.  # noqa: E501
 
-        The code of the fulfillment network that will be used.  # noqa: E501
+        Designates which fulfillment network is used.  # noqa: E501
 
         :return: The fulfillment_channel_code of this FulfillmentAvailability.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class FulfillmentAvailability(object):
     def fulfillment_channel_code(self, fulfillment_channel_code):
         """Sets the fulfillment_channel_code of this FulfillmentAvailability.
 
-        The code of the fulfillment network that will be used.  # noqa: E501
+        Designates which fulfillment network is used.  # noqa: E501
 
         :param fulfillment_channel_code: The fulfillment_channel_code of this FulfillmentAvailability.  # noqa: E501
         :type: str
