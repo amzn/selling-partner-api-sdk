@@ -52,7 +52,7 @@ public class UploadsApiTest {
 
     @Test
     public void createUploadDestinationForResourceTest() throws Exception {
-        instructBackendMock("createUploadDestinationForResource", "201");
+        instructBackendMock("Uploads", "createUploadDestinationForResource", "201");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
         String contentMD5 = easyRandom.nextObject(String.class);
         String resource = easyRandom.nextObject(String.class);
@@ -64,9 +64,10 @@ public class UploadsApiTest {
         assertValidResponsePayload(201, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

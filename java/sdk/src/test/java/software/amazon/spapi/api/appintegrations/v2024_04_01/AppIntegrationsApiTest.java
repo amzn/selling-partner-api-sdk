@@ -54,7 +54,7 @@ public class AppIntegrationsApiTest {
 
     @Test
     public void createNotificationTest() throws Exception {
-        instructBackendMock("createNotification", "200");
+        instructBackendMock("AppIntegrations", "createNotification", "200");
         CreateNotificationRequest body = easyRandom.nextObject(CreateNotificationRequest.class);
 
         ApiResponse<CreateNotificationResponse> response = api.createNotificationWithHttpInfo(body);
@@ -65,7 +65,7 @@ public class AppIntegrationsApiTest {
 
     @Test
     public void deleteNotificationsTest() throws Exception {
-        instructBackendMock("deleteNotifications", "204");
+        instructBackendMock("AppIntegrations", "deleteNotifications", "204");
         DeleteNotificationsRequest body = easyRandom.nextObject(DeleteNotificationsRequest.class);
 
         api.deleteNotificationsWithHttpInfo(body);
@@ -73,16 +73,17 @@ public class AppIntegrationsApiTest {
 
     @Test
     public void recordActionFeedbackTest() throws Exception {
-        instructBackendMock("recordActionFeedback", "204");
+        instructBackendMock("AppIntegrations", "recordActionFeedback", "204");
         RecordActionFeedbackRequest body = easyRandom.nextObject(RecordActionFeedbackRequest.class);
         String notificationId = easyRandom.nextObject(String.class);
 
         api.recordActionFeedbackWithHttpInfo(body, notificationId);
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

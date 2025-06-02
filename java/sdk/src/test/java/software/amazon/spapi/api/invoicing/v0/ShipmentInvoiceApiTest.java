@@ -54,7 +54,7 @@ public class ShipmentInvoiceApiTest {
 
     @Test
     public void getInvoiceStatusTest() throws Exception {
-        instructBackendMock("getInvoiceStatus", "200");
+        instructBackendMock("ShipmentInvoice", "getInvoiceStatus", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoiceStatusResponse> response = api.getInvoiceStatusWithHttpInfo(shipmentId);
@@ -65,7 +65,7 @@ public class ShipmentInvoiceApiTest {
 
     @Test
     public void getShipmentDetailsTest() throws Exception {
-        instructBackendMock("getShipmentDetails", "200");
+        instructBackendMock("ShipmentInvoice", "getShipmentDetails", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetShipmentDetailsResponse> response = api.getShipmentDetailsWithHttpInfo(shipmentId);
@@ -76,7 +76,7 @@ public class ShipmentInvoiceApiTest {
 
     @Test
     public void submitInvoiceTest() throws Exception {
-        instructBackendMock("submitInvoice", "200");
+        instructBackendMock("ShipmentInvoice", "submitInvoice", "200");
         SubmitInvoiceRequest body = easyRandom.nextObject(SubmitInvoiceRequest.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -86,9 +86,10 @@ public class ShipmentInvoiceApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

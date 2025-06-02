@@ -81,7 +81,7 @@ public class ShippingApiTest {
 
     @Test
     public void cancelShipmentTest() throws Exception {
-        instructBackendMock("cancelShipment", "200");
+        instructBackendMock("Shipping", "cancelShipment", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelShipmentResponse> response = api.cancelShipmentWithHttpInfo(shipmentId, null);
@@ -92,7 +92,7 @@ public class ShippingApiTest {
 
     @Test
     public void createClaimTest() throws Exception {
-        instructBackendMock("createClaim", "201");
+        instructBackendMock("Shipping", "createClaim", "201");
         CreateClaimRequest body = easyRandom.nextObject(CreateClaimRequest.class);
 
         ApiResponse<CreateClaimResponse> response = api.createClaimWithHttpInfo(body, null);
@@ -103,7 +103,7 @@ public class ShippingApiTest {
 
     @Test
     public void directPurchaseShipmentTest() throws Exception {
-        instructBackendMock("directPurchaseShipment", "200");
+        instructBackendMock("Shipping", "directPurchaseShipment", "200");
         DirectPurchaseRequest body = easyRandom.nextObject(DirectPurchaseRequest.class);
 
         ApiResponse<DirectPurchaseResponse> response = api.directPurchaseShipmentWithHttpInfo(body, null, null, null);
@@ -114,7 +114,7 @@ public class ShippingApiTest {
 
     @Test
     public void generateCollectionFormTest() throws Exception {
-        instructBackendMock("generateCollectionForm", "200");
+        instructBackendMock("Shipping", "generateCollectionForm", "200");
         GenerateCollectionFormRequest body = easyRandom.nextObject(GenerateCollectionFormRequest.class);
 
         ApiResponse<GenerateCollectionFormResponse> response = api.generateCollectionFormWithHttpInfo(body, null, null);
@@ -125,7 +125,7 @@ public class ShippingApiTest {
 
     @Test
     public void getAccessPointsTest() throws Exception {
-        instructBackendMock("getAccessPoints", "200");
+        instructBackendMock("Shipping", "getAccessPoints", "200");
         List<String> accessPointTypes = easyRandom.objects(String.class, 2).collect(Collectors.toList());
         String countryCode = easyRandom.nextObject(String.class);
         String postalCode = easyRandom.nextObject(String.class);
@@ -139,7 +139,7 @@ public class ShippingApiTest {
 
     @Test
     public void getAdditionalInputsTest() throws Exception {
-        instructBackendMock("getAdditionalInputs", "200");
+        instructBackendMock("Shipping", "getAdditionalInputs", "200");
         String requestToken = easyRandom.nextObject(String.class);
         String rateId = easyRandom.nextObject(String.class);
 
@@ -152,7 +152,7 @@ public class ShippingApiTest {
 
     @Test
     public void getCarrierAccountFormInputsTest() throws Exception {
-        instructBackendMock("getCarrierAccountFormInputs", "200");
+        instructBackendMock("Shipping", "getCarrierAccountFormInputs", "200");
 
         ApiResponse<GetCarrierAccountFormInputsResponse> response = api.getCarrierAccountFormInputsWithHttpInfo(null);
 
@@ -162,7 +162,7 @@ public class ShippingApiTest {
 
     @Test
     public void getCarrierAccountsTest() throws Exception {
-        instructBackendMock("getCarrierAccounts", "200");
+        instructBackendMock("Shipping", "getCarrierAccounts", "200");
         GetCarrierAccountsRequest body = easyRandom.nextObject(GetCarrierAccountsRequest.class);
 
         ApiResponse<GetCarrierAccountsResponse> response = api.getCarrierAccountsWithHttpInfo(body, null);
@@ -173,7 +173,7 @@ public class ShippingApiTest {
 
     @Test
     public void getCollectionFormTest() throws Exception {
-        instructBackendMock("getCollectionForm", "200");
+        instructBackendMock("Shipping", "getCollectionForm", "200");
         String collectionFormId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetCollectionFormResponse> response = api.getCollectionFormWithHttpInfo(collectionFormId, null);
@@ -184,7 +184,7 @@ public class ShippingApiTest {
 
     @Test
     public void getCollectionFormHistoryTest() throws Exception {
-        instructBackendMock("getCollectionFormHistory", "200");
+        instructBackendMock("Shipping", "getCollectionFormHistory", "200");
         GetCollectionFormHistoryRequest body = easyRandom.nextObject(GetCollectionFormHistoryRequest.class);
 
         ApiResponse<GetCollectionFormHistoryResponse> response = api.getCollectionFormHistoryWithHttpInfo(body, null);
@@ -195,7 +195,7 @@ public class ShippingApiTest {
 
     @Test
     public void getRatesTest() throws Exception {
-        instructBackendMock("getRates", "200");
+        instructBackendMock("Shipping", "getRates", "200");
         GetRatesRequest body = easyRandom.nextObject(GetRatesRequest.class);
 
         ApiResponse<GetRatesResponse> response = api.getRatesWithHttpInfo(body, null);
@@ -206,7 +206,7 @@ public class ShippingApiTest {
 
     @Test
     public void getShipmentDocumentsTest() throws Exception {
-        instructBackendMock("getShipmentDocuments", "200");
+        instructBackendMock("Shipping", "getShipmentDocuments", "200");
         String shipmentId = easyRandom.nextObject(String.class);
         String packageClientReferenceId = easyRandom.nextObject(String.class);
 
@@ -219,7 +219,7 @@ public class ShippingApiTest {
 
     @Test
     public void getTrackingTest() throws Exception {
-        instructBackendMock("getTracking", "200");
+        instructBackendMock("Shipping", "getTracking", "200");
         String trackingId = easyRandom.nextObject(String.class);
         String carrierId = easyRandom.nextObject(String.class);
 
@@ -231,7 +231,7 @@ public class ShippingApiTest {
 
     @Test
     public void getUnmanifestedShipmentsTest() throws Exception {
-        instructBackendMock("getUnmanifestedShipments", "200");
+        instructBackendMock("Shipping", "getUnmanifestedShipments", "200");
         GetUnmanifestedShipmentsRequest body = easyRandom.nextObject(GetUnmanifestedShipmentsRequest.class);
 
         ApiResponse<GetUnmanifestedShipmentsResponse> response = api.getUnmanifestedShipmentsWithHttpInfo(body, null);
@@ -242,7 +242,7 @@ public class ShippingApiTest {
 
     @Test
     public void linkCarrierAccountTest() throws Exception {
-        instructBackendMock("linkCarrierAccount", "200");
+        instructBackendMock("Shipping", "linkCarrierAccount", "200");
         LinkCarrierAccountRequest body = easyRandom.nextObject(LinkCarrierAccountRequest.class);
         String carrierId = easyRandom.nextObject(String.class);
 
@@ -254,7 +254,7 @@ public class ShippingApiTest {
 
     @Test
     public void linkCarrierAccount_0Test() throws Exception {
-        instructBackendMock("linkCarrierAccount_0", "200");
+        instructBackendMock("Shipping", "linkCarrierAccount_0", "200");
         LinkCarrierAccountRequest body = easyRandom.nextObject(LinkCarrierAccountRequest.class);
         String carrierId = easyRandom.nextObject(String.class);
 
@@ -266,7 +266,7 @@ public class ShippingApiTest {
 
     @Test
     public void oneClickShipmentTest() throws Exception {
-        instructBackendMock("oneClickShipment", "200");
+        instructBackendMock("Shipping", "oneClickShipment", "200");
         OneClickShipmentRequest body = easyRandom.nextObject(OneClickShipmentRequest.class);
 
         ApiResponse<OneClickShipmentResponse> response = api.oneClickShipmentWithHttpInfo(body, null);
@@ -277,7 +277,7 @@ public class ShippingApiTest {
 
     @Test
     public void purchaseShipmentTest() throws Exception {
-        instructBackendMock("purchaseShipment", "200");
+        instructBackendMock("Shipping", "purchaseShipment", "200");
         PurchaseShipmentRequest body = easyRandom.nextObject(PurchaseShipmentRequest.class);
 
         ApiResponse<PurchaseShipmentResponse> response = api.purchaseShipmentWithHttpInfo(body, null, null);
@@ -288,7 +288,7 @@ public class ShippingApiTest {
 
     @Test
     public void submitNdrFeedbackTest() throws Exception {
-        instructBackendMock("submitNdrFeedback", "204");
+        instructBackendMock("Shipping", "submitNdrFeedback", "204");
         SubmitNdrFeedbackRequest body = easyRandom.nextObject(SubmitNdrFeedbackRequest.class);
 
         api.submitNdrFeedbackWithHttpInfo(body, null);
@@ -296,7 +296,7 @@ public class ShippingApiTest {
 
     @Test
     public void unlinkCarrierAccountTest() throws Exception {
-        instructBackendMock("unlinkCarrierAccount", "200");
+        instructBackendMock("Shipping", "unlinkCarrierAccount", "200");
         UnlinkCarrierAccountRequest body = easyRandom.nextObject(UnlinkCarrierAccountRequest.class);
         String carrierId = easyRandom.nextObject(String.class);
 
@@ -307,9 +307,10 @@ public class ShippingApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

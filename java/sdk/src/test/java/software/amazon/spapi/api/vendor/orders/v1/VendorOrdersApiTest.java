@@ -55,7 +55,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getPurchaseOrderTest() throws Exception {
-        instructBackendMock("getPurchaseOrder", "200");
+        instructBackendMock("VendorOrders", "getPurchaseOrder", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<GetPurchaseOrderResponse> response = api.getPurchaseOrderWithHttpInfo(purchaseOrderNumber);
@@ -66,7 +66,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getPurchaseOrdersTest() throws Exception {
-        instructBackendMock("getPurchaseOrders", "200");
+        instructBackendMock("VendorOrders", "getPurchaseOrders", "200");
 
         ApiResponse<GetPurchaseOrdersResponse> response = api.getPurchaseOrdersWithHttpInfo(
                 null, null, null, null, null, null, null, null, null, null, null, null);
@@ -77,7 +77,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getPurchaseOrdersStatusTest() throws Exception {
-        instructBackendMock("getPurchaseOrdersStatus", "200");
+        instructBackendMock("VendorOrders", "getPurchaseOrdersStatus", "200");
 
         ApiResponse<GetPurchaseOrdersStatusResponse> response = api.getPurchaseOrdersStatusWithHttpInfo(
                 null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -88,7 +88,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void submitAcknowledgementTest() throws Exception {
-        instructBackendMock("submitAcknowledgement", "202");
+        instructBackendMock("VendorOrders", "submitAcknowledgement", "202");
         SubmitAcknowledgementRequest body = easyRandom.nextObject(SubmitAcknowledgementRequest.class);
 
         ApiResponse<SubmitAcknowledgementResponse> response = api.submitAcknowledgementWithHttpInfo(body);
@@ -97,9 +97,10 @@ public class VendorOrdersApiTest {
         assertValidResponsePayload(202, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

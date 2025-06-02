@@ -52,7 +52,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventGroupsTest() throws Exception {
-        instructBackendMock("listFinancialEventGroups", "200");
+        instructBackendMock("Default", "listFinancialEventGroups", "200");
 
         ApiResponse<ListFinancialEventGroupsResponse> response =
                 api.listFinancialEventGroupsWithHttpInfo(null, null, null, null);
@@ -63,7 +63,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventsTest() throws Exception {
-        instructBackendMock("listFinancialEvents", "200");
+        instructBackendMock("Default", "listFinancialEvents", "200");
 
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsWithHttpInfo(null, null, null, null);
 
@@ -73,7 +73,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventsByGroupIdTest() throws Exception {
-        instructBackendMock("listFinancialEventsByGroupId", "200");
+        instructBackendMock("Default", "listFinancialEventsByGroupId", "200");
         String eventGroupId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListFinancialEventsResponse> response =
@@ -85,7 +85,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventsByOrderIdTest() throws Exception {
-        instructBackendMock("listFinancialEventsByOrderId", "200");
+        instructBackendMock("Default", "listFinancialEventsByOrderId", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListFinancialEventsResponse> response =
@@ -95,9 +95,10 @@ public class DefaultApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

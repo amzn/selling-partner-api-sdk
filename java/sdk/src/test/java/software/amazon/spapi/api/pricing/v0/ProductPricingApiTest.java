@@ -56,7 +56,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getCompetitivePricingTest() throws Exception {
-        instructBackendMock("getCompetitivePricing", "200");
+        instructBackendMock("ProductPricing", "getCompetitivePricing", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String itemType = easyRandom.nextObject(String.class);
 
@@ -69,7 +69,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getItemOffersTest() throws Exception {
-        instructBackendMock("getItemOffers", "200");
+        instructBackendMock("ProductPricing", "getItemOffers", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String itemCondition = easyRandom.nextObject(String.class);
         String asin = easyRandom.nextObject(String.class);
@@ -83,7 +83,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getItemOffersBatchTest() throws Exception {
-        instructBackendMock("getItemOffersBatch", "200");
+        instructBackendMock("ProductPricing", "getItemOffersBatch", "200");
         GetItemOffersBatchRequest body = easyRandom.nextObject(GetItemOffersBatchRequest.class);
 
         ApiResponse<GetItemOffersBatchResponse> response = api.getItemOffersBatchWithHttpInfo(body);
@@ -94,7 +94,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getListingOffersTest() throws Exception {
-        instructBackendMock("getListingOffers", "200");
+        instructBackendMock("ProductPricing", "getListingOffers", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String itemCondition = easyRandom.nextObject(String.class);
         String sellerSKU = easyRandom.nextObject(String.class);
@@ -108,7 +108,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getListingOffersBatchTest() throws Exception {
-        instructBackendMock("getListingOffersBatch", "200");
+        instructBackendMock("ProductPricing", "getListingOffersBatch", "200");
         GetListingOffersBatchRequest body = easyRandom.nextObject(GetListingOffersBatchRequest.class);
 
         ApiResponse<GetListingOffersBatchResponse> response = api.getListingOffersBatchWithHttpInfo(body);
@@ -119,7 +119,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getPricingTest() throws Exception {
-        instructBackendMock("getPricing", "200");
+        instructBackendMock("ProductPricing", "getPricing", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String itemType = easyRandom.nextObject(String.class);
 
@@ -130,9 +130,10 @@ public class ProductPricingApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

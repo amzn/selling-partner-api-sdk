@@ -74,7 +74,7 @@ public class MessagingApiTest {
 
     @Test
     public void confirmCustomizationDetailsTest() throws Exception {
-        instructBackendMock("confirmCustomizationDetails", "201");
+        instructBackendMock("Messaging", "confirmCustomizationDetails", "201");
         CreateConfirmCustomizationDetailsRequest body =
                 easyRandom.nextObject(CreateConfirmCustomizationDetailsRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
@@ -89,7 +89,7 @@ public class MessagingApiTest {
 
     @Test
     public void createAmazonMotorsTest() throws Exception {
-        instructBackendMock("createAmazonMotors", "201");
+        instructBackendMock("Messaging", "createAmazonMotors", "201");
         CreateAmazonMotorsRequest body = easyRandom.nextObject(CreateAmazonMotorsRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -103,7 +103,7 @@ public class MessagingApiTest {
 
     @Test
     public void createConfirmDeliveryDetailsTest() throws Exception {
-        instructBackendMock("createConfirmDeliveryDetails", "201");
+        instructBackendMock("Messaging", "createConfirmDeliveryDetails", "201");
         CreateConfirmDeliveryDetailsRequest body = easyRandom.nextObject(CreateConfirmDeliveryDetailsRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -117,7 +117,7 @@ public class MessagingApiTest {
 
     @Test
     public void createConfirmOrderDetailsTest() throws Exception {
-        instructBackendMock("createConfirmOrderDetails", "201");
+        instructBackendMock("Messaging", "createConfirmOrderDetails", "201");
         CreateConfirmOrderDetailsRequest body = easyRandom.nextObject(CreateConfirmOrderDetailsRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -131,7 +131,7 @@ public class MessagingApiTest {
 
     @Test
     public void createConfirmServiceDetailsTest() throws Exception {
-        instructBackendMock("createConfirmServiceDetails", "201");
+        instructBackendMock("Messaging", "createConfirmServiceDetails", "201");
         CreateConfirmServiceDetailsRequest body = easyRandom.nextObject(CreateConfirmServiceDetailsRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -145,7 +145,7 @@ public class MessagingApiTest {
 
     @Test
     public void createDigitalAccessKeyTest() throws Exception {
-        instructBackendMock("createDigitalAccessKey", "201");
+        instructBackendMock("Messaging", "createDigitalAccessKey", "201");
         CreateDigitalAccessKeyRequest body = easyRandom.nextObject(CreateDigitalAccessKeyRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -159,7 +159,7 @@ public class MessagingApiTest {
 
     @Test
     public void createLegalDisclosureTest() throws Exception {
-        instructBackendMock("createLegalDisclosure", "201");
+        instructBackendMock("Messaging", "createLegalDisclosure", "201");
         CreateLegalDisclosureRequest body = easyRandom.nextObject(CreateLegalDisclosureRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -173,7 +173,7 @@ public class MessagingApiTest {
 
     @Test
     public void createNegativeFeedbackRemovalTest() throws Exception {
-        instructBackendMock("createNegativeFeedbackRemoval", "201");
+        instructBackendMock("Messaging", "createNegativeFeedbackRemoval", "201");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -186,7 +186,7 @@ public class MessagingApiTest {
 
     @Test
     public void createUnexpectedProblemTest() throws Exception {
-        instructBackendMock("createUnexpectedProblem", "201");
+        instructBackendMock("Messaging", "createUnexpectedProblem", "201");
         CreateUnexpectedProblemRequest body = easyRandom.nextObject(CreateUnexpectedProblemRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -200,7 +200,7 @@ public class MessagingApiTest {
 
     @Test
     public void createWarrantyTest() throws Exception {
-        instructBackendMock("createWarranty", "201");
+        instructBackendMock("Messaging", "createWarranty", "201");
         CreateWarrantyRequest body = easyRandom.nextObject(CreateWarrantyRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -214,7 +214,7 @@ public class MessagingApiTest {
 
     @Test
     public void getAttributesTest() throws Exception {
-        instructBackendMock("getAttributes", "200");
+        instructBackendMock("Messaging", "getAttributes", "200");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -226,7 +226,7 @@ public class MessagingApiTest {
 
     @Test
     public void getMessagingActionsForOrderTest() throws Exception {
-        instructBackendMock("getMessagingActionsForOrder", "200");
+        instructBackendMock("Messaging", "getMessagingActionsForOrder", "200");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -239,7 +239,7 @@ public class MessagingApiTest {
 
     @Test
     public void sendInvoiceTest() throws Exception {
-        instructBackendMock("sendInvoice", "201");
+        instructBackendMock("Messaging", "sendInvoice", "201");
         InvoiceRequest body = easyRandom.nextObject(InvoiceRequest.class);
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -250,9 +250,10 @@ public class MessagingApiTest {
         assertValidResponsePayload(201, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

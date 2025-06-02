@@ -51,7 +51,7 @@ public class VehiclesApiTest {
 
     @Test
     public void getVehiclesTest() throws Exception {
-        instructBackendMock("getVehicles", "200");
+        instructBackendMock("Vehicles", "getVehicles", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String vehicleType = easyRandom.nextObject(String.class);
 
@@ -61,9 +61,10 @@ public class VehiclesApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

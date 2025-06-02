@@ -60,7 +60,7 @@ public class NotificationsApiTest {
 
     @Test
     public void createDestinationTest() throws Exception {
-        instructBackendMock("createDestination", "200");
+        instructBackendMock("Notifications", "createDestination", "200");
         CreateDestinationRequest body = easyRandom.nextObject(CreateDestinationRequest.class);
 
         ApiResponse<CreateDestinationResponse> response = api.createDestinationWithHttpInfo(body);
@@ -71,7 +71,7 @@ public class NotificationsApiTest {
 
     @Test
     public void createSubscriptionTest() throws Exception {
-        instructBackendMock("createSubscription", "200");
+        instructBackendMock("Notifications", "createSubscription", "200");
         CreateSubscriptionRequest body = easyRandom.nextObject(CreateSubscriptionRequest.class);
         String notificationType = easyRandom.nextObject(String.class);
 
@@ -83,7 +83,7 @@ public class NotificationsApiTest {
 
     @Test
     public void deleteDestinationTest() throws Exception {
-        instructBackendMock("deleteDestination", "200");
+        instructBackendMock("Notifications", "deleteDestination", "200");
         String destinationId = easyRandom.nextObject(String.class);
 
         ApiResponse<DeleteDestinationResponse> response = api.deleteDestinationWithHttpInfo(destinationId);
@@ -94,7 +94,7 @@ public class NotificationsApiTest {
 
     @Test
     public void deleteSubscriptionByIdTest() throws Exception {
-        instructBackendMock("deleteSubscriptionById", "200");
+        instructBackendMock("Notifications", "deleteSubscriptionById", "200");
         String subscriptionId = easyRandom.nextObject(String.class);
         String notificationType = easyRandom.nextObject(String.class);
 
@@ -107,7 +107,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getDestinationTest() throws Exception {
-        instructBackendMock("getDestination", "200");
+        instructBackendMock("Notifications", "getDestination", "200");
         String destinationId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetDestinationResponse> response = api.getDestinationWithHttpInfo(destinationId);
@@ -118,7 +118,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getDestinationsTest() throws Exception {
-        instructBackendMock("getDestinations", "200");
+        instructBackendMock("Notifications", "getDestinations", "200");
 
         ApiResponse<GetDestinationsResponse> response = api.getDestinationsWithHttpInfo();
 
@@ -128,7 +128,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getSubscriptionTest() throws Exception {
-        instructBackendMock("getSubscription", "200");
+        instructBackendMock("Notifications", "getSubscription", "200");
         String notificationType = easyRandom.nextObject(String.class);
 
         ApiResponse<GetSubscriptionResponse> response = api.getSubscriptionWithHttpInfo(notificationType, null);
@@ -139,7 +139,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getSubscriptionByIdTest() throws Exception {
-        instructBackendMock("getSubscriptionById", "200");
+        instructBackendMock("Notifications", "getSubscriptionById", "200");
         String subscriptionId = easyRandom.nextObject(String.class);
         String notificationType = easyRandom.nextObject(String.class);
 
@@ -150,9 +150,10 @@ public class NotificationsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

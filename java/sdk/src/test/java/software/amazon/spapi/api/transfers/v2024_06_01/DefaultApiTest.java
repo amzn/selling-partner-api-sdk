@@ -53,7 +53,7 @@ public class DefaultApiTest {
 
     @Test
     public void getPaymentMethodsTest() throws Exception {
-        instructBackendMock("getPaymentMethods", "200");
+        instructBackendMock("Default", "getPaymentMethods", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetPaymentMethodsResponse> response = api.getPaymentMethodsWithHttpInfo(marketplaceId, null);
@@ -64,7 +64,7 @@ public class DefaultApiTest {
 
     @Test
     public void initiatePayoutTest() throws Exception {
-        instructBackendMock("initiatePayout", "200");
+        instructBackendMock("Default", "initiatePayout", "200");
         InitiatePayoutRequest body = easyRandom.nextObject(InitiatePayoutRequest.class);
 
         ApiResponse<InitiatePayoutResponse> response = api.initiatePayoutWithHttpInfo(body);
@@ -73,9 +73,10 @@ public class DefaultApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

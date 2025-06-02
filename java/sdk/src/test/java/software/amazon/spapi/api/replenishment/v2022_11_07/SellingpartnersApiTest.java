@@ -51,7 +51,7 @@ public class SellingpartnersApiTest {
 
     @Test
     public void getSellingPartnerMetricsTest() throws Exception {
-        instructBackendMock("getSellingPartnerMetrics", "200");
+        instructBackendMock("Sellingpartners", "getSellingPartnerMetrics", "200");
 
         ApiResponse<GetSellingPartnerMetricsResponse> response = api.getSellingPartnerMetricsWithHttpInfo(null);
 
@@ -59,9 +59,10 @@ public class SellingpartnersApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

@@ -52,7 +52,7 @@ public class TransferPreviewApiTest {
 
     @Test
     public void getTransferPreviewTest() throws Exception {
-        instructBackendMock("getTransferPreview", "200");
+        instructBackendMock("TransferPreview", "getTransferPreview", "200");
         String sourceCountryCode = easyRandom.nextObject(String.class);
         String sourceCurrencyCode = easyRandom.nextObject(String.class);
         String destinationCountryCode = easyRandom.nextObject(String.class);
@@ -66,9 +66,10 @@ public class TransferPreviewApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

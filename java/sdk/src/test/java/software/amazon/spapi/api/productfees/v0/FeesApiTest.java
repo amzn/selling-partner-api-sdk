@@ -55,7 +55,7 @@ public class FeesApiTest {
 
     @Test
     public void getMyFeesEstimateForASINTest() throws Exception {
-        instructBackendMock("getMyFeesEstimateForASIN", "200");
+        instructBackendMock("Fees", "getMyFeesEstimateForASIN", "200");
         GetMyFeesEstimateRequest body = easyRandom.nextObject(GetMyFeesEstimateRequest.class);
         String asin = easyRandom.nextObject(String.class);
 
@@ -67,7 +67,7 @@ public class FeesApiTest {
 
     @Test
     public void getMyFeesEstimateForSKUTest() throws Exception {
-        instructBackendMock("getMyFeesEstimateForSKU", "200");
+        instructBackendMock("Fees", "getMyFeesEstimateForSKU", "200");
         GetMyFeesEstimateRequest body = easyRandom.nextObject(GetMyFeesEstimateRequest.class);
         String sellerSKU = easyRandom.nextObject(String.class);
 
@@ -79,7 +79,7 @@ public class FeesApiTest {
 
     @Test
     public void getMyFeesEstimatesTest() throws Exception {
-        instructBackendMock("getMyFeesEstimates", "200");
+        instructBackendMock("Fees", "getMyFeesEstimates", "200");
         List<FeesEstimateByIdRequest> body =
                 easyRandom.objects(FeesEstimateByIdRequest.class, 2).collect(Collectors.toList());
 
@@ -89,9 +89,10 @@ public class FeesApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

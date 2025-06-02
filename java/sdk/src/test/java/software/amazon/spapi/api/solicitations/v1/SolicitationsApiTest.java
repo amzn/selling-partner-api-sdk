@@ -53,7 +53,7 @@ public class SolicitationsApiTest {
 
     @Test
     public void createProductReviewAndSellerFeedbackSolicitationTest() throws Exception {
-        instructBackendMock("createProductReviewAndSellerFeedbackSolicitation", "201");
+        instructBackendMock("Solicitations", "createProductReviewAndSellerFeedbackSolicitation", "201");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -66,7 +66,7 @@ public class SolicitationsApiTest {
 
     @Test
     public void getSolicitationActionsForOrderTest() throws Exception {
-        instructBackendMock("getSolicitationActionsForOrder", "200");
+        instructBackendMock("Solicitations", "getSolicitationActionsForOrder", "200");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -77,9 +77,10 @@ public class SolicitationsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

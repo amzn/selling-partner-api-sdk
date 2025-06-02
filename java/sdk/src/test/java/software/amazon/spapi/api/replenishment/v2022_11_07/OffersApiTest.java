@@ -52,7 +52,7 @@ public class OffersApiTest {
 
     @Test
     public void listOfferMetricsTest() throws Exception {
-        instructBackendMock("listOfferMetrics", "200");
+        instructBackendMock("Offers", "listOfferMetrics", "200");
 
         ApiResponse<ListOfferMetricsResponse> response = api.listOfferMetricsWithHttpInfo(null);
 
@@ -62,7 +62,7 @@ public class OffersApiTest {
 
     @Test
     public void listOffersTest() throws Exception {
-        instructBackendMock("listOffers", "200");
+        instructBackendMock("Offers", "listOffers", "200");
 
         ApiResponse<ListOffersResponse> response = api.listOffersWithHttpInfo(null);
 
@@ -70,9 +70,10 @@ public class OffersApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

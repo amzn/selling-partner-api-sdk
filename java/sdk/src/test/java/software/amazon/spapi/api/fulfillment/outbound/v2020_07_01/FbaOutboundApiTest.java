@@ -70,7 +70,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void cancelFulfillmentOrderTest() throws Exception {
-        instructBackendMock("cancelFulfillmentOrder", "200");
+        instructBackendMock("FbaOutbound", "cancelFulfillmentOrder", "200");
         String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelFulfillmentOrderResponse> response =
@@ -82,7 +82,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void createFulfillmentOrderTest() throws Exception {
-        instructBackendMock("createFulfillmentOrder", "200");
+        instructBackendMock("FbaOutbound", "createFulfillmentOrder", "200");
         CreateFulfillmentOrderRequest body = easyRandom.nextObject(CreateFulfillmentOrderRequest.class);
 
         ApiResponse<CreateFulfillmentOrderResponse> response = api.createFulfillmentOrderWithHttpInfo(body);
@@ -93,7 +93,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void createFulfillmentReturnTest() throws Exception {
-        instructBackendMock("createFulfillmentReturn", "200");
+        instructBackendMock("FbaOutbound", "createFulfillmentReturn", "200");
         CreateFulfillmentReturnRequest body = easyRandom.nextObject(CreateFulfillmentReturnRequest.class);
         String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
@@ -106,7 +106,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void deliveryOffersTest() throws Exception {
-        instructBackendMock("deliveryOffers", "200");
+        instructBackendMock("FbaOutbound", "deliveryOffers", "200");
         GetDeliveryOffersRequest body = easyRandom.nextObject(GetDeliveryOffersRequest.class);
 
         ApiResponse<GetDeliveryOffersResponse> response = api.deliveryOffersWithHttpInfo(body);
@@ -117,7 +117,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void getFeatureInventoryTest() throws Exception {
-        instructBackendMock("getFeatureInventory", "200");
+        instructBackendMock("FbaOutbound", "getFeatureInventory", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String featureName = easyRandom.nextObject(String.class);
 
@@ -130,7 +130,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void getFeatureSKUTest() throws Exception {
-        instructBackendMock("getFeatureSKU", "200");
+        instructBackendMock("FbaOutbound", "getFeatureSKU", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String featureName = easyRandom.nextObject(String.class);
         String sellerSku = easyRandom.nextObject(String.class);
@@ -144,7 +144,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void getFeaturesTest() throws Exception {
-        instructBackendMock("getFeatures", "200");
+        instructBackendMock("FbaOutbound", "getFeatures", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetFeaturesResponse> response = api.getFeaturesWithHttpInfo(marketplaceId);
@@ -155,7 +155,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void getFulfillmentOrderTest() throws Exception {
-        instructBackendMock("getFulfillmentOrder", "200");
+        instructBackendMock("FbaOutbound", "getFulfillmentOrder", "200");
         String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetFulfillmentOrderResponse> response =
@@ -167,7 +167,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void getFulfillmentPreviewTest() throws Exception {
-        instructBackendMock("getFulfillmentPreview", "200");
+        instructBackendMock("FbaOutbound", "getFulfillmentPreview", "200");
         GetFulfillmentPreviewRequest body = easyRandom.nextObject(GetFulfillmentPreviewRequest.class);
 
         ApiResponse<GetFulfillmentPreviewResponse> response = api.getFulfillmentPreviewWithHttpInfo(body);
@@ -178,7 +178,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void getPackageTrackingDetailsTest() throws Exception {
-        instructBackendMock("getPackageTrackingDetails", "200");
+        instructBackendMock("FbaOutbound", "getPackageTrackingDetails", "200");
         Integer packageNumber = easyRandom.nextObject(Integer.class);
 
         ApiResponse<GetPackageTrackingDetailsResponse> response =
@@ -190,7 +190,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void listAllFulfillmentOrdersTest() throws Exception {
-        instructBackendMock("listAllFulfillmentOrders", "200");
+        instructBackendMock("FbaOutbound", "listAllFulfillmentOrders", "200");
 
         ApiResponse<ListAllFulfillmentOrdersResponse> response = api.listAllFulfillmentOrdersWithHttpInfo(null, null);
 
@@ -200,7 +200,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void listReturnReasonCodesTest() throws Exception {
-        instructBackendMock("listReturnReasonCodes", "200");
+        instructBackendMock("FbaOutbound", "listReturnReasonCodes", "200");
         String sellerSku = easyRandom.nextObject(String.class);
 
         ApiResponse<ListReturnReasonCodesResponse> response =
@@ -212,7 +212,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void submitFulfillmentOrderStatusUpdateTest() throws Exception {
-        instructBackendMock("submitFulfillmentOrderStatusUpdate", "200");
+        instructBackendMock("FbaOutbound", "submitFulfillmentOrderStatusUpdate", "200");
         SubmitFulfillmentOrderStatusUpdateRequest body =
                 easyRandom.nextObject(SubmitFulfillmentOrderStatusUpdateRequest.class);
         String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
@@ -226,7 +226,7 @@ public class FbaOutboundApiTest {
 
     @Test
     public void updateFulfillmentOrderTest() throws Exception {
-        instructBackendMock("updateFulfillmentOrder", "200");
+        instructBackendMock("FbaOutbound", "updateFulfillmentOrder", "200");
         UpdateFulfillmentOrderRequest body = easyRandom.nextObject(UpdateFulfillmentOrderRequest.class);
         String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
@@ -237,9 +237,10 @@ public class FbaOutboundApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

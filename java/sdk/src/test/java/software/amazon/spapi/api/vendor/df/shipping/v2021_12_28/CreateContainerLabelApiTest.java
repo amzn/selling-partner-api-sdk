@@ -52,7 +52,7 @@ public class CreateContainerLabelApiTest {
 
     @Test
     public void createContainerLabelTest() throws Exception {
-        instructBackendMock("createContainerLabel", "200");
+        instructBackendMock("CreateContainerLabel", "createContainerLabel", "200");
         CreateContainerLabelRequest body = easyRandom.nextObject(CreateContainerLabelRequest.class);
 
         ApiResponse<CreateContainerLabelResponse> response = api.createContainerLabelWithHttpInfo(body);
@@ -61,9 +61,10 @@ public class CreateContainerLabelApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

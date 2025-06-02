@@ -52,7 +52,7 @@ public class ListingsApiTest {
 
     @Test
     public void getListingsRestrictionsTest() throws Exception {
-        instructBackendMock("getListingsRestrictions", "200");
+        instructBackendMock("Listings", "getListingsRestrictions", "200");
         String asin = easyRandom.nextObject(String.class);
         String sellerId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -64,9 +64,10 @@ public class ListingsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

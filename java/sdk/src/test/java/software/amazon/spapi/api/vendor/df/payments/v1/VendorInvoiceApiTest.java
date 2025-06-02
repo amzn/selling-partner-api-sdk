@@ -52,7 +52,7 @@ public class VendorInvoiceApiTest {
 
     @Test
     public void submitInvoiceTest() throws Exception {
-        instructBackendMock("submitInvoice", "202");
+        instructBackendMock("VendorInvoice", "submitInvoice", "202");
         SubmitInvoiceRequest body = easyRandom.nextObject(SubmitInvoiceRequest.class);
 
         ApiResponse<SubmitInvoiceResponse> response = api.submitInvoiceWithHttpInfo(body);
@@ -61,9 +61,10 @@ public class VendorInvoiceApiTest {
         assertValidResponsePayload(202, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

@@ -55,7 +55,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void createShippingLabelsTest() throws Exception {
-        instructBackendMock("createShippingLabels", "200");
+        instructBackendMock("VendorShippingLabels", "createShippingLabels", "200");
         CreateShippingLabelsRequest body = easyRandom.nextObject(CreateShippingLabelsRequest.class);
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
@@ -67,7 +67,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void getShippingLabelTest() throws Exception {
-        instructBackendMock("getShippingLabel", "200");
+        instructBackendMock("VendorShippingLabels", "getShippingLabel", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<ShippingLabel> response = api.getShippingLabelWithHttpInfo(purchaseOrderNumber);
@@ -78,7 +78,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void getShippingLabelsTest() throws Exception {
-        instructBackendMock("getShippingLabels", "200");
+        instructBackendMock("VendorShippingLabels", "getShippingLabels", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
@@ -91,7 +91,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void submitShippingLabelRequestTest() throws Exception {
-        instructBackendMock("submitShippingLabelRequest", "202");
+        instructBackendMock("VendorShippingLabels", "submitShippingLabelRequest", "202");
         SubmitShippingLabelsRequest body = easyRandom.nextObject(SubmitShippingLabelsRequest.class);
 
         ApiResponse<TransactionReference> response = api.submitShippingLabelRequestWithHttpInfo(body);
@@ -100,9 +100,10 @@ public class VendorShippingLabelsApiTest {
         assertValidResponsePayload(202, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

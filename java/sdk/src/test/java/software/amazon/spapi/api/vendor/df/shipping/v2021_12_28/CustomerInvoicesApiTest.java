@@ -52,7 +52,7 @@ public class CustomerInvoicesApiTest {
 
     @Test
     public void getCustomerInvoiceTest() throws Exception {
-        instructBackendMock("getCustomerInvoice", "200");
+        instructBackendMock("CustomerInvoices", "getCustomerInvoice", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<CustomerInvoice> response = api.getCustomerInvoiceWithHttpInfo(purchaseOrderNumber);
@@ -63,7 +63,7 @@ public class CustomerInvoicesApiTest {
 
     @Test
     public void getCustomerInvoicesTest() throws Exception {
-        instructBackendMock("getCustomerInvoices", "200");
+        instructBackendMock("CustomerInvoices", "getCustomerInvoices", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
@@ -74,9 +74,10 @@ public class CustomerInvoicesApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

@@ -54,7 +54,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getCompetitiveSummaryTest() throws Exception {
-        instructBackendMock("getCompetitiveSummary", "200");
+        instructBackendMock("ProductPricing", "getCompetitiveSummary", "200");
         CompetitiveSummaryBatchRequest body = easyRandom.nextObject(CompetitiveSummaryBatchRequest.class);
 
         ApiResponse<CompetitiveSummaryBatchResponse> response = api.getCompetitiveSummaryWithHttpInfo(body);
@@ -65,7 +65,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getFeaturedOfferExpectedPriceBatchTest() throws Exception {
-        instructBackendMock("getFeaturedOfferExpectedPriceBatch", "200");
+        instructBackendMock("ProductPricing", "getFeaturedOfferExpectedPriceBatch", "200");
         GetFeaturedOfferExpectedPriceBatchRequest body =
                 easyRandom.nextObject(GetFeaturedOfferExpectedPriceBatchRequest.class);
 
@@ -76,9 +76,10 @@ public class ProductPricingApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

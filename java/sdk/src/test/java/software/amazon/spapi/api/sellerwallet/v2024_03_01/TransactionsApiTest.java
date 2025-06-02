@@ -53,7 +53,7 @@ public class TransactionsApiTest {
 
     @Test
     public void createTransactionTest() throws Exception {
-        instructBackendMock("createTransaction", "200");
+        instructBackendMock("Transactions", "createTransaction", "200");
         TransactionInitiationRequest body = easyRandom.nextObject(TransactionInitiationRequest.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
@@ -67,7 +67,7 @@ public class TransactionsApiTest {
 
     @Test
     public void getTransactionTest() throws Exception {
-        instructBackendMock("getTransaction", "200");
+        instructBackendMock("Transactions", "getTransaction", "200");
         String transactionId = easyRandom.nextObject(String.class);
 
         ApiResponse<Transaction> response = api.getTransactionWithHttpInfo(transactionId);
@@ -78,7 +78,7 @@ public class TransactionsApiTest {
 
     @Test
     public void listAccountTransactionsTest() throws Exception {
-        instructBackendMock("listAccountTransactions", "200");
+        instructBackendMock("Transactions", "listAccountTransactions", "200");
         String accountId = easyRandom.nextObject(String.class);
 
         ApiResponse<TransactionListing> response = api.listAccountTransactionsWithHttpInfo(accountId, null);
@@ -87,9 +87,10 @@ public class TransactionsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

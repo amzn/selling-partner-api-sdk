@@ -56,7 +56,7 @@ public class ListingsApiTest {
 
     @Test
     public void deleteListingsItemTest() throws Exception {
-        instructBackendMock("deleteListingsItem", "200");
+        instructBackendMock("Listings", "deleteListingsItem", "200");
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -70,7 +70,7 @@ public class ListingsApiTest {
 
     @Test
     public void getListingsItemTest() throws Exception {
-        instructBackendMock("getListingsItem", "200");
+        instructBackendMock("Listings", "getListingsItem", "200");
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -83,7 +83,7 @@ public class ListingsApiTest {
 
     @Test
     public void patchListingsItemTest() throws Exception {
-        instructBackendMock("patchListingsItem", "200");
+        instructBackendMock("Listings", "patchListingsItem", "200");
         ListingsItemPatchRequest body = easyRandom.nextObject(ListingsItemPatchRequest.class);
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
@@ -98,7 +98,7 @@ public class ListingsApiTest {
 
     @Test
     public void putListingsItemTest() throws Exception {
-        instructBackendMock("putListingsItem", "200");
+        instructBackendMock("Listings", "putListingsItem", "200");
         ListingsItemPutRequest body = easyRandom.nextObject(ListingsItemPutRequest.class);
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
@@ -113,7 +113,7 @@ public class ListingsApiTest {
 
     @Test
     public void searchListingsItemsTest() throws Exception {
-        instructBackendMock("searchListingsItems", "200");
+        instructBackendMock("Listings", "searchListingsItems", "200");
         String sellerId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -142,9 +142,10 @@ public class ListingsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

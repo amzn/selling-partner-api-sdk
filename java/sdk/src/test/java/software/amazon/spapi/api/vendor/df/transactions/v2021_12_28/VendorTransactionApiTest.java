@@ -51,7 +51,7 @@ public class VendorTransactionApiTest {
 
     @Test
     public void getTransactionStatusTest() throws Exception {
-        instructBackendMock("getTransactionStatus", "200");
+        instructBackendMock("VendorTransaction", "getTransactionStatus", "200");
         String transactionId = easyRandom.nextObject(String.class);
 
         ApiResponse<TransactionStatus> response = api.getTransactionStatusWithHttpInfo(transactionId);
@@ -60,9 +60,10 @@ public class VendorTransactionApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

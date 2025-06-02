@@ -53,7 +53,7 @@ public class DefinitionsApiTest {
 
     @Test
     public void getDefinitionsProductTypeTest() throws Exception {
-        instructBackendMock("getDefinitionsProductType", "200");
+        instructBackendMock("Definitions", "getDefinitionsProductType", "200");
         String productType = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -66,7 +66,7 @@ public class DefinitionsApiTest {
 
     @Test
     public void searchDefinitionsProductTypesTest() throws Exception {
-        instructBackendMock("searchDefinitionsProductTypes", "200");
+        instructBackendMock("Definitions", "searchDefinitionsProductTypes", "200");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ProductTypeList> response =
@@ -76,9 +76,10 @@ public class DefinitionsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

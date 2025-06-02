@@ -57,7 +57,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void addInventoryTest() throws Exception {
-        instructBackendMock("addInventory", "200");
+        instructBackendMock("FbaInventory", "addInventory", "200");
         AddInventoryRequest body = easyRandom.nextObject(AddInventoryRequest.class);
         String xAmznIdempotencyToken = easyRandom.nextObject(String.class);
 
@@ -69,7 +69,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void createInventoryItemTest() throws Exception {
-        instructBackendMock("createInventoryItem", "200");
+        instructBackendMock("FbaInventory", "createInventoryItem", "200");
         CreateInventoryItemRequest body = easyRandom.nextObject(CreateInventoryItemRequest.class);
 
         ApiResponse<CreateInventoryItemResponse> response = api.createInventoryItemWithHttpInfo(body);
@@ -80,7 +80,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void deleteInventoryItemTest() throws Exception {
-        instructBackendMock("deleteInventoryItem", "200");
+        instructBackendMock("FbaInventory", "deleteInventoryItem", "200");
         String sellerSku = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -93,7 +93,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void getInventorySummariesTest() throws Exception {
-        instructBackendMock("getInventorySummaries", "200");
+        instructBackendMock("FbaInventory", "getInventorySummaries", "200");
         String granularityType = easyRandom.nextObject(String.class);
         String granularityId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -105,9 +105,10 @@ public class FbaInventoryApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

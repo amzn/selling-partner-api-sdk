@@ -54,7 +54,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getOrderTest() throws Exception {
-        instructBackendMock("getOrder", "200");
+        instructBackendMock("VendorOrders", "getOrder", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<Order> response = api.getOrderWithHttpInfo(purchaseOrderNumber);
@@ -65,7 +65,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getOrdersTest() throws Exception {
-        instructBackendMock("getOrders", "200");
+        instructBackendMock("VendorOrders", "getOrders", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
@@ -78,7 +78,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void submitAcknowledgementTest() throws Exception {
-        instructBackendMock("submitAcknowledgement", "202");
+        instructBackendMock("VendorOrders", "submitAcknowledgement", "202");
         SubmitAcknowledgementRequest body = easyRandom.nextObject(SubmitAcknowledgementRequest.class);
 
         ApiResponse<TransactionId> response = api.submitAcknowledgementWithHttpInfo(body);
@@ -87,9 +87,10 @@ public class VendorOrdersApiTest {
         assertValidResponsePayload(202, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

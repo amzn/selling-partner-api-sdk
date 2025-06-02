@@ -58,7 +58,7 @@ public class MerchantFulfillmentApiTest {
 
     @Test
     public void cancelShipmentTest() throws Exception {
-        instructBackendMock("cancelShipment", "200");
+        instructBackendMock("MerchantFulfillment", "cancelShipment", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelShipmentResponse> response = api.cancelShipmentWithHttpInfo(shipmentId);
@@ -69,7 +69,7 @@ public class MerchantFulfillmentApiTest {
 
     @Test
     public void createShipmentTest() throws Exception {
-        instructBackendMock("createShipment", "200");
+        instructBackendMock("MerchantFulfillment", "createShipment", "200");
         CreateShipmentRequest body = easyRandom.nextObject(CreateShipmentRequest.class);
 
         ApiResponse<CreateShipmentResponse> response = api.createShipmentWithHttpInfo(body);
@@ -80,7 +80,7 @@ public class MerchantFulfillmentApiTest {
 
     @Test
     public void getAdditionalSellerInputsTest() throws Exception {
-        instructBackendMock("getAdditionalSellerInputs", "200");
+        instructBackendMock("MerchantFulfillment", "getAdditionalSellerInputs", "200");
         GetAdditionalSellerInputsRequest body = easyRandom.nextObject(GetAdditionalSellerInputsRequest.class);
 
         ApiResponse<GetAdditionalSellerInputsResponse> response = api.getAdditionalSellerInputsWithHttpInfo(body);
@@ -91,7 +91,7 @@ public class MerchantFulfillmentApiTest {
 
     @Test
     public void getEligibleShipmentServicesTest() throws Exception {
-        instructBackendMock("getEligibleShipmentServices", "200");
+        instructBackendMock("MerchantFulfillment", "getEligibleShipmentServices", "200");
         GetEligibleShipmentServicesRequest body = easyRandom.nextObject(GetEligibleShipmentServicesRequest.class);
 
         ApiResponse<GetEligibleShipmentServicesResponse> response = api.getEligibleShipmentServicesWithHttpInfo(body);
@@ -102,7 +102,7 @@ public class MerchantFulfillmentApiTest {
 
     @Test
     public void getShipmentTest() throws Exception {
-        instructBackendMock("getShipment", "200");
+        instructBackendMock("MerchantFulfillment", "getShipment", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetShipmentResponse> response = api.getShipmentWithHttpInfo(shipmentId);
@@ -111,9 +111,10 @@ public class MerchantFulfillmentApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

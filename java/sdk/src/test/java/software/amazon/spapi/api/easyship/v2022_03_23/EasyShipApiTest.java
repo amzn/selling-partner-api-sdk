@@ -56,7 +56,7 @@ public class EasyShipApiTest {
 
     @Test
     public void createScheduledPackageTest() throws Exception {
-        instructBackendMock("createScheduledPackage", "200");
+        instructBackendMock("EasyShip", "createScheduledPackage", "200");
         CreateScheduledPackageRequest body = easyRandom.nextObject(CreateScheduledPackageRequest.class);
 
         ApiResponse<ModelPackage> response = api.createScheduledPackageWithHttpInfo(body);
@@ -67,7 +67,7 @@ public class EasyShipApiTest {
 
     @Test
     public void createScheduledPackageBulkTest() throws Exception {
-        instructBackendMock("createScheduledPackageBulk", "200");
+        instructBackendMock("EasyShip", "createScheduledPackageBulk", "200");
         CreateScheduledPackagesRequest body = easyRandom.nextObject(CreateScheduledPackagesRequest.class);
 
         ApiResponse<CreateScheduledPackagesResponse> response = api.createScheduledPackageBulkWithHttpInfo(body);
@@ -78,7 +78,7 @@ public class EasyShipApiTest {
 
     @Test
     public void getScheduledPackageTest() throws Exception {
-        instructBackendMock("getScheduledPackage", "200");
+        instructBackendMock("EasyShip", "getScheduledPackage", "200");
         String amazonOrderId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -90,7 +90,7 @@ public class EasyShipApiTest {
 
     @Test
     public void listHandoverSlotsTest() throws Exception {
-        instructBackendMock("listHandoverSlots", "200");
+        instructBackendMock("EasyShip", "listHandoverSlots", "200");
 
         ApiResponse<ListHandoverSlotsResponse> response = api.listHandoverSlotsWithHttpInfo(null);
 
@@ -100,7 +100,7 @@ public class EasyShipApiTest {
 
     @Test
     public void updateScheduledPackagesTest() throws Exception {
-        instructBackendMock("updateScheduledPackages", "200");
+        instructBackendMock("EasyShip", "updateScheduledPackages", "200");
 
         ApiResponse<Packages> response = api.updateScheduledPackagesWithHttpInfo(null);
 
@@ -108,9 +108,10 @@ public class EasyShipApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

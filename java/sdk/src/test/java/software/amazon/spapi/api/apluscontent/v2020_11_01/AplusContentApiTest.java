@@ -62,7 +62,7 @@ public class AplusContentApiTest {
 
     @Test
     public void createContentDocumentTest() throws Exception {
-        instructBackendMock("createContentDocument", "200");
+        instructBackendMock("AplusContent", "createContentDocument", "200");
         PostContentDocumentRequest body = easyRandom.nextObject(PostContentDocumentRequest.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -74,7 +74,7 @@ public class AplusContentApiTest {
 
     @Test
     public void getContentDocumentTest() throws Exception {
-        instructBackendMock("getContentDocument", "200");
+        instructBackendMock("AplusContent", "getContentDocument", "200");
         String contentReferenceKey = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
         List<String> includedDataSet = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -88,7 +88,7 @@ public class AplusContentApiTest {
 
     @Test
     public void listContentDocumentAsinRelationsTest() throws Exception {
-        instructBackendMock("listContentDocumentAsinRelations", "200");
+        instructBackendMock("AplusContent", "listContentDocumentAsinRelations", "200");
         String contentReferenceKey = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -101,7 +101,7 @@ public class AplusContentApiTest {
 
     @Test
     public void postContentDocumentApprovalSubmissionTest() throws Exception {
-        instructBackendMock("postContentDocumentApprovalSubmission", "200");
+        instructBackendMock("AplusContent", "postContentDocumentApprovalSubmission", "200");
         String contentReferenceKey = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -114,7 +114,7 @@ public class AplusContentApiTest {
 
     @Test
     public void postContentDocumentAsinRelationsTest() throws Exception {
-        instructBackendMock("postContentDocumentAsinRelations", "200");
+        instructBackendMock("AplusContent", "postContentDocumentAsinRelations", "200");
         PostContentDocumentAsinRelationsRequest body =
                 easyRandom.nextObject(PostContentDocumentAsinRelationsRequest.class);
         String contentReferenceKey = easyRandom.nextObject(String.class);
@@ -129,7 +129,7 @@ public class AplusContentApiTest {
 
     @Test
     public void postContentDocumentSuspendSubmissionTest() throws Exception {
-        instructBackendMock("postContentDocumentSuspendSubmission", "200");
+        instructBackendMock("AplusContent", "postContentDocumentSuspendSubmission", "200");
         String contentReferenceKey = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -142,7 +142,7 @@ public class AplusContentApiTest {
 
     @Test
     public void searchContentDocumentsTest() throws Exception {
-        instructBackendMock("searchContentDocuments", "200");
+        instructBackendMock("AplusContent", "searchContentDocuments", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<SearchContentDocumentsResponse> response =
@@ -154,7 +154,7 @@ public class AplusContentApiTest {
 
     @Test
     public void searchContentPublishRecordsTest() throws Exception {
-        instructBackendMock("searchContentPublishRecords", "200");
+        instructBackendMock("AplusContent", "searchContentPublishRecords", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String asin = easyRandom.nextObject(String.class);
 
@@ -167,7 +167,7 @@ public class AplusContentApiTest {
 
     @Test
     public void updateContentDocumentTest() throws Exception {
-        instructBackendMock("updateContentDocument", "200");
+        instructBackendMock("AplusContent", "updateContentDocument", "200");
         PostContentDocumentRequest body = easyRandom.nextObject(PostContentDocumentRequest.class);
         String contentReferenceKey = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
@@ -181,7 +181,7 @@ public class AplusContentApiTest {
 
     @Test
     public void validateContentDocumentAsinRelationsTest() throws Exception {
-        instructBackendMock("validateContentDocumentAsinRelations", "200");
+        instructBackendMock("AplusContent", "validateContentDocumentAsinRelations", "200");
         PostContentDocumentRequest body = easyRandom.nextObject(PostContentDocumentRequest.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -192,9 +192,10 @@ public class AplusContentApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
