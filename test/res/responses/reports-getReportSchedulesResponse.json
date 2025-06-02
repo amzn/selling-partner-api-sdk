@@ -1,0 +1,1 @@
+{"reportSchedules":[{"reportType":"FEE_DISCOUNTS_REPORT","marketplaceIds":["ATVPDKIKX0DER"],"reportScheduleId":"ID1","period":"PT5M","nextReportCreationTime":"2024-03-11T15:03:44.973Z"},{"reportType":"GET_FBA_FULFILLMENT_CUSTOMER_TAXES_DATA","reportScheduleId":"ID2","period":"PT5M","nextReportCreationTime":"2024-03-11T15:03:44.973Z"}]}
