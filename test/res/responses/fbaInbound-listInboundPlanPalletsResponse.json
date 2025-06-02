@@ -1,0 +1,1 @@
+{"pallets":[{"stackability":"STACKABLE","packageId":"pk1234abcd-1234-abcd-5678-1234abcd5678","weight":{"unit":"KG","value":5.5},"dimensions":{"unitOfMeasurement":"CM","length":3,"width":4,"height":5},"quantity":2}],"pagination":{"nextToken":"nextPaginationToken"}}

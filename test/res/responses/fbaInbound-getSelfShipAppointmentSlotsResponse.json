@@ -1,0 +1,1 @@
+{"selfShipAppointmentSlotsAvailability":{"expiresAt":"2024-01-02T00:00:00.000Z","slots":[{"slotId":"aa1234abcd-1234-abcd-5678-1234abcd5678","slotTime":{"startTime":"2024-01-01T00:00:00.000Z","endTime":"2024-01-02T00:00:00.000Z"}}]},"pagination":{"nextToken":"nextPaginationToken"}}

@@ -1,0 +1,1 @@
+{"invoicesAttributes":{"invoiceStatusOptions":[{"description":"The government authorized the invoice.","value":"AUTHORIZED"},{"description":"The government rejected the invoice.","value":"REJECTED"},{"description":"The invoice is canceled.","value":"CANCELED"}],"invoiceTypeOptions":[],"transactionIdentifierNameOptions":[],"transactionTypeOptions":[]}}

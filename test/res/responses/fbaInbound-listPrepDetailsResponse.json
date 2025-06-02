@@ -1,0 +1,1 @@
+{"mskuPrepDetails":[{"msku":"msku1","prepCategory":"TEXTILE","prepTypes":["ITEM_LABELING","ITEM_POLYBAGGING"],"prepOwnerConstraint":"AMAZON_ONLY","labelOwnerConstraint":"AMAZON_ONLY","allOwnersConstraint":"MUST_MATCH"},{"msku":"msku2","prepCategory":"FRAGILE","prepTypes":["ITEM_LABELING","ITEM_BUBBLEWRAP"],"allOwnersConstraint":"MUST_MATCH"}]}
