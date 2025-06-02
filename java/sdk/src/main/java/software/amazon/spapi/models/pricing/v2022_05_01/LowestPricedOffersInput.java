@@ -33,8 +33,8 @@ public class LowestPricedOffersInput {
      */
     @JsonAdapter(OfferTypeEnum.Adapter.class)
     public enum OfferTypeEnum {
-        @SerializedName("CONSUMER")
-        CONSUMER("CONSUMER");
+        @SerializedName("Consumer")
+        CONSUMER("Consumer");
 
         private String value;
 

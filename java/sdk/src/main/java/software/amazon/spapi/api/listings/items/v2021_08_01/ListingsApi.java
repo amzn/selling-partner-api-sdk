@@ -345,15 +345,13 @@ public class ListingsApi {
     }
 
     /**
-     * Returns details about a listings item for a selling partner. **Note:** The parameters associated with this
-     * operation may contain special characters that must be encoded to successfully call the API. To avoid errors with
-     * SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns details about a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput can
+     * receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param sku A selling partner provided identifier for an Amazon listing. (required)
@@ -375,15 +373,13 @@ public class ListingsApi {
     }
 
     /**
-     * Returns details about a listings item for a selling partner. **Note:** The parameters associated with this
-     * operation may contain special characters that must be encoded to successfully call the API. To avoid errors with
-     * SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns details about a listings item for a selling partner. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput can
+     * receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param sku A selling partner provided identifier for an Amazon listing. (required)
@@ -409,16 +405,14 @@ public class ListingsApi {
     }
 
     /**
-     * (asynchronously) Returns details about a listings item for a selling partner. **Note:** The parameters associated
-     * with this operation may contain special characters that must be encoded to successfully call the API. To avoid
-     * errors with SKUs when encoding URLs, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
-     * Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Returns details about a listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput can receive higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
      * @param sku A selling partner provided identifier for an Amazon listing. (required)
@@ -561,7 +555,7 @@ public class ListingsApi {
      * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
      * that were applied to the requested operation, when available. The preceding table indicates the default rate and
      * burst values for this operation. Selling partners whose business demands require higher throughput can receive
-     * higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
      * Partner API documentation.
      *
@@ -599,7 +593,7 @@ public class ListingsApi {
      * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
      * that were applied to the requested operation, when available. The preceding table indicates the default rate and
      * burst values for this operation. Selling partners whose business demands require higher throughput can receive
-     * higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
      * Partner API documentation.
      *
@@ -640,7 +634,7 @@ public class ListingsApi {
      * second) | Burst | | ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
      * usage plan rate limits that were applied to the requested operation, when available. The preceding table
      * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput can receive higher rate and burst values then those shown here. For more information, refer to
+     * higher throughput can receive higher rate and burst values than those shown here. For more information, refer to
      * [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
      * Partner API documentation.
@@ -785,17 +779,14 @@ public class ListingsApi {
     }
 
     /**
-     * Creates or fully updates an existing listings item for a selling partner. **Note:** This operation has a
-     * throttling rate of one request per second when &#x60;mode&#x60; is &#x60;VALIDATION_PREVIEW&#x60;. **Note:** The
-     * parameters associated with this operation may contain special characters that must be encoded to successfully
-     * call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
-     * Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput can receive higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
@@ -826,17 +817,14 @@ public class ListingsApi {
     }
 
     /**
-     * Creates or fully updates an existing listings item for a selling partner. **Note:** This operation has a
-     * throttling rate of one request per second when &#x60;mode&#x60; is &#x60;VALIDATION_PREVIEW&#x60;. **Note:** The
-     * parameters associated with this operation may contain special characters that must be encoded to successfully
-     * call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
-     * Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput can receive higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
@@ -870,17 +858,14 @@ public class ListingsApi {
     }
 
     /**
-     * (asynchronously) Creates or fully updates an existing listings item for a selling partner. **Note:** This
-     * operation has a throttling rate of one request per second when &#x60;mode&#x60; is
-     * &#x60;VALIDATION_PREVIEW&#x60;. **Note:** The parameters associated with this operation may contain special
-     * characters that must be encoded to successfully call the API. To avoid errors with SKUs when encoding URLs, refer
-     * to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Creates a new or fully-updates an existing listings item for a selling partner. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput can receive higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)

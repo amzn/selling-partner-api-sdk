@@ -31,11 +31,11 @@ public class FulfillmentAvailability {
     }
 
     /**
-     * The code of the fulfillment network that will be used.
+     * Designates which fulfillment network is used.
      *
      * @return fulfillmentChannelCode
      */
-    @Schema(required = true, description = "The code of the fulfillment network that will be used.")
+    @Schema(required = true, description = "Designates which fulfillment network is used.")
     public String getFulfillmentChannelCode() {
         return fulfillmentChannelCode;
     }

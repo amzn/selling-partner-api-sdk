@@ -30,7 +30,9 @@ public class FeaturedOfferSegment {
         @SerializedName("PRIME")
         PRIME("PRIME"),
         @SerializedName("NON_PRIME")
-        NON_PRIME("NON_PRIME");
+        NON_PRIME("NON_PRIME"),
+        @SerializedName("DEFAULT")
+        DEFAULT("DEFAULT");
 
         private String value;
 

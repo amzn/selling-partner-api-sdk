@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** the relationship details for a listing item. */
-@Schema(description = "the relationship details for a listing item.")
+/** The relationship details for a listing item. */
+@Schema(description = "The relationship details for a listing item.")
 public class ItemRelationship {
     @SerializedName("childSkus")
     private List<String> childSkus = null;
