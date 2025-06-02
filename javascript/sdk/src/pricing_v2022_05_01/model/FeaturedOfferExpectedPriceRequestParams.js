@@ -25,7 +25,7 @@ export class FeaturedOfferExpectedPriceRequestParams {
    * The parameters for an individual request.
    * @alias module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams
    * @class
-   * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which data is returned.
+   * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param sku {String} The seller SKU of the item.
    */
   constructor (marketplaceId, sku) {
@@ -63,7 +63,7 @@ export class FeaturedOfferExpectedPriceRequestParams {
 }
 
 /**
- * A marketplace identifier. Specifies the marketplace for which data is returned.
+ * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.marketplaceId = undefined

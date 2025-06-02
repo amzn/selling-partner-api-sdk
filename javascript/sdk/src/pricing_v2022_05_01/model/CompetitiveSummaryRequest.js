@@ -28,7 +28,7 @@ export class CompetitiveSummaryRequest {
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryRequest
    * @class
    * @param asin {String} The ASIN of the item.
-   * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which data is returned.
+   * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param includedData {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryIncludedData>} The list of requested competitive pricing data for the product.
    * @param method {module:pricing_v2022_05_01/model/HttpMethod}
    * @param uri {String} The URI associated with the individual APIs that are called as part of the batch request.
@@ -80,7 +80,7 @@ export class CompetitiveSummaryRequest {
 CompetitiveSummaryRequest.prototype.asin = undefined
 
 /**
- * A marketplace identifier. Specifies the marketplace for which data is returned.
+ * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  */
 CompetitiveSummaryRequest.prototype.marketplaceId = undefined

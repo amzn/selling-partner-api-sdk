@@ -32,7 +32,7 @@ export class FeaturedOfferExpectedPriceRequest {
    * @implements module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams
    * @param uri {String} The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.
    * @param method {module:pricing_v2022_05_01/model/HttpMethod}
-   * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which data is returned.
+   * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param sku {String} The seller SKU of the item.
    */
   constructor (uri, method, marketplaceId, sku) {
@@ -103,7 +103,7 @@ FeaturedOfferExpectedPriceRequest.prototype.body = undefined
 FeaturedOfferExpectedPriceRequest.prototype.headers = undefined
 
 /**
- * A marketplace identifier. Specifies the marketplace for which data is returned.
+ * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  */
 FeaturedOfferExpectedPriceRequest.prototype.marketplaceId = undefined
@@ -145,7 +145,7 @@ BatchRequest.prototype.headers = undefined
 
 // Implement FeaturedOfferExpectedPriceRequestParams interface:
 /**
- * A marketplace identifier. Specifies the marketplace for which data is returned.
+ * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.marketplaceId = undefined

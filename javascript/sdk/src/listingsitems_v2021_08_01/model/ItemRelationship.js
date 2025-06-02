@@ -22,7 +22,7 @@ import { ItemVariationTheme } from './ItemVariationTheme.js'
 export class ItemRelationship {
   /**
    * Constructs a new <code>ItemRelationship</code>.
-   * the relationship details for a listing item.
+   * The relationship details for a listing item.
    * @alias module:listingsitems_v2021_08_01/model/ItemRelationship
    * @class
    * @param type {module:listingsitems_v2021_08_01/model/ItemRelationship.TypeEnum} The type of relationship.

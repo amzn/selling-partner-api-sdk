@@ -25,7 +25,7 @@ export class OfferIdentifier {
    * Identifies an offer from a particular seller for a specified ASIN.
    * @alias module:pricing_v2022_05_01/model/OfferIdentifier
    * @class
-   * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which data is returned.
+   * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param asin {String} The ASIN of the item.
    */
   constructor (marketplaceId, asin) {
@@ -65,7 +65,7 @@ export class OfferIdentifier {
 }
 
 /**
- * A marketplace identifier. Specifies the marketplace for which data is returned.
+ * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  */
 OfferIdentifier.prototype.marketplaceId = undefined

@@ -74,10 +74,10 @@ LowestPricedOffersInput.prototype.itemCondition = undefined
 LowestPricedOffersInput.OfferTypeEnum = {
 
   /**
-     * value: "CONSUMER"
+     * value: "Consumer"
      * @const
      */
-  CONSUMER: 'CONSUMER'
+  Consumer: 'Consumer'
 }
 
 /**
