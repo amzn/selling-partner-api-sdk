@@ -1,0 +1,1 @@
+{"invoice":{"date":"2024-07-10T15:00:00.000Z","errorCode":"","externalInvoiceId":"1283743","govResponse":"","id":"ad5b9dcd-6981-4dc4-a3d7-dd2568298a94","invoiceType":"CUSTOMER_SALES","series":"32","status":"AUTHORIZED","transactionIds":[{"name":"BUSINESS_TRANSACTION_ID","id":"94cd4e1a-5cc5-486d-b592-045a95a168e1"}],"transactionType":"CUSTOMER_SALES_SYMBOLIC"}}
