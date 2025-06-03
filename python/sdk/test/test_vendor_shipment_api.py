@@ -34,7 +34,7 @@ class TestVendorShipmentApi(unittest.TestCase):
 
     def test_get_shipment_details(self):
         
-        self.instruct_backend_mock("vendorShipment".casefold(), self.to_camel_case("get_shipment_details"), "200")
+        self.instruct_backend_mock("vendorShipment".casefold().replace(' ', ''), self.to_camel_case("get_shipment_details"), "200")
         response = self.api.get_shipment_details_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -42,7 +42,7 @@ class TestVendorShipmentApi(unittest.TestCase):
 
     def test_get_shipment_labels(self):
         
-        self.instruct_backend_mock("vendorShipment".casefold(), self.to_camel_case("get_shipment_labels"), "200")
+        self.instruct_backend_mock("vendorShipment".casefold().replace(' ', ''), self.to_camel_case("get_shipment_labels"), "200")
         response = self.api.get_shipment_labels_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -51,7 +51,7 @@ class TestVendorShipmentApi(unittest.TestCase):
     def test_submit_shipment_confirmations(self):
         body = self._get_random_value("SubmitShipmentConfirmationsRequest", None)
         
-        self.instruct_backend_mock("vendorShipment".casefold(), self.to_camel_case("submit_shipment_confirmations"), "202")
+        self.instruct_backend_mock("vendorShipment".casefold().replace(' ', ''), self.to_camel_case("submit_shipment_confirmations"), "202")
         response = self.api.submit_shipment_confirmations_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -60,7 +60,7 @@ class TestVendorShipmentApi(unittest.TestCase):
     def test_submit_shipments(self):
         body = self._get_random_value("SubmitShipments", None)
         
-        self.instruct_backend_mock("vendorShipment".casefold(), self.to_camel_case("submit_shipments"), "202")
+        self.instruct_backend_mock("vendorShipment".casefold().replace(' ', ''), self.to_camel_case("submit_shipments"), "202")
         response = self.api.submit_shipments_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])

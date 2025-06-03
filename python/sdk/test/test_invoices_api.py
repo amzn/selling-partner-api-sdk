@@ -35,7 +35,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_create_invoices_export(self):
         body = self._get_random_value("ExportInvoicesRequest", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("create_invoices_export"), "202")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("create_invoices_export"), "202")
         response = self.api.create_invoices_export_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -45,7 +45,7 @@ class TestInvoicesApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         invoice_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("get_invoice"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoice"), "200")
         response = self.api.get_invoice_with_http_info(marketplace_id, invoice_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("get_invoices"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices"), "200")
         response = self.api.get_invoices_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -63,7 +63,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_attributes(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("get_invoices_attributes"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_attributes"), "200")
         response = self.api.get_invoices_attributes_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -72,7 +72,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_document(self):
         invoices_document_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("get_invoices_document"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_document"), "200")
         response = self.api.get_invoices_document_with_http_info(invoices_document_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -81,7 +81,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_export(self):
         export_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("get_invoices_export"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_export"), "200")
         response = self.api.get_invoices_export_with_http_info(export_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -90,7 +90,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_exports(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("invoices".casefold(), self.to_camel_case("get_invoices_exports"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_exports"), "200")
         response = self.api.get_invoices_exports_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

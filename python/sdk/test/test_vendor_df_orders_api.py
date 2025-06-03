@@ -35,7 +35,7 @@ class TestVendorDfOrdersApi(unittest.TestCase):
     def test_get_order(self):
         purchase_order_number = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("vendorDfOrders".casefold(), self.to_camel_case("get_order"), "200")
+        self.instruct_backend_mock("vendorDfOrders".casefold().replace(' ', ''), self.to_camel_case("get_order"), "200")
         response = self.api.get_order_with_http_info(purchase_order_number, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestVendorDfOrdersApi(unittest.TestCase):
         created_after = self._get_random_value("datetime", None)
         created_before = self._get_random_value("datetime", None)
         
-        self.instruct_backend_mock("vendorDfOrders".casefold(), self.to_camel_case("get_orders"), "200")
+        self.instruct_backend_mock("vendorDfOrders".casefold().replace(' ', ''), self.to_camel_case("get_orders"), "200")
         response = self.api.get_orders_with_http_info(created_after, created_before, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestVendorDfOrdersApi(unittest.TestCase):
     def test_submit_acknowledgement(self):
         body = self._get_random_value("SubmitAcknowledgementRequest", None)
         
-        self.instruct_backend_mock("vendorDfOrders".casefold(), self.to_camel_case("submit_acknowledgement"), "202")
+        self.instruct_backend_mock("vendorDfOrders".casefold().replace(' ', ''), self.to_camel_case("submit_acknowledgement"), "202")
         response = self.api.submit_acknowledgement_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])

@@ -35,7 +35,7 @@ class TestVendorTransactionApi(unittest.TestCase):
     def test_get_transaction(self):
         transaction_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("vendorTransaction".casefold(), self.to_camel_case("get_transaction"), "200")
+        self.instruct_backend_mock("vendorTransaction".casefold().replace(' ', ''), self.to_camel_case("get_transaction"), "200")
         response = self.api.get_transaction_with_http_info(transaction_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

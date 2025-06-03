@@ -36,7 +36,7 @@ class TestAplusContentApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         post_content_document_request = self._get_random_value("PostContentDocumentRequest", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("create_content_document"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("create_content_document"), "200")
         response = self.api.create_content_document_with_http_info(marketplace_id, post_content_document_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -47,7 +47,7 @@ class TestAplusContentApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         included_data_set = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("get_content_document"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("get_content_document"), "200")
         response = self.api.get_content_document_with_http_info(content_reference_key, marketplace_id, included_data_set, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -57,7 +57,7 @@ class TestAplusContentApi(unittest.TestCase):
         content_reference_key = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("list_content_document_asin_relations"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("list_content_document_asin_relations"), "200")
         response = self.api.list_content_document_asin_relations_with_http_info(content_reference_key, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -67,7 +67,7 @@ class TestAplusContentApi(unittest.TestCase):
         content_reference_key = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("post_content_document_approval_submission"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("post_content_document_approval_submission"), "200")
         response = self.api.post_content_document_approval_submission_with_http_info(content_reference_key, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -78,7 +78,7 @@ class TestAplusContentApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         post_content_document_asin_relations_request = self._get_random_value("PostContentDocumentAsinRelationsRequest", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("post_content_document_asin_relations"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("post_content_document_asin_relations"), "200")
         response = self.api.post_content_document_asin_relations_with_http_info(content_reference_key, marketplace_id, post_content_document_asin_relations_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -88,7 +88,7 @@ class TestAplusContentApi(unittest.TestCase):
         content_reference_key = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("post_content_document_suspend_submission"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("post_content_document_suspend_submission"), "200")
         response = self.api.post_content_document_suspend_submission_with_http_info(content_reference_key, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -97,7 +97,7 @@ class TestAplusContentApi(unittest.TestCase):
     def test_search_content_documents(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("search_content_documents"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("search_content_documents"), "200")
         response = self.api.search_content_documents_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -107,7 +107,7 @@ class TestAplusContentApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         asin = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("search_content_publish_records"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("search_content_publish_records"), "200")
         response = self.api.search_content_publish_records_with_http_info(marketplace_id, asin, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -118,7 +118,7 @@ class TestAplusContentApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         post_content_document_request = self._get_random_value("PostContentDocumentRequest", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("update_content_document"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("update_content_document"), "200")
         response = self.api.update_content_document_with_http_info(content_reference_key, marketplace_id, post_content_document_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -128,7 +128,7 @@ class TestAplusContentApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         post_content_document_request = self._get_random_value("PostContentDocumentRequest", None)
         
-        self.instruct_backend_mock("aplusContent".casefold(), self.to_camel_case("validate_content_document_asin_relations"), "200")
+        self.instruct_backend_mock("aplusContent".casefold().replace(' ', ''), self.to_camel_case("validate_content_document_asin_relations"), "200")
         response = self.api.validate_content_document_asin_relations_with_http_info(marketplace_id, post_content_document_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

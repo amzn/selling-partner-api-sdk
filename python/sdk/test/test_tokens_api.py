@@ -35,7 +35,7 @@ class TestTokensApi(unittest.TestCase):
     def test_create_restricted_data_token(self):
         body = self._get_random_value("CreateRestrictedDataTokenRequest", None)
         
-        self.instruct_backend_mock("tokens".casefold(), self.to_camel_case("create_restricted_data_token"), "200")
+        self.instruct_backend_mock("tokens".casefold().replace(' ', ''), self.to_camel_case("create_restricted_data_token"), "200")
         response = self.api.create_restricted_data_token_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

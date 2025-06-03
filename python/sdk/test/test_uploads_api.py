@@ -37,7 +37,7 @@ class TestUploadsApi(unittest.TestCase):
         content_md5 = self._get_random_value("str", None)
         resource = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("uploads".casefold(), self.to_camel_case("create_upload_destination_for_resource"), "201")
+        self.instruct_backend_mock("uploads".casefold().replace(' ', ''), self.to_camel_case("create_upload_destination_for_resource"), "201")
         response = self.api.create_upload_destination_for_resource_with_http_info(marketplace_ids, content_md5, resource, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])

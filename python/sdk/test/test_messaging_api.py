@@ -37,7 +37,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateConfirmCustomizationDetailsRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("confirm_customization_details"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("confirm_customization_details"), "201")
         response = self.api.confirm_customization_details_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -48,7 +48,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateAmazonMotorsRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_amazon_motors"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_amazon_motors"), "201")
         response = self.api.create_amazon_motors_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -59,7 +59,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateConfirmDeliveryDetailsRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_confirm_delivery_details"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_confirm_delivery_details"), "201")
         response = self.api.create_confirm_delivery_details_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -70,7 +70,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateConfirmOrderDetailsRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_confirm_order_details"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_confirm_order_details"), "201")
         response = self.api.create_confirm_order_details_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -81,7 +81,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateConfirmServiceDetailsRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_confirm_service_details"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_confirm_service_details"), "201")
         response = self.api.create_confirm_service_details_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -92,7 +92,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateDigitalAccessKeyRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_digital_access_key"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_digital_access_key"), "201")
         response = self.api.create_digital_access_key_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -103,7 +103,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateLegalDisclosureRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_legal_disclosure"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_legal_disclosure"), "201")
         response = self.api.create_legal_disclosure_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -113,7 +113,7 @@ class TestMessagingApi(unittest.TestCase):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_negative_feedback_removal"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_negative_feedback_removal"), "201")
         response = self.api.create_negative_feedback_removal_with_http_info(amazon_order_id, marketplace_ids, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -124,7 +124,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateUnexpectedProblemRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_unexpected_problem"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_unexpected_problem"), "201")
         response = self.api.create_unexpected_problem_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -135,7 +135,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("CreateWarrantyRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("create_warranty"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_warranty"), "201")
         response = self.api.create_warranty_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -145,7 +145,7 @@ class TestMessagingApi(unittest.TestCase):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("get_attributes"), "200")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("get_attributes"), "200")
         response = self.api.get_attributes_with_http_info(amazon_order_id, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -155,7 +155,7 @@ class TestMessagingApi(unittest.TestCase):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("get_messaging_actions_for_order"), "200")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("get_messaging_actions_for_order"), "200")
         response = self.api.get_messaging_actions_for_order_with_http_info(amazon_order_id, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -166,7 +166,7 @@ class TestMessagingApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("InvoiceRequest", None)
         
-        self.instruct_backend_mock("messaging".casefold(), self.to_camel_case("send_invoice"), "201")
+        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("send_invoice"), "201")
         response = self.api.send_invoice_with_http_info(amazon_order_id, marketplace_ids, body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])

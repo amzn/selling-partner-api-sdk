@@ -36,7 +36,7 @@ class TestProductPricingApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         item_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("productPricing".casefold(), self.to_camel_case("get_competitive_pricing"), "200")
+        self.instruct_backend_mock("productPricing".casefold().replace(' ', ''), self.to_camel_case("get_competitive_pricing"), "200")
         response = self.api.get_competitive_pricing_with_http_info(marketplace_id, item_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -47,7 +47,7 @@ class TestProductPricingApi(unittest.TestCase):
         item_condition = self._get_random_value("str", None)
         asin = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("productPricing".casefold(), self.to_camel_case("get_item_offers"), "200")
+        self.instruct_backend_mock("productPricing".casefold().replace(' ', ''), self.to_camel_case("get_item_offers"), "200")
         response = self.api.get_item_offers_with_http_info(marketplace_id, item_condition, asin, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -56,7 +56,7 @@ class TestProductPricingApi(unittest.TestCase):
     def test_get_item_offers_batch(self):
         get_item_offers_batch_request_body = self._get_random_value("GetItemOffersBatchRequest", None)
         
-        self.instruct_backend_mock("productPricing".casefold(), self.to_camel_case("get_item_offers_batch"), "200")
+        self.instruct_backend_mock("productPricing".casefold().replace(' ', ''), self.to_camel_case("get_item_offers_batch"), "200")
         response = self.api.get_item_offers_batch_with_http_info(get_item_offers_batch_request_body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -67,7 +67,7 @@ class TestProductPricingApi(unittest.TestCase):
         item_condition = self._get_random_value("str", None)
         seller_sku = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("productPricing".casefold(), self.to_camel_case("get_listing_offers"), "200")
+        self.instruct_backend_mock("productPricing".casefold().replace(' ', ''), self.to_camel_case("get_listing_offers"), "200")
         response = self.api.get_listing_offers_with_http_info(marketplace_id, item_condition, seller_sku, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -76,7 +76,7 @@ class TestProductPricingApi(unittest.TestCase):
     def test_get_listing_offers_batch(self):
         get_listing_offers_batch_request_body = self._get_random_value("GetListingOffersBatchRequest", None)
         
-        self.instruct_backend_mock("productPricing".casefold(), self.to_camel_case("get_listing_offers_batch"), "200")
+        self.instruct_backend_mock("productPricing".casefold().replace(' ', ''), self.to_camel_case("get_listing_offers_batch"), "200")
         response = self.api.get_listing_offers_batch_with_http_info(get_listing_offers_batch_request_body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -86,7 +86,7 @@ class TestProductPricingApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         item_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("productPricing".casefold(), self.to_camel_case("get_pricing"), "200")
+        self.instruct_backend_mock("productPricing".casefold().replace(' ', ''), self.to_camel_case("get_pricing"), "200")
         response = self.api.get_pricing_with_http_info(marketplace_id, item_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

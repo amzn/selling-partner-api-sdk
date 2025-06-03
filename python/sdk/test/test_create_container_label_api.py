@@ -35,7 +35,7 @@ class TestCreateContainerLabelApi(unittest.TestCase):
     def test_create_container_label(self):
         body = self._get_random_value("CreateContainerLabelRequest", None)
         
-        self.instruct_backend_mock("createContainerLabel".casefold(), self.to_camel_case("create_container_label"), "200")
+        self.instruct_backend_mock("createContainerLabel".casefold().replace(' ', ''), self.to_camel_case("create_container_label"), "200")
         response = self.api.create_container_label_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

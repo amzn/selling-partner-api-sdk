@@ -35,7 +35,7 @@ class TestVendorInvoiceApi(unittest.TestCase):
     def test_submit_invoice(self):
         body = self._get_random_value("SubmitInvoiceRequest", None)
         
-        self.instruct_backend_mock("vendorInvoice".casefold(), self.to_camel_case("submit_invoice"), "202")
+        self.instruct_backend_mock("vendorInvoice".casefold().replace(' ', ''), self.to_camel_case("submit_invoice"), "202")
         response = self.api.submit_invoice_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])

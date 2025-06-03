@@ -37,7 +37,7 @@ class TestListingsApi(unittest.TestCase):
         sku = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("listings".casefold(), self.to_camel_case("delete_listings_item"), "200")
+        self.instruct_backend_mock("listings".casefold().replace(' ', ''), self.to_camel_case("delete_listings_item"), "200")
         response = self.api.delete_listings_item_with_http_info(seller_id, sku, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -48,7 +48,7 @@ class TestListingsApi(unittest.TestCase):
         sku = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("listings".casefold(), self.to_camel_case("get_listings_item"), "200")
+        self.instruct_backend_mock("listings".casefold().replace(' ', ''), self.to_camel_case("get_listings_item"), "200")
         response = self.api.get_listings_item_with_http_info(seller_id, sku, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -60,7 +60,7 @@ class TestListingsApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("ListingsItemPatchRequest", None)
         
-        self.instruct_backend_mock("listings".casefold(), self.to_camel_case("patch_listings_item"), "200")
+        self.instruct_backend_mock("listings".casefold().replace(' ', ''), self.to_camel_case("patch_listings_item"), "200")
         response = self.api.patch_listings_item_with_http_info(seller_id, sku, marketplace_ids, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -72,7 +72,7 @@ class TestListingsApi(unittest.TestCase):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         body = self._get_random_value("ListingsItemPutRequest", None)
         
-        self.instruct_backend_mock("listings".casefold(), self.to_camel_case("put_listings_item"), "200")
+        self.instruct_backend_mock("listings".casefold().replace(' ', ''), self.to_camel_case("put_listings_item"), "200")
         response = self.api.put_listings_item_with_http_info(seller_id, sku, marketplace_ids, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -82,7 +82,7 @@ class TestListingsApi(unittest.TestCase):
         seller_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("listings".casefold(), self.to_camel_case("search_listings_items"), "200")
+        self.instruct_backend_mock("listings".casefold().replace(' ', ''), self.to_camel_case("search_listings_items"), "200")
         response = self.api.search_listings_items_with_http_info(seller_id, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

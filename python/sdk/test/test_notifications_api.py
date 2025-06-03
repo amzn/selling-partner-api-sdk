@@ -35,7 +35,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_create_destination(self):
         body = self._get_random_value("CreateDestinationRequest", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("create_destination"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("create_destination"), "200")
         response = self.api.create_destination_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestNotificationsApi(unittest.TestCase):
         notification_type = self._get_random_value("str", None)
         body = self._get_random_value("CreateSubscriptionRequest", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("create_subscription"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("create_subscription"), "200")
         response = self.api.create_subscription_with_http_info(notification_type, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_delete_destination(self):
         destination_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("delete_destination"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("delete_destination"), "200")
         response = self.api.delete_destination_with_http_info(destination_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -64,7 +64,7 @@ class TestNotificationsApi(unittest.TestCase):
         subscription_id = self._get_random_value("str", None)
         notification_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("delete_subscription_by_id"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("delete_subscription_by_id"), "200")
         response = self.api.delete_subscription_by_id_with_http_info(subscription_id, notification_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -73,7 +73,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_get_destination(self):
         destination_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("get_destination"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_destination"), "200")
         response = self.api.get_destination_with_http_info(destination_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -81,7 +81,7 @@ class TestNotificationsApi(unittest.TestCase):
 
     def test_get_destinations(self):
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("get_destinations"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_destinations"), "200")
         response = self.api.get_destinations_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -90,7 +90,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_get_subscription(self):
         notification_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("get_subscription"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_subscription"), "200")
         response = self.api.get_subscription_with_http_info(notification_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -100,7 +100,7 @@ class TestNotificationsApi(unittest.TestCase):
         subscription_id = self._get_random_value("str", None)
         notification_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("notifications".casefold(), self.to_camel_case("get_subscription_by_id"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_subscription_by_id"), "200")
         response = self.api.get_subscription_by_id_with_http_info(subscription_id, notification_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

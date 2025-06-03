@@ -34,7 +34,7 @@ class TestReplenishmentApi(unittest.TestCase):
 
     def test_get_selling_partner_metrics(self):
         
-        self.instruct_backend_mock("replenishment".casefold(), self.to_camel_case("get_selling_partner_metrics"), "200")
+        self.instruct_backend_mock("replenishment".casefold().replace(' ', ''), self.to_camel_case("get_selling_partner_metrics"), "200")
         response = self.api.get_selling_partner_metrics_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -42,7 +42,7 @@ class TestReplenishmentApi(unittest.TestCase):
 
     def test_list_offer_metrics(self):
         
-        self.instruct_backend_mock("replenishment".casefold(), self.to_camel_case("list_offer_metrics"), "200")
+        self.instruct_backend_mock("replenishment".casefold().replace(' ', ''), self.to_camel_case("list_offer_metrics"), "200")
         response = self.api.list_offer_metrics_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -50,7 +50,7 @@ class TestReplenishmentApi(unittest.TestCase):
 
     def test_list_offers(self):
         
-        self.instruct_backend_mock("replenishment".casefold(), self.to_camel_case("list_offers"), "200")
+        self.instruct_backend_mock("replenishment".casefold().replace(' ', ''), self.to_camel_case("list_offers"), "200")
         response = self.api.list_offers_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

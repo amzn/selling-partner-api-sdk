@@ -37,7 +37,7 @@ class TestTransactionsApi(unittest.TestCase):
         amount_digital_signature = self._get_random_value("str", None)
         body = self._get_random_value("TransactionInitiationRequest", None)
         
-        self.instruct_backend_mock("Transactions".casefold(), self.to_camel_case("create_transaction"), "200")
+        self.instruct_backend_mock("Transactions".casefold().replace(' ', ''), self.to_camel_case("create_transaction"), "200")
         response = self.api.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -46,7 +46,7 @@ class TestTransactionsApi(unittest.TestCase):
     def test_get_transaction(self):
         transaction_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("Transactions".casefold(), self.to_camel_case("get_transaction"), "200")
+        self.instruct_backend_mock("Transactions".casefold().replace(' ', ''), self.to_camel_case("get_transaction"), "200")
         response = self.api.get_transaction_with_http_info(transaction_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -55,7 +55,7 @@ class TestTransactionsApi(unittest.TestCase):
     def test_list_account_transactions(self):
         account_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("Transactions".casefold(), self.to_camel_case("list_account_transactions"), "200")
+        self.instruct_backend_mock("Transactions".casefold().replace(' ', ''), self.to_camel_case("list_account_transactions"), "200")
         response = self.api.list_account_transactions_with_http_info(account_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

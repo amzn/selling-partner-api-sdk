@@ -36,7 +36,7 @@ class TestCatalogApi(unittest.TestCase):
         asin = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("catalog".casefold(), self.to_camel_case("get_catalog_item"), "200")
+        self.instruct_backend_mock("catalog".casefold().replace(' ', ''), self.to_camel_case("get_catalog_item"), "200")
         response = self.api.get_catalog_item_with_http_info(asin, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestCatalogApi(unittest.TestCase):
     def test_search_catalog_items(self):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock("catalog".casefold(), self.to_camel_case("search_catalog_items"), "200")
+        self.instruct_backend_mock("catalog".casefold().replace(' ', ''), self.to_camel_case("search_catalog_items"), "200")
         response = self.api.search_catalog_items_with_http_info(marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

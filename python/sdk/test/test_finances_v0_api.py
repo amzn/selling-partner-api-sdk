@@ -34,7 +34,7 @@ class TestFinancesV0Api(unittest.TestCase):
 
     def test_list_financial_event_groups(self):
         
-        self.instruct_backend_mock("financesV0".casefold(), self.to_camel_case("list_financial_event_groups"), "200")
+        self.instruct_backend_mock("financesV0".casefold().replace(' ', ''), self.to_camel_case("list_financial_event_groups"), "200")
         response = self.api.list_financial_event_groups_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -42,7 +42,7 @@ class TestFinancesV0Api(unittest.TestCase):
 
     def test_list_financial_events(self):
         
-        self.instruct_backend_mock("financesV0".casefold(), self.to_camel_case("list_financial_events"), "200")
+        self.instruct_backend_mock("financesV0".casefold().replace(' ', ''), self.to_camel_case("list_financial_events"), "200")
         response = self.api.list_financial_events_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -51,7 +51,7 @@ class TestFinancesV0Api(unittest.TestCase):
     def test_list_financial_events_by_group_id(self):
         event_group_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("financesV0".casefold(), self.to_camel_case("list_financial_events_by_group_id"), "200")
+        self.instruct_backend_mock("financesV0".casefold().replace(' ', ''), self.to_camel_case("list_financial_events_by_group_id"), "200")
         response = self.api.list_financial_events_by_group_id_with_http_info(event_group_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -60,7 +60,7 @@ class TestFinancesV0Api(unittest.TestCase):
     def test_list_financial_events_by_order_id(self):
         order_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("financesV0".casefold(), self.to_camel_case("list_financial_events_by_order_id"), "200")
+        self.instruct_backend_mock("financesV0".casefold().replace(' ', ''), self.to_camel_case("list_financial_events_by_order_id"), "200")
         response = self.api.list_financial_events_by_order_id_with_http_info(order_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

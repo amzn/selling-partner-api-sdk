@@ -35,7 +35,7 @@ class TestTransfersApi(unittest.TestCase):
     def test_get_payment_methods(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("transfers".casefold(), self.to_camel_case("get_payment_methods"), "200")
+        self.instruct_backend_mock("transfers".casefold().replace(' ', ''), self.to_camel_case("get_payment_methods"), "200")
         response = self.api.get_payment_methods_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,7 +44,7 @@ class TestTransfersApi(unittest.TestCase):
     def test_initiate_payout(self):
         body = self._get_random_value("InitiatePayoutRequest", None)
         
-        self.instruct_backend_mock("transfers".casefold(), self.to_camel_case("initiate_payout"), "200")
+        self.instruct_backend_mock("transfers".casefold().replace(' ', ''), self.to_camel_case("initiate_payout"), "200")
         response = self.api.initiate_payout_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

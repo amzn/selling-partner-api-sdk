@@ -37,7 +37,7 @@ class TestSalesApi(unittest.TestCase):
         interval = self._get_random_value("str", None)
         granularity = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("sales".casefold(), self.to_camel_case("get_order_metrics"), "200")
+        self.instruct_backend_mock("sales".casefold().replace(' ', ''), self.to_camel_case("get_order_metrics"), "200")
         response = self.api.get_order_metrics_with_http_info(marketplace_ids, interval, granularity, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

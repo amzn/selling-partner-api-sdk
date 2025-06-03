@@ -34,7 +34,7 @@ class TestSellersApi(unittest.TestCase):
 
     def test_get_account(self):
         
-        self.instruct_backend_mock("sellers".casefold(), self.to_camel_case("get_account"), "200")
+        self.instruct_backend_mock("sellers".casefold().replace(' ', ''), self.to_camel_case("get_account"), "200")
         response = self.api.get_account_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -42,7 +42,7 @@ class TestSellersApi(unittest.TestCase):
 
     def test_get_marketplace_participations(self):
         
-        self.instruct_backend_mock("sellers".casefold(), self.to_camel_case("get_marketplace_participations"), "200")
+        self.instruct_backend_mock("sellers".casefold().replace(' ', ''), self.to_camel_case("get_marketplace_participations"), "200")
         response = self.api.get_marketplace_participations_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

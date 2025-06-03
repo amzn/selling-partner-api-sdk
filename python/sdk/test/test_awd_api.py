@@ -35,14 +35,14 @@ class TestAwdApi(unittest.TestCase):
     def test_cancel_inbound(self):
         order_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("cancel_inbound"), "204")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("cancel_inbound"), "204")
         response = self.api.cancel_inbound_with_http_info(order_id, )
         pass
 
     def test_check_inbound_eligibility(self):
         body = self._get_random_value("InboundPackages", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("check_inbound_eligibility"), "200")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("check_inbound_eligibility"), "200")
         response = self.api.check_inbound_eligibility_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -51,14 +51,14 @@ class TestAwdApi(unittest.TestCase):
     def test_confirm_inbound(self):
         order_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("confirm_inbound"), "204")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("confirm_inbound"), "204")
         response = self.api.confirm_inbound_with_http_info(order_id, )
         pass
 
     def test_create_inbound(self):
         body = self._get_random_value("InboundOrderCreationData", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("create_inbound"), "201")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("create_inbound"), "201")
         response = self.api.create_inbound_with_http_info(body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -67,7 +67,7 @@ class TestAwdApi(unittest.TestCase):
     def test_get_inbound(self):
         order_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("get_inbound"), "200")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("get_inbound"), "200")
         response = self.api.get_inbound_with_http_info(order_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -76,7 +76,7 @@ class TestAwdApi(unittest.TestCase):
     def test_get_inbound_shipment(self):
         shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("get_inbound_shipment"), "200")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("get_inbound_shipment"), "200")
         response = self.api.get_inbound_shipment_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -85,7 +85,7 @@ class TestAwdApi(unittest.TestCase):
     def test_get_inbound_shipment_labels(self):
         shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("get_inbound_shipment_labels"), "200")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("get_inbound_shipment_labels"), "200")
         response = self.api.get_inbound_shipment_labels_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -93,7 +93,7 @@ class TestAwdApi(unittest.TestCase):
 
     def test_list_inbound_shipments(self):
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("list_inbound_shipments"), "200")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_inbound_shipments"), "200")
         response = self.api.list_inbound_shipments_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -101,7 +101,7 @@ class TestAwdApi(unittest.TestCase):
 
     def test_list_inventory(self):
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("list_inventory"), "200")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_inventory"), "200")
         response = self.api.list_inventory_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -111,7 +111,7 @@ class TestAwdApi(unittest.TestCase):
         order_id = self._get_random_value("str", None)
         body = self._get_random_value("InboundOrder", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("update_inbound"), "204")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("update_inbound"), "204")
         response = self.api.update_inbound_with_http_info(order_id, body, )
         pass
 
@@ -119,7 +119,7 @@ class TestAwdApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         body = self._get_random_value("TransportationDetails", None)
         
-        self.instruct_backend_mock("awd".casefold(), self.to_camel_case("update_inbound_shipment_transport_details"), "204")
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("update_inbound_shipment_transport_details"), "204")
         response = self.api.update_inbound_shipment_transport_details_with_http_info(shipment_id, body, )
         pass
 

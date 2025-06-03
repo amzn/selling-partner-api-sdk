@@ -35,14 +35,14 @@ class TestSupplySourcesApi(unittest.TestCase):
     def test_archive_supply_source(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("supplySources".casefold(), self.to_camel_case("archive_supply_source"), "204")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("archive_supply_source"), "204")
         response = self.api.archive_supply_source_with_http_info(supply_source_id, )
         pass
 
     def test_create_supply_source(self):
         payload = self._get_random_value("CreateSupplySourceRequest", None)
         
-        self.instruct_backend_mock("supplySources".casefold(), self.to_camel_case("create_supply_source"), "200")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("create_supply_source"), "200")
         response = self.api.create_supply_source_with_http_info(payload, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -51,7 +51,7 @@ class TestSupplySourcesApi(unittest.TestCase):
     def test_get_supply_source(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("supplySources".casefold(), self.to_camel_case("get_supply_source"), "200")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("get_supply_source"), "200")
         response = self.api.get_supply_source_with_http_info(supply_source_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -59,7 +59,7 @@ class TestSupplySourcesApi(unittest.TestCase):
 
     def test_get_supply_sources(self):
         
-        self.instruct_backend_mock("supplySources".casefold(), self.to_camel_case("get_supply_sources"), "200")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("get_supply_sources"), "200")
         response = self.api.get_supply_sources_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -68,14 +68,14 @@ class TestSupplySourcesApi(unittest.TestCase):
     def test_update_supply_source(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("supplySources".casefold(), self.to_camel_case("update_supply_source"), "204")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("update_supply_source"), "204")
         response = self.api.update_supply_source_with_http_info(supply_source_id, )
         pass
 
     def test_update_supply_source_status(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("supplySources".casefold(), self.to_camel_case("update_supply_source_status"), "204")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("update_supply_source_status"), "204")
         response = self.api.update_supply_source_status_with_http_info(supply_source_id, )
         pass
 

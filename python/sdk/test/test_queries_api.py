@@ -35,14 +35,14 @@ class TestQueriesApi(unittest.TestCase):
     def test_cancel_query(self):
         query_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("queries".casefold(), self.to_camel_case("cancel_query"), "204")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("cancel_query"), "204")
         response = self.api.cancel_query_with_http_info(query_id, )
         pass
 
     def test_create_query(self):
         body = self._get_random_value("CreateQuerySpecification", None)
         
-        self.instruct_backend_mock("queries".casefold(), self.to_camel_case("create_query"), "202")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("create_query"), "202")
         response = self.api.create_query_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -51,7 +51,7 @@ class TestQueriesApi(unittest.TestCase):
     def test_get_document(self):
         document_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("queries".casefold(), self.to_camel_case("get_document"), "200")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("get_document"), "200")
         response = self.api.get_document_with_http_info(document_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -59,7 +59,7 @@ class TestQueriesApi(unittest.TestCase):
 
     def test_get_queries(self):
         
-        self.instruct_backend_mock("queries".casefold(), self.to_camel_case("get_queries"), "200")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("get_queries"), "200")
         response = self.api.get_queries_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -68,7 +68,7 @@ class TestQueriesApi(unittest.TestCase):
     def test_get_query(self):
         query_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("queries".casefold(), self.to_camel_case("get_query"), "200")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("get_query"), "200")
         response = self.api.get_query_with_http_info(query_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

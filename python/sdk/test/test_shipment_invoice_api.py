@@ -35,7 +35,7 @@ class TestShipmentInvoiceApi(unittest.TestCase):
     def test_get_invoice_status(self):
         shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("shipmentInvoice".casefold(), self.to_camel_case("get_invoice_status"), "200")
+        self.instruct_backend_mock("shipmentInvoice".casefold().replace(' ', ''), self.to_camel_case("get_invoice_status"), "200")
         response = self.api.get_invoice_status_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,7 +44,7 @@ class TestShipmentInvoiceApi(unittest.TestCase):
     def test_get_shipment_details(self):
         shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("shipmentInvoice".casefold(), self.to_camel_case("get_shipment_details"), "200")
+        self.instruct_backend_mock("shipmentInvoice".casefold().replace(' ', ''), self.to_camel_case("get_shipment_details"), "200")
         response = self.api.get_shipment_details_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestShipmentInvoiceApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         body = self._get_random_value("SubmitInvoiceRequest", None)
         
-        self.instruct_backend_mock("shipmentInvoice".casefold(), self.to_camel_case("submit_invoice"), "200")
+        self.instruct_backend_mock("shipmentInvoice".casefold().replace(' ', ''), self.to_camel_case("submit_invoice"), "200")
         response = self.api.submit_invoice_with_http_info(shipment_id, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
