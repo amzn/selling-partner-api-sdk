@@ -50,7 +50,7 @@ class LowestPricedOffersInput implements ModelInterface, \ArrayAccess, \JsonSeri
 {
     public const DISCRIMINATOR = null;
 
-    public const OFFER_TYPE_CONSUMER = 'CONSUMER';
+    public const OFFER_TYPE_CONSUMER = 'Consumer';
 
     /**
      * The original name of the model.

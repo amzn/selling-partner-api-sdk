@@ -143,6 +143,8 @@ class SalesApi
      *                                           Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN. (optional)
      * @param null|string $sku
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param null|string $amazon_program
+     *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -156,9 +158,10 @@ class SalesApi
         ?string $fulfillment_network = null,
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
-        ?string $sku = null
+        ?string $sku = null,
+        ?string $amazon_program = null
     ): GetOrderMetricsResponse {
-        list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku);
+        list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
 
         return $response;
     }
@@ -184,6 +187,8 @@ class SalesApi
      *                                           Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN. (optional)
      * @param null|string $sku
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param null|string $amazon_program
+     *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
      *
      * @return array of \SpApi\Model\sales\v1\GetOrderMetricsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -199,9 +204,10 @@ class SalesApi
         ?string $fulfillment_network = null,
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
-        ?string $sku = null
+        ?string $sku = null,
+        ?string $amazon_program = null
     ): array {
-        $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku);
+        $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
         $request = $this->config->sign($request);
 
         try {
@@ -289,6 +295,8 @@ class SalesApi
      *                                           Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN. (optional)
      * @param null|string $sku
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param null|string $amazon_program
+     *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -301,9 +309,10 @@ class SalesApi
         ?string $fulfillment_network = null,
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
-        ?string $sku = null
+        ?string $sku = null,
+        ?string $amazon_program = null
     ): PromiseInterface {
-        return $this->getOrderMetricsAsyncWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku)
+        return $this->getOrderMetricsAsyncWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -333,6 +342,8 @@ class SalesApi
      *                                           Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN. (optional)
      * @param null|string $sku
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param null|string $amazon_program
+     *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -345,10 +356,11 @@ class SalesApi
         ?string $fulfillment_network = null,
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
-        ?string $sku = null
+        ?string $sku = null,
+        ?string $amazon_program = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sales\v1\GetOrderMetricsResponse';
-        $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku);
+        $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
         $request = $this->config->sign($request);
         if ($this->rateLimiterEnabled) {
             $this->getOrderMetricsRateLimiter->consume()->ensureAccepted();
@@ -413,6 +425,8 @@ class SalesApi
      *                                           Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN. (optional)
      * @param null|string $sku
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
+     * @param null|string $amazon_program
+     *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -425,7 +439,8 @@ class SalesApi
         ?string $fulfillment_network = null,
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
-        ?string $sku = null
+        ?string $sku = null,
+        ?string $amazon_program = null
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
         if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
@@ -537,6 +552,16 @@ class SalesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sku,
             'sku', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amazon_program,
+            'amazonProgram', // param base name
             'string', // openApiType
             '', // style
             false, // explode

@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description the relationship details for a listing item.
+ * @description The relationship details for a listing item.
  *
  * @author   OpenAPI Generator team
  *
