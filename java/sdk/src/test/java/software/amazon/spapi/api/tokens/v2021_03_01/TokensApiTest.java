@@ -52,7 +52,7 @@ public class TokensApiTest {
 
     @Test
     public void createRestrictedDataTokenTest() throws Exception {
-        instructBackendMock("Tokens", "createRestrictedDataToken", "200");
+        instructBackendMock("tokens", "createRestrictedDataToken", "200");
         CreateRestrictedDataTokenRequest body = easyRandom.nextObject(CreateRestrictedDataTokenRequest.class);
 
         ApiResponse<CreateRestrictedDataTokenResponse> response = api.createRestrictedDataTokenWithHttpInfo(body);

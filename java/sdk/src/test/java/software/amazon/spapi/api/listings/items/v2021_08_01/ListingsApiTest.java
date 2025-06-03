@@ -56,7 +56,7 @@ public class ListingsApiTest {
 
     @Test
     public void deleteListingsItemTest() throws Exception {
-        instructBackendMock("Listings", "deleteListingsItem", "200");
+        instructBackendMock("listings", "deleteListingsItem", "200");
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -70,7 +70,7 @@ public class ListingsApiTest {
 
     @Test
     public void getListingsItemTest() throws Exception {
-        instructBackendMock("Listings", "getListingsItem", "200");
+        instructBackendMock("listings", "getListingsItem", "200");
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -83,7 +83,7 @@ public class ListingsApiTest {
 
     @Test
     public void patchListingsItemTest() throws Exception {
-        instructBackendMock("Listings", "patchListingsItem", "200");
+        instructBackendMock("listings", "patchListingsItem", "200");
         ListingsItemPatchRequest body = easyRandom.nextObject(ListingsItemPatchRequest.class);
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
@@ -98,7 +98,7 @@ public class ListingsApiTest {
 
     @Test
     public void putListingsItemTest() throws Exception {
-        instructBackendMock("Listings", "putListingsItem", "200");
+        instructBackendMock("listings", "putListingsItem", "200");
         ListingsItemPutRequest body = easyRandom.nextObject(ListingsItemPutRequest.class);
         String sellerId = easyRandom.nextObject(String.class);
         String sku = easyRandom.nextObject(String.class);
@@ -113,7 +113,7 @@ public class ListingsApiTest {
 
     @Test
     public void searchListingsItemsTest() throws Exception {
-        instructBackendMock("Listings", "searchListingsItems", "200");
+        instructBackendMock("listings", "searchListingsItems", "200");
         String sellerId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 

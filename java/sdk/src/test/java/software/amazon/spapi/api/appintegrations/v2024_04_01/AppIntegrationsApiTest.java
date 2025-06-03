@@ -54,7 +54,7 @@ public class AppIntegrationsApiTest {
 
     @Test
     public void createNotificationTest() throws Exception {
-        instructBackendMock("AppIntegrations", "createNotification", "200");
+        instructBackendMock("appIntegrations", "createNotification", "200");
         CreateNotificationRequest body = easyRandom.nextObject(CreateNotificationRequest.class);
 
         ApiResponse<CreateNotificationResponse> response = api.createNotificationWithHttpInfo(body);
@@ -65,7 +65,7 @@ public class AppIntegrationsApiTest {
 
     @Test
     public void deleteNotificationsTest() throws Exception {
-        instructBackendMock("AppIntegrations", "deleteNotifications", "204");
+        instructBackendMock("appIntegrations", "deleteNotifications", "204");
         DeleteNotificationsRequest body = easyRandom.nextObject(DeleteNotificationsRequest.class);
 
         api.deleteNotificationsWithHttpInfo(body);
@@ -73,7 +73,7 @@ public class AppIntegrationsApiTest {
 
     @Test
     public void recordActionFeedbackTest() throws Exception {
-        instructBackendMock("AppIntegrations", "recordActionFeedback", "204");
+        instructBackendMock("appIntegrations", "recordActionFeedback", "204");
         RecordActionFeedbackRequest body = easyRandom.nextObject(RecordActionFeedbackRequest.class);
         String notificationId = easyRandom.nextObject(String.class);
 

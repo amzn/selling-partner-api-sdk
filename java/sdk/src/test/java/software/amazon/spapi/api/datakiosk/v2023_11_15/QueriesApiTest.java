@@ -55,7 +55,7 @@ public class QueriesApiTest {
 
     @Test
     public void cancelQueryTest() throws Exception {
-        instructBackendMock("Queries", "cancelQuery", "204");
+        instructBackendMock("queries", "cancelQuery", "204");
         String queryId = easyRandom.nextObject(String.class);
 
         api.cancelQueryWithHttpInfo(queryId);
@@ -63,7 +63,7 @@ public class QueriesApiTest {
 
     @Test
     public void createQueryTest() throws Exception {
-        instructBackendMock("Queries", "createQuery", "202");
+        instructBackendMock("queries", "createQuery", "202");
         CreateQuerySpecification body = easyRandom.nextObject(CreateQuerySpecification.class);
 
         ApiResponse<CreateQueryResponse> response = api.createQueryWithHttpInfo(body);
@@ -74,7 +74,7 @@ public class QueriesApiTest {
 
     @Test
     public void getDocumentTest() throws Exception {
-        instructBackendMock("Queries", "getDocument", "200");
+        instructBackendMock("queries", "getDocument", "200");
         String documentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetDocumentResponse> response = api.getDocumentWithHttpInfo(documentId);
@@ -85,7 +85,7 @@ public class QueriesApiTest {
 
     @Test
     public void getQueriesTest() throws Exception {
-        instructBackendMock("Queries", "getQueries", "200");
+        instructBackendMock("queries", "getQueries", "200");
 
         ApiResponse<GetQueriesResponse> response = api.getQueriesWithHttpInfo(null, null, null, null, null);
 
@@ -95,7 +95,7 @@ public class QueriesApiTest {
 
     @Test
     public void getQueryTest() throws Exception {
-        instructBackendMock("Queries", "getQuery", "200");
+        instructBackendMock("queries", "getQuery", "200");
         String queryId = easyRandom.nextObject(String.class);
 
         ApiResponse<Query> response = api.getQueryWithHttpInfo(queryId);

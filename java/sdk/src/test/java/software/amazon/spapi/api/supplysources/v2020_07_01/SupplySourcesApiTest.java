@@ -55,7 +55,7 @@ public class SupplySourcesApiTest {
 
     @Test
     public void archiveSupplySourceTest() throws Exception {
-        instructBackendMock("SupplySources", "archiveSupplySource", "204");
+        instructBackendMock("supplySources", "archiveSupplySource", "204");
         String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ErrorList> response = api.archiveSupplySourceWithHttpInfo(supplySourceId);
@@ -66,7 +66,7 @@ public class SupplySourcesApiTest {
 
     @Test
     public void createSupplySourceTest() throws Exception {
-        instructBackendMock("SupplySources", "createSupplySource", "200");
+        instructBackendMock("supplySources", "createSupplySource", "200");
         CreateSupplySourceRequest body = easyRandom.nextObject(CreateSupplySourceRequest.class);
 
         ApiResponse<CreateSupplySourceResponse> response = api.createSupplySourceWithHttpInfo(body);
@@ -77,7 +77,7 @@ public class SupplySourcesApiTest {
 
     @Test
     public void getSupplySourceTest() throws Exception {
-        instructBackendMock("SupplySources", "getSupplySource", "200");
+        instructBackendMock("supplySources", "getSupplySource", "200");
         String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<SupplySource> response = api.getSupplySourceWithHttpInfo(supplySourceId);
@@ -88,7 +88,7 @@ public class SupplySourcesApiTest {
 
     @Test
     public void getSupplySourcesTest() throws Exception {
-        instructBackendMock("SupplySources", "getSupplySources", "200");
+        instructBackendMock("supplySources", "getSupplySources", "200");
 
         ApiResponse<GetSupplySourcesResponse> response = api.getSupplySourcesWithHttpInfo(null, null);
 
@@ -98,7 +98,7 @@ public class SupplySourcesApiTest {
 
     @Test
     public void updateSupplySourceTest() throws Exception {
-        instructBackendMock("SupplySources", "updateSupplySource", "204");
+        instructBackendMock("supplySources", "updateSupplySource", "204");
         String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ErrorList> response = api.updateSupplySourceWithHttpInfo(supplySourceId, null);
@@ -109,7 +109,7 @@ public class SupplySourcesApiTest {
 
     @Test
     public void updateSupplySourceStatusTest() throws Exception {
-        instructBackendMock("SupplySources", "updateSupplySourceStatus", "204");
+        instructBackendMock("supplySources", "updateSupplySourceStatus", "204");
         String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ErrorList> response = api.updateSupplySourceStatusWithHttpInfo(supplySourceId, null);

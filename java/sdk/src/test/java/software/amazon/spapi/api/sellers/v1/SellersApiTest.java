@@ -52,7 +52,7 @@ public class SellersApiTest {
 
     @Test
     public void getAccountTest() throws Exception {
-        instructBackendMock("Sellers", "getAccount", "200");
+        instructBackendMock("sellers", "getAccount", "200");
 
         ApiResponse<GetAccountResponse> response = api.getAccountWithHttpInfo();
 
@@ -62,7 +62,7 @@ public class SellersApiTest {
 
     @Test
     public void getMarketplaceParticipationsTest() throws Exception {
-        instructBackendMock("Sellers", "getMarketplaceParticipations", "200");
+        instructBackendMock("sellers", "getMarketplaceParticipations", "200");
 
         ApiResponse<GetMarketplaceParticipationsResponse> response = api.getMarketplaceParticipationsWithHttpInfo();
 

@@ -57,7 +57,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void addInventoryTest() throws Exception {
-        instructBackendMock("FbaInventory", "addInventory", "200");
+        instructBackendMock("fbaInventory", "addInventory", "200");
         AddInventoryRequest body = easyRandom.nextObject(AddInventoryRequest.class);
         String xAmznIdempotencyToken = easyRandom.nextObject(String.class);
 
@@ -69,7 +69,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void createInventoryItemTest() throws Exception {
-        instructBackendMock("FbaInventory", "createInventoryItem", "200");
+        instructBackendMock("fbaInventory", "createInventoryItem", "200");
         CreateInventoryItemRequest body = easyRandom.nextObject(CreateInventoryItemRequest.class);
 
         ApiResponse<CreateInventoryItemResponse> response = api.createInventoryItemWithHttpInfo(body);
@@ -80,7 +80,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void deleteInventoryItemTest() throws Exception {
-        instructBackendMock("FbaInventory", "deleteInventoryItem", "200");
+        instructBackendMock("fbaInventory", "deleteInventoryItem", "200");
         String sellerSku = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -93,7 +93,7 @@ public class FbaInventoryApiTest {
 
     @Test
     public void getInventorySummariesTest() throws Exception {
-        instructBackendMock("FbaInventory", "getInventorySummaries", "200");
+        instructBackendMock("fbaInventory", "getInventorySummaries", "200");
         String granularityType = easyRandom.nextObject(String.class);
         String granularityId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());

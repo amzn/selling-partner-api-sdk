@@ -55,7 +55,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void getPackingSlipTest() throws Exception {
-        instructBackendMock("VendorShipping", "getPackingSlip", "200");
+        instructBackendMock("vendorShipping", "getPackingSlip", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<PackingSlip> response = api.getPackingSlipWithHttpInfo(purchaseOrderNumber);
@@ -66,7 +66,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void getPackingSlipsTest() throws Exception {
-        instructBackendMock("VendorShipping", "getPackingSlips", "200");
+        instructBackendMock("vendorShipping", "getPackingSlips", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
@@ -79,7 +79,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void submitShipmentConfirmationsTest() throws Exception {
-        instructBackendMock("VendorShipping", "submitShipmentConfirmations", "202");
+        instructBackendMock("vendorShipping", "submitShipmentConfirmations", "202");
         SubmitShipmentConfirmationsRequest body = easyRandom.nextObject(SubmitShipmentConfirmationsRequest.class);
 
         ApiResponse<TransactionReference> response = api.submitShipmentConfirmationsWithHttpInfo(body);
@@ -90,7 +90,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void submitShipmentStatusUpdatesTest() throws Exception {
-        instructBackendMock("VendorShipping", "submitShipmentStatusUpdates", "202");
+        instructBackendMock("vendorShipping", "submitShipmentStatusUpdates", "202");
         SubmitShipmentStatusUpdatesRequest body = easyRandom.nextObject(SubmitShipmentStatusUpdatesRequest.class);
 
         ApiResponse<TransactionReference> response = api.submitShipmentStatusUpdatesWithHttpInfo(body);

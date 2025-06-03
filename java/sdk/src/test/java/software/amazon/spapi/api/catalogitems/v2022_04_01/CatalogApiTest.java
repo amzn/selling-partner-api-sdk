@@ -53,7 +53,7 @@ public class CatalogApiTest {
 
     @Test
     public void getCatalogItemTest() throws Exception {
-        instructBackendMock("Catalog", "getCatalogItem", "200");
+        instructBackendMock("catalog", "getCatalogItem", "200");
         String asin = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -65,7 +65,7 @@ public class CatalogApiTest {
 
     @Test
     public void searchCatalogItemsTest() throws Exception {
-        instructBackendMock("Catalog", "searchCatalogItems", "200");
+        instructBackendMock("catalog", "searchCatalogItems", "200");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ItemSearchResults> response = api.searchCatalogItemsWithHttpInfo(

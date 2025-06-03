@@ -55,7 +55,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getBillOfLadingTest() throws Exception {
-        instructBackendMock("FbaInbound", "getBillOfLading", "200");
+        instructBackendMock("fbaInbound", "getBillOfLading", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetBillOfLadingResponse> response = api.getBillOfLadingWithHttpInfo(shipmentId);
@@ -66,7 +66,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getLabelsTest() throws Exception {
-        instructBackendMock("FbaInbound", "getLabels", "200");
+        instructBackendMock("fbaInbound", "getLabels", "200");
         String shipmentId = easyRandom.nextObject(String.class);
         String pageType = easyRandom.nextObject(String.class);
         String labelType = easyRandom.nextObject(String.class);
@@ -80,7 +80,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getPrepInstructionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "getPrepInstructions", "200");
+        instructBackendMock("fbaInbound", "getPrepInstructions", "200");
         String shipToCountryCode = easyRandom.nextObject(String.class);
 
         ApiResponse<GetPrepInstructionsResponse> response =
@@ -92,7 +92,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getShipmentItemsTest() throws Exception {
-        instructBackendMock("FbaInbound", "getShipmentItems", "200");
+        instructBackendMock("fbaInbound", "getShipmentItems", "200");
         String queryType = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -105,7 +105,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getShipmentItemsByShipmentIdTest() throws Exception {
-        instructBackendMock("FbaInbound", "getShipmentItemsByShipmentId", "200");
+        instructBackendMock("fbaInbound", "getShipmentItemsByShipmentId", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetShipmentItemsResponse> response = api.getShipmentItemsByShipmentIdWithHttpInfo(shipmentId, null);
@@ -116,7 +116,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getShipmentsTest() throws Exception {
-        instructBackendMock("FbaInbound", "getShipments", "200");
+        instructBackendMock("fbaInbound", "getShipments", "200");
         String queryType = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 

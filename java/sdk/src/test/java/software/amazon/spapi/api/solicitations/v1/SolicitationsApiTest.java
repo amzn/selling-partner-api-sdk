@@ -53,7 +53,7 @@ public class SolicitationsApiTest {
 
     @Test
     public void createProductReviewAndSellerFeedbackSolicitationTest() throws Exception {
-        instructBackendMock("Solicitations", "createProductReviewAndSellerFeedbackSolicitation", "201");
+        instructBackendMock("solicitations", "createProductReviewAndSellerFeedbackSolicitation", "201");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -66,7 +66,7 @@ public class SolicitationsApiTest {
 
     @Test
     public void getSolicitationActionsForOrderTest() throws Exception {
-        instructBackendMock("Solicitations", "getSolicitationActionsForOrder", "200");
+        instructBackendMock("solicitations", "getSolicitationActionsForOrder", "200");
         String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 

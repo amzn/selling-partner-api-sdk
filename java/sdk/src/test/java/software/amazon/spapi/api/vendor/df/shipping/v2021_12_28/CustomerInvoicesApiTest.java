@@ -52,7 +52,7 @@ public class CustomerInvoicesApiTest {
 
     @Test
     public void getCustomerInvoiceTest() throws Exception {
-        instructBackendMock("CustomerInvoices", "getCustomerInvoice", "200");
+        instructBackendMock("customerInvoices", "getCustomerInvoice", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<CustomerInvoice> response = api.getCustomerInvoiceWithHttpInfo(purchaseOrderNumber);
@@ -63,7 +63,7 @@ public class CustomerInvoicesApiTest {
 
     @Test
     public void getCustomerInvoicesTest() throws Exception {
-        instructBackendMock("CustomerInvoices", "getCustomerInvoices", "200");
+        instructBackendMock("customerInvoices", "getCustomerInvoices", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 

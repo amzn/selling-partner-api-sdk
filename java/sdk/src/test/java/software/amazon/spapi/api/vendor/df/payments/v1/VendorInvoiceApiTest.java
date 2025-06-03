@@ -52,7 +52,7 @@ public class VendorInvoiceApiTest {
 
     @Test
     public void submitInvoiceTest() throws Exception {
-        instructBackendMock("VendorInvoice", "submitInvoice", "202");
+        instructBackendMock("vendorInvoice", "submitInvoice", "202");
         SubmitInvoiceRequest body = easyRandom.nextObject(SubmitInvoiceRequest.class);
 
         ApiResponse<SubmitInvoiceResponse> response = api.submitInvoiceWithHttpInfo(body);

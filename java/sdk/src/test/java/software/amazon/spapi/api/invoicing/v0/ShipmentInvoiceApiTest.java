@@ -54,7 +54,7 @@ public class ShipmentInvoiceApiTest {
 
     @Test
     public void getInvoiceStatusTest() throws Exception {
-        instructBackendMock("ShipmentInvoice", "getInvoiceStatus", "200");
+        instructBackendMock("shipmentInvoice", "getInvoiceStatus", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoiceStatusResponse> response = api.getInvoiceStatusWithHttpInfo(shipmentId);
@@ -65,7 +65,7 @@ public class ShipmentInvoiceApiTest {
 
     @Test
     public void getShipmentDetailsTest() throws Exception {
-        instructBackendMock("ShipmentInvoice", "getShipmentDetails", "200");
+        instructBackendMock("shipmentInvoice", "getShipmentDetails", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetShipmentDetailsResponse> response = api.getShipmentDetailsWithHttpInfo(shipmentId);
@@ -76,7 +76,7 @@ public class ShipmentInvoiceApiTest {
 
     @Test
     public void submitInvoiceTest() throws Exception {
-        instructBackendMock("ShipmentInvoice", "submitInvoice", "200");
+        instructBackendMock("shipmentInvoice", "submitInvoice", "200");
         SubmitInvoiceRequest body = easyRandom.nextObject(SubmitInvoiceRequest.class);
         String shipmentId = easyRandom.nextObject(String.class);
 

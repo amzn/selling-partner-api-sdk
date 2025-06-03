@@ -52,7 +52,7 @@ public class ListingsApiTest {
 
     @Test
     public void getListingsRestrictionsTest() throws Exception {
-        instructBackendMock("Listings", "getListingsRestrictions", "200");
+        instructBackendMock("listings", "getListingsRestrictions", "200");
         String asin = easyRandom.nextObject(String.class);
         String sellerId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());

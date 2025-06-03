@@ -110,7 +110,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void cancelInboundPlanTest() throws Exception {
-        instructBackendMock("FbaInbound", "cancelInboundPlan", "202");
+        instructBackendMock("fbaInbound", "cancelInboundPlan", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelInboundPlanResponse> response = api.cancelInboundPlanWithHttpInfo(inboundPlanId);
@@ -121,7 +121,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void cancelSelfShipAppointmentTest() throws Exception {
-        instructBackendMock("FbaInbound", "cancelSelfShipAppointment", "202");
+        instructBackendMock("fbaInbound", "cancelSelfShipAppointment", "202");
         CancelSelfShipAppointmentRequest body = easyRandom.nextObject(CancelSelfShipAppointmentRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
@@ -135,7 +135,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void confirmDeliveryWindowOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "confirmDeliveryWindowOptions", "202");
+        instructBackendMock("fbaInbound", "confirmDeliveryWindowOptions", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
         String deliveryWindowOptionId = easyRandom.nextObject(String.class);
@@ -149,7 +149,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void confirmPackingOptionTest() throws Exception {
-        instructBackendMock("FbaInbound", "confirmPackingOption", "202");
+        instructBackendMock("fbaInbound", "confirmPackingOption", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String packingOptionId = easyRandom.nextObject(String.class);
 
@@ -162,7 +162,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void confirmPlacementOptionTest() throws Exception {
-        instructBackendMock("FbaInbound", "confirmPlacementOption", "202");
+        instructBackendMock("fbaInbound", "confirmPlacementOption", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String placementOptionId = easyRandom.nextObject(String.class);
 
@@ -175,7 +175,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void confirmShipmentContentUpdatePreviewTest() throws Exception {
-        instructBackendMock("FbaInbound", "confirmShipmentContentUpdatePreview", "202");
+        instructBackendMock("fbaInbound", "confirmShipmentContentUpdatePreview", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
         String contentUpdatePreviewId = easyRandom.nextObject(String.class);
@@ -189,7 +189,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void confirmTransportationOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "confirmTransportationOptions", "202");
+        instructBackendMock("fbaInbound", "confirmTransportationOptions", "202");
         ConfirmTransportationOptionsRequest body = easyRandom.nextObject(ConfirmTransportationOptionsRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
 
@@ -202,7 +202,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void createInboundPlanTest() throws Exception {
-        instructBackendMock("FbaInbound", "createInboundPlan", "202");
+        instructBackendMock("fbaInbound", "createInboundPlan", "202");
         CreateInboundPlanRequest body = easyRandom.nextObject(CreateInboundPlanRequest.class);
 
         ApiResponse<CreateInboundPlanResponse> response = api.createInboundPlanWithHttpInfo(body);
@@ -213,7 +213,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void createMarketplaceItemLabelsTest() throws Exception {
-        instructBackendMock("FbaInbound", "createMarketplaceItemLabels", "200");
+        instructBackendMock("fbaInbound", "createMarketplaceItemLabels", "200");
         CreateMarketplaceItemLabelsRequest body = easyRandom.nextObject(CreateMarketplaceItemLabelsRequest.class);
 
         ApiResponse<CreateMarketplaceItemLabelsResponse> response = api.createMarketplaceItemLabelsWithHttpInfo(body);
@@ -224,7 +224,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void generateDeliveryWindowOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "generateDeliveryWindowOptions", "202");
+        instructBackendMock("fbaInbound", "generateDeliveryWindowOptions", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -237,7 +237,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void generatePackingOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "generatePackingOptions", "202");
+        instructBackendMock("fbaInbound", "generatePackingOptions", "202");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<GeneratePackingOptionsResponse> response = api.generatePackingOptionsWithHttpInfo(inboundPlanId);
@@ -248,7 +248,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void generatePlacementOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "generatePlacementOptions", "202");
+        instructBackendMock("fbaInbound", "generatePlacementOptions", "202");
         GeneratePlacementOptionsRequest body = easyRandom.nextObject(GeneratePlacementOptionsRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
 
@@ -261,7 +261,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void generateSelfShipAppointmentSlotsTest() throws Exception {
-        instructBackendMock("FbaInbound", "generateSelfShipAppointmentSlots", "201");
+        instructBackendMock("fbaInbound", "generateSelfShipAppointmentSlots", "201");
         GenerateSelfShipAppointmentSlotsRequest body =
                 easyRandom.nextObject(GenerateSelfShipAppointmentSlotsRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
@@ -276,7 +276,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void generateShipmentContentUpdatePreviewsTest() throws Exception {
-        instructBackendMock("FbaInbound", "generateShipmentContentUpdatePreviews", "202");
+        instructBackendMock("fbaInbound", "generateShipmentContentUpdatePreviews", "202");
         GenerateShipmentContentUpdatePreviewsRequest body =
                 easyRandom.nextObject(GenerateShipmentContentUpdatePreviewsRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
@@ -291,7 +291,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void generateTransportationOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "generateTransportationOptions", "202");
+        instructBackendMock("fbaInbound", "generateTransportationOptions", "202");
         GenerateTransportationOptionsRequest body = easyRandom.nextObject(GenerateTransportationOptionsRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
 
@@ -304,7 +304,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getDeliveryChallanDocumentTest() throws Exception {
-        instructBackendMock("FbaInbound", "getDeliveryChallanDocument", "200");
+        instructBackendMock("fbaInbound", "getDeliveryChallanDocument", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -317,7 +317,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getInboundOperationStatusTest() throws Exception {
-        instructBackendMock("FbaInbound", "getInboundOperationStatus", "200");
+        instructBackendMock("fbaInbound", "getInboundOperationStatus", "200");
         String operationId = easyRandom.nextObject(String.class);
 
         ApiResponse<InboundOperationStatus> response = api.getInboundOperationStatusWithHttpInfo(operationId);
@@ -328,7 +328,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getInboundPlanTest() throws Exception {
-        instructBackendMock("FbaInbound", "getInboundPlan", "200");
+        instructBackendMock("fbaInbound", "getInboundPlan", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<InboundPlan> response = api.getInboundPlanWithHttpInfo(inboundPlanId);
@@ -339,7 +339,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getSelfShipAppointmentSlotsTest() throws Exception {
-        instructBackendMock("FbaInbound", "getSelfShipAppointmentSlots", "200");
+        instructBackendMock("fbaInbound", "getSelfShipAppointmentSlots", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -352,7 +352,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getShipmentTest() throws Exception {
-        instructBackendMock("FbaInbound", "getShipment", "200");
+        instructBackendMock("fbaInbound", "getShipment", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -364,7 +364,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getShipmentContentUpdatePreviewTest() throws Exception {
-        instructBackendMock("FbaInbound", "getShipmentContentUpdatePreview", "200");
+        instructBackendMock("fbaInbound", "getShipmentContentUpdatePreview", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
         String contentUpdatePreviewId = easyRandom.nextObject(String.class);
@@ -378,7 +378,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listDeliveryWindowOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listDeliveryWindowOptions", "200");
+        instructBackendMock("fbaInbound", "listDeliveryWindowOptions", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -391,7 +391,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listInboundPlanBoxesTest() throws Exception {
-        instructBackendMock("FbaInbound", "listInboundPlanBoxes", "200");
+        instructBackendMock("fbaInbound", "listInboundPlanBoxes", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListInboundPlanBoxesResponse> response =
@@ -403,7 +403,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listInboundPlanItemsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listInboundPlanItems", "200");
+        instructBackendMock("fbaInbound", "listInboundPlanItems", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListInboundPlanItemsResponse> response =
@@ -415,7 +415,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listInboundPlanPalletsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listInboundPlanPallets", "200");
+        instructBackendMock("fbaInbound", "listInboundPlanPallets", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListInboundPlanPalletsResponse> response =
@@ -427,7 +427,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listInboundPlansTest() throws Exception {
-        instructBackendMock("FbaInbound", "listInboundPlans", "200");
+        instructBackendMock("fbaInbound", "listInboundPlans", "200");
 
         ApiResponse<ListInboundPlansResponse> response = api.listInboundPlansWithHttpInfo(null, null, null, null, null);
 
@@ -437,7 +437,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listItemComplianceDetailsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listItemComplianceDetails", "200");
+        instructBackendMock("fbaInbound", "listItemComplianceDetails", "200");
         List<String> mskus = easyRandom.objects(String.class, 2).collect(Collectors.toList());
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -450,7 +450,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listPackingGroupBoxesTest() throws Exception {
-        instructBackendMock("FbaInbound", "listPackingGroupBoxes", "200");
+        instructBackendMock("fbaInbound", "listPackingGroupBoxes", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String packingGroupId = easyRandom.nextObject(String.class);
 
@@ -463,7 +463,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listPackingGroupItemsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listPackingGroupItems", "200");
+        instructBackendMock("fbaInbound", "listPackingGroupItems", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String packingGroupId = easyRandom.nextObject(String.class);
 
@@ -476,7 +476,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listPackingOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listPackingOptions", "200");
+        instructBackendMock("fbaInbound", "listPackingOptions", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListPackingOptionsResponse> response =
@@ -488,7 +488,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listPlacementOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listPlacementOptions", "200");
+        instructBackendMock("fbaInbound", "listPlacementOptions", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListPlacementOptionsResponse> response =
@@ -500,7 +500,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listPrepDetailsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listPrepDetails", "200");
+        instructBackendMock("fbaInbound", "listPrepDetails", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         List<String> mskus = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -512,7 +512,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listShipmentBoxesTest() throws Exception {
-        instructBackendMock("FbaInbound", "listShipmentBoxes", "200");
+        instructBackendMock("fbaInbound", "listShipmentBoxes", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -525,7 +525,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listShipmentContentUpdatePreviewsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listShipmentContentUpdatePreviews", "200");
+        instructBackendMock("fbaInbound", "listShipmentContentUpdatePreviews", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -538,7 +538,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listShipmentItemsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listShipmentItems", "200");
+        instructBackendMock("fbaInbound", "listShipmentItems", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -551,7 +551,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listShipmentPalletsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listShipmentPallets", "200");
+        instructBackendMock("fbaInbound", "listShipmentPallets", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
 
@@ -564,7 +564,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void listTransportationOptionsTest() throws Exception {
-        instructBackendMock("FbaInbound", "listTransportationOptions", "200");
+        instructBackendMock("fbaInbound", "listTransportationOptions", "200");
         String inboundPlanId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListTransportationOptionsResponse> response =
@@ -576,7 +576,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void scheduleSelfShipAppointmentTest() throws Exception {
-        instructBackendMock("FbaInbound", "scheduleSelfShipAppointment", "200");
+        instructBackendMock("fbaInbound", "scheduleSelfShipAppointment", "200");
         ScheduleSelfShipAppointmentRequest body = easyRandom.nextObject(ScheduleSelfShipAppointmentRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
@@ -591,7 +591,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void setPackingInformationTest() throws Exception {
-        instructBackendMock("FbaInbound", "setPackingInformation", "202");
+        instructBackendMock("fbaInbound", "setPackingInformation", "202");
         SetPackingInformationRequest body = easyRandom.nextObject(SetPackingInformationRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
 
@@ -604,7 +604,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void setPrepDetailsTest() throws Exception {
-        instructBackendMock("FbaInbound", "setPrepDetails", "202");
+        instructBackendMock("fbaInbound", "setPrepDetails", "202");
         SetPrepDetailsRequest body = easyRandom.nextObject(SetPrepDetailsRequest.class);
 
         ApiResponse<SetPrepDetailsResponse> response = api.setPrepDetailsWithHttpInfo(body);
@@ -615,7 +615,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void updateInboundPlanNameTest() throws Exception {
-        instructBackendMock("FbaInbound", "updateInboundPlanName", "204");
+        instructBackendMock("fbaInbound", "updateInboundPlanName", "204");
         UpdateInboundPlanNameRequest body = easyRandom.nextObject(UpdateInboundPlanNameRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
 
@@ -624,7 +624,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void updateItemComplianceDetailsTest() throws Exception {
-        instructBackendMock("FbaInbound", "updateItemComplianceDetails", "202");
+        instructBackendMock("fbaInbound", "updateItemComplianceDetails", "202");
         UpdateItemComplianceDetailsRequest body = easyRandom.nextObject(UpdateItemComplianceDetailsRequest.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -637,7 +637,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void updateShipmentNameTest() throws Exception {
-        instructBackendMock("FbaInbound", "updateShipmentName", "204");
+        instructBackendMock("fbaInbound", "updateShipmentName", "204");
         UpdateShipmentNameRequest body = easyRandom.nextObject(UpdateShipmentNameRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
@@ -647,7 +647,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void updateShipmentSourceAddressTest() throws Exception {
-        instructBackendMock("FbaInbound", "updateShipmentSourceAddress", "202");
+        instructBackendMock("fbaInbound", "updateShipmentSourceAddress", "202");
         UpdateShipmentSourceAddressRequest body = easyRandom.nextObject(UpdateShipmentSourceAddressRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);
@@ -661,7 +661,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void updateShipmentTrackingDetailsTest() throws Exception {
-        instructBackendMock("FbaInbound", "updateShipmentTrackingDetails", "202");
+        instructBackendMock("fbaInbound", "updateShipmentTrackingDetails", "202");
         UpdateShipmentTrackingDetailsRequest body = easyRandom.nextObject(UpdateShipmentTrackingDetailsRequest.class);
         String inboundPlanId = easyRandom.nextObject(String.class);
         String shipmentId = easyRandom.nextObject(String.class);

@@ -51,7 +51,7 @@ public class FbaInboundApiTest {
 
     @Test
     public void getItemEligibilityPreviewTest() throws Exception {
-        instructBackendMock("FbaInbound", "getItemEligibilityPreview", "200");
+        instructBackendMock("fbaInbound", "getItemEligibilityPreview", "200");
         String asin = easyRandom.nextObject(String.class);
         String program = easyRandom.nextObject(String.class);
 

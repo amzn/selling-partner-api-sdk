@@ -54,7 +54,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void createTransferScheduleTest() throws Exception {
-        instructBackendMock("TransferSchedule", "createTransferSchedule", "200");
+        instructBackendMock("Transfer Schedule", "createTransferSchedule", "200");
         TransferScheduleRequest body = easyRandom.nextObject(TransferScheduleRequest.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
@@ -68,7 +68,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void deleteScheduleTransactionTest() throws Exception {
-        instructBackendMock("TransferSchedule", "deleteScheduleTransaction", "200");
+        instructBackendMock("Transfer Schedule", "deleteScheduleTransaction", "200");
         String transferScheduleId = easyRandom.nextObject(String.class);
 
         ApiResponse<DeleteTransferSchedule> response = api.deleteScheduleTransactionWithHttpInfo(transferScheduleId);
@@ -79,7 +79,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void getTransferScheduleTest() throws Exception {
-        instructBackendMock("TransferSchedule", "getTransferSchedule", "200");
+        instructBackendMock("Transfer Schedule", "getTransferSchedule", "200");
         String transferScheduleId = easyRandom.nextObject(String.class);
 
         ApiResponse<TransferSchedule> response = api.getTransferScheduleWithHttpInfo(transferScheduleId);
@@ -90,7 +90,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void listTransferSchedulesTest() throws Exception {
-        instructBackendMock("TransferSchedule", "listTransferSchedules", "200");
+        instructBackendMock("Transfer Schedule", "listTransferSchedules", "200");
         String accountId = easyRandom.nextObject(String.class);
 
         ApiResponse<TransferScheduleListing> response = api.listTransferSchedulesWithHttpInfo(accountId, null);
@@ -101,7 +101,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void updateTransferScheduleTest() throws Exception {
-        instructBackendMock("TransferSchedule", "updateTransferSchedule", "200");
+        instructBackendMock("Transfer Schedule", "updateTransferSchedule", "200");
         TransferSchedule body = easyRandom.nextObject(TransferSchedule.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);

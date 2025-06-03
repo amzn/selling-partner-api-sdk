@@ -54,7 +54,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getCompetitiveSummaryTest() throws Exception {
-        instructBackendMock("ProductPricing", "getCompetitiveSummary", "200");
+        instructBackendMock("productPricing", "getCompetitiveSummary", "200");
         CompetitiveSummaryBatchRequest body = easyRandom.nextObject(CompetitiveSummaryBatchRequest.class);
 
         ApiResponse<CompetitiveSummaryBatchResponse> response = api.getCompetitiveSummaryWithHttpInfo(body);
@@ -65,7 +65,7 @@ public class ProductPricingApiTest {
 
     @Test
     public void getFeaturedOfferExpectedPriceBatchTest() throws Exception {
-        instructBackendMock("ProductPricing", "getFeaturedOfferExpectedPriceBatch", "200");
+        instructBackendMock("productPricing", "getFeaturedOfferExpectedPriceBatch", "200");
         GetFeaturedOfferExpectedPriceBatchRequest body =
                 easyRandom.nextObject(GetFeaturedOfferExpectedPriceBatchRequest.class);
 

@@ -53,7 +53,7 @@ public class DefaultApiTest {
 
     @Test
     public void getPaymentMethodsTest() throws Exception {
-        instructBackendMock("Default", "getPaymentMethods", "200");
+        instructBackendMock("default", "getPaymentMethods", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetPaymentMethodsResponse> response = api.getPaymentMethodsWithHttpInfo(marketplaceId, null);
@@ -64,7 +64,7 @@ public class DefaultApiTest {
 
     @Test
     public void initiatePayoutTest() throws Exception {
-        instructBackendMock("Default", "initiatePayout", "200");
+        instructBackendMock("default", "initiatePayout", "200");
         InitiatePayoutRequest body = easyRandom.nextObject(InitiatePayoutRequest.class);
 
         ApiResponse<InitiatePayoutResponse> response = api.initiatePayoutWithHttpInfo(body);

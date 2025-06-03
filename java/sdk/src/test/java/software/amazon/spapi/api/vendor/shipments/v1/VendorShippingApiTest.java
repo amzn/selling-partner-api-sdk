@@ -55,7 +55,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void getShipmentDetailsTest() throws Exception {
-        instructBackendMock("VendorShipping", "getShipmentDetails", "200");
+        instructBackendMock("vendorShipping", "getShipmentDetails", "200");
 
         ApiResponse<GetShipmentDetailsResponse> response = api.getShipmentDetailsWithHttpInfo(
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
@@ -67,7 +67,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void getShipmentLabelsTest() throws Exception {
-        instructBackendMock("VendorShipping", "getShipmentLabels", "200");
+        instructBackendMock("vendorShipping", "getShipmentLabels", "200");
 
         ApiResponse<GetShipmentLabels> response =
                 api.getShipmentLabelsWithHttpInfo(null, null, null, null, null, null, null, null);
@@ -78,7 +78,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void submitShipmentConfirmationsTest() throws Exception {
-        instructBackendMock("VendorShipping", "submitShipmentConfirmations", "202");
+        instructBackendMock("vendorShipping", "submitShipmentConfirmations", "202");
         SubmitShipmentConfirmationsRequest body = easyRandom.nextObject(SubmitShipmentConfirmationsRequest.class);
 
         ApiResponse<SubmitShipmentConfirmationsResponse> response = api.submitShipmentConfirmationsWithHttpInfo(body);
@@ -89,7 +89,7 @@ public class VendorShippingApiTest {
 
     @Test
     public void submitShipmentsTest() throws Exception {
-        instructBackendMock("VendorShipping", "submitShipments", "202");
+        instructBackendMock("vendorShipping", "submitShipments", "202");
         SubmitShipments body = easyRandom.nextObject(SubmitShipments.class);
 
         ApiResponse<SubmitShipmentConfirmationsResponse> response = api.submitShipmentsWithHttpInfo(body);

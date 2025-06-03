@@ -52,7 +52,7 @@ public class UploadsApiTest {
 
     @Test
     public void createUploadDestinationForResourceTest() throws Exception {
-        instructBackendMock("Uploads", "createUploadDestinationForResource", "201");
+        instructBackendMock("uploads", "createUploadDestinationForResource", "201");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
         String contentMD5 = easyRandom.nextObject(String.class);
         String resource = easyRandom.nextObject(String.class);

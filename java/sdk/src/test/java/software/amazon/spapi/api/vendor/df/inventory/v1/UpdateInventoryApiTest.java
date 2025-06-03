@@ -52,7 +52,7 @@ public class UpdateInventoryApiTest {
 
     @Test
     public void submitInventoryUpdateTest() throws Exception {
-        instructBackendMock("UpdateInventory", "submitInventoryUpdate", "202");
+        instructBackendMock("updateInventory", "submitInventoryUpdate", "202");
         SubmitInventoryUpdateRequest body = easyRandom.nextObject(SubmitInventoryUpdateRequest.class);
         String warehouseId = easyRandom.nextObject(String.class);
 
