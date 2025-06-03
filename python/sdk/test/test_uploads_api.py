@@ -46,15 +46,6 @@ class TestUploadsApi(unittest.TestCase):
 
     def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
         url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.uploads_v2020_11_01" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.uploads_v2020_11_01" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.uploads_v2020_11_01" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.uploads_v2020_11_01" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
