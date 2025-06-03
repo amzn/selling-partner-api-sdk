@@ -114,7 +114,7 @@ public class TransferScheduleApiTest {
     }
 
     private void instructBackendMock(String basename, String response, String code) throws Exception {
-        basename = basename.replaceAll("/\"W/g", "").toLowerCase();
+        basename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
