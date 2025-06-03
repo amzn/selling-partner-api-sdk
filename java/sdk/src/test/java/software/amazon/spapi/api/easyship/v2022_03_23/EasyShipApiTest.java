@@ -56,7 +56,7 @@ public class EasyShipApiTest {
 
     @Test
     public void createScheduledPackageTest() throws Exception {
-        instructBackendMock("EasyShip", "createScheduledPackage", "200");
+        instructBackendMock("easyShip", "createScheduledPackage", "200");
         CreateScheduledPackageRequest body = easyRandom.nextObject(CreateScheduledPackageRequest.class);
 
         ApiResponse<ModelPackage> response = api.createScheduledPackageWithHttpInfo(body);
@@ -67,7 +67,7 @@ public class EasyShipApiTest {
 
     @Test
     public void createScheduledPackageBulkTest() throws Exception {
-        instructBackendMock("EasyShip", "createScheduledPackageBulk", "200");
+        instructBackendMock("easyShip", "createScheduledPackageBulk", "200");
         CreateScheduledPackagesRequest body = easyRandom.nextObject(CreateScheduledPackagesRequest.class);
 
         ApiResponse<CreateScheduledPackagesResponse> response = api.createScheduledPackageBulkWithHttpInfo(body);
@@ -78,7 +78,7 @@ public class EasyShipApiTest {
 
     @Test
     public void getScheduledPackageTest() throws Exception {
-        instructBackendMock("EasyShip", "getScheduledPackage", "200");
+        instructBackendMock("easyShip", "getScheduledPackage", "200");
         String amazonOrderId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -90,7 +90,7 @@ public class EasyShipApiTest {
 
     @Test
     public void listHandoverSlotsTest() throws Exception {
-        instructBackendMock("EasyShip", "listHandoverSlots", "200");
+        instructBackendMock("easyShip", "listHandoverSlots", "200");
 
         ApiResponse<ListHandoverSlotsResponse> response = api.listHandoverSlotsWithHttpInfo(null);
 
@@ -100,7 +100,7 @@ public class EasyShipApiTest {
 
     @Test
     public void updateScheduledPackagesTest() throws Exception {
-        instructBackendMock("EasyShip", "updateScheduledPackages", "200");
+        instructBackendMock("easyShip", "updateScheduledPackages", "200");
 
         ApiResponse<Packages> response = api.updateScheduledPackagesWithHttpInfo(null);
 

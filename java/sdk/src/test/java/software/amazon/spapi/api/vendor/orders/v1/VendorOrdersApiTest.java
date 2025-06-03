@@ -55,7 +55,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getPurchaseOrderTest() throws Exception {
-        instructBackendMock("VendorOrders", "getPurchaseOrder", "200");
+        instructBackendMock("vendorOrders", "getPurchaseOrder", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<GetPurchaseOrderResponse> response = api.getPurchaseOrderWithHttpInfo(purchaseOrderNumber);
@@ -66,7 +66,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getPurchaseOrdersTest() throws Exception {
-        instructBackendMock("VendorOrders", "getPurchaseOrders", "200");
+        instructBackendMock("vendorOrders", "getPurchaseOrders", "200");
 
         ApiResponse<GetPurchaseOrdersResponse> response = api.getPurchaseOrdersWithHttpInfo(
                 null, null, null, null, null, null, null, null, null, null, null, null);
@@ -77,7 +77,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getPurchaseOrdersStatusTest() throws Exception {
-        instructBackendMock("VendorOrders", "getPurchaseOrdersStatus", "200");
+        instructBackendMock("vendorOrders", "getPurchaseOrdersStatus", "200");
 
         ApiResponse<GetPurchaseOrdersStatusResponse> response = api.getPurchaseOrdersStatusWithHttpInfo(
                 null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -88,7 +88,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void submitAcknowledgementTest() throws Exception {
-        instructBackendMock("VendorOrders", "submitAcknowledgement", "202");
+        instructBackendMock("vendorOrders", "submitAcknowledgement", "202");
         SubmitAcknowledgementRequest body = easyRandom.nextObject(SubmitAcknowledgementRequest.class);
 
         ApiResponse<SubmitAcknowledgementResponse> response = api.submitAcknowledgementWithHttpInfo(body);

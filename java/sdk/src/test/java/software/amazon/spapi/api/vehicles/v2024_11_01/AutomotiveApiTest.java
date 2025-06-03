@@ -51,7 +51,7 @@ public class AutomotiveApiTest {
 
     @Test
     public void getVehiclesTest() throws Exception {
-        instructBackendMock("Automotive", "getVehicles", "200");
+        instructBackendMock("vehicles", "getVehicles", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String vehicleType = easyRandom.nextObject(String.class);
 

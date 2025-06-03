@@ -52,7 +52,7 @@ public class CreateContainerLabelApiTest {
 
     @Test
     public void createContainerLabelTest() throws Exception {
-        instructBackendMock("CreateContainerLabel", "createContainerLabel", "200");
+        instructBackendMock("createContainerLabel", "createContainerLabel", "200");
         CreateContainerLabelRequest body = easyRandom.nextObject(CreateContainerLabelRequest.class);
 
         ApiResponse<CreateContainerLabelResponse> response = api.createContainerLabelWithHttpInfo(body);

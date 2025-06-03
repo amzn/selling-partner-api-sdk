@@ -55,7 +55,7 @@ public class FeesApiTest {
 
     @Test
     public void getMyFeesEstimateForASINTest() throws Exception {
-        instructBackendMock("Fees", "getMyFeesEstimateForASIN", "200");
+        instructBackendMock("fees", "getMyFeesEstimateForASIN", "200");
         GetMyFeesEstimateRequest body = easyRandom.nextObject(GetMyFeesEstimateRequest.class);
         String asin = easyRandom.nextObject(String.class);
 
@@ -67,7 +67,7 @@ public class FeesApiTest {
 
     @Test
     public void getMyFeesEstimateForSKUTest() throws Exception {
-        instructBackendMock("Fees", "getMyFeesEstimateForSKU", "200");
+        instructBackendMock("fees", "getMyFeesEstimateForSKU", "200");
         GetMyFeesEstimateRequest body = easyRandom.nextObject(GetMyFeesEstimateRequest.class);
         String sellerSKU = easyRandom.nextObject(String.class);
 
@@ -79,7 +79,7 @@ public class FeesApiTest {
 
     @Test
     public void getMyFeesEstimatesTest() throws Exception {
-        instructBackendMock("Fees", "getMyFeesEstimates", "200");
+        instructBackendMock("fees", "getMyFeesEstimates", "200");
         List<FeesEstimateByIdRequest> body =
                 easyRandom.objects(FeesEstimateByIdRequest.class, 2).collect(Collectors.toList());
 

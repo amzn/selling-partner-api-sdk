@@ -57,7 +57,7 @@ public class FeedsApiTest {
 
     @Test
     public void cancelFeedTest() throws Exception {
-        instructBackendMock("Feeds", "cancelFeed", "200");
+        instructBackendMock("feeds", "cancelFeed", "200");
         String feedId = easyRandom.nextObject(String.class);
 
         api.cancelFeedWithHttpInfo(feedId);
@@ -65,7 +65,7 @@ public class FeedsApiTest {
 
     @Test
     public void createFeedTest() throws Exception {
-        instructBackendMock("Feeds", "createFeed", "202");
+        instructBackendMock("feeds", "createFeed", "202");
         CreateFeedSpecification body = easyRandom.nextObject(CreateFeedSpecification.class);
 
         ApiResponse<CreateFeedResponse> response = api.createFeedWithHttpInfo(body);
@@ -76,7 +76,7 @@ public class FeedsApiTest {
 
     @Test
     public void createFeedDocumentTest() throws Exception {
-        instructBackendMock("Feeds", "createFeedDocument", "201");
+        instructBackendMock("feeds", "createFeedDocument", "201");
         CreateFeedDocumentSpecification body = easyRandom.nextObject(CreateFeedDocumentSpecification.class);
 
         ApiResponse<CreateFeedDocumentResponse> response = api.createFeedDocumentWithHttpInfo(body);
@@ -87,7 +87,7 @@ public class FeedsApiTest {
 
     @Test
     public void getFeedTest() throws Exception {
-        instructBackendMock("Feeds", "getFeed", "200");
+        instructBackendMock("feeds", "getFeed", "200");
         String feedId = easyRandom.nextObject(String.class);
 
         ApiResponse<Feed> response = api.getFeedWithHttpInfo(feedId);
@@ -98,7 +98,7 @@ public class FeedsApiTest {
 
     @Test
     public void getFeedDocumentTest() throws Exception {
-        instructBackendMock("Feeds", "getFeedDocument", "200");
+        instructBackendMock("feeds", "getFeedDocument", "200");
         String feedDocumentId = easyRandom.nextObject(String.class);
 
         ApiResponse<FeedDocument> response = api.getFeedDocumentWithHttpInfo(feedDocumentId);
@@ -109,7 +109,7 @@ public class FeedsApiTest {
 
     @Test
     public void getFeedsTest() throws Exception {
-        instructBackendMock("Feeds", "getFeeds", "200");
+        instructBackendMock("feeds", "getFeeds", "200");
 
         ApiResponse<GetFeedsResponse> response = api.getFeedsWithHttpInfo(null, null, null, null, null, null, null);
 

@@ -52,7 +52,7 @@ public class TransferPreviewApiTest {
 
     @Test
     public void getTransferPreviewTest() throws Exception {
-        instructBackendMock("TransferPreview", "getTransferPreview", "200");
+        instructBackendMock("Transfer Preview", "getTransferPreview", "200");
         String sourceCountryCode = easyRandom.nextObject(String.class);
         String sourceCurrencyCode = easyRandom.nextObject(String.class);
         String destinationCountryCode = easyRandom.nextObject(String.class);

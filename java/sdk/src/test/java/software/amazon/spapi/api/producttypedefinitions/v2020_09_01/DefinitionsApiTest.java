@@ -53,7 +53,7 @@ public class DefinitionsApiTest {
 
     @Test
     public void getDefinitionsProductTypeTest() throws Exception {
-        instructBackendMock("Definitions", "getDefinitionsProductType", "200");
+        instructBackendMock("definitions", "getDefinitionsProductType", "200");
         String productType = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -66,7 +66,7 @@ public class DefinitionsApiTest {
 
     @Test
     public void searchDefinitionsProductTypesTest() throws Exception {
-        instructBackendMock("Definitions", "searchDefinitionsProductTypes", "200");
+        instructBackendMock("definitions", "searchDefinitionsProductTypes", "200");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ProductTypeList> response =

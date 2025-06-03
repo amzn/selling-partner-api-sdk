@@ -51,7 +51,7 @@ public class VendorTransactionApiTest {
 
     @Test
     public void getTransactionTest() throws Exception {
-        instructBackendMock("VendorTransaction", "getTransaction", "200");
+        instructBackendMock("vendorTransaction", "getTransaction", "200");
         String transactionId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetTransactionResponse> response = api.getTransactionWithHttpInfo(transactionId);

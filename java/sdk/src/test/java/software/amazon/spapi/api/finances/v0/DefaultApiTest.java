@@ -52,7 +52,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventGroupsTest() throws Exception {
-        instructBackendMock("Default", "listFinancialEventGroups", "200");
+        instructBackendMock("default", "listFinancialEventGroups", "200");
 
         ApiResponse<ListFinancialEventGroupsResponse> response =
                 api.listFinancialEventGroupsWithHttpInfo(null, null, null, null);
@@ -63,7 +63,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventsTest() throws Exception {
-        instructBackendMock("Default", "listFinancialEvents", "200");
+        instructBackendMock("default", "listFinancialEvents", "200");
 
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsWithHttpInfo(null, null, null, null);
 
@@ -73,7 +73,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventsByGroupIdTest() throws Exception {
-        instructBackendMock("Default", "listFinancialEventsByGroupId", "200");
+        instructBackendMock("default", "listFinancialEventsByGroupId", "200");
         String eventGroupId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListFinancialEventsResponse> response =
@@ -85,7 +85,7 @@ public class DefaultApiTest {
 
     @Test
     public void listFinancialEventsByOrderIdTest() throws Exception {
-        instructBackendMock("Default", "listFinancialEventsByOrderId", "200");
+        instructBackendMock("default", "listFinancialEventsByOrderId", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListFinancialEventsResponse> response =

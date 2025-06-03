@@ -60,7 +60,7 @@ public class NotificationsApiTest {
 
     @Test
     public void createDestinationTest() throws Exception {
-        instructBackendMock("Notifications", "createDestination", "200");
+        instructBackendMock("notifications", "createDestination", "200");
         CreateDestinationRequest body = easyRandom.nextObject(CreateDestinationRequest.class);
 
         ApiResponse<CreateDestinationResponse> response = api.createDestinationWithHttpInfo(body);
@@ -71,7 +71,7 @@ public class NotificationsApiTest {
 
     @Test
     public void createSubscriptionTest() throws Exception {
-        instructBackendMock("Notifications", "createSubscription", "200");
+        instructBackendMock("notifications", "createSubscription", "200");
         CreateSubscriptionRequest body = easyRandom.nextObject(CreateSubscriptionRequest.class);
         String notificationType = easyRandom.nextObject(String.class);
 
@@ -83,7 +83,7 @@ public class NotificationsApiTest {
 
     @Test
     public void deleteDestinationTest() throws Exception {
-        instructBackendMock("Notifications", "deleteDestination", "200");
+        instructBackendMock("notifications", "deleteDestination", "200");
         String destinationId = easyRandom.nextObject(String.class);
 
         ApiResponse<DeleteDestinationResponse> response = api.deleteDestinationWithHttpInfo(destinationId);
@@ -94,7 +94,7 @@ public class NotificationsApiTest {
 
     @Test
     public void deleteSubscriptionByIdTest() throws Exception {
-        instructBackendMock("Notifications", "deleteSubscriptionById", "200");
+        instructBackendMock("notifications", "deleteSubscriptionById", "200");
         String subscriptionId = easyRandom.nextObject(String.class);
         String notificationType = easyRandom.nextObject(String.class);
 
@@ -107,7 +107,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getDestinationTest() throws Exception {
-        instructBackendMock("Notifications", "getDestination", "200");
+        instructBackendMock("notifications", "getDestination", "200");
         String destinationId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetDestinationResponse> response = api.getDestinationWithHttpInfo(destinationId);
@@ -118,7 +118,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getDestinationsTest() throws Exception {
-        instructBackendMock("Notifications", "getDestinations", "200");
+        instructBackendMock("notifications", "getDestinations", "200");
 
         ApiResponse<GetDestinationsResponse> response = api.getDestinationsWithHttpInfo();
 
@@ -128,7 +128,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getSubscriptionTest() throws Exception {
-        instructBackendMock("Notifications", "getSubscription", "200");
+        instructBackendMock("notifications", "getSubscription", "200");
         String notificationType = easyRandom.nextObject(String.class);
 
         ApiResponse<GetSubscriptionResponse> response = api.getSubscriptionWithHttpInfo(notificationType, null);
@@ -139,7 +139,7 @@ public class NotificationsApiTest {
 
     @Test
     public void getSubscriptionByIdTest() throws Exception {
-        instructBackendMock("Notifications", "getSubscriptionById", "200");
+        instructBackendMock("notifications", "getSubscriptionById", "200");
         String subscriptionId = easyRandom.nextObject(String.class);
         String notificationType = easyRandom.nextObject(String.class);
 

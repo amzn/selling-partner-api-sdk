@@ -58,7 +58,7 @@ public class InvoicesApiTest {
 
     @Test
     public void createInvoicesExportTest() throws Exception {
-        instructBackendMock("Invoices", "createInvoicesExport", "202");
+        instructBackendMock("invoices", "createInvoicesExport", "202");
         ExportInvoicesRequest body = easyRandom.nextObject(ExportInvoicesRequest.class);
 
         ApiResponse<ExportInvoicesResponse> response = api.createInvoicesExportWithHttpInfo(body);
@@ -69,7 +69,7 @@ public class InvoicesApiTest {
 
     @Test
     public void getInvoiceTest() throws Exception {
-        instructBackendMock("Invoices", "getInvoice", "200");
+        instructBackendMock("invoices", "getInvoice", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
         String invoiceId = easyRandom.nextObject(String.class);
 
@@ -81,7 +81,7 @@ public class InvoicesApiTest {
 
     @Test
     public void getInvoicesTest() throws Exception {
-        instructBackendMock("Invoices", "getInvoices", "200");
+        instructBackendMock("invoices", "getInvoices", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesResponse> response = api.getInvoicesWithHttpInfo(
@@ -93,7 +93,7 @@ public class InvoicesApiTest {
 
     @Test
     public void getInvoicesAttributesTest() throws Exception {
-        instructBackendMock("Invoices", "getInvoicesAttributes", "200");
+        instructBackendMock("invoices", "getInvoicesAttributes", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesAttributesResponse> response = api.getInvoicesAttributesWithHttpInfo(marketplaceId);
@@ -104,7 +104,7 @@ public class InvoicesApiTest {
 
     @Test
     public void getInvoicesDocumentTest() throws Exception {
-        instructBackendMock("Invoices", "getInvoicesDocument", "200");
+        instructBackendMock("invoices", "getInvoicesDocument", "200");
         String invoicesDocumentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesDocumentResponse> response = api.getInvoicesDocumentWithHttpInfo(invoicesDocumentId);
@@ -115,7 +115,7 @@ public class InvoicesApiTest {
 
     @Test
     public void getInvoicesExportTest() throws Exception {
-        instructBackendMock("Invoices", "getInvoicesExport", "200");
+        instructBackendMock("invoices", "getInvoicesExport", "200");
         String exportId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesExportResponse> response = api.getInvoicesExportWithHttpInfo(exportId);
@@ -126,7 +126,7 @@ public class InvoicesApiTest {
 
     @Test
     public void getInvoicesExportsTest() throws Exception {
-        instructBackendMock("Invoices", "getInvoicesExports", "200");
+        instructBackendMock("invoices", "getInvoicesExports", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetInvoicesExportsResponse> response =

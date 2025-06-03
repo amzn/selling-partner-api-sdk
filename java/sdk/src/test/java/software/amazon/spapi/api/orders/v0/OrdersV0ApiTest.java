@@ -60,7 +60,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void confirmShipmentTest() throws Exception {
-        instructBackendMock("OrdersV0", "confirmShipment", "204");
+        instructBackendMock("ordersV0", "confirmShipment", "204");
         ConfirmShipmentRequest body = easyRandom.nextObject(ConfirmShipmentRequest.class);
         String orderId = easyRandom.nextObject(String.class);
 
@@ -69,7 +69,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrderTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrder", "200");
+        instructBackendMock("ordersV0", "getOrder", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderResponse> response = api.getOrderWithHttpInfo(orderId);
@@ -80,7 +80,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrderAddressTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrderAddress", "200");
+        instructBackendMock("ordersV0", "getOrderAddress", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderAddressResponse> response = api.getOrderAddressWithHttpInfo(orderId);
@@ -91,7 +91,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrderBuyerInfoTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrderBuyerInfo", "200");
+        instructBackendMock("ordersV0", "getOrderBuyerInfo", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderBuyerInfoResponse> response = api.getOrderBuyerInfoWithHttpInfo(orderId);
@@ -102,7 +102,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrderItemsTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrderItems", "200");
+        instructBackendMock("ordersV0", "getOrderItems", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderItemsResponse> response = api.getOrderItemsWithHttpInfo(orderId, null);
@@ -113,7 +113,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrderItemsBuyerInfoTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrderItemsBuyerInfo", "200");
+        instructBackendMock("ordersV0", "getOrderItemsBuyerInfo", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderItemsBuyerInfoResponse> response = api.getOrderItemsBuyerInfoWithHttpInfo(orderId, null);
@@ -124,7 +124,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrderRegulatedInfoTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrderRegulatedInfo", "200");
+        instructBackendMock("ordersV0", "getOrderRegulatedInfo", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderRegulatedInfoResponse> response = api.getOrderRegulatedInfoWithHttpInfo(orderId);
@@ -135,7 +135,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void getOrdersTest() throws Exception {
-        instructBackendMock("OrdersV0", "getOrders", "200");
+        instructBackendMock("ordersV0", "getOrders", "200");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<GetOrdersResponse> response = api.getOrdersWithHttpInfo(
@@ -168,7 +168,7 @@ public class OrdersV0ApiTest {
 
     @Test
     public void updateVerificationStatusTest() throws Exception {
-        instructBackendMock("OrdersV0", "updateVerificationStatus", "204");
+        instructBackendMock("ordersV0", "updateVerificationStatus", "204");
         UpdateVerificationStatusRequest body = easyRandom.nextObject(UpdateVerificationStatusRequest.class);
         String orderId = easyRandom.nextObject(String.class);
 

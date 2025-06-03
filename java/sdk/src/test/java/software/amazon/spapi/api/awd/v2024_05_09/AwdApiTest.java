@@ -60,7 +60,7 @@ public class AwdApiTest {
 
     @Test
     public void cancelInboundTest() throws Exception {
-        instructBackendMock("Awd", "cancelInbound", "204");
+        instructBackendMock("awd", "cancelInbound", "204");
         String orderId = easyRandom.nextObject(String.class);
 
         api.cancelInboundWithHttpInfo(orderId);
@@ -68,7 +68,7 @@ public class AwdApiTest {
 
     @Test
     public void checkInboundEligibilityTest() throws Exception {
-        instructBackendMock("Awd", "checkInboundEligibility", "200");
+        instructBackendMock("awd", "checkInboundEligibility", "200");
         InboundPackages body = easyRandom.nextObject(InboundPackages.class);
 
         ApiResponse<InboundEligibility> response = api.checkInboundEligibilityWithHttpInfo(body);
@@ -79,7 +79,7 @@ public class AwdApiTest {
 
     @Test
     public void confirmInboundTest() throws Exception {
-        instructBackendMock("Awd", "confirmInbound", "204");
+        instructBackendMock("awd", "confirmInbound", "204");
         String orderId = easyRandom.nextObject(String.class);
 
         api.confirmInboundWithHttpInfo(orderId);
@@ -87,7 +87,7 @@ public class AwdApiTest {
 
     @Test
     public void createInboundTest() throws Exception {
-        instructBackendMock("Awd", "createInbound", "201");
+        instructBackendMock("awd", "createInbound", "201");
         InboundOrderCreationData body = easyRandom.nextObject(InboundOrderCreationData.class);
 
         ApiResponse<InboundOrderReference> response = api.createInboundWithHttpInfo(body);
@@ -98,7 +98,7 @@ public class AwdApiTest {
 
     @Test
     public void getInboundTest() throws Exception {
-        instructBackendMock("Awd", "getInbound", "200");
+        instructBackendMock("awd", "getInbound", "200");
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<InboundOrder> response = api.getInboundWithHttpInfo(orderId);
@@ -109,7 +109,7 @@ public class AwdApiTest {
 
     @Test
     public void getInboundShipmentTest() throws Exception {
-        instructBackendMock("Awd", "getInboundShipment", "200");
+        instructBackendMock("awd", "getInboundShipment", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<InboundShipment> response = api.getInboundShipmentWithHttpInfo(shipmentId, null);
@@ -120,7 +120,7 @@ public class AwdApiTest {
 
     @Test
     public void getInboundShipmentLabelsTest() throws Exception {
-        instructBackendMock("Awd", "getInboundShipmentLabels", "200");
+        instructBackendMock("awd", "getInboundShipmentLabels", "200");
         String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<ShipmentLabels> response = api.getInboundShipmentLabelsWithHttpInfo(shipmentId, null, null);
@@ -131,7 +131,7 @@ public class AwdApiTest {
 
     @Test
     public void listInboundShipmentsTest() throws Exception {
-        instructBackendMock("Awd", "listInboundShipments", "200");
+        instructBackendMock("awd", "listInboundShipments", "200");
 
         ApiResponse<ShipmentListing> response =
                 api.listInboundShipmentsWithHttpInfo(null, null, null, null, null, null, null);
@@ -142,7 +142,7 @@ public class AwdApiTest {
 
     @Test
     public void listInventoryTest() throws Exception {
-        instructBackendMock("Awd", "listInventory", "200");
+        instructBackendMock("awd", "listInventory", "200");
 
         ApiResponse<InventoryListing> response = api.listInventoryWithHttpInfo(null, null, null, null, null);
 
@@ -152,7 +152,7 @@ public class AwdApiTest {
 
     @Test
     public void updateInboundTest() throws Exception {
-        instructBackendMock("Awd", "updateInbound", "204");
+        instructBackendMock("awd", "updateInbound", "204");
         InboundOrder body = easyRandom.nextObject(InboundOrder.class);
         String orderId = easyRandom.nextObject(String.class);
 
@@ -161,7 +161,7 @@ public class AwdApiTest {
 
     @Test
     public void updateInboundShipmentTransportDetailsTest() throws Exception {
-        instructBackendMock("Awd", "updateInboundShipmentTransportDetails", "204");
+        instructBackendMock("awd", "updateInboundShipmentTransportDetails", "204");
         TransportationDetails body = easyRandom.nextObject(TransportationDetails.class);
         String shipmentId = easyRandom.nextObject(String.class);
 

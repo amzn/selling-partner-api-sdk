@@ -75,7 +75,7 @@ public class ServiceApiTest {
 
     @Test
     public void addAppointmentForServiceJobByServiceJobIdTest() throws Exception {
-        instructBackendMock("Service", "addAppointmentForServiceJobByServiceJobId", "200");
+        instructBackendMock("service", "addAppointmentForServiceJobByServiceJobId", "200");
         AddAppointmentRequest body = easyRandom.nextObject(AddAppointmentRequest.class);
         String serviceJobId = easyRandom.nextObject(String.class);
 
@@ -88,7 +88,7 @@ public class ServiceApiTest {
 
     @Test
     public void assignAppointmentResourcesTest() throws Exception {
-        instructBackendMock("Service", "assignAppointmentResources", "200");
+        instructBackendMock("service", "assignAppointmentResources", "200");
         AssignAppointmentResourcesRequest body = easyRandom.nextObject(AssignAppointmentResourcesRequest.class);
         String serviceJobId = easyRandom.nextObject(String.class);
         String appointmentId = easyRandom.nextObject(String.class);
@@ -102,7 +102,7 @@ public class ServiceApiTest {
 
     @Test
     public void cancelReservationTest() throws Exception {
-        instructBackendMock("Service", "cancelReservation", "204");
+        instructBackendMock("service", "cancelReservation", "204");
         String reservationId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -115,7 +115,7 @@ public class ServiceApiTest {
 
     @Test
     public void cancelServiceJobByServiceJobIdTest() throws Exception {
-        instructBackendMock("Service", "cancelServiceJobByServiceJobId", "200");
+        instructBackendMock("service", "cancelServiceJobByServiceJobId", "200");
         String serviceJobId = easyRandom.nextObject(String.class);
         String cancellationReasonCode = easyRandom.nextObject(String.class);
 
@@ -128,7 +128,7 @@ public class ServiceApiTest {
 
     @Test
     public void completeServiceJobByServiceJobIdTest() throws Exception {
-        instructBackendMock("Service", "completeServiceJobByServiceJobId", "200");
+        instructBackendMock("service", "completeServiceJobByServiceJobId", "200");
         String serviceJobId = easyRandom.nextObject(String.class);
 
         ApiResponse<CompleteServiceJobByServiceJobIdResponse> response =
@@ -140,7 +140,7 @@ public class ServiceApiTest {
 
     @Test
     public void createReservationTest() throws Exception {
-        instructBackendMock("Service", "createReservation", "200");
+        instructBackendMock("service", "createReservation", "200");
         CreateReservationRequest body = easyRandom.nextObject(CreateReservationRequest.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -152,7 +152,7 @@ public class ServiceApiTest {
 
     @Test
     public void createServiceDocumentUploadDestinationTest() throws Exception {
-        instructBackendMock("Service", "createServiceDocumentUploadDestination", "200");
+        instructBackendMock("service", "createServiceDocumentUploadDestination", "200");
         ServiceUploadDocument body = easyRandom.nextObject(ServiceUploadDocument.class);
 
         ApiResponse<CreateServiceDocumentUploadDestination> response =
@@ -164,7 +164,7 @@ public class ServiceApiTest {
 
     @Test
     public void getAppointmentSlotsTest() throws Exception {
-        instructBackendMock("Service", "getAppointmentSlots", "200");
+        instructBackendMock("service", "getAppointmentSlots", "200");
         String asin = easyRandom.nextObject(String.class);
         String storeId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -178,7 +178,7 @@ public class ServiceApiTest {
 
     @Test
     public void getAppointmmentSlotsByJobIdTest() throws Exception {
-        instructBackendMock("Service", "getAppointmmentSlotsByJobId", "200");
+        instructBackendMock("service", "getAppointmmentSlotsByJobId", "200");
         String serviceJobId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
@@ -191,7 +191,7 @@ public class ServiceApiTest {
 
     @Test
     public void getFixedSlotCapacityTest() throws Exception {
-        instructBackendMock("Service", "getFixedSlotCapacity", "200");
+        instructBackendMock("service", "getFixedSlotCapacity", "200");
         FixedSlotCapacityQuery body = easyRandom.nextObject(FixedSlotCapacityQuery.class);
         String resourceId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -205,7 +205,7 @@ public class ServiceApiTest {
 
     @Test
     public void getRangeSlotCapacityTest() throws Exception {
-        instructBackendMock("Service", "getRangeSlotCapacity", "200");
+        instructBackendMock("service", "getRangeSlotCapacity", "200");
         RangeSlotCapacityQuery body = easyRandom.nextObject(RangeSlotCapacityQuery.class);
         String resourceId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -219,7 +219,7 @@ public class ServiceApiTest {
 
     @Test
     public void getServiceJobByServiceJobIdTest() throws Exception {
-        instructBackendMock("Service", "getServiceJobByServiceJobId", "200");
+        instructBackendMock("service", "getServiceJobByServiceJobId", "200");
         String serviceJobId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetServiceJobByServiceJobIdResponse> response =
@@ -231,7 +231,7 @@ public class ServiceApiTest {
 
     @Test
     public void getServiceJobsTest() throws Exception {
-        instructBackendMock("Service", "getServiceJobs", "200");
+        instructBackendMock("service", "getServiceJobs", "200");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<GetServiceJobsResponse> response = api.getServiceJobsWithHttpInfo(
@@ -258,7 +258,7 @@ public class ServiceApiTest {
 
     @Test
     public void rescheduleAppointmentForServiceJobByServiceJobIdTest() throws Exception {
-        instructBackendMock("Service", "rescheduleAppointmentForServiceJobByServiceJobId", "200");
+        instructBackendMock("service", "rescheduleAppointmentForServiceJobByServiceJobId", "200");
         RescheduleAppointmentRequest body = easyRandom.nextObject(RescheduleAppointmentRequest.class);
         String serviceJobId = easyRandom.nextObject(String.class);
         String appointmentId = easyRandom.nextObject(String.class);
@@ -272,7 +272,7 @@ public class ServiceApiTest {
 
     @Test
     public void setAppointmentFulfillmentDataTest() throws Exception {
-        instructBackendMock("Service", "setAppointmentFulfillmentData", "204");
+        instructBackendMock("service", "setAppointmentFulfillmentData", "204");
         SetAppointmentFulfillmentDataRequest body = easyRandom.nextObject(SetAppointmentFulfillmentDataRequest.class);
         String serviceJobId = easyRandom.nextObject(String.class);
         String appointmentId = easyRandom.nextObject(String.class);
@@ -285,7 +285,7 @@ public class ServiceApiTest {
 
     @Test
     public void updateReservationTest() throws Exception {
-        instructBackendMock("Service", "updateReservation", "200");
+        instructBackendMock("service", "updateReservation", "200");
         UpdateReservationRequest body = easyRandom.nextObject(UpdateReservationRequest.class);
         String reservationId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
@@ -299,7 +299,7 @@ public class ServiceApiTest {
 
     @Test
     public void updateScheduleTest() throws Exception {
-        instructBackendMock("Service", "updateSchedule", "200");
+        instructBackendMock("service", "updateSchedule", "200");
         UpdateScheduleRequest body = easyRandom.nextObject(UpdateScheduleRequest.class);
         String resourceId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());

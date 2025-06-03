@@ -54,7 +54,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getOrderTest() throws Exception {
-        instructBackendMock("VendorOrders", "getOrder", "200");
+        instructBackendMock("vendorOrders", "getOrder", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<Order> response = api.getOrderWithHttpInfo(purchaseOrderNumber);
@@ -65,7 +65,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void getOrdersTest() throws Exception {
-        instructBackendMock("VendorOrders", "getOrders", "200");
+        instructBackendMock("vendorOrders", "getOrders", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
@@ -78,7 +78,7 @@ public class VendorOrdersApiTest {
 
     @Test
     public void submitAcknowledgementTest() throws Exception {
-        instructBackendMock("VendorOrders", "submitAcknowledgement", "202");
+        instructBackendMock("vendorOrders", "submitAcknowledgement", "202");
         SubmitAcknowledgementRequest body = easyRandom.nextObject(SubmitAcknowledgementRequest.class);
 
         ApiResponse<TransactionId> response = api.submitAcknowledgementWithHttpInfo(body);

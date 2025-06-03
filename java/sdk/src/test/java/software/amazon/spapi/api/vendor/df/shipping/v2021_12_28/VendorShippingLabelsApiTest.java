@@ -55,7 +55,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void createShippingLabelsTest() throws Exception {
-        instructBackendMock("VendorShippingLabels", "createShippingLabels", "200");
+        instructBackendMock("vendorShippingLabels", "createShippingLabels", "200");
         CreateShippingLabelsRequest body = easyRandom.nextObject(CreateShippingLabelsRequest.class);
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
@@ -67,7 +67,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void getShippingLabelTest() throws Exception {
-        instructBackendMock("VendorShippingLabels", "getShippingLabel", "200");
+        instructBackendMock("vendorShippingLabels", "getShippingLabel", "200");
         String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<ShippingLabel> response = api.getShippingLabelWithHttpInfo(purchaseOrderNumber);
@@ -78,7 +78,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void getShippingLabelsTest() throws Exception {
-        instructBackendMock("VendorShippingLabels", "getShippingLabels", "200");
+        instructBackendMock("vendorShippingLabels", "getShippingLabels", "200");
         OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
         OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
@@ -91,7 +91,7 @@ public class VendorShippingLabelsApiTest {
 
     @Test
     public void submitShippingLabelRequestTest() throws Exception {
-        instructBackendMock("VendorShippingLabels", "submitShippingLabelRequest", "202");
+        instructBackendMock("vendorShippingLabels", "submitShippingLabelRequest", "202");
         SubmitShippingLabelsRequest body = easyRandom.nextObject(SubmitShippingLabelsRequest.class);
 
         ApiResponse<TransactionReference> response = api.submitShippingLabelRequestWithHttpInfo(body);

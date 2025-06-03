@@ -52,7 +52,7 @@ public class SalesApiTest {
 
     @Test
     public void getOrderMetricsTest() throws Exception {
-        instructBackendMock("Sales", "getOrderMetrics", "200");
+        instructBackendMock("sales", "getOrderMetrics", "200");
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
         String interval = easyRandom.nextObject(String.class);
         String granularity = easyRandom.nextObject(String.class);

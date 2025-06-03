@@ -50,7 +50,7 @@ public class ShipmentApiTest {
 
     @Test
     public void updateShipmentStatusTest() throws Exception {
-        instructBackendMock("Shipment", "updateShipmentStatus", "204");
+        instructBackendMock("shipment", "updateShipmentStatus", "204");
         UpdateShipmentStatusRequest body = easyRandom.nextObject(UpdateShipmentStatusRequest.class);
         String orderId = easyRandom.nextObject(String.class);
 

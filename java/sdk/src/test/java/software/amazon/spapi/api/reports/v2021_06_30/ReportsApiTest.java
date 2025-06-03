@@ -60,7 +60,7 @@ public class ReportsApiTest {
 
     @Test
     public void cancelReportTest() throws Exception {
-        instructBackendMock("Reports", "cancelReport", "200");
+        instructBackendMock("reports", "cancelReport", "200");
         String reportId = easyRandom.nextObject(String.class);
 
         api.cancelReportWithHttpInfo(reportId);
@@ -68,7 +68,7 @@ public class ReportsApiTest {
 
     @Test
     public void cancelReportScheduleTest() throws Exception {
-        instructBackendMock("Reports", "cancelReportSchedule", "200");
+        instructBackendMock("reports", "cancelReportSchedule", "200");
         String reportScheduleId = easyRandom.nextObject(String.class);
 
         api.cancelReportScheduleWithHttpInfo(reportScheduleId);
@@ -76,7 +76,7 @@ public class ReportsApiTest {
 
     @Test
     public void createReportTest() throws Exception {
-        instructBackendMock("Reports", "createReport", "202");
+        instructBackendMock("reports", "createReport", "202");
         CreateReportSpecification body = easyRandom.nextObject(CreateReportSpecification.class);
 
         ApiResponse<CreateReportResponse> response = api.createReportWithHttpInfo(body);
@@ -87,7 +87,7 @@ public class ReportsApiTest {
 
     @Test
     public void createReportScheduleTest() throws Exception {
-        instructBackendMock("Reports", "createReportSchedule", "201");
+        instructBackendMock("reports", "createReportSchedule", "201");
         CreateReportScheduleSpecification body = easyRandom.nextObject(CreateReportScheduleSpecification.class);
 
         ApiResponse<CreateReportScheduleResponse> response = api.createReportScheduleWithHttpInfo(body);
@@ -98,7 +98,7 @@ public class ReportsApiTest {
 
     @Test
     public void getReportTest() throws Exception {
-        instructBackendMock("Reports", "getReport", "200");
+        instructBackendMock("reports", "getReport", "200");
         String reportId = easyRandom.nextObject(String.class);
 
         ApiResponse<Report> response = api.getReportWithHttpInfo(reportId);
@@ -109,7 +109,7 @@ public class ReportsApiTest {
 
     @Test
     public void getReportDocumentTest() throws Exception {
-        instructBackendMock("Reports", "getReportDocument", "200");
+        instructBackendMock("reports", "getReportDocument", "200");
         String reportDocumentId = easyRandom.nextObject(String.class);
 
         ApiResponse<ReportDocument> response = api.getReportDocumentWithHttpInfo(reportDocumentId);
@@ -120,7 +120,7 @@ public class ReportsApiTest {
 
     @Test
     public void getReportScheduleTest() throws Exception {
-        instructBackendMock("Reports", "getReportSchedule", "200");
+        instructBackendMock("reports", "getReportSchedule", "200");
         String reportScheduleId = easyRandom.nextObject(String.class);
 
         ApiResponse<ReportSchedule> response = api.getReportScheduleWithHttpInfo(reportScheduleId);
@@ -131,7 +131,7 @@ public class ReportsApiTest {
 
     @Test
     public void getReportSchedulesTest() throws Exception {
-        instructBackendMock("Reports", "getReportSchedules", "200");
+        instructBackendMock("reports", "getReportSchedules", "200");
         List<String> reportTypes = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ReportScheduleList> response = api.getReportSchedulesWithHttpInfo(reportTypes);
@@ -142,7 +142,7 @@ public class ReportsApiTest {
 
     @Test
     public void getReportsTest() throws Exception {
-        instructBackendMock("Reports", "getReports", "200");
+        instructBackendMock("reports", "getReports", "200");
 
         ApiResponse<GetReportsResponse> response = api.getReportsWithHttpInfo(null, null, null, null, null, null, null);
 

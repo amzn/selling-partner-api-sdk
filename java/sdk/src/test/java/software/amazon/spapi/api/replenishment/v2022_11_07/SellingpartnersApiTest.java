@@ -51,7 +51,7 @@ public class SellingpartnersApiTest {
 
     @Test
     public void getSellingPartnerMetricsTest() throws Exception {
-        instructBackendMock("Sellingpartners", "getSellingPartnerMetrics", "200");
+        instructBackendMock("sellingpartners", "getSellingPartnerMetrics", "200");
 
         ApiResponse<GetSellingPartnerMetricsResponse> response = api.getSellingPartnerMetricsWithHttpInfo(null);
 
