@@ -36,7 +36,7 @@ class TestSolicitationsApi(unittest.TestCase):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock(self.to_camel_case("create_product_review_and_seller_feedback_solicitation"), "201")
+        self.instruct_backend_mock("solicitations".casefold(), self.to_camel_case("create_product_review_and_seller_feedback_solicitation"), "201")
         response = self.api.create_product_review_and_seller_feedback_solicitation_with_http_info(amazon_order_id, marketplace_ids, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -46,15 +46,15 @@ class TestSolicitationsApi(unittest.TestCase):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock(self.to_camel_case("get_solicitation_actions_for_order"), "200")
+        self.instruct_backend_mock("solicitations".casefold(), self.to_camel_case("get_solicitation_actions_for_order"), "200")
         response = self.api.get_solicitation_actions_for_order_with_http_info(amazon_order_id, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.solicitations_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"

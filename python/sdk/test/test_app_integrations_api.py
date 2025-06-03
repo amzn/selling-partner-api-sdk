@@ -35,7 +35,7 @@ class TestAppIntegrationsApi(unittest.TestCase):
     def test_create_notification(self):
         body = self._get_random_value("CreateNotificationRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_notification"), "200")
+        self.instruct_backend_mock("appIntegrations".casefold(), self.to_camel_case("create_notification"), "200")
         response = self.api.create_notification_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,7 +44,7 @@ class TestAppIntegrationsApi(unittest.TestCase):
     def test_delete_notifications(self):
         body = self._get_random_value("DeleteNotificationsRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("delete_notifications"), "204")
+        self.instruct_backend_mock("appIntegrations".casefold(), self.to_camel_case("delete_notifications"), "204")
         response = self.api.delete_notifications_with_http_info(body, )
         pass
 
@@ -52,13 +52,13 @@ class TestAppIntegrationsApi(unittest.TestCase):
         notification_id = self._get_random_value("str", None)
         body = self._get_random_value("RecordActionFeedbackRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("record_action_feedback"), "204")
+        self.instruct_backend_mock("appIntegrations".casefold(), self.to_camel_case("record_action_feedback"), "204")
         response = self.api.record_action_feedback_with_http_info(notification_id, body, )
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.appintegrations_v2024_04_01" and response == "getOrder":
             url += f"?qualifier=Vendor"

@@ -35,7 +35,7 @@ class TestVendorOrdersApi(unittest.TestCase):
     def test_get_purchase_order(self):
         purchase_order_number = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_purchase_order"), "200")
+        self.instruct_backend_mock("vendorOrders".casefold(), self.to_camel_case("get_purchase_order"), "200")
         response = self.api.get_purchase_order_with_http_info(purchase_order_number, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -43,7 +43,7 @@ class TestVendorOrdersApi(unittest.TestCase):
 
     def test_get_purchase_orders(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_purchase_orders"), "200")
+        self.instruct_backend_mock("vendorOrders".casefold(), self.to_camel_case("get_purchase_orders"), "200")
         response = self.api.get_purchase_orders_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -51,7 +51,7 @@ class TestVendorOrdersApi(unittest.TestCase):
 
     def test_get_purchase_orders_status(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_purchase_orders_status"), "200")
+        self.instruct_backend_mock("vendorOrders".casefold(), self.to_camel_case("get_purchase_orders_status"), "200")
         response = self.api.get_purchase_orders_status_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -60,15 +60,15 @@ class TestVendorOrdersApi(unittest.TestCase):
     def test_submit_acknowledgement(self):
         body = self._get_random_value("SubmitAcknowledgementRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("submit_acknowledgement"), "202")
+        self.instruct_backend_mock("vendorOrders".casefold(), self.to_camel_case("submit_acknowledgement"), "202")
         response = self.api.submit_acknowledgement_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.vendor_orders_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"

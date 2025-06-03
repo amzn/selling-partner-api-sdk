@@ -37,15 +37,15 @@ class TestUploadsApi(unittest.TestCase):
         content_md5 = self._get_random_value("str", None)
         resource = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_upload_destination_for_resource"), "201")
+        self.instruct_backend_mock("uploads".casefold(), self.to_camel_case("create_upload_destination_for_resource"), "201")
         response = self.api.create_upload_destination_for_resource_with_http_info(marketplace_ids, content_md5, resource, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.uploads_v2020_11_01" and response == "getOrder":
             url += f"?qualifier=Vendor"

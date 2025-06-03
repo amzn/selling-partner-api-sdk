@@ -34,7 +34,7 @@ class TestSellersApi(unittest.TestCase):
 
     def test_get_account(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_account"), "200")
+        self.instruct_backend_mock("sellers".casefold(), self.to_camel_case("get_account"), "200")
         response = self.api.get_account_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -42,15 +42,15 @@ class TestSellersApi(unittest.TestCase):
 
     def test_get_marketplace_participations(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_marketplace_participations"), "200")
+        self.instruct_backend_mock("sellers".casefold(), self.to_camel_case("get_marketplace_participations"), "200")
         response = self.api.get_marketplace_participations_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.sellers_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"

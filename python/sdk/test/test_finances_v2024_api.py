@@ -35,15 +35,15 @@ class TestFinancesV2024Api(unittest.TestCase):
     def test_list_transactions(self):
         posted_after = self._get_random_value("datetime", None)
         
-        self.instruct_backend_mock(self.to_camel_case("list_transactions"), "200")
+        self.instruct_backend_mock("financesV2024".casefold(), self.to_camel_case("list_transactions"), "200")
         response = self.api.list_transactions_with_http_info(posted_after, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.finances_v2024_06_19" and response == "getOrder":
             url += f"?qualifier=Vendor"

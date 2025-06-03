@@ -37,15 +37,15 @@ class TestSalesApi(unittest.TestCase):
         interval = self._get_random_value("str", None)
         granularity = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_order_metrics"), "200")
+        self.instruct_backend_mock("sales".casefold(), self.to_camel_case("get_order_metrics"), "200")
         response = self.api.get_order_metrics_with_http_info(marketplace_ids, interval, granularity, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.sales_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"

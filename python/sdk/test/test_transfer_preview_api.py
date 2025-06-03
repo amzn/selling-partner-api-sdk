@@ -39,15 +39,15 @@ class TestTransferPreviewApi(unittest.TestCase):
         destination_currency_code = self._get_random_value("str", None)
         base_amount = self._get_random_value("float", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_transfer_preview"), "200")
+        self.instruct_backend_mock("Transfer_Preview".casefold(), self.to_camel_case("get_transfer_preview"), "200")
         response = self.api.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.seller_wallet_2024_03_01" and response == "getOrder":
             url += f"?qualifier=Vendor"

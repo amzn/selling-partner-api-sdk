@@ -35,7 +35,7 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
     def test_cancel_shipment(self):
         shipment_id = self._get_random_value("str", "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}".replace("*$", "{"+ "0" + "}$"))
         
-        self.instruct_backend_mock(self.to_camel_case("cancel_shipment"), "200")
+        self.instruct_backend_mock("merchantFulfillment".casefold(), self.to_camel_case("cancel_shipment"), "200")
         response = self.api.cancel_shipment_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,7 +44,7 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
     def test_create_shipment(self):
         body = self._get_random_value("CreateShipmentRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_shipment"), "200")
+        self.instruct_backend_mock("merchantFulfillment".casefold(), self.to_camel_case("create_shipment"), "200")
         response = self.api.create_shipment_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -53,7 +53,7 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
     def test_get_additional_seller_inputs(self):
         body = self._get_random_value("GetAdditionalSellerInputsRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_additional_seller_inputs"), "200")
+        self.instruct_backend_mock("merchantFulfillment".casefold(), self.to_camel_case("get_additional_seller_inputs"), "200")
         response = self.api.get_additional_seller_inputs_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -62,7 +62,7 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
     def test_get_eligible_shipment_services(self):
         body = self._get_random_value("GetEligibleShipmentServicesRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_eligible_shipment_services"), "200")
+        self.instruct_backend_mock("merchantFulfillment".casefold(), self.to_camel_case("get_eligible_shipment_services"), "200")
         response = self.api.get_eligible_shipment_services_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -71,15 +71,15 @@ class TestMerchantFulfillmentApi(unittest.TestCase):
     def test_get_shipment(self):
         shipment_id = self._get_random_value("str", "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}".replace("*$", "{"+ "0" + "}$"))
         
-        self.instruct_backend_mock(self.to_camel_case("get_shipment"), "200")
+        self.instruct_backend_mock("merchantFulfillment".casefold(), self.to_camel_case("get_shipment"), "200")
         response = self.api.get_shipment_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.merchant_fulfillment_v0" and response == "getOrder":
             url += f"?qualifier=Vendor"

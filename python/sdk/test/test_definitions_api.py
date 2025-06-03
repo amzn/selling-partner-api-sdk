@@ -36,7 +36,7 @@ class TestDefinitionsApi(unittest.TestCase):
         product_type = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock(self.to_camel_case("get_definitions_product_type"), "200")
+        self.instruct_backend_mock("definitions".casefold(), self.to_camel_case("get_definitions_product_type"), "200")
         response = self.api.get_definitions_product_type_with_http_info(product_type, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,15 +45,15 @@ class TestDefinitionsApi(unittest.TestCase):
     def test_search_definitions_product_types(self):
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock(self.to_camel_case("search_definitions_product_types"), "200")
+        self.instruct_backend_mock("definitions".casefold(), self.to_camel_case("search_definitions_product_types"), "200")
         response = self.api.search_definitions_product_types_with_http_info(marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.product_type_definitions_v2020_09_01" and response == "getOrder":
             url += f"?qualifier=Vendor"

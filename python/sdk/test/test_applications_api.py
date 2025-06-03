@@ -34,13 +34,13 @@ class TestApplicationsApi(unittest.TestCase):
 
     def test_rotate_application_client_secret(self):
         
-        self.instruct_backend_mock(self.to_camel_case("rotate_application_client_secret"), "204")
+        self.instruct_backend_mock("Applications".casefold(), self.to_camel_case("rotate_application_client_secret"), "204")
         response = self.api.rotate_application_client_secret_with_http_info()
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.applications_v2023_11_30" and response == "getOrder":
             url += f"?qualifier=Vendor"

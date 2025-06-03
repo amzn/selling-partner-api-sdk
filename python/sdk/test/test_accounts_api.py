@@ -35,7 +35,7 @@ class TestAccountsApi(unittest.TestCase):
     def test_get_account(self):
         account_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_account"), "200")
+        self.instruct_backend_mock("Accounts".casefold(), self.to_camel_case("get_account"), "200")
         response = self.api.get_account_with_http_info(account_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,7 +44,7 @@ class TestAccountsApi(unittest.TestCase):
     def test_list_account_balances(self):
         account_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("list_account_balances"), "200")
+        self.instruct_backend_mock("Accounts".casefold(), self.to_camel_case("list_account_balances"), "200")
         response = self.api.list_account_balances_with_http_info(account_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -53,15 +53,15 @@ class TestAccountsApi(unittest.TestCase):
     def test_list_accounts(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("list_accounts"), "200")
+        self.instruct_backend_mock("Accounts".casefold(), self.to_camel_case("list_accounts"), "200")
         response = self.api.list_accounts_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.seller_wallet_2024_03_01" and response == "getOrder":
             url += f"?qualifier=Vendor"

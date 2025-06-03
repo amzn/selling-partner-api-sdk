@@ -36,7 +36,7 @@ class TestVendorShippingLabelsApi(unittest.TestCase):
         purchase_order_number = self._get_random_value("str", "^[a-zA-Z0-9]+$".replace("*$", "{"+ "0" + "}$"))
         body = self._get_random_value("CreateShippingLabelsRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_shipping_labels"), "200")
+        self.instruct_backend_mock("vendorShippingLabels".casefold(), self.to_camel_case("create_shipping_labels"), "200")
         response = self.api.create_shipping_labels_with_http_info(purchase_order_number, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestVendorShippingLabelsApi(unittest.TestCase):
     def test_get_shipping_label(self):
         purchase_order_number = self._get_random_value("str", "^[a-zA-Z0-9]+$".replace("*$", "{"+ "0" + "}$"))
         
-        self.instruct_backend_mock(self.to_camel_case("get_shipping_label"), "200")
+        self.instruct_backend_mock("vendorShippingLabels".casefold(), self.to_camel_case("get_shipping_label"), "200")
         response = self.api.get_shipping_label_with_http_info(purchase_order_number, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -55,7 +55,7 @@ class TestVendorShippingLabelsApi(unittest.TestCase):
         created_after = self._get_random_value("datetime", None)
         created_before = self._get_random_value("datetime", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_shipping_labels"), "200")
+        self.instruct_backend_mock("vendorShippingLabels".casefold(), self.to_camel_case("get_shipping_labels"), "200")
         response = self.api.get_shipping_labels_with_http_info(created_after, created_before, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -64,15 +64,15 @@ class TestVendorShippingLabelsApi(unittest.TestCase):
     def test_submit_shipping_label_request(self):
         body = self._get_random_value("SubmitShippingLabelsRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("submit_shipping_label_request"), "202")
+        self.instruct_backend_mock("vendorShippingLabels".casefold(), self.to_camel_case("submit_shipping_label_request"), "202")
         response = self.api.submit_shipping_label_request_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getOrder":
             url += f"?qualifier=Vendor"

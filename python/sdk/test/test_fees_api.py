@@ -36,7 +36,7 @@ class TestFeesApi(unittest.TestCase):
         asin = self._get_random_value("str", None)
         body = self._get_random_value("GetMyFeesEstimateRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_my_fees_estimate_for_asin"), "200")
+        self.instruct_backend_mock("fees".casefold(), self.to_camel_case("get_my_fees_estimate_for_asin"), "200")
         response = self.api.get_my_fees_estimate_for_asin_with_http_info(asin, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -46,7 +46,7 @@ class TestFeesApi(unittest.TestCase):
         seller_sku = self._get_random_value("str", None)
         body = self._get_random_value("GetMyFeesEstimateRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_my_fees_estimate_for_sku"), "200")
+        self.instruct_backend_mock("fees".casefold(), self.to_camel_case("get_my_fees_estimate_for_sku"), "200")
         response = self.api.get_my_fees_estimate_for_sku_with_http_info(seller_sku, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -55,15 +55,15 @@ class TestFeesApi(unittest.TestCase):
     def test_get_my_fees_estimates(self):
         body = [self._get_random_value("List[FeesEstimateByIdRequest]") for _ in range(1)]
         
-        self.instruct_backend_mock(self.to_camel_case("get_my_fees_estimates"), "200")
+        self.instruct_backend_mock("fees".casefold(), self.to_camel_case("get_my_fees_estimates"), "200")
         response = self.api.get_my_fees_estimates_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.product_fees_v0" and response == "getOrder":
             url += f"?qualifier=Vendor"

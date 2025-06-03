@@ -35,14 +35,14 @@ class TestFeedsApi(unittest.TestCase):
     def test_cancel_feed(self):
         feed_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("cancel_feed"), "200")
+        self.instruct_backend_mock("feeds".casefold(), self.to_camel_case("cancel_feed"), "200")
         response = self.api.cancel_feed_with_http_info(feed_id, )
         pass
 
     def test_create_feed(self):
         body = self._get_random_value("CreateFeedSpecification", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_feed"), "202")
+        self.instruct_backend_mock("feeds".casefold(), self.to_camel_case("create_feed"), "202")
         response = self.api.create_feed_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -51,7 +51,7 @@ class TestFeedsApi(unittest.TestCase):
     def test_create_feed_document(self):
         body = self._get_random_value("CreateFeedDocumentSpecification", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_feed_document"), "201")
+        self.instruct_backend_mock("feeds".casefold(), self.to_camel_case("create_feed_document"), "201")
         response = self.api.create_feed_document_with_http_info(body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
@@ -60,7 +60,7 @@ class TestFeedsApi(unittest.TestCase):
     def test_get_feed(self):
         feed_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_feed"), "200")
+        self.instruct_backend_mock("feeds".casefold(), self.to_camel_case("get_feed"), "200")
         response = self.api.get_feed_with_http_info(feed_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -69,7 +69,7 @@ class TestFeedsApi(unittest.TestCase):
     def test_get_feed_document(self):
         feed_document_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_feed_document"), "200")
+        self.instruct_backend_mock("feeds".casefold(), self.to_camel_case("get_feed_document"), "200")
         response = self.api.get_feed_document_with_http_info(feed_document_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -77,15 +77,15 @@ class TestFeedsApi(unittest.TestCase):
 
     def test_get_feeds(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_feeds"), "200")
+        self.instruct_backend_mock("feeds".casefold(), self.to_camel_case("get_feeds"), "200")
         response = self.api.get_feeds_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.feeds_v2021_06_30" and response == "getOrder":
             url += f"?qualifier=Vendor"

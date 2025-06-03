@@ -35,15 +35,15 @@ class TestCreateContainerLabelApi(unittest.TestCase):
     def test_create_container_label(self):
         body = self._get_random_value("CreateContainerLabelRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_container_label"), "200")
+        self.instruct_backend_mock("createContainerLabel".casefold(), self.to_camel_case("create_container_label"), "200")
         response = self.api.create_container_label_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getOrder":
             url += f"?qualifier=Vendor"

@@ -36,15 +36,15 @@ class TestFbaInboundEligibilityApi(unittest.TestCase):
         asin = self._get_random_value("str", None)
         program = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_item_eligibility_preview"), "200")
+        self.instruct_backend_mock("fbaInboundEligibility".casefold(), self.to_camel_case("get_item_eligibility_preview"), "200")
         response = self.api.get_item_eligibility_preview_with_http_info(asin, program, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.fba_eligibility_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"

@@ -35,7 +35,7 @@ class TestProductPricingV2022Api(unittest.TestCase):
     def test_get_competitive_summary(self):
         requests = self._get_random_value("CompetitiveSummaryBatchRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_competitive_summary"), "200")
+        self.instruct_backend_mock("productPricingV2022".casefold(), self.to_camel_case("get_competitive_summary"), "200")
         response = self.api.get_competitive_summary_with_http_info(requests, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,15 +44,15 @@ class TestProductPricingV2022Api(unittest.TestCase):
     def test_get_featured_offer_expected_price_batch(self):
         get_featured_offer_expected_price_batch_request_body = self._get_random_value("GetFeaturedOfferExpectedPriceBatchRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_featured_offer_expected_price_batch"), "200")
+        self.instruct_backend_mock("productPricingV2022".casefold(), self.to_camel_case("get_featured_offer_expected_price_batch"), "200")
         response = self.api.get_featured_offer_expected_price_batch_with_http_info(get_featured_offer_expected_price_batch_request_body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.product_pricing_v2022_05_01" and response == "getOrder":
             url += f"?qualifier=Vendor"

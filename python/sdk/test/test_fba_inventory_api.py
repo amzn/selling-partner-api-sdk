@@ -36,7 +36,7 @@ class TestFbaInventoryApi(unittest.TestCase):
         x_amzn_idempotency_token = self._get_random_value("str", None)
         add_inventory_request_body = self._get_random_value("AddInventoryRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("add_inventory"), "200")
+        self.instruct_backend_mock("fbaInventory".casefold(), self.to_camel_case("add_inventory"), "200")
         response = self.api.add_inventory_with_http_info(x_amzn_idempotency_token, add_inventory_request_body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestFbaInventoryApi(unittest.TestCase):
     def test_create_inventory_item(self):
         create_inventory_item_request_body = self._get_random_value("CreateInventoryItemRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_inventory_item"), "200")
+        self.instruct_backend_mock("fbaInventory".casefold(), self.to_camel_case("create_inventory_item"), "200")
         response = self.api.create_inventory_item_with_http_info(create_inventory_item_request_body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -55,7 +55,7 @@ class TestFbaInventoryApi(unittest.TestCase):
         seller_sku = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("delete_inventory_item"), "200")
+        self.instruct_backend_mock("fbaInventory".casefold(), self.to_camel_case("delete_inventory_item"), "200")
         response = self.api.delete_inventory_item_with_http_info(seller_sku, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -66,15 +66,15 @@ class TestFbaInventoryApi(unittest.TestCase):
         granularity_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
         
-        self.instruct_backend_mock(self.to_camel_case("get_inventory_summaries"), "200")
+        self.instruct_backend_mock("fbaInventory".casefold(), self.to_camel_case("get_inventory_summaries"), "200")
         response = self.api.get_inventory_summaries_with_http_info(granularity_type, granularity_id, marketplace_ids, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.fba_inventory_v1" and response == "getOrder":
             url += f"?qualifier=Vendor"

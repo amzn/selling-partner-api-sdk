@@ -36,13 +36,13 @@ class TestShipmentApi(unittest.TestCase):
         order_id = self._get_random_value("str", None)
         payload = self._get_random_value("UpdateShipmentStatusRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("update_shipment_status"), "204")
+        self.instruct_backend_mock("shipment".casefold(), self.to_camel_case("update_shipment_status"), "204")
         response = self.api.update_shipment_status_with_http_info(order_id, payload, )
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.orders_v0" and response == "getOrder":
             url += f"?qualifier=Vendor"

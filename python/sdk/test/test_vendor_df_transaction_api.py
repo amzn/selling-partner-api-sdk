@@ -35,15 +35,15 @@ class TestVendorDfTransactionApi(unittest.TestCase):
     def test_get_transaction_status(self):
         transaction_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_transaction_status"), "200")
+        self.instruct_backend_mock("vendorDfTransaction".casefold(), self.to_camel_case("get_transaction_status"), "200")
         response = self.api.get_transaction_status_with_http_info(transaction_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.vendor_direct_fulfillment_transactions_v2021_12_28" and response == "getOrder":
             url += f"?qualifier=Vendor"

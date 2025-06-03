@@ -35,7 +35,7 @@ class TestCustomerInvoicesApi(unittest.TestCase):
     def test_get_customer_invoice(self):
         purchase_order_number = self._get_random_value("str", "^[a-zA-Z0-9]+$".replace("*$", "{"+ "0" + "}$"))
         
-        self.instruct_backend_mock(self.to_camel_case("get_customer_invoice"), "200")
+        self.instruct_backend_mock("customerInvoices".casefold(), self.to_camel_case("get_customer_invoice"), "200")
         response = self.api.get_customer_invoice_with_http_info(purchase_order_number, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,15 +45,15 @@ class TestCustomerInvoicesApi(unittest.TestCase):
         created_after = self._get_random_value("datetime", None)
         created_before = self._get_random_value("datetime", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_customer_invoices"), "200")
+        self.instruct_backend_mock("customerInvoices".casefold(), self.to_camel_case("get_customer_invoices"), "200")
         response = self.api.get_customer_invoices_with_http_info(created_after, created_before, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         ## handle same api operation name exceptions
         if "vendor" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getOrder":
             url += f"?qualifier=Vendor"
