@@ -36,6 +36,9 @@ use GuzzleHttp\Psr7\Request;
 use SpApi\AuthAndAuth\LWAAccessTokenCache;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
+use SpApi\Api\tokens\v2021_03_01\TokensApi;
+use SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest;
+use SpApi\Model\tokens\v2021_03_01\RestrictedResource;
 
 /**
  * Configuration Class Doc Comment
@@ -94,6 +97,11 @@ class Configuration
     private static array $rateLimitConfiguration;
 
     private LWAAuthorizationSigner $lwaAuthSigner;
+    
+    /**
+     * Restricted Data Token for accessing PII data
+     */
+    private ?string $restrictedDataToken = null;
 
     /**
      * Constructor.
@@ -166,10 +174,73 @@ class Configuration
         $this->lwaAuthSigner->getLwaClient()->setLWAAccessTokenCache(null);
     }
 
+    /**
+     * Signs a request with the appropriate token
+     *
+     * @param Request $request The request to sign
+     * @return Request The signed request
+     */
     public function sign(Request $request): Request
     {
+        if ($this->restrictedDataToken !== null) {
+            return $request->withHeader('x-amz-access-token', $this->restrictedDataToken);
+        }
         return $this->lwaAuthSigner->sign($request);
     }
+
+    /**
+     * Sets a restricted data token
+     *
+     * @param string $token The restricted data token
+     * @return self
+     */
+    public function setRestrictedDataToken(string $token): self
+    {
+        $this->restrictedDataToken = $token;
+        return $this;
+    }
+
+    /**
+     * Gets a restricted data token for the specified resources
+     *
+     * @param RestrictedResource[] $resources Array of RestrictedResource objects
+     * @return string The restricted data token
+     * @throws \Exception
+     */
+    public function getRestrictedDataToken(array $resources): string
+    {
+        $tokensApi = new TokensApi($this);
+        $request = new CreateRestrictedDataTokenRequest();
+        $request->setRestrictedResources($resources);
+
+        try {
+            $response = $tokensApi->createRestrictedDataToken($request);
+            $this->restrictedDataToken = $response->getRestrictedDataToken();
+            return $this->restrictedDataToken;
+        } catch (\Exception $e) {
+            throw new \Exception("Failed to get restricted data token: " . $e->getMessage());
+        }
+    }
+
+    /**
+     * Creates a restricted resource
+     *
+     * @param string $method HTTP method
+     * @param string $path API path
+     * @param array $dataElements Data elements to restrict
+     * @return RestrictedResource
+     */
+    public function createRestrictedResource(string $method, string $path, array $dataElements = []): RestrictedResource
+    {
+        $resource = new RestrictedResource();
+        $resource->setMethod($method);
+        $resource->setPath($path);
+        if (!empty($dataElements)) {
+            $resource->setDataElements($dataElements);
+        }
+        return $resource;
+    }
+
 
     /**
      * Sets boolean format for query string.
