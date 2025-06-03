@@ -37,7 +37,7 @@ class TestTransferScheduleApi(unittest.TestCase):
         amount_digital_signature = self._get_random_value("str", None)
         body = self._get_random_value("TransferScheduleRequest", None)
         
-        self.instruct_backend_mock("Transfer_Schedule".casefold(), self.to_camel_case("create_transfer_schedule"), "200")
+        self.instruct_backend_mock("Transfer Schedule".casefold(), self.to_camel_case("create_transfer_schedule"), "200")
         response = self.api.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -46,7 +46,7 @@ class TestTransferScheduleApi(unittest.TestCase):
     def test_delete_schedule_transaction(self):
         transfer_schedule_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("Transfer_Schedule".casefold(), self.to_camel_case("delete_schedule_transaction"), "200")
+        self.instruct_backend_mock("Transfer Schedule".casefold(), self.to_camel_case("delete_schedule_transaction"), "200")
         response = self.api.delete_schedule_transaction_with_http_info(transfer_schedule_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -55,7 +55,7 @@ class TestTransferScheduleApi(unittest.TestCase):
     def test_get_transfer_schedule(self):
         transfer_schedule_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("Transfer_Schedule".casefold(), self.to_camel_case("get_transfer_schedule"), "200")
+        self.instruct_backend_mock("Transfer Schedule".casefold(), self.to_camel_case("get_transfer_schedule"), "200")
         response = self.api.get_transfer_schedule_with_http_info(transfer_schedule_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -64,7 +64,7 @@ class TestTransferScheduleApi(unittest.TestCase):
     def test_list_transfer_schedules(self):
         account_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("Transfer_Schedule".casefold(), self.to_camel_case("list_transfer_schedules"), "200")
+        self.instruct_backend_mock("Transfer Schedule".casefold(), self.to_camel_case("list_transfer_schedules"), "200")
         response = self.api.list_transfer_schedules_with_http_info(account_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -75,7 +75,7 @@ class TestTransferScheduleApi(unittest.TestCase):
         amount_digital_signature = self._get_random_value("str", None)
         body = self._get_random_value("TransferSchedule", None)
         
-        self.instruct_backend_mock("Transfer_Schedule".casefold(), self.to_camel_case("update_transfer_schedule"), "200")
+        self.instruct_backend_mock("Transfer Schedule".casefold(), self.to_camel_case("update_transfer_schedule"), "200")
         response = self.api.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])

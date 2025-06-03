@@ -36,7 +36,7 @@ class TestAutomotiveApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         vehicle_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock("automotive".casefold(), self.to_camel_case("get_vehicles"), "200")
+        self.instruct_backend_mock("vehicles".casefold(), self.to_camel_case("get_vehicles"), "200")
         response = self.api.get_vehicles_with_http_info(marketplace_id, vehicle_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
