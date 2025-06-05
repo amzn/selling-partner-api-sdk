@@ -1,10 +1,9 @@
 ## Python SDK for Selling Partner API
-[![PyPI version](https://img.shields.io/pypi/v/amzn-sp-api)](https://pypi.org/project/amzn-sp-api/)
+[![PyPI version](https://img.shields.io/pypi/v/amzn-sp-api?label=PyPI)](https://pypi.org/project/amzn-sp-api/)
 
-<!-- youtube video is under creating -->
-<!-- [![Video Thumbnail](docs/video-thumbnail.png)]()
+[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=IEWTnO2L620&pp=0gcJCbEJAYcqIYzv)
 
-*Click on the image to watch the video.* -->
+*Click on the image to watch the video.*
 
 The Selling Partner API SDK for Python enables you to easily connect your Python application to Amazon's REST-based Selling Partner API.
 
