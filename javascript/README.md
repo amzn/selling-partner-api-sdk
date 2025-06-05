@@ -1,10 +1,9 @@
 ## JavaScript SDK for Selling Partner API
 [![npm version](https://badge.fury.io/js/@amazon-sp-api-release%2Famazon-sp-api-sdk-js.svg)](https://www.npmjs.com/package/@amazon-sp-api-release/amazon-sp-api-sdk-js)
 
-<!-- youtube video is under creating -->
-<!-- [![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=OmYTAA80V_4)
+[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=5pRZXYhjNIQ)
 
-*Click on the image to watch the video.* -->
+*Click on the image to watch the video.*
 
 The Selling Partner API SDK for JavaScript enables you to easily connect your JavaScript/Node.js application to Amazon's REST-based Selling Partner API.
 

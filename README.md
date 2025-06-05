@@ -1,5 +1,11 @@
 <img src="docs/logo.png" alt="Selling Partner API SDK logo" width="700"/>
 
+[![Maven](https://img.shields.io/maven-central/v/software.amazon.spapi/spapi-sdk.svg?label=Maven)](https://central.sonatype.com/artifact/software.amazon.spapi/spapi-sdk)
+[![Packagist](https://img.shields.io/packagist/v/amzn-spapi/sdk?label=Packagist)](https://packagist.org/packages/amzn-spapi/sdk)
+[![npm version](https://badge.fury.io/js/@amazon-sp-api-release%2Famazon-sp-api-sdk-js.svg)](https://www.npmjs.com/package/@amazon-sp-api-release/amazon-sp-api-sdk-js)
+[![PyPI version](https://img.shields.io/pypi/v/amzn-sp-api?label=PyPI)](https://pypi.org/project/amzn-sp-api/)
+[![NuGet](https://img.shields.io/nuget/v/software.amzn.spapi?label=NuGet)](https://www.nuget.org/packages/software.amzn.spapi)
+
 The Selling Partner API SDK enables you to easily connect to and work with Amazon's REST-based SP-API. 
 
 * [Learn more about Selling Partner API](https://developer.amazonservices.com/)

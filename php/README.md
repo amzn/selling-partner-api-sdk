@@ -1,4 +1,5 @@
 ## PHP SDK for Selling Partner API
+[![Packagist](https://img.shields.io/packagist/v/amzn-spapi/sdk?label=Packagist)](https://packagist.org/packages/amzn-spapi/sdk)
 
 [![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=ZxG7wvmelj0)
 

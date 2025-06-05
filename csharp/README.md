@@ -1,5 +1,5 @@
 ## C# SDK for Selling Partner API
-
+[![NuGet](https://img.shields.io/nuget/v/software.amzn.spapi?label=NuGet)](https://www.nuget.org/packages/software.amzn.spapi)
 
 The Selling Partner API SDK for C# enables you to easily connect your C# application to Amazon's REST-based Selling Partner API.
 
