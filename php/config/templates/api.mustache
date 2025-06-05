@@ -67,6 +67,11 @@ use {{invokerPackage}}\ObjectSerializer;
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
 
+    /**
+    * @var string|null Restricted Data Token
+    */
+    private ?string $restrictedDataToken = null;
+
     {{#operation}}
     public ?LimiterInterface ${{operationId}}RateLimiter;
     {{/operation}}
@@ -128,6 +133,18 @@ use {{invokerPackage}}\ObjectSerializer;
     public function getConfig(): Configuration
     {
         return $this->config;
+    }
+
+    /**
+    * Use Restricted Data Token for an operation
+    *
+    * @param string $token The restricted data token
+    * @return $this
+    */
+    public function withRestrictedDataToken(string $token)
+    {
+        $this->restrictedDataToken = $token;
+        return $this;
     }
 
 {{#operation}}
@@ -216,7 +233,12 @@ use {{invokerPackage}}\ObjectSerializer;
     {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
     ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $this->restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -386,7 +408,12 @@ use {{invokerPackage}}\ObjectSerializer;
     ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $this->restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->{{operationId}}RateLimiter->consume()->ensureAccepted();
         }
