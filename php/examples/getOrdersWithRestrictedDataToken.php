@@ -27,13 +27,16 @@ $config = new Configuration([], $lwaAuthorizationCredentials);
 $config->setHost("https://sellingpartnerapi-na.amazon.com");
 
 try {
-    // Create a restricted resource
+    // Create a restricted resource specifying the API endpoint and required data elements
     $resource = new RestrictedResource();
     $resource->setMethod('GET');
     $resource->setPath('/orders/v0/orders');
-    $resource->setDataElements(['buyerInfo', 'shippingAddress']);
+    $resource->setDataElements([
+        'buyerInfo',
+        'shippingAddress'
+    ]);
 
-    // Generate RDT token with restrictedResources
+    // Get a Restricted Data Token for accessing PII data
     $tokensApi = new TokensApi($config);
     $request = new CreateRestrictedDataTokenRequest();
     $request->setRestrictedResources([$resource]);
@@ -45,14 +48,14 @@ try {
 
     // Make the API call with RDT token
     $response = $ordersApi
-        ->withRestrictedDataToken($rdtToken)
         ->getOrders(
             ['ATVPDKIKX0DER'],  // marketplace_ids
             '2023-01-01T00:00:00Z',  // createdAfter
             null,  // createdBefore
             null,  // lastUpdatedAfter
             null,  // lastUpdatedBefore
-            ['Shipped']  // Only Unshipped or Shipped orderStatuses contain PII data
+            ['Shipped'],  // Only Unshipped or Shipped orderStatuses contain PII data
+            restrictedDataToken: $rdtToken // Pass RDT token to access PII data
         );
 
     // Process Orders API response

@@ -134,19 +134,6 @@ use {{invokerPackage}}\ObjectSerializer;
     {
         return $this->config;
     }
-
-    /**
-    * Use Restricted Data Token for an operation
-    *
-    * @param string $token The restricted data token
-    * @return $this
-    */
-    public function withRestrictedDataToken(string $token)
-    {
-        $this->restrictedDataToken = $token;
-        return $this;
-    }
-
 {{#operation}}
     /**
      * Operation {{{operationId}}}
@@ -186,9 +173,10 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},
+        ?string $restrictedDataToken = null
     ){{#returnType}}: {{#responses}}{{#-first}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
-        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});{{#returnType}}
+        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},$restrictedDataToken);{{#returnType}}
         return $response;{{/returnType}}
     }
 
@@ -230,14 +218,15 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}WithHttpInfo(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        if ($this->restrictedDataToken === null) {
+        if ($restrictedDataToken === null) {
             $request = $this->config->sign($request);
         } else {
             // Use RDT token
-            $request = $request->withHeader('x-amz-access-token', $this->restrictedDataToken);
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
         }
 
         try {
