@@ -66,12 +66,6 @@ use {{invokerPackage}}\ObjectSerializer;
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
-    /**
-    * @var string|null Restricted Data Token
-    */
-    private ?string $restrictedDataToken = null;
-
     {{#operation}}
     public ?LimiterInterface ${{operationId}}RateLimiter;
     {{/operation}}
@@ -393,7 +387,8 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}AsyncWithHttpInfo(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
@@ -401,7 +396,7 @@ use {{invokerPackage}}\ObjectSerializer;
             $request = $this->config->sign($request);
         } else {
             // Use RDT token
-            $request = $request->withHeader('x-amz-access-token', $this->restrictedDataToken);
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
         }
         if ($this->rateLimiterEnabled) {
             $this->{{operationId}}RateLimiter->consume()->ensureAccepted();
