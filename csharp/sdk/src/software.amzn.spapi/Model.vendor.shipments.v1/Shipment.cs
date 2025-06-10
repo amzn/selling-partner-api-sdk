@@ -32,9 +32,9 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
     public partial class Shipment : IValidatableObject
     {
         /// <summary>
-        /// Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.
+        /// Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated for each operation.
         /// </summary>
-        /// <value>Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.</value>
+        /// <value>Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated for each operation.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TransactionTypeEnum
         {
@@ -53,9 +53,9 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
 
 
         /// <summary>
-        /// Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.
+        /// Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated for each operation.
         /// </summary>
-        /// <value>Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.</value>
+        /// <value>Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated for each operation.</value>
         [DataMember(Name = "transactionType", IsRequired = true, EmitDefaultValue = true)]
         public TransactionTypeEnum TransactionType { get; set; }
         /// <summary>
@@ -98,9 +98,9 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         [DataMember(Name = "currentShipmentStatus", EmitDefaultValue = false)]
         public CurrentShipmentStatusEnum? CurrentShipmentStatus { get; set; }
         /// <summary>
-        /// Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.
+        /// Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.
         /// </summary>
-        /// <value>Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.</value>
+        /// <value>Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ShipmentFreightTermEnum
         {
@@ -119,9 +119,9 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
 
 
         /// <summary>
-        /// Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.
+        /// Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.
         /// </summary>
-        /// <value>Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.</value>
+        /// <value>Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.</value>
         [DataMember(Name = "shipmentFreightTerm", EmitDefaultValue = false)]
         public ShipmentFreightTermEnum? ShipmentFreightTerm { get; set; }
         /// <summary>
@@ -133,7 +133,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Initializes a new instance of the <see cref="Shipment" /> class.
         /// </summary>
         /// <param name="vendorShipmentIdentifier">Unique Transportation ID created by Vendor (Should not be used over the last 365 days). (required).</param>
-        /// <param name="transactionType">Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation. (required).</param>
+        /// <param name="transactionType">Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated for each operation. (required).</param>
         /// <param name="buyerReferenceNumber">The buyer Reference Number is a unique identifier generated by buyer for all Collect/WePay shipments when you submit a transportation request. This field is mandatory for Collect/WePay shipments..</param>
         /// <param name="transactionDate">Date on which the transportation request was submitted. (required).</param>
         /// <param name="currentShipmentStatus">Indicates the current shipment status..</param>
@@ -142,7 +142,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="shipmentCreateDate">The date and time of the shipment request created by vendor..</param>
         /// <param name="shipmentConfirmDate">The date and time of the departure of the shipment from the vendor&#39;s location. Vendors are requested to send ASNs within 30 minutes of departure from their warehouse/distribution center or at least 6 hours prior to the appointment time at the Buyer destination warehouse, whichever is sooner. Shipped date mentioned in the shipment confirmation should not be in the future..</param>
         /// <param name="packageLabelCreateDate">The date and time of the package label created for the shipment by buyer..</param>
-        /// <param name="shipmentFreightTerm">Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information..</param>
+        /// <param name="shipmentFreightTerm">Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required..</param>
         /// <param name="sellingParty">sellingParty (required).</param>
         /// <param name="shipFromParty">shipFromParty (required).</param>
         /// <param name="shipToParty">shipToParty (required).</param>
