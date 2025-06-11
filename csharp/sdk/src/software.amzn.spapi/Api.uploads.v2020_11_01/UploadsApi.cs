@@ -241,8 +241,11 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateUploadDestinationForResource", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateUploadDestinationForResource", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateUploadDestinationResponse>(localVarResponse.StatusCode,
@@ -320,8 +323,11 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateUploadDestinationForResource", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateUploadDestinationForResource", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateUploadDestinationResponse>(localVarResponse.StatusCode,

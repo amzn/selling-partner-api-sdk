@@ -2366,8 +2366,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CancelInboundPlan", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CancelInboundPlan", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CancelInboundPlanResponse>(localVarResponse.StatusCode,
@@ -2430,8 +2433,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CancelInboundPlan", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CancelInboundPlan", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CancelInboundPlanResponse>(localVarResponse.StatusCode,
@@ -2514,8 +2520,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CancelSelfShipAppointment", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CancelSelfShipAppointment", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CancelSelfShipAppointmentResponse>(localVarResponse.StatusCode,
@@ -2598,8 +2607,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CancelSelfShipAppointment", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CancelSelfShipAppointment", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CancelSelfShipAppointmentResponse>(localVarResponse.StatusCode,
@@ -2674,8 +2686,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmDeliveryWindowOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmDeliveryWindowOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmDeliveryWindowOptionsResponse>(localVarResponse.StatusCode,
@@ -2750,8 +2765,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmDeliveryWindowOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmDeliveryWindowOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmDeliveryWindowOptionsResponse>(localVarResponse.StatusCode,
@@ -2820,8 +2838,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmPackingOption", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmPackingOption", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmPackingOptionResponse>(localVarResponse.StatusCode,
@@ -2890,8 +2911,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmPackingOption", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmPackingOption", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmPackingOptionResponse>(localVarResponse.StatusCode,
@@ -2960,8 +2984,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmPlacementOption", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmPlacementOption", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmPlacementOptionResponse>(localVarResponse.StatusCode,
@@ -3030,8 +3057,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmPlacementOption", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmPlacementOption", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmPlacementOptionResponse>(localVarResponse.StatusCode,
@@ -3106,8 +3136,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmShipmentContentUpdatePreview", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmShipmentContentUpdatePreview", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmShipmentContentUpdatePreviewResponse>(localVarResponse.StatusCode,
@@ -3182,8 +3215,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmShipmentContentUpdatePreview", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmShipmentContentUpdatePreview", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmShipmentContentUpdatePreviewResponse>(localVarResponse.StatusCode,
@@ -3260,8 +3296,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmTransportationOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmTransportationOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmTransportationOptionsResponse>(localVarResponse.StatusCode,
@@ -3338,8 +3377,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ConfirmTransportationOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ConfirmTransportationOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ConfirmTransportationOptionsResponse>(localVarResponse.StatusCode,
@@ -3410,8 +3452,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateInboundPlan", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateInboundPlan", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateInboundPlanResponse>(localVarResponse.StatusCode,
@@ -3482,8 +3527,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateInboundPlan", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateInboundPlan", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateInboundPlanResponse>(localVarResponse.StatusCode,
@@ -3554,8 +3602,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateMarketplaceItemLabels", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateMarketplaceItemLabels", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateMarketplaceItemLabelsResponse>(localVarResponse.StatusCode,
@@ -3626,8 +3677,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateMarketplaceItemLabels", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateMarketplaceItemLabels", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateMarketplaceItemLabelsResponse>(localVarResponse.StatusCode,
@@ -3696,8 +3750,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateDeliveryWindowOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateDeliveryWindowOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateDeliveryWindowOptionsResponse>(localVarResponse.StatusCode,
@@ -3766,8 +3823,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateDeliveryWindowOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateDeliveryWindowOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateDeliveryWindowOptionsResponse>(localVarResponse.StatusCode,
@@ -3830,8 +3890,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GeneratePackingOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GeneratePackingOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GeneratePackingOptionsResponse>(localVarResponse.StatusCode,
@@ -3894,8 +3957,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GeneratePackingOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GeneratePackingOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GeneratePackingOptionsResponse>(localVarResponse.StatusCode,
@@ -3972,8 +4038,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GeneratePlacementOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GeneratePlacementOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GeneratePlacementOptionsResponse>(localVarResponse.StatusCode,
@@ -4050,8 +4119,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GeneratePlacementOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GeneratePlacementOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GeneratePlacementOptionsResponse>(localVarResponse.StatusCode,
@@ -4134,8 +4206,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateSelfShipAppointmentSlots", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateSelfShipAppointmentSlots", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateSelfShipAppointmentSlotsResponse>(localVarResponse.StatusCode,
@@ -4218,8 +4293,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateSelfShipAppointmentSlots", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateSelfShipAppointmentSlots", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateSelfShipAppointmentSlotsResponse>(localVarResponse.StatusCode,
@@ -4302,8 +4380,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateShipmentContentUpdatePreviews", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateShipmentContentUpdatePreviews", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateShipmentContentUpdatePreviewsResponse>(localVarResponse.StatusCode,
@@ -4386,8 +4467,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateShipmentContentUpdatePreviews", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateShipmentContentUpdatePreviews", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateShipmentContentUpdatePreviewsResponse>(localVarResponse.StatusCode,
@@ -4464,8 +4548,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateTransportationOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateTransportationOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateTransportationOptionsResponse>(localVarResponse.StatusCode,
@@ -4542,8 +4629,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GenerateTransportationOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GenerateTransportationOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GenerateTransportationOptionsResponse>(localVarResponse.StatusCode,
@@ -4612,8 +4702,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetDeliveryChallanDocument", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetDeliveryChallanDocument", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetDeliveryChallanDocumentResponse>(localVarResponse.StatusCode,
@@ -4682,8 +4775,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetDeliveryChallanDocument", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetDeliveryChallanDocument", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetDeliveryChallanDocumentResponse>(localVarResponse.StatusCode,
@@ -4746,8 +4842,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetInboundOperationStatus", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetInboundOperationStatus", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<InboundOperationStatus>(localVarResponse.StatusCode,
@@ -4810,8 +4909,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetInboundOperationStatus", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetInboundOperationStatus", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<InboundOperationStatus>(localVarResponse.StatusCode,
@@ -4874,8 +4976,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetInboundPlan", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetInboundPlan", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<InboundPlan>(localVarResponse.StatusCode,
@@ -4938,8 +5043,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetInboundPlan", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetInboundPlan", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<InboundPlan>(localVarResponse.StatusCode,
@@ -5014,8 +5122,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetSelfShipAppointmentSlots", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetSelfShipAppointmentSlots", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetSelfShipAppointmentSlotsResponse>(localVarResponse.StatusCode,
@@ -5090,8 +5201,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetSelfShipAppointmentSlots", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetSelfShipAppointmentSlots", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetSelfShipAppointmentSlotsResponse>(localVarResponse.StatusCode,
@@ -5160,8 +5274,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipment", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipment", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Shipment>(localVarResponse.StatusCode,
@@ -5230,8 +5347,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipment", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipment", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Shipment>(localVarResponse.StatusCode,
@@ -5306,8 +5426,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipmentContentUpdatePreview", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipmentContentUpdatePreview", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ContentUpdatePreview>(localVarResponse.StatusCode,
@@ -5382,8 +5505,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipmentContentUpdatePreview", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipmentContentUpdatePreview", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ContentUpdatePreview>(localVarResponse.StatusCode,
@@ -5458,8 +5584,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListDeliveryWindowOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListDeliveryWindowOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListDeliveryWindowOptionsResponse>(localVarResponse.StatusCode,
@@ -5534,8 +5663,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListDeliveryWindowOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListDeliveryWindowOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListDeliveryWindowOptionsResponse>(localVarResponse.StatusCode,
@@ -5604,8 +5736,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlanBoxes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlanBoxes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlanBoxesResponse>(localVarResponse.StatusCode,
@@ -5674,8 +5809,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlanBoxes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlanBoxes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlanBoxesResponse>(localVarResponse.StatusCode,
@@ -5744,8 +5882,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlanItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlanItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlanItemsResponse>(localVarResponse.StatusCode,
@@ -5814,8 +5955,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlanItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlanItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlanItemsResponse>(localVarResponse.StatusCode,
@@ -5884,8 +6028,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlanPallets", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlanPallets", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlanPalletsResponse>(localVarResponse.StatusCode,
@@ -5954,8 +6101,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlanPallets", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlanPallets", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlanPalletsResponse>(localVarResponse.StatusCode,
@@ -6027,8 +6177,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlans", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlans", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlansResponse>(localVarResponse.StatusCode,
@@ -6100,8 +6253,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListInboundPlans", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListInboundPlans", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListInboundPlansResponse>(localVarResponse.StatusCode,
@@ -6170,8 +6326,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListItemComplianceDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListItemComplianceDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListItemComplianceDetailsResponse>(localVarResponse.StatusCode,
@@ -6240,8 +6399,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListItemComplianceDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListItemComplianceDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListItemComplianceDetailsResponse>(localVarResponse.StatusCode,
@@ -6316,8 +6478,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPackingGroupBoxes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPackingGroupBoxes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPackingGroupBoxesResponse>(localVarResponse.StatusCode,
@@ -6392,8 +6557,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPackingGroupBoxes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPackingGroupBoxes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPackingGroupBoxesResponse>(localVarResponse.StatusCode,
@@ -6468,8 +6636,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPackingGroupItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPackingGroupItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPackingGroupItemsResponse>(localVarResponse.StatusCode,
@@ -6544,8 +6715,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPackingGroupItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPackingGroupItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPackingGroupItemsResponse>(localVarResponse.StatusCode,
@@ -6614,8 +6788,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPackingOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPackingOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPackingOptionsResponse>(localVarResponse.StatusCode,
@@ -6684,8 +6861,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPackingOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPackingOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPackingOptionsResponse>(localVarResponse.StatusCode,
@@ -6754,8 +6934,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPlacementOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPlacementOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPlacementOptionsResponse>(localVarResponse.StatusCode,
@@ -6824,8 +7007,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPlacementOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPlacementOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPlacementOptionsResponse>(localVarResponse.StatusCode,
@@ -6894,8 +7080,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPrepDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPrepDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPrepDetailsResponse>(localVarResponse.StatusCode,
@@ -6964,8 +7153,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListPrepDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListPrepDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListPrepDetailsResponse>(localVarResponse.StatusCode,
@@ -7040,8 +7232,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentBoxes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentBoxes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentBoxesResponse>(localVarResponse.StatusCode,
@@ -7116,8 +7311,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentBoxes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentBoxes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentBoxesResponse>(localVarResponse.StatusCode,
@@ -7192,8 +7390,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentContentUpdatePreviews", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentContentUpdatePreviews", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentContentUpdatePreviewsResponse>(localVarResponse.StatusCode,
@@ -7268,8 +7469,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentContentUpdatePreviews", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentContentUpdatePreviews", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentContentUpdatePreviewsResponse>(localVarResponse.StatusCode,
@@ -7344,8 +7548,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentItemsResponse>(localVarResponse.StatusCode,
@@ -7420,8 +7627,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentItemsResponse>(localVarResponse.StatusCode,
@@ -7496,8 +7706,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentPallets", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentPallets", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentPalletsResponse>(localVarResponse.StatusCode,
@@ -7572,8 +7785,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListShipmentPallets", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListShipmentPallets", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListShipmentPalletsResponse>(localVarResponse.StatusCode,
@@ -7648,8 +7864,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListTransportationOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListTransportationOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListTransportationOptionsResponse>(localVarResponse.StatusCode,
@@ -7724,8 +7943,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListTransportationOptions", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListTransportationOptions", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListTransportationOptionsResponse>(localVarResponse.StatusCode,
@@ -7814,8 +8036,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ScheduleSelfShipAppointment", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ScheduleSelfShipAppointment", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ScheduleSelfShipAppointmentResponse>(localVarResponse.StatusCode,
@@ -7904,8 +8129,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ScheduleSelfShipAppointment", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ScheduleSelfShipAppointment", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ScheduleSelfShipAppointmentResponse>(localVarResponse.StatusCode,
@@ -7982,8 +8210,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SetPackingInformation", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SetPackingInformation", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SetPackingInformationResponse>(localVarResponse.StatusCode,
@@ -8060,8 +8291,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SetPackingInformation", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SetPackingInformation", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SetPackingInformationResponse>(localVarResponse.StatusCode,
@@ -8132,8 +8366,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SetPrepDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SetPrepDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SetPrepDetailsResponse>(localVarResponse.StatusCode,
@@ -8204,8 +8441,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SetPrepDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SetPrepDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SetPrepDetailsResponse>(localVarResponse.StatusCode,
@@ -8281,8 +8521,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateInboundPlanName", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateInboundPlanName", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Object>(
@@ -8359,8 +8602,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateInboundPlanName", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateInboundPlanName", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Object>(
@@ -8438,8 +8684,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateItemComplianceDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateItemComplianceDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<UpdateItemComplianceDetailsResponse>(localVarResponse.StatusCode,
@@ -8516,8 +8765,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateItemComplianceDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateItemComplianceDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<UpdateItemComplianceDetailsResponse>(localVarResponse.StatusCode,
@@ -8599,8 +8851,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateShipmentName", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateShipmentName", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Object>(
@@ -8683,8 +8938,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateShipmentName", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateShipmentName", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Object>(
@@ -8768,8 +9026,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateShipmentSourceAddress", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateShipmentSourceAddress", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<UpdateShipmentSourceAddressResponse>(localVarResponse.StatusCode,
@@ -8852,8 +9113,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateShipmentSourceAddress", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateShipmentSourceAddress", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<UpdateShipmentSourceAddressResponse>(localVarResponse.StatusCode,
@@ -8936,8 +9200,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateShipmentTrackingDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateShipmentTrackingDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<UpdateShipmentTrackingDetailsResponse>(localVarResponse.StatusCode,
@@ -9020,8 +9287,11 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("UpdateShipmentTrackingDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("UpdateShipmentTrackingDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<UpdateShipmentTrackingDetailsResponse>(localVarResponse.StatusCode,

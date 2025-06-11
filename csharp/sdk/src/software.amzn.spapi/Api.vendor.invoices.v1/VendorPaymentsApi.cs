@@ -222,8 +222,11 @@ namespace software.amzn.spapi.Api.vendor.invoices.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitInvoices", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitInvoices", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitInvoicesResponse>(localVarResponse.StatusCode,
@@ -294,8 +297,11 @@ namespace software.amzn.spapi.Api.vendor.invoices.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitInvoices", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitInvoices", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitInvoicesResponse>(localVarResponse.StatusCode,

@@ -263,8 +263,11 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPaymentMethods", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPaymentMethods", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPaymentMethodsResponse>(localVarResponse.StatusCode,
@@ -330,8 +333,11 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPaymentMethods", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPaymentMethods", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPaymentMethodsResponse>(localVarResponse.StatusCode,
@@ -402,8 +408,11 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("InitiatePayout", localVarResponse.ErrorException);
+                // Exception exception = new Exception("InitiatePayout", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<InitiatePayoutResponse>(localVarResponse.StatusCode,
@@ -474,8 +483,11 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("InitiatePayout", localVarResponse.ErrorException);
+                // Exception exception = new Exception("InitiatePayout", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<InitiatePayoutResponse>(localVarResponse.StatusCode,
