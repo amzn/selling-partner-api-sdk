@@ -141,9 +141,10 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function createNotification(
-        CreateNotificationRequest $body
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateNotificationResponse {
-        list($response) = $this->createNotificationWithHttpInfo($body);
+        list($response) = $this->createNotificationWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -160,10 +161,16 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function createNotificationWithHttpInfo(
-        CreateNotificationRequest $body
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createNotificationRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -258,11 +265,17 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function createNotificationAsyncWithHttpInfo(
-        CreateNotificationRequest $body
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
         $request = $this->createNotificationRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createNotificationRateLimiter->consume()->ensureAccepted();
         }
@@ -396,9 +409,10 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteNotifications(
-        DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->deleteNotificationsWithHttpInfo($body);
+        $this->deleteNotificationsWithHttpInfo($body, $restrictedDataToken);
     }
 
     /**
@@ -413,10 +427,16 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteNotificationsWithHttpInfo(
-        DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteNotificationsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -499,11 +519,17 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteNotificationsAsyncWithHttpInfo(
-        DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteNotificationsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
         }
@@ -627,9 +653,10 @@ class AppIntegrationsApi
      */
     public function recordActionFeedback(
         string $notification_id,
-        RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->recordActionFeedbackWithHttpInfo($notification_id, $body);
+        $this->recordActionFeedbackWithHttpInfo($notification_id, $body, $restrictedDataToken);
     }
 
     /**
@@ -647,10 +674,16 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackWithHttpInfo(
         string $notification_id,
-        RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -739,11 +772,17 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackAsyncWithHttpInfo(
         string $notification_id,
-        RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
         }

@@ -149,9 +149,10 @@ class FbaInventoryApi
      */
     public function addInventory(
         string $x_amzn_idempotency_token,
-        AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): AddInventoryResponse {
-        list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body);
+        list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -171,10 +172,16 @@ class FbaInventoryApi
      */
     public function addInventoryWithHttpInfo(
         string $x_amzn_idempotency_token,
-        AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -275,11 +282,17 @@ class FbaInventoryApi
      */
     public function addInventoryAsyncWithHttpInfo(
         string $x_amzn_idempotency_token,
-        AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\AddInventoryResponse';
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->addInventoryRateLimiter->consume()->ensureAccepted();
         }
@@ -427,9 +440,10 @@ class FbaInventoryApi
      * @throws \InvalidArgumentException
      */
     public function createInventoryItem(
-        CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): CreateInventoryItemResponse {
-        list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body);
+        list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -446,10 +460,16 @@ class FbaInventoryApi
      * @throws \InvalidArgumentException
      */
     public function createInventoryItemWithHttpInfo(
-        CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -544,11 +564,17 @@ class FbaInventoryApi
      * @throws \InvalidArgumentException
      */
     public function createInventoryItemAsyncWithHttpInfo(
-        CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse';
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
         }
@@ -685,9 +711,10 @@ class FbaInventoryApi
      */
     public function deleteInventoryItem(
         string $seller_sku,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): DeleteInventoryItemResponse {
-        list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id);
+        list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -707,10 +734,16 @@ class FbaInventoryApi
      */
     public function deleteInventoryItemWithHttpInfo(
         string $seller_sku,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -811,11 +844,17 @@ class FbaInventoryApi
      */
     public function deleteInventoryItemAsyncWithHttpInfo(
         string $seller_sku,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse';
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
         }
@@ -993,9 +1032,10 @@ class FbaInventoryApi
         ?\DateTime $start_date_time = null,
         ?array $seller_skus = null,
         ?string $seller_sku = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetInventorySummariesResponse {
-        list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
+        list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1033,10 +1073,16 @@ class FbaInventoryApi
         ?\DateTime $start_date_time = null,
         ?array $seller_skus = null,
         ?string $seller_sku = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1173,11 +1219,17 @@ class FbaInventoryApi
         ?\DateTime $start_date_time = null,
         ?array $seller_skus = null,
         ?string $seller_sku = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse';
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
         }

@@ -157,9 +157,10 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function createInvoicesExport(
-        ExportInvoicesRequest $body
+        ExportInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): ExportInvoicesResponse {
-        list($response) = $this->createInvoicesExportWithHttpInfo($body);
+        list($response) = $this->createInvoicesExportWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -176,10 +177,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function createInvoicesExportWithHttpInfo(
-        ExportInvoicesRequest $body
+        ExportInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInvoicesExportRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -274,11 +281,17 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function createInvoicesExportAsyncWithHttpInfo(
-        ExportInvoicesRequest $body
+        ExportInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse';
         $request = $this->createInvoicesExportRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInvoicesExportRateLimiter->consume()->ensureAccepted();
         }
@@ -415,9 +428,10 @@ class InvoicesApi
      */
     public function getInvoice(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $restrictedDataToken = null
     ): GetInvoiceResponse {
-        list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id);
+        list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id, $restrictedDataToken);
 
         return $response;
     }
@@ -437,10 +451,16 @@ class InvoicesApi
      */
     public function getInvoiceWithHttpInfo(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -541,11 +561,17 @@ class InvoicesApi
      */
     public function getInvoiceAsyncWithHttpInfo(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse';
         $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoiceRateLimiter->consume()->ensureAccepted();
         }
@@ -741,9 +767,10 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $restrictedDataToken = null
     ): GetInvoicesResponse {
-        list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
+        list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $restrictedDataToken);
 
         return $response;
     }
@@ -799,10 +826,16 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -975,11 +1008,17 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse';
         $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesRateLimiter->consume()->ensureAccepted();
         }
@@ -1290,9 +1329,10 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributes(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): GetInvoicesAttributesResponse {
-        list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id);
+        list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1309,10 +1349,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesAttributesRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1407,11 +1453,17 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesAsyncWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
         $request = $this->getInvoicesAttributesRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesAttributesRateLimiter->consume()->ensureAccepted();
         }
@@ -1550,9 +1602,10 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocument(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $restrictedDataToken = null
     ): GetInvoicesDocumentResponse {
-        list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id);
+        list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1569,10 +1622,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentWithHttpInfo(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesDocumentRequest($invoices_document_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1667,11 +1726,17 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentAsyncWithHttpInfo(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
         $request = $this->getInvoicesDocumentRequest($invoices_document_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -1808,9 +1873,10 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExport(
-        string $export_id
+        string $export_id,
+        ?string $restrictedDataToken = null
     ): GetInvoicesExportResponse {
-        list($response) = $this->getInvoicesExportWithHttpInfo($export_id);
+        list($response) = $this->getInvoicesExportWithHttpInfo($export_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1827,10 +1893,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportWithHttpInfo(
-        string $export_id
+        string $export_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesExportRequest($export_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1925,11 +1997,17 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportAsyncWithHttpInfo(
-        string $export_id
+        string $export_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
         $request = $this->getInvoicesExportRequest($export_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesExportRateLimiter->consume()->ensureAccepted();
         }
@@ -2081,9 +2159,10 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $restrictedDataToken = null
     ): GetInvoicesExportsResponse {
-        list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
+        list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $restrictedDataToken);
 
         return $response;
     }
@@ -2115,10 +2194,16 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2243,11 +2328,17 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
         $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesExportsRateLimiter->consume()->ensureAccepted();
         }

@@ -139,9 +139,10 @@ class SolicitationsApi
      */
     public function createProductReviewAndSellerFeedbackSolicitation(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): CreateProductReviewAndSellerFeedbackSolicitationResponse {
-        list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -161,10 +162,16 @@ class SolicitationsApi
      */
     public function createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -265,11 +272,17 @@ class SolicitationsApi
      */
     public function createProductReviewAndSellerFeedbackSolicitationAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter->consume()->ensureAccepted();
         }
@@ -432,9 +445,10 @@ class SolicitationsApi
      */
     public function getSolicitationActionsForOrder(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): GetSolicitationActionsForOrderResponse {
-        list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -454,10 +468,16 @@ class SolicitationsApi
      */
     public function getSolicitationActionsForOrderWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -558,11 +578,17 @@ class SolicitationsApi
      */
     public function getSolicitationActionsForOrderAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSolicitationActionsForOrderRateLimiter->consume()->ensureAccepted();
         }

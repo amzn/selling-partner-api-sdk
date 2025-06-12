@@ -171,9 +171,10 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function cancelInbound(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelInboundWithHttpInfo($order_id);
+        $this->cancelInboundWithHttpInfo($order_id, $restrictedDataToken);
     }
 
     /**
@@ -188,10 +189,16 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelInboundRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -274,11 +281,17 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelInboundRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelInboundRateLimiter->consume()->ensureAccepted();
         }
@@ -402,9 +415,10 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function checkInboundEligibility(
-        InboundPackages $body
+        InboundPackages $body,
+        ?string $restrictedDataToken = null
     ): InboundEligibility {
-        list($response) = $this->checkInboundEligibilityWithHttpInfo($body);
+        list($response) = $this->checkInboundEligibilityWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -421,10 +435,16 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function checkInboundEligibilityWithHttpInfo(
-        InboundPackages $body
+        InboundPackages $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->checkInboundEligibilityRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -519,11 +539,17 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function checkInboundEligibilityAsyncWithHttpInfo(
-        InboundPackages $body
+        InboundPackages $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InboundEligibility';
         $request = $this->checkInboundEligibilityRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->checkInboundEligibilityRateLimiter->consume()->ensureAccepted();
         }
@@ -657,9 +683,10 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function confirmInbound(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->confirmInboundWithHttpInfo($order_id);
+        $this->confirmInboundWithHttpInfo($order_id, $restrictedDataToken);
     }
 
     /**
@@ -674,10 +701,16 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function confirmInboundWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmInboundRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -760,11 +793,17 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function confirmInboundAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->confirmInboundRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmInboundRateLimiter->consume()->ensureAccepted();
         }
@@ -888,9 +927,10 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function createInbound(
-        InboundOrderCreationData $body
+        InboundOrderCreationData $body,
+        ?string $restrictedDataToken = null
     ): InboundOrderReference {
-        list($response) = $this->createInboundWithHttpInfo($body);
+        list($response) = $this->createInboundWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -907,10 +947,16 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function createInboundWithHttpInfo(
-        InboundOrderCreationData $body
+        InboundOrderCreationData $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInboundRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1005,11 +1051,17 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function createInboundAsyncWithHttpInfo(
-        InboundOrderCreationData $body
+        InboundOrderCreationData $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InboundOrderReference';
         $request = $this->createInboundRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInboundRateLimiter->consume()->ensureAccepted();
         }
@@ -1143,9 +1195,10 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function getInbound(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): InboundOrder {
-        list($response) = $this->getInboundWithHttpInfo($order_id);
+        list($response) = $this->getInboundWithHttpInfo($order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1162,10 +1215,16 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function getInboundWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1260,11 +1319,17 @@ class AwdApi
      * @throws \InvalidArgumentException
      */
     public function getInboundAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InboundOrder';
         $request = $this->getInboundRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundRateLimiter->consume()->ensureAccepted();
         }
@@ -1404,9 +1469,10 @@ class AwdApi
      */
     public function getInboundShipment(
         string $shipment_id,
-        ?string $sku_quantities = null
+        ?string $sku_quantities = null,
+        ?string $restrictedDataToken = null
     ): InboundShipment {
-        list($response) = $this->getInboundShipmentWithHttpInfo($shipment_id, $sku_quantities);
+        list($response) = $this->getInboundShipmentWithHttpInfo($shipment_id, $sku_quantities, $restrictedDataToken);
 
         return $response;
     }
@@ -1426,10 +1492,16 @@ class AwdApi
      */
     public function getInboundShipmentWithHttpInfo(
         string $shipment_id,
-        ?string $sku_quantities = null
+        ?string $sku_quantities = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundShipmentRequest($shipment_id, $sku_quantities);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1530,11 +1602,17 @@ class AwdApi
      */
     public function getInboundShipmentAsyncWithHttpInfo(
         string $shipment_id,
-        ?string $sku_quantities = null
+        ?string $sku_quantities = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InboundShipment';
         $request = $this->getInboundShipmentRequest($shipment_id, $sku_quantities);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -1694,9 +1772,10 @@ class AwdApi
     public function getInboundShipmentLabels(
         string $shipment_id,
         ?string $page_type = null,
-        ?string $format_type = null
+        ?string $format_type = null,
+        ?string $restrictedDataToken = null
     ): ShipmentLabels {
-        list($response) = $this->getInboundShipmentLabelsWithHttpInfo($shipment_id, $page_type, $format_type);
+        list($response) = $this->getInboundShipmentLabelsWithHttpInfo($shipment_id, $page_type, $format_type, $restrictedDataToken);
 
         return $response;
     }
@@ -1719,10 +1798,16 @@ class AwdApi
     public function getInboundShipmentLabelsWithHttpInfo(
         string $shipment_id,
         ?string $page_type = null,
-        ?string $format_type = null
+        ?string $format_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundShipmentLabelsRequest($shipment_id, $page_type, $format_type);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1829,11 +1914,17 @@ class AwdApi
     public function getInboundShipmentLabelsAsyncWithHttpInfo(
         string $shipment_id,
         ?string $page_type = null,
-        ?string $format_type = null
+        ?string $format_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentLabels';
         $request = $this->getInboundShipmentLabelsRequest($shipment_id, $page_type, $format_type);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundShipmentLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -2018,9 +2109,10 @@ class AwdApi
         ?\DateTime $updated_after = null,
         ?\DateTime $updated_before = null,
         ?int $max_results = 25,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ShipmentListing {
-        list($response) = $this->listInboundShipmentsWithHttpInfo($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token);
+        list($response) = $this->listInboundShipmentsWithHttpInfo($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -2055,10 +2147,16 @@ class AwdApi
         ?\DateTime $updated_after = null,
         ?\DateTime $updated_before = null,
         ?int $max_results = 25,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundShipmentsRequest($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2189,11 +2287,17 @@ class AwdApi
         ?\DateTime $updated_after = null,
         ?\DateTime $updated_before = null,
         ?int $max_results = 25,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentListing';
         $request = $this->listInboundShipmentsRequest($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundShipmentsRateLimiter->consume()->ensureAccepted();
         }
@@ -2422,9 +2526,10 @@ class AwdApi
         ?string $sort_order = null,
         ?string $details = null,
         ?string $next_token = null,
-        ?int $max_results = 25
+        ?int $max_results = 25,
+        ?string $restrictedDataToken = null
     ): InventoryListing {
-        list($response) = $this->listInventoryWithHttpInfo($sku, $sort_order, $details, $next_token, $max_results);
+        list($response) = $this->listInventoryWithHttpInfo($sku, $sort_order, $details, $next_token, $max_results, $restrictedDataToken);
 
         return $response;
     }
@@ -2453,10 +2558,16 @@ class AwdApi
         ?string $sort_order = null,
         ?string $details = null,
         ?string $next_token = null,
-        ?int $max_results = 25
+        ?int $max_results = 25,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInventoryRequest($sku, $sort_order, $details, $next_token, $max_results);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2575,11 +2686,17 @@ class AwdApi
         ?string $sort_order = null,
         ?string $details = null,
         ?string $next_token = null,
-        ?int $max_results = 25
+        ?int $max_results = 25,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InventoryListing';
         $request = $this->listInventoryRequest($sku, $sort_order, $details, $next_token, $max_results);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInventoryRateLimiter->consume()->ensureAccepted();
         }
@@ -2773,9 +2890,10 @@ class AwdApi
      */
     public function updateInbound(
         string $order_id,
-        InboundOrder $body
+        InboundOrder $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateInboundWithHttpInfo($order_id, $body);
+        $this->updateInboundWithHttpInfo($order_id, $body, $restrictedDataToken);
     }
 
     /**
@@ -2793,10 +2911,16 @@ class AwdApi
      */
     public function updateInboundWithHttpInfo(
         string $order_id,
-        InboundOrder $body
+        InboundOrder $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateInboundRequest($order_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2885,11 +3009,17 @@ class AwdApi
      */
     public function updateInboundAsyncWithHttpInfo(
         string $order_id,
-        InboundOrder $body
+        InboundOrder $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundRequest($order_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateInboundRateLimiter->consume()->ensureAccepted();
         }
@@ -3031,9 +3161,10 @@ class AwdApi
      */
     public function updateInboundShipmentTransportDetails(
         string $shipment_id,
-        TransportationDetails $body
+        TransportationDetails $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateInboundShipmentTransportDetailsWithHttpInfo($shipment_id, $body);
+        $this->updateInboundShipmentTransportDetailsWithHttpInfo($shipment_id, $body, $restrictedDataToken);
     }
 
     /**
@@ -3051,10 +3182,16 @@ class AwdApi
      */
     public function updateInboundShipmentTransportDetailsWithHttpInfo(
         string $shipment_id,
-        TransportationDetails $body
+        TransportationDetails $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateInboundShipmentTransportDetailsRequest($shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3143,11 +3280,17 @@ class AwdApi
      */
     public function updateInboundShipmentTransportDetailsAsyncWithHttpInfo(
         string $shipment_id,
-        TransportationDetails $body
+        TransportationDetails $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundShipmentTransportDetailsRequest($shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateInboundShipmentTransportDetailsRateLimiter->consume()->ensureAccepted();
         }

@@ -151,9 +151,10 @@ class DefaultApi
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventGroupsResponse {
-        list($response) = $this->listFinancialEventGroupsWithHttpInfo($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
+        list($response) = $this->listFinancialEventGroupsWithHttpInfo($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -179,10 +180,16 @@ class DefaultApi
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventGroupsRequest($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -295,11 +302,17 @@ class DefaultApi
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse';
         $request = $this->listFinancialEventGroupsRequest($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventGroupsRateLimiter->consume()->ensureAccepted();
         }
@@ -486,9 +499,10 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventsResponse {
-        list($response) = $this->listFinancialEventsWithHttpInfo($max_results_per_page, $posted_after, $posted_before, $next_token);
+        list($response) = $this->listFinancialEventsWithHttpInfo($max_results_per_page, $posted_after, $posted_before, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -514,10 +528,16 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventsRequest($max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -630,11 +650,17 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsRequest($max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventsRateLimiter->consume()->ensureAccepted();
         }
@@ -824,9 +850,10 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventsResponse {
-        list($response) = $this->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
+        list($response) = $this->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -855,10 +882,16 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventsByGroupIdRequest($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -977,11 +1010,17 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByGroupIdRequest($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventsByGroupIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1183,9 +1222,10 @@ class DefaultApi
     public function listFinancialEventsByOrderId(
         string $order_id,
         ?int $max_results_per_page = 100,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventsResponse {
-        list($response) = $this->listFinancialEventsByOrderIdWithHttpInfo($order_id, $max_results_per_page, $next_token);
+        list($response) = $this->listFinancialEventsByOrderIdWithHttpInfo($order_id, $max_results_per_page, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1208,10 +1248,16 @@ class DefaultApi
     public function listFinancialEventsByOrderIdWithHttpInfo(
         string $order_id,
         ?int $max_results_per_page = 100,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventsByOrderIdRequest($order_id, $max_results_per_page, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1318,11 +1364,17 @@ class DefaultApi
     public function listFinancialEventsByOrderIdAsyncWithHttpInfo(
         string $order_id,
         ?int $max_results_per_page = 100,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByOrderIdRequest($order_id, $max_results_per_page, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventsByOrderIdRateLimiter->consume()->ensureAccepted();
         }

@@ -148,9 +148,10 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function cancelQuery(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelQueryWithHttpInfo($query_id);
+        $this->cancelQueryWithHttpInfo($query_id, $restrictedDataToken);
     }
 
     /**
@@ -165,10 +166,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function cancelQueryWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -251,11 +258,17 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function cancelQueryAsyncWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelQueryRateLimiter->consume()->ensureAccepted();
         }
@@ -379,9 +392,10 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function createQuery(
-        CreateQuerySpecification $body
+        CreateQuerySpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateQueryResponse {
-        list($response) = $this->createQueryWithHttpInfo($body);
+        list($response) = $this->createQueryWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -398,10 +412,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function createQueryWithHttpInfo(
-        CreateQuerySpecification $body
+        CreateQuerySpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createQueryRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -496,11 +516,17 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function createQueryAsyncWithHttpInfo(
-        CreateQuerySpecification $body
+        CreateQuerySpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse';
         $request = $this->createQueryRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createQueryRateLimiter->consume()->ensureAccepted();
         }
@@ -634,9 +660,10 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getDocument(
-        string $document_id
+        string $document_id,
+        ?string $restrictedDataToken = null
     ): GetDocumentResponse {
-        list($response) = $this->getDocumentWithHttpInfo($document_id);
+        list($response) = $this->getDocumentWithHttpInfo($document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -653,10 +680,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getDocumentWithHttpInfo(
-        string $document_id
+        string $document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDocumentRequest($document_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -751,11 +784,17 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getDocumentAsyncWithHttpInfo(
-        string $document_id
+        string $document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse';
         $request = $this->getDocumentRequest($document_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -904,9 +943,10 @@ class QueriesApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): GetQueriesResponse {
-        list($response) = $this->getQueriesWithHttpInfo($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
+        list($response) = $this->getQueriesWithHttpInfo($processing_statuses, $page_size, $created_since, $created_until, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -935,10 +975,16 @@ class QueriesApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getQueriesRequest($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1057,11 +1103,17 @@ class QueriesApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse';
         $request = $this->getQueriesRequest($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getQueriesRateLimiter->consume()->ensureAccepted();
         }
@@ -1256,9 +1308,10 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getQuery(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): Query {
-        list($response) = $this->getQueryWithHttpInfo($query_id);
+        list($response) = $this->getQueryWithHttpInfo($query_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1275,10 +1328,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getQueryWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1373,11 +1432,17 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getQueryAsyncWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\Query';
         $request = $this->getQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getQueryRateLimiter->consume()->ensureAccepted();
         }

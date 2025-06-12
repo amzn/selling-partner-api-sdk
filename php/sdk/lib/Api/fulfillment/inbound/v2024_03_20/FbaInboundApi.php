@@ -322,9 +322,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundPlan(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): CancelInboundPlanResponse {
-        list($response) = $this->cancelInboundPlanWithHttpInfo($inbound_plan_id);
+        list($response) = $this->cancelInboundPlanWithHttpInfo($inbound_plan_id, $restrictedDataToken);
 
         return $response;
     }
@@ -341,10 +342,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundPlanWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -439,11 +446,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundPlanAsyncWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse';
         $request = $this->cancelInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelInboundPlanRateLimiter->consume()->ensureAccepted();
         }
@@ -595,9 +608,10 @@ class FbaInboundApi
     public function cancelSelfShipAppointment(
         string $inbound_plan_id,
         string $shipment_id,
-        CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): CancelSelfShipAppointmentResponse {
-        list($response) = $this->cancelSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->cancelSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -620,10 +634,16 @@ class FbaInboundApi
     public function cancelSelfShipAppointmentWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -730,11 +750,17 @@ class FbaInboundApi
     public function cancelSelfShipAppointmentAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse';
         $request = $this->cancelSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
         }
@@ -929,9 +955,10 @@ class FbaInboundApi
     public function confirmDeliveryWindowOptions(
         string $inbound_plan_id,
         string $shipment_id,
-        string $delivery_window_option_id
+        string $delivery_window_option_id,
+        ?string $restrictedDataToken = null
     ): ConfirmDeliveryWindowOptionsResponse {
-        list($response) = $this->confirmDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $delivery_window_option_id);
+        list($response) = $this->confirmDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $delivery_window_option_id, $restrictedDataToken);
 
         return $response;
     }
@@ -954,10 +981,16 @@ class FbaInboundApi
     public function confirmDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $delivery_window_option_id
+        string $delivery_window_option_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $delivery_window_option_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1064,11 +1097,17 @@ class FbaInboundApi
     public function confirmDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $delivery_window_option_id
+        string $delivery_window_option_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse';
         $request = $this->confirmDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $delivery_window_option_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -1271,9 +1310,10 @@ class FbaInboundApi
      */
     public function confirmPackingOption(
         string $inbound_plan_id,
-        string $packing_option_id
+        string $packing_option_id,
+        ?string $restrictedDataToken = null
     ): ConfirmPackingOptionResponse {
-        list($response) = $this->confirmPackingOptionWithHttpInfo($inbound_plan_id, $packing_option_id);
+        list($response) = $this->confirmPackingOptionWithHttpInfo($inbound_plan_id, $packing_option_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1293,10 +1333,16 @@ class FbaInboundApi
      */
     public function confirmPackingOptionWithHttpInfo(
         string $inbound_plan_id,
-        string $packing_option_id
+        string $packing_option_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmPackingOptionRequest($inbound_plan_id, $packing_option_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1397,11 +1443,17 @@ class FbaInboundApi
      */
     public function confirmPackingOptionAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $packing_option_id
+        string $packing_option_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse';
         $request = $this->confirmPackingOptionRequest($inbound_plan_id, $packing_option_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmPackingOptionRateLimiter->consume()->ensureAccepted();
         }
@@ -1577,9 +1629,10 @@ class FbaInboundApi
      */
     public function confirmPlacementOption(
         string $inbound_plan_id,
-        string $placement_option_id
+        string $placement_option_id,
+        ?string $restrictedDataToken = null
     ): ConfirmPlacementOptionResponse {
-        list($response) = $this->confirmPlacementOptionWithHttpInfo($inbound_plan_id, $placement_option_id);
+        list($response) = $this->confirmPlacementOptionWithHttpInfo($inbound_plan_id, $placement_option_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1599,10 +1652,16 @@ class FbaInboundApi
      */
     public function confirmPlacementOptionWithHttpInfo(
         string $inbound_plan_id,
-        string $placement_option_id
+        string $placement_option_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmPlacementOptionRequest($inbound_plan_id, $placement_option_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1703,11 +1762,17 @@ class FbaInboundApi
      */
     public function confirmPlacementOptionAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $placement_option_id
+        string $placement_option_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse';
         $request = $this->confirmPlacementOptionRequest($inbound_plan_id, $placement_option_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmPlacementOptionRateLimiter->consume()->ensureAccepted();
         }
@@ -1886,9 +1951,10 @@ class FbaInboundApi
     public function confirmShipmentContentUpdatePreview(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): ConfirmShipmentContentUpdatePreviewResponse {
-        list($response) = $this->confirmShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id);
+        list($response) = $this->confirmShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1911,10 +1977,16 @@ class FbaInboundApi
     public function confirmShipmentContentUpdatePreviewWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2021,11 +2093,17 @@ class FbaInboundApi
     public function confirmShipmentContentUpdatePreviewAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse';
         $request = $this->confirmShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
         }
@@ -2228,9 +2306,10 @@ class FbaInboundApi
      */
     public function confirmTransportationOptions(
         string $inbound_plan_id,
-        ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): ConfirmTransportationOptionsResponse {
-        list($response) = $this->confirmTransportationOptionsWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->confirmTransportationOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -2250,10 +2329,16 @@ class FbaInboundApi
      */
     public function confirmTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
-        ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2354,11 +2439,17 @@ class FbaInboundApi
      */
     public function confirmTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse';
         $request = $this->confirmTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -2520,9 +2611,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createInboundPlan(
-        CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateInboundPlanResponse {
-        list($response) = $this->createInboundPlanWithHttpInfo($body);
+        list($response) = $this->createInboundPlanWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -2539,10 +2631,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createInboundPlanWithHttpInfo(
-        CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInboundPlanRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2637,11 +2735,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createInboundPlanAsyncWithHttpInfo(
-        CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse';
         $request = $this->createInboundPlanRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInboundPlanRateLimiter->consume()->ensureAccepted();
         }
@@ -2775,9 +2879,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabels(
-        CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateMarketplaceItemLabelsResponse {
-        list($response) = $this->createMarketplaceItemLabelsWithHttpInfo($body);
+        list($response) = $this->createMarketplaceItemLabelsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -2794,10 +2899,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabelsWithHttpInfo(
-        CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createMarketplaceItemLabelsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2892,11 +3003,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabelsAsyncWithHttpInfo(
-        CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse';
         $request = $this->createMarketplaceItemLabelsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createMarketplaceItemLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -3033,9 +3150,10 @@ class FbaInboundApi
      */
     public function generateDeliveryWindowOptions(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GenerateDeliveryWindowOptionsResponse {
-        list($response) = $this->generateDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id);
+        list($response) = $this->generateDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3055,10 +3173,16 @@ class FbaInboundApi
      */
     public function generateDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3159,11 +3283,17 @@ class FbaInboundApi
      */
     public function generateDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse';
         $request = $this->generateDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -3336,9 +3466,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function generatePackingOptions(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): GeneratePackingOptionsResponse {
-        list($response) = $this->generatePackingOptionsWithHttpInfo($inbound_plan_id);
+        list($response) = $this->generatePackingOptionsWithHttpInfo($inbound_plan_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3355,10 +3486,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function generatePackingOptionsWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generatePackingOptionsRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3453,11 +3590,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function generatePackingOptionsAsyncWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse';
         $request = $this->generatePackingOptionsRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generatePackingOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -3606,9 +3749,10 @@ class FbaInboundApi
      */
     public function generatePlacementOptions(
         string $inbound_plan_id,
-        GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): GeneratePlacementOptionsResponse {
-        list($response) = $this->generatePlacementOptionsWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->generatePlacementOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3628,10 +3772,16 @@ class FbaInboundApi
      */
     public function generatePlacementOptionsWithHttpInfo(
         string $inbound_plan_id,
-        GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generatePlacementOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3732,11 +3882,17 @@ class FbaInboundApi
      */
     public function generatePlacementOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse';
         $request = $this->generatePlacementOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generatePlacementOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -3904,9 +4060,10 @@ class FbaInboundApi
     public function generateSelfShipAppointmentSlots(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): GenerateSelfShipAppointmentSlotsResponse {
-        list($response) = $this->generateSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->generateSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3929,10 +4086,16 @@ class FbaInboundApi
     public function generateSelfShipAppointmentSlotsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4039,11 +4202,17 @@ class FbaInboundApi
     public function generateSelfShipAppointmentSlotsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse';
         $request = $this->generateSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -4238,9 +4407,10 @@ class FbaInboundApi
     public function generateShipmentContentUpdatePreviews(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): GenerateShipmentContentUpdatePreviewsResponse {
-        list($response) = $this->generateShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->generateShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4263,10 +4433,16 @@ class FbaInboundApi
     public function generateShipmentContentUpdatePreviewsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4373,11 +4549,17 @@ class FbaInboundApi
     public function generateShipmentContentUpdatePreviewsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse';
         $request = $this->generateShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
         }
@@ -4569,9 +4751,10 @@ class FbaInboundApi
      */
     public function generateTransportationOptions(
         string $inbound_plan_id,
-        GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): GenerateTransportationOptionsResponse {
-        list($response) = $this->generateTransportationOptionsWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->generateTransportationOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4591,10 +4774,16 @@ class FbaInboundApi
      */
     public function generateTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
-        GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4695,11 +4884,17 @@ class FbaInboundApi
      */
     public function generateTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse';
         $request = $this->generateTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -4864,9 +5059,10 @@ class FbaInboundApi
      */
     public function getDeliveryChallanDocument(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetDeliveryChallanDocumentResponse {
-        list($response) = $this->getDeliveryChallanDocumentWithHttpInfo($inbound_plan_id, $shipment_id);
+        list($response) = $this->getDeliveryChallanDocumentWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -4886,10 +5082,16 @@ class FbaInboundApi
      */
     public function getDeliveryChallanDocumentWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDeliveryChallanDocumentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4990,11 +5192,17 @@ class FbaInboundApi
      */
     public function getDeliveryChallanDocumentAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse';
         $request = $this->getDeliveryChallanDocumentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDeliveryChallanDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -5167,9 +5375,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatus(
-        string $operation_id
+        string $operation_id,
+        ?string $restrictedDataToken = null
     ): InboundOperationStatus {
-        list($response) = $this->getInboundOperationStatusWithHttpInfo($operation_id);
+        list($response) = $this->getInboundOperationStatusWithHttpInfo($operation_id, $restrictedDataToken);
 
         return $response;
     }
@@ -5186,10 +5395,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatusWithHttpInfo(
-        string $operation_id
+        string $operation_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundOperationStatusRequest($operation_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5284,11 +5499,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatusAsyncWithHttpInfo(
-        string $operation_id
+        string $operation_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus';
         $request = $this->getInboundOperationStatusRequest($operation_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundOperationStatusRateLimiter->consume()->ensureAccepted();
         }
@@ -5434,9 +5655,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundPlan(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): InboundPlan {
-        list($response) = $this->getInboundPlanWithHttpInfo($inbound_plan_id);
+        list($response) = $this->getInboundPlanWithHttpInfo($inbound_plan_id, $restrictedDataToken);
 
         return $response;
     }
@@ -5453,10 +5675,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundPlanWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5551,11 +5779,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundPlanAsyncWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan';
         $request = $this->getInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundPlanRateLimiter->consume()->ensureAccepted();
         }
@@ -5710,9 +5944,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): GetSelfShipAppointmentSlotsResponse {
-        list($response) = $this->getSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->getSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -5738,10 +5973,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5854,11 +6095,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse';
         $request = $this->getSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -6075,9 +6322,10 @@ class FbaInboundApi
      */
     public function getShipment(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): Shipment {
-        list($response) = $this->getShipmentWithHttpInfo($inbound_plan_id, $shipment_id);
+        list($response) = $this->getShipmentWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -6097,10 +6345,16 @@ class FbaInboundApi
      */
     public function getShipmentWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -6201,11 +6455,17 @@ class FbaInboundApi
      */
     public function getShipmentAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment';
         $request = $this->getShipmentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -6384,9 +6644,10 @@ class FbaInboundApi
     public function getShipmentContentUpdatePreview(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): ContentUpdatePreview {
-        list($response) = $this->getShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id);
+        list($response) = $this->getShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id, $restrictedDataToken);
 
         return $response;
     }
@@ -6409,10 +6670,16 @@ class FbaInboundApi
     public function getShipmentContentUpdatePreviewWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -6519,11 +6786,17 @@ class FbaInboundApi
     public function getShipmentContentUpdatePreviewAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview';
         $request = $this->getShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
         }
@@ -6732,9 +7005,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListDeliveryWindowOptionsResponse {
-        list($response) = $this->listDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -6760,10 +7034,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -6876,11 +7156,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse';
         $request = $this->listDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -7100,9 +7386,10 @@ class FbaInboundApi
     public function listInboundPlanBoxes(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlanBoxesResponse {
-        list($response) = $this->listInboundPlanBoxesWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listInboundPlanBoxesWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -7125,10 +7412,16 @@ class FbaInboundApi
     public function listInboundPlanBoxesWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanBoxesRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -7235,11 +7528,17 @@ class FbaInboundApi
     public function listInboundPlanBoxesAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse';
         $request = $this->listInboundPlanBoxesRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlanBoxesRateLimiter->consume()->ensureAccepted();
         }
@@ -7432,9 +7731,10 @@ class FbaInboundApi
     public function listInboundPlanItems(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlanItemsResponse {
-        list($response) = $this->listInboundPlanItemsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listInboundPlanItemsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -7457,10 +7757,16 @@ class FbaInboundApi
     public function listInboundPlanItemsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanItemsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -7567,11 +7873,17 @@ class FbaInboundApi
     public function listInboundPlanItemsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse';
         $request = $this->listInboundPlanItemsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlanItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -7764,9 +8076,10 @@ class FbaInboundApi
     public function listInboundPlanPallets(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlanPalletsResponse {
-        list($response) = $this->listInboundPlanPalletsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listInboundPlanPalletsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -7789,10 +8102,16 @@ class FbaInboundApi
     public function listInboundPlanPalletsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanPalletsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -7899,11 +8218,17 @@ class FbaInboundApi
     public function listInboundPlanPalletsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse';
         $request = $this->listInboundPlanPalletsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlanPalletsRateLimiter->consume()->ensureAccepted();
         }
@@ -8102,9 +8427,10 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $status = null,
         ?string $sort_by = null,
-        ?string $sort_order = null
+        ?string $sort_order = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlansResponse {
-        list($response) = $this->listInboundPlansWithHttpInfo($page_size, $pagination_token, $status, $sort_by, $sort_order);
+        list($response) = $this->listInboundPlansWithHttpInfo($page_size, $pagination_token, $status, $sort_by, $sort_order, $restrictedDataToken);
 
         return $response;
     }
@@ -8133,10 +8459,16 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $status = null,
         ?string $sort_by = null,
-        ?string $sort_order = null
+        ?string $sort_order = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlansRequest($page_size, $pagination_token, $status, $sort_by, $sort_order);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -8255,11 +8587,17 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $status = null,
         ?string $sort_by = null,
-        ?string $sort_order = null
+        ?string $sort_order = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse';
         $request = $this->listInboundPlansRequest($page_size, $pagination_token, $status, $sort_by, $sort_order);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlansRateLimiter->consume()->ensureAccepted();
         }
@@ -8460,9 +8798,10 @@ class FbaInboundApi
      */
     public function listItemComplianceDetails(
         array $mskus,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): ListItemComplianceDetailsResponse {
-        list($response) = $this->listItemComplianceDetailsWithHttpInfo($mskus, $marketplace_id);
+        list($response) = $this->listItemComplianceDetailsWithHttpInfo($mskus, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -8482,10 +8821,16 @@ class FbaInboundApi
      */
     public function listItemComplianceDetailsWithHttpInfo(
         array $mskus,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listItemComplianceDetailsRequest($mskus, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -8586,11 +8931,17 @@ class FbaInboundApi
      */
     public function listItemComplianceDetailsAsyncWithHttpInfo(
         array $mskus,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse';
         $request = $this->listItemComplianceDetailsRequest($mskus, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -8770,9 +9121,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPackingGroupBoxesResponse {
-        list($response) = $this->listPackingGroupBoxesWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
+        list($response) = $this->listPackingGroupBoxesWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -8798,10 +9150,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingGroupBoxesRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -8914,11 +9272,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse';
         $request = $this->listPackingGroupBoxesRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPackingGroupBoxesRateLimiter->consume()->ensureAccepted();
         }
@@ -9141,9 +9505,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPackingGroupItemsResponse {
-        list($response) = $this->listPackingGroupItemsWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
+        list($response) = $this->listPackingGroupItemsWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -9169,10 +9534,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingGroupItemsRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -9285,11 +9656,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse';
         $request = $this->listPackingGroupItemsRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPackingGroupItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -9509,9 +9886,10 @@ class FbaInboundApi
     public function listPackingOptions(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPackingOptionsResponse {
-        list($response) = $this->listPackingOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listPackingOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -9534,10 +9912,16 @@ class FbaInboundApi
     public function listPackingOptionsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -9644,11 +10028,17 @@ class FbaInboundApi
     public function listPackingOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse';
         $request = $this->listPackingOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPackingOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -9841,9 +10231,10 @@ class FbaInboundApi
     public function listPlacementOptions(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPlacementOptionsResponse {
-        list($response) = $this->listPlacementOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listPlacementOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -9866,10 +10257,16 @@ class FbaInboundApi
     public function listPlacementOptionsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPlacementOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -9976,11 +10373,17 @@ class FbaInboundApi
     public function listPlacementOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse';
         $request = $this->listPlacementOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPlacementOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -10170,9 +10573,10 @@ class FbaInboundApi
      */
     public function listPrepDetails(
         string $marketplace_id,
-        array $mskus
+        array $mskus,
+        ?string $restrictedDataToken = null
     ): ListPrepDetailsResponse {
-        list($response) = $this->listPrepDetailsWithHttpInfo($marketplace_id, $mskus);
+        list($response) = $this->listPrepDetailsWithHttpInfo($marketplace_id, $mskus, $restrictedDataToken);
 
         return $response;
     }
@@ -10192,10 +10596,16 @@ class FbaInboundApi
      */
     public function listPrepDetailsWithHttpInfo(
         string $marketplace_id,
-        array $mskus
+        array $mskus,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPrepDetailsRequest($marketplace_id, $mskus);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -10296,11 +10706,17 @@ class FbaInboundApi
      */
     public function listPrepDetailsAsyncWithHttpInfo(
         string $marketplace_id,
-        array $mskus
+        array $mskus,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse';
         $request = $this->listPrepDetailsRequest($marketplace_id, $mskus);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPrepDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -10480,9 +10896,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentBoxesResponse {
-        list($response) = $this->listShipmentBoxesWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentBoxesWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -10508,10 +10925,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentBoxesRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -10624,11 +11047,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse';
         $request = $this->listShipmentBoxesRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentBoxesRateLimiter->consume()->ensureAccepted();
         }
@@ -10851,9 +11280,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentContentUpdatePreviewsResponse {
-        list($response) = $this->listShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -10879,10 +11309,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -10995,11 +11431,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse';
         $request = $this->listShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
         }
@@ -11222,9 +11664,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentItemsResponse {
-        list($response) = $this->listShipmentItemsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentItemsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -11250,10 +11693,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentItemsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -11366,11 +11815,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse';
         $request = $this->listShipmentItemsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -11593,9 +12048,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentPalletsResponse {
-        list($response) = $this->listShipmentPalletsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentPalletsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -11621,10 +12077,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentPalletsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -11737,11 +12199,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse';
         $request = $this->listShipmentPalletsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentPalletsRateLimiter->consume()->ensureAccepted();
         }
@@ -11967,9 +12435,10 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
-        ?string $shipment_id = null
+        ?string $shipment_id = null,
+        ?string $restrictedDataToken = null
     ): ListTransportationOptionsResponse {
-        list($response) = $this->listTransportationOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
+        list($response) = $this->listTransportationOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -11998,10 +12467,16 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
-        ?string $shipment_id = null
+        ?string $shipment_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listTransportationOptionsRequest($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -12120,11 +12595,17 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
-        ?string $shipment_id = null
+        ?string $shipment_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse';
         $request = $this->listTransportationOptionsRequest($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -12366,9 +12847,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): ScheduleSelfShipAppointmentResponse {
-        list($response) = $this->scheduleSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body);
+        list($response) = $this->scheduleSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -12394,10 +12876,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->scheduleSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $slot_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -12510,11 +12998,17 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse';
         $request = $this->scheduleSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $slot_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->scheduleSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
         }
@@ -12733,9 +13227,10 @@ class FbaInboundApi
      */
     public function setPackingInformation(
         string $inbound_plan_id,
-        SetPackingInformationRequest $body
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): SetPackingInformationResponse {
-        list($response) = $this->setPackingInformationWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->setPackingInformationWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -12755,10 +13250,16 @@ class FbaInboundApi
      */
     public function setPackingInformationWithHttpInfo(
         string $inbound_plan_id,
-        SetPackingInformationRequest $body
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->setPackingInformationRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -12859,11 +13360,17 @@ class FbaInboundApi
      */
     public function setPackingInformationAsyncWithHttpInfo(
         string $inbound_plan_id,
-        SetPackingInformationRequest $body
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse';
         $request = $this->setPackingInformationRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->setPackingInformationRateLimiter->consume()->ensureAccepted();
         }
@@ -13025,9 +13532,10 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function setPrepDetails(
-        SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): SetPrepDetailsResponse {
-        list($response) = $this->setPrepDetailsWithHttpInfo($body);
+        list($response) = $this->setPrepDetailsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -13044,10 +13552,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function setPrepDetailsWithHttpInfo(
-        SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->setPrepDetailsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13142,11 +13656,17 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function setPrepDetailsAsyncWithHttpInfo(
-        SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse';
         $request = $this->setPrepDetailsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->setPrepDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -13283,9 +13803,10 @@ class FbaInboundApi
      */
     public function updateInboundPlanName(
         string $inbound_plan_id,
-        UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateInboundPlanNameWithHttpInfo($inbound_plan_id, $body);
+        $this->updateInboundPlanNameWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
     }
 
     /**
@@ -13303,10 +13824,16 @@ class FbaInboundApi
      */
     public function updateInboundPlanNameWithHttpInfo(
         string $inbound_plan_id,
-        UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateInboundPlanNameRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13395,11 +13922,17 @@ class FbaInboundApi
      */
     public function updateInboundPlanNameAsyncWithHttpInfo(
         string $inbound_plan_id,
-        UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundPlanNameRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateInboundPlanNameRateLimiter->consume()->ensureAccepted();
         }
@@ -13551,9 +14084,10 @@ class FbaInboundApi
      */
     public function updateItemComplianceDetails(
         string $marketplace_id,
-        UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateItemComplianceDetailsResponse {
-        list($response) = $this->updateItemComplianceDetailsWithHttpInfo($marketplace_id, $body);
+        list($response) = $this->updateItemComplianceDetailsWithHttpInfo($marketplace_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -13573,10 +14107,16 @@ class FbaInboundApi
      */
     public function updateItemComplianceDetailsWithHttpInfo(
         string $marketplace_id,
-        UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateItemComplianceDetailsRequest($marketplace_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13677,11 +14217,17 @@ class FbaInboundApi
      */
     public function updateItemComplianceDetailsAsyncWithHttpInfo(
         string $marketplace_id,
-        UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse';
         $request = $this->updateItemComplianceDetailsRequest($marketplace_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -13848,9 +14394,10 @@ class FbaInboundApi
     public function updateShipmentName(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateShipmentNameWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        $this->updateShipmentNameWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
     }
 
     /**
@@ -13871,10 +14418,16 @@ class FbaInboundApi
     public function updateShipmentNameWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentNameRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13969,11 +14522,17 @@ class FbaInboundApi
     public function updateShipmentNameAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentNameRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentNameRateLimiter->consume()->ensureAccepted();
         }
@@ -14155,9 +14714,10 @@ class FbaInboundApi
     public function updateShipmentSourceAddress(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateShipmentSourceAddressResponse {
-        list($response) = $this->updateShipmentSourceAddressWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->updateShipmentSourceAddressWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -14180,10 +14740,16 @@ class FbaInboundApi
     public function updateShipmentSourceAddressWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentSourceAddressRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -14290,11 +14856,17 @@ class FbaInboundApi
     public function updateShipmentSourceAddressAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse';
         $request = $this->updateShipmentSourceAddressRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentSourceAddressRateLimiter->consume()->ensureAccepted();
         }
@@ -14489,9 +15061,10 @@ class FbaInboundApi
     public function updateShipmentTrackingDetails(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateShipmentTrackingDetailsResponse {
-        list($response) = $this->updateShipmentTrackingDetailsWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->updateShipmentTrackingDetailsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -14514,10 +15087,16 @@ class FbaInboundApi
     public function updateShipmentTrackingDetailsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentTrackingDetailsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -14624,11 +15203,17 @@ class FbaInboundApi
     public function updateShipmentTrackingDetailsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse';
         $request = $this->updateShipmentTrackingDetailsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentTrackingDetailsRateLimiter->consume()->ensureAccepted();
         }

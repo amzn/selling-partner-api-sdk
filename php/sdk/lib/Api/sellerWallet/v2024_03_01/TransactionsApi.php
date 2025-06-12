@@ -148,9 +148,10 @@ class TransactionsApi
     public function createTransaction(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransactionInitiationRequest $body
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): Transaction {
-        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body);
+        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -175,10 +176,16 @@ class TransactionsApi
     public function createTransactionWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransactionInitiationRequest $body
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -289,11 +296,17 @@ class TransactionsApi
     public function createTransactionAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransactionInitiationRequest $body
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
         $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createTransactionRateLimiter->consume()->ensureAccepted();
         }
@@ -456,9 +469,10 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      */
     public function getTransaction(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): Transaction {
-        list($response) = $this->getTransactionWithHttpInfo($transaction_id);
+        list($response) = $this->getTransactionWithHttpInfo($transaction_id, $restrictedDataToken);
 
         return $response;
     }
@@ -477,10 +491,16 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      */
     public function getTransactionWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransactionRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -579,11 +599,17 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      */
     public function getTransactionAsyncWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
         $request = $this->getTransactionRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransactionRateLimiter->consume()->ensureAccepted();
         }
@@ -725,9 +751,10 @@ class TransactionsApi
      */
     public function listAccountTransactions(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): TransactionListing {
-        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token);
+        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -749,10 +776,16 @@ class TransactionsApi
      */
     public function listAccountTransactionsWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -857,11 +890,17 @@ class TransactionsApi
      */
     public function listAccountTransactionsAsyncWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing';
         $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAccountTransactionsRateLimiter->consume()->ensureAccepted();
         }

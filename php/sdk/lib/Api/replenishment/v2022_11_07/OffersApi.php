@@ -138,9 +138,10 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOfferMetrics(
-        ?ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): ListOfferMetricsResponse {
-        list($response) = $this->listOfferMetricsWithHttpInfo($body);
+        list($response) = $this->listOfferMetricsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -157,10 +158,16 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOfferMetricsWithHttpInfo(
-        ?ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listOfferMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,11 +262,17 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOfferMetricsAsyncWithHttpInfo(
-        ?ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
         $request = $this->listOfferMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listOfferMetricsRateLimiter->consume()->ensureAccepted();
         }
@@ -386,9 +399,10 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOffers(
-        ?ListOffersRequest $body = null
+        ?ListOffersRequest $body = null,
+        ?string $restrictedDataToken = null
     ): ListOffersResponse {
-        list($response) = $this->listOffersWithHttpInfo($body);
+        list($response) = $this->listOffersWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -405,10 +419,16 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOffersWithHttpInfo(
-        ?ListOffersRequest $body = null
+        ?ListOffersRequest $body = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listOffersRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -503,11 +523,17 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOffersAsyncWithHttpInfo(
-        ?ListOffersRequest $body = null
+        ?ListOffersRequest $body = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse';
         $request = $this->listOffersRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listOffersRateLimiter->consume()->ensureAccepted();
         }

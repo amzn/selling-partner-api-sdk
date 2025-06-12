@@ -144,9 +144,10 @@ class FeesApi
      */
     public function getMyFeesEstimateForASIN(
         string $asin,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): GetMyFeesEstimateResponse {
-        list($response) = $this->getMyFeesEstimateForASINWithHttpInfo($asin, $body);
+        list($response) = $this->getMyFeesEstimateForASINWithHttpInfo($asin, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -166,10 +167,16 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINWithHttpInfo(
         string $asin,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,11 +277,17 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINAsyncWithHttpInfo(
         string $asin,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMyFeesEstimateForASINRateLimiter->consume()->ensureAccepted();
         }
@@ -429,9 +442,10 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKU(
         string $seller_sku,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): GetMyFeesEstimateResponse {
-        list($response) = $this->getMyFeesEstimateForSKUWithHttpInfo($seller_sku, $body);
+        list($response) = $this->getMyFeesEstimateForSKUWithHttpInfo($seller_sku, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -451,10 +465,16 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKUWithHttpInfo(
         string $seller_sku,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -555,11 +575,17 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKUAsyncWithHttpInfo(
         string $seller_sku,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMyFeesEstimateForSKURateLimiter->consume()->ensureAccepted();
         }
@@ -713,9 +739,10 @@ class FeesApi
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimates(
-        array $body
+        array $body,
+        ?string $restrictedDataToken = null
     ): array {
-        list($response) = $this->getMyFeesEstimatesWithHttpInfo($body);
+        list($response) = $this->getMyFeesEstimatesWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -732,10 +759,16 @@ class FeesApi
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimatesWithHttpInfo(
-        array $body
+        array $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMyFeesEstimatesRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -830,11 +863,17 @@ class FeesApi
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimatesAsyncWithHttpInfo(
-        array $body
+        array $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\FeesEstimateResult[]';
         $request = $this->getMyFeesEstimatesRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMyFeesEstimatesRateLimiter->consume()->ensureAccepted();
         }

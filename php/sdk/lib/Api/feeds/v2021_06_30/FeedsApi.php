@@ -153,9 +153,10 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function cancelFeed(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelFeedWithHttpInfo($feed_id);
+        $this->cancelFeedWithHttpInfo($feed_id, $restrictedDataToken);
     }
 
     /**
@@ -170,10 +171,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function cancelFeedWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -256,11 +263,17 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function cancelFeedAsyncWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelFeedRateLimiter->consume()->ensureAccepted();
         }
@@ -384,9 +397,10 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeed(
-        CreateFeedSpecification $body
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateFeedResponse {
-        list($response) = $this->createFeedWithHttpInfo($body);
+        list($response) = $this->createFeedWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -403,10 +417,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedWithHttpInfo(
-        CreateFeedSpecification $body
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFeedRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -501,11 +521,17 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedAsyncWithHttpInfo(
-        CreateFeedSpecification $body
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse';
         $request = $this->createFeedRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createFeedRateLimiter->consume()->ensureAccepted();
         }
@@ -639,9 +665,10 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedDocument(
-        CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateFeedDocumentResponse {
-        list($response) = $this->createFeedDocumentWithHttpInfo($body);
+        list($response) = $this->createFeedDocumentWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -658,10 +685,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedDocumentWithHttpInfo(
-        CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFeedDocumentRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -756,11 +789,17 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedDocumentAsyncWithHttpInfo(
-        CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse';
         $request = $this->createFeedDocumentRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -894,9 +933,10 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeed(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): Feed {
-        list($response) = $this->getFeedWithHttpInfo($feed_id);
+        list($response) = $this->getFeedWithHttpInfo($feed_id, $restrictedDataToken);
 
         return $response;
     }
@@ -913,10 +953,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1011,11 +1057,17 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedAsyncWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\Feed';
         $request = $this->getFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeedRateLimiter->consume()->ensureAccepted();
         }
@@ -1152,9 +1204,10 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedDocument(
-        string $feed_document_id
+        string $feed_document_id,
+        ?string $restrictedDataToken = null
     ): FeedDocument {
-        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id);
+        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1171,10 +1224,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentWithHttpInfo(
-        string $feed_document_id
+        string $feed_document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedDocumentRequest($feed_document_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1269,11 +1328,17 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentAsyncWithHttpInfo(
-        string $feed_document_id
+        string $feed_document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\FeedDocument';
         $request = $this->getFeedDocumentRequest($feed_document_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -1428,9 +1493,10 @@ class FeedsApi
         ?array $processing_statuses = null,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetFeedsResponse {
-        list($response) = $this->getFeedsWithHttpInfo($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
+        list($response) = $this->getFeedsWithHttpInfo($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1465,10 +1531,16 @@ class FeedsApi
         ?array $processing_statuses = null,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1599,11 +1671,17 @@ class FeedsApi
         ?array $processing_statuses = null,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse';
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeedsRateLimiter->consume()->ensureAccepted();
         }

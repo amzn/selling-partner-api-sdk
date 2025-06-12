@@ -151,9 +151,10 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function cancelShipment(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): CancelShipmentResponse {
-        list($response) = $this->cancelShipmentWithHttpInfo($shipment_id);
+        list($response) = $this->cancelShipmentWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -170,10 +171,16 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function cancelShipmentWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelShipmentRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -268,11 +275,17 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function cancelShipmentAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\merchantFulfillment\v0\CancelShipmentResponse';
         $request = $this->cancelShipmentRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -412,9 +425,10 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function createShipment(
-        CreateShipmentRequest $body
+        CreateShipmentRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateShipmentResponse {
-        list($response) = $this->createShipmentWithHttpInfo($body);
+        list($response) = $this->createShipmentWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -431,10 +445,16 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function createShipmentWithHttpInfo(
-        CreateShipmentRequest $body
+        CreateShipmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createShipmentRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -529,11 +549,17 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function createShipmentAsyncWithHttpInfo(
-        CreateShipmentRequest $body
+        CreateShipmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\merchantFulfillment\v0\CreateShipmentResponse';
         $request = $this->createShipmentRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -667,9 +693,10 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getAdditionalSellerInputs(
-        GetAdditionalSellerInputsRequest $body
+        GetAdditionalSellerInputsRequest $body,
+        ?string $restrictedDataToken = null
     ): GetAdditionalSellerInputsResponse {
-        list($response) = $this->getAdditionalSellerInputsWithHttpInfo($body);
+        list($response) = $this->getAdditionalSellerInputsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -686,10 +713,16 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getAdditionalSellerInputsWithHttpInfo(
-        GetAdditionalSellerInputsRequest $body
+        GetAdditionalSellerInputsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAdditionalSellerInputsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -784,11 +817,17 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getAdditionalSellerInputsAsyncWithHttpInfo(
-        GetAdditionalSellerInputsRequest $body
+        GetAdditionalSellerInputsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResponse';
         $request = $this->getAdditionalSellerInputsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAdditionalSellerInputsRateLimiter->consume()->ensureAccepted();
         }
@@ -922,9 +961,10 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getEligibleShipmentServices(
-        GetEligibleShipmentServicesRequest $body
+        GetEligibleShipmentServicesRequest $body,
+        ?string $restrictedDataToken = null
     ): GetEligibleShipmentServicesResponse {
-        list($response) = $this->getEligibleShipmentServicesWithHttpInfo($body);
+        list($response) = $this->getEligibleShipmentServicesWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -941,10 +981,16 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getEligibleShipmentServicesWithHttpInfo(
-        GetEligibleShipmentServicesRequest $body
+        GetEligibleShipmentServicesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getEligibleShipmentServicesRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1039,11 +1085,17 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getEligibleShipmentServicesAsyncWithHttpInfo(
-        GetEligibleShipmentServicesRequest $body
+        GetEligibleShipmentServicesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResponse';
         $request = $this->getEligibleShipmentServicesRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getEligibleShipmentServicesRateLimiter->consume()->ensureAccepted();
         }
@@ -1177,9 +1229,10 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getShipment(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetShipmentResponse {
-        list($response) = $this->getShipmentWithHttpInfo($shipment_id);
+        list($response) = $this->getShipmentWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1196,10 +1249,16 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1294,11 +1353,17 @@ class MerchantFulfillmentApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\merchantFulfillment\v0\GetShipmentResponse';
         $request = $this->getShipmentRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentRateLimiter->consume()->ensureAccepted();
         }

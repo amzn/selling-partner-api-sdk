@@ -222,9 +222,10 @@ class ShippingApi
      */
     public function cancelShipment(
         string $shipment_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): CancelShipmentResponse {
-        list($response) = $this->cancelShipmentWithHttpInfo($shipment_id, $x_amzn_shipping_business_id);
+        list($response) = $this->cancelShipmentWithHttpInfo($shipment_id, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -244,10 +245,16 @@ class ShippingApi
      */
     public function cancelShipmentWithHttpInfo(
         string $shipment_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelShipmentRequest($shipment_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -348,11 +355,17 @@ class ShippingApi
      */
     public function cancelShipmentAsyncWithHttpInfo(
         string $shipment_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\CancelShipmentResponse';
         $request = $this->cancelShipmentRequest($shipment_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -500,9 +513,10 @@ class ShippingApi
      */
     public function createClaim(
         CreateClaimRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): CreateClaimResponse {
-        list($response) = $this->createClaimWithHttpInfo($body, $x_amzn_shipping_business_id);
+        list($response) = $this->createClaimWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -522,10 +536,16 @@ class ShippingApi
      */
     public function createClaimWithHttpInfo(
         CreateClaimRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createClaimRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -626,11 +646,17 @@ class ShippingApi
      */
     public function createClaimAsyncWithHttpInfo(
         CreateClaimRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\CreateClaimResponse';
         $request = $this->createClaimRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createClaimRateLimiter->consume()->ensureAccepted();
         }
@@ -781,9 +807,10 @@ class ShippingApi
         DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): DirectPurchaseResponse {
-        list($response) = $this->directPurchaseShipmentWithHttpInfo($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id);
+        list($response) = $this->directPurchaseShipmentWithHttpInfo($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -809,10 +836,16 @@ class ShippingApi
         DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->directPurchaseShipmentRequest($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -925,11 +958,17 @@ class ShippingApi
         DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\DirectPurchaseResponse';
         $request = $this->directPurchaseShipmentRequest($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->directPurchaseShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -1091,9 +1130,10 @@ class ShippingApi
     public function generateCollectionForm(
         GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GenerateCollectionFormResponse {
-        list($response) = $this->generateCollectionFormWithHttpInfo($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
+        list($response) = $this->generateCollectionFormWithHttpInfo($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1116,10 +1156,16 @@ class ShippingApi
     public function generateCollectionFormWithHttpInfo(
         GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateCollectionFormRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1226,11 +1272,17 @@ class ShippingApi
     public function generateCollectionFormAsyncWithHttpInfo(
         GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GenerateCollectionFormResponse';
         $request = $this->generateCollectionFormRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateCollectionFormRateLimiter->consume()->ensureAccepted();
         }
@@ -1388,9 +1440,10 @@ class ShippingApi
         array $access_point_types,
         string $country_code,
         string $postal_code,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetAccessPointsResponse {
-        list($response) = $this->getAccessPointsWithHttpInfo($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id);
+        list($response) = $this->getAccessPointsWithHttpInfo($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1416,10 +1469,16 @@ class ShippingApi
         array $access_point_types,
         string $country_code,
         string $postal_code,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAccessPointsRequest($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1532,11 +1591,17 @@ class ShippingApi
         array $access_point_types,
         string $country_code,
         string $postal_code,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetAccessPointsResponse';
         $request = $this->getAccessPointsRequest($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAccessPointsRateLimiter->consume()->ensureAccepted();
         }
@@ -1727,9 +1792,10 @@ class ShippingApi
     public function getAdditionalInputs(
         string $request_token,
         string $rate_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetAdditionalInputsResponse {
-        list($response) = $this->getAdditionalInputsWithHttpInfo($request_token, $rate_id, $x_amzn_shipping_business_id);
+        list($response) = $this->getAdditionalInputsWithHttpInfo($request_token, $rate_id, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1752,10 +1818,16 @@ class ShippingApi
     public function getAdditionalInputsWithHttpInfo(
         string $request_token,
         string $rate_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAdditionalInputsRequest($request_token, $rate_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1862,11 +1934,17 @@ class ShippingApi
     public function getAdditionalInputsAsyncWithHttpInfo(
         string $request_token,
         string $rate_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetAdditionalInputsResponse';
         $request = $this->getAdditionalInputsRequest($request_token, $rate_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAdditionalInputsRateLimiter->consume()->ensureAccepted();
         }
@@ -2032,9 +2110,10 @@ class ShippingApi
      * @throws \InvalidArgumentException
      */
     public function getCarrierAccountFormInputs(
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetCarrierAccountFormInputsResponse {
-        list($response) = $this->getCarrierAccountFormInputsWithHttpInfo($x_amzn_shipping_business_id);
+        list($response) = $this->getCarrierAccountFormInputsWithHttpInfo($x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -2051,10 +2130,16 @@ class ShippingApi
      * @throws \InvalidArgumentException
      */
     public function getCarrierAccountFormInputsWithHttpInfo(
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCarrierAccountFormInputsRequest($x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2149,11 +2234,17 @@ class ShippingApi
      * @throws \InvalidArgumentException
      */
     public function getCarrierAccountFormInputsAsyncWithHttpInfo(
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse';
         $request = $this->getCarrierAccountFormInputsRequest($x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCarrierAccountFormInputsRateLimiter->consume()->ensureAccepted();
         }
@@ -2282,9 +2373,10 @@ class ShippingApi
      */
     public function getCarrierAccounts(
         GetCarrierAccountsRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetCarrierAccountsResponse {
-        list($response) = $this->getCarrierAccountsWithHttpInfo($body, $x_amzn_shipping_business_id);
+        list($response) = $this->getCarrierAccountsWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -2304,10 +2396,16 @@ class ShippingApi
      */
     public function getCarrierAccountsWithHttpInfo(
         GetCarrierAccountsRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCarrierAccountsRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2408,11 +2506,17 @@ class ShippingApi
      */
     public function getCarrierAccountsAsyncWithHttpInfo(
         GetCarrierAccountsRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountsResponse';
         $request = $this->getCarrierAccountsRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCarrierAccountsRateLimiter->consume()->ensureAccepted();
         }
@@ -2557,9 +2661,10 @@ class ShippingApi
      */
     public function getCollectionForm(
         string $collection_form_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetCollectionFormResponse {
-        list($response) = $this->getCollectionFormWithHttpInfo($collection_form_id, $x_amzn_shipping_business_id);
+        list($response) = $this->getCollectionFormWithHttpInfo($collection_form_id, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -2579,10 +2684,16 @@ class ShippingApi
      */
     public function getCollectionFormWithHttpInfo(
         string $collection_form_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCollectionFormRequest($collection_form_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2683,11 +2794,17 @@ class ShippingApi
      */
     public function getCollectionFormAsyncWithHttpInfo(
         string $collection_form_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormResponse';
         $request = $this->getCollectionFormRequest($collection_form_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCollectionFormRateLimiter->consume()->ensureAccepted();
         }
@@ -2835,9 +2952,10 @@ class ShippingApi
      */
     public function getCollectionFormHistory(
         GetCollectionFormHistoryRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetCollectionFormHistoryResponse {
-        list($response) = $this->getCollectionFormHistoryWithHttpInfo($body, $x_amzn_shipping_business_id);
+        list($response) = $this->getCollectionFormHistoryWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -2857,10 +2975,16 @@ class ShippingApi
      */
     public function getCollectionFormHistoryWithHttpInfo(
         GetCollectionFormHistoryRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCollectionFormHistoryRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2961,11 +3085,17 @@ class ShippingApi
      */
     public function getCollectionFormHistoryAsyncWithHttpInfo(
         GetCollectionFormHistoryRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse';
         $request = $this->getCollectionFormHistoryRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCollectionFormHistoryRateLimiter->consume()->ensureAccepted();
         }
@@ -3110,9 +3240,10 @@ class ShippingApi
      */
     public function getRates(
         GetRatesRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetRatesResponse {
-        list($response) = $this->getRatesWithHttpInfo($body, $x_amzn_shipping_business_id);
+        list($response) = $this->getRatesWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3132,10 +3263,16 @@ class ShippingApi
      */
     public function getRatesWithHttpInfo(
         GetRatesRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getRatesRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3236,11 +3373,17 @@ class ShippingApi
      */
     public function getRatesAsyncWithHttpInfo(
         GetRatesRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetRatesResponse';
         $request = $this->getRatesRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getRatesRateLimiter->consume()->ensureAccepted();
         }
@@ -3394,9 +3537,10 @@ class ShippingApi
         string $package_client_reference_id,
         ?string $format = null,
         ?float $dpi = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetShipmentDocumentsResponse {
-        list($response) = $this->getShipmentDocumentsWithHttpInfo($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id);
+        list($response) = $this->getShipmentDocumentsWithHttpInfo($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3425,10 +3569,16 @@ class ShippingApi
         string $package_client_reference_id,
         ?string $format = null,
         ?float $dpi = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentDocumentsRequest($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3547,11 +3697,17 @@ class ShippingApi
         string $package_client_reference_id,
         ?string $format = null,
         ?float $dpi = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse';
         $request = $this->getShipmentDocumentsRequest($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentDocumentsRateLimiter->consume()->ensureAccepted();
         }
@@ -3748,9 +3904,10 @@ class ShippingApi
     public function getTracking(
         string $tracking_id,
         string $carrier_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetTrackingResponse {
-        list($response) = $this->getTrackingWithHttpInfo($tracking_id, $carrier_id, $x_amzn_shipping_business_id);
+        list($response) = $this->getTrackingWithHttpInfo($tracking_id, $carrier_id, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3773,10 +3930,16 @@ class ShippingApi
     public function getTrackingWithHttpInfo(
         string $tracking_id,
         string $carrier_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTrackingRequest($tracking_id, $carrier_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3883,11 +4046,17 @@ class ShippingApi
     public function getTrackingAsyncWithHttpInfo(
         string $tracking_id,
         string $carrier_id,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetTrackingResponse';
         $request = $this->getTrackingRequest($tracking_id, $carrier_id, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTrackingRateLimiter->consume()->ensureAccepted();
         }
@@ -4056,9 +4225,10 @@ class ShippingApi
      */
     public function getUnmanifestedShipments(
         GetUnmanifestedShipmentsRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): GetUnmanifestedShipmentsResponse {
-        list($response) = $this->getUnmanifestedShipmentsWithHttpInfo($body, $x_amzn_shipping_business_id);
+        list($response) = $this->getUnmanifestedShipmentsWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -4078,10 +4248,16 @@ class ShippingApi
      */
     public function getUnmanifestedShipmentsWithHttpInfo(
         GetUnmanifestedShipmentsRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getUnmanifestedShipmentsRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4182,11 +4358,17 @@ class ShippingApi
      */
     public function getUnmanifestedShipmentsAsyncWithHttpInfo(
         GetUnmanifestedShipmentsRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse';
         $request = $this->getUnmanifestedShipmentsRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getUnmanifestedShipmentsRateLimiter->consume()->ensureAccepted();
         }
@@ -4334,9 +4516,10 @@ class ShippingApi
     public function linkCarrierAccount(
         string $carrier_id,
         LinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): LinkCarrierAccountResponse {
-        list($response) = $this->linkCarrierAccountWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id);
+        list($response) = $this->linkCarrierAccountWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -4359,10 +4542,16 @@ class ShippingApi
     public function linkCarrierAccountWithHttpInfo(
         string $carrier_id,
         LinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->linkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4469,11 +4658,17 @@ class ShippingApi
     public function linkCarrierAccountAsyncWithHttpInfo(
         string $carrier_id,
         LinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
         $request = $this->linkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->linkCarrierAccountRateLimiter->consume()->ensureAccepted();
         }
@@ -4639,9 +4834,10 @@ class ShippingApi
     public function linkCarrierAccount_0(
         string $carrier_id,
         LinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): LinkCarrierAccountResponse {
-        list($response) = $this->linkCarrierAccount_0WithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id);
+        list($response) = $this->linkCarrierAccount_0WithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -4664,10 +4860,16 @@ class ShippingApi
     public function linkCarrierAccount_0WithHttpInfo(
         string $carrier_id,
         LinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->linkCarrierAccount_0Request($carrier_id, $body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4774,11 +4976,17 @@ class ShippingApi
     public function linkCarrierAccount_0AsyncWithHttpInfo(
         string $carrier_id,
         LinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
         $request = $this->linkCarrierAccount_0Request($carrier_id, $body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->linkCarrierAccount_0RateLimiter->consume()->ensureAccepted();
         }
@@ -4941,9 +5149,10 @@ class ShippingApi
      */
     public function oneClickShipment(
         OneClickShipmentRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): OneClickShipmentResponse {
-        list($response) = $this->oneClickShipmentWithHttpInfo($body, $x_amzn_shipping_business_id);
+        list($response) = $this->oneClickShipmentWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -4963,10 +5172,16 @@ class ShippingApi
      */
     public function oneClickShipmentWithHttpInfo(
         OneClickShipmentRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->oneClickShipmentRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5067,11 +5282,17 @@ class ShippingApi
      */
     public function oneClickShipmentAsyncWithHttpInfo(
         OneClickShipmentRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\OneClickShipmentResponse';
         $request = $this->oneClickShipmentRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->oneClickShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -5219,9 +5440,10 @@ class ShippingApi
     public function purchaseShipment(
         PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PurchaseShipmentResponse {
-        list($response) = $this->purchaseShipmentWithHttpInfo($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
+        list($response) = $this->purchaseShipmentWithHttpInfo($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -5244,10 +5466,16 @@ class ShippingApi
     public function purchaseShipmentWithHttpInfo(
         PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->purchaseShipmentRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5354,11 +5582,17 @@ class ShippingApi
     public function purchaseShipmentAsyncWithHttpInfo(
         PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\PurchaseShipmentResponse';
         $request = $this->purchaseShipmentRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->purchaseShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -5510,9 +5744,10 @@ class ShippingApi
      */
     public function submitNdrFeedback(
         SubmitNdrFeedbackRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->submitNdrFeedbackWithHttpInfo($body, $x_amzn_shipping_business_id);
+        $this->submitNdrFeedbackWithHttpInfo($body, $x_amzn_shipping_business_id, $restrictedDataToken);
     }
 
     /**
@@ -5530,10 +5765,16 @@ class ShippingApi
      */
     public function submitNdrFeedbackWithHttpInfo(
         SubmitNdrFeedbackRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitNdrFeedbackRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5622,11 +5863,17 @@ class ShippingApi
      */
     public function submitNdrFeedbackAsyncWithHttpInfo(
         SubmitNdrFeedbackRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->submitNdrFeedbackRequest($body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitNdrFeedbackRateLimiter->consume()->ensureAccepted();
         }
@@ -5761,9 +6008,10 @@ class ShippingApi
     public function unlinkCarrierAccount(
         string $carrier_id,
         UnlinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): UnlinkCarrierAccountResponse {
-        list($response) = $this->unlinkCarrierAccountWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id);
+        list($response) = $this->unlinkCarrierAccountWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id, $restrictedDataToken);
 
         return $response;
     }
@@ -5786,10 +6034,16 @@ class ShippingApi
     public function unlinkCarrierAccountWithHttpInfo(
         string $carrier_id,
         UnlinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->unlinkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5896,11 +6150,17 @@ class ShippingApi
     public function unlinkCarrierAccountAsyncWithHttpInfo(
         string $carrier_id,
         UnlinkCarrierAccountRequest $body,
-        ?string $x_amzn_shipping_business_id = null
+        ?string $x_amzn_shipping_business_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse';
         $request = $this->unlinkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->unlinkCarrierAccountRateLimiter->consume()->ensureAccepted();
         }

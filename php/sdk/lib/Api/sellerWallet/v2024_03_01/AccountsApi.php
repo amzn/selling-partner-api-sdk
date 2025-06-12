@@ -142,9 +142,10 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function getAccount(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): BankAccount {
-        list($response) = $this->getAccountWithHttpInfo($account_id);
+        list($response) = $this->getAccountWithHttpInfo($account_id, $restrictedDataToken);
 
         return $response;
     }
@@ -163,10 +164,16 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function getAccountWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAccountRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -265,11 +272,17 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function getAccountAsyncWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BankAccount';
         $request = $this->getAccountRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAccountRateLimiter->consume()->ensureAccepted();
         }
@@ -408,9 +421,10 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountBalances(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): BalanceListing {
-        list($response) = $this->listAccountBalancesWithHttpInfo($account_id);
+        list($response) = $this->listAccountBalancesWithHttpInfo($account_id, $restrictedDataToken);
 
         return $response;
     }
@@ -429,10 +443,16 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountBalancesRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -531,11 +551,17 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesAsyncWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BalanceListing';
         $request = $this->listAccountBalancesRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAccountBalancesRateLimiter->consume()->ensureAccepted();
         }
@@ -674,9 +700,10 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccounts(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): BankAccountListing {
-        list($response) = $this->listAccountsWithHttpInfo($marketplace_id);
+        list($response) = $this->listAccountsWithHttpInfo($marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -695,10 +722,16 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountsWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountsRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -797,11 +830,17 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountsAsyncWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BankAccountListing';
         $request = $this->listAccountsRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAccountsRateLimiter->consume()->ensureAccepted();
         }

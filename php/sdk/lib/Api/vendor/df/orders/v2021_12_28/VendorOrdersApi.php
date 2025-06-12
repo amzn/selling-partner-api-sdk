@@ -75,7 +75,6 @@ class VendorOrdersApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getOrderRateLimiter;
     public ?LimiterInterface $getOrdersRateLimiter;
     public ?LimiterInterface $submitAcknowledgementRateLimiter;
@@ -140,7 +139,6 @@ class VendorOrdersApi
     {
         return $this->config;
     }
-
     /**
      * Operation getOrder
      *
@@ -152,9 +150,10 @@ class VendorOrdersApi
      * @return \SpApi\Model\vendor\df\orders\v2021_12_28\Order
      */
     public function getOrder(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\orders\v2021_12_28\Order {
-        list($response) = $this->getOrderWithHttpInfo($purchase_order_number);
+        list($response) = $this->getOrderWithHttpInfo($purchase_order_number,$restrictedDataToken);
         return $response;
     }
 
@@ -169,10 +168,16 @@ class VendorOrdersApi
      * @return array of \SpApi\Model\vendor\df\orders\v2021_12_28\Order, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -266,11 +271,17 @@ class VendorOrdersApi
      * @return PromiseInterface
      */
     public function getOrderAsyncWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\Order';
         $request = $this->getOrderRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -434,9 +445,10 @@ class VendorOrdersApi
         ?int $limit = null,
         ?string $sort_order = null,
         ?string $next_token = null,
-        ?bool $include_details = true
+        ?bool $include_details = true,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\orders\v2021_12_28\OrderList {
-        list($response) = $this->getOrdersWithHttpInfo($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details);
+        list($response) = $this->getOrdersWithHttpInfo($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details,$restrictedDataToken);
         return $response;
     }
 
@@ -472,10 +484,16 @@ class VendorOrdersApi
         ?int $limit = null,
         ?string $sort_order = null,
         ?string $next_token = null,
-        ?bool $include_details = true
+        ?bool $include_details = true,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrdersRequest($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -611,11 +629,17 @@ class VendorOrdersApi
         ?int $limit = null,
         ?string $sort_order = null,
         ?string $next_token = null,
-        ?bool $include_details = true
+        ?bool $include_details = true,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList';
         $request = $this->getOrdersRequest($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrdersRateLimiter->consume()->ensureAccepted();
         }
@@ -864,9 +888,10 @@ class VendorOrdersApi
      * @return \SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId
      */
     public function submitAcknowledgement(
-        \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body
+        \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId {
-        list($response) = $this->submitAcknowledgementWithHttpInfo($body);
+        list($response) = $this->submitAcknowledgementWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -881,10 +906,16 @@ class VendorOrdersApi
      * @return array of \SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitAcknowledgementWithHttpInfo(
-        \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body
+        \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitAcknowledgementRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -978,11 +1009,17 @@ class VendorOrdersApi
      * @return PromiseInterface
      */
     public function submitAcknowledgementAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body
+        \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId';
         $request = $this->submitAcknowledgementRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitAcknowledgementRateLimiter->consume()->ensureAccepted();
         }

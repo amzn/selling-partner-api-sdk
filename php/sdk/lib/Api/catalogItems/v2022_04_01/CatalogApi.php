@@ -145,9 +145,10 @@ class CatalogApi
         string $asin,
         array $marketplace_ids,
         ?array $included_data = null,
-        ?string $locale = null
+        ?string $locale = null,
+        ?string $restrictedDataToken = null
     ): Item {
-        list($response) = $this->getCatalogItemWithHttpInfo($asin, $marketplace_ids, $included_data, $locale);
+        list($response) = $this->getCatalogItemWithHttpInfo($asin, $marketplace_ids, $included_data, $locale, $restrictedDataToken);
 
         return $response;
     }
@@ -173,10 +174,16 @@ class CatalogApi
         string $asin,
         array $marketplace_ids,
         ?array $included_data = null,
-        ?string $locale = null
+        ?string $locale = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCatalogItemRequest($asin, $marketplace_ids, $included_data, $locale);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -289,11 +296,17 @@ class CatalogApi
         string $asin,
         array $marketplace_ids,
         ?array $included_data = null,
-        ?string $locale = null
+        ?string $locale = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\catalogItems\v2022_04_01\Item';
         $request = $this->getCatalogItemRequest($asin, $marketplace_ids, $included_data, $locale);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCatalogItemRateLimiter->consume()->ensureAccepted();
         }
@@ -509,9 +522,10 @@ class CatalogApi
         ?array $classification_ids = null,
         ?int $page_size = 10,
         ?string $page_token = null,
-        ?string $keywords_locale = null
+        ?string $keywords_locale = null,
+        ?string $restrictedDataToken = null
     ): ItemSearchResults {
-        list($response) = $this->searchCatalogItemsWithHttpInfo($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
+        list($response) = $this->searchCatalogItemsWithHttpInfo($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale, $restrictedDataToken);
 
         return $response;
     }
@@ -561,10 +575,16 @@ class CatalogApi
         ?array $classification_ids = null,
         ?int $page_size = 10,
         ?string $page_token = null,
-        ?string $keywords_locale = null
+        ?string $keywords_locale = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchCatalogItemsRequest($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -725,11 +745,17 @@ class CatalogApi
         ?array $classification_ids = null,
         ?int $page_size = 10,
         ?string $page_token = null,
-        ?string $keywords_locale = null
+        ?string $keywords_locale = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults';
         $request = $this->searchCatalogItemsRequest($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->searchCatalogItemsRateLimiter->consume()->ensureAccepted();
         }

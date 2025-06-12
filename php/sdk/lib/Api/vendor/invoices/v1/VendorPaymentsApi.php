@@ -75,7 +75,6 @@ class VendorPaymentsApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $submitInvoicesRateLimiter;
 
     /**
@@ -134,7 +133,6 @@ class VendorPaymentsApi
     {
         return $this->config;
     }
-
     /**
      * Operation submitInvoices
      *
@@ -146,9 +144,10 @@ class VendorPaymentsApi
      * @return \SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse
      */
     public function submitInvoices(
-        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse {
-        list($response) = $this->submitInvoicesWithHttpInfo($body);
+        list($response) = $this->submitInvoicesWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -163,10 +162,16 @@ class VendorPaymentsApi
      * @return array of \SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitInvoicesWithHttpInfo(
-        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitInvoicesRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -260,11 +265,17 @@ class VendorPaymentsApi
      * @return PromiseInterface
      */
     public function submitInvoicesAsyncWithHttpInfo(
-        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse';
         $request = $this->submitInvoicesRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitInvoicesRateLimiter->consume()->ensureAccepted();
         }

@@ -75,7 +75,6 @@ class VendorShippingApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getPackingSlipRateLimiter;
     public ?LimiterInterface $getPackingSlipsRateLimiter;
     public ?LimiterInterface $submitShipmentConfirmationsRateLimiter;
@@ -143,7 +142,6 @@ class VendorShippingApi
     {
         return $this->config;
     }
-
     /**
      * Operation getPackingSlip
      *
@@ -157,9 +155,10 @@ class VendorShippingApi
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlip
      */
     public function getPackingSlip(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlip {
-        list($response) = $this->getPackingSlipWithHttpInfo($purchase_order_number);
+        list($response) = $this->getPackingSlipWithHttpInfo($purchase_order_number,$restrictedDataToken);
         return $response;
     }
 
@@ -176,10 +175,16 @@ class VendorShippingApi
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlip, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPackingSlipWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPackingSlipRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -277,11 +282,17 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function getPackingSlipAsyncWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlip';
         $request = $this->getPackingSlipRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPackingSlipRateLimiter->consume()->ensureAccepted();
         }
@@ -445,9 +456,10 @@ class VendorShippingApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = 'ASC',
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlipList {
-        list($response) = $this->getPackingSlipsWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
+        list($response) = $this->getPackingSlipsWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,$restrictedDataToken);
         return $response;
     }
 
@@ -479,10 +491,16 @@ class VendorShippingApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = 'ASC',
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPackingSlipsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -610,11 +628,17 @@ class VendorShippingApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = 'ASC',
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlipList';
         $request = $this->getPackingSlipsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPackingSlipsRateLimiter->consume()->ensureAccepted();
         }
@@ -839,9 +863,10 @@ class VendorShippingApi
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference
      */
     public function submitShipmentConfirmations(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference {
-        list($response) = $this->submitShipmentConfirmationsWithHttpInfo($body);
+        list($response) = $this->submitShipmentConfirmationsWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -858,10 +883,16 @@ class VendorShippingApi
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShipmentConfirmationsWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShipmentConfirmationsRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -959,11 +990,17 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function submitShipmentConfirmationsAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShipmentConfirmationsRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShipmentConfirmationsRateLimiter->consume()->ensureAccepted();
         }
@@ -1106,9 +1143,10 @@ class VendorShippingApi
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference
      */
     public function submitShipmentStatusUpdates(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference {
-        list($response) = $this->submitShipmentStatusUpdatesWithHttpInfo($body);
+        list($response) = $this->submitShipmentStatusUpdatesWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1125,10 +1163,16 @@ class VendorShippingApi
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShipmentStatusUpdatesWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShipmentStatusUpdatesRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1226,11 +1270,17 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function submitShipmentStatusUpdatesAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShipmentStatusUpdatesRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShipmentStatusUpdatesRateLimiter->consume()->ensureAccepted();
         }

@@ -154,9 +154,10 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $restrictedDataToken = null
     ): ProductTypeDefinition {
-        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
+        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $restrictedDataToken);
 
         return $response;
     }
@@ -191,10 +192,16 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -325,11 +332,17 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition';
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDefinitionsProductTypeRateLimiter->consume()->ensureAccepted();
         }
@@ -563,9 +576,10 @@ class DefinitionsApi
         ?array $keywords = null,
         ?string $item_name = null,
         ?string $locale = null,
-        ?string $search_locale = null
+        ?string $search_locale = null,
+        ?string $restrictedDataToken = null
     ): ProductTypeList {
-        list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
+        list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale, $restrictedDataToken);
 
         return $response;
     }
@@ -594,10 +608,16 @@ class DefinitionsApi
         ?array $keywords = null,
         ?string $item_name = null,
         ?string $locale = null,
-        ?string $search_locale = null
+        ?string $search_locale = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -716,11 +736,17 @@ class DefinitionsApi
         ?array $keywords = null,
         ?string $item_name = null,
         ?string $locale = null,
-        ?string $search_locale = null
+        ?string $search_locale = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList';
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->searchDefinitionsProductTypesRateLimiter->consume()->ensureAccepted();
         }

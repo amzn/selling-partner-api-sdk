@@ -75,7 +75,6 @@ class VendorTransactionApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getTransactionStatusRateLimiter;
 
     /**
@@ -134,7 +133,6 @@ class VendorTransactionApi
     {
         return $this->config;
     }
-
     /**
      * Operation getTransactionStatus
      *
@@ -146,9 +144,10 @@ class VendorTransactionApi
      * @return \SpApi\Model\vendor\df\transactions\v2021_12_28\TransactionStatus
      */
     public function getTransactionStatus(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\transactions\v2021_12_28\TransactionStatus {
-        list($response) = $this->getTransactionStatusWithHttpInfo($transaction_id);
+        list($response) = $this->getTransactionStatusWithHttpInfo($transaction_id,$restrictedDataToken);
         return $response;
     }
 
@@ -163,10 +162,16 @@ class VendorTransactionApi
      * @return array of \SpApi\Model\vendor\df\transactions\v2021_12_28\TransactionStatus, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionStatusWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransactionStatusRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -260,11 +265,17 @@ class VendorTransactionApi
      * @return PromiseInterface
      */
     public function getTransactionStatusAsyncWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\transactions\v2021_12_28\TransactionStatus';
         $request = $this->getTransactionStatusRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransactionStatusRateLimiter->consume()->ensureAccepted();
         }

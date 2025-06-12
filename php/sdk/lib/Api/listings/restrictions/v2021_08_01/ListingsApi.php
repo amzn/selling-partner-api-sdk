@@ -144,9 +144,10 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $restrictedDataToken = null
     ): RestrictionList {
-        list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
+        list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $restrictedDataToken);
 
         return $response;
     }
@@ -175,10 +176,16 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -297,11 +304,17 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList';
         $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getListingsRestrictionsRateLimiter->consume()->ensureAccepted();
         }

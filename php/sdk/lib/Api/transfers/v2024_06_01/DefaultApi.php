@@ -140,9 +140,10 @@ class DefaultApi
      */
     public function getPaymentMethods(
         string $marketplace_id,
-        ?array $payment_method_types = null
+        ?array $payment_method_types = null,
+        ?string $restrictedDataToken = null
     ): GetPaymentMethodsResponse {
-        list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types);
+        list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types, $restrictedDataToken);
 
         return $response;
     }
@@ -162,10 +163,16 @@ class DefaultApi
      */
     public function getPaymentMethodsWithHttpInfo(
         string $marketplace_id,
-        ?array $payment_method_types = null
+        ?array $payment_method_types = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -266,11 +273,17 @@ class DefaultApi
      */
     public function getPaymentMethodsAsyncWithHttpInfo(
         string $marketplace_id,
-        ?array $payment_method_types = null
+        ?array $payment_method_types = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPaymentMethodsRateLimiter->consume()->ensureAccepted();
         }
@@ -425,9 +438,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      */
     public function initiatePayout(
-        InitiatePayoutRequest $body
+        InitiatePayoutRequest $body,
+        ?string $restrictedDataToken = null
     ): InitiatePayoutResponse {
-        list($response) = $this->initiatePayoutWithHttpInfo($body);
+        list($response) = $this->initiatePayoutWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -444,10 +458,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      */
     public function initiatePayoutWithHttpInfo(
-        InitiatePayoutRequest $body
+        InitiatePayoutRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->initiatePayoutRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -542,11 +562,17 @@ class DefaultApi
      * @throws \InvalidArgumentException
      */
     public function initiatePayoutAsyncWithHttpInfo(
-        InitiatePayoutRequest $body
+        InitiatePayoutRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
         $request = $this->initiatePayoutRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->initiatePayoutRateLimiter->consume()->ensureAccepted();
         }

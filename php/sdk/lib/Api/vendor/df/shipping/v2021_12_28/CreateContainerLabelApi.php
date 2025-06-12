@@ -75,7 +75,6 @@ class CreateContainerLabelApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $createContainerLabelRateLimiter;
 
     /**
@@ -134,7 +133,6 @@ class CreateContainerLabelApi
     {
         return $this->config;
     }
-
     /**
      * Operation createContainerLabel
      *
@@ -148,9 +146,10 @@ class CreateContainerLabelApi
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse
      */
     public function createContainerLabel(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse {
-        list($response) = $this->createContainerLabelWithHttpInfo($body);
+        list($response) = $this->createContainerLabelWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -167,10 +166,16 @@ class CreateContainerLabelApi
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createContainerLabelWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createContainerLabelRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -268,11 +273,17 @@ class CreateContainerLabelApi
      * @return PromiseInterface
      */
     public function createContainerLabelAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse';
         $request = $this->createContainerLabelRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createContainerLabelRateLimiter->consume()->ensureAccepted();
         }

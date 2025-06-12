@@ -155,9 +155,10 @@ class TransferScheduleApi
     public function createTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        TransferScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body);
+        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -182,10 +183,16 @@ class TransferScheduleApi
     public function createTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        TransferScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -296,11 +303,17 @@ class TransferScheduleApi
     public function createTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        TransferScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -463,9 +476,10 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransaction(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): DeleteTransferSchedule {
-        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id);
+        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
 
         return $response;
     }
@@ -484,10 +498,16 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -586,11 +606,17 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionAsyncWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule';
         $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteScheduleTransactionRateLimiter->consume()->ensureAccepted();
         }
@@ -729,9 +755,10 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function getTransferSchedule(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id);
+        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
 
         return $response;
     }
@@ -750,10 +777,16 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransferScheduleRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -852,11 +885,17 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleAsyncWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->getTransferScheduleRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -998,9 +1037,10 @@ class TransferScheduleApi
      */
     public function listTransferSchedules(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): TransferScheduleListing {
-        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token);
+        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1022,10 +1062,16 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1130,11 +1176,17 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesAsyncWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing';
         $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listTransferSchedulesRateLimiter->consume()->ensureAccepted();
         }
@@ -1294,9 +1346,10 @@ class TransferScheduleApi
     public function updateTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        TransferSchedule $body,
+        ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body);
+        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1321,10 +1374,16 @@ class TransferScheduleApi
     public function updateTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        TransferSchedule $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1435,11 +1494,17 @@ class TransferScheduleApi
     public function updateTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        TransferSchedule $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateTransferScheduleRateLimiter->consume()->ensureAccepted();
         }

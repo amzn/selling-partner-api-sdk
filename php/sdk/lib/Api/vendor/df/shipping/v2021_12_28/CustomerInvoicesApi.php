@@ -75,7 +75,6 @@ class CustomerInvoicesApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getCustomerInvoiceRateLimiter;
     public ?LimiterInterface $getCustomerInvoicesRateLimiter;
 
@@ -137,7 +136,6 @@ class CustomerInvoicesApi
     {
         return $this->config;
     }
-
     /**
      * Operation getCustomerInvoice
      *
@@ -151,9 +149,10 @@ class CustomerInvoicesApi
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice
      */
     public function getCustomerInvoice(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice {
-        list($response) = $this->getCustomerInvoiceWithHttpInfo($purchase_order_number);
+        list($response) = $this->getCustomerInvoiceWithHttpInfo($purchase_order_number,$restrictedDataToken);
         return $response;
     }
 
@@ -170,10 +169,16 @@ class CustomerInvoicesApi
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCustomerInvoiceWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCustomerInvoiceRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -271,11 +276,17 @@ class CustomerInvoicesApi
      * @return PromiseInterface
      */
     public function getCustomerInvoiceAsyncWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice';
         $request = $this->getCustomerInvoiceRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCustomerInvoiceRateLimiter->consume()->ensureAccepted();
         }
@@ -439,9 +450,10 @@ class CustomerInvoicesApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList {
-        list($response) = $this->getCustomerInvoicesWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
+        list($response) = $this->getCustomerInvoicesWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,$restrictedDataToken);
         return $response;
     }
 
@@ -473,10 +485,16 @@ class CustomerInvoicesApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCustomerInvoicesRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -604,11 +622,17 @@ class CustomerInvoicesApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList';
         $request = $this->getCustomerInvoicesRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCustomerInvoicesRateLimiter->consume()->ensureAccepted();
         }

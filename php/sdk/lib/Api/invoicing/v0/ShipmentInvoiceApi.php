@@ -141,9 +141,10 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getInvoiceStatus(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetInvoiceStatusResponse {
-        list($response) = $this->getInvoiceStatusWithHttpInfo($shipment_id);
+        list($response) = $this->getInvoiceStatusWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -160,10 +161,16 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getInvoiceStatusWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoiceStatusRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -258,11 +265,17 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getInvoiceStatusAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse';
         $request = $this->getInvoiceStatusRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoiceStatusRateLimiter->consume()->ensureAccepted();
         }
@@ -399,9 +412,10 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentDetails(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetShipmentDetailsResponse {
-        list($response) = $this->getShipmentDetailsWithHttpInfo($shipment_id);
+        list($response) = $this->getShipmentDetailsWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -418,10 +432,16 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentDetailsWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentDetailsRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -516,11 +536,17 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentDetailsAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse';
         $request = $this->getShipmentDetailsRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -660,9 +686,10 @@ class ShipmentInvoiceApi
      */
     public function submitInvoice(
         string $shipment_id,
-        SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): SubmitInvoiceResponse {
-        list($response) = $this->submitInvoiceWithHttpInfo($shipment_id, $body);
+        list($response) = $this->submitInvoiceWithHttpInfo($shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -682,10 +709,16 @@ class ShipmentInvoiceApi
      */
     public function submitInvoiceWithHttpInfo(
         string $shipment_id,
-        SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitInvoiceRequest($shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -786,11 +819,17 @@ class ShipmentInvoiceApi
      */
     public function submitInvoiceAsyncWithHttpInfo(
         string $shipment_id,
-        SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
         }

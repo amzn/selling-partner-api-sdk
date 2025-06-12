@@ -133,9 +133,10 @@ class TokensApi
      * @throws \InvalidArgumentException
      */
     public function createRestrictedDataToken(
-        CreateRestrictedDataTokenRequest $body
+        CreateRestrictedDataTokenRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateRestrictedDataTokenResponse {
-        list($response) = $this->createRestrictedDataTokenWithHttpInfo($body);
+        list($response) = $this->createRestrictedDataTokenWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -152,10 +153,16 @@ class TokensApi
      * @throws \InvalidArgumentException
      */
     public function createRestrictedDataTokenWithHttpInfo(
-        CreateRestrictedDataTokenRequest $body
+        CreateRestrictedDataTokenRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createRestrictedDataTokenRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -250,11 +257,17 @@ class TokensApi
      * @throws \InvalidArgumentException
      */
     public function createRestrictedDataTokenAsyncWithHttpInfo(
-        CreateRestrictedDataTokenRequest $body
+        CreateRestrictedDataTokenRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse';
         $request = $this->createRestrictedDataTokenRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createRestrictedDataTokenRateLimiter->consume()->ensureAccepted();
         }

@@ -141,9 +141,10 @@ class AutomotiveApi
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
-        ?string $updated_after = null
+        ?string $updated_after = null,
+        ?string $restrictedDataToken = null
     ): VehiclesResponse {
-        list($response) = $this->getVehicles_0WithHttpInfo($marketplace_id, $vehicle_type, $page_token, $updated_after);
+        list($response) = $this->getVehicles_0WithHttpInfo($marketplace_id, $vehicle_type, $page_token, $updated_after, $restrictedDataToken);
 
         return $response;
     }
@@ -169,10 +170,16 @@ class AutomotiveApi
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
-        ?string $updated_after = null
+        ?string $updated_after = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getVehicles_0Request($marketplace_id, $vehicle_type, $page_token, $updated_after);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -285,11 +292,17 @@ class AutomotiveApi
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
-        ?string $updated_after = null
+        ?string $updated_after = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vehicles\v2024_11_01\VehiclesResponse';
         $request = $this->getVehicles_0Request($marketplace_id, $vehicle_type, $page_token, $updated_after);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getVehicles_0RateLimiter->consume()->ensureAccepted();
         }

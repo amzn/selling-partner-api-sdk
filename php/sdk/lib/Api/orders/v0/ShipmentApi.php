@@ -135,9 +135,10 @@ class ShipmentApi
      */
     public function updateShipmentStatus(
         string $order_id,
-        UpdateShipmentStatusRequest $payload
+        UpdateShipmentStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateShipmentStatusWithHttpInfo($order_id, $payload);
+        $this->updateShipmentStatusWithHttpInfo($order_id, $payload, $restrictedDataToken);
     }
 
     /**
@@ -155,10 +156,16 @@ class ShipmentApi
      */
     public function updateShipmentStatusWithHttpInfo(
         string $order_id,
-        UpdateShipmentStatusRequest $payload
+        UpdateShipmentStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -247,11 +254,17 @@ class ShipmentApi
      */
     public function updateShipmentStatusAsyncWithHttpInfo(
         string $order_id,
-        UpdateShipmentStatusRequest $payload
+        UpdateShipmentStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentStatusRateLimiter->consume()->ensureAccepted();
         }

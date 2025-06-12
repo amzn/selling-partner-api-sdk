@@ -206,9 +206,10 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
-        AddAppointmentRequest $body
+        AddAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): SetAppointmentResponse {
-        list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body);
+        list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -228,10 +229,16 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
-        AddAppointmentRequest $body
+        AddAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -332,11 +339,17 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        AddAppointmentRequest $body
+        AddAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->addAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -501,9 +514,10 @@ class ServiceApi
     public function assignAppointmentResources(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        AssignAppointmentResourcesRequest $body,
+        ?string $restrictedDataToken = null
     ): AssignAppointmentResourcesResponse {
-        list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body);
+        list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -526,10 +540,16 @@ class ServiceApi
     public function assignAppointmentResourcesWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        AssignAppointmentResourcesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -636,11 +656,17 @@ class ServiceApi
     public function assignAppointmentResourcesAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        AssignAppointmentResourcesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse';
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->assignAppointmentResourcesRateLimiter->consume()->ensureAccepted();
         }
@@ -826,9 +852,10 @@ class ServiceApi
      */
     public function cancelReservation(
         string $reservation_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): CancelReservationResponse {
-        list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids);
+        list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -848,10 +875,16 @@ class ServiceApi
      */
     public function cancelReservationWithHttpInfo(
         string $reservation_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -952,11 +985,17 @@ class ServiceApi
      */
     public function cancelReservationAsyncWithHttpInfo(
         string $reservation_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CancelReservationResponse';
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelReservationRateLimiter->consume()->ensureAccepted();
         }
@@ -1126,9 +1165,10 @@ class ServiceApi
      */
     public function cancelServiceJobByServiceJobId(
         string $service_job_id,
-        string $cancellation_reason_code
+        string $cancellation_reason_code,
+        ?string $restrictedDataToken = null
     ): CancelServiceJobByServiceJobIdResponse {
-        list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code);
+        list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code, $restrictedDataToken);
 
         return $response;
     }
@@ -1148,10 +1188,16 @@ class ServiceApi
      */
     public function cancelServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
-        string $cancellation_reason_code
+        string $cancellation_reason_code,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1252,11 +1298,17 @@ class ServiceApi
      */
     public function cancelServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        string $cancellation_reason_code
+        string $cancellation_reason_code,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1429,9 +1481,10 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function completeServiceJobByServiceJobId(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): CompleteServiceJobByServiceJobIdResponse {
-        list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id);
+        list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1448,10 +1501,16 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function completeServiceJobByServiceJobIdWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1546,11 +1605,17 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function completeServiceJobByServiceJobIdAsyncWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->completeServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1696,9 +1761,10 @@ class ServiceApi
      */
     public function createReservation(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        CreateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateReservationResponse {
-        list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body);
+        list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1718,10 +1784,16 @@ class ServiceApi
      */
     public function createReservationWithHttpInfo(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        CreateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReservationRequest($marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1822,11 +1894,17 @@ class ServiceApi
      */
     public function createReservationAsyncWithHttpInfo(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        CreateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CreateReservationResponse';
         $request = $this->createReservationRequest($marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createReservationRateLimiter->consume()->ensureAccepted();
         }
@@ -1984,9 +2062,10 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function createServiceDocumentUploadDestination(
-        ServiceUploadDocument $body
+        ServiceUploadDocument $body,
+        ?string $restrictedDataToken = null
     ): CreateServiceDocumentUploadDestination {
-        list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body);
+        list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -2003,10 +2082,16 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function createServiceDocumentUploadDestinationWithHttpInfo(
-        ServiceUploadDocument $body
+        ServiceUploadDocument $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2101,11 +2186,17 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function createServiceDocumentUploadDestinationAsyncWithHttpInfo(
-        ServiceUploadDocument $body
+        ServiceUploadDocument $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination';
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createServiceDocumentUploadDestinationRateLimiter->consume()->ensureAccepted();
         }
@@ -2251,9 +2342,10 @@ class ServiceApi
         string $store_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): GetAppointmentSlotsResponse {
-        list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time);
+        list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time, $restrictedDataToken);
 
         return $response;
     }
@@ -2282,10 +2374,16 @@ class ServiceApi
         string $store_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2404,11 +2502,17 @@ class ServiceApi
         string $store_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -2630,9 +2734,10 @@ class ServiceApi
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): GetAppointmentSlotsResponse {
-        list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time);
+        list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time, $restrictedDataToken);
 
         return $response;
     }
@@ -2658,10 +2763,16 @@ class ServiceApi
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2774,11 +2885,17 @@ class ServiceApi
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAppointmmentSlotsByJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -2980,9 +3097,10 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         FixedSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): FixedSlotCapacity {
-        list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token);
+        list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -3008,10 +3126,16 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         FixedSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3124,11 +3248,17 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         FixedSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\FixedSlotCapacity';
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFixedSlotCapacityRateLimiter->consume()->ensureAccepted();
         }
@@ -3333,9 +3463,10 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         RangeSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): RangeSlotCapacity {
-        list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token);
+        list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -3361,10 +3492,16 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         RangeSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3477,11 +3614,17 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         RangeSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\RangeSlotCapacity';
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getRangeSlotCapacityRateLimiter->consume()->ensureAccepted();
         }
@@ -3677,9 +3820,10 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function getServiceJobByServiceJobId(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): GetServiceJobByServiceJobIdResponse {
-        list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id);
+        list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3696,10 +3840,16 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function getServiceJobByServiceJobIdWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3794,11 +3944,17 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function getServiceJobByServiceJobIdAsyncWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse';
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -3986,9 +4142,10 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?string $restrictedDataToken = null
     ): GetServiceJobsResponse {
-        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
+        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -4050,10 +4207,16 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4238,11 +4401,17 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getServiceJobsRateLimiter->consume()->ensureAccepted();
         }
@@ -4620,9 +4789,10 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        RescheduleAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): SetAppointmentResponse {
-        list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body);
+        list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4645,10 +4815,16 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        RescheduleAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4755,11 +4931,17 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        RescheduleAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -4948,9 +5130,10 @@ class ServiceApi
     public function setAppointmentFulfillmentData(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        SetAppointmentFulfillmentDataRequest $body,
+        ?string $restrictedDataToken = null
     ): string {
-        list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body);
+        list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4973,10 +5156,16 @@ class ServiceApi
     public function setAppointmentFulfillmentDataWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        SetAppointmentFulfillmentDataRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5083,11 +5272,17 @@ class ServiceApi
     public function setAppointmentFulfillmentDataAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        SetAppointmentFulfillmentDataRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = 'string';
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->setAppointmentFulfillmentDataRateLimiter->consume()->ensureAccepted();
         }
@@ -5276,9 +5471,10 @@ class ServiceApi
     public function updateReservation(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        UpdateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateReservationResponse {
-        list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body);
+        list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -5301,10 +5497,16 @@ class ServiceApi
     public function updateReservationWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        UpdateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5411,11 +5613,17 @@ class ServiceApi
     public function updateReservationAsyncWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        UpdateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\UpdateReservationResponse';
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateReservationRateLimiter->consume()->ensureAccepted();
         }
@@ -5604,9 +5812,10 @@ class ServiceApi
     public function updateSchedule(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        UpdateScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateScheduleResponse {
-        list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body);
+        list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -5629,10 +5838,16 @@ class ServiceApi
     public function updateScheduleWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        UpdateScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5739,11 +5954,17 @@ class ServiceApi
     public function updateScheduleAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        UpdateScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\UpdateScheduleResponse';
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateScheduleRateLimiter->consume()->ensureAccepted();
         }

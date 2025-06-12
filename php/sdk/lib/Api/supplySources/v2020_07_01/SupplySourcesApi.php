@@ -153,9 +153,10 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function archiveSupplySource(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): ErrorList {
-        list($response) = $this->archiveSupplySourceWithHttpInfo($supply_source_id);
+        list($response) = $this->archiveSupplySourceWithHttpInfo($supply_source_id, $restrictedDataToken);
 
         return $response;
     }
@@ -172,10 +173,16 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function archiveSupplySourceWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->archiveSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,11 +277,17 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function archiveSupplySourceAsyncWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->archiveSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->archiveSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -411,9 +424,10 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function createSupplySource(
-        CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload,
+        ?string $restrictedDataToken = null
     ): CreateSupplySourceResponse {
-        list($response) = $this->createSupplySourceWithHttpInfo($payload);
+        list($response) = $this->createSupplySourceWithHttpInfo($payload, $restrictedDataToken);
 
         return $response;
     }
@@ -430,10 +444,16 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function createSupplySourceWithHttpInfo(
-        CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createSupplySourceRequest($payload);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -528,11 +548,17 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function createSupplySourceAsyncWithHttpInfo(
-        CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse';
         $request = $this->createSupplySourceRequest($payload);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -666,9 +692,10 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function getSupplySource(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): SupplySource {
-        list($response) = $this->getSupplySourceWithHttpInfo($supply_source_id);
+        list($response) = $this->getSupplySourceWithHttpInfo($supply_source_id, $restrictedDataToken);
 
         return $response;
     }
@@ -685,10 +712,16 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function getSupplySourceWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -783,11 +816,17 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function getSupplySourceAsyncWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\SupplySource';
         $request = $this->getSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -927,9 +966,10 @@ class SupplySourcesApi
      */
     public function getSupplySources(
         ?string $next_page_token = null,
-        ?float $page_size = 10.0
+        ?float $page_size = 10.0,
+        ?string $restrictedDataToken = null
     ): GetSupplySourcesResponse {
-        list($response) = $this->getSupplySourcesWithHttpInfo($next_page_token, $page_size);
+        list($response) = $this->getSupplySourcesWithHttpInfo($next_page_token, $page_size, $restrictedDataToken);
 
         return $response;
     }
@@ -949,10 +989,16 @@ class SupplySourcesApi
      */
     public function getSupplySourcesWithHttpInfo(
         ?string $next_page_token = null,
-        ?float $page_size = 10.0
+        ?float $page_size = 10.0,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSupplySourcesRequest($next_page_token, $page_size);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1053,11 +1099,17 @@ class SupplySourcesApi
      */
     public function getSupplySourcesAsyncWithHttpInfo(
         ?string $next_page_token = null,
-        ?float $page_size = 10.0
+        ?float $page_size = 10.0,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse';
         $request = $this->getSupplySourcesRequest($next_page_token, $page_size);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSupplySourcesRateLimiter->consume()->ensureAccepted();
         }
@@ -1205,9 +1257,10 @@ class SupplySourcesApi
      */
     public function updateSupplySource(
         string $supply_source_id,
-        ?UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): ErrorList {
-        list($response) = $this->updateSupplySourceWithHttpInfo($supply_source_id, $payload);
+        list($response) = $this->updateSupplySourceWithHttpInfo($supply_source_id, $payload, $restrictedDataToken);
 
         return $response;
     }
@@ -1227,10 +1280,16 @@ class SupplySourcesApi
      */
     public function updateSupplySourceWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1331,11 +1390,17 @@ class SupplySourcesApi
      */
     public function updateSupplySourceAsyncWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -1484,9 +1549,10 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatus(
         string $supply_source_id,
-        ?UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): ErrorList {
-        list($response) = $this->updateSupplySourceStatusWithHttpInfo($supply_source_id, $payload);
+        list($response) = $this->updateSupplySourceStatusWithHttpInfo($supply_source_id, $payload, $restrictedDataToken);
 
         return $response;
     }
@@ -1506,10 +1572,16 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1610,11 +1682,17 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusAsyncWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateSupplySourceStatusRateLimiter->consume()->ensureAccepted();
         }

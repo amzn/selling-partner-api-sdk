@@ -159,9 +159,10 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null,
-        ?string $amazon_program = null
+        ?string $amazon_program = null,
+        ?string $restrictedDataToken = null
     ): GetOrderMetricsResponse {
-        list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
+        list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program, $restrictedDataToken);
 
         return $response;
     }
@@ -205,10 +206,16 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null,
-        ?string $amazon_program = null
+        ?string $amazon_program = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -357,11 +364,17 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null,
-        ?string $amazon_program = null
+        ?string $amazon_program = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sales\v1\GetOrderMetricsResponse';
         $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderMetricsRateLimiter->consume()->ensureAccepted();
         }

@@ -75,7 +75,6 @@ class UpdateInventoryApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $submitInventoryUpdateRateLimiter;
 
     /**
@@ -134,7 +133,6 @@ class UpdateInventoryApi
     {
         return $this->config;
     }
-
     /**
      * Operation submitInventoryUpdate
      *
@@ -149,9 +147,10 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdate(
         string $warehouse_id,
-        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse {
-        list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body);
+        list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body,$restrictedDataToken);
         return $response;
     }
 
@@ -169,10 +168,16 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdateWithHttpInfo(
         string $warehouse_id,
-        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -272,11 +277,17 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdateAsyncWithHttpInfo(
         string $warehouse_id,
-        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitInventoryUpdateRateLimiter->consume()->ensureAccepted();
         }

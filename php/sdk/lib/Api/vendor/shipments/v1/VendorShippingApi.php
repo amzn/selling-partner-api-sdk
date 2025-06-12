@@ -75,7 +75,6 @@ class VendorShippingApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getShipmentDetailsRateLimiter;
     public ?LimiterInterface $getShipmentLabelsRateLimiter;
     public ?LimiterInterface $submitShipmentConfirmationsRateLimiter;
@@ -143,7 +142,6 @@ class VendorShippingApi
     {
         return $this->config;
     }
-
     /**
      * Operation getShipmentDetails
      *
@@ -226,9 +224,10 @@ class VendorShippingApi
         ?string $vendor_shipment_identifier = null,
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse {
-        list($response) = $this->getShipmentDetailsWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
+        list($response) = $this->getShipmentDetailsWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code,$restrictedDataToken);
         return $response;
     }
 
@@ -314,10 +313,16 @@ class VendorShippingApi
         ?string $vendor_shipment_identifier = null,
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentDetailsRequest($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -553,11 +558,17 @@ class VendorShippingApi
         ?string $vendor_shipment_identifier = null,
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse';
         $request = $this->getShipmentDetailsRequest($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -999,7 +1010,7 @@ class VendorShippingApi
      * @param  string|null $sort_order
      *  Sort the list by shipment label creation date in ascending or descending order. (optional)
      * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  \DateTime|null $label_created_after
      *  Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
      * @param  \DateTime|null $label_created_before
@@ -1023,9 +1034,10 @@ class VendorShippingApi
         ?\DateTime $label_created_before = null,
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\GetShipmentLabels {
-        list($response) = $this->getShipmentLabelsWithHttpInfo($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
+        list($response) = $this->getShipmentLabelsWithHttpInfo($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code,$restrictedDataToken);
         return $response;
     }
 
@@ -1037,7 +1049,7 @@ class VendorShippingApi
      * @param  string|null $sort_order
      *  Sort the list by shipment label creation date in ascending or descending order. (optional)
      * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  \DateTime|null $label_created_after
      *  Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
      * @param  \DateTime|null $label_created_before
@@ -1061,10 +1073,16 @@ class VendorShippingApi
         ?\DateTime $label_created_before = null,
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentLabelsRequest($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1136,7 +1154,7 @@ class VendorShippingApi
      * @param  string|null $sort_order
      *  Sort the list by shipment label creation date in ascending or descending order. (optional)
      * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  \DateTime|null $label_created_after
      *  Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
      * @param  \DateTime|null $label_created_before
@@ -1177,7 +1195,7 @@ class VendorShippingApi
      * @param  string|null $sort_order
      *  Sort the list by shipment label creation date in ascending or descending order. (optional)
      * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  \DateTime|null $label_created_after
      *  Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
      * @param  \DateTime|null $label_created_before
@@ -1200,11 +1218,17 @@ class VendorShippingApi
         ?\DateTime $label_created_before = null,
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\GetShipmentLabels';
         $request = $this->getShipmentLabelsRequest($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -1253,7 +1277,7 @@ class VendorShippingApi
      * @param  string|null $sort_order
      *  Sort the list by shipment label creation date in ascending or descending order. (optional)
      * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  \DateTime|null $label_created_after
      *  Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)
      * @param  \DateTime|null $label_created_before
@@ -1443,9 +1467,10 @@ class VendorShippingApi
      * @return \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse
      */
     public function submitShipmentConfirmations(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse {
-        list($response) = $this->submitShipmentConfirmationsWithHttpInfo($body);
+        list($response) = $this->submitShipmentConfirmationsWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1462,10 +1487,16 @@ class VendorShippingApi
      * @return array of \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShipmentConfirmationsWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShipmentConfirmationsRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1563,11 +1594,17 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function submitShipmentConfirmationsAsyncWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse';
         $request = $this->submitShipmentConfirmationsRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShipmentConfirmationsRateLimiter->consume()->ensureAccepted();
         }
@@ -1710,9 +1747,10 @@ class VendorShippingApi
      * @return \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse
      */
     public function submitShipments(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse {
-        list($response) = $this->submitShipmentsWithHttpInfo($body);
+        list($response) = $this->submitShipmentsWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1729,10 +1767,16 @@ class VendorShippingApi
      * @return array of \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShipmentsWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShipmentsRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1830,11 +1874,17 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function submitShipmentsAsyncWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse';
         $request = $this->submitShipmentsRequest($body);
-        $request = $this->config->sign($request);
+        if ($this->restrictedDataToken === null) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShipmentsRateLimiter->consume()->ensureAccepted();
         }

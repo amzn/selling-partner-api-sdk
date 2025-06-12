@@ -164,9 +164,10 @@ class ProductPricingApi
         string $item_type,
         ?array $asins = null,
         ?array $skus = null,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): GetPricingResponse {
-        list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type);
+        list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -195,10 +196,16 @@ class ProductPricingApi
         string $item_type,
         ?array $asins = null,
         ?array $skus = null,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -317,11 +324,17 @@ class ProductPricingApi
         string $item_type,
         ?array $asins = null,
         ?array $skus = null,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
         }
@@ -534,9 +547,10 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $asin,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): GetOffersResponse {
-        list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type);
+        list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -562,10 +576,16 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $asin,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -678,11 +698,17 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $asin,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getItemOffersRateLimiter->consume()->ensureAccepted();
         }
@@ -871,9 +897,10 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getItemOffersBatch(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): GetItemOffersBatchResponse {
-        list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body);
+        list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -890,10 +917,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getItemOffersBatchWithHttpInfo(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -988,11 +1021,17 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getItemOffersBatchAsyncWithHttpInfo(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse';
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
         }
@@ -1135,9 +1174,10 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): GetOffersResponse {
-        list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type);
+        list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -1163,10 +1203,16 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1279,11 +1325,17 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getListingOffersRateLimiter->consume()->ensureAccepted();
         }
@@ -1472,9 +1524,10 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getListingOffersBatch(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): GetListingOffersBatchResponse {
-        list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body);
+        list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -1491,10 +1544,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getListingOffersBatchWithHttpInfo(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1589,11 +1648,17 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getListingOffersBatchAsyncWithHttpInfo(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse';
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
         }
@@ -1742,9 +1807,10 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $item_condition = null,
-        ?string $offer_type = null
+        ?string $offer_type = null,
+        ?string $restrictedDataToken = null
     ): GetPricingResponse {
-        list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
+        list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -1776,10 +1842,16 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $item_condition = null,
-        ?string $offer_type = null
+        ?string $offer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1904,11 +1976,17 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $item_condition = null,
-        ?string $offer_type = null
+        ?string $offer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPricingRateLimiter->consume()->ensureAccepted();
         }

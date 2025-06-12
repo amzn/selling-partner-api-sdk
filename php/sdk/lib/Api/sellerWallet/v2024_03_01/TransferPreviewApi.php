@@ -146,9 +146,10 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        ?string $restrictedDataToken = null
     ): TransferRatePreview {
-        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
+        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $restrictedDataToken);
 
         return $response;
     }
@@ -179,10 +180,16 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -305,11 +312,17 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview';
         $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransferPreviewRateLimiter->consume()->ensureAccepted();
         }

@@ -133,9 +133,10 @@ class SellingpartnersApi
      * @throws \InvalidArgumentException
      */
     public function getSellingPartnerMetrics(
-        ?GetSellingPartnerMetricsRequest $body = null
+        ?GetSellingPartnerMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): GetSellingPartnerMetricsResponse {
-        list($response) = $this->getSellingPartnerMetricsWithHttpInfo($body);
+        list($response) = $this->getSellingPartnerMetricsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -152,10 +153,16 @@ class SellingpartnersApi
      * @throws \InvalidArgumentException
      */
     public function getSellingPartnerMetricsWithHttpInfo(
-        ?GetSellingPartnerMetricsRequest $body = null
+        ?GetSellingPartnerMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSellingPartnerMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -250,11 +257,17 @@ class SellingpartnersApi
      * @throws \InvalidArgumentException
      */
     public function getSellingPartnerMetricsAsyncWithHttpInfo(
-        ?GetSellingPartnerMetricsRequest $body = null
+        ?GetSellingPartnerMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponse';
         $request = $this->getSellingPartnerMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSellingPartnerMetricsRateLimiter->consume()->ensureAccepted();
         }

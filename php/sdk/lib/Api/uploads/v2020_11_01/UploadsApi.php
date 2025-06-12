@@ -141,9 +141,10 @@ class UploadsApi
         array $marketplace_ids,
         string $content_md5,
         string $resource,
-        ?string $content_type = null
+        ?string $content_type = null,
+        ?string $restrictedDataToken = null
     ): CreateUploadDestinationResponse {
-        list($response) = $this->createUploadDestinationForResourceWithHttpInfo($marketplace_ids, $content_md5, $resource, $content_type);
+        list($response) = $this->createUploadDestinationForResourceWithHttpInfo($marketplace_ids, $content_md5, $resource, $content_type, $restrictedDataToken);
 
         return $response;
     }
@@ -169,10 +170,16 @@ class UploadsApi
         array $marketplace_ids,
         string $content_md5,
         string $resource,
-        ?string $content_type = null
+        ?string $content_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createUploadDestinationForResourceRequest($marketplace_ids, $content_md5, $resource, $content_type);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -285,11 +292,17 @@ class UploadsApi
         array $marketplace_ids,
         string $content_md5,
         string $resource,
-        ?string $content_type = null
+        ?string $content_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse';
         $request = $this->createUploadDestinationForResourceRequest($marketplace_ids, $content_md5, $resource, $content_type);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createUploadDestinationForResourceRateLimiter->consume()->ensureAccepted();
         }

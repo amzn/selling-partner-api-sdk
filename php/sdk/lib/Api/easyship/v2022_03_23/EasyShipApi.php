@@ -151,9 +151,10 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackage(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        CreateScheduledPackageRequest $create_scheduled_package_request,
+        ?string $restrictedDataToken = null
     ): Package {
-        list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request);
+        list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request, $restrictedDataToken);
 
         return $response;
     }
@@ -170,10 +171,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageWithHttpInfo(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        CreateScheduledPackageRequest $create_scheduled_package_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -268,11 +275,17 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageAsyncWithHttpInfo(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        CreateScheduledPackageRequest $create_scheduled_package_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
         }
@@ -406,9 +419,10 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageBulk(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        ?string $restrictedDataToken = null
     ): CreateScheduledPackagesResponse {
-        list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request);
+        list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request, $restrictedDataToken);
 
         return $response;
     }
@@ -425,10 +439,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageBulkWithHttpInfo(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -523,11 +543,17 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageBulkAsyncWithHttpInfo(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
         }
@@ -664,9 +690,10 @@ class EasyShipApi
      */
     public function getScheduledPackage(
         string $amazon_order_id,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): Package {
-        list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id);
+        list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -686,10 +713,16 @@ class EasyShipApi
      */
     public function getScheduledPackageWithHttpInfo(
         string $amazon_order_id,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -790,11 +823,17 @@ class EasyShipApi
      */
     public function getScheduledPackageAsyncWithHttpInfo(
         string $amazon_order_id,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
         }
@@ -965,9 +1004,10 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function listHandoverSlots(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?string $restrictedDataToken = null
     ): ListHandoverSlotsResponse {
-        list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request);
+        list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request, $restrictedDataToken);
 
         return $response;
     }
@@ -984,10 +1024,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function listHandoverSlotsWithHttpInfo(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1082,11 +1128,17 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function listHandoverSlotsAsyncWithHttpInfo(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -1213,9 +1265,10 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function updateScheduledPackages(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?string $restrictedDataToken = null
     ): Packages {
-        list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request);
+        list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request, $restrictedDataToken);
 
         return $response;
     }
@@ -1232,10 +1285,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function updateScheduledPackagesWithHttpInfo(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1330,11 +1389,17 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function updateScheduledPackagesAsyncWithHttpInfo(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Packages';
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
         }

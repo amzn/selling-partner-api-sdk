@@ -138,9 +138,10 @@ class FbaInboundApi
     public function getItemEligibilityPreview(
         string $asin,
         string $program,
-        ?array $marketplace_ids = null
+        ?array $marketplace_ids = null,
+        ?string $restrictedDataToken = null
     ): GetItemEligibilityPreviewResponse {
-        list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids);
+        list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -163,10 +164,16 @@ class FbaInboundApi
     public function getItemEligibilityPreviewWithHttpInfo(
         string $asin,
         string $program,
-        ?array $marketplace_ids = null
+        ?array $marketplace_ids = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -273,11 +280,17 @@ class FbaInboundApi
     public function getItemEligibilityPreviewAsyncWithHttpInfo(
         string $asin,
         string $program,
-        ?array $marketplace_ids = null
+        ?array $marketplace_ids = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getItemEligibilityPreviewRateLimiter->consume()->ensureAccepted();
         }

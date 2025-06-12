@@ -138,9 +138,10 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getCompetitiveSummary(
-        CompetitiveSummaryBatchRequest $requests
+        CompetitiveSummaryBatchRequest $requests,
+        ?string $restrictedDataToken = null
     ): CompetitiveSummaryBatchResponse {
-        list($response) = $this->getCompetitiveSummaryWithHttpInfo($requests);
+        list($response) = $this->getCompetitiveSummaryWithHttpInfo($requests, $restrictedDataToken);
 
         return $response;
     }
@@ -157,10 +158,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getCompetitiveSummaryWithHttpInfo(
-        CompetitiveSummaryBatchRequest $requests
+        CompetitiveSummaryBatchRequest $requests,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCompetitiveSummaryRequest($requests);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,11 +262,17 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getCompetitiveSummaryAsyncWithHttpInfo(
-        CompetitiveSummaryBatchRequest $requests
+        CompetitiveSummaryBatchRequest $requests,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
         $request = $this->getCompetitiveSummaryRequest($requests);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCompetitiveSummaryRateLimiter->consume()->ensureAccepted();
         }
@@ -393,9 +406,10 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturedOfferExpectedPriceBatch(
-        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body,
+        ?string $restrictedDataToken = null
     ): GetFeaturedOfferExpectedPriceBatchResponse {
-        list($response) = $this->getFeaturedOfferExpectedPriceBatchWithHttpInfo($get_featured_offer_expected_price_batch_request_body);
+        list($response) = $this->getFeaturedOfferExpectedPriceBatchWithHttpInfo($get_featured_offer_expected_price_batch_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -412,10 +426,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturedOfferExpectedPriceBatchWithHttpInfo(
-        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeaturedOfferExpectedPriceBatchRequest($get_featured_offer_expected_price_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null === $restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -510,11 +530,17 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturedOfferExpectedPriceBatchAsyncWithHttpInfo(
-        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
         $request = $this->getFeaturedOfferExpectedPriceBatchRequest($get_featured_offer_expected_price_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null === $this->restrictedDataToken) {
+            $request = $this->config->sign($request);
+        } else {
+            // Use RDT token
+            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeaturedOfferExpectedPriceBatchRateLimiter->consume()->ensureAccepted();
         }
