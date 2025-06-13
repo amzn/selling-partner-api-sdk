@@ -1,4 +1,4 @@
-<img src="docs/logo.png" alt="Selling Partner API SDK logo" width="700"/>
+<img src="docs/logo-white.png" alt="Selling Partner API SDK logo" width="700"/>
 
 [![Maven](https://img.shields.io/maven-central/v/software.amazon.spapi/spapi-sdk.svg?label=Maven)](https://central.sonatype.com/artifact/software.amazon.spapi/spapi-sdk)
 [![Packagist](https://img.shields.io/packagist/v/amzn-spapi/sdk?label=Packagist)](https://packagist.org/packages/amzn-spapi/sdk)
