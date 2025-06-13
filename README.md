@@ -32,6 +32,15 @@ You can get started with the SDK in minutes following the instructions for your 
 * [Python](https://github.com/amzn/selling-partner-api-sdk/tree/main/python)
 * [C#](https://github.com/amzn/selling-partner-api-sdk/tree/main/csharp)
 
+### Feature Overview
+
+| Programming language | Basic API Support | RDT Support  | Rate Limiter |
+|----------------------|:-----------------:|:------------:|:------------:|
+| Java                 |         ✅        |      ❌      |      ✅      |
+| PHP                  |         ✅        |      ❌      |      ✅      |
+| JavaScript           |         ✅        |      ❌      |      ✅      |
+| Python               |         ✅        |      ❌      |      ❌      |
+| C#                   |         ✅        |      ❌      |      ❌      |
 
 ### Giving Feedback
 
