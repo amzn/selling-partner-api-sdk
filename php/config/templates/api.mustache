@@ -29,6 +29,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use {{invokerPackage}}\ApiException;
 use {{invokerPackage}}\Configuration;
 use {{invokerPackage}}\HeaderSelector;
@@ -158,6 +159,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * {{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return {{#returnType}}{{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{^responses}}void{{/responses}}{{/returnType}}
@@ -203,6 +205,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * {{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of {{#returnType}}{{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{^responses}}void{{/responses}}{{/returnType}}, HTTP status code, HTTP response headers (array of strings)
@@ -216,11 +219,12 @@ use {{invokerPackage}}\ObjectSerializer;
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        if ($restrictedDataToken === null) {
+        RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}", $restrictedDataToken);
+        if (!RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}") || $restrictedDataToken === null) {
             $request = $this->config->sign($request);
         } else {
             // Use RDT token
-            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken);
         }
 
         try {
@@ -392,11 +396,12 @@ use {{invokerPackage}}\ObjectSerializer;
     ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        if ($this->restrictedDataToken === null) {
+        RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}", $restrictedDataToken);
+        if (!RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}") || $restrictedDataToken === null) {
             $request = $this->config->sign($request);
         } else {
             // Use RDT token
-            $request = $request->withHeader('x-amz-access-token', $restrictedDataToken);
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken);
         }
         if ($this->rateLimiterEnabled) {
             $this->{{operationId}}RateLimiter->consume()->ensureAccepted();
