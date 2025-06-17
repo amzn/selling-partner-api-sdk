@@ -219,14 +219,11 @@ use {{invokerPackage}}\ObjectSerializer;
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}", $restrictedDataToken);
-        if (!RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}") || $restrictedDataToken === null) {
-            $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "{{classname}}-{{operationId}}");
         } else {
-            // Use RDT token
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken);
+            $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -396,12 +393,10 @@ use {{invokerPackage}}\ObjectSerializer;
     ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}", $restrictedDataToken);
-        if (!RestrictedDataTokenSigner::isRestrictedOperation("{{classname}}-{{operationId}}") || $restrictedDataToken === null) {
-            $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "{{classname}}-{{operationId}}");
         } else {
-            // Use RDT token
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken);
+            $request = $this->config->sign($request);
         }
         if ($this->rateLimiterEnabled) {
             $this->{{operationId}}RateLimiter->consume()->ensureAccepted();

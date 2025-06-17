@@ -11,10 +11,19 @@ class RestrictedDataTokenSigner
      *
      * @param Request $request Request to sign
      * @param string $restrictedDataToken The Restricted Data Token
+     * @param string $operationName The operation name in format 'ClassName-operationId'
      * @return Request Signed request
      */
-    public static function sign(Request $request, string $restrictedDataToken): Request
+    public static function sign(Request $request, string $restrictedDataToken, string $operationName): Request
     {
+            $isRestricted = self::isRestrictedOperation($operationName);
+            if (!$isRestricted) {
+                throw new \InvalidArgumentException(
+                    "Operation '{$operationName}' does not require a Restricted Data Token (RDT). " .
+                    "Remove the RDT parameter for non-restricted operations."
+                );
+            }
+
         return $request->withHeader(LWAAuthorizationSigner::SIGNED_ACCESS_TOKEN_HEADER_NAME, $restrictedDataToken);
     }
 
@@ -22,15 +31,12 @@ class RestrictedDataTokenSigner
      * Check if an operation requires RDT access
      *
      * @param string $operationName The operation name in format 'ClassName-operationId'
-     * @param string|null $restrictedDataToken Optional RDT token to validate usage
      * @return bool True if the operation requires RDT, false otherwise
-     * @throws \InvalidArgumentException If RDT is used for a non-restricted operation
      */
-    public static function isRestrictedOperation(string $operationName, ?string $restrictedDataToken = null): bool
+    public static function isRestrictedOperation(string $operationName): bool
     {
         // List of operations that require RDT access
         $restrictedOperations = [
-
             // Direct Fulfillment Orders API
             'VendorOrdersApi-getOrders',
             'VendorOrdersApi-getOrder',
@@ -44,7 +50,6 @@ class RestrictedDataTokenSigner
             'VendorShippingLabelsApi-getCustomerInvoices',
             'VendorShippingLabelsApi-createShippingLabels',
 
-
             // Easy Ship API v2022-03-23
             'EasyShipApi-createScheduledPackageBulk',
 
@@ -57,29 +62,17 @@ class RestrictedDataTokenSigner
             'OrdersV0Api-getOrderItemsBuyerInfo',
             'OrdersV0Api-getOrderRegulatedInfo',
 
-
             // Merchant Fulfillment API
             'MerchantFulfillmentApi-getShipment',
             'MerchantFulfillmentApi-cancelShipment',
             'MerchantFulfillmentApi-createShipment',
 
-
             // Shipment Invoicing
             'ShipmentInvoiceApi-getShipmentDetails',
-
         ];
 
-        $isRestricted = in_array($operationName, $restrictedOperations);
-
-        // Throw exception if RDT is provided for a non-restricted operation
-        if (!$isRestricted && $restrictedDataToken !== null) {
-            throw new \InvalidArgumentException(
-                "Operation '{$operationName}' does not require a Restricted Data Token (RDT). " .
-                "Remove the RDT parameter for non-restricted operations."
-            );
-        }
-
-
-        return $isRestricted;
+        return in_array($operationName, $restrictedOperations);
     }
 }
+
+
