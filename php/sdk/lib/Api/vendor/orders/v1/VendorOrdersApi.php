@@ -276,7 +276,7 @@ class VendorOrdersApi
      */
     public function getPurchaseOrderAsyncWithHttpInfo(
         string $purchase_order_number,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\GetPurchaseOrderResponse';
         $request = $this->getPurchaseOrderRequest($purchase_order_number);
@@ -681,7 +681,7 @@ class VendorOrdersApi
         ?bool $is_po_changed = null,
         ?string $purchase_order_state = null,
         ?string $ordering_vendor_code = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\GetPurchaseOrdersResponse';
         $request = $this->getPurchaseOrdersRequest($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code);
@@ -1244,7 +1244,7 @@ class VendorOrdersApi
         ?string $item_receive_status = null,
         ?string $ordering_vendor_code = null,
         ?string $ship_to_party_id = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\GetPurchaseOrdersStatusResponse';
         $request = $this->getPurchaseOrdersStatusRequest($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id);
@@ -1676,7 +1676,7 @@ class VendorOrdersApi
      */
     public function submitAcknowledgementAsyncWithHttpInfo(
         \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse';
         $request = $this->submitAcknowledgementRequest($body);

@@ -273,7 +273,7 @@ class VendorOrdersApi
      */
     public function getOrderAsyncWithHttpInfo(
         string $purchase_order_number,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\Order';
         $request = $this->getOrderRequest($purchase_order_number);
@@ -630,7 +630,7 @@ class VendorOrdersApi
         ?string $sort_order = null,
         ?string $next_token = null,
         ?bool $include_details = true,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList';
         $request = $this->getOrdersRequest($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details);
@@ -1009,7 +1009,7 @@ class VendorOrdersApi
      */
     public function submitAcknowledgementAsyncWithHttpInfo(
         \SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId';
         $request = $this->submitAcknowledgementRequest($body);

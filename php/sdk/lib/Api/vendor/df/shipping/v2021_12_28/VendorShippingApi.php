@@ -284,7 +284,7 @@ class VendorShippingApi
      */
     public function getPackingSlipAsyncWithHttpInfo(
         string $purchase_order_number,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlip';
         $request = $this->getPackingSlipRequest($purchase_order_number);
@@ -629,7 +629,7 @@ class VendorShippingApi
         ?int $limit = null,
         ?string $sort_order = 'ASC',
         ?string $next_token = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\PackingSlipList';
         $request = $this->getPackingSlipsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
@@ -990,7 +990,7 @@ class VendorShippingApi
      */
     public function submitShipmentConfirmationsAsyncWithHttpInfo(
         \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShipmentConfirmationsRequest($body);
@@ -1269,7 +1269,7 @@ class VendorShippingApi
      */
     public function submitShipmentStatusUpdatesAsyncWithHttpInfo(
         \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentStatusUpdatesRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShipmentStatusUpdatesRequest($body);

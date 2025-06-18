@@ -144,7 +144,7 @@ class ApplicationsApi
      * @return 
      */
     public function rotateApplicationClientSecret(
-    ,
+    
         ?string $restrictedDataToken = null
     ): void {
         $this->rotateApplicationClientSecretWithHttpInfo(,$restrictedDataToken);
@@ -160,7 +160,7 @@ class ApplicationsApi
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
     public function rotateApplicationClientSecretWithHttpInfo(
-    ,
+    
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->rotateApplicationClientSecretRequest();
@@ -245,8 +245,8 @@ class ApplicationsApi
      * @return PromiseInterface
      */
     public function rotateApplicationClientSecretAsyncWithHttpInfo(
-    ,
-        ?string $restrictedDataToken = null
+    
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->rotateApplicationClientSecretRequest();

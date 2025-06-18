@@ -560,7 +560,7 @@ class VendorShippingApi
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
         ?string $seller_warehouse_code = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse';
         $request = $this->getShipmentDetailsRequest($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
@@ -1219,7 +1219,7 @@ class VendorShippingApi
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
         ?string $seller_warehouse_code = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\GetShipmentLabels';
         $request = $this->getShipmentLabelsRequest($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
@@ -1594,7 +1594,7 @@ class VendorShippingApi
      */
     public function submitShipmentConfirmationsAsyncWithHttpInfo(
         \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse';
         $request = $this->submitShipmentConfirmationsRequest($body);
@@ -1873,7 +1873,7 @@ class VendorShippingApi
      */
     public function submitShipmentsAsyncWithHttpInfo(
         \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse';
         $request = $this->submitShipmentsRequest($body);

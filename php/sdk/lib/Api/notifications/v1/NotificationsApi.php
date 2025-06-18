@@ -288,7 +288,7 @@ class NotificationsApi
      */
     public function createDestinationAsyncWithHttpInfo(
         \SpApi\Model\notifications\v1\CreateDestinationRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\CreateDestinationResponse';
         $request = $this->createDestinationRequest($body);
@@ -571,7 +571,7 @@ class NotificationsApi
     public function createSubscriptionAsyncWithHttpInfo(
         string $notification_type,
         \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\CreateSubscriptionResponse';
         $request = $this->createSubscriptionRequest($notification_type, $body);
@@ -859,7 +859,7 @@ class NotificationsApi
      */
     public function deleteDestinationAsyncWithHttpInfo(
         string $destination_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\DeleteDestinationResponse';
         $request = $this->deleteDestinationRequest($destination_id);
@@ -1144,7 +1144,7 @@ class NotificationsApi
     public function deleteSubscriptionByIdAsyncWithHttpInfo(
         string $subscription_id,
         string $notification_type,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse';
         $request = $this->deleteSubscriptionByIdRequest($subscription_id, $notification_type);
@@ -1434,7 +1434,7 @@ class NotificationsApi
      */
     public function getDestinationAsyncWithHttpInfo(
         string $destination_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetDestinationResponse';
         $request = $this->getDestinationRequest($destination_id);
@@ -1584,7 +1584,7 @@ class NotificationsApi
      * @return \SpApi\Model\notifications\v1\GetDestinationsResponse
      */
     public function getDestinations(
-    ,
+    
         ?string $restrictedDataToken = null
     ): \SpApi\Model\notifications\v1\GetDestinationsResponse {
         list($response) = $this->getDestinationsWithHttpInfo(,$restrictedDataToken);
@@ -1601,7 +1601,7 @@ class NotificationsApi
      * @return array of \SpApi\Model\notifications\v1\GetDestinationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDestinationsWithHttpInfo(
-    ,
+    
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDestinationsRequest();
@@ -1698,8 +1698,8 @@ class NotificationsApi
      * @return PromiseInterface
      */
     public function getDestinationsAsyncWithHttpInfo(
-    ,
-        ?string $restrictedDataToken = null
+    
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetDestinationsResponse';
         $request = $this->getDestinationsRequest();
@@ -1968,7 +1968,7 @@ class NotificationsApi
     public function getSubscriptionAsyncWithHttpInfo(
         string $notification_type,
         ?string $payload_version = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionResponse';
         $request = $this->getSubscriptionRequest($notification_type, $payload_version);
@@ -2266,7 +2266,7 @@ class NotificationsApi
     public function getSubscriptionByIdAsyncWithHttpInfo(
         string $subscription_id,
         string $notification_type,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse';
         $request = $this->getSubscriptionByIdRequest($subscription_id, $notification_type);
