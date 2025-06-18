@@ -279,7 +279,7 @@ class UpdateInventoryApi
     public function submitInventoryUpdateAsyncWithHttpInfo(
         string $warehouse_id,
         \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);

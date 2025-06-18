@@ -275,7 +275,7 @@ class CreateContainerLabelApi
      */
     public function createContainerLabelAsyncWithHttpInfo(
         \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse';
         $request = $this->createContainerLabelRequest($body);

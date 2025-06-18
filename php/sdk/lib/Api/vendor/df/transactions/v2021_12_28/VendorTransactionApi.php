@@ -267,7 +267,7 @@ class VendorTransactionApi
      */
     public function getTransactionStatusAsyncWithHttpInfo(
         string $transaction_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\transactions\v2021_12_28\TransactionStatus';
         $request = $this->getTransactionStatusRequest($transaction_id);

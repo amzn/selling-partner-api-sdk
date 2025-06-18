@@ -278,7 +278,7 @@ class CustomerInvoicesApi
      */
     public function getCustomerInvoiceAsyncWithHttpInfo(
         string $purchase_order_number,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice';
         $request = $this->getCustomerInvoiceRequest($purchase_order_number);
@@ -623,7 +623,7 @@ class CustomerInvoicesApi
         ?int $limit = null,
         ?string $sort_order = null,
         ?string $next_token = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList';
         $request = $this->getCustomerInvoicesRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);

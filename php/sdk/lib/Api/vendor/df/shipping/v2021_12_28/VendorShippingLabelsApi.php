@@ -296,7 +296,7 @@ class VendorShippingLabelsApi
     public function createShippingLabelsAsyncWithHttpInfo(
         string $purchase_order_number,
         \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel';
         $request = $this->createShippingLabelsRequest($purchase_order_number, $body);
@@ -596,7 +596,7 @@ class VendorShippingLabelsApi
      */
     public function getShippingLabelAsyncWithHttpInfo(
         string $purchase_order_number,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel';
         $request = $this->getShippingLabelRequest($purchase_order_number);
@@ -941,7 +941,7 @@ class VendorShippingLabelsApi
         ?int $limit = null,
         ?string $sort_order = 'ASC',
         ?string $next_token = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList';
         $request = $this->getShippingLabelsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
@@ -1302,7 +1302,7 @@ class VendorShippingLabelsApi
      */
     public function submitShippingLabelRequestAsyncWithHttpInfo(
         \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShippingLabelRequestRequest($body);

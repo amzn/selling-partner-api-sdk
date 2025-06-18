@@ -147,7 +147,7 @@ class SellersApi
      * @return \SpApi\Model\sellers\v1\GetAccountResponse
      */
     public function getAccount(
-    ,
+    
         ?string $restrictedDataToken = null
     ): \SpApi\Model\sellers\v1\GetAccountResponse {
         list($response) = $this->getAccountWithHttpInfo(,$restrictedDataToken);
@@ -164,7 +164,7 @@ class SellersApi
      * @return array of \SpApi\Model\sellers\v1\GetAccountResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountWithHttpInfo(
-    ,
+    
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAccountRequest();
@@ -261,8 +261,8 @@ class SellersApi
      * @return PromiseInterface
      */
     public function getAccountAsyncWithHttpInfo(
-    ,
-        ?string $restrictedDataToken = null
+    
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellers\v1\GetAccountResponse';
         $request = $this->getAccountRequest();
@@ -396,7 +396,7 @@ class SellersApi
      * @return \SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse
      */
     public function getMarketplaceParticipations(
-    ,
+    
         ?string $restrictedDataToken = null
     ): \SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse {
         list($response) = $this->getMarketplaceParticipationsWithHttpInfo(,$restrictedDataToken);
@@ -413,7 +413,7 @@ class SellersApi
      * @return array of \SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMarketplaceParticipationsWithHttpInfo(
-    ,
+    
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMarketplaceParticipationsRequest();
@@ -510,8 +510,8 @@ class SellersApi
      * @return PromiseInterface
      */
     public function getMarketplaceParticipationsAsyncWithHttpInfo(
-    ,
-        ?string $restrictedDataToken = null
+    
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse';
         $request = $this->getMarketplaceParticipationsRequest();

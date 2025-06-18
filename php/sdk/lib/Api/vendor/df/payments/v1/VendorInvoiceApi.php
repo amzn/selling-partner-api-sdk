@@ -267,7 +267,7 @@ class VendorInvoiceApi
      */
     public function submitInvoiceAsyncWithHttpInfo(
         \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\payments\v1\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($body);
