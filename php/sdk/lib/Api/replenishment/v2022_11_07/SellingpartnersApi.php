@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsRequest;
@@ -127,15 +128,17 @@ class SellingpartnersApi
      * Operation getSellingPartnerMetrics.
      *
      * @param null|GetSellingPartnerMetricsRequest $body
-     *                                                   The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     *                                                                  The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getSellingPartnerMetrics(
-        ?GetSellingPartnerMetricsRequest $body = null
+        ?GetSellingPartnerMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): GetSellingPartnerMetricsResponse {
-        list($response) = $this->getSellingPartnerMetricsWithHttpInfo($body);
+        list($response) = $this->getSellingPartnerMetricsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -144,7 +147,8 @@ class SellingpartnersApi
      * Operation getSellingPartnerMetricsWithHttpInfo.
      *
      * @param null|GetSellingPartnerMetricsRequest $body
-     *                                                   The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     *                                                                  The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -152,10 +156,15 @@ class SellingpartnersApi
      * @throws \InvalidArgumentException
      */
     public function getSellingPartnerMetricsWithHttpInfo(
-        ?GetSellingPartnerMetricsRequest $body = null
+        ?GetSellingPartnerMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSellingPartnerMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellingpartnersApi-getSellingPartnerMetrics');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -250,11 +259,16 @@ class SellingpartnersApi
      * @throws \InvalidArgumentException
      */
     public function getSellingPartnerMetricsAsyncWithHttpInfo(
-        ?GetSellingPartnerMetricsRequest $body = null
+        ?GetSellingPartnerMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponse';
         $request = $this->getSellingPartnerMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellingpartnersApi-getSellingPartnerMetrics');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSellingPartnerMetricsRateLimiter->consume()->ensureAccepted();
         }

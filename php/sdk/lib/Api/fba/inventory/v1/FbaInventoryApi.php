@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fba\inventory\v1\AddInventoryRequest;
@@ -143,15 +144,17 @@ class FbaInventoryApi
      *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
      * @param AddInventoryRequest $add_inventory_request_body
      *                                                        List of items to add to Sandbox inventory. (required)
+     * @param null|string         $restrictedDataToken        Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function addInventory(
         string $x_amzn_idempotency_token,
-        AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): AddInventoryResponse {
-        list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body);
+        list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -163,6 +166,7 @@ class FbaInventoryApi
      *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
      * @param AddInventoryRequest $add_inventory_request_body
      *                                                        List of items to add to Sandbox inventory. (required)
+     * @param null|string         $restrictedDataToken        Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fba\inventory\v1\AddInventoryResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -171,10 +175,15 @@ class FbaInventoryApi
      */
     public function addInventoryWithHttpInfo(
         string $x_amzn_idempotency_token,
-        AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-addInventory');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -275,11 +284,16 @@ class FbaInventoryApi
      */
     public function addInventoryAsyncWithHttpInfo(
         string $x_amzn_idempotency_token,
-        AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\AddInventoryResponse';
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-addInventory');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->addInventoryRateLimiter->consume()->ensureAccepted();
         }
@@ -422,14 +436,16 @@ class FbaInventoryApi
      *
      * @param CreateInventoryItemRequest $create_inventory_item_request_body
      *                                                                       CreateInventoryItem Request Body Parameter. (required)
+     * @param null|string                $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createInventoryItem(
-        CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): CreateInventoryItemResponse {
-        list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body);
+        list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -439,6 +455,7 @@ class FbaInventoryApi
      *
      * @param CreateInventoryItemRequest $create_inventory_item_request_body
      *                                                                       CreateInventoryItem Request Body Parameter. (required)
+     * @param null|string                $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -446,10 +463,15 @@ class FbaInventoryApi
      * @throws \InvalidArgumentException
      */
     public function createInventoryItemWithHttpInfo(
-        CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-createInventoryItem');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -544,11 +566,16 @@ class FbaInventoryApi
      * @throws \InvalidArgumentException
      */
     public function createInventoryItemAsyncWithHttpInfo(
-        CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse';
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-createInventoryItem');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
         }
@@ -675,19 +702,21 @@ class FbaInventoryApi
     /**
      * Operation deleteInventoryItem.
      *
-     * @param string $seller_sku
-     *                               A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param string $marketplace_id
-     *                               The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string      $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function deleteInventoryItem(
         string $seller_sku,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): DeleteInventoryItemResponse {
-        list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id);
+        list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -695,10 +724,11 @@ class FbaInventoryApi
     /**
      * Operation deleteInventoryItemWithHttpInfo.
      *
-     * @param string $seller_sku
-     *                               A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param string $marketplace_id
-     *                               The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string      $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -707,10 +737,15 @@ class FbaInventoryApi
      */
     public function deleteInventoryItemWithHttpInfo(
         string $seller_sku,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-deleteInventoryItem');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -811,11 +846,16 @@ class FbaInventoryApi
      */
     public function deleteInventoryItemAsyncWithHttpInfo(
         string $seller_sku,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse';
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-deleteInventoryItem');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
         }
@@ -966,21 +1006,22 @@ class FbaInventoryApi
      * Operation getInventorySummaries.
      *
      * @param string         $granularity_type
-     *                                         The granularity type for the inventory aggregation level. (required)
+     *                                            The granularity type for the inventory aggregation level. (required)
      * @param string         $granularity_id
-     *                                         The granularity ID for the inventory aggregation level. (required)
+     *                                            The granularity ID for the inventory aggregation level. (required)
      * @param string[]       $marketplace_ids
-     *                                         The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     *                                            The marketplace ID for the marketplace for which to return inventory summaries. (required)
      * @param null|bool      $details
-     *                                         true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     *                                            true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
      * @param null|\DateTime $start_date_time
-     *                                         A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     *                                            A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
      * @param null|string[]  $seller_skus
-     *                                         A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     *                                            A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
      * @param null|string    $seller_sku
-     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     *                                            A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
      * @param null|string    $next_token
-     *                                         String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     *                                            String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -993,9 +1034,10 @@ class FbaInventoryApi
         ?\DateTime $start_date_time = null,
         ?array $seller_skus = null,
         ?string $seller_sku = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetInventorySummariesResponse {
-        list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
+        list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1004,21 +1046,22 @@ class FbaInventoryApi
      * Operation getInventorySummariesWithHttpInfo.
      *
      * @param string         $granularity_type
-     *                                         The granularity type for the inventory aggregation level. (required)
+     *                                            The granularity type for the inventory aggregation level. (required)
      * @param string         $granularity_id
-     *                                         The granularity ID for the inventory aggregation level. (required)
+     *                                            The granularity ID for the inventory aggregation level. (required)
      * @param string[]       $marketplace_ids
-     *                                         The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     *                                            The marketplace ID for the marketplace for which to return inventory summaries. (required)
      * @param null|bool      $details
-     *                                         true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     *                                            true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
      * @param null|\DateTime $start_date_time
-     *                                         A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     *                                            A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
      * @param null|string[]  $seller_skus
-     *                                         A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     *                                            A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
      * @param null|string    $seller_sku
-     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     *                                            A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
      * @param null|string    $next_token
-     *                                         String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     *                                            String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1033,10 +1076,15 @@ class FbaInventoryApi
         ?\DateTime $start_date_time = null,
         ?array $seller_skus = null,
         ?string $seller_sku = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-getInventorySummaries');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1173,11 +1221,16 @@ class FbaInventoryApi
         ?\DateTime $start_date_time = null,
         ?array $seller_skus = null,
         ?string $seller_sku = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse';
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-getInventorySummaries');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
         }

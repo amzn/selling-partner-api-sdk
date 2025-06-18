@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sales\v1\GetOrderMetricsResponse;
@@ -145,6 +146,7 @@ class SalesApi
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
      * @param null|string $amazon_program
      *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -159,9 +161,10 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null,
-        ?string $amazon_program = null
+        ?string $amazon_program = null,
+        ?string $restrictedDataToken = null
     ): GetOrderMetricsResponse {
-        list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
+        list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program, $restrictedDataToken);
 
         return $response;
     }
@@ -189,6 +192,7 @@ class SalesApi
      *                                           Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
      * @param null|string $amazon_program
      *                                           Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only. (optional)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sales\v1\GetOrderMetricsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -205,10 +209,15 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null,
-        ?string $amazon_program = null
+        ?string $amazon_program = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SalesApi-getOrderMetrics');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -357,11 +366,16 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null,
-        ?string $amazon_program = null
+        ?string $amazon_program = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sales\v1\GetOrderMetricsResponse';
         $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku, $amazon_program);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SalesApi-getOrderMetrics');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderMetricsRateLimiter->consume()->ensureAccepted();
         }

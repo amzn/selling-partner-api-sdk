@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sellerWallet\v2024_03_01\Transaction;
@@ -141,6 +142,7 @@ class TransactionsApi
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
      *                                                                     The payload of the request (required)
+     * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -148,9 +150,10 @@ class TransactionsApi
     public function createTransaction(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransactionInitiationRequest $body
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): Transaction {
-        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body);
+        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -166,6 +169,7 @@ class TransactionsApi
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
      *                                                                     The payload of the request (required)
+     * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
      *
@@ -175,10 +179,15 @@ class TransactionsApi
     public function createTransactionWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransactionInitiationRequest $body
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -289,11 +298,16 @@ class TransactionsApi
     public function createTransactionAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransactionInitiationRequest $body
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
         $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createTransactionRateLimiter->consume()->ensureAccepted();
         }
@@ -449,16 +463,18 @@ class TransactionsApi
      *
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      *
-     * @param string $transaction_id
-     *                               The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string      $transaction_id
+     *                                         The ID of the Amazon Seller Wallet transaction. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getTransaction(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): Transaction {
-        list($response) = $this->getTransactionWithHttpInfo($transaction_id);
+        list($response) = $this->getTransactionWithHttpInfo($transaction_id, $restrictedDataToken);
 
         return $response;
     }
@@ -468,8 +484,9 @@ class TransactionsApi
      *
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      *
-     * @param string $transaction_id
-     *                               The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string      $transaction_id
+     *                                         The ID of the Amazon Seller Wallet transaction. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
      *
@@ -477,10 +494,15 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      */
     public function getTransactionWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransactionRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -579,11 +601,16 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      */
     public function getTransactionAsyncWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
         $request = $this->getTransactionRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransactionRateLimiter->consume()->ensureAccepted();
         }
@@ -716,18 +743,20 @@ class TransactionsApi
      * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listAccountTransactions(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): TransactionListing {
-        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token);
+        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -738,9 +767,10 @@ class TransactionsApi
      * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransactionListing, HTTP status code, HTTP response headers (array of strings)
      *
@@ -749,10 +779,15 @@ class TransactionsApi
      */
     public function listAccountTransactionsWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -857,11 +892,16 @@ class TransactionsApi
      */
     public function listAccountTransactionsAsyncWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing';
         $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAccountTransactionsRateLimiter->consume()->ensureAccepted();
         }

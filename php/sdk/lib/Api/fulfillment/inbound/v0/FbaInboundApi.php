@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse;
@@ -144,16 +145,18 @@ class FbaInboundApi
     /**
      * Operation getBillOfLading.
      *
-     * @param string $shipment_id
-     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string      $shipment_id
+     *                                         A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getBillOfLading(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetBillOfLadingResponse {
-        list($response) = $this->getBillOfLadingWithHttpInfo($shipment_id);
+        list($response) = $this->getBillOfLadingWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -161,8 +164,9 @@ class FbaInboundApi
     /**
      * Operation getBillOfLadingWithHttpInfo.
      *
-     * @param string $shipment_id
-     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string      $shipment_id
+     *                                         A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -170,10 +174,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getBillOfLadingWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getBillOfLadingRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getBillOfLading');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -268,11 +277,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getBillOfLadingAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse';
         $request = $this->getBillOfLadingRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getBillOfLading');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getBillOfLadingRateLimiter->consume()->ensureAccepted();
         }
@@ -418,6 +432,7 @@ class FbaInboundApi
      *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
      * @param null|int      $page_start_index
      *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param null|string   $restrictedDataToken     Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -430,9 +445,10 @@ class FbaInboundApi
         ?array $package_labels_to_print = null,
         ?int $number_of_pallets = null,
         ?int $page_size = null,
-        ?int $page_start_index = null
+        ?int $page_start_index = null,
+        ?string $restrictedDataToken = null
     ): GetLabelsResponse {
-        list($response) = $this->getLabelsWithHttpInfo($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
+        list($response) = $this->getLabelsWithHttpInfo($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index, $restrictedDataToken);
 
         return $response;
     }
@@ -456,6 +472,7 @@ class FbaInboundApi
      *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
      * @param null|int      $page_start_index
      *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param null|string   $restrictedDataToken     Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -470,10 +487,15 @@ class FbaInboundApi
         ?array $package_labels_to_print = null,
         ?int $number_of_pallets = null,
         ?int $page_size = null,
-        ?int $page_start_index = null
+        ?int $page_start_index = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getLabelsRequest($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getLabels');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -610,11 +632,16 @@ class FbaInboundApi
         ?array $package_labels_to_print = null,
         ?int $number_of_pallets = null,
         ?int $page_size = null,
-        ?int $page_start_index = null
+        ?int $page_start_index = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse';
         $request = $this->getLabelsRequest($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getLabels');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -854,6 +881,7 @@ class FbaInboundApi
      *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
      * @param null|string[] $asin_list
      *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -861,9 +889,10 @@ class FbaInboundApi
     public function getPrepInstructions(
         string $ship_to_country_code,
         ?array $seller_sku_list = null,
-        ?array $asin_list = null
+        ?array $asin_list = null,
+        ?string $restrictedDataToken = null
     ): GetPrepInstructionsResponse {
-        list($response) = $this->getPrepInstructionsWithHttpInfo($ship_to_country_code, $seller_sku_list, $asin_list);
+        list($response) = $this->getPrepInstructionsWithHttpInfo($ship_to_country_code, $seller_sku_list, $asin_list, $restrictedDataToken);
 
         return $response;
     }
@@ -877,6 +906,7 @@ class FbaInboundApi
      *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
      * @param null|string[] $asin_list
      *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -886,10 +916,15 @@ class FbaInboundApi
     public function getPrepInstructionsWithHttpInfo(
         string $ship_to_country_code,
         ?array $seller_sku_list = null,
-        ?array $asin_list = null
+        ?array $asin_list = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPrepInstructionsRequest($ship_to_country_code, $seller_sku_list, $asin_list);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getPrepInstructions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -996,11 +1031,16 @@ class FbaInboundApi
     public function getPrepInstructionsAsyncWithHttpInfo(
         string $ship_to_country_code,
         ?array $seller_sku_list = null,
-        ?array $asin_list = null
+        ?array $asin_list = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse';
         $request = $this->getPrepInstructionsRequest($ship_to_country_code, $seller_sku_list, $asin_list);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getPrepInstructions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPrepInstructionsRateLimiter->consume()->ensureAccepted();
         }
@@ -1175,6 +1215,7 @@ class FbaInboundApi
      *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
      * @param null|string    $next_token
      *                                            A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1184,9 +1225,10 @@ class FbaInboundApi
         string $marketplace_id,
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetShipmentItemsResponse {
-        list($response) = $this->getShipmentItemsWithHttpInfo($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
+        list($response) = $this->getShipmentItemsWithHttpInfo($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1204,6 +1246,7 @@ class FbaInboundApi
      *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
      * @param null|string    $next_token
      *                                            A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1215,10 +1258,15 @@ class FbaInboundApi
         string $marketplace_id,
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentItemsRequest($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1337,11 +1385,16 @@ class FbaInboundApi
         string $marketplace_id,
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
         $request = $this->getShipmentItemsRequest($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -1532,18 +1585,20 @@ class FbaInboundApi
      * Operation getShipmentItemsByShipmentId.
      *
      * @param string      $shipment_id
-     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     *                                         A shipment identifier used for selecting items in a specific inbound shipment. (required)
      * @param null|string $marketplace_id
-     *                                    Deprecated. Do not use. (optional)
+     *                                         Deprecated. Do not use. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getShipmentItemsByShipmentId(
         string $shipment_id,
-        ?string $marketplace_id = null
+        ?string $marketplace_id = null,
+        ?string $restrictedDataToken = null
     ): GetShipmentItemsResponse {
-        list($response) = $this->getShipmentItemsByShipmentIdWithHttpInfo($shipment_id, $marketplace_id);
+        list($response) = $this->getShipmentItemsByShipmentIdWithHttpInfo($shipment_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1552,9 +1607,10 @@ class FbaInboundApi
      * Operation getShipmentItemsByShipmentIdWithHttpInfo.
      *
      * @param string      $shipment_id
-     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     *                                         A shipment identifier used for selecting items in a specific inbound shipment. (required)
      * @param null|string $marketplace_id
-     *                                    Deprecated. Do not use. (optional)
+     *                                         Deprecated. Do not use. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1563,10 +1619,15 @@ class FbaInboundApi
      */
     public function getShipmentItemsByShipmentIdWithHttpInfo(
         string $shipment_id,
-        ?string $marketplace_id = null
+        ?string $marketplace_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentItemsByShipmentIdRequest($shipment_id, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentItemsByShipmentId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1667,11 +1728,16 @@ class FbaInboundApi
      */
     public function getShipmentItemsByShipmentIdAsyncWithHttpInfo(
         string $shipment_id,
-        ?string $marketplace_id = null
+        ?string $marketplace_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
         $request = $this->getShipmentItemsByShipmentIdRequest($shipment_id, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentItemsByShipmentId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentItemsByShipmentIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1829,6 +1895,7 @@ class FbaInboundApi
      *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
      * @param null|string    $next_token
      *                                             A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1840,9 +1907,10 @@ class FbaInboundApi
         ?array $shipment_id_list = null,
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetShipmentsResponse {
-        list($response) = $this->getShipmentsWithHttpInfo($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
+        list($response) = $this->getShipmentsWithHttpInfo($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1864,6 +1932,7 @@ class FbaInboundApi
      *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
      * @param null|string    $next_token
      *                                             A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1877,10 +1946,15 @@ class FbaInboundApi
         ?array $shipment_id_list = null,
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentsRequest($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipments');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2011,11 +2085,16 @@ class FbaInboundApi
         ?array $shipment_id_list = null,
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse';
         $request = $this->getShipmentsRequest($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipments');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentsRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest;
@@ -151,15 +152,17 @@ class InvoicesApi
      * Operation createInvoicesExport.
      *
      * @param ExportInvoicesRequest $body
-     *                                    Information required to create the export request. (required)
+     *                                                   Information required to create the export request. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createInvoicesExport(
-        ExportInvoicesRequest $body
+        ExportInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): ExportInvoicesResponse {
-        list($response) = $this->createInvoicesExportWithHttpInfo($body);
+        list($response) = $this->createInvoicesExportWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -168,7 +171,8 @@ class InvoicesApi
      * Operation createInvoicesExportWithHttpInfo.
      *
      * @param ExportInvoicesRequest $body
-     *                                    Information required to create the export request. (required)
+     *                                                   Information required to create the export request. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -176,10 +180,15 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function createInvoicesExportWithHttpInfo(
-        ExportInvoicesRequest $body
+        ExportInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInvoicesExportRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-createInvoicesExport');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -274,11 +283,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function createInvoicesExportAsyncWithHttpInfo(
-        ExportInvoicesRequest $body
+        ExportInvoicesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse';
         $request = $this->createInvoicesExportRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-createInvoicesExport');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInvoicesExportRateLimiter->consume()->ensureAccepted();
         }
@@ -405,19 +419,21 @@ class InvoicesApi
     /**
      * Operation getInvoice.
      *
-     * @param string $marketplace_id
-     *                               The marketplace from which you want the invoice. (required)
-     * @param string $invoice_id
-     *                               The invoice identifier. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace from which you want the invoice. (required)
+     * @param string      $invoice_id
+     *                                         The invoice identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInvoice(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $restrictedDataToken = null
     ): GetInvoiceResponse {
-        list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id);
+        list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id, $restrictedDataToken);
 
         return $response;
     }
@@ -425,10 +441,11 @@ class InvoicesApi
     /**
      * Operation getInvoiceWithHttpInfo.
      *
-     * @param string $marketplace_id
-     *                               The marketplace from which you want the invoice. (required)
-     * @param string $invoice_id
-     *                               The invoice identifier. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace from which you want the invoice. (required)
+     * @param string      $invoice_id
+     *                                         The invoice identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -437,10 +454,15 @@ class InvoicesApi
      */
     public function getInvoiceWithHttpInfo(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoice');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -541,11 +563,16 @@ class InvoicesApi
      */
     public function getInvoiceAsyncWithHttpInfo(
         string $marketplace_id,
-        string $invoice_id
+        string $invoice_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse';
         $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoice');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoiceRateLimiter->consume()->ensureAccepted();
         }
@@ -723,6 +750,7 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -741,9 +769,10 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $restrictedDataToken = null
     ): GetInvoicesResponse {
-        list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
+        list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by, $restrictedDataToken);
 
         return $response;
     }
@@ -779,6 +808,7 @@ class InvoicesApi
      *                                                    Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)
      * @param null|string    $sort_by
      *                                                    The attribute by which you want to sort the invoices in the response. (optional)
+     * @param null|string    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -799,10 +829,15 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoices');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -975,11 +1010,16 @@ class InvoicesApi
         ?string $invoice_type = null,
         ?array $statuses = null,
         ?string $external_invoice_id = null,
-        ?string $sort_by = null
+        ?string $sort_by = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse';
         $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoices');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesRateLimiter->consume()->ensureAccepted();
         }
@@ -1283,16 +1323,18 @@ class InvoicesApi
     /**
      * Operation getInvoicesAttributes.
      *
-     * @param string $marketplace_id
-     *                               The marketplace identifier. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributes(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): GetInvoicesAttributesResponse {
-        list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id);
+        list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1300,8 +1342,9 @@ class InvoicesApi
     /**
      * Operation getInvoicesAttributesWithHttpInfo.
      *
-     * @param string $marketplace_id
-     *                               The marketplace identifier. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1309,10 +1352,15 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesAttributesRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesAttributes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1407,11 +1455,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesAttributesAsyncWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
         $request = $this->getInvoicesAttributesRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesAttributes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesAttributesRateLimiter->consume()->ensureAccepted();
         }
@@ -1543,16 +1596,18 @@ class InvoicesApi
     /**
      * Operation getInvoicesDocument.
      *
-     * @param string $invoices_document_id
-     *                                     The export document identifier. (required)
+     * @param string      $invoices_document_id
+     *                                          The export document identifier. (required)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocument(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $restrictedDataToken = null
     ): GetInvoicesDocumentResponse {
-        list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id);
+        list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1560,8 +1615,9 @@ class InvoicesApi
     /**
      * Operation getInvoicesDocumentWithHttpInfo.
      *
-     * @param string $invoices_document_id
-     *                                     The export document identifier. (required)
+     * @param string      $invoices_document_id
+     *                                          The export document identifier. (required)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1569,10 +1625,15 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentWithHttpInfo(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesDocumentRequest($invoices_document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1667,11 +1728,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesDocumentAsyncWithHttpInfo(
-        string $invoices_document_id
+        string $invoices_document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
         $request = $this->getInvoicesDocumentRequest($invoices_document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -1801,16 +1867,18 @@ class InvoicesApi
     /**
      * Operation getInvoicesExport.
      *
-     * @param string $export_id
-     *                          The unique identifier for the export. (required)
+     * @param string      $export_id
+     *                                         The unique identifier for the export. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExport(
-        string $export_id
+        string $export_id,
+        ?string $restrictedDataToken = null
     ): GetInvoicesExportResponse {
-        list($response) = $this->getInvoicesExportWithHttpInfo($export_id);
+        list($response) = $this->getInvoicesExportWithHttpInfo($export_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1818,8 +1886,9 @@ class InvoicesApi
     /**
      * Operation getInvoicesExportWithHttpInfo.
      *
-     * @param string $export_id
-     *                          The unique identifier for the export. (required)
+     * @param string      $export_id
+     *                                         The unique identifier for the export. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1827,10 +1896,15 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportWithHttpInfo(
-        string $export_id
+        string $export_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesExportRequest($export_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExport');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1925,11 +1999,16 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      */
     public function getInvoicesExportAsyncWithHttpInfo(
-        string $export_id
+        string $export_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
         $request = $this->getInvoicesExportRequest($export_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExport');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesExportRateLimiter->consume()->ensureAccepted();
         }
@@ -2060,17 +2139,18 @@ class InvoicesApi
      * Operation getInvoicesExports.
      *
      * @param string         $marketplace_id
-     *                                       The returned exports match the specified marketplace. (required)
+     *                                            The returned exports match the specified marketplace. (required)
      * @param null|\DateTime $date_start
-     *                                       The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago. (optional)
+     *                                            The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago. (optional)
      * @param null|string    $next_token
-     *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param null|int       $page_size
-     *                                       The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)
+     *                                            The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)
      * @param null|\DateTime $date_end
-     *                                       The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
+     *                                            The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
-     *                                       Return exports matching the status specified. (optional)
+     *                                            Return exports matching the status specified. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2081,9 +2161,10 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $restrictedDataToken = null
     ): GetInvoicesExportsResponse {
-        list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
+        list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status, $restrictedDataToken);
 
         return $response;
     }
@@ -2092,17 +2173,18 @@ class InvoicesApi
      * Operation getInvoicesExportsWithHttpInfo.
      *
      * @param string         $marketplace_id
-     *                                       The returned exports match the specified marketplace. (required)
+     *                                            The returned exports match the specified marketplace. (required)
      * @param null|\DateTime $date_start
-     *                                       The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago. (optional)
+     *                                            The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago. (optional)
      * @param null|string    $next_token
-     *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param null|int       $page_size
-     *                                       The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)
+     *                                            The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100 (optional)
      * @param null|\DateTime $date_end
-     *                                       The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
+     *                                            The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)
      * @param null|string    $status
-     *                                       Return exports matching the status specified. (optional)
+     *                                            Return exports matching the status specified. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2115,10 +2197,15 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExports');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2243,11 +2330,16 @@ class InvoicesApi
         ?string $next_token = null,
         ?int $page_size = null,
         ?\DateTime $date_end = null,
-        ?string $status = null
+        ?string $status = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
         $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExports');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoicesExportsRateLimiter->consume()->ensureAccepted();
         }

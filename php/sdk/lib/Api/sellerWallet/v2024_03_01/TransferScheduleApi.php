@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule;
@@ -148,6 +149,7 @@ class TransferScheduleApi
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
      *                                                                The payload of the request. (required)
+     * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -155,9 +157,10 @@ class TransferScheduleApi
     public function createTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        TransferScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body);
+        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -173,6 +176,7 @@ class TransferScheduleApi
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
      *                                                                The payload of the request. (required)
+     * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
      *
@@ -182,10 +186,15 @@ class TransferScheduleApi
     public function createTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        TransferScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -296,11 +305,16 @@ class TransferScheduleApi
     public function createTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        TransferScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -456,16 +470,18 @@ class TransferScheduleApi
      *
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param string      $transfer_schedule_id
+     *                                          A unique reference ID for a scheduled transfer. (required)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransaction(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): DeleteTransferSchedule {
-        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id);
+        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
 
         return $response;
     }
@@ -475,8 +491,9 @@ class TransferScheduleApi
      *
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param string      $transfer_schedule_id
+     *                                          A unique reference ID for a scheduled transfer. (required)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule, HTTP status code, HTTP response headers (array of strings)
      *
@@ -484,10 +501,15 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -586,11 +608,16 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionAsyncWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule';
         $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteScheduleTransactionRateLimiter->consume()->ensureAccepted();
         }
@@ -722,16 +749,18 @@ class TransferScheduleApi
      *
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
-     * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string      $transfer_schedule_id
+     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getTransferSchedule(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id);
+        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
 
         return $response;
     }
@@ -741,8 +770,9 @@ class TransferScheduleApi
      *
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
-     * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string      $transfer_schedule_id
+     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
      *
@@ -750,10 +780,15 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransferScheduleRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -852,11 +887,16 @@ class TransferScheduleApi
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleAsyncWithHttpInfo(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->getTransferScheduleRequest($transfer_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -989,18 +1029,20 @@ class TransferScheduleApi
      * The API will return all the transfer schedules for a given Amazon Seller Wallet account
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listTransferSchedules(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): TransferScheduleListing {
-        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token);
+        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1011,9 +1053,10 @@ class TransferScheduleApi
      * The API will return all the transfer schedules for a given Amazon Seller Wallet account
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1022,10 +1065,15 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1130,11 +1178,16 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesAsyncWithHttpInfo(
         string $account_id,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing';
         $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listTransferSchedulesRateLimiter->consume()->ensureAccepted();
         }
@@ -1287,6 +1340,7 @@ class TransferScheduleApi
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
      *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1294,9 +1348,10 @@ class TransferScheduleApi
     public function updateTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        TransferSchedule $body,
+        ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body);
+        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1312,6 +1367,7 @@ class TransferScheduleApi
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
      *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1321,10 +1377,15 @@ class TransferScheduleApi
     public function updateTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        TransferSchedule $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1435,11 +1496,16 @@ class TransferScheduleApi
     public function updateTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        TransferSchedule $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateTransferScheduleRateLimiter->consume()->ensureAccepted();
         }

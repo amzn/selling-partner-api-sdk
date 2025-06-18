@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse;
@@ -134,15 +135,17 @@ class DefaultApi
      *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getPaymentMethods(
         string $marketplace_id,
-        ?array $payment_method_types = null
+        ?array $payment_method_types = null,
+        ?string $restrictedDataToken = null
     ): GetPaymentMethodsResponse {
-        list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types);
+        list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types, $restrictedDataToken);
 
         return $response;
     }
@@ -154,6 +157,7 @@ class DefaultApi
      *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -162,10 +166,15 @@ class DefaultApi
      */
     public function getPaymentMethodsWithHttpInfo(
         string $marketplace_id,
-        ?array $payment_method_types = null
+        ?array $payment_method_types = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-getPaymentMethods');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -266,11 +275,16 @@ class DefaultApi
      */
     public function getPaymentMethodsAsyncWithHttpInfo(
         string $marketplace_id,
-        ?array $payment_method_types = null
+        ?array $payment_method_types = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-getPaymentMethods');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPaymentMethodsRateLimiter->consume()->ensureAccepted();
         }
@@ -419,15 +433,17 @@ class DefaultApi
      * Operation initiatePayout.
      *
      * @param InitiatePayoutRequest $body
-     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     *                                                   The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function initiatePayout(
-        InitiatePayoutRequest $body
+        InitiatePayoutRequest $body,
+        ?string $restrictedDataToken = null
     ): InitiatePayoutResponse {
-        list($response) = $this->initiatePayoutWithHttpInfo($body);
+        list($response) = $this->initiatePayoutWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -436,7 +452,8 @@ class DefaultApi
      * Operation initiatePayoutWithHttpInfo.
      *
      * @param InitiatePayoutRequest $body
-     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     *                                                   The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -444,10 +461,15 @@ class DefaultApi
      * @throws \InvalidArgumentException
      */
     public function initiatePayoutWithHttpInfo(
-        InitiatePayoutRequest $body
+        InitiatePayoutRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->initiatePayoutRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-initiatePayout');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -542,11 +564,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      */
     public function initiatePayoutAsyncWithHttpInfo(
-        InitiatePayoutRequest $body
+        InitiatePayoutRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
         $request = $this->initiatePayoutRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-initiatePayout');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->initiatePayoutRateLimiter->consume()->ensureAccepted();
         }

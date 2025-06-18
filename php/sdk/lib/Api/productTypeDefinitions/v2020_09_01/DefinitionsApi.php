@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition;
@@ -143,6 +144,7 @@ class DefinitionsApi
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -154,9 +156,10 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $restrictedDataToken = null
     ): ProductTypeDefinition {
-        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
+        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $restrictedDataToken);
 
         return $response;
     }
@@ -178,6 +181,7 @@ class DefinitionsApi
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition, HTTP status code, HTTP response headers (array of strings)
      *
@@ -191,10 +195,15 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -325,11 +334,16 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition';
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDefinitionsProductTypeRateLimiter->consume()->ensureAccepted();
         }
@@ -545,15 +559,16 @@ class DefinitionsApi
      * Operation searchDefinitionsProductTypes.
      *
      * @param string[]      $marketplace_ids
-     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param null|string[] $keywords
-     *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     *                                           A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                           The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                           The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                           The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -563,9 +578,10 @@ class DefinitionsApi
         ?array $keywords = null,
         ?string $item_name = null,
         ?string $locale = null,
-        ?string $search_locale = null
+        ?string $search_locale = null,
+        ?string $restrictedDataToken = null
     ): ProductTypeList {
-        list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
+        list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale, $restrictedDataToken);
 
         return $response;
     }
@@ -574,15 +590,16 @@ class DefinitionsApi
      * Operation searchDefinitionsProductTypesWithHttpInfo.
      *
      * @param string[]      $marketplace_ids
-     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param null|string[] $keywords
-     *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     *                                           A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                           The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                           The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                           The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList, HTTP status code, HTTP response headers (array of strings)
      *
@@ -594,10 +611,15 @@ class DefinitionsApi
         ?array $keywords = null,
         ?string $item_name = null,
         ?string $locale = null,
-        ?string $search_locale = null
+        ?string $search_locale = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-searchDefinitionsProductTypes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -716,11 +738,16 @@ class DefinitionsApi
         ?array $keywords = null,
         ?string $item_name = null,
         ?string $locale = null,
-        ?string $search_locale = null
+        ?string $search_locale = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList';
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-searchDefinitionsProductTypes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->searchDefinitionsProductTypesRateLimiter->consume()->ensureAccepted();
         }

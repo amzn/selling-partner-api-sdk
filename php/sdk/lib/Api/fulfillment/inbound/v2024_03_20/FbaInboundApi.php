@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse;
@@ -315,16 +316,18 @@ class FbaInboundApi
     /**
      * Operation cancelInboundPlan.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelInboundPlan(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): CancelInboundPlanResponse {
-        list($response) = $this->cancelInboundPlanWithHttpInfo($inbound_plan_id);
+        list($response) = $this->cancelInboundPlanWithHttpInfo($inbound_plan_id, $restrictedDataToken);
 
         return $response;
     }
@@ -332,8 +335,9 @@ class FbaInboundApi
     /**
      * Operation cancelInboundPlanWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -341,10 +345,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundPlanWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelInboundPlan');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -439,11 +448,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelInboundPlanAsyncWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse';
         $request = $this->cancelInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelInboundPlan');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelInboundPlanRateLimiter->consume()->ensureAccepted();
         }
@@ -583,11 +597,12 @@ class FbaInboundApi
      * Operation cancelSelfShipAppointment.
      *
      * @param string                           $inbound_plan_id
-     *                                                          Identifier of an inbound plan. (required)
+     *                                                              Identifier of an inbound plan. (required)
      * @param string                           $shipment_id
-     *                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param CancelSelfShipAppointmentRequest $body
-     *                                                          The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     *                                                              The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -595,9 +610,10 @@ class FbaInboundApi
     public function cancelSelfShipAppointment(
         string $inbound_plan_id,
         string $shipment_id,
-        CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): CancelSelfShipAppointmentResponse {
-        list($response) = $this->cancelSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->cancelSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -606,11 +622,12 @@ class FbaInboundApi
      * Operation cancelSelfShipAppointmentWithHttpInfo.
      *
      * @param string                           $inbound_plan_id
-     *                                                          Identifier of an inbound plan. (required)
+     *                                                              Identifier of an inbound plan. (required)
      * @param string                           $shipment_id
-     *                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param CancelSelfShipAppointmentRequest $body
-     *                                                          The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     *                                                              The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -620,10 +637,15 @@ class FbaInboundApi
     public function cancelSelfShipAppointmentWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelSelfShipAppointment');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -730,11 +752,16 @@ class FbaInboundApi
     public function cancelSelfShipAppointmentAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse';
         $request = $this->cancelSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelSelfShipAppointment');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
         }
@@ -916,12 +943,13 @@ class FbaInboundApi
     /**
      * Operation confirmDeliveryWindowOptions.
      *
-     * @param string $inbound_plan_id
-     *                                          Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                          The shipment to confirm the delivery window option for. (required)
-     * @param string $delivery_window_option_id
-     *                                          The id of the delivery window option to be confirmed. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               The shipment to confirm the delivery window option for. (required)
+     * @param string      $delivery_window_option_id
+     *                                               The id of the delivery window option to be confirmed. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -929,9 +957,10 @@ class FbaInboundApi
     public function confirmDeliveryWindowOptions(
         string $inbound_plan_id,
         string $shipment_id,
-        string $delivery_window_option_id
+        string $delivery_window_option_id,
+        ?string $restrictedDataToken = null
     ): ConfirmDeliveryWindowOptionsResponse {
-        list($response) = $this->confirmDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $delivery_window_option_id);
+        list($response) = $this->confirmDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $delivery_window_option_id, $restrictedDataToken);
 
         return $response;
     }
@@ -939,12 +968,13 @@ class FbaInboundApi
     /**
      * Operation confirmDeliveryWindowOptionsWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                          Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                          The shipment to confirm the delivery window option for. (required)
-     * @param string $delivery_window_option_id
-     *                                          The id of the delivery window option to be confirmed. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               The shipment to confirm the delivery window option for. (required)
+     * @param string      $delivery_window_option_id
+     *                                               The id of the delivery window option to be confirmed. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -954,10 +984,15 @@ class FbaInboundApi
     public function confirmDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $delivery_window_option_id
+        string $delivery_window_option_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $delivery_window_option_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmDeliveryWindowOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1064,11 +1099,16 @@ class FbaInboundApi
     public function confirmDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $delivery_window_option_id
+        string $delivery_window_option_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse';
         $request = $this->confirmDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $delivery_window_option_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmDeliveryWindowOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -1261,19 +1301,21 @@ class FbaInboundApi
     /**
      * Operation confirmPackingOption.
      *
-     * @param string $inbound_plan_id
-     *                                  Identifier of an inbound plan. (required)
-     * @param string $packing_option_id
-     *                                  Identifier of a packing option. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_option_id
+     *                                         Identifier of a packing option. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function confirmPackingOption(
         string $inbound_plan_id,
-        string $packing_option_id
+        string $packing_option_id,
+        ?string $restrictedDataToken = null
     ): ConfirmPackingOptionResponse {
-        list($response) = $this->confirmPackingOptionWithHttpInfo($inbound_plan_id, $packing_option_id);
+        list($response) = $this->confirmPackingOptionWithHttpInfo($inbound_plan_id, $packing_option_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1281,10 +1323,11 @@ class FbaInboundApi
     /**
      * Operation confirmPackingOptionWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                  Identifier of an inbound plan. (required)
-     * @param string $packing_option_id
-     *                                  Identifier of a packing option. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_option_id
+     *                                         Identifier of a packing option. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1293,10 +1336,15 @@ class FbaInboundApi
      */
     public function confirmPackingOptionWithHttpInfo(
         string $inbound_plan_id,
-        string $packing_option_id
+        string $packing_option_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmPackingOptionRequest($inbound_plan_id, $packing_option_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPackingOption');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1397,11 +1445,16 @@ class FbaInboundApi
      */
     public function confirmPackingOptionAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $packing_option_id
+        string $packing_option_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse';
         $request = $this->confirmPackingOptionRequest($inbound_plan_id, $packing_option_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPackingOption');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmPackingOptionRateLimiter->consume()->ensureAccepted();
         }
@@ -1567,19 +1620,21 @@ class FbaInboundApi
     /**
      * Operation confirmPlacementOption.
      *
-     * @param string $inbound_plan_id
-     *                                    Identifier of an inbound plan. (required)
-     * @param string $placement_option_id
-     *                                    The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $placement_option_id
+     *                                         The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function confirmPlacementOption(
         string $inbound_plan_id,
-        string $placement_option_id
+        string $placement_option_id,
+        ?string $restrictedDataToken = null
     ): ConfirmPlacementOptionResponse {
-        list($response) = $this->confirmPlacementOptionWithHttpInfo($inbound_plan_id, $placement_option_id);
+        list($response) = $this->confirmPlacementOptionWithHttpInfo($inbound_plan_id, $placement_option_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1587,10 +1642,11 @@ class FbaInboundApi
     /**
      * Operation confirmPlacementOptionWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                    Identifier of an inbound plan. (required)
-     * @param string $placement_option_id
-     *                                    The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $placement_option_id
+     *                                         The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1599,10 +1655,15 @@ class FbaInboundApi
      */
     public function confirmPlacementOptionWithHttpInfo(
         string $inbound_plan_id,
-        string $placement_option_id
+        string $placement_option_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmPlacementOptionRequest($inbound_plan_id, $placement_option_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPlacementOption');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1703,11 +1764,16 @@ class FbaInboundApi
      */
     public function confirmPlacementOptionAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $placement_option_id
+        string $placement_option_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse';
         $request = $this->confirmPlacementOptionRequest($inbound_plan_id, $placement_option_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPlacementOption');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmPlacementOptionRateLimiter->consume()->ensureAccepted();
         }
@@ -1873,12 +1939,13 @@ class FbaInboundApi
     /**
      * Operation confirmShipmentContentUpdatePreview.
      *
-     * @param string $inbound_plan_id
-     *                                          Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param string $content_update_preview_id
-     *                                          Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1886,9 +1953,10 @@ class FbaInboundApi
     public function confirmShipmentContentUpdatePreview(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): ConfirmShipmentContentUpdatePreviewResponse {
-        list($response) = $this->confirmShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id);
+        list($response) = $this->confirmShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1896,12 +1964,13 @@ class FbaInboundApi
     /**
      * Operation confirmShipmentContentUpdatePreviewWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                          Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param string $content_update_preview_id
-     *                                          Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1911,10 +1980,15 @@ class FbaInboundApi
     public function confirmShipmentContentUpdatePreviewWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmShipmentContentUpdatePreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2021,11 +2095,16 @@ class FbaInboundApi
     public function confirmShipmentContentUpdatePreviewAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse';
         $request = $this->confirmShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmShipmentContentUpdatePreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
         }
@@ -2219,18 +2298,20 @@ class FbaInboundApi
      * Operation confirmTransportationOptions.
      *
      * @param string                              $inbound_plan_id
-     *                                                             Identifier of an inbound plan. (required)
+     *                                                                 Identifier of an inbound plan. (required)
      * @param ConfirmTransportationOptionsRequest $body
-     *                                                             The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     *                                                                 The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param null|string                         $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function confirmTransportationOptions(
         string $inbound_plan_id,
-        ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): ConfirmTransportationOptionsResponse {
-        list($response) = $this->confirmTransportationOptionsWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->confirmTransportationOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -2239,9 +2320,10 @@ class FbaInboundApi
      * Operation confirmTransportationOptionsWithHttpInfo.
      *
      * @param string                              $inbound_plan_id
-     *                                                             Identifier of an inbound plan. (required)
+     *                                                                 Identifier of an inbound plan. (required)
      * @param ConfirmTransportationOptionsRequest $body
-     *                                                             The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     *                                                                 The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param null|string                         $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2250,10 +2332,15 @@ class FbaInboundApi
      */
     public function confirmTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
-        ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmTransportationOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2354,11 +2441,16 @@ class FbaInboundApi
      */
     public function confirmTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse';
         $request = $this->confirmTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmTransportationOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -2514,15 +2606,17 @@ class FbaInboundApi
      * Operation createInboundPlan.
      *
      * @param CreateInboundPlanRequest $body
-     *                                       The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     *                                                      The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createInboundPlan(
-        CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateInboundPlanResponse {
-        list($response) = $this->createInboundPlanWithHttpInfo($body);
+        list($response) = $this->createInboundPlanWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -2531,7 +2625,8 @@ class FbaInboundApi
      * Operation createInboundPlanWithHttpInfo.
      *
      * @param CreateInboundPlanRequest $body
-     *                                       The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     *                                                      The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2539,10 +2634,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createInboundPlanWithHttpInfo(
-        CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInboundPlanRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createInboundPlan');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2637,11 +2737,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createInboundPlanAsyncWithHttpInfo(
-        CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse';
         $request = $this->createInboundPlanRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createInboundPlan');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createInboundPlanRateLimiter->consume()->ensureAccepted();
         }
@@ -2769,15 +2874,17 @@ class FbaInboundApi
      * Operation createMarketplaceItemLabels.
      *
      * @param CreateMarketplaceItemLabelsRequest $body
-     *                                                 The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     *                                                                The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabels(
-        CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateMarketplaceItemLabelsResponse {
-        list($response) = $this->createMarketplaceItemLabelsWithHttpInfo($body);
+        list($response) = $this->createMarketplaceItemLabelsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -2786,7 +2893,8 @@ class FbaInboundApi
      * Operation createMarketplaceItemLabelsWithHttpInfo.
      *
      * @param CreateMarketplaceItemLabelsRequest $body
-     *                                                 The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     *                                                                The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2794,10 +2902,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabelsWithHttpInfo(
-        CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createMarketplaceItemLabelsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createMarketplaceItemLabels');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2892,11 +3005,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabelsAsyncWithHttpInfo(
-        CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse';
         $request = $this->createMarketplaceItemLabelsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createMarketplaceItemLabels');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createMarketplaceItemLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -3023,19 +3141,21 @@ class FbaInboundApi
     /**
      * Operation generateDeliveryWindowOptions.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                The shipment to generate delivery window options for. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         The shipment to generate delivery window options for. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function generateDeliveryWindowOptions(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GenerateDeliveryWindowOptionsResponse {
-        list($response) = $this->generateDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id);
+        list($response) = $this->generateDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3043,10 +3163,11 @@ class FbaInboundApi
     /**
      * Operation generateDeliveryWindowOptionsWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                The shipment to generate delivery window options for. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         The shipment to generate delivery window options for. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3055,10 +3176,15 @@ class FbaInboundApi
      */
     public function generateDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateDeliveryWindowOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3159,11 +3285,16 @@ class FbaInboundApi
      */
     public function generateDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse';
         $request = $this->generateDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateDeliveryWindowOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -3329,16 +3460,18 @@ class FbaInboundApi
     /**
      * Operation generatePackingOptions.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function generatePackingOptions(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): GeneratePackingOptionsResponse {
-        list($response) = $this->generatePackingOptionsWithHttpInfo($inbound_plan_id);
+        list($response) = $this->generatePackingOptionsWithHttpInfo($inbound_plan_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3346,8 +3479,9 @@ class FbaInboundApi
     /**
      * Operation generatePackingOptionsWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3355,10 +3489,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function generatePackingOptionsWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generatePackingOptionsRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePackingOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3453,11 +3592,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function generatePackingOptionsAsyncWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse';
         $request = $this->generatePackingOptionsRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePackingOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generatePackingOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -3597,18 +3741,20 @@ class FbaInboundApi
      * Operation generatePlacementOptions.
      *
      * @param string                          $inbound_plan_id
-     *                                                         Identifier of an inbound plan. (required)
+     *                                                             Identifier of an inbound plan. (required)
      * @param GeneratePlacementOptionsRequest $body
-     *                                                         The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     *                                                             The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function generatePlacementOptions(
         string $inbound_plan_id,
-        GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): GeneratePlacementOptionsResponse {
-        list($response) = $this->generatePlacementOptionsWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->generatePlacementOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3617,9 +3763,10 @@ class FbaInboundApi
      * Operation generatePlacementOptionsWithHttpInfo.
      *
      * @param string                          $inbound_plan_id
-     *                                                         Identifier of an inbound plan. (required)
+     *                                                             Identifier of an inbound plan. (required)
      * @param GeneratePlacementOptionsRequest $body
-     *                                                         The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     *                                                             The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3628,10 +3775,15 @@ class FbaInboundApi
      */
     public function generatePlacementOptionsWithHttpInfo(
         string $inbound_plan_id,
-        GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generatePlacementOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePlacementOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3732,11 +3884,16 @@ class FbaInboundApi
      */
     public function generatePlacementOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse';
         $request = $this->generatePlacementOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePlacementOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generatePlacementOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -3892,11 +4049,12 @@ class FbaInboundApi
      * Operation generateSelfShipAppointmentSlots.
      *
      * @param string                                  $inbound_plan_id
-     *                                                                 Identifier of an inbound plan. (required)
+     *                                                                     Identifier of an inbound plan. (required)
      * @param string                                  $shipment_id
-     *                                                                 Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                     Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param GenerateSelfShipAppointmentSlotsRequest $body
-     *                                                                 The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     *                                                                     The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param null|string                             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3904,9 +4062,10 @@ class FbaInboundApi
     public function generateSelfShipAppointmentSlots(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): GenerateSelfShipAppointmentSlotsResponse {
-        list($response) = $this->generateSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->generateSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3915,11 +4074,12 @@ class FbaInboundApi
      * Operation generateSelfShipAppointmentSlotsWithHttpInfo.
      *
      * @param string                                  $inbound_plan_id
-     *                                                                 Identifier of an inbound plan. (required)
+     *                                                                     Identifier of an inbound plan. (required)
      * @param string                                  $shipment_id
-     *                                                                 Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                     Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param GenerateSelfShipAppointmentSlotsRequest $body
-     *                                                                 The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     *                                                                     The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param null|string                             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3929,10 +4089,15 @@ class FbaInboundApi
     public function generateSelfShipAppointmentSlotsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateSelfShipAppointmentSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4039,11 +4204,16 @@ class FbaInboundApi
     public function generateSelfShipAppointmentSlotsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse';
         $request = $this->generateSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateSelfShipAppointmentSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -4226,11 +4396,12 @@ class FbaInboundApi
      * Operation generateShipmentContentUpdatePreviews.
      *
      * @param string                                       $inbound_plan_id
-     *                                                                      Identifier of an inbound plan. (required)
+     *                                                                          Identifier of an inbound plan. (required)
      * @param string                                       $shipment_id
-     *                                                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param GenerateShipmentContentUpdatePreviewsRequest $body
-     *                                                                      The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     *                                                                          The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param null|string                                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -4238,9 +4409,10 @@ class FbaInboundApi
     public function generateShipmentContentUpdatePreviews(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): GenerateShipmentContentUpdatePreviewsResponse {
-        list($response) = $this->generateShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->generateShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4249,11 +4421,12 @@ class FbaInboundApi
      * Operation generateShipmentContentUpdatePreviewsWithHttpInfo.
      *
      * @param string                                       $inbound_plan_id
-     *                                                                      Identifier of an inbound plan. (required)
+     *                                                                          Identifier of an inbound plan. (required)
      * @param string                                       $shipment_id
-     *                                                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param GenerateShipmentContentUpdatePreviewsRequest $body
-     *                                                                      The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     *                                                                          The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param null|string                                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4263,10 +4436,15 @@ class FbaInboundApi
     public function generateShipmentContentUpdatePreviewsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateShipmentContentUpdatePreviews');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4373,11 +4551,16 @@ class FbaInboundApi
     public function generateShipmentContentUpdatePreviewsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse';
         $request = $this->generateShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateShipmentContentUpdatePreviews');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
         }
@@ -4560,18 +4743,20 @@ class FbaInboundApi
      * Operation generateTransportationOptions.
      *
      * @param string                               $inbound_plan_id
-     *                                                              Identifier of an inbound plan. (required)
+     *                                                                  Identifier of an inbound plan. (required)
      * @param GenerateTransportationOptionsRequest $body
-     *                                                              The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     *                                                                  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function generateTransportationOptions(
         string $inbound_plan_id,
-        GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): GenerateTransportationOptionsResponse {
-        list($response) = $this->generateTransportationOptionsWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->generateTransportationOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4580,9 +4765,10 @@ class FbaInboundApi
      * Operation generateTransportationOptionsWithHttpInfo.
      *
      * @param string                               $inbound_plan_id
-     *                                                              Identifier of an inbound plan. (required)
+     *                                                                  Identifier of an inbound plan. (required)
      * @param GenerateTransportationOptionsRequest $body
-     *                                                              The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     *                                                                  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4591,10 +4777,15 @@ class FbaInboundApi
      */
     public function generateTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
-        GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateTransportationOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4695,11 +4886,16 @@ class FbaInboundApi
      */
     public function generateTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse';
         $request = $this->generateTransportationOptionsRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateTransportationOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->generateTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -4854,19 +5050,21 @@ class FbaInboundApi
     /**
      * Operation getDeliveryChallanDocument.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getDeliveryChallanDocument(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetDeliveryChallanDocumentResponse {
-        list($response) = $this->getDeliveryChallanDocumentWithHttpInfo($inbound_plan_id, $shipment_id);
+        list($response) = $this->getDeliveryChallanDocumentWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -4874,10 +5072,11 @@ class FbaInboundApi
     /**
      * Operation getDeliveryChallanDocumentWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4886,10 +5085,15 @@ class FbaInboundApi
      */
     public function getDeliveryChallanDocumentWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDeliveryChallanDocumentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getDeliveryChallanDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4990,11 +5194,16 @@ class FbaInboundApi
      */
     public function getDeliveryChallanDocumentAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse';
         $request = $this->getDeliveryChallanDocumentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getDeliveryChallanDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDeliveryChallanDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -5160,16 +5369,18 @@ class FbaInboundApi
     /**
      * Operation getInboundOperationStatus.
      *
-     * @param string $operation_id
-     *                             Identifier of an asynchronous operation. (required)
+     * @param string      $operation_id
+     *                                         Identifier of an asynchronous operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatus(
-        string $operation_id
+        string $operation_id,
+        ?string $restrictedDataToken = null
     ): InboundOperationStatus {
-        list($response) = $this->getInboundOperationStatusWithHttpInfo($operation_id);
+        list($response) = $this->getInboundOperationStatusWithHttpInfo($operation_id, $restrictedDataToken);
 
         return $response;
     }
@@ -5177,8 +5388,9 @@ class FbaInboundApi
     /**
      * Operation getInboundOperationStatusWithHttpInfo.
      *
-     * @param string $operation_id
-     *                             Identifier of an asynchronous operation. (required)
+     * @param string      $operation_id
+     *                                         Identifier of an asynchronous operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus, HTTP status code, HTTP response headers (array of strings)
      *
@@ -5186,10 +5398,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatusWithHttpInfo(
-        string $operation_id
+        string $operation_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundOperationStatusRequest($operation_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundOperationStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5284,11 +5501,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatusAsyncWithHttpInfo(
-        string $operation_id
+        string $operation_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus';
         $request = $this->getInboundOperationStatusRequest($operation_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundOperationStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundOperationStatusRateLimiter->consume()->ensureAccepted();
         }
@@ -5427,16 +5649,18 @@ class FbaInboundApi
     /**
      * Operation getInboundPlan.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInboundPlan(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): InboundPlan {
-        list($response) = $this->getInboundPlanWithHttpInfo($inbound_plan_id);
+        list($response) = $this->getInboundPlanWithHttpInfo($inbound_plan_id, $restrictedDataToken);
 
         return $response;
     }
@@ -5444,8 +5668,9 @@ class FbaInboundApi
     /**
      * Operation getInboundPlanWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan, HTTP status code, HTTP response headers (array of strings)
      *
@@ -5453,10 +5678,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundPlanWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundPlan');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5551,11 +5781,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function getInboundPlanAsyncWithHttpInfo(
-        string $inbound_plan_id
+        string $inbound_plan_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan';
         $request = $this->getInboundPlanRequest($inbound_plan_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundPlan');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInboundPlanRateLimiter->consume()->ensureAccepted();
         }
@@ -5695,13 +5930,14 @@ class FbaInboundApi
      * Operation getSelfShipAppointmentSlots.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -5710,9 +5946,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): GetSelfShipAppointmentSlotsResponse {
-        list($response) = $this->getSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->getSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -5721,13 +5958,14 @@ class FbaInboundApi
      * Operation getSelfShipAppointmentSlotsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -5738,10 +5976,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getSelfShipAppointmentSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5854,11 +6097,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse';
         $request = $this->getSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getSelfShipAppointmentSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -6065,19 +6313,21 @@ class FbaInboundApi
     /**
      * Operation getShipment.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getShipment(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): Shipment {
-        list($response) = $this->getShipmentWithHttpInfo($inbound_plan_id, $shipment_id);
+        list($response) = $this->getShipmentWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -6085,10 +6335,11 @@ class FbaInboundApi
     /**
      * Operation getShipmentWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment, HTTP status code, HTTP response headers (array of strings)
      *
@@ -6097,10 +6348,15 @@ class FbaInboundApi
      */
     public function getShipmentWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipment');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -6201,11 +6457,16 @@ class FbaInboundApi
      */
     public function getShipmentAsyncWithHttpInfo(
         string $inbound_plan_id,
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment';
         $request = $this->getShipmentRequest($inbound_plan_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipment');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -6371,12 +6632,13 @@ class FbaInboundApi
     /**
      * Operation getShipmentContentUpdatePreview.
      *
-     * @param string $inbound_plan_id
-     *                                          Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param string $content_update_preview_id
-     *                                          Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -6384,9 +6646,10 @@ class FbaInboundApi
     public function getShipmentContentUpdatePreview(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): ContentUpdatePreview {
-        list($response) = $this->getShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id);
+        list($response) = $this->getShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id, $restrictedDataToken);
 
         return $response;
     }
@@ -6394,12 +6657,13 @@ class FbaInboundApi
     /**
      * Operation getShipmentContentUpdatePreviewWithHttpInfo.
      *
-     * @param string $inbound_plan_id
-     *                                          Identifier of an inbound plan. (required)
-     * @param string $shipment_id
-     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param string $content_update_preview_id
-     *                                          Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview, HTTP status code, HTTP response headers (array of strings)
      *
@@ -6409,10 +6673,15 @@ class FbaInboundApi
     public function getShipmentContentUpdatePreviewWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentContentUpdatePreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -6519,11 +6788,16 @@ class FbaInboundApi
     public function getShipmentContentUpdatePreviewAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        string $content_update_preview_id
+        string $content_update_preview_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview';
         $request = $this->getShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentContentUpdatePreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
         }
@@ -6717,13 +6991,14 @@ class FbaInboundApi
      * Operation listDeliveryWindowOptions.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      The shipment to get delivery window options for. (required)
+     *                                         The shipment to get delivery window options for. (required)
      * @param null|int    $page_size
-     *                                      The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of delivery window options to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -6732,9 +7007,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListDeliveryWindowOptionsResponse {
-        list($response) = $this->listDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -6743,13 +7019,14 @@ class FbaInboundApi
      * Operation listDeliveryWindowOptionsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      The shipment to get delivery window options for. (required)
+     *                                         The shipment to get delivery window options for. (required)
      * @param null|int    $page_size
-     *                                      The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of delivery window options to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -6760,10 +7037,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listDeliveryWindowOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -6876,11 +7158,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse';
         $request = $this->listDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listDeliveryWindowOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -7088,11 +7375,12 @@ class FbaInboundApi
      * Operation listInboundPlanBoxes.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -7100,9 +7388,10 @@ class FbaInboundApi
     public function listInboundPlanBoxes(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlanBoxesResponse {
-        list($response) = $this->listInboundPlanBoxesWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listInboundPlanBoxesWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -7111,11 +7400,12 @@ class FbaInboundApi
      * Operation listInboundPlanBoxesWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -7125,10 +7415,15 @@ class FbaInboundApi
     public function listInboundPlanBoxesWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanBoxesRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanBoxes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -7235,11 +7530,16 @@ class FbaInboundApi
     public function listInboundPlanBoxesAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse';
         $request = $this->listInboundPlanBoxesRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanBoxes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlanBoxesRateLimiter->consume()->ensureAccepted();
         }
@@ -7420,11 +7720,12 @@ class FbaInboundApi
      * Operation listInboundPlanItems.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -7432,9 +7733,10 @@ class FbaInboundApi
     public function listInboundPlanItems(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlanItemsResponse {
-        list($response) = $this->listInboundPlanItemsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listInboundPlanItemsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -7443,11 +7745,12 @@ class FbaInboundApi
      * Operation listInboundPlanItemsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -7457,10 +7760,15 @@ class FbaInboundApi
     public function listInboundPlanItemsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanItemsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -7567,11 +7875,16 @@ class FbaInboundApi
     public function listInboundPlanItemsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse';
         $request = $this->listInboundPlanItemsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlanItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -7752,11 +8065,12 @@ class FbaInboundApi
      * Operation listInboundPlanPallets.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -7764,9 +8078,10 @@ class FbaInboundApi
     public function listInboundPlanPallets(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlanPalletsResponse {
-        list($response) = $this->listInboundPlanPalletsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listInboundPlanPalletsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -7775,11 +8090,12 @@ class FbaInboundApi
      * Operation listInboundPlanPalletsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -7789,10 +8105,15 @@ class FbaInboundApi
     public function listInboundPlanPalletsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanPalletsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanPallets');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -7899,11 +8220,16 @@ class FbaInboundApi
     public function listInboundPlanPalletsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse';
         $request = $this->listInboundPlanPalletsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanPallets');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlanPalletsRateLimiter->consume()->ensureAccepted();
         }
@@ -8084,15 +8410,16 @@ class FbaInboundApi
      * Operation listInboundPlans.
      *
      * @param null|int    $page_size
-     *                                      The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of inbound plans to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      * @param null|string $status
-     *                                      The status of an inbound plan. (optional)
+     *                                         The status of an inbound plan. (optional)
      * @param null|string $sort_by
-     *                                      Sort by field. (optional)
+     *                                         Sort by field. (optional)
      * @param null|string $sort_order
-     *                                      The sort order. (optional)
+     *                                         The sort order. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -8102,9 +8429,10 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $status = null,
         ?string $sort_by = null,
-        ?string $sort_order = null
+        ?string $sort_order = null,
+        ?string $restrictedDataToken = null
     ): ListInboundPlansResponse {
-        list($response) = $this->listInboundPlansWithHttpInfo($page_size, $pagination_token, $status, $sort_by, $sort_order);
+        list($response) = $this->listInboundPlansWithHttpInfo($page_size, $pagination_token, $status, $sort_by, $sort_order, $restrictedDataToken);
 
         return $response;
     }
@@ -8113,15 +8441,16 @@ class FbaInboundApi
      * Operation listInboundPlansWithHttpInfo.
      *
      * @param null|int    $page_size
-     *                                      The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of inbound plans to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      * @param null|string $status
-     *                                      The status of an inbound plan. (optional)
+     *                                         The status of an inbound plan. (optional)
      * @param null|string $sort_by
-     *                                      Sort by field. (optional)
+     *                                         Sort by field. (optional)
      * @param null|string $sort_order
-     *                                      The sort order. (optional)
+     *                                         The sort order. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -8133,10 +8462,15 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $status = null,
         ?string $sort_by = null,
-        ?string $sort_order = null
+        ?string $sort_order = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlansRequest($page_size, $pagination_token, $status, $sort_by, $sort_order);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlans');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -8255,11 +8589,16 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $status = null,
         ?string $sort_by = null,
-        ?string $sort_order = null
+        ?string $sort_order = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse';
         $request = $this->listInboundPlansRequest($page_size, $pagination_token, $status, $sort_by, $sort_order);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlans');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listInboundPlansRateLimiter->consume()->ensureAccepted();
         }
@@ -8450,19 +8789,21 @@ class FbaInboundApi
     /**
      * Operation listItemComplianceDetails.
      *
-     * @param string[] $mskus
-     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param string   $marketplace_id
-     *                                 The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listItemComplianceDetails(
         array $mskus,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): ListItemComplianceDetailsResponse {
-        list($response) = $this->listItemComplianceDetailsWithHttpInfo($mskus, $marketplace_id);
+        list($response) = $this->listItemComplianceDetailsWithHttpInfo($mskus, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -8470,10 +8811,11 @@ class FbaInboundApi
     /**
      * Operation listItemComplianceDetailsWithHttpInfo.
      *
-     * @param string[] $mskus
-     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param string   $marketplace_id
-     *                                 The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -8482,10 +8824,15 @@ class FbaInboundApi
      */
     public function listItemComplianceDetailsWithHttpInfo(
         array $mskus,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listItemComplianceDetailsRequest($mskus, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listItemComplianceDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -8586,11 +8933,16 @@ class FbaInboundApi
      */
     public function listItemComplianceDetailsAsyncWithHttpInfo(
         array $mskus,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse';
         $request = $this->listItemComplianceDetailsRequest($mskus, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listItemComplianceDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -8755,13 +9107,14 @@ class FbaInboundApi
      * Operation listPackingGroupBoxes.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $packing_group_id
-     *                                      Identifier of a packing group. (required)
+     *                                         Identifier of a packing group. (required)
      * @param null|int    $page_size
-     *                                      The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -8770,9 +9123,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPackingGroupBoxesResponse {
-        list($response) = $this->listPackingGroupBoxesWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
+        list($response) = $this->listPackingGroupBoxesWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -8781,13 +9135,14 @@ class FbaInboundApi
      * Operation listPackingGroupBoxesWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $packing_group_id
-     *                                      Identifier of a packing group. (required)
+     *                                         Identifier of a packing group. (required)
      * @param null|int    $page_size
-     *                                      The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -8798,10 +9153,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingGroupBoxesRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupBoxes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -8914,11 +9274,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse';
         $request = $this->listPackingGroupBoxesRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupBoxes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPackingGroupBoxesRateLimiter->consume()->ensureAccepted();
         }
@@ -9126,13 +9491,14 @@ class FbaInboundApi
      * Operation listPackingGroupItems.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $packing_group_id
-     *                                      Identifier of a packing group. (required)
+     *                                         Identifier of a packing group. (required)
      * @param null|int    $page_size
-     *                                      The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of packing group items to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -9141,9 +9507,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPackingGroupItemsResponse {
-        list($response) = $this->listPackingGroupItemsWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
+        list($response) = $this->listPackingGroupItemsWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -9152,13 +9519,14 @@ class FbaInboundApi
      * Operation listPackingGroupItemsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $packing_group_id
-     *                                      Identifier of a packing group. (required)
+     *                                         Identifier of a packing group. (required)
      * @param null|int    $page_size
-     *                                      The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of packing group items to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -9169,10 +9537,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingGroupItemsRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -9285,11 +9658,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse';
         $request = $this->listPackingGroupItemsRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPackingGroupItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -9497,11 +9875,12 @@ class FbaInboundApi
      * Operation listPackingOptions.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of packing options to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of packing options to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -9509,9 +9888,10 @@ class FbaInboundApi
     public function listPackingOptions(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPackingOptionsResponse {
-        list($response) = $this->listPackingOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listPackingOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -9520,11 +9900,12 @@ class FbaInboundApi
      * Operation listPackingOptionsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of packing options to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of packing options to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -9534,10 +9915,15 @@ class FbaInboundApi
     public function listPackingOptionsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -9644,11 +10030,16 @@ class FbaInboundApi
     public function listPackingOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse';
         $request = $this->listPackingOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPackingOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -9829,11 +10220,12 @@ class FbaInboundApi
      * Operation listPlacementOptions.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of placement options to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of placement options to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -9841,9 +10233,10 @@ class FbaInboundApi
     public function listPlacementOptions(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListPlacementOptionsResponse {
-        list($response) = $this->listPlacementOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token);
+        list($response) = $this->listPlacementOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -9852,11 +10245,12 @@ class FbaInboundApi
      * Operation listPlacementOptionsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param null|int    $page_size
-     *                                      The number of placement options to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of placement options to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -9866,10 +10260,15 @@ class FbaInboundApi
     public function listPlacementOptionsWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPlacementOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPlacementOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -9976,11 +10375,16 @@ class FbaInboundApi
     public function listPlacementOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse';
         $request = $this->listPlacementOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPlacementOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPlacementOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -10160,19 +10564,21 @@ class FbaInboundApi
     /**
      * Operation listPrepDetails.
      *
-     * @param string   $marketplace_id
-     *                                 The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param string[] $mskus
-     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listPrepDetails(
         string $marketplace_id,
-        array $mskus
+        array $mskus,
+        ?string $restrictedDataToken = null
     ): ListPrepDetailsResponse {
-        list($response) = $this->listPrepDetailsWithHttpInfo($marketplace_id, $mskus);
+        list($response) = $this->listPrepDetailsWithHttpInfo($marketplace_id, $mskus, $restrictedDataToken);
 
         return $response;
     }
@@ -10180,10 +10586,11 @@ class FbaInboundApi
     /**
      * Operation listPrepDetailsWithHttpInfo.
      *
-     * @param string   $marketplace_id
-     *                                 The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param string[] $mskus
-     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -10192,10 +10599,15 @@ class FbaInboundApi
      */
     public function listPrepDetailsWithHttpInfo(
         string $marketplace_id,
-        array $mskus
+        array $mskus,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPrepDetailsRequest($marketplace_id, $mskus);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPrepDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -10296,11 +10708,16 @@ class FbaInboundApi
      */
     public function listPrepDetailsAsyncWithHttpInfo(
         string $marketplace_id,
-        array $mskus
+        array $mskus,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse';
         $request = $this->listPrepDetailsRequest($marketplace_id, $mskus);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPrepDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listPrepDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -10465,13 +10882,14 @@ class FbaInboundApi
      * Operation listShipmentBoxes.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -10480,9 +10898,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentBoxesResponse {
-        list($response) = $this->listShipmentBoxesWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentBoxesWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -10491,13 +10910,14 @@ class FbaInboundApi
      * Operation listShipmentBoxesWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -10508,10 +10928,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentBoxesRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentBoxes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -10624,11 +11049,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse';
         $request = $this->listShipmentBoxesRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentBoxes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentBoxesRateLimiter->consume()->ensureAccepted();
         }
@@ -10836,13 +11266,14 @@ class FbaInboundApi
      * Operation listShipmentContentUpdatePreviews.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of content update previews to return. (optional, default to 10)
+     *                                         The number of content update previews to return. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -10851,9 +11282,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentContentUpdatePreviewsResponse {
-        list($response) = $this->listShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -10862,13 +11294,14 @@ class FbaInboundApi
      * Operation listShipmentContentUpdatePreviewsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of content update previews to return. (optional, default to 10)
+     *                                         The number of content update previews to return. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -10879,10 +11312,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentContentUpdatePreviews');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -10995,11 +11433,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse';
         $request = $this->listShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentContentUpdatePreviews');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
         }
@@ -11207,13 +11650,14 @@ class FbaInboundApi
      * Operation listShipmentItems.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -11222,9 +11666,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentItemsResponse {
-        list($response) = $this->listShipmentItemsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentItemsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -11233,13 +11678,14 @@ class FbaInboundApi
      * Operation listShipmentItemsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -11250,10 +11696,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentItemsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -11366,11 +11817,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse';
         $request = $this->listShipmentItemsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -11578,13 +12034,14 @@ class FbaInboundApi
      * Operation listShipmentPallets.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -11593,9 +12050,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): ListShipmentPalletsResponse {
-        list($response) = $this->listShipmentPalletsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
+        list($response) = $this->listShipmentPalletsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -11604,13 +12062,14 @@ class FbaInboundApi
      * Operation listShipmentPalletsWithHttpInfo.
      *
      * @param string      $inbound_plan_id
-     *                                      Identifier of an inbound plan. (required)
+     *                                         Identifier of an inbound plan. (required)
      * @param string      $shipment_id
-     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param null|int    $page_size
-     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
      * @param null|string $pagination_token
-     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -11621,10 +12080,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentPalletsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentPallets');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -11737,11 +12201,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse';
         $request = $this->listShipmentPalletsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentPallets');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listShipmentPalletsRateLimiter->consume()->ensureAccepted();
         }
@@ -11958,6 +12427,7 @@ class FbaInboundApi
      *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
      * @param null|string $shipment_id
      *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -11967,9 +12437,10 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
-        ?string $shipment_id = null
+        ?string $shipment_id = null,
+        ?string $restrictedDataToken = null
     ): ListTransportationOptionsResponse {
-        list($response) = $this->listTransportationOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
+        list($response) = $this->listTransportationOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -11987,6 +12458,7 @@ class FbaInboundApi
      *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
      * @param null|string $shipment_id
      *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -11998,10 +12470,15 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
-        ?string $shipment_id = null
+        ?string $shipment_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listTransportationOptionsRequest($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listTransportationOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -12120,11 +12597,16 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
-        ?string $shipment_id = null
+        ?string $shipment_id = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse';
         $request = $this->listTransportationOptionsRequest($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listTransportationOptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
@@ -12351,13 +12833,14 @@ class FbaInboundApi
      * Operation scheduleSelfShipAppointment.
      *
      * @param string                             $inbound_plan_id
-     *                                                            Identifier of an inbound plan. (required)
+     *                                                                Identifier of an inbound plan. (required)
      * @param string                             $shipment_id
-     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param string                             $slot_id
-     *                                                            An identifier to a self-ship appointment slot. (required)
+     *                                                                An identifier to a self-ship appointment slot. (required)
      * @param ScheduleSelfShipAppointmentRequest $body
-     *                                                            The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     *                                                                The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -12366,9 +12849,10 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): ScheduleSelfShipAppointmentResponse {
-        list($response) = $this->scheduleSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body);
+        list($response) = $this->scheduleSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -12377,13 +12861,14 @@ class FbaInboundApi
      * Operation scheduleSelfShipAppointmentWithHttpInfo.
      *
      * @param string                             $inbound_plan_id
-     *                                                            Identifier of an inbound plan. (required)
+     *                                                                Identifier of an inbound plan. (required)
      * @param string                             $shipment_id
-     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param string                             $slot_id
-     *                                                            An identifier to a self-ship appointment slot. (required)
+     *                                                                An identifier to a self-ship appointment slot. (required)
      * @param ScheduleSelfShipAppointmentRequest $body
-     *                                                            The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     *                                                                The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -12394,10 +12879,15 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->scheduleSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $slot_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-scheduleSelfShipAppointment');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -12510,11 +13000,16 @@ class FbaInboundApi
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse';
         $request = $this->scheduleSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $slot_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-scheduleSelfShipAppointment');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->scheduleSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
         }
@@ -12724,18 +13219,20 @@ class FbaInboundApi
      * Operation setPackingInformation.
      *
      * @param string                       $inbound_plan_id
-     *                                                      Identifier of an inbound plan. (required)
+     *                                                          Identifier of an inbound plan. (required)
      * @param SetPackingInformationRequest $body
-     *                                                      The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     *                                                          The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function setPackingInformation(
         string $inbound_plan_id,
-        SetPackingInformationRequest $body
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): SetPackingInformationResponse {
-        list($response) = $this->setPackingInformationWithHttpInfo($inbound_plan_id, $body);
+        list($response) = $this->setPackingInformationWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -12744,9 +13241,10 @@ class FbaInboundApi
      * Operation setPackingInformationWithHttpInfo.
      *
      * @param string                       $inbound_plan_id
-     *                                                      Identifier of an inbound plan. (required)
+     *                                                          Identifier of an inbound plan. (required)
      * @param SetPackingInformationRequest $body
-     *                                                      The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     *                                                          The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -12755,10 +13253,15 @@ class FbaInboundApi
      */
     public function setPackingInformationWithHttpInfo(
         string $inbound_plan_id,
-        SetPackingInformationRequest $body
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->setPackingInformationRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPackingInformation');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -12859,11 +13362,16 @@ class FbaInboundApi
      */
     public function setPackingInformationAsyncWithHttpInfo(
         string $inbound_plan_id,
-        SetPackingInformationRequest $body
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse';
         $request = $this->setPackingInformationRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPackingInformation');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->setPackingInformationRateLimiter->consume()->ensureAccepted();
         }
@@ -13019,15 +13527,17 @@ class FbaInboundApi
      * Operation setPrepDetails.
      *
      * @param SetPrepDetailsRequest $body
-     *                                    The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     *                                                   The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function setPrepDetails(
-        SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): SetPrepDetailsResponse {
-        list($response) = $this->setPrepDetailsWithHttpInfo($body);
+        list($response) = $this->setPrepDetailsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -13036,7 +13546,8 @@ class FbaInboundApi
      * Operation setPrepDetailsWithHttpInfo.
      *
      * @param SetPrepDetailsRequest $body
-     *                                    The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     *                                                   The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -13044,10 +13555,15 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function setPrepDetailsWithHttpInfo(
-        SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->setPrepDetailsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPrepDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13142,11 +13658,16 @@ class FbaInboundApi
      * @throws \InvalidArgumentException
      */
     public function setPrepDetailsAsyncWithHttpInfo(
-        SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse';
         $request = $this->setPrepDetailsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPrepDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->setPrepDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -13274,27 +13795,30 @@ class FbaInboundApi
      * Operation updateInboundPlanName.
      *
      * @param string                       $inbound_plan_id
-     *                                                      Identifier of an inbound plan. (required)
+     *                                                          Identifier of an inbound plan. (required)
      * @param UpdateInboundPlanNameRequest $body
-     *                                                      The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     *                                                          The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateInboundPlanName(
         string $inbound_plan_id,
-        UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateInboundPlanNameWithHttpInfo($inbound_plan_id, $body);
+        $this->updateInboundPlanNameWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
     }
 
     /**
      * Operation updateInboundPlanNameWithHttpInfo.
      *
      * @param string                       $inbound_plan_id
-     *                                                      Identifier of an inbound plan. (required)
+     *                                                          Identifier of an inbound plan. (required)
      * @param UpdateInboundPlanNameRequest $body
-     *                                                      The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     *                                                          The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -13303,10 +13827,15 @@ class FbaInboundApi
      */
     public function updateInboundPlanNameWithHttpInfo(
         string $inbound_plan_id,
-        UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateInboundPlanNameRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateInboundPlanName');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13395,11 +13924,16 @@ class FbaInboundApi
      */
     public function updateInboundPlanNameAsyncWithHttpInfo(
         string $inbound_plan_id,
-        UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundPlanNameRequest($inbound_plan_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateInboundPlanName');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateInboundPlanNameRateLimiter->consume()->ensureAccepted();
         }
@@ -13542,18 +14076,20 @@ class FbaInboundApi
      * Operation updateItemComplianceDetails.
      *
      * @param string                             $marketplace_id
-     *                                                           The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                                                The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param UpdateItemComplianceDetailsRequest $body
-     *                                                           The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     *                                                                The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateItemComplianceDetails(
         string $marketplace_id,
-        UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateItemComplianceDetailsResponse {
-        list($response) = $this->updateItemComplianceDetailsWithHttpInfo($marketplace_id, $body);
+        list($response) = $this->updateItemComplianceDetailsWithHttpInfo($marketplace_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -13562,9 +14098,10 @@ class FbaInboundApi
      * Operation updateItemComplianceDetailsWithHttpInfo.
      *
      * @param string                             $marketplace_id
-     *                                                           The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                                                The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param UpdateItemComplianceDetailsRequest $body
-     *                                                           The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     *                                                                The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -13573,10 +14110,15 @@ class FbaInboundApi
      */
     public function updateItemComplianceDetailsWithHttpInfo(
         string $marketplace_id,
-        UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateItemComplianceDetailsRequest($marketplace_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateItemComplianceDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13677,11 +14219,16 @@ class FbaInboundApi
      */
     public function updateItemComplianceDetailsAsyncWithHttpInfo(
         string $marketplace_id,
-        UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse';
         $request = $this->updateItemComplianceDetailsRequest($marketplace_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateItemComplianceDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -13836,11 +14383,12 @@ class FbaInboundApi
      * Operation updateShipmentName.
      *
      * @param string                    $inbound_plan_id
-     *                                                   Identifier of an inbound plan. (required)
+     *                                                       Identifier of an inbound plan. (required)
      * @param string                    $shipment_id
-     *                                                   Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                       Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param UpdateShipmentNameRequest $body
-     *                                                   The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     *                                                       The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -13848,20 +14396,22 @@ class FbaInboundApi
     public function updateShipmentName(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateShipmentNameWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        $this->updateShipmentNameWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
     }
 
     /**
      * Operation updateShipmentNameWithHttpInfo.
      *
      * @param string                    $inbound_plan_id
-     *                                                   Identifier of an inbound plan. (required)
+     *                                                       Identifier of an inbound plan. (required)
      * @param string                    $shipment_id
-     *                                                   Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                       Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param UpdateShipmentNameRequest $body
-     *                                                   The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     *                                                       The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -13871,10 +14421,15 @@ class FbaInboundApi
     public function updateShipmentNameWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentNameRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentName');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -13969,11 +14524,16 @@ class FbaInboundApi
     public function updateShipmentNameAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentNameRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentName');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentNameRateLimiter->consume()->ensureAccepted();
         }
@@ -14143,11 +14703,12 @@ class FbaInboundApi
      * Operation updateShipmentSourceAddress.
      *
      * @param string                             $inbound_plan_id
-     *                                                            Identifier of an inbound plan. (required)
+     *                                                                Identifier of an inbound plan. (required)
      * @param string                             $shipment_id
-     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param UpdateShipmentSourceAddressRequest $body
-     *                                                            The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     *                                                                The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -14155,9 +14716,10 @@ class FbaInboundApi
     public function updateShipmentSourceAddress(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateShipmentSourceAddressResponse {
-        list($response) = $this->updateShipmentSourceAddressWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->updateShipmentSourceAddressWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -14166,11 +14728,12 @@ class FbaInboundApi
      * Operation updateShipmentSourceAddressWithHttpInfo.
      *
      * @param string                             $inbound_plan_id
-     *                                                            Identifier of an inbound plan. (required)
+     *                                                                Identifier of an inbound plan. (required)
      * @param string                             $shipment_id
-     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param UpdateShipmentSourceAddressRequest $body
-     *                                                            The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     *                                                                The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -14180,10 +14743,15 @@ class FbaInboundApi
     public function updateShipmentSourceAddressWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentSourceAddressRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentSourceAddress');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -14290,11 +14858,16 @@ class FbaInboundApi
     public function updateShipmentSourceAddressAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse';
         $request = $this->updateShipmentSourceAddressRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentSourceAddress');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentSourceAddressRateLimiter->consume()->ensureAccepted();
         }
@@ -14477,11 +15050,12 @@ class FbaInboundApi
      * Operation updateShipmentTrackingDetails.
      *
      * @param string                               $inbound_plan_id
-     *                                                              Identifier of an inbound plan. (required)
+     *                                                                  Identifier of an inbound plan. (required)
      * @param string                               $shipment_id
-     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param UpdateShipmentTrackingDetailsRequest $body
-     *                                                              The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     *                                                                  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -14489,9 +15063,10 @@ class FbaInboundApi
     public function updateShipmentTrackingDetails(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateShipmentTrackingDetailsResponse {
-        list($response) = $this->updateShipmentTrackingDetailsWithHttpInfo($inbound_plan_id, $shipment_id, $body);
+        list($response) = $this->updateShipmentTrackingDetailsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -14500,11 +15075,12 @@ class FbaInboundApi
      * Operation updateShipmentTrackingDetailsWithHttpInfo.
      *
      * @param string                               $inbound_plan_id
-     *                                                              Identifier of an inbound plan. (required)
+     *                                                                  Identifier of an inbound plan. (required)
      * @param string                               $shipment_id
-     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     *                                                                  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param UpdateShipmentTrackingDetailsRequest $body
-     *                                                              The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     *                                                                  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -14514,10 +15090,15 @@ class FbaInboundApi
     public function updateShipmentTrackingDetailsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentTrackingDetailsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentTrackingDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -14624,11 +15205,16 @@ class FbaInboundApi
     public function updateShipmentTrackingDetailsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse';
         $request = $this->updateShipmentTrackingDetailsRequest($inbound_plan_id, $shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentTrackingDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentTrackingDetailsRateLimiter->consume()->ensureAccepted();
         }

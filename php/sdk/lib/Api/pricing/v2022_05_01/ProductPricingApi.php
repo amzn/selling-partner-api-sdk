@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest;
@@ -132,15 +133,17 @@ class ProductPricingApi
      * Operation getCompetitiveSummary.
      *
      * @param CompetitiveSummaryBatchRequest $requests
-     *                                                 The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     *                                                            The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     * @param null|string                    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getCompetitiveSummary(
-        CompetitiveSummaryBatchRequest $requests
+        CompetitiveSummaryBatchRequest $requests,
+        ?string $restrictedDataToken = null
     ): CompetitiveSummaryBatchResponse {
-        list($response) = $this->getCompetitiveSummaryWithHttpInfo($requests);
+        list($response) = $this->getCompetitiveSummaryWithHttpInfo($requests, $restrictedDataToken);
 
         return $response;
     }
@@ -149,7 +152,8 @@ class ProductPricingApi
      * Operation getCompetitiveSummaryWithHttpInfo.
      *
      * @param CompetitiveSummaryBatchRequest $requests
-     *                                                 The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     *                                                            The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     * @param null|string                    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -157,10 +161,15 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getCompetitiveSummaryWithHttpInfo(
-        CompetitiveSummaryBatchRequest $requests
+        CompetitiveSummaryBatchRequest $requests,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCompetitiveSummaryRequest($requests);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitiveSummary');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,11 +264,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getCompetitiveSummaryAsyncWithHttpInfo(
-        CompetitiveSummaryBatchRequest $requests
+        CompetitiveSummaryBatchRequest $requests,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
         $request = $this->getCompetitiveSummaryRequest($requests);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitiveSummary');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCompetitiveSummaryRateLimiter->consume()->ensureAccepted();
         }
@@ -388,14 +402,16 @@ class ProductPricingApi
      *
      * @param GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *                                                                                                        The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
+     * @param null|string                               $restrictedDataToken                                  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFeaturedOfferExpectedPriceBatch(
-        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body,
+        ?string $restrictedDataToken = null
     ): GetFeaturedOfferExpectedPriceBatchResponse {
-        list($response) = $this->getFeaturedOfferExpectedPriceBatchWithHttpInfo($get_featured_offer_expected_price_batch_request_body);
+        list($response) = $this->getFeaturedOfferExpectedPriceBatchWithHttpInfo($get_featured_offer_expected_price_batch_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -405,6 +421,7 @@ class ProductPricingApi
      *
      * @param GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *                                                                                                        The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
+     * @param null|string                               $restrictedDataToken                                  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -412,10 +429,15 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturedOfferExpectedPriceBatchWithHttpInfo(
-        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeaturedOfferExpectedPriceBatchRequest($get_featured_offer_expected_price_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getFeaturedOfferExpectedPriceBatch');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -510,11 +532,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturedOfferExpectedPriceBatchAsyncWithHttpInfo(
-        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
         $request = $this->getFeaturedOfferExpectedPriceBatchRequest($get_featured_offer_expected_price_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getFeaturedOfferExpectedPriceBatch');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeaturedOfferExpectedPriceBatchRateLimiter->consume()->ensureAccepted();
         }
