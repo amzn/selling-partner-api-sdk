@@ -270,8 +270,11 @@ namespace software.amzn.spapi.Api.solicitations.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateProductReviewAndSellerFeedbackSolicitation", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateProductReviewAndSellerFeedbackSolicitation", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse>(localVarResponse.StatusCode,
@@ -340,8 +343,11 @@ namespace software.amzn.spapi.Api.solicitations.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("CreateProductReviewAndSellerFeedbackSolicitation", localVarResponse.ErrorException);
+                // Exception exception = new Exception("CreateProductReviewAndSellerFeedbackSolicitation", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse>(localVarResponse.StatusCode,
@@ -410,8 +416,11 @@ namespace software.amzn.spapi.Api.solicitations.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetSolicitationActionsForOrder", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetSolicitationActionsForOrder", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetSolicitationActionsForOrderResponse>(localVarResponse.StatusCode,
@@ -480,8 +489,11 @@ namespace software.amzn.spapi.Api.solicitations.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetSolicitationActionsForOrder", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetSolicitationActionsForOrder", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetSolicitationActionsForOrderResponse>(localVarResponse.StatusCode,

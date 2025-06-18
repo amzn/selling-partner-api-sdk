@@ -109,7 +109,7 @@ namespace {{packageName}}.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}Swagger-Codegen/{{packageVersion}}/csharp{{/httpUserAgent}}";
+            UserAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}amazon-selling-partner-api-sdk/{{packageVersion}}/csharp{{/httpUserAgent}}";
             BasePath = "{{{basePath}}}";
             DefaultHeader = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
             ApiKey = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();

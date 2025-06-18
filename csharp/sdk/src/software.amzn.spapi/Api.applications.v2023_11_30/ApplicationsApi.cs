@@ -203,8 +203,11 @@ namespace software.amzn.spapi.Api.applications.v2023_11_30
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("RotateApplicationClientSecret", localVarResponse.ErrorException);
+                // Exception exception = new Exception("RotateApplicationClientSecret", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Object>(
@@ -261,8 +264,11 @@ namespace software.amzn.spapi.Api.applications.v2023_11_30
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("RotateApplicationClientSecret", localVarResponse.ErrorException);
+                // Exception exception = new Exception("RotateApplicationClientSecret", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Object>(

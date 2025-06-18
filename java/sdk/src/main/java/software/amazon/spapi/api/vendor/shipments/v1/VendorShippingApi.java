@@ -695,7 +695,7 @@ public class VendorShippingApi {
      *
      * @param limit The limit to the number of records returned. Default value is 50 records. (optional)
      * @param sortOrder Sort the list by shipment label creation date in ascending or descending order. (optional)
-     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     * @param nextToken A token that you use to retrieve the next page of results. The response includes
      *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the
      *     next page of results, call the operation with this token and include the same arguments as the call that
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
@@ -803,7 +803,7 @@ public class VendorShippingApi {
      *
      * @param limit The limit to the number of records returned. Default value is 50 records. (optional)
      * @param sortOrder Sort the list by shipment label creation date in ascending or descending order. (optional)
-     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     * @param nextToken A token that you use to retrieve the next page of results. The response includes
      *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the
      *     next page of results, call the operation with this token and include the same arguments as the call that
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
@@ -852,7 +852,7 @@ public class VendorShippingApi {
      *
      * @param limit The limit to the number of records returned. Default value is 50 records. (optional)
      * @param sortOrder Sort the list by shipment label creation date in ascending or descending order. (optional)
-     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     * @param nextToken A token that you use to retrieve the next page of results. The response includes
      *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the
      *     next page of results, call the operation with this token and include the same arguments as the call that
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
@@ -905,7 +905,7 @@ public class VendorShippingApi {
      *
      * @param limit The limit to the number of records returned. Default value is 50 records. (optional)
      * @param sortOrder Sort the list by shipment label creation date in ascending or descending order. (optional)
-     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     * @param nextToken A token that you use to retrieve the next page of results. The response includes
      *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the
      *     next page of results, call the operation with this token and include the same arguments as the call that
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
