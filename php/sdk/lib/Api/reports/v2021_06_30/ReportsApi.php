@@ -1,16 +1,18 @@
 <?php
+
 /**
  * ReportsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Reports
+ * Selling Partner API for Reports.
  *
  * The Selling Partner API for Reports lets you retrieve and manage a variety of reports that can help selling partners manage their businesses.
  *
@@ -35,47 +37,35 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\reports\v2021_06_30\CreateReportResponse;
+use SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse;
+use SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification;
+use SpApi\Model\reports\v2021_06_30\CreateReportSpecification;
+use SpApi\Model\reports\v2021_06_30\GetReportsResponse;
+use SpApi\Model\reports\v2021_06_30\Report;
+use SpApi\Model\reports\v2021_06_30\ReportDocument;
+use SpApi\Model\reports\v2021_06_30\ReportSchedule;
+use SpApi\Model\reports\v2021_06_30\ReportScheduleList;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * ReportsApi Class Doc Comment
+ * ReportsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ReportsApi
 {
-    /**
-     * @var ClientInterface
-     */
-    protected ClientInterface $client;
-
-    /**
-     * @var Configuration
-     */
-    protected Configuration $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected HeaderSelector $headerSelector;
-
-    /**
-     * @var int Host index
-     */
-    protected int $hostIndex;
-
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
     public ?LimiterInterface $cancelReportRateLimiter;
     public ?LimiterInterface $cancelReportScheduleRateLimiter;
     public ?LimiterInterface $createReportRateLimiter;
@@ -85,18 +75,27 @@ class ReportsApi
     public ?LimiterInterface $getReportScheduleRateLimiter;
     public ?LimiterInterface $getReportSchedulesRateLimiter;
     public ?LimiterInterface $getReportsRateLimiter;
+    protected ClientInterface $client;
+
+    protected Configuration $config;
+
+    protected HeaderSelector $headerSelector;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
+     * @var int Host index
+     */
+    protected int $hostIndex;
+
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
+
+    /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -106,24 +105,24 @@ class ReportsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-cancelReport"), $this->rateLimitStorage);
-            $this->cancelReportRateLimiter = $factory->create("ReportsApi-cancelReport");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-cancelReportSchedule"), $this->rateLimitStorage);
-            $this->cancelReportScheduleRateLimiter = $factory->create("ReportsApi-cancelReportSchedule");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-createReport"), $this->rateLimitStorage);
-            $this->createReportRateLimiter = $factory->create("ReportsApi-createReport");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-createReportSchedule"), $this->rateLimitStorage);
-            $this->createReportScheduleRateLimiter = $factory->create("ReportsApi-createReportSchedule");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-getReport"), $this->rateLimitStorage);
-            $this->getReportRateLimiter = $factory->create("ReportsApi-getReport");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-getReportDocument"), $this->rateLimitStorage);
-            $this->getReportDocumentRateLimiter = $factory->create("ReportsApi-getReportDocument");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-getReportSchedule"), $this->rateLimitStorage);
-            $this->getReportScheduleRateLimiter = $factory->create("ReportsApi-getReportSchedule");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-getReportSchedules"), $this->rateLimitStorage);
-            $this->getReportSchedulesRateLimiter = $factory->create("ReportsApi-getReportSchedules");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ReportsApi-getReports"), $this->rateLimitStorage);
-            $this->getReportsRateLimiter = $factory->create("ReportsApi-getReports");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-cancelReport'), $this->rateLimitStorage);
+            $this->cancelReportRateLimiter = $factory->create('ReportsApi-cancelReport');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-cancelReportSchedule'), $this->rateLimitStorage);
+            $this->cancelReportScheduleRateLimiter = $factory->create('ReportsApi-cancelReportSchedule');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-createReport'), $this->rateLimitStorage);
+            $this->createReportRateLimiter = $factory->create('ReportsApi-createReport');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-createReportSchedule'), $this->rateLimitStorage);
+            $this->createReportScheduleRateLimiter = $factory->create('ReportsApi-createReportSchedule');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReport'), $this->rateLimitStorage);
+            $this->getReportRateLimiter = $factory->create('ReportsApi-getReport');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportDocument'), $this->rateLimitStorage);
+            $this->getReportDocumentRateLimiter = $factory->create('ReportsApi-getReportDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportSchedule'), $this->rateLimitStorage);
+            $this->getReportScheduleRateLimiter = $factory->create('ReportsApi-getReportSchedule');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportSchedules'), $this->rateLimitStorage);
+            $this->getReportSchedulesRateLimiter = $factory->create('ReportsApi-getReportSchedules');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReports'), $this->rateLimitStorage);
+            $this->getReportsRateLimiter = $factory->create('ReportsApi-getReports');
         }
 
         $this->client = $client ?: new Client();
@@ -132,7 +131,7 @@ class ReportsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -142,7 +141,7 @@ class ReportsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -151,54 +150,54 @@ class ReportsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation cancelReport
+     * Operation cancelReport.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function cancelReport(
         string $report_id,
         ?string $restrictedDataToken = null
     ): void {
-        $this->cancelReportWithHttpInfo($report_id,$restrictedDataToken);
+        $this->cancelReportWithHttpInfo($report_id, $restrictedDataToken);
     }
 
     /**
-     * Operation cancelReportWithHttpInfo
+     * Operation cancelReportWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelReportWithHttpInfo(
         string $report_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReportRequest($report_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-cancelReport");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReport');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelReportRateLimiter->consume()->ensureAccepted();
@@ -235,26 +234,26 @@ class ReportsApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelReportAsync
+     * Operation cancelReportAsync.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportAsync(
         string $report_id
@@ -264,26 +263,26 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelReportAsyncWithHttpInfo
+     * Operation cancelReportAsyncWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportAsyncWithHttpInfo(
         string $report_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelReportRequest($report_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-cancelReport");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReport');
         } else {
             $request = $this->config->sign($request);
         }
@@ -294,12 +293,13 @@ class ReportsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -311,23 +311,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelReport'
+     * Create request for operation 'cancelReport'.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelReportRequest(
         string $report_id
     ): Request {
         // verify the required parameter 'report_id' is set
-        if ($report_id === null || (is_array($report_id) && count($report_id) === 0)) {
+        if (null === $report_id || (is_array($report_id) && 0 === count($report_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_id when calling cancelReport'
             );
@@ -340,21 +340,17 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_id !== null) {
+        if (null !== $report_id) {
             $resourcePath = str_replace(
-                '{' . 'reportId' . '}',
+                '{reportId}',
                 ObjectSerializer::toPathValue($report_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -368,22 +364,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -397,55 +390,58 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation cancelReportSchedule
+     * Operation cancelReportSchedule.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function cancelReportSchedule(
         string $report_schedule_id,
         ?string $restrictedDataToken = null
     ): void {
-        $this->cancelReportScheduleWithHttpInfo($report_schedule_id,$restrictedDataToken);
+        $this->cancelReportScheduleWithHttpInfo($report_schedule_id, $restrictedDataToken);
     }
 
     /**
-     * Operation cancelReportScheduleWithHttpInfo
+     * Operation cancelReportScheduleWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelReportScheduleWithHttpInfo(
         string $report_schedule_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReportScheduleRequest($report_schedule_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-cancelReportSchedule");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReportSchedule');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelReportScheduleRateLimiter->consume()->ensureAccepted();
@@ -482,26 +478,26 @@ class ReportsApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelReportScheduleAsync
+     * Operation cancelReportScheduleAsync.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportScheduleAsync(
         string $report_schedule_id
@@ -511,26 +507,26 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelReportScheduleAsyncWithHttpInfo
+     * Operation cancelReportScheduleAsyncWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportScheduleAsyncWithHttpInfo(
         string $report_schedule_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelReportScheduleRequest($report_schedule_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-cancelReportSchedule");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReportSchedule');
         } else {
             $request = $this->config->sign($request);
         }
@@ -541,12 +537,13 @@ class ReportsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -558,23 +555,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelReportSchedule'
+     * Create request for operation 'cancelReportSchedule'.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelReportScheduleRequest(
         string $report_schedule_id
     ): Request {
         // verify the required parameter 'report_schedule_id' is set
-        if ($report_schedule_id === null || (is_array($report_schedule_id) && count($report_schedule_id) === 0)) {
+        if (null === $report_schedule_id || (is_array($report_schedule_id) && 0 === count($report_schedule_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_schedule_id when calling cancelReportSchedule'
             );
@@ -587,21 +584,17 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_schedule_id !== null) {
+        if (null !== $report_schedule_id) {
             $resourcePath = str_replace(
-                '{' . 'reportScheduleId' . '}',
+                '{reportScheduleId}',
                 ObjectSerializer::toPathValue($report_schedule_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -615,22 +608,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -644,56 +634,60 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createReport
+     * Operation createReport.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                                       Information required to create the report. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\CreateReportResponse
      */
     public function createReport(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body,
+        CreateReportSpecification $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\CreateReportResponse {
-        list($response) = $this->createReportWithHttpInfo($body,$restrictedDataToken);
+    ): CreateReportResponse {
+        list($response) = $this->createReportWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createReportWithHttpInfo
+     * Operation createReportWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                                       Information required to create the report. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createReportWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body,
+        CreateReportSpecification $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReportRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-createReport");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReport');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createReportRateLimiter->consume()->ensureAccepted();
@@ -729,68 +723,68 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createReportAsync
+     * Operation createReportAsync.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportAsync(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+        CreateReportSpecification $body
     ): PromiseInterface {
         return $this->createReportAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createReportAsyncWithHttpInfo
+     * Operation createReportAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportAsyncWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body,
-    ?string $restrictedDataToken = null
+        CreateReportSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
         $request = $this->createReportRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-createReport");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReport');
         } else {
             $request = $this->config->sign($request);
         }
@@ -802,11 +796,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -814,12 +808,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -831,23 +826,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createReport'
+     * Create request for operation 'createReport'.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createReportRequest(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+        CreateReportSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createReport'
             );
@@ -860,20 +855,15 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -886,22 +876,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -915,56 +902,60 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createReportSchedule
+     * Operation createReportSchedule.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                               Information required to create the report schedule. (required)
+     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse
      */
     public function createReportSchedule(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body,
+        CreateReportScheduleSpecification $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse {
-        list($response) = $this->createReportScheduleWithHttpInfo($body,$restrictedDataToken);
+    ): CreateReportScheduleResponse {
+        list($response) = $this->createReportScheduleWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createReportScheduleWithHttpInfo
+     * Operation createReportScheduleWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                               Information required to create the report schedule. (required)
+     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createReportScheduleWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body,
+        CreateReportScheduleSpecification $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReportScheduleRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-createReportSchedule");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReportSchedule');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createReportScheduleRateLimiter->consume()->ensureAccepted();
@@ -1000,68 +991,68 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createReportScheduleAsync
+     * Operation createReportScheduleAsync.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportScheduleAsync(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body
     ): PromiseInterface {
         return $this->createReportScheduleAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createReportScheduleAsyncWithHttpInfo
+     * Operation createReportScheduleAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportScheduleAsyncWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body,
-    ?string $restrictedDataToken = null
+        CreateReportScheduleSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
         $request = $this->createReportScheduleRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-createReportSchedule");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReportSchedule');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1073,11 +1064,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1085,12 +1076,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1102,23 +1094,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createReportSchedule'
+     * Create request for operation 'createReportSchedule'.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createReportScheduleRequest(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createReportSchedule'
             );
@@ -1131,20 +1123,15 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1157,22 +1144,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1186,56 +1170,60 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReport
+     * Operation getReport.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\Report
      */
     public function getReport(
         string $report_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\Report {
-        list($response) = $this->getReportWithHttpInfo($report_id,$restrictedDataToken);
+    ): Report {
+        list($response) = $this->getReportWithHttpInfo($report_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getReportWithHttpInfo
+     * Operation getReportWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\Report, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportWithHttpInfo(
         string $report_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportRequest($report_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReport");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReport');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getReportRateLimiter->consume()->ensureAccepted();
@@ -1271,39 +1259,39 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\Report' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\Report' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\Report' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\Report' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\Report', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\Report', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportAsync
+     * Operation getReportAsync.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportAsync(
         string $report_id
@@ -1313,26 +1301,26 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportAsyncWithHttpInfo
+     * Operation getReportAsyncWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportAsyncWithHttpInfo(
         string $report_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\Report';
         $request = $this->getReportRequest($report_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReport");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReport');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1344,11 +1332,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1356,12 +1344,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1373,23 +1362,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReport'
+     * Create request for operation 'getReport'.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportRequest(
         string $report_id
     ): Request {
         // verify the required parameter 'report_id' is set
-        if ($report_id === null || (is_array($report_id) && count($report_id) === 0)) {
+        if (null === $report_id || (is_array($report_id) && 0 === count($report_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_id when calling getReport'
             );
@@ -1402,21 +1391,17 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_id !== null) {
+        if (null !== $report_id) {
             $resourcePath = str_replace(
-                '{' . 'reportId' . '}',
+                '{reportId}',
                 ObjectSerializer::toPathValue($report_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1430,22 +1415,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1459,56 +1441,60 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReportDocument
+     * Operation getReportDocument.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string      $report_document_id
+     *                                         The identifier for the report document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\ReportDocument
      */
     public function getReportDocument(
         string $report_document_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\ReportDocument {
-        list($response) = $this->getReportDocumentWithHttpInfo($report_document_id,$restrictedDataToken);
+    ): ReportDocument {
+        list($response) = $this->getReportDocumentWithHttpInfo($report_document_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getReportDocumentWithHttpInfo
+     * Operation getReportDocumentWithHttpInfo.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string      $report_document_id
+     *                                         The identifier for the report document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportDocument, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportDocumentWithHttpInfo(
         string $report_document_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportDocumentRequest($report_document_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReportDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getReportDocumentRateLimiter->consume()->ensureAccepted();
@@ -1544,39 +1530,39 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportDocument', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportDocument', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportDocumentAsync
+     * Operation getReportDocumentAsync.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportDocumentAsync(
         string $report_document_id
@@ -1586,26 +1572,26 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportDocumentAsyncWithHttpInfo
+     * Operation getReportDocumentAsyncWithHttpInfo.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportDocumentAsyncWithHttpInfo(
         string $report_document_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
         $request = $this->getReportDocumentRequest($report_document_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReportDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1617,11 +1603,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1629,12 +1615,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1646,23 +1633,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReportDocument'
+     * Create request for operation 'getReportDocument'.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportDocumentRequest(
         string $report_document_id
     ): Request {
         // verify the required parameter 'report_document_id' is set
-        if ($report_document_id === null || (is_array($report_document_id) && count($report_document_id) === 0)) {
+        if (null === $report_document_id || (is_array($report_document_id) && 0 === count($report_document_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_document_id when calling getReportDocument'
             );
@@ -1675,21 +1662,17 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_document_id !== null) {
+        if (null !== $report_document_id) {
             $resourcePath = str_replace(
-                '{' . 'reportDocumentId' . '}',
+                '{reportDocumentId}',
                 ObjectSerializer::toPathValue($report_document_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1703,22 +1686,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1732,56 +1712,60 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReportSchedule
+     * Operation getReportSchedule.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\ReportSchedule
      */
     public function getReportSchedule(
         string $report_schedule_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\ReportSchedule {
-        list($response) = $this->getReportScheduleWithHttpInfo($report_schedule_id,$restrictedDataToken);
+    ): ReportSchedule {
+        list($response) = $this->getReportScheduleWithHttpInfo($report_schedule_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getReportScheduleWithHttpInfo
+     * Operation getReportScheduleWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportSchedule, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportScheduleWithHttpInfo(
         string $report_schedule_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportScheduleRequest($report_schedule_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReportSchedule");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedule');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getReportScheduleRateLimiter->consume()->ensureAccepted();
@@ -1817,39 +1801,39 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportSchedule', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportSchedule', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportScheduleAsync
+     * Operation getReportScheduleAsync.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportScheduleAsync(
         string $report_schedule_id
@@ -1859,26 +1843,26 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportScheduleAsyncWithHttpInfo
+     * Operation getReportScheduleAsyncWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportScheduleAsyncWithHttpInfo(
         string $report_schedule_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportSchedule';
         $request = $this->getReportScheduleRequest($report_schedule_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReportSchedule");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedule');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1890,11 +1874,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1902,12 +1886,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1919,23 +1904,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReportSchedule'
+     * Create request for operation 'getReportSchedule'.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportScheduleRequest(
         string $report_schedule_id
     ): Request {
         // verify the required parameter 'report_schedule_id' is set
-        if ($report_schedule_id === null || (is_array($report_schedule_id) && count($report_schedule_id) === 0)) {
+        if (null === $report_schedule_id || (is_array($report_schedule_id) && 0 === count($report_schedule_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_schedule_id when calling getReportSchedule'
             );
@@ -1948,21 +1933,17 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_schedule_id !== null) {
+        if (null !== $report_schedule_id) {
             $resourcePath = str_replace(
-                '{' . 'reportScheduleId' . '}',
+                '{reportScheduleId}',
                 ObjectSerializer::toPathValue($report_schedule_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1976,22 +1957,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2005,56 +1983,60 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReportSchedules
+     * Operation getReportSchedules.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[]    $report_types
+     *                                         A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\ReportScheduleList
      */
     public function getReportSchedules(
         array $report_types,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\ReportScheduleList {
-        list($response) = $this->getReportSchedulesWithHttpInfo($report_types,$restrictedDataToken);
+    ): ReportScheduleList {
+        list($response) = $this->getReportSchedulesWithHttpInfo($report_types, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getReportSchedulesWithHttpInfo
+     * Operation getReportSchedulesWithHttpInfo.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[]    $report_types
+     *                                         A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportScheduleList, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportSchedulesWithHttpInfo(
         array $report_types,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportSchedulesRequest($report_types);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReportSchedules");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedules');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getReportSchedulesRateLimiter->consume()->ensureAccepted();
@@ -2090,39 +2072,39 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportScheduleList', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportScheduleList', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportSchedulesAsync
+     * Operation getReportSchedulesAsync.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportSchedulesAsync(
         array $report_types
@@ -2132,26 +2114,26 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportSchedulesAsyncWithHttpInfo
+     * Operation getReportSchedulesAsyncWithHttpInfo.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportSchedulesAsyncWithHttpInfo(
         array $report_types,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportScheduleList';
         $request = $this->getReportSchedulesRequest($report_types);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReportSchedules");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedules');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2163,11 +2145,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2175,12 +2157,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2192,23 +2175,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReportSchedules'
+     * Create request for operation 'getReportSchedules'.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportSchedulesRequest(
         array $report_types
     ): Request {
         // verify the required parameter 'report_types' is set
-        if ($report_types === null || (is_array($report_types) && count($report_types) === 0)) {
+        if (null === $report_types || (is_array($report_types) && 0 === count($report_types))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_types when calling getReportSchedules'
             );
@@ -2219,7 +2202,6 @@ class ReportsApi
         if (count($report_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$report_types" when calling ReportsApi.getReportSchedules, number of items must be greater than or equal to 1.');
         }
-
 
         $resourcePath = '/reports/2021-06-30/schedules';
         $formParams = [];
@@ -2239,12 +2221,8 @@ class ReportsApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -2258,22 +2236,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2287,36 +2262,36 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReports
+     * Operation getReports.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\GetReportsResponse
      */
     public function getReports(
         ?array $report_types = null,
@@ -2327,33 +2302,35 @@ class ReportsApi
         ?\DateTime $created_until = null,
         ?string $next_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\reports\v2021_06_30\GetReportsResponse {
-        list($response) = $this->getReportsWithHttpInfo($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token,,,,,,,$restrictedDataToken);
+    ): GetReportsResponse {
+        list($response) = $this->getReportsWithHttpInfo($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getReportsWithHttpInfo
+     * Operation getReportsWithHttpInfo.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\GetReportsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportsWithHttpInfo(
         ?array $report_types = null,
@@ -2366,13 +2343,15 @@ class ReportsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportsRequest($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReports");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReports');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getReportsRateLimiter->consume()->ensureAccepted();
@@ -2408,51 +2387,51 @@ class ReportsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\GetReportsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\GetReportsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\reports\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\reports\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportsAsync
+     * Operation getReportsAsync.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportsAsync(
         ?array $report_types = null,
@@ -2468,29 +2447,29 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportsAsyncWithHttpInfo
+     * Operation getReportsAsyncWithHttpInfo.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportsAsyncWithHttpInfo(
         ?array $report_types = null,
@@ -2500,12 +2479,12 @@ class ReportsApi
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
         ?string $next_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\GetReportsResponse';
         $request = $this->getReportsRequest($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ReportsApi-getReports");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReports');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2517,11 +2496,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2529,12 +2508,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2546,29 +2526,29 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReports'
+     * Create request for operation 'getReports'.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportsRequest(
         ?array $report_types = null,
@@ -2579,31 +2559,30 @@ class ReportsApi
         ?\DateTime $created_until = null,
         ?string $next_token = null
     ): Request {
-        if ($report_types !== null && count($report_types) > 10) {
+        if (null !== $report_types && count($report_types) > 10) {
             throw new \InvalidArgumentException('invalid value for "$report_types" when calling ReportsApi.getReports, number of items must be less than or equal to 10.');
         }
-        if ($report_types !== null && count($report_types) < 1) {
+        if (null !== $report_types && count($report_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$report_types" when calling ReportsApi.getReports, number of items must be greater than or equal to 1.');
         }
 
-        if ($processing_statuses !== null && count($processing_statuses) < 1) {
+        if (null !== $processing_statuses && count($processing_statuses) < 1) {
             throw new \InvalidArgumentException('invalid value for "$processing_statuses" when calling ReportsApi.getReports, number of items must be greater than or equal to 1.');
         }
 
-        if ($marketplace_ids !== null && count($marketplace_ids) > 10) {
+        if (null !== $marketplace_ids && count($marketplace_ids) > 10) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ReportsApi.getReports, number of items must be less than or equal to 10.');
         }
-        if ($marketplace_ids !== null && count($marketplace_ids) < 1) {
+        if (null !== $marketplace_ids && count($marketplace_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ReportsApi.getReports, number of items must be greater than or equal to 1.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ReportsApi.getReports, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ReportsApi.getReports, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/reports/2021-06-30/reports';
         $formParams = [];
@@ -2683,12 +2662,8 @@ class ReportsApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -2702,22 +2677,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2731,19 +2703,21 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -2751,7 +2725,7 @@ class ReportsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

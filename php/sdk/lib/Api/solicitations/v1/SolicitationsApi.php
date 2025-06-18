@@ -1,16 +1,18 @@
 <?php
+
 /**
  * SolicitationsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Solicitations
+ * Selling Partner API for Solicitations.
  *
  * With the Solicitations API you can build applications that send non-critical solicitations to buyers. You can get a list of solicitation types that are available for an order that you specify, then call an operation that sends a solicitation to the buyer for that order. Buyers cannot respond to solicitations sent by this API, and these solicitations do not appear in the Messaging section of Seller Central or in the recipient's Message Center. The Solicitations API returns responses that are formed according to the <a href=https://tools.ietf.org/html/draft-kelly-json-hal-08>JSON Hypertext Application Language</a> (HAL) standard.
  *
@@ -35,38 +37,34 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse;
+use SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * SolicitationsApi Class Doc Comment
+ * SolicitationsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class SolicitationsApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $createProductReviewAndSellerFeedbackSolicitationRateLimiter;
+    public ?LimiterInterface $getSolicitationActionsForOrderRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,22 +72,16 @@ class SolicitationsApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $createProductReviewAndSellerFeedbackSolicitationRateLimiter;
-    public ?LimiterInterface $getSolicitationActionsForOrderRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -99,10 +91,10 @@ class SolicitationsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation"), $this->rateLimitStorage);
-            $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter = $factory->create("SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("SolicitationsApi-getSolicitationActionsForOrder"), $this->rateLimitStorage);
-            $this->getSolicitationActionsForOrderRateLimiter = $factory->create("SolicitationsApi-getSolicitationActionsForOrder");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation'), $this->rateLimitStorage);
+            $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter = $factory->create('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SolicitationsApi-getSolicitationActionsForOrder'), $this->rateLimitStorage);
+            $this->getSolicitationActionsForOrderRateLimiter = $factory->create('SolicitationsApi-getSolicitationActionsForOrder');
         }
 
         $this->client = $client ?: new Client();
@@ -111,7 +103,7 @@ class SolicitationsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -121,7 +113,7 @@ class SolicitationsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -130,47 +122,46 @@ class SolicitationsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation createProductReviewAndSellerFeedbackSolicitation
+     * Operation createProductReviewAndSellerFeedbackSolicitation.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse
      */
     public function createProductReviewAndSellerFeedbackSolicitation(
         string $amazon_order_id,
         array $marketplace_ids,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse {
-        list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids,,$restrictedDataToken);
+    ): CreateProductReviewAndSellerFeedbackSolicitationResponse {
+        list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createProductReviewAndSellerFeedbackSolicitationWithHttpInfo
+     * Operation createProductReviewAndSellerFeedbackSolicitationWithHttpInfo.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
         string $amazon_order_id,
@@ -178,13 +169,15 @@ class SolicitationsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter->consume()->ensureAccepted();
@@ -220,41 +213,41 @@ class SolicitationsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createProductReviewAndSellerFeedbackSolicitationAsync
+     * Operation createProductReviewAndSellerFeedbackSolicitationAsync.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string   $amazon_order_id
+     *                                  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[] $marketplace_ids
+     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createProductReviewAndSellerFeedbackSolicitationAsync(
         string $amazon_order_id,
@@ -265,29 +258,29 @@ class SolicitationsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createProductReviewAndSellerFeedbackSolicitationAsyncWithHttpInfo
+     * Operation createProductReviewAndSellerFeedbackSolicitationAsyncWithHttpInfo.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string   $amazon_order_id
+     *                                  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[] $marketplace_ids
+     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createProductReviewAndSellerFeedbackSolicitationAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation');
         } else {
             $request = $this->config->sign($request);
         }
@@ -299,11 +292,11 @@ class SolicitationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -311,12 +304,13 @@ class SolicitationsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -328,32 +322,32 @@ class SolicitationsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createProductReviewAndSellerFeedbackSolicitation'
+     * Create request for operation 'createProductReviewAndSellerFeedbackSolicitation'.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string   $amazon_order_id
+     *                                  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[] $marketplace_ids
+     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createProductReviewAndSellerFeedbackSolicitationRequest(
         string $amazon_order_id,
         array $marketplace_ids
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
-        if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
+        if (null === $amazon_order_id || (is_array($amazon_order_id) && 0 === count($amazon_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amazon_order_id when calling createProductReviewAndSellerFeedbackSolicitation'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling createProductReviewAndSellerFeedbackSolicitation'
             );
@@ -361,7 +355,6 @@ class SolicitationsApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling SolicitationsApi.createProductReviewAndSellerFeedbackSolicitation, number of items must be less than or equal to 1.');
         }
-
 
         $resourcePath = '/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback';
         $formParams = [];
@@ -381,20 +374,17 @@ class SolicitationsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($amazon_order_id !== null) {
+        if (null !== $amazon_order_id) {
             $resourcePath = str_replace(
-                '{' . 'amazonOrderId' . '}',
+                '{amazonOrderId}',
                 ObjectSerializer::toPathValue($amazon_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/hal+json'],
-            
             '',
             $multipart
         );
@@ -408,22 +398,19 @@ class SolicitationsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -437,48 +424,50 @@ class SolicitationsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getSolicitationActionsForOrder
+     * Operation getSolicitationActionsForOrder.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse
      */
     public function getSolicitationActionsForOrder(
         string $amazon_order_id,
         array $marketplace_ids,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse {
-        list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids,,$restrictedDataToken);
+    ): GetSolicitationActionsForOrderResponse {
+        list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getSolicitationActionsForOrderWithHttpInfo
+     * Operation getSolicitationActionsForOrderWithHttpInfo.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getSolicitationActionsForOrderWithHttpInfo(
         string $amazon_order_id,
@@ -486,13 +475,15 @@ class SolicitationsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "SolicitationsApi-getSolicitationActionsForOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-getSolicitationActionsForOrder');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getSolicitationActionsForOrderRateLimiter->consume()->ensureAccepted();
@@ -528,41 +519,41 @@ class SolicitationsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getSolicitationActionsForOrderAsync
+     * Operation getSolicitationActionsForOrderAsync.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string   $amazon_order_id
+     *                                  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[] $marketplace_ids
+     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSolicitationActionsForOrderAsync(
         string $amazon_order_id,
@@ -573,29 +564,29 @@ class SolicitationsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getSolicitationActionsForOrderAsyncWithHttpInfo
+     * Operation getSolicitationActionsForOrderAsyncWithHttpInfo.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string   $amazon_order_id
+     *                                  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[] $marketplace_ids
+     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSolicitationActionsForOrderAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "SolicitationsApi-getSolicitationActionsForOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-getSolicitationActionsForOrder');
         } else {
             $request = $this->config->sign($request);
         }
@@ -607,11 +598,11 @@ class SolicitationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -619,12 +610,13 @@ class SolicitationsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -636,32 +628,32 @@ class SolicitationsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getSolicitationActionsForOrder'
+     * Create request for operation 'getSolicitationActionsForOrder'.
      *
-     * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string   $amazon_order_id
+     *                                  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[] $marketplace_ids
+     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getSolicitationActionsForOrderRequest(
         string $amazon_order_id,
         array $marketplace_ids
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
-        if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
+        if (null === $amazon_order_id || (is_array($amazon_order_id) && 0 === count($amazon_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amazon_order_id when calling getSolicitationActionsForOrder'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getSolicitationActionsForOrder'
             );
@@ -669,7 +661,6 @@ class SolicitationsApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling SolicitationsApi.getSolicitationActionsForOrder, number of items must be less than or equal to 1.');
         }
-
 
         $resourcePath = '/solicitations/v1/orders/{amazonOrderId}';
         $formParams = [];
@@ -689,20 +680,17 @@ class SolicitationsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($amazon_order_id !== null) {
+        if (null !== $amazon_order_id) {
             $resourcePath = str_replace(
-                '{' . 'amazonOrderId' . '}',
+                '{amazonOrderId}',
                 ObjectSerializer::toPathValue($amazon_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/hal+json'],
-            
             '',
             $multipart
         );
@@ -716,22 +704,19 @@ class SolicitationsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -745,19 +730,21 @@ class SolicitationsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -765,7 +752,7 @@ class SolicitationsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

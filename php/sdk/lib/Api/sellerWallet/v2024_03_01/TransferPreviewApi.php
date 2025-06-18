@@ -1,16 +1,18 @@
 <?php
+
 /**
  * TransferPreviewApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -35,38 +37,32 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * TransferPreviewApi Class Doc Comment
+ * TransferPreviewApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class TransferPreviewApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $getTransferPreviewRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +70,16 @@ class TransferPreviewApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $getTransferPreviewRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -98,8 +89,8 @@ class TransferPreviewApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransferPreviewApi-getTransferPreview"), $this->rateLimitStorage);
-            $this->getTransferPreviewRateLimiter = $factory->create("TransferPreviewApi-getTransferPreview");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferPreviewApi-getTransferPreview'), $this->rateLimitStorage);
+            $this->getTransferPreviewRateLimiter = $factory->create('TransferPreviewApi-getTransferPreview');
         }
 
         $this->client = $client ?: new Client();
@@ -108,7 +99,7 @@ class TransferPreviewApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -118,7 +109,7 @@ class TransferPreviewApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -127,33 +118,30 @@ class TransferPreviewApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation getTransferPreview
+     * Operation getTransferPreview.
      *
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
-     * @param  string $source_country_code
-     *  Country code of the source transaction account in ISO 3166 format. (required)
-     * @param  string $source_currency_code
-     *  Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param  string $destination_country_code
-     *  Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param  string $destination_currency_code
-     *  Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param  float $base_amount
-     *  The base transaction amount without any markup fees. (required)
+     * @param string      $source_country_code
+     *                                               Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string      $source_currency_code
+     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string      $destination_country_code
+     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string      $destination_currency_code
+     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float       $base_amount
+     *                                               The base transaction amount without any markup fees. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview
      */
     public function getTransferPreview(
         string $source_country_code,
@@ -162,31 +150,33 @@ class TransferPreviewApi
         string $destination_currency_code,
         float $base_amount,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview {
-        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount,,,,,$restrictedDataToken);
+    ): TransferRatePreview {
+        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getTransferPreviewWithHttpInfo
+     * Operation getTransferPreviewWithHttpInfo.
      *
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
-     * @param  string $source_country_code
-     *  Country code of the source transaction account in ISO 3166 format. (required)
-     * @param  string $source_currency_code
-     *  Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param  string $destination_country_code
-     *  Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param  string $destination_currency_code
-     *  Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param  float $base_amount
-     *  The base transaction amount without any markup fees. (required)
+     * @param string      $source_country_code
+     *                                               Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string      $source_currency_code
+     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string      $destination_country_code
+     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string      $destination_currency_code
+     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float       $base_amount
+     *                                               The base transaction amount without any markup fees. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getTransferPreviewWithHttpInfo(
         string $source_country_code,
@@ -197,13 +187,15 @@ class TransferPreviewApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferPreviewApi-getTransferPreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferPreviewApi-getTransferPreview');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getTransferPreviewRateLimiter->consume()->ensureAccepted();
@@ -239,49 +231,49 @@ class TransferPreviewApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getTransferPreviewAsync
+     * Operation getTransferPreviewAsync.
      *
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
-     * @param  string $source_country_code
-     *  Country code of the source transaction account in ISO 3166 format. (required)
-     * @param  string $source_currency_code
-     *  Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param  string $destination_country_code
-     *  Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param  string $destination_currency_code
-     *  Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param  float $base_amount
-     *  The base transaction amount without any markup fees. (required)
+     * @param string $source_country_code
+     *                                          Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string $source_currency_code
+     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string $destination_country_code
+     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string $destination_currency_code
+     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float  $base_amount
+     *                                          The base transaction amount without any markup fees. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getTransferPreviewAsync(
         string $source_country_code,
@@ -295,27 +287,27 @@ class TransferPreviewApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getTransferPreviewAsyncWithHttpInfo
+     * Operation getTransferPreviewAsyncWithHttpInfo.
      *
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
-     * @param  string $source_country_code
-     *  Country code of the source transaction account in ISO 3166 format. (required)
-     * @param  string $source_currency_code
-     *  Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param  string $destination_country_code
-     *  Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param  string $destination_currency_code
-     *  Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param  float $base_amount
-     *  The base transaction amount without any markup fees. (required)
+     * @param string $source_country_code
+     *                                          Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string $source_currency_code
+     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string $destination_country_code
+     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string $destination_currency_code
+     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float  $base_amount
+     *                                          The base transaction amount without any markup fees. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getTransferPreviewAsyncWithHttpInfo(
         string $source_country_code,
@@ -323,12 +315,12 @@ class TransferPreviewApi
         string $destination_country_code,
         string $destination_currency_code,
         float $base_amount,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview';
         $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferPreviewApi-getTransferPreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferPreviewApi-getTransferPreview');
         } else {
             $request = $this->config->sign($request);
         }
@@ -340,11 +332,11 @@ class TransferPreviewApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -352,12 +344,13 @@ class TransferPreviewApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -369,25 +362,25 @@ class TransferPreviewApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getTransferPreview'
+     * Create request for operation 'getTransferPreview'.
      *
-     * @param  string $source_country_code
-     *  Country code of the source transaction account in ISO 3166 format. (required)
-     * @param  string $source_currency_code
-     *  Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param  string $destination_country_code
-     *  Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param  string $destination_currency_code
-     *  Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param  float $base_amount
-     *  The base transaction amount without any markup fees. (required)
+     * @param string $source_country_code
+     *                                          Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string $source_currency_code
+     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string $destination_country_code
+     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string $destination_currency_code
+     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float  $base_amount
+     *                                          The base transaction amount without any markup fees. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getTransferPreviewRequest(
         string $source_country_code,
@@ -397,31 +390,31 @@ class TransferPreviewApi
         float $base_amount
     ): Request {
         // verify the required parameter 'source_country_code' is set
-        if ($source_country_code === null || (is_array($source_country_code) && count($source_country_code) === 0)) {
+        if (null === $source_country_code || (is_array($source_country_code) && 0 === count($source_country_code))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $source_country_code when calling getTransferPreview'
             );
         }
         // verify the required parameter 'source_currency_code' is set
-        if ($source_currency_code === null || (is_array($source_currency_code) && count($source_currency_code) === 0)) {
+        if (null === $source_currency_code || (is_array($source_currency_code) && 0 === count($source_currency_code))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $source_currency_code when calling getTransferPreview'
             );
         }
         // verify the required parameter 'destination_country_code' is set
-        if ($destination_country_code === null || (is_array($destination_country_code) && count($destination_country_code) === 0)) {
+        if (null === $destination_country_code || (is_array($destination_country_code) && 0 === count($destination_country_code))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $destination_country_code when calling getTransferPreview'
             );
         }
         // verify the required parameter 'destination_currency_code' is set
-        if ($destination_currency_code === null || (is_array($destination_currency_code) && count($destination_currency_code) === 0)) {
+        if (null === $destination_currency_code || (is_array($destination_currency_code) && 0 === count($destination_currency_code))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $destination_currency_code when calling getTransferPreview'
             );
         }
         // verify the required parameter 'base_amount' is set
-        if ($base_amount === null || (is_array($base_amount) && count($base_amount) === 0)) {
+        if (null === $base_amount || (is_array($base_amount) && 0 === count($base_amount))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $base_amount when calling getTransferPreview'
             );
@@ -485,12 +478,8 @@ class TransferPreviewApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -504,22 +493,19 @@ class TransferPreviewApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -533,19 +519,21 @@ class TransferPreviewApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -553,7 +541,7 @@ class TransferPreviewApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

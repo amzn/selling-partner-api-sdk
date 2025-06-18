@@ -1,16 +1,18 @@
 <?php
+
 /**
  * CatalogApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Catalog Items
+ * Selling Partner API for Catalog Items.
  *
  * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
@@ -35,38 +37,34 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\catalogItems\v2022_04_01\Item;
+use SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * CatalogApi Class Doc Comment
+ * CatalogApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class CatalogApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $getCatalogItemRateLimiter;
+    public ?LimiterInterface $searchCatalogItemsRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,22 +72,16 @@ class CatalogApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $getCatalogItemRateLimiter;
-    public ?LimiterInterface $searchCatalogItemsRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -99,10 +91,10 @@ class CatalogApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CatalogApi-getCatalogItem"), $this->rateLimitStorage);
-            $this->getCatalogItemRateLimiter = $factory->create("CatalogApi-getCatalogItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("CatalogApi-searchCatalogItems"), $this->rateLimitStorage);
-            $this->searchCatalogItemsRateLimiter = $factory->create("CatalogApi-searchCatalogItems");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-getCatalogItem'), $this->rateLimitStorage);
+            $this->getCatalogItemRateLimiter = $factory->create('CatalogApi-getCatalogItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-searchCatalogItems'), $this->rateLimitStorage);
+            $this->searchCatalogItemsRateLimiter = $factory->create('CatalogApi-searchCatalogItems');
         }
 
         $this->client = $client ?: new Client();
@@ -111,7 +103,7 @@ class CatalogApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -121,7 +113,7 @@ class CatalogApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -130,29 +122,26 @@ class CatalogApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation getCatalogItem
+     * Operation getCatalogItem.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param string        $asin
+     *                                           The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param string[]      $marketplace_ids
+     *                                           A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data
+     *                                           A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                           The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\catalogItems\v2022_04_01\Item
      */
     public function getCatalogItem(
         string $asin,
@@ -160,27 +149,29 @@ class CatalogApi
         ?array $included_data = null,
         ?string $locale = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\catalogItems\v2022_04_01\Item {
-        list($response) = $this->getCatalogItemWithHttpInfo($asin, $marketplace_ids, $included_data, $locale,,,,$restrictedDataToken);
+    ): Item {
+        list($response) = $this->getCatalogItemWithHttpInfo($asin, $marketplace_ids, $included_data, $locale, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getCatalogItemWithHttpInfo
+     * Operation getCatalogItemWithHttpInfo.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param string        $asin
+     *                                           The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param string[]      $marketplace_ids
+     *                                           A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data
+     *                                           A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                           The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\catalogItems\v2022_04_01\Item, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getCatalogItemWithHttpInfo(
         string $asin,
@@ -190,13 +181,15 @@ class CatalogApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCatalogItemRequest($asin, $marketplace_ids, $included_data, $locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CatalogApi-getCatalogItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CatalogApi-getCatalogItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getCatalogItemRateLimiter->consume()->ensureAccepted();
@@ -232,45 +225,45 @@ class CatalogApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\catalogItems\v2022_04_01\Item' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\catalogItems\v2022_04_01\Item' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\catalogItems\v2022_04_01\Item' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\catalogItems\v2022_04_01\Item' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\Item', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\Item', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getCatalogItemAsync
+     * Operation getCatalogItemAsync.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param string        $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param string[]      $marketplace_ids
+     *                                       A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data
+     *                                       A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                       The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getCatalogItemAsync(
         string $asin,
@@ -283,35 +276,35 @@ class CatalogApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getCatalogItemAsyncWithHttpInfo
+     * Operation getCatalogItemAsyncWithHttpInfo.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param string        $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param string[]      $marketplace_ids
+     *                                       A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data
+     *                                       A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                       The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getCatalogItemAsyncWithHttpInfo(
         string $asin,
         array $marketplace_ids,
         ?array $included_data = null,
         ?string $locale = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\catalogItems\v2022_04_01\Item';
         $request = $this->getCatalogItemRequest($asin, $marketplace_ids, $included_data, $locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CatalogApi-getCatalogItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CatalogApi-getCatalogItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -323,11 +316,11 @@ class CatalogApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -335,12 +328,13 @@ class CatalogApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -352,23 +346,23 @@ class CatalogApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getCatalogItem'
+     * Create request for operation 'getCatalogItem'.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param string        $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param string[]      $marketplace_ids
+     *                                       A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data
+     *                                       A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                       The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getCatalogItemRequest(
         string $asin,
@@ -377,13 +371,13 @@ class CatalogApi
         ?string $locale = null
     ): Request {
         // verify the required parameter 'asin' is set
-        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
+        if (null === $asin || (is_array($asin) && 0 === count($asin))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $asin when calling getCatalogItem'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getCatalogItem'
             );
@@ -427,20 +421,17 @@ class CatalogApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($asin !== null) {
+        if (null !== $asin) {
             $resourcePath = str_replace(
-                '{' . 'asin' . '}',
+                '{asin}',
                 ObjectSerializer::toPathValue($asin),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -454,22 +445,19 @@ class CatalogApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -483,46 +471,46 @@ class CatalogApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation searchCatalogItems
+     * Operation searchCatalogItems.
      *
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
-     * @param  string|null $identifiers_type
-     *  The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
-     * @param  string|null $seller_id
-     *  A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
-     * @param  string[]|null $keywords
-     *  A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
-     * @param  string[]|null $brand_names
-     *  A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  string[]|null $classification_ids
-     *  A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  int|null $page_size
-     *  The number of results to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
-     * @param  string|null $keywords_locale
-     *  The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param string[]      $marketplace_ids
+     *                                           A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $identifiers
+     *                                           A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param null|string   $identifiers_type
+     *                                           The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param null|string[] $included_data
+     *                                           A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                           The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $seller_id
+     *                                           A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param null|string[] $keywords
+     *                                           A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param null|string[] $brand_names
+     *                                           A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string[] $classification_ids
+     *                                           A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|int      $page_size
+     *                                           The number of results to include on each page. (optional, default to 10)
+     * @param null|string   $page_token
+     *                                           A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $keywords_locale
+     *                                           The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults
      */
     public function searchCatalogItems(
         array $marketplace_ids,
@@ -538,43 +526,45 @@ class CatalogApi
         ?string $page_token = null,
         ?string $keywords_locale = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults {
-        list($response) = $this->searchCatalogItemsWithHttpInfo($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale,,,,,,,,,,,,$restrictedDataToken);
+    ): ItemSearchResults {
+        list($response) = $this->searchCatalogItemsWithHttpInfo($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation searchCatalogItemsWithHttpInfo
+     * Operation searchCatalogItemsWithHttpInfo.
      *
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
-     * @param  string|null $identifiers_type
-     *  The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
-     * @param  string|null $seller_id
-     *  A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
-     * @param  string[]|null $keywords
-     *  A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
-     * @param  string[]|null $brand_names
-     *  A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  string[]|null $classification_ids
-     *  A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  int|null $page_size
-     *  The number of results to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
-     * @param  string|null $keywords_locale
-     *  The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param string[]      $marketplace_ids
+     *                                           A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $identifiers
+     *                                           A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param null|string   $identifiers_type
+     *                                           The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param null|string[] $included_data
+     *                                           A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                           The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $seller_id
+     *                                           A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param null|string[] $keywords
+     *                                           A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param null|string[] $brand_names
+     *                                           A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string[] $classification_ids
+     *                                           A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|int      $page_size
+     *                                           The number of results to include on each page. (optional, default to 10)
+     * @param null|string   $page_token
+     *                                           A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $keywords_locale
+     *                                           The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function searchCatalogItemsWithHttpInfo(
         array $marketplace_ids,
@@ -592,13 +582,15 @@ class CatalogApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchCatalogItemsRequest($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CatalogApi-searchCatalogItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CatalogApi-searchCatalogItems');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->searchCatalogItemsRateLimiter->consume()->ensureAccepted();
@@ -634,61 +626,61 @@ class CatalogApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation searchCatalogItemsAsync
+     * Operation searchCatalogItemsAsync.
      *
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
-     * @param  string|null $identifiers_type
-     *  The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
-     * @param  string|null $seller_id
-     *  A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
-     * @param  string[]|null $keywords
-     *  A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
-     * @param  string[]|null $brand_names
-     *  A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  string[]|null $classification_ids
-     *  A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  int|null $page_size
-     *  The number of results to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
-     * @param  string|null $keywords_locale
-     *  The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param string[]      $marketplace_ids
+     *                                          A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $identifiers
+     *                                          A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param null|string   $identifiers_type
+     *                                          The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param null|string[] $included_data
+     *                                          A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                          The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $seller_id
+     *                                          A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param null|string[] $keywords
+     *                                          A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param null|string[] $brand_names
+     *                                          A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string[] $classification_ids
+     *                                          A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|int      $page_size
+     *                                          The number of results to include on each page. (optional, default to 10)
+     * @param null|string   $page_token
+     *                                          A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $keywords_locale
+     *                                          The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchCatalogItemsAsync(
         array $marketplace_ids,
@@ -709,39 +701,39 @@ class CatalogApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation searchCatalogItemsAsyncWithHttpInfo
+     * Operation searchCatalogItemsAsyncWithHttpInfo.
      *
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
-     * @param  string|null $identifiers_type
-     *  The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
-     * @param  string|null $seller_id
-     *  A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
-     * @param  string[]|null $keywords
-     *  A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
-     * @param  string[]|null $brand_names
-     *  A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  string[]|null $classification_ids
-     *  A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  int|null $page_size
-     *  The number of results to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
-     * @param  string|null $keywords_locale
-     *  The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param string[]      $marketplace_ids
+     *                                          A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $identifiers
+     *                                          A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param null|string   $identifiers_type
+     *                                          The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param null|string[] $included_data
+     *                                          A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                          The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $seller_id
+     *                                          A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param null|string[] $keywords
+     *                                          A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param null|string[] $brand_names
+     *                                          A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string[] $classification_ids
+     *                                          A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|int      $page_size
+     *                                          The number of results to include on each page. (optional, default to 10)
+     * @param null|string   $page_token
+     *                                          A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $keywords_locale
+     *                                          The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchCatalogItemsAsyncWithHttpInfo(
         array $marketplace_ids,
@@ -756,12 +748,12 @@ class CatalogApi
         ?int $page_size = 10,
         ?string $page_token = null,
         ?string $keywords_locale = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults';
         $request = $this->searchCatalogItemsRequest($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CatalogApi-searchCatalogItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CatalogApi-searchCatalogItems');
         } else {
             $request = $this->config->sign($request);
         }
@@ -773,11 +765,11 @@ class CatalogApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -785,12 +777,13 @@ class CatalogApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -802,39 +795,39 @@ class CatalogApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'searchCatalogItems'
+     * Create request for operation 'searchCatalogItems'.
      *
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
-     * @param  string|null $identifiers_type
-     *  The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets to include in the response. (optional)
-     * @param  string|null $locale
-     *  The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
-     * @param  string|null $seller_id
-     *  A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
-     * @param  string[]|null $keywords
-     *  A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
-     * @param  string[]|null $brand_names
-     *  A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  string[]|null $classification_ids
-     *  A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
-     * @param  int|null $page_size
-     *  The number of results to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
-     * @param  string|null $keywords_locale
-     *  The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param string[]      $marketplace_ids
+     *                                          A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $identifiers
+     *                                          A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param null|string   $identifiers_type
+     *                                          The type of product identifiers that you can use to search the Amazon catalog. **Note:** &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param null|string[] $included_data
+     *                                          A comma-delimited list of datasets to include in the response. (optional)
+     * @param null|string   $locale
+     *                                          The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace. (optional)
+     * @param null|string   $seller_id
+     *                                          A selling partner identifier, such as a seller account or vendor code. **Note:** Required when &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param null|string[] $keywords
+     *                                          A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param null|string[] $brand_names
+     *                                          A comma-delimited list of brand names that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|string[] $classification_ids
+     *                                          A comma-delimited list of classification identifiers that you can use to limit the search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param null|int      $page_size
+     *                                          The number of results to include on each page. (optional, default to 10)
+     * @param null|string   $page_token
+     *                                          A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $keywords_locale
+     *                                          The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function searchCatalogItemsRequest(
         array $marketplace_ids,
@@ -851,7 +844,7 @@ class CatalogApi
         ?string $keywords_locale = null
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling searchCatalogItems'
             );
@@ -860,18 +853,17 @@ class CatalogApi
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling CatalogApi.searchCatalogItems, number of items must be less than or equal to 1.');
         }
 
-        if ($identifiers !== null && count($identifiers) > 20) {
+        if (null !== $identifiers && count($identifiers) > 20) {
             throw new \InvalidArgumentException('invalid value for "$identifiers" when calling CatalogApi.searchCatalogItems, number of items must be less than or equal to 20.');
         }
 
-        if ($keywords !== null && count($keywords) > 20) {
+        if (null !== $keywords && count($keywords) > 20) {
             throw new \InvalidArgumentException('invalid value for "$keywords" when calling CatalogApi.searchCatalogItems, number of items must be less than or equal to 20.');
         }
 
-        if ($page_size !== null && $page_size > 20) {
+        if (null !== $page_size && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling CatalogApi.searchCatalogItems, must be smaller than or equal to 20.');
         }
-
 
         $resourcePath = '/catalog/2022-04-01/items';
         $formParams = [];
@@ -1001,12 +993,8 @@ class CatalogApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1020,22 +1008,19 @@ class CatalogApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1049,19 +1034,21 @@ class CatalogApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1069,7 +1056,7 @@ class CatalogApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

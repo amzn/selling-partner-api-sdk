@@ -229,7 +229,7 @@ class VendorShippingApi
         ?string $seller_warehouse_code = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse {
-        list($response) = $this->getShipmentDetailsWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code,,,,,,,,,,,,,,,,,,,,,,,,$restrictedDataToken);
+        list($response) = $this->getShipmentDetailsWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code,$restrictedDataToken);
         return $response;
     }
 
@@ -1038,7 +1038,7 @@ class VendorShippingApi
         ?string $seller_warehouse_code = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\GetShipmentLabels {
-        list($response) = $this->getShipmentLabelsWithHttpInfo($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code,,,,,,,,$restrictedDataToken);
+        list($response) = $this->getShipmentLabelsWithHttpInfo($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code,$restrictedDataToken);
         return $response;
     }
 

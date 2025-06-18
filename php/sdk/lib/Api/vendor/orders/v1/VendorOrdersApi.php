@@ -464,7 +464,7 @@ class VendorOrdersApi
         ?string $ordering_vendor_code = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersResponse {
-        list($response) = $this->getPurchaseOrdersWithHttpInfo($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code,,,,,,,,,,,,$restrictedDataToken);
+        list($response) = $this->getPurchaseOrdersWithHttpInfo($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code,$restrictedDataToken);
         return $response;
     }
 
@@ -1018,7 +1018,7 @@ class VendorOrdersApi
         ?string $ship_to_party_id = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersStatusResponse {
-        list($response) = $this->getPurchaseOrdersStatusWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id,,,,,,,,,,,,,$restrictedDataToken);
+        list($response) = $this->getPurchaseOrdersStatusWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id,$restrictedDataToken);
         return $response;
     }
 

@@ -1,16 +1,18 @@
 <?php
+
 /**
  * FbaOutboundApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -35,47 +37,46 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FbaOutboundApi Class Doc Comment
+ * FbaOutboundApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FbaOutboundApi
 {
-    /**
-     * @var ClientInterface
-     */
-    protected ClientInterface $client;
-
-    /**
-     * @var Configuration
-     */
-    protected Configuration $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected HeaderSelector $headerSelector;
-
-    /**
-     * @var int Host index
-     */
-    protected int $hostIndex;
-
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
     public ?LimiterInterface $cancelFulfillmentOrderRateLimiter;
     public ?LimiterInterface $createFulfillmentOrderRateLimiter;
     public ?LimiterInterface $createFulfillmentReturnRateLimiter;
@@ -90,18 +91,27 @@ class FbaOutboundApi
     public ?LimiterInterface $listReturnReasonCodesRateLimiter;
     public ?LimiterInterface $submitFulfillmentOrderStatusUpdateRateLimiter;
     public ?LimiterInterface $updateFulfillmentOrderRateLimiter;
+    protected ClientInterface $client;
+
+    protected Configuration $config;
+
+    protected HeaderSelector $headerSelector;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
+     * @var int Host index
+     */
+    protected int $hostIndex;
+
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
+
+    /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -111,34 +121,34 @@ class FbaOutboundApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-cancelFulfillmentOrder"), $this->rateLimitStorage);
-            $this->cancelFulfillmentOrderRateLimiter = $factory->create("FbaOutboundApi-cancelFulfillmentOrder");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-createFulfillmentOrder"), $this->rateLimitStorage);
-            $this->createFulfillmentOrderRateLimiter = $factory->create("FbaOutboundApi-createFulfillmentOrder");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-createFulfillmentReturn"), $this->rateLimitStorage);
-            $this->createFulfillmentReturnRateLimiter = $factory->create("FbaOutboundApi-createFulfillmentReturn");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-deliveryOffers"), $this->rateLimitStorage);
-            $this->deliveryOffersRateLimiter = $factory->create("FbaOutboundApi-deliveryOffers");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-getFeatureInventory"), $this->rateLimitStorage);
-            $this->getFeatureInventoryRateLimiter = $factory->create("FbaOutboundApi-getFeatureInventory");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-getFeatureSKU"), $this->rateLimitStorage);
-            $this->getFeatureSKURateLimiter = $factory->create("FbaOutboundApi-getFeatureSKU");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-getFeatures"), $this->rateLimitStorage);
-            $this->getFeaturesRateLimiter = $factory->create("FbaOutboundApi-getFeatures");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-getFulfillmentOrder"), $this->rateLimitStorage);
-            $this->getFulfillmentOrderRateLimiter = $factory->create("FbaOutboundApi-getFulfillmentOrder");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-getFulfillmentPreview"), $this->rateLimitStorage);
-            $this->getFulfillmentPreviewRateLimiter = $factory->create("FbaOutboundApi-getFulfillmentPreview");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-getPackageTrackingDetails"), $this->rateLimitStorage);
-            $this->getPackageTrackingDetailsRateLimiter = $factory->create("FbaOutboundApi-getPackageTrackingDetails");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-listAllFulfillmentOrders"), $this->rateLimitStorage);
-            $this->listAllFulfillmentOrdersRateLimiter = $factory->create("FbaOutboundApi-listAllFulfillmentOrders");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-listReturnReasonCodes"), $this->rateLimitStorage);
-            $this->listReturnReasonCodesRateLimiter = $factory->create("FbaOutboundApi-listReturnReasonCodes");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-submitFulfillmentOrderStatusUpdate"), $this->rateLimitStorage);
-            $this->submitFulfillmentOrderStatusUpdateRateLimiter = $factory->create("FbaOutboundApi-submitFulfillmentOrderStatusUpdate");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaOutboundApi-updateFulfillmentOrder"), $this->rateLimitStorage);
-            $this->updateFulfillmentOrderRateLimiter = $factory->create("FbaOutboundApi-updateFulfillmentOrder");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-cancelFulfillmentOrder'), $this->rateLimitStorage);
+            $this->cancelFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-cancelFulfillmentOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentOrder'), $this->rateLimitStorage);
+            $this->createFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentReturn'), $this->rateLimitStorage);
+            $this->createFulfillmentReturnRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentReturn');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-deliveryOffers'), $this->rateLimitStorage);
+            $this->deliveryOffersRateLimiter = $factory->create('FbaOutboundApi-deliveryOffers');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureInventory'), $this->rateLimitStorage);
+            $this->getFeatureInventoryRateLimiter = $factory->create('FbaOutboundApi-getFeatureInventory');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureSKU'), $this->rateLimitStorage);
+            $this->getFeatureSKURateLimiter = $factory->create('FbaOutboundApi-getFeatureSKU');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatures'), $this->rateLimitStorage);
+            $this->getFeaturesRateLimiter = $factory->create('FbaOutboundApi-getFeatures');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFulfillmentOrder'), $this->rateLimitStorage);
+            $this->getFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-getFulfillmentOrder');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFulfillmentPreview'), $this->rateLimitStorage);
+            $this->getFulfillmentPreviewRateLimiter = $factory->create('FbaOutboundApi-getFulfillmentPreview');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getPackageTrackingDetails'), $this->rateLimitStorage);
+            $this->getPackageTrackingDetailsRateLimiter = $factory->create('FbaOutboundApi-getPackageTrackingDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-listAllFulfillmentOrders'), $this->rateLimitStorage);
+            $this->listAllFulfillmentOrdersRateLimiter = $factory->create('FbaOutboundApi-listAllFulfillmentOrders');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-listReturnReasonCodes'), $this->rateLimitStorage);
+            $this->listReturnReasonCodesRateLimiter = $factory->create('FbaOutboundApi-listReturnReasonCodes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-submitFulfillmentOrderStatusUpdate'), $this->rateLimitStorage);
+            $this->submitFulfillmentOrderStatusUpdateRateLimiter = $factory->create('FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-updateFulfillmentOrder'), $this->rateLimitStorage);
+            $this->updateFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-updateFulfillmentOrder');
         }
 
         $this->client = $client ?: new Client();
@@ -147,7 +157,7 @@ class FbaOutboundApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -157,7 +167,7 @@ class FbaOutboundApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -166,55 +176,56 @@ class FbaOutboundApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation cancelFulfillmentOrder
+     * Operation cancelFulfillmentOrder.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse
      */
     public function cancelFulfillmentOrder(
         string $seller_fulfillment_order_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse {
-        list($response) = $this->cancelFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id,$restrictedDataToken);
+    ): CancelFulfillmentOrderResponse {
+        list($response) = $this->cancelFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation cancelFulfillmentOrderWithHttpInfo
+     * Operation cancelFulfillmentOrderWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelFulfillmentOrderWithHttpInfo(
         string $seller_fulfillment_order_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelFulfillmentOrderRequest($seller_fulfillment_order_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-cancelFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-cancelFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelFulfillmentOrderRateLimiter->consume()->ensureAccepted();
@@ -250,39 +261,39 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelFulfillmentOrderAsync
+     * Operation cancelFulfillmentOrderAsync.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string $seller_fulfillment_order_id
+     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelFulfillmentOrderAsync(
         string $seller_fulfillment_order_id
@@ -292,26 +303,26 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelFulfillmentOrderAsyncWithHttpInfo
+     * Operation cancelFulfillmentOrderAsyncWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string $seller_fulfillment_order_id
+     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelFulfillmentOrderAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse';
         $request = $this->cancelFulfillmentOrderRequest($seller_fulfillment_order_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-cancelFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-cancelFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
@@ -323,11 +334,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -335,12 +346,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -352,23 +364,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelFulfillmentOrder'
+     * Create request for operation 'cancelFulfillmentOrder'.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string $seller_fulfillment_order_id
+     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelFulfillmentOrderRequest(
         string $seller_fulfillment_order_id
     ): Request {
         // verify the required parameter 'seller_fulfillment_order_id' is set
-        if ($seller_fulfillment_order_id === null || (is_array($seller_fulfillment_order_id) && count($seller_fulfillment_order_id) === 0)) {
+        if (null === $seller_fulfillment_order_id || (is_array($seller_fulfillment_order_id) && 0 === count($seller_fulfillment_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_fulfillment_order_id when calling cancelFulfillmentOrder'
             );
@@ -377,7 +389,6 @@ class FbaOutboundApi
             throw new \InvalidArgumentException('invalid length for "$seller_fulfillment_order_id" when calling FbaOutboundApi.cancelFulfillmentOrder, must be smaller than or equal to 40.');
         }
 
-
         $resourcePath = '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel';
         $formParams = [];
         $queryParams = [];
@@ -385,21 +396,17 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($seller_fulfillment_order_id !== null) {
+        if (null !== $seller_fulfillment_order_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerFulfillmentOrderId' . '}',
+                '{sellerFulfillmentOrderId}',
                 ObjectSerializer::toPathValue($seller_fulfillment_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -413,22 +420,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -442,56 +446,60 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createFulfillmentOrder
+     * Operation createFulfillmentOrder.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
-     *  CreateFulfillmentOrderRequest parameter (required)
+     * @param CreateFulfillmentOrderRequest $body
+     *                                                           CreateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse
      */
     public function createFulfillmentOrder(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body,
+        CreateFulfillmentOrderRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse {
-        list($response) = $this->createFulfillmentOrderWithHttpInfo($body,$restrictedDataToken);
+    ): CreateFulfillmentOrderResponse {
+        list($response) = $this->createFulfillmentOrderWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createFulfillmentOrderWithHttpInfo
+     * Operation createFulfillmentOrderWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
-     *  CreateFulfillmentOrderRequest parameter (required)
+     * @param CreateFulfillmentOrderRequest $body
+     *                                                           CreateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createFulfillmentOrderWithHttpInfo(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body,
+        CreateFulfillmentOrderRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFulfillmentOrderRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-createFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createFulfillmentOrderRateLimiter->consume()->ensureAccepted();
@@ -527,68 +535,68 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createFulfillmentOrderAsync
+     * Operation createFulfillmentOrderAsync.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
-     *  CreateFulfillmentOrderRequest parameter (required)
+     * @param CreateFulfillmentOrderRequest $body
+     *                                            CreateFulfillmentOrderRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFulfillmentOrderAsync(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
+        CreateFulfillmentOrderRequest $body
     ): PromiseInterface {
         return $this->createFulfillmentOrderAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createFulfillmentOrderAsyncWithHttpInfo
+     * Operation createFulfillmentOrderAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
-     *  CreateFulfillmentOrderRequest parameter (required)
+     * @param CreateFulfillmentOrderRequest $body
+     *                                            CreateFulfillmentOrderRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFulfillmentOrderAsyncWithHttpInfo(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body,
-    ?string $restrictedDataToken = null
+        CreateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse';
         $request = $this->createFulfillmentOrderRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-createFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
@@ -600,11 +608,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -612,12 +620,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -629,23 +638,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createFulfillmentOrder'
+     * Create request for operation 'createFulfillmentOrder'.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
-     *  CreateFulfillmentOrderRequest parameter (required)
+     * @param CreateFulfillmentOrderRequest $body
+     *                                            CreateFulfillmentOrderRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createFulfillmentOrderRequest(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest $body
+        CreateFulfillmentOrderRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createFulfillmentOrder'
             );
@@ -658,20 +667,15 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -684,22 +688,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -713,62 +714,66 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createFulfillmentReturn
+     * Operation createFulfillmentReturn.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
-     *  CreateFulfillmentReturnRequest parameter (required)
+     * @param string                         $seller_fulfillment_order_id
+     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     * @param CreateFulfillmentReturnRequest $body
+     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     * @param null|string                    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse
      */
     public function createFulfillmentReturn(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body,
+        CreateFulfillmentReturnRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse {
-        list($response) = $this->createFulfillmentReturnWithHttpInfo($seller_fulfillment_order_id, $body,,$restrictedDataToken);
+    ): CreateFulfillmentReturnResponse {
+        list($response) = $this->createFulfillmentReturnWithHttpInfo($seller_fulfillment_order_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createFulfillmentReturnWithHttpInfo
+     * Operation createFulfillmentReturnWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
-     *  CreateFulfillmentReturnRequest parameter (required)
+     * @param string                         $seller_fulfillment_order_id
+     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     * @param CreateFulfillmentReturnRequest $body
+     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     * @param null|string                    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createFulfillmentReturnWithHttpInfo(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body,
+        CreateFulfillmentReturnRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFulfillmentReturnRequest($seller_fulfillment_order_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-createFulfillmentReturn");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentReturn');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createFulfillmentReturnRateLimiter->consume()->ensureAccepted();
@@ -804,74 +809,74 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createFulfillmentReturnAsync
+     * Operation createFulfillmentReturnAsync.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
-     *  CreateFulfillmentReturnRequest parameter (required)
+     * @param string                         $seller_fulfillment_order_id
+     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     * @param CreateFulfillmentReturnRequest $body
+     *                                                                    CreateFulfillmentReturnRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFulfillmentReturnAsync(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
+        CreateFulfillmentReturnRequest $body
     ): PromiseInterface {
         return $this->createFulfillmentReturnAsyncWithHttpInfo($seller_fulfillment_order_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createFulfillmentReturnAsyncWithHttpInfo
+     * Operation createFulfillmentReturnAsyncWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
-     *  CreateFulfillmentReturnRequest parameter (required)
+     * @param string                         $seller_fulfillment_order_id
+     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     * @param CreateFulfillmentReturnRequest $body
+     *                                                                    CreateFulfillmentReturnRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFulfillmentReturnAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body,
-    ?string $restrictedDataToken = null
+        CreateFulfillmentReturnRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse';
         $request = $this->createFulfillmentReturnRequest($seller_fulfillment_order_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-createFulfillmentReturn");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentReturn');
         } else {
             $request = $this->config->sign($request);
         }
@@ -883,11 +888,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -895,12 +900,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -912,32 +918,32 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createFulfillmentReturn'
+     * Create request for operation 'createFulfillmentReturn'.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
-     *  CreateFulfillmentReturnRequest parameter (required)
+     * @param string                         $seller_fulfillment_order_id
+     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     * @param CreateFulfillmentReturnRequest $body
+     *                                                                    CreateFulfillmentReturnRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createFulfillmentReturnRequest(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest $body
+        CreateFulfillmentReturnRequest $body
     ): Request {
         // verify the required parameter 'seller_fulfillment_order_id' is set
-        if ($seller_fulfillment_order_id === null || (is_array($seller_fulfillment_order_id) && count($seller_fulfillment_order_id) === 0)) {
+        if (null === $seller_fulfillment_order_id || (is_array($seller_fulfillment_order_id) && 0 === count($seller_fulfillment_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_fulfillment_order_id when calling createFulfillmentReturn'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createFulfillmentReturn'
             );
@@ -950,28 +956,24 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($seller_fulfillment_order_id !== null) {
+        if (null !== $seller_fulfillment_order_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerFulfillmentOrderId' . '}',
+                '{sellerFulfillmentOrderId}',
                 ObjectSerializer::toPathValue($seller_fulfillment_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -984,22 +986,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1013,56 +1012,60 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation deliveryOffers
+     * Operation deliveryOffers.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
-     *  GetDeliveryOffersRequest parameter (required)
+     * @param GetDeliveryOffersRequest $body
+     *                                                      GetDeliveryOffersRequest parameter (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse
      */
     public function deliveryOffers(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body,
+        GetDeliveryOffersRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse {
-        list($response) = $this->deliveryOffersWithHttpInfo($body,$restrictedDataToken);
+    ): GetDeliveryOffersResponse {
+        list($response) = $this->deliveryOffersWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation deliveryOffersWithHttpInfo
+     * Operation deliveryOffersWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
-     *  GetDeliveryOffersRequest parameter (required)
+     * @param GetDeliveryOffersRequest $body
+     *                                                      GetDeliveryOffersRequest parameter (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function deliveryOffersWithHttpInfo(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body,
+        GetDeliveryOffersRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->deliveryOffersRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-deliveryOffers");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-deliveryOffers');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->deliveryOffersRateLimiter->consume()->ensureAccepted();
@@ -1098,68 +1101,68 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation deliveryOffersAsync
+     * Operation deliveryOffersAsync.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
-     *  GetDeliveryOffersRequest parameter (required)
+     * @param GetDeliveryOffersRequest $body
+     *                                       GetDeliveryOffersRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deliveryOffersAsync(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
+        GetDeliveryOffersRequest $body
     ): PromiseInterface {
         return $this->deliveryOffersAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation deliveryOffersAsyncWithHttpInfo
+     * Operation deliveryOffersAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
-     *  GetDeliveryOffersRequest parameter (required)
+     * @param GetDeliveryOffersRequest $body
+     *                                       GetDeliveryOffersRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deliveryOffersAsyncWithHttpInfo(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body,
-    ?string $restrictedDataToken = null
+        GetDeliveryOffersRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse';
         $request = $this->deliveryOffersRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-deliveryOffers");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-deliveryOffers');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1171,11 +1174,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1183,12 +1186,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1200,23 +1204,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'deliveryOffers'
+     * Create request for operation 'deliveryOffers'.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
-     *  GetDeliveryOffersRequest parameter (required)
+     * @param GetDeliveryOffersRequest $body
+     *                                       GetDeliveryOffersRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function deliveryOffersRequest(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest $body
+        GetDeliveryOffersRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling deliveryOffers'
             );
@@ -1229,20 +1233,15 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1255,22 +1254,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1284,30 +1280,30 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFeatureInventory
+     * Operation getFeatureInventory.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
-     * @param  string $feature_name
-     *  The name of the feature for which to return a list of eligible inventory. (required)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
-     * @param  \DateTime|null $query_start_date
-     *  A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param string         $marketplace_id
+     *                                            The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     * @param string         $feature_name
+     *                                            The name of the feature for which to return a list of eligible inventory. (required)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse
      */
     public function getFeatureInventory(
         string $marketplace_id,
@@ -1315,27 +1311,29 @@ class FbaOutboundApi
         ?string $next_token = null,
         ?\DateTime $query_start_date = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse {
-        list($response) = $this->getFeatureInventoryWithHttpInfo($marketplace_id, $feature_name, $next_token, $query_start_date,,,,$restrictedDataToken);
+    ): GetFeatureInventoryResponse {
+        list($response) = $this->getFeatureInventoryWithHttpInfo($marketplace_id, $feature_name, $next_token, $query_start_date, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFeatureInventoryWithHttpInfo
+     * Operation getFeatureInventoryWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
-     * @param  string $feature_name
-     *  The name of the feature for which to return a list of eligible inventory. (required)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
-     * @param  \DateTime|null $query_start_date
-     *  A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param string         $marketplace_id
+     *                                            The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     * @param string         $feature_name
+     *                                            The name of the feature for which to return a list of eligible inventory. (required)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFeatureInventoryWithHttpInfo(
         string $marketplace_id,
@@ -1345,13 +1343,15 @@ class FbaOutboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeatureInventoryRequest($marketplace_id, $feature_name, $next_token, $query_start_date);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFeatureInventory");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureInventory');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFeatureInventoryRateLimiter->consume()->ensureAccepted();
@@ -1387,45 +1387,45 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFeatureInventoryAsync
+     * Operation getFeatureInventoryAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
-     * @param  string $feature_name
-     *  The name of the feature for which to return a list of eligible inventory. (required)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
-     * @param  \DateTime|null $query_start_date
-     *  A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param string         $marketplace_id
+     *                                         The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     * @param string         $feature_name
+     *                                         The name of the feature for which to return a list of eligible inventory. (required)
+     * @param null|string    $next_token
+     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeatureInventoryAsync(
         string $marketplace_id,
@@ -1438,35 +1438,35 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFeatureInventoryAsyncWithHttpInfo
+     * Operation getFeatureInventoryAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
-     * @param  string $feature_name
-     *  The name of the feature for which to return a list of eligible inventory. (required)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
-     * @param  \DateTime|null $query_start_date
-     *  A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param string         $marketplace_id
+     *                                         The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     * @param string         $feature_name
+     *                                         The name of the feature for which to return a list of eligible inventory. (required)
+     * @param null|string    $next_token
+     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeatureInventoryAsyncWithHttpInfo(
         string $marketplace_id,
         string $feature_name,
         ?string $next_token = null,
         ?\DateTime $query_start_date = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse';
         $request = $this->getFeatureInventoryRequest($marketplace_id, $feature_name, $next_token, $query_start_date);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFeatureInventory");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureInventory');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1478,11 +1478,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1490,12 +1490,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1507,23 +1508,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFeatureInventory'
+     * Create request for operation 'getFeatureInventory'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
-     * @param  string $feature_name
-     *  The name of the feature for which to return a list of eligible inventory. (required)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
-     * @param  \DateTime|null $query_start_date
-     *  A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param string         $marketplace_id
+     *                                         The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     * @param string         $feature_name
+     *                                         The name of the feature for which to return a list of eligible inventory. (required)
+     * @param null|string    $next_token
+     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFeatureInventoryRequest(
         string $marketplace_id,
@@ -1532,13 +1533,13 @@ class FbaOutboundApi
         ?\DateTime $query_start_date = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getFeatureInventory'
             );
         }
         // verify the required parameter 'feature_name' is set
-        if ($feature_name === null || (is_array($feature_name) && count($feature_name) === 0)) {
+        if (null === $feature_name || (is_array($feature_name) && 0 === count($feature_name))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $feature_name when calling getFeatureInventory'
             );
@@ -1582,20 +1583,17 @@ class FbaOutboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($feature_name !== null) {
+        if (null !== $feature_name) {
             $resourcePath = str_replace(
-                '{' . 'featureName' . '}',
+                '{featureName}',
                 ObjectSerializer::toPathValue($feature_name),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -1609,22 +1607,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1638,53 +1633,55 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFeatureSKU
+     * Operation getFeatureSKU.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the count. (required)
-     * @param  string $feature_name
-     *  The name of the feature. (required)
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the count. (required)
+     * @param string      $feature_name
+     *                                         The name of the feature. (required)
+     * @param string      $seller_sku
+     *                                         Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse
      */
     public function getFeatureSKU(
         string $marketplace_id,
         string $feature_name,
         string $seller_sku,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse {
-        list($response) = $this->getFeatureSKUWithHttpInfo($marketplace_id, $feature_name, $seller_sku,,,$restrictedDataToken);
+    ): GetFeatureSkuResponse {
+        list($response) = $this->getFeatureSKUWithHttpInfo($marketplace_id, $feature_name, $seller_sku, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFeatureSKUWithHttpInfo
+     * Operation getFeatureSKUWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the count. (required)
-     * @param  string $feature_name
-     *  The name of the feature. (required)
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the count. (required)
+     * @param string      $feature_name
+     *                                         The name of the feature. (required)
+     * @param string      $seller_sku
+     *                                         Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFeatureSKUWithHttpInfo(
         string $marketplace_id,
@@ -1693,13 +1690,15 @@ class FbaOutboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeatureSKURequest($marketplace_id, $feature_name, $seller_sku);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFeatureSKU");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureSKU');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFeatureSKURateLimiter->consume()->ensureAccepted();
@@ -1735,43 +1734,43 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFeatureSKUAsync
+     * Operation getFeatureSKUAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the count. (required)
-     * @param  string $feature_name
-     *  The name of the feature. (required)
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which to return the count. (required)
+     * @param string $feature_name
+     *                               The name of the feature. (required)
+     * @param string $seller_sku
+     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeatureSKUAsync(
         string $marketplace_id,
@@ -1783,32 +1782,32 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFeatureSKUAsyncWithHttpInfo
+     * Operation getFeatureSKUAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the count. (required)
-     * @param  string $feature_name
-     *  The name of the feature. (required)
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which to return the count. (required)
+     * @param string $feature_name
+     *                               The name of the feature. (required)
+     * @param string $seller_sku
+     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeatureSKUAsyncWithHttpInfo(
         string $marketplace_id,
         string $feature_name,
         string $seller_sku,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse';
         $request = $this->getFeatureSKURequest($marketplace_id, $feature_name, $seller_sku);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFeatureSKU");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureSKU');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1820,11 +1819,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1832,12 +1831,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1849,21 +1849,21 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFeatureSKU'
+     * Create request for operation 'getFeatureSKU'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the count. (required)
-     * @param  string $feature_name
-     *  The name of the feature. (required)
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which to return the count. (required)
+     * @param string $feature_name
+     *                               The name of the feature. (required)
+     * @param string $seller_sku
+     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFeatureSKURequest(
         string $marketplace_id,
@@ -1871,19 +1871,19 @@ class FbaOutboundApi
         string $seller_sku
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getFeatureSKU'
             );
         }
         // verify the required parameter 'feature_name' is set
-        if ($feature_name === null || (is_array($feature_name) && count($feature_name) === 0)) {
+        if (null === $feature_name || (is_array($feature_name) && 0 === count($feature_name))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $feature_name when calling getFeatureSKU'
             );
         }
         // verify the required parameter 'seller_sku' is set
-        if ($seller_sku === null || (is_array($seller_sku) && count($seller_sku) === 0)) {
+        if (null === $seller_sku || (is_array($seller_sku) && 0 === count($seller_sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_sku when calling getFeatureSKU'
             );
@@ -1907,28 +1907,25 @@ class FbaOutboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($feature_name !== null) {
+        if (null !== $feature_name) {
             $resourcePath = str_replace(
-                '{' . 'featureName' . '}',
+                '{featureName}',
                 ObjectSerializer::toPathValue($feature_name),
                 $resourcePath
             );
         }
         // path params
-        if ($seller_sku !== null) {
+        if (null !== $seller_sku) {
             $resourcePath = str_replace(
-                '{' . 'sellerSku' . '}',
+                '{sellerSku}',
                 ObjectSerializer::toPathValue($seller_sku),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -1942,22 +1939,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1971,56 +1965,60 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFeatures
+     * Operation getFeatures.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the list of features. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the list of features. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse
      */
     public function getFeatures(
         string $marketplace_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse {
-        list($response) = $this->getFeaturesWithHttpInfo($marketplace_id,$restrictedDataToken);
+    ): GetFeaturesResponse {
+        list($response) = $this->getFeaturesWithHttpInfo($marketplace_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFeaturesWithHttpInfo
+     * Operation getFeaturesWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the list of features. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the list of features. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFeaturesWithHttpInfo(
         string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeaturesRequest($marketplace_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFeatures");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatures');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFeaturesRateLimiter->consume()->ensureAccepted();
@@ -2056,39 +2054,39 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFeaturesAsync
+     * Operation getFeaturesAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the list of features. (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which to return the list of features. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeaturesAsync(
         string $marketplace_id
@@ -2098,26 +2096,26 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFeaturesAsyncWithHttpInfo
+     * Operation getFeaturesAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the list of features. (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which to return the list of features. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeaturesAsyncWithHttpInfo(
         string $marketplace_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse';
         $request = $this->getFeaturesRequest($marketplace_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFeatures");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatures');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2129,11 +2127,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2141,12 +2139,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2158,23 +2157,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFeatures'
+     * Create request for operation 'getFeatures'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace for which to return the list of features. (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which to return the list of features. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFeaturesRequest(
         string $marketplace_id
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getFeatures'
             );
@@ -2198,12 +2197,8 @@ class FbaOutboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -2217,22 +2212,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2246,56 +2238,60 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFulfillmentOrder
+     * Operation getFulfillmentOrder.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse
      */
     public function getFulfillmentOrder(
         string $seller_fulfillment_order_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse {
-        list($response) = $this->getFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id,$restrictedDataToken);
+    ): GetFulfillmentOrderResponse {
+        list($response) = $this->getFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFulfillmentOrderWithHttpInfo
+     * Operation getFulfillmentOrderWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFulfillmentOrderWithHttpInfo(
         string $seller_fulfillment_order_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFulfillmentOrderRequest($seller_fulfillment_order_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFulfillmentOrderRateLimiter->consume()->ensureAccepted();
@@ -2331,39 +2327,39 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFulfillmentOrderAsync
+     * Operation getFulfillmentOrderAsync.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string $seller_fulfillment_order_id
+     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFulfillmentOrderAsync(
         string $seller_fulfillment_order_id
@@ -2373,26 +2369,26 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFulfillmentOrderAsyncWithHttpInfo
+     * Operation getFulfillmentOrderAsyncWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string $seller_fulfillment_order_id
+     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFulfillmentOrderAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse';
         $request = $this->getFulfillmentOrderRequest($seller_fulfillment_order_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2404,11 +2400,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2416,12 +2412,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2433,23 +2430,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFulfillmentOrder'
+     * Create request for operation 'getFulfillmentOrder'.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string $seller_fulfillment_order_id
+     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFulfillmentOrderRequest(
         string $seller_fulfillment_order_id
     ): Request {
         // verify the required parameter 'seller_fulfillment_order_id' is set
-        if ($seller_fulfillment_order_id === null || (is_array($seller_fulfillment_order_id) && count($seller_fulfillment_order_id) === 0)) {
+        if (null === $seller_fulfillment_order_id || (is_array($seller_fulfillment_order_id) && 0 === count($seller_fulfillment_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_fulfillment_order_id when calling getFulfillmentOrder'
             );
@@ -2458,7 +2455,6 @@ class FbaOutboundApi
             throw new \InvalidArgumentException('invalid length for "$seller_fulfillment_order_id" when calling FbaOutboundApi.getFulfillmentOrder, must be smaller than or equal to 40.');
         }
 
-
         $resourcePath = '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}';
         $formParams = [];
         $queryParams = [];
@@ -2466,21 +2462,17 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($seller_fulfillment_order_id !== null) {
+        if (null !== $seller_fulfillment_order_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerFulfillmentOrderId' . '}',
+                '{sellerFulfillmentOrderId}',
                 ObjectSerializer::toPathValue($seller_fulfillment_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -2494,22 +2486,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2523,56 +2512,60 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFulfillmentPreview
+     * Operation getFulfillmentPreview.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
-     *  GetFulfillmentPreviewRequest parameter (required)
+     * @param GetFulfillmentPreviewRequest $body
+     *                                                          GetFulfillmentPreviewRequest parameter (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse
      */
     public function getFulfillmentPreview(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body,
+        GetFulfillmentPreviewRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse {
-        list($response) = $this->getFulfillmentPreviewWithHttpInfo($body,$restrictedDataToken);
+    ): GetFulfillmentPreviewResponse {
+        list($response) = $this->getFulfillmentPreviewWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFulfillmentPreviewWithHttpInfo
+     * Operation getFulfillmentPreviewWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
-     *  GetFulfillmentPreviewRequest parameter (required)
+     * @param GetFulfillmentPreviewRequest $body
+     *                                                          GetFulfillmentPreviewRequest parameter (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFulfillmentPreviewWithHttpInfo(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body,
+        GetFulfillmentPreviewRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFulfillmentPreviewRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFulfillmentPreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentPreview');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFulfillmentPreviewRateLimiter->consume()->ensureAccepted();
@@ -2608,68 +2601,68 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFulfillmentPreviewAsync
+     * Operation getFulfillmentPreviewAsync.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
-     *  GetFulfillmentPreviewRequest parameter (required)
+     * @param GetFulfillmentPreviewRequest $body
+     *                                           GetFulfillmentPreviewRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFulfillmentPreviewAsync(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
+        GetFulfillmentPreviewRequest $body
     ): PromiseInterface {
         return $this->getFulfillmentPreviewAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFulfillmentPreviewAsyncWithHttpInfo
+     * Operation getFulfillmentPreviewAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
-     *  GetFulfillmentPreviewRequest parameter (required)
+     * @param GetFulfillmentPreviewRequest $body
+     *                                           GetFulfillmentPreviewRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFulfillmentPreviewAsyncWithHttpInfo(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body,
-    ?string $restrictedDataToken = null
+        GetFulfillmentPreviewRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse';
         $request = $this->getFulfillmentPreviewRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getFulfillmentPreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentPreview');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2681,11 +2674,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2693,12 +2686,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2710,23 +2704,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFulfillmentPreview'
+     * Create request for operation 'getFulfillmentPreview'.
      *
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
-     *  GetFulfillmentPreviewRequest parameter (required)
+     * @param GetFulfillmentPreviewRequest $body
+     *                                           GetFulfillmentPreviewRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFulfillmentPreviewRequest(
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest $body
+        GetFulfillmentPreviewRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling getFulfillmentPreview'
             );
@@ -2739,20 +2733,15 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -2765,22 +2754,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2794,56 +2780,60 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getPackageTrackingDetails
+     * Operation getPackageTrackingDetails.
      *
-     * @param  int $package_number
-     *  The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int         $package_number
+     *                                         The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse
      */
     public function getPackageTrackingDetails(
         int $package_number,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse {
-        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number,$restrictedDataToken);
+    ): GetPackageTrackingDetailsResponse {
+        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getPackageTrackingDetailsWithHttpInfo
+     * Operation getPackageTrackingDetailsWithHttpInfo.
      *
-     * @param  int $package_number
-     *  The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int         $package_number
+     *                                         The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsWithHttpInfo(
         int $package_number,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPackageTrackingDetailsRequest($package_number);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getPackageTrackingDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getPackageTrackingDetailsRateLimiter->consume()->ensureAccepted();
@@ -2879,39 +2869,39 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getPackageTrackingDetailsAsync
+     * Operation getPackageTrackingDetailsAsync.
      *
-     * @param  int $package_number
-     *  The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int $package_number
+     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getPackageTrackingDetailsAsync(
         int $package_number
@@ -2921,26 +2911,26 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getPackageTrackingDetailsAsyncWithHttpInfo
+     * Operation getPackageTrackingDetailsAsyncWithHttpInfo.
      *
-     * @param  int $package_number
-     *  The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int $package_number
+     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getPackageTrackingDetailsAsyncWithHttpInfo(
         int $package_number,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse';
         $request = $this->getPackageTrackingDetailsRequest($package_number);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-getPackageTrackingDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2952,11 +2942,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2964,12 +2954,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2981,23 +2972,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getPackageTrackingDetails'
+     * Create request for operation 'getPackageTrackingDetails'.
      *
-     * @param  int $package_number
-     *  The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int $package_number
+     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getPackageTrackingDetailsRequest(
         int $package_number
     ): Request {
         // verify the required parameter 'package_number' is set
-        if ($package_number === null || (is_array($package_number) && count($package_number) === 0)) {
+        if (null === $package_number || (is_array($package_number) && 0 === count($package_number))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $package_number when calling getPackageTrackingDetails'
             );
@@ -3021,12 +3012,8 @@ class FbaOutboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -3040,22 +3027,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3069,48 +3053,50 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listAllFulfillmentOrders
+     * Operation listAllFulfillmentOrders.
      *
-     * @param  \DateTime|null $query_start_date
-     *  A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                            A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse
      */
     public function listAllFulfillmentOrders(
         ?\DateTime $query_start_date = null,
         ?string $next_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse {
-        list($response) = $this->listAllFulfillmentOrdersWithHttpInfo($query_start_date, $next_token,,$restrictedDataToken);
+    ): ListAllFulfillmentOrdersResponse {
+        list($response) = $this->listAllFulfillmentOrdersWithHttpInfo($query_start_date, $next_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listAllFulfillmentOrdersWithHttpInfo
+     * Operation listAllFulfillmentOrdersWithHttpInfo.
      *
-     * @param  \DateTime|null $query_start_date
-     *  A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                            A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listAllFulfillmentOrdersWithHttpInfo(
         ?\DateTime $query_start_date = null,
@@ -3118,13 +3104,15 @@ class FbaOutboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAllFulfillmentOrdersRequest($query_start_date, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-listAllFulfillmentOrders");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listAllFulfillmentOrders');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listAllFulfillmentOrdersRateLimiter->consume()->ensureAccepted();
@@ -3160,41 +3148,41 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listAllFulfillmentOrdersAsync
+     * Operation listAllFulfillmentOrdersAsync.
      *
-     * @param  \DateTime|null $query_start_date
-     *  A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                         A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     * @param null|string    $next_token
+     *                                         A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listAllFulfillmentOrdersAsync(
         ?\DateTime $query_start_date = null,
@@ -3205,29 +3193,29 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listAllFulfillmentOrdersAsyncWithHttpInfo
+     * Operation listAllFulfillmentOrdersAsyncWithHttpInfo.
      *
-     * @param  \DateTime|null $query_start_date
-     *  A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                         A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     * @param null|string    $next_token
+     *                                         A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listAllFulfillmentOrdersAsyncWithHttpInfo(
         ?\DateTime $query_start_date = null,
         ?string $next_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse';
         $request = $this->listAllFulfillmentOrdersRequest($query_start_date, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-listAllFulfillmentOrders");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listAllFulfillmentOrders');
         } else {
             $request = $this->config->sign($request);
         }
@@ -3239,11 +3227,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3251,12 +3239,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3268,25 +3257,24 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listAllFulfillmentOrders'
+     * Create request for operation 'listAllFulfillmentOrders'.
      *
-     * @param  \DateTime|null $query_start_date
-     *  A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param null|\DateTime $query_start_date
+     *                                         A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     * @param null|string    $next_token
+     *                                         A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listAllFulfillmentOrdersRequest(
         ?\DateTime $query_start_date = null,
         ?string $next_token = null
     ): Request {
-
         $resourcePath = '/fba/outbound/2020-07-01/fulfillmentOrders';
         $formParams = [];
         $queryParams = [];
@@ -3315,12 +3303,8 @@ class FbaOutboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -3334,22 +3318,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3363,30 +3344,30 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listReturnReasonCodes
+     * Operation listReturnReasonCodes.
      *
-     * @param  string $seller_sku
-     *  The seller SKU for which return reason codes are required. (required)
-     * @param  string|null $marketplace_id
-     *  The marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $language
-     *  The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param string      $seller_sku
+     *                                                 The seller SKU for which return reason codes are required. (required)
+     * @param null|string $marketplace_id
+     *                                                 The marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $language
+     *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse
      */
     public function listReturnReasonCodes(
         string $seller_sku,
@@ -3394,27 +3375,29 @@ class FbaOutboundApi
         ?string $seller_fulfillment_order_id = null,
         ?string $language = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse {
-        list($response) = $this->listReturnReasonCodesWithHttpInfo($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language,,,,$restrictedDataToken);
+    ): ListReturnReasonCodesResponse {
+        list($response) = $this->listReturnReasonCodesWithHttpInfo($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listReturnReasonCodesWithHttpInfo
+     * Operation listReturnReasonCodesWithHttpInfo.
      *
-     * @param  string $seller_sku
-     *  The seller SKU for which return reason codes are required. (required)
-     * @param  string|null $marketplace_id
-     *  The marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $language
-     *  The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param string      $seller_sku
+     *                                                 The seller SKU for which return reason codes are required. (required)
+     * @param null|string $marketplace_id
+     *                                                 The marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $language
+     *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listReturnReasonCodesWithHttpInfo(
         string $seller_sku,
@@ -3424,13 +3407,15 @@ class FbaOutboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listReturnReasonCodesRequest($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-listReturnReasonCodes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listReturnReasonCodes');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listReturnReasonCodesRateLimiter->consume()->ensureAccepted();
@@ -3466,45 +3451,45 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listReturnReasonCodesAsync
+     * Operation listReturnReasonCodesAsync.
      *
-     * @param  string $seller_sku
-     *  The seller SKU for which return reason codes are required. (required)
-     * @param  string|null $marketplace_id
-     *  The marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $language
-     *  The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param string      $seller_sku
+     *                                                 The seller SKU for which return reason codes are required. (required)
+     * @param null|string $marketplace_id
+     *                                                 The marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $language
+     *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listReturnReasonCodesAsync(
         string $seller_sku,
@@ -3517,35 +3502,35 @@ class FbaOutboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listReturnReasonCodesAsyncWithHttpInfo
+     * Operation listReturnReasonCodesAsyncWithHttpInfo.
      *
-     * @param  string $seller_sku
-     *  The seller SKU for which return reason codes are required. (required)
-     * @param  string|null $marketplace_id
-     *  The marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $language
-     *  The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param string      $seller_sku
+     *                                                 The seller SKU for which return reason codes are required. (required)
+     * @param null|string $marketplace_id
+     *                                                 The marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $language
+     *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listReturnReasonCodesAsyncWithHttpInfo(
         string $seller_sku,
         ?string $marketplace_id = null,
         ?string $seller_fulfillment_order_id = null,
         ?string $language = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse';
         $request = $this->listReturnReasonCodesRequest($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-listReturnReasonCodes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listReturnReasonCodes');
         } else {
             $request = $this->config->sign($request);
         }
@@ -3557,11 +3542,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3569,12 +3554,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3586,23 +3572,23 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listReturnReasonCodes'
+     * Create request for operation 'listReturnReasonCodes'.
      *
-     * @param  string $seller_sku
-     *  The seller SKU for which return reason codes are required. (required)
-     * @param  string|null $marketplace_id
-     *  The marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
-     * @param  string|null $language
-     *  The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param string      $seller_sku
+     *                                                 The seller SKU for which return reason codes are required. (required)
+     * @param null|string $marketplace_id
+     *                                                 The marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
+     * @param null|string $language
+     *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listReturnReasonCodesRequest(
         string $seller_sku,
@@ -3611,7 +3597,7 @@ class FbaOutboundApi
         ?string $language = null
     ): Request {
         // verify the required parameter 'seller_sku' is set
-        if ($seller_sku === null || (is_array($seller_sku) && count($seller_sku) === 0)) {
+        if (null === $seller_sku || (is_array($seller_sku) && 0 === count($seller_sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_sku when calling listReturnReasonCodes'
             );
@@ -3665,12 +3651,8 @@ class FbaOutboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'payload'],
-            
             '',
             $multipart
         );
@@ -3684,22 +3666,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3713,62 +3692,66 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation submitFulfillmentOrderStatusUpdate
+     * Operation submitFulfillmentOrderStatusUpdate.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string                                    $seller_fulfillment_order_id
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param SubmitFulfillmentOrderStatusUpdateRequest $body
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string                               $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse
      */
     public function submitFulfillmentOrderStatusUpdate(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body,
+        SubmitFulfillmentOrderStatusUpdateRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse {
-        list($response) = $this->submitFulfillmentOrderStatusUpdateWithHttpInfo($seller_fulfillment_order_id, $body,,$restrictedDataToken);
+    ): SubmitFulfillmentOrderStatusUpdateResponse {
+        list($response) = $this->submitFulfillmentOrderStatusUpdateWithHttpInfo($seller_fulfillment_order_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation submitFulfillmentOrderStatusUpdateWithHttpInfo
+     * Operation submitFulfillmentOrderStatusUpdateWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string                                    $seller_fulfillment_order_id
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param SubmitFulfillmentOrderStatusUpdateRequest $body
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string                               $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function submitFulfillmentOrderStatusUpdateWithHttpInfo(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body,
+        SubmitFulfillmentOrderStatusUpdateRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitFulfillmentOrderStatusUpdateRequest($seller_fulfillment_order_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-submitFulfillmentOrderStatusUpdate");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->submitFulfillmentOrderStatusUpdateRateLimiter->consume()->ensureAccepted();
@@ -3804,74 +3787,74 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation submitFulfillmentOrderStatusUpdateAsync
+     * Operation submitFulfillmentOrderStatusUpdateAsync.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string                                    $seller_fulfillment_order_id
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param SubmitFulfillmentOrderStatusUpdateRequest $body
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function submitFulfillmentOrderStatusUpdateAsync(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
+        SubmitFulfillmentOrderStatusUpdateRequest $body
     ): PromiseInterface {
         return $this->submitFulfillmentOrderStatusUpdateAsyncWithHttpInfo($seller_fulfillment_order_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation submitFulfillmentOrderStatusUpdateAsyncWithHttpInfo
+     * Operation submitFulfillmentOrderStatusUpdateAsyncWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string                                    $seller_fulfillment_order_id
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param SubmitFulfillmentOrderStatusUpdateRequest $body
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function submitFulfillmentOrderStatusUpdateAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body,
-    ?string $restrictedDataToken = null
+        SubmitFulfillmentOrderStatusUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse';
         $request = $this->submitFulfillmentOrderStatusUpdateRequest($seller_fulfillment_order_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-submitFulfillmentOrderStatusUpdate");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
         } else {
             $request = $this->config->sign($request);
         }
@@ -3883,11 +3866,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3895,12 +3878,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3912,26 +3896,26 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'submitFulfillmentOrderStatusUpdate'
+     * Create request for operation 'submitFulfillmentOrderStatusUpdate'.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string                                    $seller_fulfillment_order_id
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param SubmitFulfillmentOrderStatusUpdateRequest $body
+     *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function submitFulfillmentOrderStatusUpdateRequest(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest $body
+        SubmitFulfillmentOrderStatusUpdateRequest $body
     ): Request {
         // verify the required parameter 'seller_fulfillment_order_id' is set
-        if ($seller_fulfillment_order_id === null || (is_array($seller_fulfillment_order_id) && count($seller_fulfillment_order_id) === 0)) {
+        if (null === $seller_fulfillment_order_id || (is_array($seller_fulfillment_order_id) && 0 === count($seller_fulfillment_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_fulfillment_order_id when calling submitFulfillmentOrderStatusUpdate'
             );
@@ -3941,7 +3925,7 @@ class FbaOutboundApi
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling submitFulfillmentOrderStatusUpdate'
             );
@@ -3954,28 +3938,24 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($seller_fulfillment_order_id !== null) {
+        if (null !== $seller_fulfillment_order_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerFulfillmentOrderId' . '}',
+                '{sellerFulfillmentOrderId}',
                 ObjectSerializer::toPathValue($seller_fulfillment_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -3988,22 +3968,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4017,62 +3994,66 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateFulfillmentOrder
+     * Operation updateFulfillmentOrder.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
-     *  UpdateFulfillmentOrderRequest parameter (required)
+     * @param string                        $seller_fulfillment_order_id
+     *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param UpdateFulfillmentOrderRequest $body
+     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse
      */
     public function updateFulfillmentOrder(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body,
+        UpdateFulfillmentOrderRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse {
-        list($response) = $this->updateFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $body,,$restrictedDataToken);
+    ): UpdateFulfillmentOrderResponse {
+        list($response) = $this->updateFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation updateFulfillmentOrderWithHttpInfo
+     * Operation updateFulfillmentOrderWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
-     *  UpdateFulfillmentOrderRequest parameter (required)
+     * @param string                        $seller_fulfillment_order_id
+     *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param UpdateFulfillmentOrderRequest $body
+     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateFulfillmentOrderWithHttpInfo(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body,
+        UpdateFulfillmentOrderRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateFulfillmentOrderRequest($seller_fulfillment_order_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-updateFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-updateFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateFulfillmentOrderRateLimiter->consume()->ensureAccepted();
@@ -4108,74 +4089,74 @@ class FbaOutboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateFulfillmentOrderAsync
+     * Operation updateFulfillmentOrderAsync.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
-     *  UpdateFulfillmentOrderRequest parameter (required)
+     * @param string                        $seller_fulfillment_order_id
+     *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param UpdateFulfillmentOrderRequest $body
+     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateFulfillmentOrderAsync(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
+        UpdateFulfillmentOrderRequest $body
     ): PromiseInterface {
         return $this->updateFulfillmentOrderAsyncWithHttpInfo($seller_fulfillment_order_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateFulfillmentOrderAsyncWithHttpInfo
+     * Operation updateFulfillmentOrderAsyncWithHttpInfo.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
-     *  UpdateFulfillmentOrderRequest parameter (required)
+     * @param string                        $seller_fulfillment_order_id
+     *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param UpdateFulfillmentOrderRequest $body
+     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateFulfillmentOrderAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body,
-    ?string $restrictedDataToken = null
+        UpdateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse';
         $request = $this->updateFulfillmentOrderRequest($seller_fulfillment_order_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaOutboundApi-updateFulfillmentOrder");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-updateFulfillmentOrder');
         } else {
             $request = $this->config->sign($request);
         }
@@ -4187,11 +4168,11 @@ class FbaOutboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4199,12 +4180,13 @@ class FbaOutboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4216,26 +4198,26 @@ class FbaOutboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateFulfillmentOrder'
+     * Create request for operation 'updateFulfillmentOrder'.
      *
-     * @param  string $seller_fulfillment_order_id
-     *  The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-     * @param  \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
-     *  UpdateFulfillmentOrderRequest parameter (required)
+     * @param string                        $seller_fulfillment_order_id
+     *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param UpdateFulfillmentOrderRequest $body
+     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateFulfillmentOrderRequest(
         string $seller_fulfillment_order_id,
-        \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest $body
+        UpdateFulfillmentOrderRequest $body
     ): Request {
         // verify the required parameter 'seller_fulfillment_order_id' is set
-        if ($seller_fulfillment_order_id === null || (is_array($seller_fulfillment_order_id) && count($seller_fulfillment_order_id) === 0)) {
+        if (null === $seller_fulfillment_order_id || (is_array($seller_fulfillment_order_id) && 0 === count($seller_fulfillment_order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_fulfillment_order_id when calling updateFulfillmentOrder'
             );
@@ -4245,7 +4227,7 @@ class FbaOutboundApi
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateFulfillmentOrder'
             );
@@ -4258,28 +4240,24 @@ class FbaOutboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($seller_fulfillment_order_id !== null) {
+        if (null !== $seller_fulfillment_order_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerFulfillmentOrderId' . '}',
+                '{sellerFulfillmentOrderId}',
                 ObjectSerializer::toPathValue($seller_fulfillment_order_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -4292,22 +4270,19 @@ class FbaOutboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4321,19 +4296,21 @@ class FbaOutboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -4341,7 +4318,7 @@ class FbaOutboundApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
