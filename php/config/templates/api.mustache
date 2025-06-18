@@ -172,7 +172,7 @@ use {{invokerPackage}}\ObjectSerializer;
     {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
         ?string $restrictedDataToken = null
     ){{#returnType}}: {{#responses}}{{#-first}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
-        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},$restrictedDataToken);{{#returnType}}
+        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}},{{/allParams}}$restrictedDataToken);{{#returnType}}
         return $response;{{/returnType}}
     }
 
