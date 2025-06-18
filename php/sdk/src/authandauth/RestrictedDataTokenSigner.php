@@ -67,8 +67,11 @@ class RestrictedDataTokenSigner
             'MerchantFulfillmentApi-cancelShipment',
             'MerchantFulfillmentApi-createShipment',
 
-            // Shipment Invoicing
+            // Shipment Invoicing API
             'ShipmentInvoiceApi-getShipmentDetails',
+
+            // Reports API
+            'ReportsApi-getReportDocument'
         ];
 
         return in_array($operationName, $restrictedOperations);
