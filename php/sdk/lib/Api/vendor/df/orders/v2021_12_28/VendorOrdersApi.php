@@ -449,7 +449,7 @@ class VendorOrdersApi
         ?bool $include_details = true,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\orders\v2021_12_28\OrderList {
-        list($response) = $this->getOrdersWithHttpInfo($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details,,,,,,,,$restrictedDataToken);
+        list($response) = $this->getOrdersWithHttpInfo($created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details,$restrictedDataToken);
         return $response;
     }
 

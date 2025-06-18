@@ -1,16 +1,18 @@
 <?php
+
 /**
  * FbaInventoryApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for FBA Inventory
+ * Selling Partner API for FBA Inventory.
  *
  * The Selling Partner API for FBA Inventory lets you programmatically retrieve information about inventory in Amazon's fulfillment network.
  *
@@ -35,38 +37,40 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\fba\inventory\v1\AddInventoryRequest;
+use SpApi\Model\fba\inventory\v1\AddInventoryResponse;
+use SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest;
+use SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse;
+use SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse;
+use SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FbaInventoryApi Class Doc Comment
+ * FbaInventoryApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FbaInventoryApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $addInventoryRateLimiter;
+    public ?LimiterInterface $createInventoryItemRateLimiter;
+    public ?LimiterInterface $deleteInventoryItemRateLimiter;
+    public ?LimiterInterface $getInventorySummariesRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,24 +78,16 @@ class FbaInventoryApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $addInventoryRateLimiter;
-    public ?LimiterInterface $createInventoryItemRateLimiter;
-    public ?LimiterInterface $deleteInventoryItemRateLimiter;
-    public ?LimiterInterface $getInventorySummariesRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -101,14 +97,14 @@ class FbaInventoryApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInventoryApi-addInventory"), $this->rateLimitStorage);
-            $this->addInventoryRateLimiter = $factory->create("FbaInventoryApi-addInventory");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInventoryApi-createInventoryItem"), $this->rateLimitStorage);
-            $this->createInventoryItemRateLimiter = $factory->create("FbaInventoryApi-createInventoryItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInventoryApi-deleteInventoryItem"), $this->rateLimitStorage);
-            $this->deleteInventoryItemRateLimiter = $factory->create("FbaInventoryApi-deleteInventoryItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInventoryApi-getInventorySummaries"), $this->rateLimitStorage);
-            $this->getInventorySummariesRateLimiter = $factory->create("FbaInventoryApi-getInventorySummaries");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-addInventory'), $this->rateLimitStorage);
+            $this->addInventoryRateLimiter = $factory->create('FbaInventoryApi-addInventory');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-createInventoryItem'), $this->rateLimitStorage);
+            $this->createInventoryItemRateLimiter = $factory->create('FbaInventoryApi-createInventoryItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-deleteInventoryItem'), $this->rateLimitStorage);
+            $this->deleteInventoryItemRateLimiter = $factory->create('FbaInventoryApi-deleteInventoryItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-getInventorySummaries'), $this->rateLimitStorage);
+            $this->getInventorySummariesRateLimiter = $factory->create('FbaInventoryApi-getInventorySummaries');
         }
 
         $this->client = $client ?: new Client();
@@ -117,7 +113,7 @@ class FbaInventoryApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -127,7 +123,7 @@ class FbaInventoryApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -136,61 +132,62 @@ class FbaInventoryApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation addInventory
+     * Operation addInventory.
      *
-     * @param  string $x_amzn_idempotency_token
-     *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
-     *  List of items to add to Sandbox inventory. (required)
+     * @param string              $x_amzn_idempotency_token
+     *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param AddInventoryRequest $add_inventory_request_body
+     *                                                        List of items to add to Sandbox inventory. (required)
+     * @param null|string         $restrictedDataToken        Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fba\inventory\v1\AddInventoryResponse
      */
     public function addInventory(
         string $x_amzn_idempotency_token,
-        \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body,
+        AddInventoryRequest $add_inventory_request_body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fba\inventory\v1\AddInventoryResponse {
-        list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body,,$restrictedDataToken);
+    ): AddInventoryResponse {
+        list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation addInventoryWithHttpInfo
+     * Operation addInventoryWithHttpInfo.
      *
-     * @param  string $x_amzn_idempotency_token
-     *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
-     *  List of items to add to Sandbox inventory. (required)
+     * @param string              $x_amzn_idempotency_token
+     *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param AddInventoryRequest $add_inventory_request_body
+     *                                                        List of items to add to Sandbox inventory. (required)
+     * @param null|string         $restrictedDataToken        Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fba\inventory\v1\AddInventoryResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function addInventoryWithHttpInfo(
         string $x_amzn_idempotency_token,
-        \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body,
+        AddInventoryRequest $add_inventory_request_body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-addInventory");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-addInventory');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->addInventoryRateLimiter->consume()->ensureAccepted();
@@ -226,74 +223,74 @@ class FbaInventoryApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fba\inventory\v1\AddInventoryResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fba\inventory\v1\AddInventoryResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fba\inventory\v1\AddInventoryResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fba\inventory\v1\AddInventoryResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\AddInventoryResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\AddInventoryResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fba\inventory\v1\AddInventoryResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fba\inventory\v1\AddInventoryResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation addInventoryAsync
+     * Operation addInventoryAsync.
      *
-     * @param  string $x_amzn_idempotency_token
-     *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
-     *  List of items to add to Sandbox inventory. (required)
+     * @param string              $x_amzn_idempotency_token
+     *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param AddInventoryRequest $add_inventory_request_body
+     *                                                        List of items to add to Sandbox inventory. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function addInventoryAsync(
         string $x_amzn_idempotency_token,
-        \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body
     ): PromiseInterface {
         return $this->addInventoryAsyncWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation addInventoryAsyncWithHttpInfo
+     * Operation addInventoryAsyncWithHttpInfo.
      *
-     * @param  string $x_amzn_idempotency_token
-     *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
-     *  List of items to add to Sandbox inventory. (required)
+     * @param string              $x_amzn_idempotency_token
+     *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param AddInventoryRequest $add_inventory_request_body
+     *                                                        List of items to add to Sandbox inventory. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function addInventoryAsyncWithHttpInfo(
         string $x_amzn_idempotency_token,
-        \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body,
-    ?string $restrictedDataToken = null
+        AddInventoryRequest $add_inventory_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\AddInventoryResponse';
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-addInventory");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-addInventory');
         } else {
             $request = $this->config->sign($request);
         }
@@ -305,11 +302,11 @@ class FbaInventoryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -317,12 +314,13 @@ class FbaInventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -334,32 +332,32 @@ class FbaInventoryApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'addInventory'
+     * Create request for operation 'addInventory'.
      *
-     * @param  string $x_amzn_idempotency_token
-     *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
-     *  List of items to add to Sandbox inventory. (required)
+     * @param string              $x_amzn_idempotency_token
+     *                                                        A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param AddInventoryRequest $add_inventory_request_body
+     *                                                        List of items to add to Sandbox inventory. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function addInventoryRequest(
         string $x_amzn_idempotency_token,
-        \SpApi\Model\fba\inventory\v1\AddInventoryRequest $add_inventory_request_body
+        AddInventoryRequest $add_inventory_request_body
     ): Request {
         // verify the required parameter 'x_amzn_idempotency_token' is set
-        if ($x_amzn_idempotency_token === null || (is_array($x_amzn_idempotency_token) && count($x_amzn_idempotency_token) === 0)) {
+        if (null === $x_amzn_idempotency_token || (is_array($x_amzn_idempotency_token) && 0 === count($x_amzn_idempotency_token))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $x_amzn_idempotency_token when calling addInventory'
             );
         }
         // verify the required parameter 'add_inventory_request_body' is set
-        if ($add_inventory_request_body === null || (is_array($add_inventory_request_body) && count($add_inventory_request_body) === 0)) {
+        if (null === $add_inventory_request_body || (is_array($add_inventory_request_body) && 0 === count($add_inventory_request_body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $add_inventory_request_body when calling addInventory'
             );
@@ -372,24 +370,20 @@ class FbaInventoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
-        if ($x_amzn_idempotency_token !== null) {
+        if (null !== $x_amzn_idempotency_token) {
             $headerParams['x-amzn-idempotency-token'] = ObjectSerializer::toHeaderValue($x_amzn_idempotency_token);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($add_inventory_request_body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($add_inventory_request_body));
             } else {
                 $httpBody = $add_inventory_request_body;
@@ -402,22 +396,19 @@ class FbaInventoryApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -431,56 +422,60 @@ class FbaInventoryApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createInventoryItem
+     * Operation createInventoryItem.
      *
-     * @param  \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
-     *  CreateInventoryItem Request Body Parameter. (required)
+     * @param CreateInventoryItemRequest $create_inventory_item_request_body
+     *                                                                       CreateInventoryItem Request Body Parameter. (required)
+     * @param null|string                $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse
      */
     public function createInventoryItem(
-        \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body,
+        CreateInventoryItemRequest $create_inventory_item_request_body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse {
-        list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body,$restrictedDataToken);
+    ): CreateInventoryItemResponse {
+        list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createInventoryItemWithHttpInfo
+     * Operation createInventoryItemWithHttpInfo.
      *
-     * @param  \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
-     *  CreateInventoryItem Request Body Parameter. (required)
+     * @param CreateInventoryItemRequest $create_inventory_item_request_body
+     *                                                                       CreateInventoryItem Request Body Parameter. (required)
+     * @param null|string                $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createInventoryItemWithHttpInfo(
-        \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body,
+        CreateInventoryItemRequest $create_inventory_item_request_body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-createInventoryItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-createInventoryItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
@@ -516,68 +511,68 @@ class FbaInventoryApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createInventoryItemAsync
+     * Operation createInventoryItemAsync.
      *
-     * @param  \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
-     *  CreateInventoryItem Request Body Parameter. (required)
+     * @param CreateInventoryItemRequest $create_inventory_item_request_body
+     *                                                                       CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createInventoryItemAsync(
-        \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body
     ): PromiseInterface {
         return $this->createInventoryItemAsyncWithHttpInfo($create_inventory_item_request_body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createInventoryItemAsyncWithHttpInfo
+     * Operation createInventoryItemAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
-     *  CreateInventoryItem Request Body Parameter. (required)
+     * @param CreateInventoryItemRequest $create_inventory_item_request_body
+     *                                                                       CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createInventoryItemAsyncWithHttpInfo(
-        \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body,
-    ?string $restrictedDataToken = null
+        CreateInventoryItemRequest $create_inventory_item_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse';
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-createInventoryItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-createInventoryItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -589,11 +584,11 @@ class FbaInventoryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -601,12 +596,13 @@ class FbaInventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -618,23 +614,23 @@ class FbaInventoryApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createInventoryItem'
+     * Create request for operation 'createInventoryItem'.
      *
-     * @param  \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
-     *  CreateInventoryItem Request Body Parameter. (required)
+     * @param CreateInventoryItemRequest $create_inventory_item_request_body
+     *                                                                       CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createInventoryItemRequest(
-        \SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest $create_inventory_item_request_body
+        CreateInventoryItemRequest $create_inventory_item_request_body
     ): Request {
         // verify the required parameter 'create_inventory_item_request_body' is set
-        if ($create_inventory_item_request_body === null || (is_array($create_inventory_item_request_body) && count($create_inventory_item_request_body) === 0)) {
+        if (null === $create_inventory_item_request_body || (is_array($create_inventory_item_request_body) && 0 === count($create_inventory_item_request_body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $create_inventory_item_request_body when calling createInventoryItem'
             );
@@ -647,20 +643,15 @@ class FbaInventoryApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($create_inventory_item_request_body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_inventory_item_request_body));
             } else {
                 $httpBody = $create_inventory_item_request_body;
@@ -673,22 +664,19 @@ class FbaInventoryApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -702,48 +690,50 @@ class FbaInventoryApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation deleteInventoryItem
+     * Operation deleteInventoryItem.
      *
-     * @param  string $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string      $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse
      */
     public function deleteInventoryItem(
         string $seller_sku,
         string $marketplace_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse {
-        list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id,,$restrictedDataToken);
+    ): DeleteInventoryItemResponse {
+        list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation deleteInventoryItemWithHttpInfo
+     * Operation deleteInventoryItemWithHttpInfo.
      *
-     * @param  string $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string      $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function deleteInventoryItemWithHttpInfo(
         string $seller_sku,
@@ -751,13 +741,15 @@ class FbaInventoryApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-deleteInventoryItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-deleteInventoryItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
@@ -793,41 +785,41 @@ class FbaInventoryApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation deleteInventoryItemAsync
+     * Operation deleteInventoryItemAsync.
      *
-     * @param  string $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string $seller_sku
+     *                               A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string $marketplace_id
+     *                               The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deleteInventoryItemAsync(
         string $seller_sku,
@@ -838,29 +830,29 @@ class FbaInventoryApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation deleteInventoryItemAsyncWithHttpInfo
+     * Operation deleteInventoryItemAsyncWithHttpInfo.
      *
-     * @param  string $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string $seller_sku
+     *                               A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string $marketplace_id
+     *                               The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deleteInventoryItemAsyncWithHttpInfo(
         string $seller_sku,
         string $marketplace_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse';
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-deleteInventoryItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-deleteInventoryItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -872,11 +864,11 @@ class FbaInventoryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -884,12 +876,13 @@ class FbaInventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -901,32 +894,32 @@ class FbaInventoryApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'deleteInventoryItem'
+     * Create request for operation 'deleteInventoryItem'.
      *
-     * @param  string $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param string $seller_sku
+     *                               A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param string $marketplace_id
+     *                               The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function deleteInventoryItemRequest(
         string $seller_sku,
         string $marketplace_id
     ): Request {
         // verify the required parameter 'seller_sku' is set
-        if ($seller_sku === null || (is_array($seller_sku) && count($seller_sku) === 0)) {
+        if (null === $seller_sku || (is_array($seller_sku) && 0 === count($seller_sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_sku when calling deleteInventoryItem'
             );
         }
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling deleteInventoryItem'
             );
@@ -950,20 +943,17 @@ class FbaInventoryApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($seller_sku !== null) {
+        if (null !== $seller_sku) {
             $resourcePath = str_replace(
-                '{' . 'sellerSku' . '}',
+                '{sellerSku}',
                 ObjectSerializer::toPathValue($seller_sku),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -977,22 +967,19 @@ class FbaInventoryApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1006,38 +993,38 @@ class FbaInventoryApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getInventorySummaries
+     * Operation getInventorySummaries.
      *
-     * @param  string $granularity_type
-     *  The granularity type for the inventory aggregation level. (required)
-     * @param  string $granularity_id
-     *  The granularity ID for the inventory aggregation level. (required)
-     * @param  string[] $marketplace_ids
-     *  The marketplace ID for the marketplace for which to return inventory summaries. (required)
-     * @param  bool|null $details
-     *  true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
-     * @param  \DateTime|null $start_date_time
-     *  A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
-     * @param  string[]|null $seller_skus
-     *  A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
-     * @param  string|null $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
-     * @param  string|null $next_token
-     *  String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param string         $granularity_type
+     *                                            The granularity type for the inventory aggregation level. (required)
+     * @param string         $granularity_id
+     *                                            The granularity ID for the inventory aggregation level. (required)
+     * @param string[]       $marketplace_ids
+     *                                            The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param null|bool      $details
+     *                                            true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param null|\DateTime $start_date_time
+     *                                            A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     * @param null|string[]  $seller_skus
+     *                                            A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     * @param null|string    $seller_sku
+     *                                            A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param null|string    $next_token
+     *                                            String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse
      */
     public function getInventorySummaries(
         string $granularity_type,
@@ -1049,35 +1036,37 @@ class FbaInventoryApi
         ?string $seller_sku = null,
         ?string $next_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse {
-        list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token,,,,,,,,$restrictedDataToken);
+    ): GetInventorySummariesResponse {
+        list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getInventorySummariesWithHttpInfo
+     * Operation getInventorySummariesWithHttpInfo.
      *
-     * @param  string $granularity_type
-     *  The granularity type for the inventory aggregation level. (required)
-     * @param  string $granularity_id
-     *  The granularity ID for the inventory aggregation level. (required)
-     * @param  string[] $marketplace_ids
-     *  The marketplace ID for the marketplace for which to return inventory summaries. (required)
-     * @param  bool|null $details
-     *  true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
-     * @param  \DateTime|null $start_date_time
-     *  A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
-     * @param  string[]|null $seller_skus
-     *  A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
-     * @param  string|null $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
-     * @param  string|null $next_token
-     *  String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param string         $granularity_type
+     *                                            The granularity type for the inventory aggregation level. (required)
+     * @param string         $granularity_id
+     *                                            The granularity ID for the inventory aggregation level. (required)
+     * @param string[]       $marketplace_ids
+     *                                            The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param null|bool      $details
+     *                                            true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param null|\DateTime $start_date_time
+     *                                            A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     * @param null|string[]  $seller_skus
+     *                                            A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     * @param null|string    $seller_sku
+     *                                            A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param null|string    $next_token
+     *                                            String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInventorySummariesWithHttpInfo(
         string $granularity_type,
@@ -1091,13 +1080,15 @@ class FbaInventoryApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-getInventorySummaries");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-getInventorySummaries');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
@@ -1133,53 +1124,53 @@ class FbaInventoryApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInventorySummariesAsync
+     * Operation getInventorySummariesAsync.
      *
-     * @param  string $granularity_type
-     *  The granularity type for the inventory aggregation level. (required)
-     * @param  string $granularity_id
-     *  The granularity ID for the inventory aggregation level. (required)
-     * @param  string[] $marketplace_ids
-     *  The marketplace ID for the marketplace for which to return inventory summaries. (required)
-     * @param  bool|null $details
-     *  true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
-     * @param  \DateTime|null $start_date_time
-     *  A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
-     * @param  string[]|null $seller_skus
-     *  A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
-     * @param  string|null $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
-     * @param  string|null $next_token
-     *  String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param string         $granularity_type
+     *                                         The granularity type for the inventory aggregation level. (required)
+     * @param string         $granularity_id
+     *                                         The granularity ID for the inventory aggregation level. (required)
+     * @param string[]       $marketplace_ids
+     *                                         The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param null|bool      $details
+     *                                         true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param null|\DateTime $start_date_time
+     *                                         A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     * @param null|string[]  $seller_skus
+     *                                         A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     * @param null|string    $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param null|string    $next_token
+     *                                         String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInventorySummariesAsync(
         string $granularity_type,
@@ -1196,31 +1187,31 @@ class FbaInventoryApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInventorySummariesAsyncWithHttpInfo
+     * Operation getInventorySummariesAsyncWithHttpInfo.
      *
-     * @param  string $granularity_type
-     *  The granularity type for the inventory aggregation level. (required)
-     * @param  string $granularity_id
-     *  The granularity ID for the inventory aggregation level. (required)
-     * @param  string[] $marketplace_ids
-     *  The marketplace ID for the marketplace for which to return inventory summaries. (required)
-     * @param  bool|null $details
-     *  true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
-     * @param  \DateTime|null $start_date_time
-     *  A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
-     * @param  string[]|null $seller_skus
-     *  A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
-     * @param  string|null $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
-     * @param  string|null $next_token
-     *  String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param string         $granularity_type
+     *                                         The granularity type for the inventory aggregation level. (required)
+     * @param string         $granularity_id
+     *                                         The granularity ID for the inventory aggregation level. (required)
+     * @param string[]       $marketplace_ids
+     *                                         The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param null|bool      $details
+     *                                         true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param null|\DateTime $start_date_time
+     *                                         A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     * @param null|string[]  $seller_skus
+     *                                         A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     * @param null|string    $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param null|string    $next_token
+     *                                         String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInventorySummariesAsyncWithHttpInfo(
         string $granularity_type,
@@ -1231,12 +1222,12 @@ class FbaInventoryApi
         ?array $seller_skus = null,
         ?string $seller_sku = null,
         ?string $next_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse';
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInventoryApi-getInventorySummaries");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-getInventorySummaries');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1248,11 +1239,11 @@ class FbaInventoryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1260,12 +1251,13 @@ class FbaInventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1277,31 +1269,31 @@ class FbaInventoryApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInventorySummaries'
+     * Create request for operation 'getInventorySummaries'.
      *
-     * @param  string $granularity_type
-     *  The granularity type for the inventory aggregation level. (required)
-     * @param  string $granularity_id
-     *  The granularity ID for the inventory aggregation level. (required)
-     * @param  string[] $marketplace_ids
-     *  The marketplace ID for the marketplace for which to return inventory summaries. (required)
-     * @param  bool|null $details
-     *  true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
-     * @param  \DateTime|null $start_date_time
-     *  A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
-     * @param  string[]|null $seller_skus
-     *  A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
-     * @param  string|null $seller_sku
-     *  A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
-     * @param  string|null $next_token
-     *  String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
+     * @param string         $granularity_type
+     *                                         The granularity type for the inventory aggregation level. (required)
+     * @param string         $granularity_id
+     *                                         The granularity ID for the inventory aggregation level. (required)
+     * @param string[]       $marketplace_ids
+     *                                         The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param null|bool      $details
+     *                                         true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param null|\DateTime $start_date_time
+     *                                         A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected. (optional)
+     * @param null|string[]  $seller_skus
+     *                                         A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs. (optional)
+     * @param null|string    $seller_sku
+     *                                         A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param null|string    $next_token
+     *                                         String token returned in the response of your previous request. The string token will expire 30 seconds after being created. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInventorySummariesRequest(
         string $granularity_type,
@@ -1314,19 +1306,19 @@ class FbaInventoryApi
         ?string $next_token = null
     ): Request {
         // verify the required parameter 'granularity_type' is set
-        if ($granularity_type === null || (is_array($granularity_type) && count($granularity_type) === 0)) {
+        if (null === $granularity_type || (is_array($granularity_type) && 0 === count($granularity_type))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $granularity_type when calling getInventorySummaries'
             );
         }
         // verify the required parameter 'granularity_id' is set
-        if ($granularity_id === null || (is_array($granularity_id) && count($granularity_id) === 0)) {
+        if (null === $granularity_id || (is_array($granularity_id) && 0 === count($granularity_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $granularity_id when calling getInventorySummaries'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getInventorySummaries'
             );
@@ -1335,10 +1327,9 @@ class FbaInventoryApi
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling FbaInventoryApi.getInventorySummaries, number of items must be less than or equal to 1.');
         }
 
-        if ($seller_skus !== null && count($seller_skus) > 50) {
+        if (null !== $seller_skus && count($seller_skus) > 50) {
             throw new \InvalidArgumentException('invalid value for "$seller_skus" when calling FbaInventoryApi.getInventorySummaries, number of items must be less than or equal to 50.');
         }
-
 
         $resourcePath = '/fba/inventory/v1/summaries';
         $formParams = [];
@@ -1428,12 +1419,8 @@ class FbaInventoryApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1447,22 +1434,19 @@ class FbaInventoryApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1476,19 +1460,21 @@ class FbaInventoryApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1496,7 +1482,7 @@ class FbaInventoryApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

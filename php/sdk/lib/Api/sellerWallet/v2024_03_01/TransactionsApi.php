@@ -1,16 +1,18 @@
 <?php
+
 /**
  * TransactionsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -35,38 +37,36 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\sellerWallet\v2024_03_01\Transaction;
+use SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest;
+use SpApi\Model\sellerWallet\v2024_03_01\TransactionListing;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * TransactionsApi Class Doc Comment
+ * TransactionsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class TransactionsApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $createTransactionRateLimiter;
+    public ?LimiterInterface $getTransactionRateLimiter;
+    public ?LimiterInterface $listAccountTransactionsRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,23 +74,16 @@ class TransactionsApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $createTransactionRateLimiter;
-    public ?LimiterInterface $getTransactionRateLimiter;
-    public ?LimiterInterface $listAccountTransactionsRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -100,12 +93,12 @@ class TransactionsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransactionsApi-createTransaction"), $this->rateLimitStorage);
-            $this->createTransactionRateLimiter = $factory->create("TransactionsApi-createTransaction");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransactionsApi-getTransaction"), $this->rateLimitStorage);
-            $this->getTransactionRateLimiter = $factory->create("TransactionsApi-getTransaction");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransactionsApi-listAccountTransactions"), $this->rateLimitStorage);
-            $this->listAccountTransactionsRateLimiter = $factory->create("TransactionsApi-listAccountTransactions");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransactionsApi-createTransaction'), $this->rateLimitStorage);
+            $this->createTransactionRateLimiter = $factory->create('TransactionsApi-createTransaction');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransactionsApi-getTransaction'), $this->rateLimitStorage);
+            $this->getTransactionRateLimiter = $factory->create('TransactionsApi-getTransaction');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransactionsApi-listAccountTransactions'), $this->rateLimitStorage);
+            $this->listAccountTransactionsRateLimiter = $factory->create('TransactionsApi-listAccountTransactions');
         }
 
         $this->client = $client ?: new Client();
@@ -114,7 +107,7 @@ class TransactionsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -124,7 +117,7 @@ class TransactionsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -133,71 +126,72 @@ class TransactionsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation createTransaction
+     * Operation createTransaction.
      *
      * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param  string $dest_account_digital_signature
-     *  Digital signature for the destination bank account details. (required)
-     * @param  string $amount_digital_signature
-     *  Digital signature for the source currency transaction amount. (required)
-     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
-     *  The payload of the request (required)
+     * @param string                       $dest_account_digital_signature
+     *                                                                     Digital signature for the destination bank account details. (required)
+     * @param string                       $amount_digital_signature
+     *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param TransactionInitiationRequest $body
+     *                                                                     The payload of the request (required)
+     * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\sellerWallet\v2024_03_01\Transaction
      */
     public function createTransaction(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body,
+        TransactionInitiationRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\sellerWallet\v2024_03_01\Transaction {
-        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body,,,$restrictedDataToken);
+    ): Transaction {
+        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createTransactionWithHttpInfo
+     * Operation createTransactionWithHttpInfo.
      *
      * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param  string $dest_account_digital_signature
-     *  Digital signature for the destination bank account details. (required)
-     * @param  string $amount_digital_signature
-     *  Digital signature for the source currency transaction amount. (required)
-     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
-     *  The payload of the request (required)
+     * @param string                       $dest_account_digital_signature
+     *                                                                     Digital signature for the destination bank account details. (required)
+     * @param string                       $amount_digital_signature
+     *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param TransactionInitiationRequest $body
+     *                                                                     The payload of the request (required)
+     * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createTransactionWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body,
+        TransactionInitiationRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransactionsApi-createTransaction");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createTransactionRateLimiter->consume()->ensureAccepted();
@@ -233,84 +227,84 @@ class TransactionsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\Transaction', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\Transaction', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createTransactionAsync
+     * Operation createTransactionAsync.
      *
      * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param  string $dest_account_digital_signature
-     *  Digital signature for the destination bank account details. (required)
-     * @param  string $amount_digital_signature
-     *  Digital signature for the source currency transaction amount. (required)
-     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
-     *  The payload of the request (required)
+     * @param string                       $dest_account_digital_signature
+     *                                                                     Digital signature for the destination bank account details. (required)
+     * @param string                       $amount_digital_signature
+     *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param TransactionInitiationRequest $body
+     *                                                                     The payload of the request (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createTransactionAsync(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
+        TransactionInitiationRequest $body
     ): PromiseInterface {
         return $this->createTransactionAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createTransactionAsyncWithHttpInfo
+     * Operation createTransactionAsyncWithHttpInfo.
      *
      * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param  string $dest_account_digital_signature
-     *  Digital signature for the destination bank account details. (required)
-     * @param  string $amount_digital_signature
-     *  Digital signature for the source currency transaction amount. (required)
-     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
-     *  The payload of the request (required)
+     * @param string                       $dest_account_digital_signature
+     *                                                                     Digital signature for the destination bank account details. (required)
+     * @param string                       $amount_digital_signature
+     *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param TransactionInitiationRequest $body
+     *                                                                     The payload of the request (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createTransactionAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body,
-    ?string $restrictedDataToken = null
+        TransactionInitiationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
         $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransactionsApi-createTransaction");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
         } else {
             $request = $this->config->sign($request);
         }
@@ -322,11 +316,11 @@ class TransactionsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -334,12 +328,13 @@ class TransactionsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -351,41 +346,41 @@ class TransactionsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createTransaction'
+     * Create request for operation 'createTransaction'.
      *
-     * @param  string $dest_account_digital_signature
-     *  Digital signature for the destination bank account details. (required)
-     * @param  string $amount_digital_signature
-     *  Digital signature for the source currency transaction amount. (required)
-     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
-     *  The payload of the request (required)
+     * @param string                       $dest_account_digital_signature
+     *                                                                     Digital signature for the destination bank account details. (required)
+     * @param string                       $amount_digital_signature
+     *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param TransactionInitiationRequest $body
+     *                                                                     The payload of the request (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createTransactionRequest(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        \SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest $body
+        TransactionInitiationRequest $body
     ): Request {
         // verify the required parameter 'dest_account_digital_signature' is set
-        if ($dest_account_digital_signature === null || (is_array($dest_account_digital_signature) && count($dest_account_digital_signature) === 0)) {
+        if (null === $dest_account_digital_signature || (is_array($dest_account_digital_signature) && 0 === count($dest_account_digital_signature))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $dest_account_digital_signature when calling createTransaction'
             );
         }
         // verify the required parameter 'amount_digital_signature' is set
-        if ($amount_digital_signature === null || (is_array($amount_digital_signature) && count($amount_digital_signature) === 0)) {
+        if (null === $amount_digital_signature || (is_array($amount_digital_signature) && 0 === count($amount_digital_signature))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amount_digital_signature when calling createTransaction'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createTransaction'
             );
@@ -398,28 +393,24 @@ class TransactionsApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
-        if ($dest_account_digital_signature !== null) {
+        if (null !== $dest_account_digital_signature) {
             $headerParams['destAccountDigitalSignature'] = ObjectSerializer::toHeaderValue($dest_account_digital_signature);
         }
         // header params
-        if ($amount_digital_signature !== null) {
+        if (null !== $amount_digital_signature) {
             $headerParams['amountDigitalSignature'] = ObjectSerializer::toHeaderValue($amount_digital_signature);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -432,22 +423,19 @@ class TransactionsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -461,60 +449,64 @@ class TransactionsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getTransaction
+     * Operation getTransaction.
      *
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      *
-     * @param  string $transaction_id
-     *  The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string      $transaction_id
+     *                                         The ID of the Amazon Seller Wallet transaction. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\sellerWallet\v2024_03_01\Transaction
      */
     public function getTransaction(
         string $transaction_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\sellerWallet\v2024_03_01\Transaction {
-        list($response) = $this->getTransactionWithHttpInfo($transaction_id,$restrictedDataToken);
+    ): Transaction {
+        list($response) = $this->getTransactionWithHttpInfo($transaction_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getTransactionWithHttpInfo
+     * Operation getTransactionWithHttpInfo.
      *
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      *
-     * @param  string $transaction_id
-     *  The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string      $transaction_id
+     *                                         The ID of the Amazon Seller Wallet transaction. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getTransactionWithHttpInfo(
         string $transaction_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransactionRequest($transaction_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransactionsApi-getTransaction");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getTransactionRateLimiter->consume()->ensureAccepted();
@@ -550,41 +542,41 @@ class TransactionsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\Transaction', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\Transaction', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getTransactionAsync
+     * Operation getTransactionAsync.
      *
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      *
-     * @param  string $transaction_id
-     *  The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string $transaction_id
+     *                               The ID of the Amazon Seller Wallet transaction. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getTransactionAsync(
         string $transaction_id
@@ -594,28 +586,28 @@ class TransactionsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getTransactionAsyncWithHttpInfo
+     * Operation getTransactionAsyncWithHttpInfo.
      *
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      *
-     * @param  string $transaction_id
-     *  The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string $transaction_id
+     *                               The ID of the Amazon Seller Wallet transaction. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getTransactionAsyncWithHttpInfo(
         string $transaction_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
         $request = $this->getTransactionRequest($transaction_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransactionsApi-getTransaction");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
         } else {
             $request = $this->config->sign($request);
         }
@@ -627,11 +619,11 @@ class TransactionsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -639,12 +631,13 @@ class TransactionsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -656,23 +649,23 @@ class TransactionsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getTransaction'
+     * Create request for operation 'getTransaction'.
      *
-     * @param  string $transaction_id
-     *  The ID of the Amazon Seller Wallet transaction. (required)
+     * @param string $transaction_id
+     *                               The ID of the Amazon Seller Wallet transaction. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getTransactionRequest(
         string $transaction_id
     ): Request {
         // verify the required parameter 'transaction_id' is set
-        if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
+        if (null === $transaction_id || (is_array($transaction_id) && 0 === count($transaction_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $transaction_id when calling getTransaction'
             );
@@ -685,21 +678,17 @@ class TransactionsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($transaction_id !== null) {
+        if (null !== $transaction_id) {
             $resourcePath = str_replace(
-                '{' . 'transactionId' . '}',
+                '{transactionId}',
                 ObjectSerializer::toPathValue($transaction_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -713,22 +702,19 @@ class TransactionsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -742,52 +728,54 @@ class TransactionsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listAccountTransactions
+     * Operation listAccountTransactions.
      *
      * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      *
-     * @param  string $account_id
-     *  The ID of the Amazon Seller Wallet account. (required)
-     * @param  string|null $next_page_token
-     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string      $account_id
+     *                                         The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $next_page_token
+     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\sellerWallet\v2024_03_01\TransactionListing
      */
     public function listAccountTransactions(
         string $account_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\sellerWallet\v2024_03_01\TransactionListing {
-        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token,,$restrictedDataToken);
+    ): TransactionListing {
+        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listAccountTransactionsWithHttpInfo
+     * Operation listAccountTransactionsWithHttpInfo.
      *
      * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      *
-     * @param  string $account_id
-     *  The ID of the Amazon Seller Wallet account. (required)
-     * @param  string|null $next_page_token
-     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string      $account_id
+     *                                         The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $next_page_token
+     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransactionListing, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listAccountTransactionsWithHttpInfo(
         string $account_id,
@@ -795,13 +783,15 @@ class TransactionsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransactionsApi-listAccountTransactions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listAccountTransactionsRateLimiter->consume()->ensureAccepted();
@@ -837,43 +827,43 @@ class TransactionsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listAccountTransactionsAsync
+     * Operation listAccountTransactionsAsync.
      *
      * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      *
-     * @param  string $account_id
-     *  The ID of the Amazon Seller Wallet account. (required)
-     * @param  string|null $next_page_token
-     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string      $account_id
+     *                                     The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $next_page_token
+     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listAccountTransactionsAsync(
         string $account_id,
@@ -884,31 +874,31 @@ class TransactionsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listAccountTransactionsAsyncWithHttpInfo
+     * Operation listAccountTransactionsAsyncWithHttpInfo.
      *
      * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      *
-     * @param  string $account_id
-     *  The ID of the Amazon Seller Wallet account. (required)
-     * @param  string|null $next_page_token
-     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string      $account_id
+     *                                     The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $next_page_token
+     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listAccountTransactionsAsyncWithHttpInfo(
         string $account_id,
         ?string $next_page_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing';
         $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransactionsApi-listAccountTransactions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -920,11 +910,11 @@ class TransactionsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -932,12 +922,13 @@ class TransactionsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -949,26 +940,26 @@ class TransactionsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listAccountTransactions'
+     * Create request for operation 'listAccountTransactions'.
      *
-     * @param  string $account_id
-     *  The ID of the Amazon Seller Wallet account. (required)
-     * @param  string|null $next_page_token
-     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param string      $account_id
+     *                                     The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $next_page_token
+     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listAccountTransactionsRequest(
         string $account_id,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+        if (null === $account_id || (is_array($account_id) && 0 === count($account_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling listAccountTransactions'
             );
@@ -1002,12 +993,8 @@ class TransactionsApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1021,22 +1008,19 @@ class TransactionsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1050,19 +1034,21 @@ class TransactionsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1070,7 +1056,7 @@ class TransactionsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

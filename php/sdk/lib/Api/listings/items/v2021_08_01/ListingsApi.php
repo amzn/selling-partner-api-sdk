@@ -1,16 +1,18 @@
 <?php
+
 /**
  * ListingsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Listings Items
+ * Selling Partner API for Listings Items.
  *
  * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
@@ -35,38 +37,40 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\listings\items\v2021_08_01\Item;
+use SpApi\Model\listings\items\v2021_08_01\ItemSearchResults;
+use SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest;
+use SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest;
+use SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * ListingsApi Class Doc Comment
+ * ListingsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ListingsApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $deleteListingsItemRateLimiter;
+    public ?LimiterInterface $getListingsItemRateLimiter;
+    public ?LimiterInterface $patchListingsItemRateLimiter;
+    public ?LimiterInterface $putListingsItemRateLimiter;
+    public ?LimiterInterface $searchListingsItemsRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,25 +78,16 @@ class ListingsApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $deleteListingsItemRateLimiter;
-    public ?LimiterInterface $getListingsItemRateLimiter;
-    public ?LimiterInterface $patchListingsItemRateLimiter;
-    public ?LimiterInterface $putListingsItemRateLimiter;
-    public ?LimiterInterface $searchListingsItemsRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -102,16 +97,16 @@ class ListingsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ListingsApi-deleteListingsItem"), $this->rateLimitStorage);
-            $this->deleteListingsItemRateLimiter = $factory->create("ListingsApi-deleteListingsItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ListingsApi-getListingsItem"), $this->rateLimitStorage);
-            $this->getListingsItemRateLimiter = $factory->create("ListingsApi-getListingsItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ListingsApi-patchListingsItem"), $this->rateLimitStorage);
-            $this->patchListingsItemRateLimiter = $factory->create("ListingsApi-patchListingsItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ListingsApi-putListingsItem"), $this->rateLimitStorage);
-            $this->putListingsItemRateLimiter = $factory->create("ListingsApi-putListingsItem");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ListingsApi-searchListingsItems"), $this->rateLimitStorage);
-            $this->searchListingsItemsRateLimiter = $factory->create("ListingsApi-searchListingsItems");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-deleteListingsItem'), $this->rateLimitStorage);
+            $this->deleteListingsItemRateLimiter = $factory->create('ListingsApi-deleteListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsItem'), $this->rateLimitStorage);
+            $this->getListingsItemRateLimiter = $factory->create('ListingsApi-getListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-patchListingsItem'), $this->rateLimitStorage);
+            $this->patchListingsItemRateLimiter = $factory->create('ListingsApi-patchListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-putListingsItem'), $this->rateLimitStorage);
+            $this->putListingsItemRateLimiter = $factory->create('ListingsApi-putListingsItem');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-searchListingsItems'), $this->rateLimitStorage);
+            $this->searchListingsItemsRateLimiter = $factory->create('ListingsApi-searchListingsItems');
         }
 
         $this->client = $client ?: new Client();
@@ -120,7 +115,7 @@ class ListingsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -130,7 +125,7 @@ class ListingsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -139,29 +134,26 @@ class ListingsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation deleteListingsItem
+     * Operation deleteListingsItem.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string      $seller_id
+     *                                         A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string      $sku
+     *                                         A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string $issue_locale
+     *                                         A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
      */
     public function deleteListingsItem(
         string $seller_id,
@@ -169,27 +161,29 @@ class ListingsApi
         array $marketplace_ids,
         ?string $issue_locale = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
-        list($response) = $this->deleteListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $issue_locale,,,,$restrictedDataToken);
+    ): ListingsItemSubmissionResponse {
+        list($response) = $this->deleteListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $issue_locale, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation deleteListingsItemWithHttpInfo
+     * Operation deleteListingsItemWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string      $seller_id
+     *                                         A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string      $sku
+     *                                         A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string $issue_locale
+     *                                         A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function deleteListingsItemWithHttpInfo(
         string $seller_id,
@@ -199,13 +193,15 @@ class ListingsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-deleteListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-deleteListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->deleteListingsItemRateLimiter->consume()->ensureAccepted();
@@ -241,45 +237,45 @@ class ListingsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation deleteListingsItemAsync
+     * Operation deleteListingsItemAsync.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string      $seller_id
+     *                                     A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string      $sku
+     *                                     A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]    $marketplace_ids
+     *                                     A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string $issue_locale
+     *                                     A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deleteListingsItemAsync(
         string $seller_id,
@@ -292,35 +288,35 @@ class ListingsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation deleteListingsItemAsyncWithHttpInfo
+     * Operation deleteListingsItemAsyncWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string      $seller_id
+     *                                     A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string      $sku
+     *                                     A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]    $marketplace_ids
+     *                                     A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string $issue_locale
+     *                                     A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deleteListingsItemAsyncWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
         ?string $issue_locale = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->deleteListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-deleteListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-deleteListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -332,11 +328,11 @@ class ListingsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -344,12 +340,13 @@ class ListingsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -361,23 +358,23 @@ class ListingsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'deleteListingsItem'
+     * Create request for operation 'deleteListingsItem'.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string      $seller_id
+     *                                     A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string      $sku
+     *                                     A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]    $marketplace_ids
+     *                                     A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string $issue_locale
+     *                                     A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function deleteListingsItemRequest(
         string $seller_id,
@@ -386,19 +383,19 @@ class ListingsApi
         ?string $issue_locale = null
     ): Request {
         // verify the required parameter 'seller_id' is set
-        if ($seller_id === null || (is_array($seller_id) && count($seller_id) === 0)) {
+        if (null === $seller_id || (is_array($seller_id) && 0 === count($seller_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_id when calling deleteListingsItem'
             );
         }
         // verify the required parameter 'sku' is set
-        if ($sku === null || (is_array($sku) && count($sku) === 0)) {
+        if (null === $sku || (is_array($sku) && 0 === count($sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $sku when calling deleteListingsItem'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling deleteListingsItem'
             );
@@ -406,7 +403,6 @@ class ListingsApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ListingsApi.deleteListingsItem, number of items must be less than or equal to 1.');
         }
-
 
         $resourcePath = '/listings/2021-08-01/items/{sellerId}/{sku}';
         $formParams = [];
@@ -436,28 +432,25 @@ class ListingsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($seller_id !== null) {
+        if (null !== $seller_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerId' . '}',
+                '{sellerId}',
                 ObjectSerializer::toPathValue($seller_id),
                 $resourcePath
             );
         }
         // path params
-        if ($sku !== null) {
+        if (null !== $sku) {
             $resourcePath = str_replace(
-                '{' . 'sku' . '}',
+                '{sku}',
                 ObjectSerializer::toPathValue($sku),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -471,22 +464,19 @@ class ListingsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -500,32 +490,32 @@ class ListingsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getListingsItem
+     * Operation getListingsItem.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param string        $seller_id
+     *                                           A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string        $sku
+     *                                           A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]      $marketplace_ids
+     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string   $issue_locale
+     *                                           A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string[] $included_data
+     *                                           A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\listings\items\v2021_08_01\Item
      */
     public function getListingsItem(
         string $seller_id,
@@ -534,29 +524,31 @@ class ListingsApi
         ?string $issue_locale = null,
         ?array $included_data = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\listings\items\v2021_08_01\Item {
-        list($response) = $this->getListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data,,,,,$restrictedDataToken);
+    ): Item {
+        list($response) = $this->getListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getListingsItemWithHttpInfo
+     * Operation getListingsItemWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param string        $seller_id
+     *                                           A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string        $sku
+     *                                           A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]      $marketplace_ids
+     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string   $issue_locale
+     *                                           A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string[] $included_data
+     *                                           A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\listings\items\v2021_08_01\Item, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getListingsItemWithHttpInfo(
         string $seller_id,
@@ -567,13 +559,15 @@ class ListingsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-getListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getListingsItemRateLimiter->consume()->ensureAccepted();
@@ -609,47 +603,47 @@ class ListingsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\listings\items\v2021_08_01\Item' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\listings\items\v2021_08_01\Item' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\listings\items\v2021_08_01\Item' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\listings\items\v2021_08_01\Item' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\Item', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\Item', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getListingsItemAsync
+     * Operation getListingsItemAsync.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param string        $seller_id
+     *                                       A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string        $sku
+     *                                       A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]      $marketplace_ids
+     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string   $issue_locale
+     *                                       A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string[] $included_data
+     *                                       A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getListingsItemAsync(
         string $seller_id,
@@ -663,25 +657,25 @@ class ListingsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getListingsItemAsyncWithHttpInfo
+     * Operation getListingsItemAsyncWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param string        $seller_id
+     *                                       A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string        $sku
+     *                                       A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]      $marketplace_ids
+     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string   $issue_locale
+     *                                       A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string[] $included_data
+     *                                       A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getListingsItemAsyncWithHttpInfo(
         string $seller_id,
@@ -689,12 +683,12 @@ class ListingsApi
         array $marketplace_ids,
         ?string $issue_locale = null,
         ?array $included_data = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\Item';
         $request = $this->getListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-getListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -706,11 +700,11 @@ class ListingsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -718,12 +712,13 @@ class ListingsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -735,25 +730,25 @@ class ListingsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getListingsItem'
+     * Create request for operation 'getListingsItem'.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param string        $seller_id
+     *                                       A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string        $sku
+     *                                       A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]      $marketplace_ids
+     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string   $issue_locale
+     *                                       A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string[] $included_data
+     *                                       A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getListingsItemRequest(
         string $seller_id,
@@ -763,19 +758,19 @@ class ListingsApi
         ?array $included_data = null
     ): Request {
         // verify the required parameter 'seller_id' is set
-        if ($seller_id === null || (is_array($seller_id) && count($seller_id) === 0)) {
+        if (null === $seller_id || (is_array($seller_id) && 0 === count($seller_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_id when calling getListingsItem'
             );
         }
         // verify the required parameter 'sku' is set
-        if ($sku === null || (is_array($sku) && count($sku) === 0)) {
+        if (null === $sku || (is_array($sku) && 0 === count($sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $sku when calling getListingsItem'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getListingsItem'
             );
@@ -783,7 +778,6 @@ class ListingsApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ListingsApi.getListingsItem, number of items must be less than or equal to 1.');
         }
-
 
         $resourcePath = '/listings/2021-08-01/items/{sellerId}/{sku}';
         $formParams = [];
@@ -823,28 +817,25 @@ class ListingsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($seller_id !== null) {
+        if (null !== $seller_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerId' . '}',
+                '{sellerId}',
                 ObjectSerializer::toPathValue($seller_id),
                 $resourcePath
             );
         }
         // path params
-        if ($sku !== null) {
+        if (null !== $sku) {
             $resourcePath = str_replace(
-                '{' . 'sku' . '}',
+                '{sku}',
                 ObjectSerializer::toPathValue($sku),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -858,22 +849,19 @@ class ListingsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -887,92 +875,96 @@ class ListingsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation patchListingsItem
+     * Operation patchListingsItem.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
-     *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                   $seller_id
+     *                                                      A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                   $sku
+     *                                                      A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]                 $marketplace_ids
+     *                                                      A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPatchRequest $body
+     *                                                      The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
+     * @param null|string[]            $included_data
+     *                                                      A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string              $mode
+     *                                                      The mode of operation for the request. (optional)
+     * @param null|string              $issue_locale
+     *                                                      A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
      */
     public function patchListingsItem(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
-        list($response) = $this->patchListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale,,,,,,,$restrictedDataToken);
+    ): ListingsItemSubmissionResponse {
+        list($response) = $this->patchListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation patchListingsItemWithHttpInfo
+     * Operation patchListingsItemWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
-     *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                   $seller_id
+     *                                                      A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                   $sku
+     *                                                      A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]                 $marketplace_ids
+     *                                                      A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPatchRequest $body
+     *                                                      The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
+     * @param null|string[]            $included_data
+     *                                                      A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string              $mode
+     *                                                      The mode of operation for the request. (optional)
+     * @param null|string              $issue_locale
+     *                                                      A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function patchListingsItemWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->patchListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-patchListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-patchListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->patchListingsItemRateLimiter->consume()->ensureAccepted();
@@ -1008,57 +1000,57 @@ class ListingsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation patchListingsItemAsync
+     * Operation patchListingsItemAsync.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
-     *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                   $seller_id
+     *                                                  A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                   $sku
+     *                                                  A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]                 $marketplace_ids
+     *                                                  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPatchRequest $body
+     *                                                  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
+     * @param null|string[]            $included_data
+     *                                                  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string              $mode
+     *                                                  The mode of operation for the request. (optional)
+     * @param null|string              $issue_locale
+     *                                                  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function patchListingsItemAsync(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -1068,44 +1060,44 @@ class ListingsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation patchListingsItemAsyncWithHttpInfo
+     * Operation patchListingsItemAsyncWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
-     *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                   $seller_id
+     *                                                  A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                   $sku
+     *                                                  A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]                 $marketplace_ids
+     *                                                  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPatchRequest $body
+     *                                                  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
+     * @param null|string[]            $included_data
+     *                                                  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string              $mode
+     *                                                  The mode of operation for the request. (optional)
+     * @param null|string              $issue_locale
+     *                                                  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function patchListingsItemAsyncWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->patchListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-patchListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-patchListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1117,11 +1109,11 @@ class ListingsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1129,12 +1121,13 @@ class ListingsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1146,53 +1139,53 @@ class ListingsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'patchListingsItem'
+     * Create request for operation 'patchListingsItem'.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
-     *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                   $seller_id
+     *                                                  A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                   $sku
+     *                                                  A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]                 $marketplace_ids
+     *                                                  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPatchRequest $body
+     *                                                  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
+     * @param null|string[]            $included_data
+     *                                                  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string              $mode
+     *                                                  The mode of operation for the request. (optional)
+     * @param null|string              $issue_locale
+     *                                                  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function patchListingsItemRequest(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
     ): Request {
         // verify the required parameter 'seller_id' is set
-        if ($seller_id === null || (is_array($seller_id) && count($seller_id) === 0)) {
+        if (null === $seller_id || (is_array($seller_id) && 0 === count($seller_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_id when calling patchListingsItem'
             );
         }
         // verify the required parameter 'sku' is set
-        if ($sku === null || (is_array($sku) && count($sku) === 0)) {
+        if (null === $sku || (is_array($sku) && 0 === count($sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $sku when calling patchListingsItem'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling patchListingsItem'
             );
@@ -1202,7 +1195,7 @@ class ListingsApi
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling patchListingsItem'
             );
@@ -1256,35 +1249,32 @@ class ListingsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($seller_id !== null) {
+        if (null !== $seller_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerId' . '}',
+                '{sellerId}',
                 ObjectSerializer::toPathValue($seller_id),
                 $resourcePath
             );
         }
         // path params
-        if ($sku !== null) {
+        if (null !== $sku) {
             $resourcePath = str_replace(
-                '{' . 'sku' . '}',
+                '{sku}',
                 ObjectSerializer::toPathValue($sku),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1297,22 +1287,19 @@ class ListingsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1326,92 +1313,96 @@ class ListingsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation putListingsItem
+     * Operation putListingsItem.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
-     *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                 $seller_id
+     *                                                    A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                 $sku
+     *                                                    A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]               $marketplace_ids
+     *                                                    A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPutRequest $body
+     *                                                    The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
+     * @param null|string[]          $included_data
+     *                                                    A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string            $mode
+     *                                                    The mode of operation for the request. (optional)
+     * @param null|string            $issue_locale
+     *                                                    A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
      */
     public function putListingsItem(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
-        list($response) = $this->putListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale,,,,,,,$restrictedDataToken);
+    ): ListingsItemSubmissionResponse {
+        list($response) = $this->putListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation putListingsItemWithHttpInfo
+     * Operation putListingsItemWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
-     *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                 $seller_id
+     *                                                    A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                 $sku
+     *                                                    A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]               $marketplace_ids
+     *                                                    A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPutRequest $body
+     *                                                    The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
+     * @param null|string[]          $included_data
+     *                                                    A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string            $mode
+     *                                                    The mode of operation for the request. (optional)
+     * @param null|string            $issue_locale
+     *                                                    A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function putListingsItemWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->putListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-putListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-putListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->putListingsItemRateLimiter->consume()->ensureAccepted();
@@ -1447,57 +1438,57 @@ class ListingsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation putListingsItemAsync
+     * Operation putListingsItemAsync.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
-     *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                 $seller_id
+     *                                                A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                 $sku
+     *                                                A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]               $marketplace_ids
+     *                                                A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPutRequest $body
+     *                                                The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
+     * @param null|string[]          $included_data
+     *                                                A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string            $mode
+     *                                                The mode of operation for the request. (optional)
+     * @param null|string            $issue_locale
+     *                                                A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function putListingsItemAsync(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -1507,44 +1498,44 @@ class ListingsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation putListingsItemAsyncWithHttpInfo
+     * Operation putListingsItemAsyncWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
-     *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                 $seller_id
+     *                                                A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                 $sku
+     *                                                A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]               $marketplace_ids
+     *                                                A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPutRequest $body
+     *                                                The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
+     * @param null|string[]          $included_data
+     *                                                A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string            $mode
+     *                                                The mode of operation for the request. (optional)
+     * @param null|string            $issue_locale
+     *                                                A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function putListingsItemAsyncWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->putListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-putListingsItem");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-putListingsItem');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1556,11 +1547,11 @@ class ListingsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1568,12 +1559,13 @@ class ListingsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1585,53 +1577,53 @@ class ListingsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'putListingsItem'
+     * Create request for operation 'putListingsItem'.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string $sku
-     *  A selling partner provided identifier for an Amazon listing. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
-     *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
-     * @param  string|null $mode
-     *  The mode of operation for the request. (optional)
-     * @param  string|null $issue_locale
-     *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     * @param string                 $seller_id
+     *                                                A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string                 $sku
+     *                                                A selling partner provided identifier for an Amazon listing. (required)
+     * @param string[]               $marketplace_ids
+     *                                                A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param ListingsItemPutRequest $body
+     *                                                The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
+     * @param null|string[]          $included_data
+     *                                                A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
+     * @param null|string            $mode
+     *                                                The mode of operation for the request. (optional)
+     * @param null|string            $issue_locale
+     *                                                A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function putListingsItemRequest(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
     ): Request {
         // verify the required parameter 'seller_id' is set
-        if ($seller_id === null || (is_array($seller_id) && count($seller_id) === 0)) {
+        if (null === $seller_id || (is_array($seller_id) && 0 === count($seller_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_id when calling putListingsItem'
             );
         }
         // verify the required parameter 'sku' is set
-        if ($sku === null || (is_array($sku) && count($sku) === 0)) {
+        if (null === $sku || (is_array($sku) && 0 === count($sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $sku when calling putListingsItem'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling putListingsItem'
             );
@@ -1641,7 +1633,7 @@ class ListingsApi
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling putListingsItem'
             );
@@ -1695,35 +1687,32 @@ class ListingsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($seller_id !== null) {
+        if (null !== $seller_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerId' . '}',
+                '{sellerId}',
                 ObjectSerializer::toPathValue($seller_id),
                 $resourcePath
             );
         }
         // path params
-        if ($sku !== null) {
+        if (null !== $sku) {
             $resourcePath = str_replace(
-                '{' . 'sku' . '}',
+                '{sku}',
                 ObjectSerializer::toPathValue($sku),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1736,22 +1725,19 @@ class ListingsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1765,60 +1751,60 @@ class ListingsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation searchListingsItems
+     * Operation searchListingsItems.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
-     * @param  string|null $identifiers_type
-     *  A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
-     * @param  string|null $variation_parent_sku
-     *  Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
-     * @param  string|null $package_hierarchy_sku
-     *  Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
-     * @param  \DateTime|null $created_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $created_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  string[]|null $with_issue_severity
-     *  Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
-     * @param  string[]|null $with_status
-     *  Filter results to include only listing items that have the specified status. (optional)
-     * @param  string[]|null $without_status
-     *  Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
-     * @param  string|null $sort_by
-     *  An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
-     * @param  string|null $sort_order
-     *  The order in which to sort the result items. (optional, default to 'DESC')
-     * @param  int|null $page_size
-     *  The number of results that you want to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string         $seller_id
+     *                                              A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string[]       $marketplace_ids
+     *                                              A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string    $issue_locale
+     *                                              A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     * @param null|string[]  $included_data
+     *                                              A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string[]  $identifiers
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     * @param null|string    $identifiers_type
+     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     * @param null|string    $variation_parent_sku
+     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     * @param null|string    $package_hierarchy_sku
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     * @param null|\DateTime $created_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $created_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|string[]  $with_issue_severity
+     *                                              Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
+     * @param null|string[]  $with_status
+     *                                              Filter results to include only listing items that have the specified status. (optional)
+     * @param null|string[]  $without_status
+     *                                              Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
+     * @param null|string    $sort_by
+     *                                              An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
+     * @param null|string    $sort_order
+     *                                              The order in which to sort the result items. (optional, default to 'DESC')
+     * @param null|int       $page_size
+     *                                              The number of results that you want to include on each page. (optional, default to 10)
+     * @param null|string    $page_token
+     *                                              A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string    $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\listings\items\v2021_08_01\ItemSearchResults
      */
     public function searchListingsItems(
         string $seller_id,
@@ -1841,57 +1827,59 @@ class ListingsApi
         ?int $page_size = 10,
         ?string $page_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\listings\items\v2021_08_01\ItemSearchResults {
-        list($response) = $this->searchListingsItemsWithHttpInfo($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token,,,,,,,,,,,,,,,,,,,$restrictedDataToken);
+    ): ItemSearchResults {
+        list($response) = $this->searchListingsItemsWithHttpInfo($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation searchListingsItemsWithHttpInfo
+     * Operation searchListingsItemsWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
-     * @param  string|null $identifiers_type
-     *  A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
-     * @param  string|null $variation_parent_sku
-     *  Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
-     * @param  string|null $package_hierarchy_sku
-     *  Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
-     * @param  \DateTime|null $created_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $created_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  string[]|null $with_issue_severity
-     *  Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
-     * @param  string[]|null $with_status
-     *  Filter results to include only listing items that have the specified status. (optional)
-     * @param  string[]|null $without_status
-     *  Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
-     * @param  string|null $sort_by
-     *  An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
-     * @param  string|null $sort_order
-     *  The order in which to sort the result items. (optional, default to 'DESC')
-     * @param  int|null $page_size
-     *  The number of results that you want to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string         $seller_id
+     *                                              A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string[]       $marketplace_ids
+     *                                              A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string    $issue_locale
+     *                                              A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     * @param null|string[]  $included_data
+     *                                              A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string[]  $identifiers
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     * @param null|string    $identifiers_type
+     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     * @param null|string    $variation_parent_sku
+     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     * @param null|string    $package_hierarchy_sku
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     * @param null|\DateTime $created_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $created_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|string[]  $with_issue_severity
+     *                                              Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
+     * @param null|string[]  $with_status
+     *                                              Filter results to include only listing items that have the specified status. (optional)
+     * @param null|string[]  $without_status
+     *                                              Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
+     * @param null|string    $sort_by
+     *                                              An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
+     * @param null|string    $sort_order
+     *                                              The order in which to sort the result items. (optional, default to 'DESC')
+     * @param null|int       $page_size
+     *                                              The number of results that you want to include on each page. (optional, default to 10)
+     * @param null|string    $page_token
+     *                                              A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string    $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\listings\items\v2021_08_01\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function searchListingsItemsWithHttpInfo(
         string $seller_id,
@@ -1916,13 +1904,15 @@ class ListingsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchListingsItemsRequest($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-searchListingsItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-searchListingsItems');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->searchListingsItemsRateLimiter->consume()->ensureAccepted();
@@ -1958,75 +1948,75 @@ class ListingsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation searchListingsItemsAsync
+     * Operation searchListingsItemsAsync.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
-     * @param  string|null $identifiers_type
-     *  A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
-     * @param  string|null $variation_parent_sku
-     *  Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
-     * @param  string|null $package_hierarchy_sku
-     *  Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
-     * @param  \DateTime|null $created_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $created_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  string[]|null $with_issue_severity
-     *  Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
-     * @param  string[]|null $with_status
-     *  Filter results to include only listing items that have the specified status. (optional)
-     * @param  string[]|null $without_status
-     *  Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
-     * @param  string|null $sort_by
-     *  An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
-     * @param  string|null $sort_order
-     *  The order in which to sort the result items. (optional, default to 'DESC')
-     * @param  int|null $page_size
-     *  The number of results that you want to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string         $seller_id
+     *                                              A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string[]       $marketplace_ids
+     *                                              A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string    $issue_locale
+     *                                              A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     * @param null|string[]  $included_data
+     *                                              A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string[]  $identifiers
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     * @param null|string    $identifiers_type
+     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     * @param null|string    $variation_parent_sku
+     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     * @param null|string    $package_hierarchy_sku
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     * @param null|\DateTime $created_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $created_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|string[]  $with_issue_severity
+     *                                              Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
+     * @param null|string[]  $with_status
+     *                                              Filter results to include only listing items that have the specified status. (optional)
+     * @param null|string[]  $without_status
+     *                                              Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
+     * @param null|string    $sort_by
+     *                                              An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
+     * @param null|string    $sort_order
+     *                                              The order in which to sort the result items. (optional, default to 'DESC')
+     * @param null|int       $page_size
+     *                                              The number of results that you want to include on each page. (optional, default to 10)
+     * @param null|string    $page_token
+     *                                              A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchListingsItemsAsync(
         string $seller_id,
@@ -2054,53 +2044,53 @@ class ListingsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation searchListingsItemsAsyncWithHttpInfo
+     * Operation searchListingsItemsAsyncWithHttpInfo.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
-     * @param  string|null $identifiers_type
-     *  A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
-     * @param  string|null $variation_parent_sku
-     *  Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
-     * @param  string|null $package_hierarchy_sku
-     *  Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
-     * @param  \DateTime|null $created_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $created_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  string[]|null $with_issue_severity
-     *  Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
-     * @param  string[]|null $with_status
-     *  Filter results to include only listing items that have the specified status. (optional)
-     * @param  string[]|null $without_status
-     *  Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
-     * @param  string|null $sort_by
-     *  An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
-     * @param  string|null $sort_order
-     *  The order in which to sort the result items. (optional, default to 'DESC')
-     * @param  int|null $page_size
-     *  The number of results that you want to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string         $seller_id
+     *                                              A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string[]       $marketplace_ids
+     *                                              A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string    $issue_locale
+     *                                              A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     * @param null|string[]  $included_data
+     *                                              A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string[]  $identifiers
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     * @param null|string    $identifiers_type
+     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     * @param null|string    $variation_parent_sku
+     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     * @param null|string    $package_hierarchy_sku
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     * @param null|\DateTime $created_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $created_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|string[]  $with_issue_severity
+     *                                              Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
+     * @param null|string[]  $with_status
+     *                                              Filter results to include only listing items that have the specified status. (optional)
+     * @param null|string[]  $without_status
+     *                                              Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
+     * @param null|string    $sort_by
+     *                                              An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
+     * @param null|string    $sort_order
+     *                                              The order in which to sort the result items. (optional, default to 'DESC')
+     * @param null|int       $page_size
+     *                                              The number of results that you want to include on each page. (optional, default to 10)
+     * @param null|string    $page_token
+     *                                              A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchListingsItemsAsyncWithHttpInfo(
         string $seller_id,
@@ -2122,12 +2112,12 @@ class ListingsApi
         ?string $sort_order = 'DESC',
         ?int $page_size = 10,
         ?string $page_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults';
         $request = $this->searchListingsItemsRequest($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ListingsApi-searchListingsItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-searchListingsItems');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2139,11 +2129,11 @@ class ListingsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2151,12 +2141,13 @@ class ListingsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2168,53 +2159,53 @@ class ListingsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'searchListingsItems'
+     * Create request for operation 'searchListingsItems'.
      *
-     * @param  string $seller_id
-     *  A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param  string[] $marketplace_ids
-     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  string|null $issue_locale
-     *  A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
-     * @param  string[]|null $included_data
-     *  A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
-     * @param  string[]|null $identifiers
-     *  A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
-     * @param  string|null $identifiers_type
-     *  A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
-     * @param  string|null $variation_parent_sku
-     *  Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
-     * @param  string|null $package_hierarchy_sku
-     *  Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
-     * @param  \DateTime|null $created_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $created_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
-     * @param  string[]|null $with_issue_severity
-     *  Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
-     * @param  string[]|null $with_status
-     *  Filter results to include only listing items that have the specified status. (optional)
-     * @param  string[]|null $without_status
-     *  Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
-     * @param  string|null $sort_by
-     *  An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
-     * @param  string|null $sort_order
-     *  The order in which to sort the result items. (optional, default to 'DESC')
-     * @param  int|null $page_size
-     *  The number of results that you want to include on each page. (optional, default to 10)
-     * @param  string|null $page_token
-     *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string         $seller_id
+     *                                              A selling partner identifier, such as a merchant account or vendor code. (required)
+     * @param string[]       $marketplace_ids
+     *                                              A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param null|string    $issue_locale
+     *                                              A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;. (optional)
+     * @param null|string[]  $included_data
+     *                                              A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;. (optional)
+     * @param null|string[]  $identifiers
+     *                                              A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;. (optional)
+     * @param null|string    $identifiers_type
+     *                                              A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided. (optional)
+     * @param null|string    $variation_parent_sku
+     *                                              Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request. (optional)
+     * @param null|string    $package_hierarchy_sku
+     *                                              Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request. (optional)
+     * @param null|\DateTime $created_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $created_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                              A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (optional)
+     * @param null|string[]  $with_issue_severity
+     *                                              Filter results to include only listing items that have issues that match one or more of the specified severity levels. (optional)
+     * @param null|string[]  $with_status
+     *                                              Filter results to include only listing items that have the specified status. (optional)
+     * @param null|string[]  $without_status
+     *                                              Filter results to include only listing items that don&#39;t contain the specified statuses. (optional)
+     * @param null|string    $sort_by
+     *                                              An attribute by which to sort the returned listing items. (optional, default to 'lastUpdatedDate')
+     * @param null|string    $sort_order
+     *                                              The order in which to sort the result items. (optional, default to 'DESC')
+     * @param null|int       $page_size
+     *                                              The number of results that you want to include on each page. (optional, default to 10)
+     * @param null|string    $page_token
+     *                                              A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function searchListingsItemsRequest(
         string $seller_id,
@@ -2238,13 +2229,13 @@ class ListingsApi
         ?string $page_token = null
     ): Request {
         // verify the required parameter 'seller_id' is set
-        if ($seller_id === null || (is_array($seller_id) && count($seller_id) === 0)) {
+        if (null === $seller_id || (is_array($seller_id) && 0 === count($seller_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_id when calling searchListingsItems'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling searchListingsItems'
             );
@@ -2253,14 +2244,13 @@ class ListingsApi
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ListingsApi.searchListingsItems, number of items must be less than or equal to 1.');
         }
 
-        if ($identifiers !== null && count($identifiers) > 20) {
+        if (null !== $identifiers && count($identifiers) > 20) {
             throw new \InvalidArgumentException('invalid value for "$identifiers" when calling ListingsApi.searchListingsItems, number of items must be less than or equal to 20.');
         }
 
-        if ($page_size !== null && $page_size > 20) {
+        if (null !== $page_size && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ListingsApi.searchListingsItems, must be smaller than or equal to 20.');
         }
-
 
         $resourcePath = '/listings/2021-08-01/items/{sellerId}';
         $formParams = [];
@@ -2450,20 +2440,17 @@ class ListingsApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($seller_id !== null) {
+        if (null !== $seller_id) {
             $resourcePath = str_replace(
-                '{' . 'sellerId' . '}',
+                '{sellerId}',
                 ObjectSerializer::toPathValue($seller_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -2477,22 +2464,19 @@ class ListingsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2506,19 +2490,21 @@ class ListingsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -2526,7 +2512,7 @@ class ListingsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

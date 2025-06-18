@@ -1,12 +1,14 @@
 <?php
+
 /**
  * AppIntegrationsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -35,38 +37,37 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest;
+use SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse;
+use SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest;
+use SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * AppIntegrationsApi Class Doc Comment
+ * AppIntegrationsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AppIntegrationsApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $createNotificationRateLimiter;
+    public ?LimiterInterface $deleteNotificationsRateLimiter;
+    public ?LimiterInterface $recordActionFeedbackRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,23 +75,16 @@ class AppIntegrationsApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $createNotificationRateLimiter;
-    public ?LimiterInterface $deleteNotificationsRateLimiter;
-    public ?LimiterInterface $recordActionFeedbackRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -100,12 +94,12 @@ class AppIntegrationsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("AppIntegrationsApi-createNotification"), $this->rateLimitStorage);
-            $this->createNotificationRateLimiter = $factory->create("AppIntegrationsApi-createNotification");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("AppIntegrationsApi-deleteNotifications"), $this->rateLimitStorage);
-            $this->deleteNotificationsRateLimiter = $factory->create("AppIntegrationsApi-deleteNotifications");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("AppIntegrationsApi-recordActionFeedback"), $this->rateLimitStorage);
-            $this->recordActionFeedbackRateLimiter = $factory->create("AppIntegrationsApi-recordActionFeedback");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-createNotification'), $this->rateLimitStorage);
+            $this->createNotificationRateLimiter = $factory->create('AppIntegrationsApi-createNotification');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-deleteNotifications'), $this->rateLimitStorage);
+            $this->deleteNotificationsRateLimiter = $factory->create('AppIntegrationsApi-deleteNotifications');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-recordActionFeedback'), $this->rateLimitStorage);
+            $this->recordActionFeedbackRateLimiter = $factory->create('AppIntegrationsApi-recordActionFeedback');
         }
 
         $this->client = $client ?: new Client();
@@ -114,7 +108,7 @@ class AppIntegrationsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -124,7 +118,7 @@ class AppIntegrationsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -133,55 +127,56 @@ class AppIntegrationsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation createNotification
+     * Operation createNotification.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
-     *  The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param CreateNotificationRequest $body
+     *                                                       The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse
      */
     public function createNotification(
-        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body,
+        CreateNotificationRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse {
-        list($response) = $this->createNotificationWithHttpInfo($body,$restrictedDataToken);
+    ): CreateNotificationResponse {
+        list($response) = $this->createNotificationWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createNotificationWithHttpInfo
+     * Operation createNotificationWithHttpInfo.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
-     *  The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param CreateNotificationRequest $body
+     *                                                       The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createNotificationWithHttpInfo(
-        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body,
+        CreateNotificationRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createNotificationRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "AppIntegrationsApi-createNotification");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-createNotification');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createNotificationRateLimiter->consume()->ensureAccepted();
@@ -217,68 +212,68 @@ class AppIntegrationsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createNotificationAsync
+     * Operation createNotificationAsync.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
-     *  The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param CreateNotificationRequest $body
+     *                                        The request body for the &#x60;createNotification&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createNotificationAsync(
-        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+        CreateNotificationRequest $body
     ): PromiseInterface {
         return $this->createNotificationAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createNotificationAsyncWithHttpInfo
+     * Operation createNotificationAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
-     *  The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param CreateNotificationRequest $body
+     *                                        The request body for the &#x60;createNotification&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createNotificationAsyncWithHttpInfo(
-        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body,
-    ?string $restrictedDataToken = null
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
         $request = $this->createNotificationRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "AppIntegrationsApi-createNotification");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-createNotification');
         } else {
             $request = $this->config->sign($request);
         }
@@ -290,11 +285,11 @@ class AppIntegrationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -302,12 +297,13 @@ class AppIntegrationsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -319,23 +315,23 @@ class AppIntegrationsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createNotification'
+     * Create request for operation 'createNotification'.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
-     *  The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param CreateNotificationRequest $body
+     *                                        The request body for the &#x60;createNotification&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createNotificationRequest(
-        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+        CreateNotificationRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createNotification'
             );
@@ -348,20 +344,15 @@ class AppIntegrationsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -374,22 +365,19 @@ class AppIntegrationsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -403,55 +391,58 @@ class AppIntegrationsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation deleteNotifications
+     * Operation deleteNotifications.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
-     *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param DeleteNotificationsRequest $body
+     *                                                        The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param null|string                $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function deleteNotifications(
-        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body,
+        DeleteNotificationsRequest $body,
         ?string $restrictedDataToken = null
     ): void {
-        $this->deleteNotificationsWithHttpInfo($body,$restrictedDataToken);
+        $this->deleteNotificationsWithHttpInfo($body, $restrictedDataToken);
     }
 
     /**
-     * Operation deleteNotificationsWithHttpInfo
+     * Operation deleteNotificationsWithHttpInfo.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
-     *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param DeleteNotificationsRequest $body
+     *                                                        The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param null|string                $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function deleteNotificationsWithHttpInfo(
-        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body,
+        DeleteNotificationsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteNotificationsRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "AppIntegrationsApi-deleteNotifications");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-deleteNotifications');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
@@ -488,55 +479,55 @@ class AppIntegrationsApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation deleteNotificationsAsync
+     * Operation deleteNotificationsAsync.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
-     *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param DeleteNotificationsRequest $body
+     *                                         The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deleteNotificationsAsync(
-        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body
     ): PromiseInterface {
         return $this->deleteNotificationsAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation deleteNotificationsAsyncWithHttpInfo
+     * Operation deleteNotificationsAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
-     *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param DeleteNotificationsRequest $body
+     *                                         The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function deleteNotificationsAsyncWithHttpInfo(
-        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body,
-    ?string $restrictedDataToken = null
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteNotificationsRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "AppIntegrationsApi-deleteNotifications");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-deleteNotifications');
         } else {
             $request = $this->config->sign($request);
         }
@@ -547,12 +538,13 @@ class AppIntegrationsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -564,23 +556,23 @@ class AppIntegrationsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'deleteNotifications'
+     * Create request for operation 'deleteNotifications'.
      *
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
-     *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param DeleteNotificationsRequest $body
+     *                                         The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function deleteNotificationsRequest(
-        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling deleteNotifications'
             );
@@ -593,20 +585,15 @@ class AppIntegrationsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -619,22 +606,19 @@ class AppIntegrationsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -648,61 +632,64 @@ class AppIntegrationsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation recordActionFeedback
+     * Operation recordActionFeedback.
      *
-     * @param  string $notification_id
-     *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
-     *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param string                      $notification_id
+     *                                                         A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param RecordActionFeedbackRequest $body
+     *                                                         The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function recordActionFeedback(
         string $notification_id,
-        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body,
+        RecordActionFeedbackRequest $body,
         ?string $restrictedDataToken = null
     ): void {
-        $this->recordActionFeedbackWithHttpInfo($notification_id, $body,,$restrictedDataToken);
+        $this->recordActionFeedbackWithHttpInfo($notification_id, $body, $restrictedDataToken);
     }
 
     /**
-     * Operation recordActionFeedbackWithHttpInfo
+     * Operation recordActionFeedbackWithHttpInfo.
      *
-     * @param  string $notification_id
-     *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
-     *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param string                      $notification_id
+     *                                                         A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param RecordActionFeedbackRequest $body
+     *                                                         The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function recordActionFeedbackWithHttpInfo(
         string $notification_id,
-        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body,
+        RecordActionFeedbackRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "AppIntegrationsApi-recordActionFeedback");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-recordActionFeedback');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
@@ -739,61 +726,61 @@ class AppIntegrationsApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation recordActionFeedbackAsync
+     * Operation recordActionFeedbackAsync.
      *
-     * @param  string $notification_id
-     *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
-     *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param string                      $notification_id
+     *                                                     A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param RecordActionFeedbackRequest $body
+     *                                                     The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function recordActionFeedbackAsync(
         string $notification_id,
-        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body
     ): PromiseInterface {
         return $this->recordActionFeedbackAsyncWithHttpInfo($notification_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation recordActionFeedbackAsyncWithHttpInfo
+     * Operation recordActionFeedbackAsyncWithHttpInfo.
      *
-     * @param  string $notification_id
-     *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
-     *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param string                      $notification_id
+     *                                                     A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param RecordActionFeedbackRequest $body
+     *                                                     The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function recordActionFeedbackAsyncWithHttpInfo(
         string $notification_id,
-        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body,
-    ?string $restrictedDataToken = null
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "AppIntegrationsApi-recordActionFeedback");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-recordActionFeedback');
         } else {
             $request = $this->config->sign($request);
         }
@@ -804,12 +791,13 @@ class AppIntegrationsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -821,32 +809,32 @@ class AppIntegrationsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'recordActionFeedback'
+     * Create request for operation 'recordActionFeedback'.
      *
-     * @param  string $notification_id
-     *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
-     *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param string                      $notification_id
+     *                                                     A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param RecordActionFeedbackRequest $body
+     *                                                     The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function recordActionFeedbackRequest(
         string $notification_id,
-        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body
     ): Request {
         // verify the required parameter 'notification_id' is set
-        if ($notification_id === null || (is_array($notification_id) && count($notification_id) === 0)) {
+        if (null === $notification_id || (is_array($notification_id) && 0 === count($notification_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $notification_id when calling recordActionFeedback'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling recordActionFeedback'
             );
@@ -859,28 +847,24 @@ class AppIntegrationsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($notification_id !== null) {
+        if (null !== $notification_id) {
             $resourcePath = str_replace(
-                '{' . 'notificationId' . '}',
+                '{notificationId}',
                 ObjectSerializer::toPathValue($notification_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -893,22 +877,19 @@ class AppIntegrationsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -922,19 +903,21 @@ class AppIntegrationsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -942,7 +925,7 @@ class AppIntegrationsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

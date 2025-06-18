@@ -1,12 +1,14 @@
 <?php
+
 /**
  * FbaInboundApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -35,47 +37,85 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FbaInboundApi Class Doc Comment
+ * FbaInboundApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FbaInboundApi
 {
-    /**
-     * @var ClientInterface
-     */
-    protected ClientInterface $client;
-
-    /**
-     * @var Configuration
-     */
-    protected Configuration $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected HeaderSelector $headerSelector;
-
-    /**
-     * @var int Host index
-     */
-    protected int $hostIndex;
-
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
     public ?LimiterInterface $cancelInboundPlanRateLimiter;
     public ?LimiterInterface $cancelSelfShipAppointmentRateLimiter;
     public ?LimiterInterface $confirmDeliveryWindowOptionsRateLimiter;
@@ -121,18 +161,27 @@ class FbaInboundApi
     public ?LimiterInterface $updateShipmentNameRateLimiter;
     public ?LimiterInterface $updateShipmentSourceAddressRateLimiter;
     public ?LimiterInterface $updateShipmentTrackingDetailsRateLimiter;
+    protected ClientInterface $client;
+
+    protected Configuration $config;
+
+    protected HeaderSelector $headerSelector;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
+     * @var int Host index
+     */
+    protected int $hostIndex;
+
+    private bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
+
+    /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -142,96 +191,96 @@ class FbaInboundApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-cancelInboundPlan"), $this->rateLimitStorage);
-            $this->cancelInboundPlanRateLimiter = $factory->create("FbaInboundApi-cancelInboundPlan");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-cancelSelfShipAppointment"), $this->rateLimitStorage);
-            $this->cancelSelfShipAppointmentRateLimiter = $factory->create("FbaInboundApi-cancelSelfShipAppointment");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-confirmDeliveryWindowOptions"), $this->rateLimitStorage);
-            $this->confirmDeliveryWindowOptionsRateLimiter = $factory->create("FbaInboundApi-confirmDeliveryWindowOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-confirmPackingOption"), $this->rateLimitStorage);
-            $this->confirmPackingOptionRateLimiter = $factory->create("FbaInboundApi-confirmPackingOption");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-confirmPlacementOption"), $this->rateLimitStorage);
-            $this->confirmPlacementOptionRateLimiter = $factory->create("FbaInboundApi-confirmPlacementOption");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-confirmShipmentContentUpdatePreview"), $this->rateLimitStorage);
-            $this->confirmShipmentContentUpdatePreviewRateLimiter = $factory->create("FbaInboundApi-confirmShipmentContentUpdatePreview");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-confirmTransportationOptions"), $this->rateLimitStorage);
-            $this->confirmTransportationOptionsRateLimiter = $factory->create("FbaInboundApi-confirmTransportationOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-createInboundPlan"), $this->rateLimitStorage);
-            $this->createInboundPlanRateLimiter = $factory->create("FbaInboundApi-createInboundPlan");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-createMarketplaceItemLabels"), $this->rateLimitStorage);
-            $this->createMarketplaceItemLabelsRateLimiter = $factory->create("FbaInboundApi-createMarketplaceItemLabels");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-generateDeliveryWindowOptions"), $this->rateLimitStorage);
-            $this->generateDeliveryWindowOptionsRateLimiter = $factory->create("FbaInboundApi-generateDeliveryWindowOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-generatePackingOptions"), $this->rateLimitStorage);
-            $this->generatePackingOptionsRateLimiter = $factory->create("FbaInboundApi-generatePackingOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-generatePlacementOptions"), $this->rateLimitStorage);
-            $this->generatePlacementOptionsRateLimiter = $factory->create("FbaInboundApi-generatePlacementOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-generateSelfShipAppointmentSlots"), $this->rateLimitStorage);
-            $this->generateSelfShipAppointmentSlotsRateLimiter = $factory->create("FbaInboundApi-generateSelfShipAppointmentSlots");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-generateShipmentContentUpdatePreviews"), $this->rateLimitStorage);
-            $this->generateShipmentContentUpdatePreviewsRateLimiter = $factory->create("FbaInboundApi-generateShipmentContentUpdatePreviews");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-generateTransportationOptions"), $this->rateLimitStorage);
-            $this->generateTransportationOptionsRateLimiter = $factory->create("FbaInboundApi-generateTransportationOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getDeliveryChallanDocument"), $this->rateLimitStorage);
-            $this->getDeliveryChallanDocumentRateLimiter = $factory->create("FbaInboundApi-getDeliveryChallanDocument");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getInboundOperationStatus"), $this->rateLimitStorage);
-            $this->getInboundOperationStatusRateLimiter = $factory->create("FbaInboundApi-getInboundOperationStatus");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getInboundPlan"), $this->rateLimitStorage);
-            $this->getInboundPlanRateLimiter = $factory->create("FbaInboundApi-getInboundPlan");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getSelfShipAppointmentSlots"), $this->rateLimitStorage);
-            $this->getSelfShipAppointmentSlotsRateLimiter = $factory->create("FbaInboundApi-getSelfShipAppointmentSlots");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getShipment"), $this->rateLimitStorage);
-            $this->getShipmentRateLimiter = $factory->create("FbaInboundApi-getShipment");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getShipmentContentUpdatePreview"), $this->rateLimitStorage);
-            $this->getShipmentContentUpdatePreviewRateLimiter = $factory->create("FbaInboundApi-getShipmentContentUpdatePreview");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listDeliveryWindowOptions"), $this->rateLimitStorage);
-            $this->listDeliveryWindowOptionsRateLimiter = $factory->create("FbaInboundApi-listDeliveryWindowOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listInboundPlanBoxes"), $this->rateLimitStorage);
-            $this->listInboundPlanBoxesRateLimiter = $factory->create("FbaInboundApi-listInboundPlanBoxes");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listInboundPlanItems"), $this->rateLimitStorage);
-            $this->listInboundPlanItemsRateLimiter = $factory->create("FbaInboundApi-listInboundPlanItems");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listInboundPlanPallets"), $this->rateLimitStorage);
-            $this->listInboundPlanPalletsRateLimiter = $factory->create("FbaInboundApi-listInboundPlanPallets");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listInboundPlans"), $this->rateLimitStorage);
-            $this->listInboundPlansRateLimiter = $factory->create("FbaInboundApi-listInboundPlans");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listItemComplianceDetails"), $this->rateLimitStorage);
-            $this->listItemComplianceDetailsRateLimiter = $factory->create("FbaInboundApi-listItemComplianceDetails");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listPackingGroupBoxes"), $this->rateLimitStorage);
-            $this->listPackingGroupBoxesRateLimiter = $factory->create("FbaInboundApi-listPackingGroupBoxes");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listPackingGroupItems"), $this->rateLimitStorage);
-            $this->listPackingGroupItemsRateLimiter = $factory->create("FbaInboundApi-listPackingGroupItems");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listPackingOptions"), $this->rateLimitStorage);
-            $this->listPackingOptionsRateLimiter = $factory->create("FbaInboundApi-listPackingOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listPlacementOptions"), $this->rateLimitStorage);
-            $this->listPlacementOptionsRateLimiter = $factory->create("FbaInboundApi-listPlacementOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listPrepDetails"), $this->rateLimitStorage);
-            $this->listPrepDetailsRateLimiter = $factory->create("FbaInboundApi-listPrepDetails");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listShipmentBoxes"), $this->rateLimitStorage);
-            $this->listShipmentBoxesRateLimiter = $factory->create("FbaInboundApi-listShipmentBoxes");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listShipmentContentUpdatePreviews"), $this->rateLimitStorage);
-            $this->listShipmentContentUpdatePreviewsRateLimiter = $factory->create("FbaInboundApi-listShipmentContentUpdatePreviews");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listShipmentItems"), $this->rateLimitStorage);
-            $this->listShipmentItemsRateLimiter = $factory->create("FbaInboundApi-listShipmentItems");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listShipmentPallets"), $this->rateLimitStorage);
-            $this->listShipmentPalletsRateLimiter = $factory->create("FbaInboundApi-listShipmentPallets");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-listTransportationOptions"), $this->rateLimitStorage);
-            $this->listTransportationOptionsRateLimiter = $factory->create("FbaInboundApi-listTransportationOptions");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-scheduleSelfShipAppointment"), $this->rateLimitStorage);
-            $this->scheduleSelfShipAppointmentRateLimiter = $factory->create("FbaInboundApi-scheduleSelfShipAppointment");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-setPackingInformation"), $this->rateLimitStorage);
-            $this->setPackingInformationRateLimiter = $factory->create("FbaInboundApi-setPackingInformation");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-setPrepDetails"), $this->rateLimitStorage);
-            $this->setPrepDetailsRateLimiter = $factory->create("FbaInboundApi-setPrepDetails");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-updateInboundPlanName"), $this->rateLimitStorage);
-            $this->updateInboundPlanNameRateLimiter = $factory->create("FbaInboundApi-updateInboundPlanName");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-updateItemComplianceDetails"), $this->rateLimitStorage);
-            $this->updateItemComplianceDetailsRateLimiter = $factory->create("FbaInboundApi-updateItemComplianceDetails");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-updateShipmentName"), $this->rateLimitStorage);
-            $this->updateShipmentNameRateLimiter = $factory->create("FbaInboundApi-updateShipmentName");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-updateShipmentSourceAddress"), $this->rateLimitStorage);
-            $this->updateShipmentSourceAddressRateLimiter = $factory->create("FbaInboundApi-updateShipmentSourceAddress");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-updateShipmentTrackingDetails"), $this->rateLimitStorage);
-            $this->updateShipmentTrackingDetailsRateLimiter = $factory->create("FbaInboundApi-updateShipmentTrackingDetails");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-cancelInboundPlan'), $this->rateLimitStorage);
+            $this->cancelInboundPlanRateLimiter = $factory->create('FbaInboundApi-cancelInboundPlan');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-cancelSelfShipAppointment'), $this->rateLimitStorage);
+            $this->cancelSelfShipAppointmentRateLimiter = $factory->create('FbaInboundApi-cancelSelfShipAppointment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmDeliveryWindowOptions'), $this->rateLimitStorage);
+            $this->confirmDeliveryWindowOptionsRateLimiter = $factory->create('FbaInboundApi-confirmDeliveryWindowOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmPackingOption'), $this->rateLimitStorage);
+            $this->confirmPackingOptionRateLimiter = $factory->create('FbaInboundApi-confirmPackingOption');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmPlacementOption'), $this->rateLimitStorage);
+            $this->confirmPlacementOptionRateLimiter = $factory->create('FbaInboundApi-confirmPlacementOption');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmShipmentContentUpdatePreview'), $this->rateLimitStorage);
+            $this->confirmShipmentContentUpdatePreviewRateLimiter = $factory->create('FbaInboundApi-confirmShipmentContentUpdatePreview');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmTransportationOptions'), $this->rateLimitStorage);
+            $this->confirmTransportationOptionsRateLimiter = $factory->create('FbaInboundApi-confirmTransportationOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-createInboundPlan'), $this->rateLimitStorage);
+            $this->createInboundPlanRateLimiter = $factory->create('FbaInboundApi-createInboundPlan');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-createMarketplaceItemLabels'), $this->rateLimitStorage);
+            $this->createMarketplaceItemLabelsRateLimiter = $factory->create('FbaInboundApi-createMarketplaceItemLabels');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateDeliveryWindowOptions'), $this->rateLimitStorage);
+            $this->generateDeliveryWindowOptionsRateLimiter = $factory->create('FbaInboundApi-generateDeliveryWindowOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generatePackingOptions'), $this->rateLimitStorage);
+            $this->generatePackingOptionsRateLimiter = $factory->create('FbaInboundApi-generatePackingOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generatePlacementOptions'), $this->rateLimitStorage);
+            $this->generatePlacementOptionsRateLimiter = $factory->create('FbaInboundApi-generatePlacementOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateSelfShipAppointmentSlots'), $this->rateLimitStorage);
+            $this->generateSelfShipAppointmentSlotsRateLimiter = $factory->create('FbaInboundApi-generateSelfShipAppointmentSlots');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateShipmentContentUpdatePreviews'), $this->rateLimitStorage);
+            $this->generateShipmentContentUpdatePreviewsRateLimiter = $factory->create('FbaInboundApi-generateShipmentContentUpdatePreviews');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateTransportationOptions'), $this->rateLimitStorage);
+            $this->generateTransportationOptionsRateLimiter = $factory->create('FbaInboundApi-generateTransportationOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getDeliveryChallanDocument'), $this->rateLimitStorage);
+            $this->getDeliveryChallanDocumentRateLimiter = $factory->create('FbaInboundApi-getDeliveryChallanDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getInboundOperationStatus'), $this->rateLimitStorage);
+            $this->getInboundOperationStatusRateLimiter = $factory->create('FbaInboundApi-getInboundOperationStatus');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getInboundPlan'), $this->rateLimitStorage);
+            $this->getInboundPlanRateLimiter = $factory->create('FbaInboundApi-getInboundPlan');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getSelfShipAppointmentSlots'), $this->rateLimitStorage);
+            $this->getSelfShipAppointmentSlotsRateLimiter = $factory->create('FbaInboundApi-getSelfShipAppointmentSlots');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipment'), $this->rateLimitStorage);
+            $this->getShipmentRateLimiter = $factory->create('FbaInboundApi-getShipment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipmentContentUpdatePreview'), $this->rateLimitStorage);
+            $this->getShipmentContentUpdatePreviewRateLimiter = $factory->create('FbaInboundApi-getShipmentContentUpdatePreview');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listDeliveryWindowOptions'), $this->rateLimitStorage);
+            $this->listDeliveryWindowOptionsRateLimiter = $factory->create('FbaInboundApi-listDeliveryWindowOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlanBoxes'), $this->rateLimitStorage);
+            $this->listInboundPlanBoxesRateLimiter = $factory->create('FbaInboundApi-listInboundPlanBoxes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlanItems'), $this->rateLimitStorage);
+            $this->listInboundPlanItemsRateLimiter = $factory->create('FbaInboundApi-listInboundPlanItems');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlanPallets'), $this->rateLimitStorage);
+            $this->listInboundPlanPalletsRateLimiter = $factory->create('FbaInboundApi-listInboundPlanPallets');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlans'), $this->rateLimitStorage);
+            $this->listInboundPlansRateLimiter = $factory->create('FbaInboundApi-listInboundPlans');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listItemComplianceDetails'), $this->rateLimitStorage);
+            $this->listItemComplianceDetailsRateLimiter = $factory->create('FbaInboundApi-listItemComplianceDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPackingGroupBoxes'), $this->rateLimitStorage);
+            $this->listPackingGroupBoxesRateLimiter = $factory->create('FbaInboundApi-listPackingGroupBoxes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPackingGroupItems'), $this->rateLimitStorage);
+            $this->listPackingGroupItemsRateLimiter = $factory->create('FbaInboundApi-listPackingGroupItems');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPackingOptions'), $this->rateLimitStorage);
+            $this->listPackingOptionsRateLimiter = $factory->create('FbaInboundApi-listPackingOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPlacementOptions'), $this->rateLimitStorage);
+            $this->listPlacementOptionsRateLimiter = $factory->create('FbaInboundApi-listPlacementOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPrepDetails'), $this->rateLimitStorage);
+            $this->listPrepDetailsRateLimiter = $factory->create('FbaInboundApi-listPrepDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentBoxes'), $this->rateLimitStorage);
+            $this->listShipmentBoxesRateLimiter = $factory->create('FbaInboundApi-listShipmentBoxes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentContentUpdatePreviews'), $this->rateLimitStorage);
+            $this->listShipmentContentUpdatePreviewsRateLimiter = $factory->create('FbaInboundApi-listShipmentContentUpdatePreviews');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentItems'), $this->rateLimitStorage);
+            $this->listShipmentItemsRateLimiter = $factory->create('FbaInboundApi-listShipmentItems');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentPallets'), $this->rateLimitStorage);
+            $this->listShipmentPalletsRateLimiter = $factory->create('FbaInboundApi-listShipmentPallets');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listTransportationOptions'), $this->rateLimitStorage);
+            $this->listTransportationOptionsRateLimiter = $factory->create('FbaInboundApi-listTransportationOptions');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-scheduleSelfShipAppointment'), $this->rateLimitStorage);
+            $this->scheduleSelfShipAppointmentRateLimiter = $factory->create('FbaInboundApi-scheduleSelfShipAppointment');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-setPackingInformation'), $this->rateLimitStorage);
+            $this->setPackingInformationRateLimiter = $factory->create('FbaInboundApi-setPackingInformation');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-setPrepDetails'), $this->rateLimitStorage);
+            $this->setPrepDetailsRateLimiter = $factory->create('FbaInboundApi-setPrepDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateInboundPlanName'), $this->rateLimitStorage);
+            $this->updateInboundPlanNameRateLimiter = $factory->create('FbaInboundApi-updateInboundPlanName');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateItemComplianceDetails'), $this->rateLimitStorage);
+            $this->updateItemComplianceDetailsRateLimiter = $factory->create('FbaInboundApi-updateItemComplianceDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateShipmentName'), $this->rateLimitStorage);
+            $this->updateShipmentNameRateLimiter = $factory->create('FbaInboundApi-updateShipmentName');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateShipmentSourceAddress'), $this->rateLimitStorage);
+            $this->updateShipmentSourceAddressRateLimiter = $factory->create('FbaInboundApi-updateShipmentSourceAddress');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateShipmentTrackingDetails'), $this->rateLimitStorage);
+            $this->updateShipmentTrackingDetailsRateLimiter = $factory->create('FbaInboundApi-updateShipmentTrackingDetails');
         }
 
         $this->client = $client ?: new Client();
@@ -240,7 +289,7 @@ class FbaInboundApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -250,7 +299,7 @@ class FbaInboundApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -259,55 +308,56 @@ class FbaInboundApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation cancelInboundPlan
+     * Operation cancelInboundPlan.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse
      */
     public function cancelInboundPlan(
         string $inbound_plan_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse {
-        list($response) = $this->cancelInboundPlanWithHttpInfo($inbound_plan_id,$restrictedDataToken);
+    ): CancelInboundPlanResponse {
+        list($response) = $this->cancelInboundPlanWithHttpInfo($inbound_plan_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation cancelInboundPlanWithHttpInfo
+     * Operation cancelInboundPlanWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelInboundPlanWithHttpInfo(
         string $inbound_plan_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelInboundPlanRequest($inbound_plan_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-cancelInboundPlan");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelInboundPlan');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelInboundPlanRateLimiter->consume()->ensureAccepted();
@@ -343,39 +393,39 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelInboundPlanAsync
+     * Operation cancelInboundPlanAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelInboundPlanAsync(
         string $inbound_plan_id
@@ -385,26 +435,26 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelInboundPlanAsyncWithHttpInfo
+     * Operation cancelInboundPlanAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelInboundPlanAsyncWithHttpInfo(
         string $inbound_plan_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse';
         $request = $this->cancelInboundPlanRequest($inbound_plan_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-cancelInboundPlan");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelInboundPlan');
         } else {
             $request = $this->config->sign($request);
         }
@@ -416,11 +466,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -428,12 +478,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -445,23 +496,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelInboundPlan'
+     * Create request for operation 'cancelInboundPlan'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelInboundPlanRequest(
         string $inbound_plan_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling cancelInboundPlan'
             );
@@ -472,10 +523,9 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.cancelInboundPlan, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.cancelInboundPlan, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.cancelInboundPlan, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation';
         $formParams = [];
@@ -484,21 +534,17 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -512,22 +558,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -541,68 +584,72 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation cancelSelfShipAppointment
+     * Operation cancelSelfShipAppointment.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param string                           $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param string                           $shipment_id
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param CancelSelfShipAppointmentRequest $body
+     *                                                              The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse
      */
     public function cancelSelfShipAppointment(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body,
+        CancelSelfShipAppointmentRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse {
-        list($response) = $this->cancelSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $body,,,$restrictedDataToken);
+    ): CancelSelfShipAppointmentResponse {
+        list($response) = $this->cancelSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation cancelSelfShipAppointmentWithHttpInfo
+     * Operation cancelSelfShipAppointmentWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param string                           $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param string                           $shipment_id
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param CancelSelfShipAppointmentRequest $body
+     *                                                              The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelSelfShipAppointmentWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body,
+        CancelSelfShipAppointmentRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-cancelSelfShipAppointment");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelSelfShipAppointment');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
@@ -638,80 +685,80 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelSelfShipAppointmentAsync
+     * Operation cancelSelfShipAppointmentAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param string                           $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param string                           $shipment_id
+     *                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param CancelSelfShipAppointmentRequest $body
+     *                                                          The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelSelfShipAppointmentAsync(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body
     ): PromiseInterface {
         return $this->cancelSelfShipAppointmentAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelSelfShipAppointmentAsyncWithHttpInfo
+     * Operation cancelSelfShipAppointmentAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param string                           $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param string                           $shipment_id
+     *                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param CancelSelfShipAppointmentRequest $body
+     *                                                          The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelSelfShipAppointmentAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body,
-    ?string $restrictedDataToken = null
+        CancelSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse';
         $request = $this->cancelSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-cancelSelfShipAppointment");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelSelfShipAppointment');
         } else {
             $request = $this->config->sign($request);
         }
@@ -723,11 +770,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -735,12 +782,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -752,29 +800,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelSelfShipAppointment'
+     * Create request for operation 'cancelSelfShipAppointment'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param string                           $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param string                           $shipment_id
+     *                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param CancelSelfShipAppointmentRequest $body
+     *                                                          The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelSelfShipAppointmentRequest(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest $body
+        CancelSelfShipAppointmentRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling cancelSelfShipAppointment'
             );
@@ -785,12 +833,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.cancelSelfShipAppointment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.cancelSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.cancelSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling cancelSelfShipAppointment'
             );
@@ -801,12 +849,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.cancelSelfShipAppointment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.cancelSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.cancelSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling cancelSelfShipAppointment'
             );
@@ -819,36 +867,32 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -861,22 +905,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -890,53 +931,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation confirmDeliveryWindowOptions
+     * Operation confirmDeliveryWindowOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to confirm the delivery window option for. (required)
-     * @param  string $delivery_window_option_id
-     *  The id of the delivery window option to be confirmed. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               The shipment to confirm the delivery window option for. (required)
+     * @param string      $delivery_window_option_id
+     *                                               The id of the delivery window option to be confirmed. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse
      */
     public function confirmDeliveryWindowOptions(
         string $inbound_plan_id,
         string $shipment_id,
         string $delivery_window_option_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse {
-        list($response) = $this->confirmDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $delivery_window_option_id,,,$restrictedDataToken);
+    ): ConfirmDeliveryWindowOptionsResponse {
+        list($response) = $this->confirmDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $delivery_window_option_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation confirmDeliveryWindowOptionsWithHttpInfo
+     * Operation confirmDeliveryWindowOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to confirm the delivery window option for. (required)
-     * @param  string $delivery_window_option_id
-     *  The id of the delivery window option to be confirmed. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               The shipment to confirm the delivery window option for. (required)
+     * @param string      $delivery_window_option_id
+     *                                               The id of the delivery window option to be confirmed. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function confirmDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
@@ -945,13 +988,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $delivery_window_option_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmDeliveryWindowOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->confirmDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
@@ -987,43 +1032,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation confirmDeliveryWindowOptionsAsync
+     * Operation confirmDeliveryWindowOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to confirm the delivery window option for. (required)
-     * @param  string $delivery_window_option_id
-     *  The id of the delivery window option to be confirmed. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          The shipment to confirm the delivery window option for. (required)
+     * @param string $delivery_window_option_id
+     *                                          The id of the delivery window option to be confirmed. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmDeliveryWindowOptionsAsync(
         string $inbound_plan_id,
@@ -1035,32 +1080,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation confirmDeliveryWindowOptionsAsyncWithHttpInfo
+     * Operation confirmDeliveryWindowOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to confirm the delivery window option for. (required)
-     * @param  string $delivery_window_option_id
-     *  The id of the delivery window option to be confirmed. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          The shipment to confirm the delivery window option for. (required)
+     * @param string $delivery_window_option_id
+     *                                          The id of the delivery window option to be confirmed. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         string $delivery_window_option_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse';
         $request = $this->confirmDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $delivery_window_option_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmDeliveryWindowOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1072,11 +1117,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1084,12 +1129,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1101,21 +1147,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'confirmDeliveryWindowOptions'
+     * Create request for operation 'confirmDeliveryWindowOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to confirm the delivery window option for. (required)
-     * @param  string $delivery_window_option_id
-     *  The id of the delivery window option to be confirmed. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          The shipment to confirm the delivery window option for. (required)
+     * @param string $delivery_window_option_id
+     *                                          The id of the delivery window option to be confirmed. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function confirmDeliveryWindowOptionsRequest(
         string $inbound_plan_id,
@@ -1123,7 +1169,7 @@ class FbaInboundApi
         string $delivery_window_option_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling confirmDeliveryWindowOptions'
             );
@@ -1134,12 +1180,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.confirmDeliveryWindowOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.confirmDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.confirmDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling confirmDeliveryWindowOptions'
             );
@@ -1150,12 +1196,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.confirmDeliveryWindowOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.confirmDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.confirmDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'delivery_window_option_id' is set
-        if ($delivery_window_option_id === null || (is_array($delivery_window_option_id) && count($delivery_window_option_id) === 0)) {
+        if (null === $delivery_window_option_id || (is_array($delivery_window_option_id) && 0 === count($delivery_window_option_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $delivery_window_option_id when calling confirmDeliveryWindowOptions'
             );
@@ -1166,10 +1212,9 @@ class FbaInboundApi
         if (strlen($delivery_window_option_id) < 36) {
             throw new \InvalidArgumentException('invalid length for "$delivery_window_option_id" when calling FbaInboundApi.confirmDeliveryWindowOptions, must be bigger than or equal to 36.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $delivery_window_option_id)) {
-            throw new \InvalidArgumentException("invalid value for \"delivery_window_option_id\" when calling FbaInboundApi.confirmDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $delivery_window_option_id)) {
+            throw new \InvalidArgumentException('invalid value for "delivery_window_option_id" when calling FbaInboundApi.confirmDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation';
         $formParams = [];
@@ -1178,37 +1223,33 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
         // path params
-        if ($delivery_window_option_id !== null) {
+        if (null !== $delivery_window_option_id) {
             $resourcePath = str_replace(
-                '{' . 'deliveryWindowOptionId' . '}',
+                '{deliveryWindowOptionId}',
                 ObjectSerializer::toPathValue($delivery_window_option_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1222,22 +1263,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1251,48 +1289,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation confirmPackingOption
+     * Operation confirmPackingOption.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_option_id
-     *  Identifier of a packing option. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_option_id
+     *                                         Identifier of a packing option. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse
      */
     public function confirmPackingOption(
         string $inbound_plan_id,
         string $packing_option_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse {
-        list($response) = $this->confirmPackingOptionWithHttpInfo($inbound_plan_id, $packing_option_id,,$restrictedDataToken);
+    ): ConfirmPackingOptionResponse {
+        list($response) = $this->confirmPackingOptionWithHttpInfo($inbound_plan_id, $packing_option_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation confirmPackingOptionWithHttpInfo
+     * Operation confirmPackingOptionWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_option_id
-     *  Identifier of a packing option. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_option_id
+     *                                         Identifier of a packing option. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function confirmPackingOptionWithHttpInfo(
         string $inbound_plan_id,
@@ -1300,13 +1340,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmPackingOptionRequest($inbound_plan_id, $packing_option_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmPackingOption");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPackingOption');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->confirmPackingOptionRateLimiter->consume()->ensureAccepted();
@@ -1342,41 +1384,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation confirmPackingOptionAsync
+     * Operation confirmPackingOptionAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_option_id
-     *  Identifier of a packing option. (required)
+     * @param string $inbound_plan_id
+     *                                  Identifier of an inbound plan. (required)
+     * @param string $packing_option_id
+     *                                  Identifier of a packing option. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmPackingOptionAsync(
         string $inbound_plan_id,
@@ -1387,29 +1429,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation confirmPackingOptionAsyncWithHttpInfo
+     * Operation confirmPackingOptionAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_option_id
-     *  Identifier of a packing option. (required)
+     * @param string $inbound_plan_id
+     *                                  Identifier of an inbound plan. (required)
+     * @param string $packing_option_id
+     *                                  Identifier of a packing option. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmPackingOptionAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $packing_option_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse';
         $request = $this->confirmPackingOptionRequest($inbound_plan_id, $packing_option_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmPackingOption");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPackingOption');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1421,11 +1463,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1433,12 +1475,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1450,26 +1493,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'confirmPackingOption'
+     * Create request for operation 'confirmPackingOption'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_option_id
-     *  Identifier of a packing option. (required)
+     * @param string $inbound_plan_id
+     *                                  Identifier of an inbound plan. (required)
+     * @param string $packing_option_id
+     *                                  Identifier of a packing option. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function confirmPackingOptionRequest(
         string $inbound_plan_id,
         string $packing_option_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling confirmPackingOption'
             );
@@ -1480,12 +1523,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.confirmPackingOption, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.confirmPackingOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.confirmPackingOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'packing_option_id' is set
-        if ($packing_option_id === null || (is_array($packing_option_id) && count($packing_option_id) === 0)) {
+        if (null === $packing_option_id || (is_array($packing_option_id) && 0 === count($packing_option_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $packing_option_id when calling confirmPackingOption'
             );
@@ -1496,10 +1539,9 @@ class FbaInboundApi
         if (strlen($packing_option_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$packing_option_id" when calling FbaInboundApi.confirmPackingOption, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $packing_option_id)) {
-            throw new \InvalidArgumentException("invalid value for \"packing_option_id\" when calling FbaInboundApi.confirmPackingOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $packing_option_id)) {
+            throw new \InvalidArgumentException('invalid value for "packing_option_id" when calling FbaInboundApi.confirmPackingOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation';
         $formParams = [];
@@ -1508,29 +1550,25 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($packing_option_id !== null) {
+        if (null !== $packing_option_id) {
             $resourcePath = str_replace(
-                '{' . 'packingOptionId' . '}',
+                '{packingOptionId}',
                 ObjectSerializer::toPathValue($packing_option_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1544,22 +1582,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1573,48 +1608,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation confirmPlacementOption
+     * Operation confirmPlacementOption.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $placement_option_id
-     *  The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $placement_option_id
+     *                                         The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse
      */
     public function confirmPlacementOption(
         string $inbound_plan_id,
         string $placement_option_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse {
-        list($response) = $this->confirmPlacementOptionWithHttpInfo($inbound_plan_id, $placement_option_id,,$restrictedDataToken);
+    ): ConfirmPlacementOptionResponse {
+        list($response) = $this->confirmPlacementOptionWithHttpInfo($inbound_plan_id, $placement_option_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation confirmPlacementOptionWithHttpInfo
+     * Operation confirmPlacementOptionWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $placement_option_id
-     *  The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $placement_option_id
+     *                                         The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function confirmPlacementOptionWithHttpInfo(
         string $inbound_plan_id,
@@ -1622,13 +1659,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmPlacementOptionRequest($inbound_plan_id, $placement_option_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmPlacementOption");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPlacementOption');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->confirmPlacementOptionRateLimiter->consume()->ensureAccepted();
@@ -1664,41 +1703,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation confirmPlacementOptionAsync
+     * Operation confirmPlacementOptionAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $placement_option_id
-     *  The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string $inbound_plan_id
+     *                                    Identifier of an inbound plan. (required)
+     * @param string $placement_option_id
+     *                                    The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmPlacementOptionAsync(
         string $inbound_plan_id,
@@ -1709,29 +1748,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation confirmPlacementOptionAsyncWithHttpInfo
+     * Operation confirmPlacementOptionAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $placement_option_id
-     *  The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string $inbound_plan_id
+     *                                    Identifier of an inbound plan. (required)
+     * @param string $placement_option_id
+     *                                    The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmPlacementOptionAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $placement_option_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse';
         $request = $this->confirmPlacementOptionRequest($inbound_plan_id, $placement_option_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmPlacementOption");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPlacementOption');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1743,11 +1782,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1755,12 +1794,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1772,26 +1812,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'confirmPlacementOption'
+     * Create request for operation 'confirmPlacementOption'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $placement_option_id
-     *  The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
+     * @param string $inbound_plan_id
+     *                                    Identifier of an inbound plan. (required)
+     * @param string $placement_option_id
+     *                                    The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function confirmPlacementOptionRequest(
         string $inbound_plan_id,
         string $placement_option_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling confirmPlacementOption'
             );
@@ -1802,12 +1842,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.confirmPlacementOption, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.confirmPlacementOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.confirmPlacementOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'placement_option_id' is set
-        if ($placement_option_id === null || (is_array($placement_option_id) && count($placement_option_id) === 0)) {
+        if (null === $placement_option_id || (is_array($placement_option_id) && 0 === count($placement_option_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $placement_option_id when calling confirmPlacementOption'
             );
@@ -1818,10 +1858,9 @@ class FbaInboundApi
         if (strlen($placement_option_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$placement_option_id" when calling FbaInboundApi.confirmPlacementOption, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $placement_option_id)) {
-            throw new \InvalidArgumentException("invalid value for \"placement_option_id\" when calling FbaInboundApi.confirmPlacementOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $placement_option_id)) {
+            throw new \InvalidArgumentException('invalid value for "placement_option_id" when calling FbaInboundApi.confirmPlacementOption, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation';
         $formParams = [];
@@ -1830,29 +1869,25 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($placement_option_id !== null) {
+        if (null !== $placement_option_id) {
             $resourcePath = str_replace(
-                '{' . 'placementOptionId' . '}',
+                '{placementOptionId}',
                 ObjectSerializer::toPathValue($placement_option_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1866,22 +1901,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1895,53 +1927,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation confirmShipmentContentUpdatePreview
+     * Operation confirmShipmentContentUpdatePreview.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse
      */
     public function confirmShipmentContentUpdatePreview(
         string $inbound_plan_id,
         string $shipment_id,
         string $content_update_preview_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse {
-        list($response) = $this->confirmShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id,,,$restrictedDataToken);
+    ): ConfirmShipmentContentUpdatePreviewResponse {
+        list($response) = $this->confirmShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation confirmShipmentContentUpdatePreviewWithHttpInfo
+     * Operation confirmShipmentContentUpdatePreviewWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function confirmShipmentContentUpdatePreviewWithHttpInfo(
         string $inbound_plan_id,
@@ -1950,13 +1984,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmShipmentContentUpdatePreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmShipmentContentUpdatePreview');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->confirmShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
@@ -1992,43 +2028,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation confirmShipmentContentUpdatePreviewAsync
+     * Operation confirmShipmentContentUpdatePreviewAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $content_update_preview_id
+     *                                          Identifier of a content update preview. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmShipmentContentUpdatePreviewAsync(
         string $inbound_plan_id,
@@ -2040,32 +2076,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation confirmShipmentContentUpdatePreviewAsyncWithHttpInfo
+     * Operation confirmShipmentContentUpdatePreviewAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $content_update_preview_id
+     *                                          Identifier of a content update preview. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmShipmentContentUpdatePreviewAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         string $content_update_preview_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse';
         $request = $this->confirmShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmShipmentContentUpdatePreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmShipmentContentUpdatePreview');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2077,11 +2113,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2089,12 +2125,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2106,21 +2143,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'confirmShipmentContentUpdatePreview'
+     * Create request for operation 'confirmShipmentContentUpdatePreview'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $content_update_preview_id
+     *                                          Identifier of a content update preview. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function confirmShipmentContentUpdatePreviewRequest(
         string $inbound_plan_id,
@@ -2128,7 +2165,7 @@ class FbaInboundApi
         string $content_update_preview_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling confirmShipmentContentUpdatePreview'
             );
@@ -2139,12 +2176,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling confirmShipmentContentUpdatePreview'
             );
@@ -2155,12 +2192,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'content_update_preview_id' is set
-        if ($content_update_preview_id === null || (is_array($content_update_preview_id) && count($content_update_preview_id) === 0)) {
+        if (null === $content_update_preview_id || (is_array($content_update_preview_id) && 0 === count($content_update_preview_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_update_preview_id when calling confirmShipmentContentUpdatePreview'
             );
@@ -2171,10 +2208,9 @@ class FbaInboundApi
         if (strlen($content_update_preview_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$content_update_preview_id" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $content_update_preview_id)) {
-            throw new \InvalidArgumentException("invalid value for \"content_update_preview_id\" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $content_update_preview_id)) {
+            throw new \InvalidArgumentException('invalid value for "content_update_preview_id" when calling FbaInboundApi.confirmShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation';
         $formParams = [];
@@ -2183,37 +2219,33 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
         // path params
-        if ($content_update_preview_id !== null) {
+        if (null !== $content_update_preview_id) {
             $resourcePath = str_replace(
-                '{' . 'contentUpdatePreviewId' . '}',
+                '{contentUpdatePreviewId}',
                 ObjectSerializer::toPathValue($content_update_preview_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -2227,22 +2259,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2256,62 +2285,66 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation confirmTransportationOptions
+     * Operation confirmTransportationOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
-     *  The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param string                              $inbound_plan_id
+     *                                                                 Identifier of an inbound plan. (required)
+     * @param ConfirmTransportationOptionsRequest $body
+     *                                                                 The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param null|string                         $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse
      */
     public function confirmTransportationOptions(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body,
+        ConfirmTransportationOptionsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse {
-        list($response) = $this->confirmTransportationOptionsWithHttpInfo($inbound_plan_id, $body,,$restrictedDataToken);
+    ): ConfirmTransportationOptionsResponse {
+        list($response) = $this->confirmTransportationOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation confirmTransportationOptionsWithHttpInfo
+     * Operation confirmTransportationOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
-     *  The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param string                              $inbound_plan_id
+     *                                                                 Identifier of an inbound plan. (required)
+     * @param ConfirmTransportationOptionsRequest $body
+     *                                                                 The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param null|string                         $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function confirmTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body,
+        ConfirmTransportationOptionsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmTransportationOptionsRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmTransportationOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmTransportationOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->confirmTransportationOptionsRateLimiter->consume()->ensureAccepted();
@@ -2347,74 +2380,74 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation confirmTransportationOptionsAsync
+     * Operation confirmTransportationOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
-     *  The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param string                              $inbound_plan_id
+     *                                                             Identifier of an inbound plan. (required)
+     * @param ConfirmTransportationOptionsRequest $body
+     *                                                             The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmTransportationOptionsAsync(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body
     ): PromiseInterface {
         return $this->confirmTransportationOptionsAsyncWithHttpInfo($inbound_plan_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation confirmTransportationOptionsAsyncWithHttpInfo
+     * Operation confirmTransportationOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
-     *  The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param string                              $inbound_plan_id
+     *                                                             Identifier of an inbound plan. (required)
+     * @param ConfirmTransportationOptionsRequest $body
+     *                                                             The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body,
-    ?string $restrictedDataToken = null
+        ConfirmTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse';
         $request = $this->confirmTransportationOptionsRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-confirmTransportationOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmTransportationOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2426,11 +2459,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2438,12 +2471,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2455,26 +2489,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'confirmTransportationOptions'
+     * Create request for operation 'confirmTransportationOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
-     *  The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param string                              $inbound_plan_id
+     *                                                             Identifier of an inbound plan. (required)
+     * @param ConfirmTransportationOptionsRequest $body
+     *                                                             The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function confirmTransportationOptionsRequest(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest $body
+        ConfirmTransportationOptionsRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling confirmTransportationOptions'
             );
@@ -2485,12 +2519,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.confirmTransportationOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.confirmTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.confirmTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling confirmTransportationOptions'
             );
@@ -2503,28 +2537,24 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -2537,22 +2567,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2566,56 +2593,60 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createInboundPlan
+     * Operation createInboundPlan.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
-     *  The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param CreateInboundPlanRequest $body
+     *                                                      The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse
      */
     public function createInboundPlan(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body,
+        CreateInboundPlanRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse {
-        list($response) = $this->createInboundPlanWithHttpInfo($body,$restrictedDataToken);
+    ): CreateInboundPlanResponse {
+        list($response) = $this->createInboundPlanWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createInboundPlanWithHttpInfo
+     * Operation createInboundPlanWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
-     *  The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param CreateInboundPlanRequest $body
+     *                                                      The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createInboundPlanWithHttpInfo(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body,
+        CreateInboundPlanRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createInboundPlanRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-createInboundPlan");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createInboundPlan');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createInboundPlanRateLimiter->consume()->ensureAccepted();
@@ -2651,68 +2682,68 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createInboundPlanAsync
+     * Operation createInboundPlanAsync.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
-     *  The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param CreateInboundPlanRequest $body
+     *                                       The body of the request to &#x60;createInboundPlan&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createInboundPlanAsync(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body
     ): PromiseInterface {
         return $this->createInboundPlanAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createInboundPlanAsyncWithHttpInfo
+     * Operation createInboundPlanAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
-     *  The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param CreateInboundPlanRequest $body
+     *                                       The body of the request to &#x60;createInboundPlan&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createInboundPlanAsyncWithHttpInfo(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body,
-    ?string $restrictedDataToken = null
+        CreateInboundPlanRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse';
         $request = $this->createInboundPlanRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-createInboundPlan");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createInboundPlan');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2724,11 +2755,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2736,12 +2767,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2753,23 +2785,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createInboundPlan'
+     * Create request for operation 'createInboundPlan'.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
-     *  The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param CreateInboundPlanRequest $body
+     *                                       The body of the request to &#x60;createInboundPlan&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createInboundPlanRequest(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest $body
+        CreateInboundPlanRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createInboundPlan'
             );
@@ -2782,20 +2814,15 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -2808,22 +2835,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2837,56 +2861,60 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createMarketplaceItemLabels
+     * Operation createMarketplaceItemLabels.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
-     *  The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param CreateMarketplaceItemLabelsRequest $body
+     *                                                                The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse
      */
     public function createMarketplaceItemLabels(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body,
+        CreateMarketplaceItemLabelsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse {
-        list($response) = $this->createMarketplaceItemLabelsWithHttpInfo($body,$restrictedDataToken);
+    ): CreateMarketplaceItemLabelsResponse {
+        list($response) = $this->createMarketplaceItemLabelsWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createMarketplaceItemLabelsWithHttpInfo
+     * Operation createMarketplaceItemLabelsWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
-     *  The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param CreateMarketplaceItemLabelsRequest $body
+     *                                                                The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createMarketplaceItemLabelsWithHttpInfo(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body,
+        CreateMarketplaceItemLabelsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createMarketplaceItemLabelsRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-createMarketplaceItemLabels");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createMarketplaceItemLabels');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createMarketplaceItemLabelsRateLimiter->consume()->ensureAccepted();
@@ -2922,68 +2950,68 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createMarketplaceItemLabelsAsync
+     * Operation createMarketplaceItemLabelsAsync.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
-     *  The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param CreateMarketplaceItemLabelsRequest $body
+     *                                                 The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createMarketplaceItemLabelsAsync(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body
     ): PromiseInterface {
         return $this->createMarketplaceItemLabelsAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createMarketplaceItemLabelsAsyncWithHttpInfo
+     * Operation createMarketplaceItemLabelsAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
-     *  The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param CreateMarketplaceItemLabelsRequest $body
+     *                                                 The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createMarketplaceItemLabelsAsyncWithHttpInfo(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body,
-    ?string $restrictedDataToken = null
+        CreateMarketplaceItemLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse';
         $request = $this->createMarketplaceItemLabelsRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-createMarketplaceItemLabels");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createMarketplaceItemLabels');
         } else {
             $request = $this->config->sign($request);
         }
@@ -2995,11 +3023,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3007,12 +3035,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3024,23 +3053,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createMarketplaceItemLabels'
+     * Create request for operation 'createMarketplaceItemLabels'.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
-     *  The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param CreateMarketplaceItemLabelsRequest $body
+     *                                                 The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createMarketplaceItemLabelsRequest(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest $body
+        CreateMarketplaceItemLabelsRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createMarketplaceItemLabels'
             );
@@ -3053,20 +3082,15 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -3079,22 +3103,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3108,48 +3129,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation generateDeliveryWindowOptions
+     * Operation generateDeliveryWindowOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to generate delivery window options for. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         The shipment to generate delivery window options for. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse
      */
     public function generateDeliveryWindowOptions(
         string $inbound_plan_id,
         string $shipment_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse {
-        list($response) = $this->generateDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id,,$restrictedDataToken);
+    ): GenerateDeliveryWindowOptionsResponse {
+        list($response) = $this->generateDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation generateDeliveryWindowOptionsWithHttpInfo
+     * Operation generateDeliveryWindowOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to generate delivery window options for. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         The shipment to generate delivery window options for. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function generateDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
@@ -3157,13 +3180,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateDeliveryWindowOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->generateDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
@@ -3199,41 +3224,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation generateDeliveryWindowOptionsAsync
+     * Operation generateDeliveryWindowOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to generate delivery window options for. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                The shipment to generate delivery window options for. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateDeliveryWindowOptionsAsync(
         string $inbound_plan_id,
@@ -3244,29 +3269,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation generateDeliveryWindowOptionsAsyncWithHttpInfo
+     * Operation generateDeliveryWindowOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to generate delivery window options for. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                The shipment to generate delivery window options for. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse';
         $request = $this->generateDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateDeliveryWindowOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -3278,11 +3303,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3290,12 +3315,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3307,26 +3333,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'generateDeliveryWindowOptions'
+     * Create request for operation 'generateDeliveryWindowOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to generate delivery window options for. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                The shipment to generate delivery window options for. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function generateDeliveryWindowOptionsRequest(
         string $inbound_plan_id,
         string $shipment_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling generateDeliveryWindowOptions'
             );
@@ -3337,12 +3363,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.generateDeliveryWindowOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.generateDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.generateDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling generateDeliveryWindowOptions'
             );
@@ -3353,10 +3379,9 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.generateDeliveryWindowOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.generateDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.generateDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions';
         $formParams = [];
@@ -3365,29 +3390,25 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -3401,22 +3422,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3430,56 +3448,60 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation generatePackingOptions
+     * Operation generatePackingOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse
      */
     public function generatePackingOptions(
         string $inbound_plan_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse {
-        list($response) = $this->generatePackingOptionsWithHttpInfo($inbound_plan_id,$restrictedDataToken);
+    ): GeneratePackingOptionsResponse {
+        list($response) = $this->generatePackingOptionsWithHttpInfo($inbound_plan_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation generatePackingOptionsWithHttpInfo
+     * Operation generatePackingOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function generatePackingOptionsWithHttpInfo(
         string $inbound_plan_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->generatePackingOptionsRequest($inbound_plan_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generatePackingOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePackingOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->generatePackingOptionsRateLimiter->consume()->ensureAccepted();
@@ -3515,39 +3537,39 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation generatePackingOptionsAsync
+     * Operation generatePackingOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generatePackingOptionsAsync(
         string $inbound_plan_id
@@ -3557,26 +3579,26 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation generatePackingOptionsAsyncWithHttpInfo
+     * Operation generatePackingOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generatePackingOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse';
         $request = $this->generatePackingOptionsRequest($inbound_plan_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generatePackingOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePackingOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -3588,11 +3610,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3600,12 +3622,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3617,23 +3640,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'generatePackingOptions'
+     * Create request for operation 'generatePackingOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function generatePackingOptionsRequest(
         string $inbound_plan_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling generatePackingOptions'
             );
@@ -3644,10 +3667,9 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.generatePackingOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.generatePackingOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.generatePackingOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions';
         $formParams = [];
@@ -3656,21 +3678,17 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -3684,22 +3702,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3713,62 +3728,66 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation generatePlacementOptions
+     * Operation generatePlacementOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
-     *  The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param string                          $inbound_plan_id
+     *                                                             Identifier of an inbound plan. (required)
+     * @param GeneratePlacementOptionsRequest $body
+     *                                                             The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse
      */
     public function generatePlacementOptions(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body,
+        GeneratePlacementOptionsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse {
-        list($response) = $this->generatePlacementOptionsWithHttpInfo($inbound_plan_id, $body,,$restrictedDataToken);
+    ): GeneratePlacementOptionsResponse {
+        list($response) = $this->generatePlacementOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation generatePlacementOptionsWithHttpInfo
+     * Operation generatePlacementOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
-     *  The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param string                          $inbound_plan_id
+     *                                                             Identifier of an inbound plan. (required)
+     * @param GeneratePlacementOptionsRequest $body
+     *                                                             The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function generatePlacementOptionsWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body,
+        GeneratePlacementOptionsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->generatePlacementOptionsRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generatePlacementOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePlacementOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->generatePlacementOptionsRateLimiter->consume()->ensureAccepted();
@@ -3804,74 +3823,74 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation generatePlacementOptionsAsync
+     * Operation generatePlacementOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
-     *  The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param string                          $inbound_plan_id
+     *                                                         Identifier of an inbound plan. (required)
+     * @param GeneratePlacementOptionsRequest $body
+     *                                                         The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generatePlacementOptionsAsync(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body
     ): PromiseInterface {
         return $this->generatePlacementOptionsAsyncWithHttpInfo($inbound_plan_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation generatePlacementOptionsAsyncWithHttpInfo
+     * Operation generatePlacementOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
-     *  The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param string                          $inbound_plan_id
+     *                                                         Identifier of an inbound plan. (required)
+     * @param GeneratePlacementOptionsRequest $body
+     *                                                         The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generatePlacementOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body,
-    ?string $restrictedDataToken = null
+        GeneratePlacementOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse';
         $request = $this->generatePlacementOptionsRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generatePlacementOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePlacementOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -3883,11 +3902,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3895,12 +3914,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3912,26 +3932,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'generatePlacementOptions'
+     * Create request for operation 'generatePlacementOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
-     *  The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param string                          $inbound_plan_id
+     *                                                         Identifier of an inbound plan. (required)
+     * @param GeneratePlacementOptionsRequest $body
+     *                                                         The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function generatePlacementOptionsRequest(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest $body
+        GeneratePlacementOptionsRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling generatePlacementOptions'
             );
@@ -3942,12 +3962,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.generatePlacementOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.generatePlacementOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.generatePlacementOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling generatePlacementOptions'
             );
@@ -3960,28 +3980,24 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -3994,22 +4010,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4023,68 +4036,72 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation generateSelfShipAppointmentSlots
+     * Operation generateSelfShipAppointmentSlots.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
-     *  The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param string                                  $inbound_plan_id
+     *                                                                     Identifier of an inbound plan. (required)
+     * @param string                                  $shipment_id
+     *                                                                     Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateSelfShipAppointmentSlotsRequest $body
+     *                                                                     The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param null|string                             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse
      */
     public function generateSelfShipAppointmentSlots(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body,
+        GenerateSelfShipAppointmentSlotsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse {
-        list($response) = $this->generateSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $body,,,$restrictedDataToken);
+    ): GenerateSelfShipAppointmentSlotsResponse {
+        list($response) = $this->generateSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation generateSelfShipAppointmentSlotsWithHttpInfo
+     * Operation generateSelfShipAppointmentSlotsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
-     *  The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param string                                  $inbound_plan_id
+     *                                                                     Identifier of an inbound plan. (required)
+     * @param string                                  $shipment_id
+     *                                                                     Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateSelfShipAppointmentSlotsRequest $body
+     *                                                                     The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param null|string                             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function generateSelfShipAppointmentSlotsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body,
+        GenerateSelfShipAppointmentSlotsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateSelfShipAppointmentSlots");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateSelfShipAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->generateSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
@@ -4120,80 +4137,80 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation generateSelfShipAppointmentSlotsAsync
+     * Operation generateSelfShipAppointmentSlotsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
-     *  The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param string                                  $inbound_plan_id
+     *                                                                 Identifier of an inbound plan. (required)
+     * @param string                                  $shipment_id
+     *                                                                 Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateSelfShipAppointmentSlotsRequest $body
+     *                                                                 The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateSelfShipAppointmentSlotsAsync(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body
     ): PromiseInterface {
         return $this->generateSelfShipAppointmentSlotsAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation generateSelfShipAppointmentSlotsAsyncWithHttpInfo
+     * Operation generateSelfShipAppointmentSlotsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
-     *  The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param string                                  $inbound_plan_id
+     *                                                                 Identifier of an inbound plan. (required)
+     * @param string                                  $shipment_id
+     *                                                                 Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateSelfShipAppointmentSlotsRequest $body
+     *                                                                 The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateSelfShipAppointmentSlotsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body,
-    ?string $restrictedDataToken = null
+        GenerateSelfShipAppointmentSlotsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse';
         $request = $this->generateSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateSelfShipAppointmentSlots");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateSelfShipAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
         }
@@ -4205,11 +4222,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4217,12 +4234,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4234,29 +4252,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'generateSelfShipAppointmentSlots'
+     * Create request for operation 'generateSelfShipAppointmentSlots'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
-     *  The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param string                                  $inbound_plan_id
+     *                                                                 Identifier of an inbound plan. (required)
+     * @param string                                  $shipment_id
+     *                                                                 Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateSelfShipAppointmentSlotsRequest $body
+     *                                                                 The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function generateSelfShipAppointmentSlotsRequest(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest $body
+        GenerateSelfShipAppointmentSlotsRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling generateSelfShipAppointmentSlots'
             );
@@ -4267,12 +4285,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.generateSelfShipAppointmentSlots, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.generateSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.generateSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling generateSelfShipAppointmentSlots'
             );
@@ -4283,12 +4301,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.generateSelfShipAppointmentSlots, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.generateSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.generateSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling generateSelfShipAppointmentSlots'
             );
@@ -4301,36 +4319,32 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -4343,22 +4357,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4372,68 +4383,72 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation generateShipmentContentUpdatePreviews
+     * Operation generateShipmentContentUpdatePreviews.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
-     *  The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param string                                       $inbound_plan_id
+     *                                                                          Identifier of an inbound plan. (required)
+     * @param string                                       $shipment_id
+     *                                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateShipmentContentUpdatePreviewsRequest $body
+     *                                                                          The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param null|string                                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse
      */
     public function generateShipmentContentUpdatePreviews(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body,
+        GenerateShipmentContentUpdatePreviewsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse {
-        list($response) = $this->generateShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $body,,,$restrictedDataToken);
+    ): GenerateShipmentContentUpdatePreviewsResponse {
+        list($response) = $this->generateShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation generateShipmentContentUpdatePreviewsWithHttpInfo
+     * Operation generateShipmentContentUpdatePreviewsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
-     *  The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param string                                       $inbound_plan_id
+     *                                                                          Identifier of an inbound plan. (required)
+     * @param string                                       $shipment_id
+     *                                                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateShipmentContentUpdatePreviewsRequest $body
+     *                                                                          The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param null|string                                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function generateShipmentContentUpdatePreviewsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body,
+        GenerateShipmentContentUpdatePreviewsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateShipmentContentUpdatePreviews");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateShipmentContentUpdatePreviews');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->generateShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
@@ -4469,80 +4484,80 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation generateShipmentContentUpdatePreviewsAsync
+     * Operation generateShipmentContentUpdatePreviewsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
-     *  The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param string                                       $inbound_plan_id
+     *                                                                      Identifier of an inbound plan. (required)
+     * @param string                                       $shipment_id
+     *                                                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateShipmentContentUpdatePreviewsRequest $body
+     *                                                                      The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateShipmentContentUpdatePreviewsAsync(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body
     ): PromiseInterface {
         return $this->generateShipmentContentUpdatePreviewsAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation generateShipmentContentUpdatePreviewsAsyncWithHttpInfo
+     * Operation generateShipmentContentUpdatePreviewsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
-     *  The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param string                                       $inbound_plan_id
+     *                                                                      Identifier of an inbound plan. (required)
+     * @param string                                       $shipment_id
+     *                                                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateShipmentContentUpdatePreviewsRequest $body
+     *                                                                      The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateShipmentContentUpdatePreviewsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body,
-    ?string $restrictedDataToken = null
+        GenerateShipmentContentUpdatePreviewsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse';
         $request = $this->generateShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateShipmentContentUpdatePreviews");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateShipmentContentUpdatePreviews');
         } else {
             $request = $this->config->sign($request);
         }
@@ -4554,11 +4569,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4566,12 +4581,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4583,29 +4599,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'generateShipmentContentUpdatePreviews'
+     * Create request for operation 'generateShipmentContentUpdatePreviews'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
-     *  The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param string                                       $inbound_plan_id
+     *                                                                      Identifier of an inbound plan. (required)
+     * @param string                                       $shipment_id
+     *                                                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param GenerateShipmentContentUpdatePreviewsRequest $body
+     *                                                                      The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function generateShipmentContentUpdatePreviewsRequest(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest $body
+        GenerateShipmentContentUpdatePreviewsRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling generateShipmentContentUpdatePreviews'
             );
@@ -4616,12 +4632,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.generateShipmentContentUpdatePreviews, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.generateShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.generateShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling generateShipmentContentUpdatePreviews'
             );
@@ -4632,12 +4648,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.generateShipmentContentUpdatePreviews, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.generateShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.generateShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling generateShipmentContentUpdatePreviews'
             );
@@ -4650,36 +4666,32 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -4692,22 +4704,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4721,62 +4730,66 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation generateTransportationOptions
+     * Operation generateTransportationOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
-     *  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                                  Identifier of an inbound plan. (required)
+     * @param GenerateTransportationOptionsRequest $body
+     *                                                                  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse
      */
     public function generateTransportationOptions(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body,
+        GenerateTransportationOptionsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse {
-        list($response) = $this->generateTransportationOptionsWithHttpInfo($inbound_plan_id, $body,,$restrictedDataToken);
+    ): GenerateTransportationOptionsResponse {
+        list($response) = $this->generateTransportationOptionsWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation generateTransportationOptionsWithHttpInfo
+     * Operation generateTransportationOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
-     *  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                                  Identifier of an inbound plan. (required)
+     * @param GenerateTransportationOptionsRequest $body
+     *                                                                  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function generateTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body,
+        GenerateTransportationOptionsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->generateTransportationOptionsRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateTransportationOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateTransportationOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->generateTransportationOptionsRateLimiter->consume()->ensureAccepted();
@@ -4812,74 +4825,74 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation generateTransportationOptionsAsync
+     * Operation generateTransportationOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
-     *  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param GenerateTransportationOptionsRequest $body
+     *                                                              The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateTransportationOptionsAsync(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body
     ): PromiseInterface {
         return $this->generateTransportationOptionsAsyncWithHttpInfo($inbound_plan_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation generateTransportationOptionsAsyncWithHttpInfo
+     * Operation generateTransportationOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
-     *  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param GenerateTransportationOptionsRequest $body
+     *                                                              The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function generateTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body,
-    ?string $restrictedDataToken = null
+        GenerateTransportationOptionsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse';
         $request = $this->generateTransportationOptionsRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-generateTransportationOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateTransportationOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -4891,11 +4904,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4903,12 +4916,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4920,26 +4934,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'generateTransportationOptions'
+     * Create request for operation 'generateTransportationOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
-     *  The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param GenerateTransportationOptionsRequest $body
+     *                                                              The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function generateTransportationOptionsRequest(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest $body
+        GenerateTransportationOptionsRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling generateTransportationOptions'
             );
@@ -4950,12 +4964,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.generateTransportationOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.generateTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.generateTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling generateTransportationOptions'
             );
@@ -4968,28 +4982,24 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -5002,22 +5012,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5031,48 +5038,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getDeliveryChallanDocument
+     * Operation getDeliveryChallanDocument.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse
      */
     public function getDeliveryChallanDocument(
         string $inbound_plan_id,
         string $shipment_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse {
-        list($response) = $this->getDeliveryChallanDocumentWithHttpInfo($inbound_plan_id, $shipment_id,,$restrictedDataToken);
+    ): GetDeliveryChallanDocumentResponse {
+        list($response) = $this->getDeliveryChallanDocumentWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getDeliveryChallanDocumentWithHttpInfo
+     * Operation getDeliveryChallanDocumentWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getDeliveryChallanDocumentWithHttpInfo(
         string $inbound_plan_id,
@@ -5080,13 +5089,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDeliveryChallanDocumentRequest($inbound_plan_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getDeliveryChallanDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getDeliveryChallanDocument');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getDeliveryChallanDocumentRateLimiter->consume()->ensureAccepted();
@@ -5122,41 +5133,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getDeliveryChallanDocumentAsync
+     * Operation getDeliveryChallanDocumentAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getDeliveryChallanDocumentAsync(
         string $inbound_plan_id,
@@ -5167,29 +5178,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getDeliveryChallanDocumentAsyncWithHttpInfo
+     * Operation getDeliveryChallanDocumentAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getDeliveryChallanDocumentAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse';
         $request = $this->getDeliveryChallanDocumentRequest($inbound_plan_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getDeliveryChallanDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getDeliveryChallanDocument');
         } else {
             $request = $this->config->sign($request);
         }
@@ -5201,11 +5212,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -5213,12 +5224,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -5230,26 +5242,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getDeliveryChallanDocument'
+     * Create request for operation 'getDeliveryChallanDocument'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getDeliveryChallanDocumentRequest(
         string $inbound_plan_id,
         string $shipment_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling getDeliveryChallanDocument'
             );
@@ -5260,12 +5272,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.getDeliveryChallanDocument, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.getDeliveryChallanDocument, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.getDeliveryChallanDocument, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getDeliveryChallanDocument'
             );
@@ -5276,10 +5288,9 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.getDeliveryChallanDocument, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.getDeliveryChallanDocument, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.getDeliveryChallanDocument, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument';
         $formParams = [];
@@ -5288,29 +5299,25 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -5324,22 +5331,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5353,56 +5357,60 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getInboundOperationStatus
+     * Operation getInboundOperationStatus.
      *
-     * @param  string $operation_id
-     *  Identifier of an asynchronous operation. (required)
+     * @param string      $operation_id
+     *                                         Identifier of an asynchronous operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus
      */
     public function getInboundOperationStatus(
         string $operation_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus {
-        list($response) = $this->getInboundOperationStatusWithHttpInfo($operation_id,$restrictedDataToken);
+    ): InboundOperationStatus {
+        list($response) = $this->getInboundOperationStatusWithHttpInfo($operation_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getInboundOperationStatusWithHttpInfo
+     * Operation getInboundOperationStatusWithHttpInfo.
      *
-     * @param  string $operation_id
-     *  Identifier of an asynchronous operation. (required)
+     * @param string      $operation_id
+     *                                         Identifier of an asynchronous operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInboundOperationStatusWithHttpInfo(
         string $operation_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundOperationStatusRequest($operation_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getInboundOperationStatus");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundOperationStatus');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getInboundOperationStatusRateLimiter->consume()->ensureAccepted();
@@ -5438,39 +5446,39 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInboundOperationStatusAsync
+     * Operation getInboundOperationStatusAsync.
      *
-     * @param  string $operation_id
-     *  Identifier of an asynchronous operation. (required)
+     * @param string $operation_id
+     *                             Identifier of an asynchronous operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundOperationStatusAsync(
         string $operation_id
@@ -5480,26 +5488,26 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInboundOperationStatusAsyncWithHttpInfo
+     * Operation getInboundOperationStatusAsyncWithHttpInfo.
      *
-     * @param  string $operation_id
-     *  Identifier of an asynchronous operation. (required)
+     * @param string $operation_id
+     *                             Identifier of an asynchronous operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundOperationStatusAsyncWithHttpInfo(
         string $operation_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus';
         $request = $this->getInboundOperationStatusRequest($operation_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getInboundOperationStatus");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundOperationStatus');
         } else {
             $request = $this->config->sign($request);
         }
@@ -5511,11 +5519,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -5523,12 +5531,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -5540,23 +5549,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInboundOperationStatus'
+     * Create request for operation 'getInboundOperationStatus'.
      *
-     * @param  string $operation_id
-     *  Identifier of an asynchronous operation. (required)
+     * @param string $operation_id
+     *                             Identifier of an asynchronous operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInboundOperationStatusRequest(
         string $operation_id
     ): Request {
         // verify the required parameter 'operation_id' is set
-        if ($operation_id === null || (is_array($operation_id) && count($operation_id) === 0)) {
+        if (null === $operation_id || (is_array($operation_id) && 0 === count($operation_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $operation_id when calling getInboundOperationStatus'
             );
@@ -5567,10 +5576,9 @@ class FbaInboundApi
         if (strlen($operation_id) < 36) {
             throw new \InvalidArgumentException('invalid length for "$operation_id" when calling FbaInboundApi.getInboundOperationStatus, must be bigger than or equal to 36.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $operation_id)) {
-            throw new \InvalidArgumentException("invalid value for \"operation_id\" when calling FbaInboundApi.getInboundOperationStatus, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $operation_id)) {
+            throw new \InvalidArgumentException('invalid value for "operation_id" when calling FbaInboundApi.getInboundOperationStatus, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/operations/{operationId}';
         $formParams = [];
@@ -5579,21 +5587,17 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($operation_id !== null) {
+        if (null !== $operation_id) {
             $resourcePath = str_replace(
-                '{' . 'operationId' . '}',
+                '{operationId}',
                 ObjectSerializer::toPathValue($operation_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -5607,22 +5611,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5636,56 +5637,60 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getInboundPlan
+     * Operation getInboundPlan.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan
      */
     public function getInboundPlan(
         string $inbound_plan_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan {
-        list($response) = $this->getInboundPlanWithHttpInfo($inbound_plan_id,$restrictedDataToken);
+    ): InboundPlan {
+        list($response) = $this->getInboundPlanWithHttpInfo($inbound_plan_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getInboundPlanWithHttpInfo
+     * Operation getInboundPlanWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInboundPlanWithHttpInfo(
         string $inbound_plan_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInboundPlanRequest($inbound_plan_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getInboundPlan");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundPlan');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getInboundPlanRateLimiter->consume()->ensureAccepted();
@@ -5721,39 +5726,39 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInboundPlanAsync
+     * Operation getInboundPlanAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundPlanAsync(
         string $inbound_plan_id
@@ -5763,26 +5768,26 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInboundPlanAsyncWithHttpInfo
+     * Operation getInboundPlanAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundPlanAsyncWithHttpInfo(
         string $inbound_plan_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\InboundPlan';
         $request = $this->getInboundPlanRequest($inbound_plan_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getInboundPlan");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundPlan');
         } else {
             $request = $this->config->sign($request);
         }
@@ -5794,11 +5799,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -5806,12 +5811,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -5823,23 +5829,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInboundPlan'
+     * Create request for operation 'getInboundPlan'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInboundPlanRequest(
         string $inbound_plan_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling getInboundPlan'
             );
@@ -5850,10 +5856,9 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.getInboundPlan, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.getInboundPlan, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.getInboundPlan, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}';
         $formParams = [];
@@ -5862,21 +5867,17 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -5890,22 +5891,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5919,30 +5917,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getSelfShipAppointmentSlots
+     * Operation getSelfShipAppointmentSlots.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse
      */
     public function getSelfShipAppointmentSlots(
         string $inbound_plan_id,
@@ -5950,27 +5948,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse {
-        list($response) = $this->getSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): GetSelfShipAppointmentSlotsResponse {
+        list($response) = $this->getSelfShipAppointmentSlotsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getSelfShipAppointmentSlotsWithHttpInfo
+     * Operation getSelfShipAppointmentSlotsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getSelfShipAppointmentSlotsWithHttpInfo(
         string $inbound_plan_id,
@@ -5980,13 +5980,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getSelfShipAppointmentSlots");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getSelfShipAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
@@ -6022,45 +6024,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getSelfShipAppointmentSlotsAsync
+     * Operation getSelfShipAppointmentSlotsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSelfShipAppointmentSlotsAsync(
         string $inbound_plan_id,
@@ -6073,35 +6075,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getSelfShipAppointmentSlotsAsyncWithHttpInfo
+     * Operation getSelfShipAppointmentSlotsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSelfShipAppointmentSlotsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse';
         $request = $this->getSelfShipAppointmentSlotsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getSelfShipAppointmentSlots");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getSelfShipAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
         }
@@ -6113,11 +6115,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -6125,12 +6127,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -6142,23 +6145,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getSelfShipAppointmentSlots'
+     * Create request for operation 'getSelfShipAppointmentSlots'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getSelfShipAppointmentSlotsRequest(
         string $inbound_plan_id,
@@ -6167,7 +6170,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling getSelfShipAppointmentSlots'
             );
@@ -6178,12 +6181,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.getSelfShipAppointmentSlots, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.getSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.getSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getSelfShipAppointmentSlots'
             );
@@ -6194,24 +6197,23 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.getSelfShipAppointmentSlots, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.getSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.getSelfShipAppointmentSlots, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.getSelfShipAppointmentSlots, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.getSelfShipAppointmentSlots, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.getSelfShipAppointmentSlots, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.getSelfShipAppointmentSlots, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots';
         $formParams = [];
@@ -6241,28 +6243,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -6276,22 +6275,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6305,48 +6301,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getShipment
+     * Operation getShipment.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment
      */
     public function getShipment(
         string $inbound_plan_id,
         string $shipment_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment {
-        list($response) = $this->getShipmentWithHttpInfo($inbound_plan_id, $shipment_id,,$restrictedDataToken);
+    ): Shipment {
+        list($response) = $this->getShipmentWithHttpInfo($inbound_plan_id, $shipment_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getShipmentWithHttpInfo
+     * Operation getShipmentWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getShipmentWithHttpInfo(
         string $inbound_plan_id,
@@ -6354,13 +6352,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentRequest($inbound_plan_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getShipment");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipment');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getShipmentRateLimiter->consume()->ensureAccepted();
@@ -6396,41 +6396,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getShipmentAsync
+     * Operation getShipmentAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentAsync(
         string $inbound_plan_id,
@@ -6441,29 +6441,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getShipmentAsyncWithHttpInfo
+     * Operation getShipmentAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment';
         $request = $this->getShipmentRequest($inbound_plan_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getShipment");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipment');
         } else {
             $request = $this->config->sign($request);
         }
@@ -6475,11 +6475,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -6487,12 +6487,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -6504,26 +6505,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getShipment'
+     * Create request for operation 'getShipment'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $inbound_plan_id
+     *                                Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getShipmentRequest(
         string $inbound_plan_id,
         string $shipment_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling getShipment'
             );
@@ -6534,12 +6535,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.getShipment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.getShipment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.getShipment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getShipment'
             );
@@ -6550,10 +6551,9 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.getShipment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.getShipment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.getShipment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}';
         $formParams = [];
@@ -6562,29 +6562,25 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -6598,22 +6594,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6627,53 +6620,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getShipmentContentUpdatePreview
+     * Operation getShipmentContentUpdatePreview.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview
      */
     public function getShipmentContentUpdatePreview(
         string $inbound_plan_id,
         string $shipment_id,
         string $content_update_preview_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview {
-        list($response) = $this->getShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id,,,$restrictedDataToken);
+    ): ContentUpdatePreview {
+        list($response) = $this->getShipmentContentUpdatePreviewWithHttpInfo($inbound_plan_id, $shipment_id, $content_update_preview_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getShipmentContentUpdatePreviewWithHttpInfo
+     * Operation getShipmentContentUpdatePreviewWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string      $inbound_plan_id
+     *                                               Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                               Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string      $content_update_preview_id
+     *                                               Identifier of a content update preview. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getShipmentContentUpdatePreviewWithHttpInfo(
         string $inbound_plan_id,
@@ -6682,13 +6677,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getShipmentContentUpdatePreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentContentUpdatePreview');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
@@ -6724,43 +6721,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getShipmentContentUpdatePreviewAsync
+     * Operation getShipmentContentUpdatePreviewAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $content_update_preview_id
+     *                                          Identifier of a content update preview. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentContentUpdatePreviewAsync(
         string $inbound_plan_id,
@@ -6772,32 +6769,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getShipmentContentUpdatePreviewAsyncWithHttpInfo
+     * Operation getShipmentContentUpdatePreviewAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $content_update_preview_id
+     *                                          Identifier of a content update preview. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentContentUpdatePreviewAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         string $content_update_preview_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview';
         $request = $this->getShipmentContentUpdatePreviewRequest($inbound_plan_id, $shipment_id, $content_update_preview_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getShipmentContentUpdatePreview");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentContentUpdatePreview');
         } else {
             $request = $this->config->sign($request);
         }
@@ -6809,11 +6806,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -6821,12 +6818,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -6838,21 +6836,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getShipmentContentUpdatePreview'
+     * Create request for operation 'getShipmentContentUpdatePreview'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $content_update_preview_id
-     *  Identifier of a content update preview. (required)
+     * @param string $inbound_plan_id
+     *                                          Identifier of an inbound plan. (required)
+     * @param string $shipment_id
+     *                                          Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string $content_update_preview_id
+     *                                          Identifier of a content update preview. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getShipmentContentUpdatePreviewRequest(
         string $inbound_plan_id,
@@ -6860,7 +6858,7 @@ class FbaInboundApi
         string $content_update_preview_id
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling getShipmentContentUpdatePreview'
             );
@@ -6871,12 +6869,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.getShipmentContentUpdatePreview, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.getShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.getShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getShipmentContentUpdatePreview'
             );
@@ -6887,12 +6885,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.getShipmentContentUpdatePreview, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.getShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.getShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'content_update_preview_id' is set
-        if ($content_update_preview_id === null || (is_array($content_update_preview_id) && count($content_update_preview_id) === 0)) {
+        if (null === $content_update_preview_id || (is_array($content_update_preview_id) && 0 === count($content_update_preview_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_update_preview_id when calling getShipmentContentUpdatePreview'
             );
@@ -6903,10 +6901,9 @@ class FbaInboundApi
         if (strlen($content_update_preview_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$content_update_preview_id" when calling FbaInboundApi.getShipmentContentUpdatePreview, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $content_update_preview_id)) {
-            throw new \InvalidArgumentException("invalid value for \"content_update_preview_id\" when calling FbaInboundApi.getShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $content_update_preview_id)) {
+            throw new \InvalidArgumentException('invalid value for "content_update_preview_id" when calling FbaInboundApi.getShipmentContentUpdatePreview, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}';
         $formParams = [];
@@ -6915,37 +6912,33 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
         // path params
-        if ($content_update_preview_id !== null) {
+        if (null !== $content_update_preview_id) {
             $resourcePath = str_replace(
-                '{' . 'contentUpdatePreviewId' . '}',
+                '{contentUpdatePreviewId}',
                 ObjectSerializer::toPathValue($content_update_preview_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -6959,22 +6952,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6988,30 +6978,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listDeliveryWindowOptions
+     * Operation listDeliveryWindowOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to get delivery window options for. (required)
-     * @param  int|null $page_size
-     *  The number of delivery window options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         The shipment to get delivery window options for. (required)
+     * @param null|int    $page_size
+     *                                         The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse
      */
     public function listDeliveryWindowOptions(
         string $inbound_plan_id,
@@ -7019,27 +7009,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse {
-        list($response) = $this->listDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListDeliveryWindowOptionsResponse {
+        list($response) = $this->listDeliveryWindowOptionsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listDeliveryWindowOptionsWithHttpInfo
+     * Operation listDeliveryWindowOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to get delivery window options for. (required)
-     * @param  int|null $page_size
-     *  The number of delivery window options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         The shipment to get delivery window options for. (required)
+     * @param null|int    $page_size
+     *                                         The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listDeliveryWindowOptionsWithHttpInfo(
         string $inbound_plan_id,
@@ -7049,13 +7041,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listDeliveryWindowOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
@@ -7091,45 +7085,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listDeliveryWindowOptionsAsync
+     * Operation listDeliveryWindowOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to get delivery window options for. (required)
-     * @param  int|null $page_size
-     *  The number of delivery window options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      The shipment to get delivery window options for. (required)
+     * @param null|int    $page_size
+     *                                      The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listDeliveryWindowOptionsAsync(
         string $inbound_plan_id,
@@ -7142,35 +7136,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listDeliveryWindowOptionsAsyncWithHttpInfo
+     * Operation listDeliveryWindowOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to get delivery window options for. (required)
-     * @param  int|null $page_size
-     *  The number of delivery window options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      The shipment to get delivery window options for. (required)
+     * @param null|int    $page_size
+     *                                      The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listDeliveryWindowOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse';
         $request = $this->listDeliveryWindowOptionsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listDeliveryWindowOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -7182,11 +7176,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -7194,12 +7188,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -7211,23 +7206,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listDeliveryWindowOptions'
+     * Create request for operation 'listDeliveryWindowOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  The shipment to get delivery window options for. (required)
-     * @param  int|null $page_size
-     *  The number of delivery window options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      The shipment to get delivery window options for. (required)
+     * @param null|int    $page_size
+     *                                      The number of delivery window options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listDeliveryWindowOptionsRequest(
         string $inbound_plan_id,
@@ -7236,7 +7231,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listDeliveryWindowOptions'
             );
@@ -7247,12 +7242,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listDeliveryWindowOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling listDeliveryWindowOptions'
             );
@@ -7263,24 +7258,23 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listDeliveryWindowOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.listDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.listDeliveryWindowOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listDeliveryWindowOptions, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listDeliveryWindowOptions, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listDeliveryWindowOptions, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listDeliveryWindowOptions, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions';
         $formParams = [];
@@ -7310,28 +7304,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -7345,22 +7336,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7374,53 +7362,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listInboundPlanBoxes
+     * Operation listInboundPlanBoxes.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse
      */
     public function listInboundPlanBoxes(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse {
-        list($response) = $this->listInboundPlanBoxesWithHttpInfo($inbound_plan_id, $page_size, $pagination_token,,,$restrictedDataToken);
+    ): ListInboundPlanBoxesResponse {
+        list($response) = $this->listInboundPlanBoxesWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listInboundPlanBoxesWithHttpInfo
+     * Operation listInboundPlanBoxesWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listInboundPlanBoxesWithHttpInfo(
         string $inbound_plan_id,
@@ -7429,13 +7419,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanBoxesRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlanBoxes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanBoxes');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listInboundPlanBoxesRateLimiter->consume()->ensureAccepted();
@@ -7471,43 +7463,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listInboundPlanBoxesAsync
+     * Operation listInboundPlanBoxesAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlanBoxesAsync(
         string $inbound_plan_id,
@@ -7519,32 +7511,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listInboundPlanBoxesAsyncWithHttpInfo
+     * Operation listInboundPlanBoxesAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlanBoxesAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse';
         $request = $this->listInboundPlanBoxesRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlanBoxes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanBoxes');
         } else {
             $request = $this->config->sign($request);
         }
@@ -7556,11 +7548,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -7568,12 +7560,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -7585,21 +7578,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listInboundPlanBoxes'
+     * Create request for operation 'listInboundPlanBoxes'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listInboundPlanBoxesRequest(
         string $inbound_plan_id,
@@ -7607,7 +7600,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listInboundPlanBoxes'
             );
@@ -7618,24 +7611,23 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listInboundPlanBoxes, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listInboundPlanBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listInboundPlanBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 1000) {
+        if (null !== $page_size && $page_size > 1000) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlanBoxes, must be smaller than or equal to 1000.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlanBoxes, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlanBoxes, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlanBoxes, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes';
         $formParams = [];
@@ -7665,20 +7657,17 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -7692,22 +7681,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7721,53 +7707,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listInboundPlanItems
+     * Operation listInboundPlanItems.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse
      */
     public function listInboundPlanItems(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse {
-        list($response) = $this->listInboundPlanItemsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token,,,$restrictedDataToken);
+    ): ListInboundPlanItemsResponse {
+        list($response) = $this->listInboundPlanItemsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listInboundPlanItemsWithHttpInfo
+     * Operation listInboundPlanItemsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listInboundPlanItemsWithHttpInfo(
         string $inbound_plan_id,
@@ -7776,13 +7764,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanItemsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlanItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanItems');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listInboundPlanItemsRateLimiter->consume()->ensureAccepted();
@@ -7818,43 +7808,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listInboundPlanItemsAsync
+     * Operation listInboundPlanItemsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlanItemsAsync(
         string $inbound_plan_id,
@@ -7866,32 +7856,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listInboundPlanItemsAsyncWithHttpInfo
+     * Operation listInboundPlanItemsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlanItemsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse';
         $request = $this->listInboundPlanItemsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlanItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanItems');
         } else {
             $request = $this->config->sign($request);
         }
@@ -7903,11 +7893,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -7915,12 +7905,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -7932,21 +7923,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listInboundPlanItems'
+     * Create request for operation 'listInboundPlanItems'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listInboundPlanItemsRequest(
         string $inbound_plan_id,
@@ -7954,7 +7945,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listInboundPlanItems'
             );
@@ -7965,24 +7956,23 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listInboundPlanItems, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listInboundPlanItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listInboundPlanItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 1000) {
+        if (null !== $page_size && $page_size > 1000) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlanItems, must be smaller than or equal to 1000.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlanItems, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlanItems, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlanItems, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items';
         $formParams = [];
@@ -8012,20 +8002,17 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -8039,22 +8026,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -8068,53 +8052,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listInboundPlanPallets
+     * Operation listInboundPlanPallets.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse
      */
     public function listInboundPlanPallets(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse {
-        list($response) = $this->listInboundPlanPalletsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token,,,$restrictedDataToken);
+    ): ListInboundPlanPalletsResponse {
+        list($response) = $this->listInboundPlanPalletsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listInboundPlanPalletsWithHttpInfo
+     * Operation listInboundPlanPalletsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listInboundPlanPalletsWithHttpInfo(
         string $inbound_plan_id,
@@ -8123,13 +8109,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlanPalletsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlanPallets");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanPallets');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listInboundPlanPalletsRateLimiter->consume()->ensureAccepted();
@@ -8165,43 +8153,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listInboundPlanPalletsAsync
+     * Operation listInboundPlanPalletsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlanPalletsAsync(
         string $inbound_plan_id,
@@ -8213,32 +8201,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listInboundPlanPalletsAsyncWithHttpInfo
+     * Operation listInboundPlanPalletsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlanPalletsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse';
         $request = $this->listInboundPlanPalletsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlanPallets");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanPallets');
         } else {
             $request = $this->config->sign($request);
         }
@@ -8250,11 +8238,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -8262,12 +8250,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -8279,21 +8268,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listInboundPlanPallets'
+     * Create request for operation 'listInboundPlanPallets'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listInboundPlanPalletsRequest(
         string $inbound_plan_id,
@@ -8301,7 +8290,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listInboundPlanPallets'
             );
@@ -8312,24 +8301,23 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listInboundPlanPallets, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listInboundPlanPallets, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listInboundPlanPallets, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 1000) {
+        if (null !== $page_size && $page_size > 1000) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlanPallets, must be smaller than or equal to 1000.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlanPallets, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlanPallets, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlanPallets, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets';
         $formParams = [];
@@ -8359,20 +8347,17 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -8386,22 +8371,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -8415,32 +8397,32 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listInboundPlans
+     * Operation listInboundPlans.
      *
-     * @param  int|null $page_size
-     *  The number of inbound plans to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $status
-     *  The status of an inbound plan. (optional)
-     * @param  string|null $sort_by
-     *  Sort by field. (optional)
-     * @param  string|null $sort_order
-     *  The sort order. (optional)
+     * @param null|int    $page_size
+     *                                         The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $status
+     *                                         The status of an inbound plan. (optional)
+     * @param null|string $sort_by
+     *                                         Sort by field. (optional)
+     * @param null|string $sort_order
+     *                                         The sort order. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse
      */
     public function listInboundPlans(
         ?int $page_size = 10,
@@ -8449,29 +8431,31 @@ class FbaInboundApi
         ?string $sort_by = null,
         ?string $sort_order = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse {
-        list($response) = $this->listInboundPlansWithHttpInfo($page_size, $pagination_token, $status, $sort_by, $sort_order,,,,,$restrictedDataToken);
+    ): ListInboundPlansResponse {
+        list($response) = $this->listInboundPlansWithHttpInfo($page_size, $pagination_token, $status, $sort_by, $sort_order, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listInboundPlansWithHttpInfo
+     * Operation listInboundPlansWithHttpInfo.
      *
-     * @param  int|null $page_size
-     *  The number of inbound plans to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $status
-     *  The status of an inbound plan. (optional)
-     * @param  string|null $sort_by
-     *  Sort by field. (optional)
-     * @param  string|null $sort_order
-     *  The sort order. (optional)
+     * @param null|int    $page_size
+     *                                         The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $status
+     *                                         The status of an inbound plan. (optional)
+     * @param null|string $sort_by
+     *                                         Sort by field. (optional)
+     * @param null|string $sort_order
+     *                                         The sort order. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listInboundPlansWithHttpInfo(
         ?int $page_size = 10,
@@ -8482,13 +8466,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listInboundPlansRequest($page_size, $pagination_token, $status, $sort_by, $sort_order);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlans");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlans');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listInboundPlansRateLimiter->consume()->ensureAccepted();
@@ -8524,47 +8510,47 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listInboundPlansAsync
+     * Operation listInboundPlansAsync.
      *
-     * @param  int|null $page_size
-     *  The number of inbound plans to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $status
-     *  The status of an inbound plan. (optional)
-     * @param  string|null $sort_by
-     *  Sort by field. (optional)
-     * @param  string|null $sort_order
-     *  The sort order. (optional)
+     * @param null|int    $page_size
+     *                                      The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $status
+     *                                      The status of an inbound plan. (optional)
+     * @param null|string $sort_by
+     *                                      Sort by field. (optional)
+     * @param null|string $sort_order
+     *                                      The sort order. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlansAsync(
         ?int $page_size = 10,
@@ -8578,25 +8564,25 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listInboundPlansAsyncWithHttpInfo
+     * Operation listInboundPlansAsyncWithHttpInfo.
      *
-     * @param  int|null $page_size
-     *  The number of inbound plans to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $status
-     *  The status of an inbound plan. (optional)
-     * @param  string|null $sort_by
-     *  Sort by field. (optional)
-     * @param  string|null $sort_order
-     *  The sort order. (optional)
+     * @param null|int    $page_size
+     *                                      The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $status
+     *                                      The status of an inbound plan. (optional)
+     * @param null|string $sort_by
+     *                                      Sort by field. (optional)
+     * @param null|string $sort_order
+     *                                      The sort order. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundPlansAsyncWithHttpInfo(
         ?int $page_size = 10,
@@ -8604,12 +8590,12 @@ class FbaInboundApi
         ?string $status = null,
         ?string $sort_by = null,
         ?string $sort_order = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse';
         $request = $this->listInboundPlansRequest($page_size, $pagination_token, $status, $sort_by, $sort_order);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listInboundPlans");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlans');
         } else {
             $request = $this->config->sign($request);
         }
@@ -8621,11 +8607,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -8633,12 +8619,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -8650,25 +8637,25 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listInboundPlans'
+     * Create request for operation 'listInboundPlans'.
      *
-     * @param  int|null $page_size
-     *  The number of inbound plans to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $status
-     *  The status of an inbound plan. (optional)
-     * @param  string|null $sort_by
-     *  Sort by field. (optional)
-     * @param  string|null $sort_order
-     *  The sort order. (optional)
+     * @param null|int    $page_size
+     *                                      The number of inbound plans to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $status
+     *                                      The status of an inbound plan. (optional)
+     * @param null|string $sort_by
+     *                                      Sort by field. (optional)
+     * @param null|string $sort_order
+     *                                      The sort order. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listInboundPlansRequest(
         ?int $page_size = 10,
@@ -8677,20 +8664,19 @@ class FbaInboundApi
         ?string $sort_by = null,
         ?string $sort_order = null
     ): Request {
-        if ($page_size !== null && $page_size > 30) {
+        if (null !== $page_size && $page_size > 30) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlans, must be smaller than or equal to 30.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listInboundPlans, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlans, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listInboundPlans, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans';
         $formParams = [];
@@ -8750,12 +8736,8 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -8769,22 +8751,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -8798,48 +8777,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listItemComplianceDetails
+     * Operation listItemComplianceDetails.
      *
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse
      */
     public function listItemComplianceDetails(
         array $mskus,
         string $marketplace_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse {
-        list($response) = $this->listItemComplianceDetailsWithHttpInfo($mskus, $marketplace_id,,$restrictedDataToken);
+    ): ListItemComplianceDetailsResponse {
+        list($response) = $this->listItemComplianceDetailsWithHttpInfo($mskus, $marketplace_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listItemComplianceDetailsWithHttpInfo
+     * Operation listItemComplianceDetailsWithHttpInfo.
      *
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listItemComplianceDetailsWithHttpInfo(
         array $mskus,
@@ -8847,13 +8828,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listItemComplianceDetailsRequest($mskus, $marketplace_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listItemComplianceDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listItemComplianceDetails');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
@@ -8889,41 +8872,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listItemComplianceDetailsAsync
+     * Operation listItemComplianceDetailsAsync.
      *
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $mskus
+     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string   $marketplace_id
+     *                                 The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listItemComplianceDetailsAsync(
         array $mskus,
@@ -8934,29 +8917,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listItemComplianceDetailsAsyncWithHttpInfo
+     * Operation listItemComplianceDetailsAsyncWithHttpInfo.
      *
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $mskus
+     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string   $marketplace_id
+     *                                 The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listItemComplianceDetailsAsyncWithHttpInfo(
         array $mskus,
         string $marketplace_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse';
         $request = $this->listItemComplianceDetailsRequest($mskus, $marketplace_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listItemComplianceDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listItemComplianceDetails');
         } else {
             $request = $this->config->sign($request);
         }
@@ -8968,11 +8951,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -8980,12 +8963,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -8997,26 +8981,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listItemComplianceDetails'
+     * Create request for operation 'listItemComplianceDetails'.
      *
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $mskus
+     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string   $marketplace_id
+     *                                 The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listItemComplianceDetailsRequest(
         array $mskus,
         string $marketplace_id
     ): Request {
         // verify the required parameter 'mskus' is set
-        if ($mskus === null || (is_array($mskus) && count($mskus) === 0)) {
+        if (null === $mskus || (is_array($mskus) && 0 === count($mskus))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $mskus when calling listItemComplianceDetails'
             );
@@ -9029,7 +9013,7 @@ class FbaInboundApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling listItemComplianceDetails'
             );
@@ -9040,7 +9024,6 @@ class FbaInboundApi
         if (strlen($marketplace_id) < 1) {
             throw new \InvalidArgumentException('invalid length for "$marketplace_id" when calling FbaInboundApi.listItemComplianceDetails, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/items/compliance';
         $formParams = [];
@@ -9070,12 +9053,8 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -9089,22 +9068,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -9118,30 +9094,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listPackingGroupBoxes
+     * Operation listPackingGroupBoxes.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                         Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                         The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse
      */
     public function listPackingGroupBoxes(
         string $inbound_plan_id,
@@ -9149,27 +9125,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse {
-        list($response) = $this->listPackingGroupBoxesWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListPackingGroupBoxesResponse {
+        list($response) = $this->listPackingGroupBoxesWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listPackingGroupBoxesWithHttpInfo
+     * Operation listPackingGroupBoxesWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                         Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                         The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listPackingGroupBoxesWithHttpInfo(
         string $inbound_plan_id,
@@ -9179,13 +9157,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingGroupBoxesRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPackingGroupBoxes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupBoxes');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listPackingGroupBoxesRateLimiter->consume()->ensureAccepted();
@@ -9221,45 +9201,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listPackingGroupBoxesAsync
+     * Operation listPackingGroupBoxesAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                      Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPackingGroupBoxesAsync(
         string $inbound_plan_id,
@@ -9272,35 +9252,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listPackingGroupBoxesAsyncWithHttpInfo
+     * Operation listPackingGroupBoxesAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                      Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPackingGroupBoxesAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse';
         $request = $this->listPackingGroupBoxesRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPackingGroupBoxes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupBoxes');
         } else {
             $request = $this->config->sign($request);
         }
@@ -9312,11 +9292,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -9324,12 +9304,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -9341,23 +9322,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listPackingGroupBoxes'
+     * Create request for operation 'listPackingGroupBoxes'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                      Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing group boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listPackingGroupBoxesRequest(
         string $inbound_plan_id,
@@ -9366,7 +9347,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listPackingGroupBoxes'
             );
@@ -9377,12 +9358,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listPackingGroupBoxes, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listPackingGroupBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listPackingGroupBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'packing_group_id' is set
-        if ($packing_group_id === null || (is_array($packing_group_id) && count($packing_group_id) === 0)) {
+        if (null === $packing_group_id || (is_array($packing_group_id) && 0 === count($packing_group_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $packing_group_id when calling listPackingGroupBoxes'
             );
@@ -9393,24 +9374,23 @@ class FbaInboundApi
         if (strlen($packing_group_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$packing_group_id" when calling FbaInboundApi.listPackingGroupBoxes, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $packing_group_id)) {
-            throw new \InvalidArgumentException("invalid value for \"packing_group_id\" when calling FbaInboundApi.listPackingGroupBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $packing_group_id)) {
+            throw new \InvalidArgumentException('invalid value for "packing_group_id" when calling FbaInboundApi.listPackingGroupBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPackingGroupBoxes, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPackingGroupBoxes, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPackingGroupBoxes, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPackingGroupBoxes, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes';
         $formParams = [];
@@ -9440,28 +9420,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($packing_group_id !== null) {
+        if (null !== $packing_group_id) {
             $resourcePath = str_replace(
-                '{' . 'packingGroupId' . '}',
+                '{packingGroupId}',
                 ObjectSerializer::toPathValue($packing_group_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -9475,22 +9452,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -9504,30 +9478,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listPackingGroupItems
+     * Operation listPackingGroupItems.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                         Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                         The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse
      */
     public function listPackingGroupItems(
         string $inbound_plan_id,
@@ -9535,27 +9509,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse {
-        list($response) = $this->listPackingGroupItemsWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListPackingGroupItemsResponse {
+        list($response) = $this->listPackingGroupItemsWithHttpInfo($inbound_plan_id, $packing_group_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listPackingGroupItemsWithHttpInfo
+     * Operation listPackingGroupItemsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                         Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                         The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listPackingGroupItemsWithHttpInfo(
         string $inbound_plan_id,
@@ -9565,13 +9541,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingGroupItemsRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPackingGroupItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupItems');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listPackingGroupItemsRateLimiter->consume()->ensureAccepted();
@@ -9607,45 +9585,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listPackingGroupItemsAsync
+     * Operation listPackingGroupItemsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                      Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPackingGroupItemsAsync(
         string $inbound_plan_id,
@@ -9658,35 +9636,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listPackingGroupItemsAsyncWithHttpInfo
+     * Operation listPackingGroupItemsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                      Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPackingGroupItemsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $packing_group_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse';
         $request = $this->listPackingGroupItemsRequest($inbound_plan_id, $packing_group_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPackingGroupItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupItems');
         } else {
             $request = $this->config->sign($request);
         }
@@ -9698,11 +9676,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -9710,12 +9688,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -9727,23 +9706,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listPackingGroupItems'
+     * Create request for operation 'listPackingGroupItems'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $packing_group_id
-     *  Identifier of a packing group. (required)
-     * @param  int|null $page_size
-     *  The number of packing group items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $packing_group_id
+     *                                      Identifier of a packing group. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing group items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listPackingGroupItemsRequest(
         string $inbound_plan_id,
@@ -9752,7 +9731,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listPackingGroupItems'
             );
@@ -9763,12 +9742,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listPackingGroupItems, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listPackingGroupItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listPackingGroupItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'packing_group_id' is set
-        if ($packing_group_id === null || (is_array($packing_group_id) && count($packing_group_id) === 0)) {
+        if (null === $packing_group_id || (is_array($packing_group_id) && 0 === count($packing_group_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $packing_group_id when calling listPackingGroupItems'
             );
@@ -9779,24 +9758,23 @@ class FbaInboundApi
         if (strlen($packing_group_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$packing_group_id" when calling FbaInboundApi.listPackingGroupItems, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $packing_group_id)) {
-            throw new \InvalidArgumentException("invalid value for \"packing_group_id\" when calling FbaInboundApi.listPackingGroupItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $packing_group_id)) {
+            throw new \InvalidArgumentException('invalid value for "packing_group_id" when calling FbaInboundApi.listPackingGroupItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPackingGroupItems, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPackingGroupItems, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPackingGroupItems, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPackingGroupItems, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items';
         $formParams = [];
@@ -9826,28 +9804,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($packing_group_id !== null) {
+        if (null !== $packing_group_id) {
             $resourcePath = str_replace(
-                '{' . 'packingGroupId' . '}',
+                '{packingGroupId}',
                 ObjectSerializer::toPathValue($packing_group_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -9861,22 +9836,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -9890,53 +9862,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listPackingOptions
+     * Operation listPackingOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of packing options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of packing options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse
      */
     public function listPackingOptions(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse {
-        list($response) = $this->listPackingOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token,,,$restrictedDataToken);
+    ): ListPackingOptionsResponse {
+        list($response) = $this->listPackingOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listPackingOptionsWithHttpInfo
+     * Operation listPackingOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of packing options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of packing options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listPackingOptionsWithHttpInfo(
         string $inbound_plan_id,
@@ -9945,13 +9919,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPackingOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPackingOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listPackingOptionsRateLimiter->consume()->ensureAccepted();
@@ -9987,43 +9963,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listPackingOptionsAsync
+     * Operation listPackingOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of packing options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPackingOptionsAsync(
         string $inbound_plan_id,
@@ -10035,32 +10011,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listPackingOptionsAsyncWithHttpInfo
+     * Operation listPackingOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of packing options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPackingOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse';
         $request = $this->listPackingOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPackingOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -10072,11 +10048,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -10084,12 +10060,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -10101,21 +10078,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listPackingOptions'
+     * Create request for operation 'listPackingOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of packing options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of packing options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listPackingOptionsRequest(
         string $inbound_plan_id,
@@ -10123,7 +10100,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listPackingOptions'
             );
@@ -10134,24 +10111,23 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listPackingOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listPackingOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listPackingOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 20) {
+        if (null !== $page_size && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPackingOptions, must be smaller than or equal to 20.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPackingOptions, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPackingOptions, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPackingOptions, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions';
         $formParams = [];
@@ -10181,20 +10157,17 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -10208,22 +10181,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -10237,53 +10207,55 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listPlacementOptions
+     * Operation listPlacementOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of placement options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of placement options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse
      */
     public function listPlacementOptions(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse {
-        list($response) = $this->listPlacementOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token,,,$restrictedDataToken);
+    ): ListPlacementOptionsResponse {
+        list($response) = $this->listPlacementOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listPlacementOptionsWithHttpInfo
+     * Operation listPlacementOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of placement options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of placement options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listPlacementOptionsWithHttpInfo(
         string $inbound_plan_id,
@@ -10292,13 +10264,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPlacementOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPlacementOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPlacementOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listPlacementOptionsRateLimiter->consume()->ensureAccepted();
@@ -10334,43 +10308,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listPlacementOptionsAsync
+     * Operation listPlacementOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of placement options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of placement options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPlacementOptionsAsync(
         string $inbound_plan_id,
@@ -10382,32 +10356,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listPlacementOptionsAsyncWithHttpInfo
+     * Operation listPlacementOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of placement options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of placement options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPlacementOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse';
         $request = $this->listPlacementOptionsRequest($inbound_plan_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPlacementOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPlacementOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -10419,11 +10393,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -10431,12 +10405,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -10448,21 +10423,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listPlacementOptions'
+     * Create request for operation 'listPlacementOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of placement options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                      The number of placement options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listPlacementOptionsRequest(
         string $inbound_plan_id,
@@ -10470,7 +10445,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listPlacementOptions'
             );
@@ -10481,24 +10456,23 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listPlacementOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listPlacementOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listPlacementOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 20) {
+        if (null !== $page_size && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPlacementOptions, must be smaller than or equal to 20.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listPlacementOptions, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPlacementOptions, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listPlacementOptions, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions';
         $formParams = [];
@@ -10528,20 +10502,17 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -10555,22 +10526,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -10584,48 +10552,50 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listPrepDetails
+     * Operation listPrepDetails.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse
      */
     public function listPrepDetails(
         string $marketplace_id,
         array $mskus,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse {
-        list($response) = $this->listPrepDetailsWithHttpInfo($marketplace_id, $mskus,,$restrictedDataToken);
+    ): ListPrepDetailsResponse {
+        list($response) = $this->listPrepDetailsWithHttpInfo($marketplace_id, $mskus, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listPrepDetailsWithHttpInfo
+     * Operation listPrepDetailsWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $mskus
+     *                                         A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listPrepDetailsWithHttpInfo(
         string $marketplace_id,
@@ -10633,13 +10603,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listPrepDetailsRequest($marketplace_id, $mskus);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPrepDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPrepDetails');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listPrepDetailsRateLimiter->consume()->ensureAccepted();
@@ -10675,41 +10647,41 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listPrepDetailsAsync
+     * Operation listPrepDetailsAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string   $marketplace_id
+     *                                 The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $mskus
+     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPrepDetailsAsync(
         string $marketplace_id,
@@ -10720,29 +10692,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listPrepDetailsAsyncWithHttpInfo
+     * Operation listPrepDetailsAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string   $marketplace_id
+     *                                 The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $mskus
+     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listPrepDetailsAsyncWithHttpInfo(
         string $marketplace_id,
         array $mskus,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse';
         $request = $this->listPrepDetailsRequest($marketplace_id, $mskus);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listPrepDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPrepDetails');
         } else {
             $request = $this->config->sign($request);
         }
@@ -10754,11 +10726,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -10766,12 +10738,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -10783,26 +10756,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listPrepDetails'
+     * Create request for operation 'listPrepDetails'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $mskus
-     *  A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param string   $marketplace_id
+     *                                 The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $mskus
+     *                                 A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listPrepDetailsRequest(
         string $marketplace_id,
         array $mskus
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling listPrepDetails'
             );
@@ -10815,7 +10788,7 @@ class FbaInboundApi
         }
 
         // verify the required parameter 'mskus' is set
-        if ($mskus === null || (is_array($mskus) && count($mskus) === 0)) {
+        if (null === $mskus || (is_array($mskus) && 0 === count($mskus))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $mskus when calling listPrepDetails'
             );
@@ -10826,7 +10799,6 @@ class FbaInboundApi
         if (count($mskus) < 1) {
             throw new \InvalidArgumentException('invalid value for "$mskus" when calling FbaInboundApi.listPrepDetails, number of items must be greater than or equal to 1.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/items/prepDetails';
         $formParams = [];
@@ -10856,12 +10828,8 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -10875,22 +10843,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -10904,30 +10869,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listShipmentBoxes
+     * Operation listShipmentBoxes.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse
      */
     public function listShipmentBoxes(
         string $inbound_plan_id,
@@ -10935,27 +10900,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse {
-        list($response) = $this->listShipmentBoxesWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListShipmentBoxesResponse {
+        list($response) = $this->listShipmentBoxesWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listShipmentBoxesWithHttpInfo
+     * Operation listShipmentBoxesWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listShipmentBoxesWithHttpInfo(
         string $inbound_plan_id,
@@ -10965,13 +10932,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentBoxesRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentBoxes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentBoxes');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listShipmentBoxesRateLimiter->consume()->ensureAccepted();
@@ -11007,45 +10976,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listShipmentBoxesAsync
+     * Operation listShipmentBoxesAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentBoxesAsync(
         string $inbound_plan_id,
@@ -11058,35 +11027,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listShipmentBoxesAsyncWithHttpInfo
+     * Operation listShipmentBoxesAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentBoxesAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse';
         $request = $this->listShipmentBoxesRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentBoxes");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentBoxes');
         } else {
             $request = $this->config->sign($request);
         }
@@ -11098,11 +11067,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -11110,12 +11079,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -11127,23 +11097,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listShipmentBoxes'
+     * Create request for operation 'listShipmentBoxes'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of boxes to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listShipmentBoxesRequest(
         string $inbound_plan_id,
@@ -11152,7 +11122,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listShipmentBoxes'
             );
@@ -11163,12 +11133,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listShipmentBoxes, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listShipmentBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listShipmentBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling listShipmentBoxes'
             );
@@ -11179,24 +11149,23 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listShipmentBoxes, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.listShipmentBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.listShipmentBoxes, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 1000) {
+        if (null !== $page_size && $page_size > 1000) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentBoxes, must be smaller than or equal to 1000.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentBoxes, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentBoxes, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentBoxes, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes';
         $formParams = [];
@@ -11226,28 +11195,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -11261,22 +11227,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -11290,30 +11253,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listShipmentContentUpdatePreviews
+     * Operation listShipmentContentUpdatePreviews.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of content update previews to return. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of content update previews to return. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse
      */
     public function listShipmentContentUpdatePreviews(
         string $inbound_plan_id,
@@ -11321,27 +11284,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse {
-        list($response) = $this->listShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListShipmentContentUpdatePreviewsResponse {
+        list($response) = $this->listShipmentContentUpdatePreviewsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listShipmentContentUpdatePreviewsWithHttpInfo
+     * Operation listShipmentContentUpdatePreviewsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of content update previews to return. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of content update previews to return. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listShipmentContentUpdatePreviewsWithHttpInfo(
         string $inbound_plan_id,
@@ -11351,13 +11316,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentContentUpdatePreviews");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentContentUpdatePreviews');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
@@ -11393,45 +11360,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listShipmentContentUpdatePreviewsAsync
+     * Operation listShipmentContentUpdatePreviewsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of content update previews to return. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of content update previews to return. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentContentUpdatePreviewsAsync(
         string $inbound_plan_id,
@@ -11444,35 +11411,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listShipmentContentUpdatePreviewsAsyncWithHttpInfo
+     * Operation listShipmentContentUpdatePreviewsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of content update previews to return. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of content update previews to return. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentContentUpdatePreviewsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse';
         $request = $this->listShipmentContentUpdatePreviewsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentContentUpdatePreviews");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentContentUpdatePreviews');
         } else {
             $request = $this->config->sign($request);
         }
@@ -11484,11 +11451,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -11496,12 +11463,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -11513,23 +11481,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listShipmentContentUpdatePreviews'
+     * Create request for operation 'listShipmentContentUpdatePreviews'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of content update previews to return. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of content update previews to return. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listShipmentContentUpdatePreviewsRequest(
         string $inbound_plan_id,
@@ -11538,7 +11506,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listShipmentContentUpdatePreviews'
             );
@@ -11549,12 +11517,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling listShipmentContentUpdatePreviews'
             );
@@ -11565,24 +11533,23 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 20) {
+        if (null !== $page_size && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must be smaller than or equal to 20.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentContentUpdatePreviews, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews';
         $formParams = [];
@@ -11612,28 +11579,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -11647,22 +11611,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -11676,30 +11637,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listShipmentItems
+     * Operation listShipmentItems.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse
      */
     public function listShipmentItems(
         string $inbound_plan_id,
@@ -11707,27 +11668,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse {
-        list($response) = $this->listShipmentItemsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListShipmentItemsResponse {
+        list($response) = $this->listShipmentItemsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listShipmentItemsWithHttpInfo
+     * Operation listShipmentItemsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listShipmentItemsWithHttpInfo(
         string $inbound_plan_id,
@@ -11737,13 +11700,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentItemsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentItems');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listShipmentItemsRateLimiter->consume()->ensureAccepted();
@@ -11779,45 +11744,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listShipmentItemsAsync
+     * Operation listShipmentItemsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentItemsAsync(
         string $inbound_plan_id,
@@ -11830,35 +11795,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listShipmentItemsAsyncWithHttpInfo
+     * Operation listShipmentItemsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentItemsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse';
         $request = $this->listShipmentItemsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentItems");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentItems');
         } else {
             $request = $this->config->sign($request);
         }
@@ -11870,11 +11835,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -11882,12 +11847,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -11899,23 +11865,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listShipmentItems'
+     * Create request for operation 'listShipmentItems'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of items to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listShipmentItemsRequest(
         string $inbound_plan_id,
@@ -11924,7 +11890,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listShipmentItems'
             );
@@ -11935,12 +11901,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listShipmentItems, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listShipmentItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listShipmentItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling listShipmentItems'
             );
@@ -11951,24 +11917,23 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listShipmentItems, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.listShipmentItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.listShipmentItems, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 1000) {
+        if (null !== $page_size && $page_size > 1000) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentItems, must be smaller than or equal to 1000.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentItems, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentItems, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentItems, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items';
         $formParams = [];
@@ -11998,28 +11963,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -12033,22 +11995,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -12062,30 +12021,30 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listShipmentPallets
+     * Operation listShipmentPallets.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse
      */
     public function listShipmentPallets(
         string $inbound_plan_id,
@@ -12093,27 +12052,29 @@ class FbaInboundApi
         ?int $page_size = 10,
         ?string $pagination_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse {
-        list($response) = $this->listShipmentPalletsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token,,,,$restrictedDataToken);
+    ): ListShipmentPalletsResponse {
+        list($response) = $this->listShipmentPalletsWithHttpInfo($inbound_plan_id, $shipment_id, $page_size, $pagination_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listShipmentPalletsWithHttpInfo
+     * Operation listShipmentPalletsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                         Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                         The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listShipmentPalletsWithHttpInfo(
         string $inbound_plan_id,
@@ -12123,13 +12084,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listShipmentPalletsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentPallets");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentPallets');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listShipmentPalletsRateLimiter->consume()->ensureAccepted();
@@ -12165,45 +12128,45 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listShipmentPalletsAsync
+     * Operation listShipmentPalletsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentPalletsAsync(
         string $inbound_plan_id,
@@ -12216,35 +12179,35 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listShipmentPalletsAsyncWithHttpInfo
+     * Operation listShipmentPalletsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listShipmentPalletsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         ?int $page_size = 10,
         ?string $pagination_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse';
         $request = $this->listShipmentPalletsRequest($inbound_plan_id, $shipment_id, $page_size, $pagination_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listShipmentPallets");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentPallets');
         } else {
             $request = $this->config->sign($request);
         }
@@ -12256,11 +12219,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -12268,12 +12231,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -12285,23 +12249,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listShipmentPallets'
+     * Create request for operation 'listShipmentPallets'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  int|null $page_size
-     *  The number of pallets to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param string      $inbound_plan_id
+     *                                      Identifier of an inbound plan. (required)
+     * @param string      $shipment_id
+     *                                      Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param null|int    $page_size
+     *                                      The number of pallets to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                      A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listShipmentPalletsRequest(
         string $inbound_plan_id,
@@ -12310,7 +12274,7 @@ class FbaInboundApi
         ?string $pagination_token = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listShipmentPallets'
             );
@@ -12321,12 +12285,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listShipmentPallets, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listShipmentPallets, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listShipmentPallets, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling listShipmentPallets'
             );
@@ -12337,24 +12301,23 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listShipmentPallets, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.listShipmentPallets, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.listShipmentPallets, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 1000) {
+        if (null !== $page_size && $page_size > 1000) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentPallets, must be smaller than or equal to 1000.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listShipmentPallets, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentPallets, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listShipmentPallets, must be bigger than or equal to 0.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets';
         $formParams = [];
@@ -12384,28 +12347,25 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -12419,22 +12379,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -12448,32 +12405,32 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listTransportationOptions
+     * Operation listTransportationOptions.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of transportation options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $placement_option_id
-     *  The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
-     * @param  string|null $shipment_id
-     *  The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of transportation options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $placement_option_id
+     *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $shipment_id
+     *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse
      */
     public function listTransportationOptions(
         string $inbound_plan_id,
@@ -12482,29 +12439,31 @@ class FbaInboundApi
         ?string $placement_option_id = null,
         ?string $shipment_id = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse {
-        list($response) = $this->listTransportationOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id,,,,,$restrictedDataToken);
+    ): ListTransportationOptionsResponse {
+        list($response) = $this->listTransportationOptionsWithHttpInfo($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation listTransportationOptionsWithHttpInfo
+     * Operation listTransportationOptionsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of transportation options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $placement_option_id
-     *  The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
-     * @param  string|null $shipment_id
-     *  The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of transportation options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $placement_option_id
+     *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $shipment_id
+     *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listTransportationOptionsWithHttpInfo(
         string $inbound_plan_id,
@@ -12515,13 +12474,15 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listTransportationOptionsRequest($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listTransportationOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listTransportationOptions');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listTransportationOptionsRateLimiter->consume()->ensureAccepted();
@@ -12557,47 +12518,47 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation listTransportationOptionsAsync
+     * Operation listTransportationOptionsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of transportation options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $placement_option_id
-     *  The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
-     * @param  string|null $shipment_id
-     *  The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of transportation options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $placement_option_id
+     *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $shipment_id
+     *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listTransportationOptionsAsync(
         string $inbound_plan_id,
@@ -12611,25 +12572,25 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listTransportationOptionsAsyncWithHttpInfo
+     * Operation listTransportationOptionsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of transportation options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $placement_option_id
-     *  The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
-     * @param  string|null $shipment_id
-     *  The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of transportation options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $placement_option_id
+     *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $shipment_id
+     *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listTransportationOptionsAsyncWithHttpInfo(
         string $inbound_plan_id,
@@ -12637,12 +12598,12 @@ class FbaInboundApi
         ?string $pagination_token = null,
         ?string $placement_option_id = null,
         ?string $shipment_id = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse';
         $request = $this->listTransportationOptionsRequest($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-listTransportationOptions");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listTransportationOptions');
         } else {
             $request = $this->config->sign($request);
         }
@@ -12654,11 +12615,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -12666,12 +12627,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -12683,25 +12645,25 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listTransportationOptions'
+     * Create request for operation 'listTransportationOptions'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  int|null $page_size
-     *  The number of transportation options to return in the response matching the given query. (optional, default to 10)
-     * @param  string|null $pagination_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
-     * @param  string|null $placement_option_id
-     *  The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
-     * @param  string|null $shipment_id
-     *  The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param string      $inbound_plan_id
+     *                                         Identifier of an inbound plan. (required)
+     * @param null|int    $page_size
+     *                                         The number of transportation options to return in the response matching the given query. (optional, default to 10)
+     * @param null|string $pagination_token
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
+     * @param null|string $placement_option_id
+     *                                         The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param null|string $shipment_id
+     *                                         The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listTransportationOptionsRequest(
         string $inbound_plan_id,
@@ -12711,7 +12673,7 @@ class FbaInboundApi
         ?string $shipment_id = null
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling listTransportationOptions'
             );
@@ -12722,44 +12684,43 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.listTransportationOptions, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.listTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.listTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($page_size !== null && $page_size > 20) {
+        if (null !== $page_size && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listTransportationOptions, must be smaller than or equal to 20.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FbaInboundApi.listTransportationOptions, must be bigger than or equal to 1.');
         }
 
-        if ($pagination_token !== null && strlen($pagination_token) > 1024) {
+        if (null !== $pagination_token && strlen($pagination_token) > 1024) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listTransportationOptions, must be smaller than or equal to 1024.');
         }
-        if ($pagination_token !== null && strlen($pagination_token) < 0) {
+        if (null !== $pagination_token && strlen($pagination_token) < 0) {
             throw new \InvalidArgumentException('invalid length for "$pagination_token" when calling FbaInboundApi.listTransportationOptions, must be bigger than or equal to 0.');
         }
 
-        if ($placement_option_id !== null && strlen($placement_option_id) > 38) {
+        if (null !== $placement_option_id && strlen($placement_option_id) > 38) {
             throw new \InvalidArgumentException('invalid length for "$placement_option_id" when calling FbaInboundApi.listTransportationOptions, must be smaller than or equal to 38.');
         }
-        if ($placement_option_id !== null && strlen($placement_option_id) < 38) {
+        if (null !== $placement_option_id && strlen($placement_option_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$placement_option_id" when calling FbaInboundApi.listTransportationOptions, must be bigger than or equal to 38.');
         }
-        if ($placement_option_id !== null && !preg_match("/^[a-zA-Z0-9-]*$/", $placement_option_id)) {
-            throw new \InvalidArgumentException("invalid value for \"placement_option_id\" when calling FbaInboundApi.listTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (null !== $placement_option_id && !preg_match('/^[a-zA-Z0-9-]*$/', $placement_option_id)) {
+            throw new \InvalidArgumentException('invalid value for "placement_option_id" when calling FbaInboundApi.listTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
-        if ($shipment_id !== null && strlen($shipment_id) > 38) {
+        if (null !== $shipment_id && strlen($shipment_id) > 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listTransportationOptions, must be smaller than or equal to 38.');
         }
-        if ($shipment_id !== null && strlen($shipment_id) < 38) {
+        if (null !== $shipment_id && strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.listTransportationOptions, must be bigger than or equal to 38.');
         }
-        if ($shipment_id !== null && !preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.listTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (null !== $shipment_id && !preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.listTransportationOptions, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
-
 
         $resourcePath = '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions';
         $formParams = [];
@@ -12809,20 +12770,17 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -12836,22 +12794,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -12865,74 +12820,78 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation scheduleSelfShipAppointment
+     * Operation scheduleSelfShipAppointment.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $slot_id
-     *  An identifier to a self-ship appointment slot. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                                Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string                             $slot_id
+     *                                                                An identifier to a self-ship appointment slot. (required)
+     * @param ScheduleSelfShipAppointmentRequest $body
+     *                                                                The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse
      */
     public function scheduleSelfShipAppointment(
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body,
+        ScheduleSelfShipAppointmentRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse {
-        list($response) = $this->scheduleSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body,,,,$restrictedDataToken);
+    ): ScheduleSelfShipAppointmentResponse {
+        list($response) = $this->scheduleSelfShipAppointmentWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation scheduleSelfShipAppointmentWithHttpInfo
+     * Operation scheduleSelfShipAppointmentWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $slot_id
-     *  An identifier to a self-ship appointment slot. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                                Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string                             $slot_id
+     *                                                                An identifier to a self-ship appointment slot. (required)
+     * @param ScheduleSelfShipAppointmentRequest $body
+     *                                                                The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function scheduleSelfShipAppointmentWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body,
+        ScheduleSelfShipAppointmentRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->scheduleSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $slot_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-scheduleSelfShipAppointment");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-scheduleSelfShipAppointment');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->scheduleSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
@@ -12968,86 +12927,86 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation scheduleSelfShipAppointmentAsync
+     * Operation scheduleSelfShipAppointmentAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $slot_id
-     *  An identifier to a self-ship appointment slot. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                            Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string                             $slot_id
+     *                                                            An identifier to a self-ship appointment slot. (required)
+     * @param ScheduleSelfShipAppointmentRequest $body
+     *                                                            The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function scheduleSelfShipAppointmentAsync(
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body
     ): PromiseInterface {
         return $this->scheduleSelfShipAppointmentAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $slot_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation scheduleSelfShipAppointmentAsyncWithHttpInfo
+     * Operation scheduleSelfShipAppointmentAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $slot_id
-     *  An identifier to a self-ship appointment slot. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                            Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string                             $slot_id
+     *                                                            An identifier to a self-ship appointment slot. (required)
+     * @param ScheduleSelfShipAppointmentRequest $body
+     *                                                            The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function scheduleSelfShipAppointmentAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body,
-    ?string $restrictedDataToken = null
+        ScheduleSelfShipAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse';
         $request = $this->scheduleSelfShipAppointmentRequest($inbound_plan_id, $shipment_id, $slot_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-scheduleSelfShipAppointment");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-scheduleSelfShipAppointment');
         } else {
             $request = $this->config->sign($request);
         }
@@ -13059,11 +13018,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -13071,12 +13030,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -13088,32 +13048,32 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'scheduleSelfShipAppointment'
+     * Create request for operation 'scheduleSelfShipAppointment'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  string $slot_id
-     *  An identifier to a self-ship appointment slot. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
-     *  The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                            Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param string                             $slot_id
+     *                                                            An identifier to a self-ship appointment slot. (required)
+     * @param ScheduleSelfShipAppointmentRequest $body
+     *                                                            The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function scheduleSelfShipAppointmentRequest(
         string $inbound_plan_id,
         string $shipment_id,
         string $slot_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest $body
+        ScheduleSelfShipAppointmentRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling scheduleSelfShipAppointment'
             );
@@ -13124,12 +13084,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.scheduleSelfShipAppointment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.scheduleSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.scheduleSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling scheduleSelfShipAppointment'
             );
@@ -13140,12 +13100,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.scheduleSelfShipAppointment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.scheduleSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.scheduleSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'slot_id' is set
-        if ($slot_id === null || (is_array($slot_id) && count($slot_id) === 0)) {
+        if (null === $slot_id || (is_array($slot_id) && 0 === count($slot_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $slot_id when calling scheduleSelfShipAppointment'
             );
@@ -13156,12 +13116,12 @@ class FbaInboundApi
         if (strlen($slot_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$slot_id" when calling FbaInboundApi.scheduleSelfShipAppointment, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $slot_id)) {
-            throw new \InvalidArgumentException("invalid value for \"slot_id\" when calling FbaInboundApi.scheduleSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $slot_id)) {
+            throw new \InvalidArgumentException('invalid value for "slot_id" when calling FbaInboundApi.scheduleSelfShipAppointment, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling scheduleSelfShipAppointment'
             );
@@ -13174,44 +13134,40 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
         // path params
-        if ($slot_id !== null) {
+        if (null !== $slot_id) {
             $resourcePath = str_replace(
-                '{' . 'slotId' . '}',
+                '{slotId}',
                 ObjectSerializer::toPathValue($slot_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -13224,22 +13180,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -13253,62 +13206,66 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation setPackingInformation
+     * Operation setPackingInformation.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
-     *  The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param SetPackingInformationRequest $body
+     *                                                          The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse
      */
     public function setPackingInformation(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body,
+        SetPackingInformationRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse {
-        list($response) = $this->setPackingInformationWithHttpInfo($inbound_plan_id, $body,,$restrictedDataToken);
+    ): SetPackingInformationResponse {
+        list($response) = $this->setPackingInformationWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation setPackingInformationWithHttpInfo
+     * Operation setPackingInformationWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
-     *  The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param SetPackingInformationRequest $body
+     *                                                          The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function setPackingInformationWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body,
+        SetPackingInformationRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->setPackingInformationRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-setPackingInformation");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPackingInformation');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->setPackingInformationRateLimiter->consume()->ensureAccepted();
@@ -13344,74 +13301,74 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation setPackingInformationAsync
+     * Operation setPackingInformationAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
-     *  The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                      Identifier of an inbound plan. (required)
+     * @param SetPackingInformationRequest $body
+     *                                                      The body of the request to &#x60;setPackingInformation&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function setPackingInformationAsync(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
+        SetPackingInformationRequest $body
     ): PromiseInterface {
         return $this->setPackingInformationAsyncWithHttpInfo($inbound_plan_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation setPackingInformationAsyncWithHttpInfo
+     * Operation setPackingInformationAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
-     *  The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                      Identifier of an inbound plan. (required)
+     * @param SetPackingInformationRequest $body
+     *                                                      The body of the request to &#x60;setPackingInformation&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function setPackingInformationAsyncWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body,
-    ?string $restrictedDataToken = null
+        SetPackingInformationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse';
         $request = $this->setPackingInformationRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-setPackingInformation");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPackingInformation');
         } else {
             $request = $this->config->sign($request);
         }
@@ -13423,11 +13380,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -13435,12 +13392,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -13452,26 +13410,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'setPackingInformation'
+     * Create request for operation 'setPackingInformation'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
-     *  The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                      Identifier of an inbound plan. (required)
+     * @param SetPackingInformationRequest $body
+     *                                                      The body of the request to &#x60;setPackingInformation&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function setPackingInformationRequest(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest $body
+        SetPackingInformationRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling setPackingInformation'
             );
@@ -13482,12 +13440,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.setPackingInformation, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.setPackingInformation, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.setPackingInformation, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling setPackingInformation'
             );
@@ -13500,28 +13458,24 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -13534,22 +13488,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -13563,56 +13514,60 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation setPrepDetails
+     * Operation setPrepDetails.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
-     *  The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param SetPrepDetailsRequest $body
+     *                                                   The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse
      */
     public function setPrepDetails(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body,
+        SetPrepDetailsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse {
-        list($response) = $this->setPrepDetailsWithHttpInfo($body,$restrictedDataToken);
+    ): SetPrepDetailsResponse {
+        list($response) = $this->setPrepDetailsWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation setPrepDetailsWithHttpInfo
+     * Operation setPrepDetailsWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
-     *  The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param SetPrepDetailsRequest $body
+     *                                                   The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function setPrepDetailsWithHttpInfo(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body,
+        SetPrepDetailsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->setPrepDetailsRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-setPrepDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPrepDetails');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->setPrepDetailsRateLimiter->consume()->ensureAccepted();
@@ -13648,68 +13603,68 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation setPrepDetailsAsync
+     * Operation setPrepDetailsAsync.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
-     *  The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param SetPrepDetailsRequest $body
+     *                                    The body of the request to &#x60;setPrepDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function setPrepDetailsAsync(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body
     ): PromiseInterface {
         return $this->setPrepDetailsAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation setPrepDetailsAsyncWithHttpInfo
+     * Operation setPrepDetailsAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
-     *  The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param SetPrepDetailsRequest $body
+     *                                    The body of the request to &#x60;setPrepDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function setPrepDetailsAsyncWithHttpInfo(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body,
-    ?string $restrictedDataToken = null
+        SetPrepDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse';
         $request = $this->setPrepDetailsRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-setPrepDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPrepDetails');
         } else {
             $request = $this->config->sign($request);
         }
@@ -13721,11 +13676,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -13733,12 +13688,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -13750,23 +13706,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'setPrepDetails'
+     * Create request for operation 'setPrepDetails'.
      *
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
-     *  The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param SetPrepDetailsRequest $body
+     *                                    The body of the request to &#x60;setPrepDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function setPrepDetailsRequest(
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest $body
+        SetPrepDetailsRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling setPrepDetails'
             );
@@ -13779,20 +13735,15 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -13805,22 +13756,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -13834,61 +13782,64 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateInboundPlanName
+     * Operation updateInboundPlanName.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
-     *  The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param UpdateInboundPlanNameRequest $body
+     *                                                          The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function updateInboundPlanName(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body,
+        UpdateInboundPlanNameRequest $body,
         ?string $restrictedDataToken = null
     ): void {
-        $this->updateInboundPlanNameWithHttpInfo($inbound_plan_id, $body,,$restrictedDataToken);
+        $this->updateInboundPlanNameWithHttpInfo($inbound_plan_id, $body, $restrictedDataToken);
     }
 
     /**
-     * Operation updateInboundPlanNameWithHttpInfo
+     * Operation updateInboundPlanNameWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
-     *  The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                          Identifier of an inbound plan. (required)
+     * @param UpdateInboundPlanNameRequest $body
+     *                                                          The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateInboundPlanNameWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body,
+        UpdateInboundPlanNameRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateInboundPlanNameRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateInboundPlanName");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateInboundPlanName');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateInboundPlanNameRateLimiter->consume()->ensureAccepted();
@@ -13925,61 +13876,61 @@ class FbaInboundApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateInboundPlanNameAsync
+     * Operation updateInboundPlanNameAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
-     *  The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                      Identifier of an inbound plan. (required)
+     * @param UpdateInboundPlanNameRequest $body
+     *                                                      The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateInboundPlanNameAsync(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body
     ): PromiseInterface {
         return $this->updateInboundPlanNameAsyncWithHttpInfo($inbound_plan_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateInboundPlanNameAsyncWithHttpInfo
+     * Operation updateInboundPlanNameAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
-     *  The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                      Identifier of an inbound plan. (required)
+     * @param UpdateInboundPlanNameRequest $body
+     *                                                      The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateInboundPlanNameAsyncWithHttpInfo(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body,
-    ?string $restrictedDataToken = null
+        UpdateInboundPlanNameRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundPlanNameRequest($inbound_plan_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateInboundPlanName");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateInboundPlanName');
         } else {
             $request = $this->config->sign($request);
         }
@@ -13990,12 +13941,13 @@ class FbaInboundApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -14007,26 +13959,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateInboundPlanName'
+     * Create request for operation 'updateInboundPlanName'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
-     *  The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param string                       $inbound_plan_id
+     *                                                      Identifier of an inbound plan. (required)
+     * @param UpdateInboundPlanNameRequest $body
+     *                                                      The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateInboundPlanNameRequest(
         string $inbound_plan_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest $body
+        UpdateInboundPlanNameRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling updateInboundPlanName'
             );
@@ -14037,12 +13989,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.updateInboundPlanName, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.updateInboundPlanName, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.updateInboundPlanName, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateInboundPlanName'
             );
@@ -14055,28 +14007,24 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -14089,22 +14037,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -14118,62 +14063,66 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateItemComplianceDetails
+     * Operation updateItemComplianceDetails.
      *
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
-     *  The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param string                             $marketplace_id
+     *                                                                The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param UpdateItemComplianceDetailsRequest $body
+     *                                                                The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse
      */
     public function updateItemComplianceDetails(
         string $marketplace_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body,
+        UpdateItemComplianceDetailsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse {
-        list($response) = $this->updateItemComplianceDetailsWithHttpInfo($marketplace_id, $body,,$restrictedDataToken);
+    ): UpdateItemComplianceDetailsResponse {
+        list($response) = $this->updateItemComplianceDetailsWithHttpInfo($marketplace_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation updateItemComplianceDetailsWithHttpInfo
+     * Operation updateItemComplianceDetailsWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
-     *  The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param string                             $marketplace_id
+     *                                                                The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param UpdateItemComplianceDetailsRequest $body
+     *                                                                The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateItemComplianceDetailsWithHttpInfo(
         string $marketplace_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body,
+        UpdateItemComplianceDetailsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateItemComplianceDetailsRequest($marketplace_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateItemComplianceDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateItemComplianceDetails');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
@@ -14209,74 +14158,74 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateItemComplianceDetailsAsync
+     * Operation updateItemComplianceDetailsAsync.
      *
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
-     *  The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param string                             $marketplace_id
+     *                                                           The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param UpdateItemComplianceDetailsRequest $body
+     *                                                           The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateItemComplianceDetailsAsync(
         string $marketplace_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body
     ): PromiseInterface {
         return $this->updateItemComplianceDetailsAsyncWithHttpInfo($marketplace_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateItemComplianceDetailsAsyncWithHttpInfo
+     * Operation updateItemComplianceDetailsAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
-     *  The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param string                             $marketplace_id
+     *                                                           The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param UpdateItemComplianceDetailsRequest $body
+     *                                                           The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateItemComplianceDetailsAsyncWithHttpInfo(
         string $marketplace_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body,
-    ?string $restrictedDataToken = null
+        UpdateItemComplianceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse';
         $request = $this->updateItemComplianceDetailsRequest($marketplace_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateItemComplianceDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateItemComplianceDetails');
         } else {
             $request = $this->config->sign($request);
         }
@@ -14288,11 +14237,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -14300,12 +14249,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -14317,26 +14267,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateItemComplianceDetails'
+     * Create request for operation 'updateItemComplianceDetails'.
      *
-     * @param  string $marketplace_id
-     *  The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
-     *  The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param string                             $marketplace_id
+     *                                                           The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param UpdateItemComplianceDetailsRequest $body
+     *                                                           The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateItemComplianceDetailsRequest(
         string $marketplace_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest $body
+        UpdateItemComplianceDetailsRequest $body
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling updateItemComplianceDetails'
             );
@@ -14349,7 +14299,7 @@ class FbaInboundApi
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateItemComplianceDetails'
             );
@@ -14373,19 +14323,15 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -14398,22 +14344,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -14427,67 +14370,70 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateShipmentName
+     * Operation updateShipmentName.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
-     *  The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param string                    $inbound_plan_id
+     *                                                       Identifier of an inbound plan. (required)
+     * @param string                    $shipment_id
+     *                                                       Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentNameRequest $body
+     *                                                       The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function updateShipmentName(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body,
+        UpdateShipmentNameRequest $body,
         ?string $restrictedDataToken = null
     ): void {
-        $this->updateShipmentNameWithHttpInfo($inbound_plan_id, $shipment_id, $body,,,$restrictedDataToken);
+        $this->updateShipmentNameWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
     }
 
     /**
-     * Operation updateShipmentNameWithHttpInfo
+     * Operation updateShipmentNameWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
-     *  The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param string                    $inbound_plan_id
+     *                                                       Identifier of an inbound plan. (required)
+     * @param string                    $shipment_id
+     *                                                       Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentNameRequest $body
+     *                                                       The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateShipmentNameWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body,
+        UpdateShipmentNameRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentNameRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateShipmentName");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentName');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateShipmentNameRateLimiter->consume()->ensureAccepted();
@@ -14524,67 +14470,67 @@ class FbaInboundApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateShipmentNameAsync
+     * Operation updateShipmentNameAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
-     *  The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param string                    $inbound_plan_id
+     *                                                   Identifier of an inbound plan. (required)
+     * @param string                    $shipment_id
+     *                                                   Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentNameRequest $body
+     *                                                   The body of the request to &#x60;updateShipmentName&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateShipmentNameAsync(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body
     ): PromiseInterface {
         return $this->updateShipmentNameAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateShipmentNameAsyncWithHttpInfo
+     * Operation updateShipmentNameAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
-     *  The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param string                    $inbound_plan_id
+     *                                                   Identifier of an inbound plan. (required)
+     * @param string                    $shipment_id
+     *                                                   Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentNameRequest $body
+     *                                                   The body of the request to &#x60;updateShipmentName&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateShipmentNameAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body,
-    ?string $restrictedDataToken = null
+        UpdateShipmentNameRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentNameRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateShipmentName");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentName');
         } else {
             $request = $this->config->sign($request);
         }
@@ -14595,12 +14541,13 @@ class FbaInboundApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -14612,29 +14559,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateShipmentName'
+     * Create request for operation 'updateShipmentName'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
-     *  The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param string                    $inbound_plan_id
+     *                                                   Identifier of an inbound plan. (required)
+     * @param string                    $shipment_id
+     *                                                   Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentNameRequest $body
+     *                                                   The body of the request to &#x60;updateShipmentName&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateShipmentNameRequest(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest $body
+        UpdateShipmentNameRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling updateShipmentName'
             );
@@ -14645,12 +14592,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.updateShipmentName, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.updateShipmentName, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.updateShipmentName, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling updateShipmentName'
             );
@@ -14661,12 +14608,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.updateShipmentName, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.updateShipmentName, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.updateShipmentName, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateShipmentName'
             );
@@ -14679,36 +14626,32 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -14721,22 +14664,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -14750,68 +14690,72 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateShipmentSourceAddress
+     * Operation updateShipmentSourceAddress.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
-     *  The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                                Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentSourceAddressRequest $body
+     *                                                                The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse
      */
     public function updateShipmentSourceAddress(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body,
+        UpdateShipmentSourceAddressRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse {
-        list($response) = $this->updateShipmentSourceAddressWithHttpInfo($inbound_plan_id, $shipment_id, $body,,,$restrictedDataToken);
+    ): UpdateShipmentSourceAddressResponse {
+        list($response) = $this->updateShipmentSourceAddressWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation updateShipmentSourceAddressWithHttpInfo
+     * Operation updateShipmentSourceAddressWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
-     *  The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                                Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                                Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentSourceAddressRequest $body
+     *                                                                The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateShipmentSourceAddressWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body,
+        UpdateShipmentSourceAddressRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentSourceAddressRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateShipmentSourceAddress");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentSourceAddress');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateShipmentSourceAddressRateLimiter->consume()->ensureAccepted();
@@ -14847,80 +14791,80 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateShipmentSourceAddressAsync
+     * Operation updateShipmentSourceAddressAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
-     *  The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                            Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentSourceAddressRequest $body
+     *                                                            The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateShipmentSourceAddressAsync(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body
     ): PromiseInterface {
         return $this->updateShipmentSourceAddressAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateShipmentSourceAddressAsyncWithHttpInfo
+     * Operation updateShipmentSourceAddressAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
-     *  The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                            Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentSourceAddressRequest $body
+     *                                                            The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateShipmentSourceAddressAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body,
-    ?string $restrictedDataToken = null
+        UpdateShipmentSourceAddressRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse';
         $request = $this->updateShipmentSourceAddressRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateShipmentSourceAddress");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentSourceAddress');
         } else {
             $request = $this->config->sign($request);
         }
@@ -14932,11 +14876,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -14944,12 +14888,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -14961,29 +14906,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateShipmentSourceAddress'
+     * Create request for operation 'updateShipmentSourceAddress'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
-     *  The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param string                             $inbound_plan_id
+     *                                                            Identifier of an inbound plan. (required)
+     * @param string                             $shipment_id
+     *                                                            Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentSourceAddressRequest $body
+     *                                                            The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateShipmentSourceAddressRequest(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest $body
+        UpdateShipmentSourceAddressRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling updateShipmentSourceAddress'
             );
@@ -14994,12 +14939,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.updateShipmentSourceAddress, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.updateShipmentSourceAddress, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.updateShipmentSourceAddress, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling updateShipmentSourceAddress'
             );
@@ -15010,12 +14955,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.updateShipmentSourceAddress, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.updateShipmentSourceAddress, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.updateShipmentSourceAddress, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateShipmentSourceAddress'
             );
@@ -15028,36 +14973,32 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -15070,22 +15011,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -15099,68 +15037,72 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateShipmentTrackingDetails
+     * Operation updateShipmentTrackingDetails.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
-     *  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                                  Identifier of an inbound plan. (required)
+     * @param string                               $shipment_id
+     *                                                                  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentTrackingDetailsRequest $body
+     *                                                                  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse
      */
     public function updateShipmentTrackingDetails(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body,
+        UpdateShipmentTrackingDetailsRequest $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse {
-        list($response) = $this->updateShipmentTrackingDetailsWithHttpInfo($inbound_plan_id, $shipment_id, $body,,,$restrictedDataToken);
+    ): UpdateShipmentTrackingDetailsResponse {
+        list($response) = $this->updateShipmentTrackingDetailsWithHttpInfo($inbound_plan_id, $shipment_id, $body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation updateShipmentTrackingDetailsWithHttpInfo
+     * Operation updateShipmentTrackingDetailsWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
-     *  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                                  Identifier of an inbound plan. (required)
+     * @param string                               $shipment_id
+     *                                                                  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentTrackingDetailsRequest $body
+     *                                                                  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateShipmentTrackingDetailsWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body,
+        UpdateShipmentTrackingDetailsRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentTrackingDetailsRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateShipmentTrackingDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentTrackingDetails');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateShipmentTrackingDetailsRateLimiter->consume()->ensureAccepted();
@@ -15196,80 +15138,80 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\inbound\v2024_03_20\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateShipmentTrackingDetailsAsync
+     * Operation updateShipmentTrackingDetailsAsync.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
-     *  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param string                               $shipment_id
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentTrackingDetailsRequest $body
+     *                                                              The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateShipmentTrackingDetailsAsync(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body
     ): PromiseInterface {
         return $this->updateShipmentTrackingDetailsAsyncWithHttpInfo($inbound_plan_id, $shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateShipmentTrackingDetailsAsyncWithHttpInfo
+     * Operation updateShipmentTrackingDetailsAsyncWithHttpInfo.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
-     *  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param string                               $shipment_id
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentTrackingDetailsRequest $body
+     *                                                              The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateShipmentTrackingDetailsAsyncWithHttpInfo(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body,
-    ?string $restrictedDataToken = null
+        UpdateShipmentTrackingDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse';
         $request = $this->updateShipmentTrackingDetailsRequest($inbound_plan_id, $shipment_id, $body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-updateShipmentTrackingDetails");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentTrackingDetails');
         } else {
             $request = $this->config->sign($request);
         }
@@ -15281,11 +15223,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -15293,12 +15235,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -15310,29 +15253,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateShipmentTrackingDetails'
+     * Create request for operation 'updateShipmentTrackingDetails'.
      *
-     * @param  string $inbound_plan_id
-     *  Identifier of an inbound plan. (required)
-     * @param  string $shipment_id
-     *  Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
-     * @param  \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
-     *  The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param string                               $inbound_plan_id
+     *                                                              Identifier of an inbound plan. (required)
+     * @param string                               $shipment_id
+     *                                                              Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param UpdateShipmentTrackingDetailsRequest $body
+     *                                                              The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateShipmentTrackingDetailsRequest(
         string $inbound_plan_id,
         string $shipment_id,
-        \SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest $body
+        UpdateShipmentTrackingDetailsRequest $body
     ): Request {
         // verify the required parameter 'inbound_plan_id' is set
-        if ($inbound_plan_id === null || (is_array($inbound_plan_id) && count($inbound_plan_id) === 0)) {
+        if (null === $inbound_plan_id || (is_array($inbound_plan_id) && 0 === count($inbound_plan_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $inbound_plan_id when calling updateShipmentTrackingDetails'
             );
@@ -15343,12 +15286,12 @@ class FbaInboundApi
         if (strlen($inbound_plan_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$inbound_plan_id" when calling FbaInboundApi.updateShipmentTrackingDetails, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $inbound_plan_id)) {
-            throw new \InvalidArgumentException("invalid value for \"inbound_plan_id\" when calling FbaInboundApi.updateShipmentTrackingDetails, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $inbound_plan_id)) {
+            throw new \InvalidArgumentException('invalid value for "inbound_plan_id" when calling FbaInboundApi.updateShipmentTrackingDetails, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling updateShipmentTrackingDetails'
             );
@@ -15359,12 +15302,12 @@ class FbaInboundApi
         if (strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling FbaInboundApi.updateShipmentTrackingDetails, must be bigger than or equal to 38.');
         }
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $shipment_id)) {
-            throw new \InvalidArgumentException("invalid value for \"shipment_id\" when calling FbaInboundApi.updateShipmentTrackingDetails, must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $shipment_id)) {
+            throw new \InvalidArgumentException('invalid value for "shipment_id" when calling FbaInboundApi.updateShipmentTrackingDetails, must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateShipmentTrackingDetails'
             );
@@ -15377,36 +15320,32 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($inbound_plan_id !== null) {
+        if (null !== $inbound_plan_id) {
             $resourcePath = str_replace(
-                '{' . 'inboundPlanId' . '}',
+                '{inboundPlanId}',
                 ObjectSerializer::toPathValue($inbound_plan_id),
                 $resourcePath
             );
         }
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -15419,22 +15358,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -15448,19 +15384,21 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -15468,7 +15406,7 @@ class FbaInboundApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

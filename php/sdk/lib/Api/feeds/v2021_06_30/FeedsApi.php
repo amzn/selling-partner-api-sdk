@@ -1,16 +1,18 @@
 <?php
+
 /**
  * FeedsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Feeds
+ * Selling Partner API for Feeds.
  *
  * The Selling Partner API for Feeds lets you upload data to Amazon on behalf of a selling partner.
  *
@@ -35,38 +37,43 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse;
+use SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification;
+use SpApi\Model\feeds\v2021_06_30\CreateFeedResponse;
+use SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification;
+use SpApi\Model\feeds\v2021_06_30\Feed;
+use SpApi\Model\feeds\v2021_06_30\FeedDocument;
+use SpApi\Model\feeds\v2021_06_30\GetFeedsResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FeedsApi Class Doc Comment
+ * FeedsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FeedsApi
 {
-    /**
-     * @var ClientInterface
-     */
+    public ?LimiterInterface $cancelFeedRateLimiter;
+    public ?LimiterInterface $createFeedRateLimiter;
+    public ?LimiterInterface $createFeedDocumentRateLimiter;
+    public ?LimiterInterface $getFeedRateLimiter;
+    public ?LimiterInterface $getFeedDocumentRateLimiter;
+    public ?LimiterInterface $getFeedsRateLimiter;
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,26 +81,16 @@ class FeedsApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
+    private bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $cancelFeedRateLimiter;
-    public ?LimiterInterface $createFeedRateLimiter;
-    public ?LimiterInterface $createFeedDocumentRateLimiter;
-    public ?LimiterInterface $getFeedRateLimiter;
-    public ?LimiterInterface $getFeedDocumentRateLimiter;
-    public ?LimiterInterface $getFeedsRateLimiter;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
+        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -103,18 +100,18 @@ class FeedsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FeedsApi-cancelFeed"), $this->rateLimitStorage);
-            $this->cancelFeedRateLimiter = $factory->create("FeedsApi-cancelFeed");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FeedsApi-createFeed"), $this->rateLimitStorage);
-            $this->createFeedRateLimiter = $factory->create("FeedsApi-createFeed");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FeedsApi-createFeedDocument"), $this->rateLimitStorage);
-            $this->createFeedDocumentRateLimiter = $factory->create("FeedsApi-createFeedDocument");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FeedsApi-getFeed"), $this->rateLimitStorage);
-            $this->getFeedRateLimiter = $factory->create("FeedsApi-getFeed");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FeedsApi-getFeedDocument"), $this->rateLimitStorage);
-            $this->getFeedDocumentRateLimiter = $factory->create("FeedsApi-getFeedDocument");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FeedsApi-getFeeds"), $this->rateLimitStorage);
-            $this->getFeedsRateLimiter = $factory->create("FeedsApi-getFeeds");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-cancelFeed'), $this->rateLimitStorage);
+            $this->cancelFeedRateLimiter = $factory->create('FeedsApi-cancelFeed');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeed'), $this->rateLimitStorage);
+            $this->createFeedRateLimiter = $factory->create('FeedsApi-createFeed');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeedDocument'), $this->rateLimitStorage);
+            $this->createFeedDocumentRateLimiter = $factory->create('FeedsApi-createFeedDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeed'), $this->rateLimitStorage);
+            $this->getFeedRateLimiter = $factory->create('FeedsApi-getFeed');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeedDocument'), $this->rateLimitStorage);
+            $this->getFeedDocumentRateLimiter = $factory->create('FeedsApi-getFeedDocument');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeeds'), $this->rateLimitStorage);
+            $this->getFeedsRateLimiter = $factory->create('FeedsApi-getFeeds');
         }
 
         $this->client = $client ?: new Client();
@@ -123,7 +120,7 @@ class FeedsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -133,7 +130,7 @@ class FeedsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -142,54 +139,54 @@ class FeedsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
+
     /**
-     * Operation cancelFeed
+     * Operation cancelFeed.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function cancelFeed(
         string $feed_id,
         ?string $restrictedDataToken = null
     ): void {
-        $this->cancelFeedWithHttpInfo($feed_id,$restrictedDataToken);
+        $this->cancelFeedWithHttpInfo($feed_id, $restrictedDataToken);
     }
 
     /**
-     * Operation cancelFeedWithHttpInfo
+     * Operation cancelFeedWithHttpInfo.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelFeedWithHttpInfo(
         string $feed_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelFeedRequest($feed_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-cancelFeed");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-cancelFeed');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelFeedRateLimiter->consume()->ensureAccepted();
@@ -226,26 +223,26 @@ class FeedsApi
                 );
             }
 
-                return [null, $statusCode, $response->getHeaders()];
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\feeds\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\feeds\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelFeedAsync
+     * Operation cancelFeedAsync.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $feed_id
+     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelFeedAsync(
         string $feed_id
@@ -255,26 +252,26 @@ class FeedsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelFeedAsyncWithHttpInfo
+     * Operation cancelFeedAsyncWithHttpInfo.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $feed_id
+     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelFeedAsyncWithHttpInfo(
         string $feed_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelFeedRequest($feed_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-cancelFeed");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-cancelFeed');
         } else {
             $request = $this->config->sign($request);
         }
@@ -285,12 +282,13 @@ class FeedsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -302,23 +300,23 @@ class FeedsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelFeed'
+     * Create request for operation 'cancelFeed'.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $feed_id
+     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelFeedRequest(
         string $feed_id
     ): Request {
         // verify the required parameter 'feed_id' is set
-        if ($feed_id === null || (is_array($feed_id) && count($feed_id) === 0)) {
+        if (null === $feed_id || (is_array($feed_id) && 0 === count($feed_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $feed_id when calling cancelFeed'
             );
@@ -331,21 +329,17 @@ class FeedsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($feed_id !== null) {
+        if (null !== $feed_id) {
             $resourcePath = str_replace(
-                '{' . 'feedId' . '}',
+                '{feedId}',
                 ObjectSerializer::toPathValue($feed_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -359,22 +353,19 @@ class FeedsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -388,56 +379,60 @@ class FeedsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createFeed
+     * Operation createFeed.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
-     *  Information required to create the feed. (required)
+     * @param CreateFeedSpecification $body
+     *                                                     Information required to create the feed. (required)
+     * @param null|string             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\feeds\v2021_06_30\CreateFeedResponse
      */
     public function createFeed(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body,
+        CreateFeedSpecification $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\feeds\v2021_06_30\CreateFeedResponse {
-        list($response) = $this->createFeedWithHttpInfo($body,$restrictedDataToken);
+    ): CreateFeedResponse {
+        list($response) = $this->createFeedWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createFeedWithHttpInfo
+     * Operation createFeedWithHttpInfo.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
-     *  Information required to create the feed. (required)
+     * @param CreateFeedSpecification $body
+     *                                                     Information required to create the feed. (required)
+     * @param null|string             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\feeds\v2021_06_30\CreateFeedResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createFeedWithHttpInfo(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body,
+        CreateFeedSpecification $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFeedRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-createFeed");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeed');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createFeedRateLimiter->consume()->ensureAccepted();
@@ -473,68 +468,68 @@ class FeedsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\feeds\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\feeds\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createFeedAsync
+     * Operation createFeedAsync.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
-     *  Information required to create the feed. (required)
+     * @param CreateFeedSpecification $body
+     *                                      Information required to create the feed. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFeedAsync(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
+        CreateFeedSpecification $body
     ): PromiseInterface {
         return $this->createFeedAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createFeedAsyncWithHttpInfo
+     * Operation createFeedAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
-     *  Information required to create the feed. (required)
+     * @param CreateFeedSpecification $body
+     *                                      Information required to create the feed. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFeedAsyncWithHttpInfo(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body,
-    ?string $restrictedDataToken = null
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse';
         $request = $this->createFeedRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-createFeed");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeed');
         } else {
             $request = $this->config->sign($request);
         }
@@ -546,11 +541,11 @@ class FeedsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -558,12 +553,13 @@ class FeedsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -575,23 +571,23 @@ class FeedsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createFeed'
+     * Create request for operation 'createFeed'.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
-     *  Information required to create the feed. (required)
+     * @param CreateFeedSpecification $body
+     *                                      Information required to create the feed. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createFeedRequest(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
+        CreateFeedSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createFeed'
             );
@@ -604,20 +600,15 @@ class FeedsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -630,22 +621,19 @@ class FeedsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -659,56 +647,60 @@ class FeedsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createFeedDocument
+     * Operation createFeedDocument.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
-     *  Specifies the content type for the createFeedDocument operation. (required)
+     * @param CreateFeedDocumentSpecification $body
+     *                                                             Specifies the content type for the createFeedDocument operation. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse
      */
     public function createFeedDocument(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body,
+        CreateFeedDocumentSpecification $body,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse {
-        list($response) = $this->createFeedDocumentWithHttpInfo($body,$restrictedDataToken);
+    ): CreateFeedDocumentResponse {
+        list($response) = $this->createFeedDocumentWithHttpInfo($body, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation createFeedDocumentWithHttpInfo
+     * Operation createFeedDocumentWithHttpInfo.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
-     *  Specifies the content type for the createFeedDocument operation. (required)
+     * @param CreateFeedDocumentSpecification $body
+     *                                                             Specifies the content type for the createFeedDocument operation. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createFeedDocumentWithHttpInfo(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body,
+        CreateFeedDocumentSpecification $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFeedDocumentRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-createFeedDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeedDocument');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
@@ -744,68 +736,68 @@ class FeedsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\feeds\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\feeds\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation createFeedDocumentAsync
+     * Operation createFeedDocumentAsync.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
-     *  Specifies the content type for the createFeedDocument operation. (required)
+     * @param CreateFeedDocumentSpecification $body
+     *                                              Specifies the content type for the createFeedDocument operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFeedDocumentAsync(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body
     ): PromiseInterface {
         return $this->createFeedDocumentAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createFeedDocumentAsyncWithHttpInfo
+     * Operation createFeedDocumentAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
-     *  Specifies the content type for the createFeedDocument operation. (required)
+     * @param CreateFeedDocumentSpecification $body
+     *                                              Specifies the content type for the createFeedDocument operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createFeedDocumentAsyncWithHttpInfo(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body,
-    ?string $restrictedDataToken = null
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse';
         $request = $this->createFeedDocumentRequest($body);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-createFeedDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeedDocument');
         } else {
             $request = $this->config->sign($request);
         }
@@ -817,11 +809,11 @@ class FeedsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -829,12 +821,13 @@ class FeedsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -846,23 +839,23 @@ class FeedsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createFeedDocument'
+     * Create request for operation 'createFeedDocument'.
      *
-     * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
-     *  Specifies the content type for the createFeedDocument operation. (required)
+     * @param CreateFeedDocumentSpecification $body
+     *                                              Specifies the content type for the createFeedDocument operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createFeedDocumentRequest(
-        \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createFeedDocument'
             );
@@ -875,20 +868,15 @@ class FeedsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json'
-            ,
+            'application/json',
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -901,22 +889,19 @@ class FeedsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -930,56 +915,60 @@ class FeedsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFeed
+     * Operation getFeed.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\feeds\v2021_06_30\Feed
      */
     public function getFeed(
         string $feed_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\feeds\v2021_06_30\Feed {
-        list($response) = $this->getFeedWithHttpInfo($feed_id,$restrictedDataToken);
+    ): Feed {
+        list($response) = $this->getFeedWithHttpInfo($feed_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFeedWithHttpInfo
+     * Operation getFeedWithHttpInfo.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\feeds\v2021_06_30\Feed, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFeedWithHttpInfo(
         string $feed_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedRequest($feed_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-getFeed");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeed');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFeedRateLimiter->consume()->ensureAccepted();
@@ -1015,39 +1004,39 @@ class FeedsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\feeds\v2021_06_30\Feed' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\feeds\v2021_06_30\Feed' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\feeds\v2021_06_30\Feed' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\feeds\v2021_06_30\Feed' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\Feed', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\Feed', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\feeds\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\feeds\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFeedAsync
+     * Operation getFeedAsync.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $feed_id
+     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeedAsync(
         string $feed_id
@@ -1057,26 +1046,26 @@ class FeedsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFeedAsyncWithHttpInfo
+     * Operation getFeedAsyncWithHttpInfo.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $feed_id
+     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeedAsyncWithHttpInfo(
         string $feed_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\Feed';
         $request = $this->getFeedRequest($feed_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-getFeed");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeed');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1088,11 +1077,11 @@ class FeedsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1100,12 +1089,13 @@ class FeedsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1117,23 +1107,23 @@ class FeedsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFeed'
+     * Create request for operation 'getFeed'.
      *
-     * @param  string $feed_id
-     *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $feed_id
+     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFeedRequest(
         string $feed_id
     ): Request {
         // verify the required parameter 'feed_id' is set
-        if ($feed_id === null || (is_array($feed_id) && count($feed_id) === 0)) {
+        if (null === $feed_id || (is_array($feed_id) && 0 === count($feed_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $feed_id when calling getFeed'
             );
@@ -1146,21 +1136,17 @@ class FeedsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($feed_id !== null) {
+        if (null !== $feed_id) {
             $resourcePath = str_replace(
-                '{' . 'feedId' . '}',
+                '{feedId}',
                 ObjectSerializer::toPathValue($feed_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1174,22 +1160,19 @@ class FeedsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1203,56 +1186,60 @@ class FeedsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFeedDocument
+     * Operation getFeedDocument.
      *
-     * @param  string $feed_document_id
-     *  The identifier of the feed document. (required)
+     * @param string      $feed_document_id
+     *                                         The identifier of the feed document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\feeds\v2021_06_30\FeedDocument
      */
     public function getFeedDocument(
         string $feed_document_id,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\feeds\v2021_06_30\FeedDocument {
-        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id,$restrictedDataToken);
+    ): FeedDocument {
+        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFeedDocumentWithHttpInfo
+     * Operation getFeedDocumentWithHttpInfo.
      *
-     * @param  string $feed_document_id
-     *  The identifier of the feed document. (required)
+     * @param string      $feed_document_id
+     *                                         The identifier of the feed document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\feeds\v2021_06_30\FeedDocument, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFeedDocumentWithHttpInfo(
         string $feed_document_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedDocumentRequest($feed_document_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-getFeedDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
@@ -1288,39 +1275,39 @@ class FeedsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\feeds\v2021_06_30\FeedDocument' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\feeds\v2021_06_30\FeedDocument' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\feeds\v2021_06_30\FeedDocument' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\feeds\v2021_06_30\FeedDocument' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\FeedDocument', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\FeedDocument', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\feeds\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\feeds\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFeedDocumentAsync
+     * Operation getFeedDocumentAsync.
      *
-     * @param  string $feed_document_id
-     *  The identifier of the feed document. (required)
+     * @param string $feed_document_id
+     *                                 The identifier of the feed document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeedDocumentAsync(
         string $feed_document_id
@@ -1330,26 +1317,26 @@ class FeedsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFeedDocumentAsyncWithHttpInfo
+     * Operation getFeedDocumentAsyncWithHttpInfo.
      *
-     * @param  string $feed_document_id
-     *  The identifier of the feed document. (required)
+     * @param string $feed_document_id
+     *                                 The identifier of the feed document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeedDocumentAsyncWithHttpInfo(
         string $feed_document_id,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\FeedDocument';
         $request = $this->getFeedDocumentRequest($feed_document_id);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-getFeedDocument");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1361,11 +1348,11 @@ class FeedsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1373,12 +1360,13 @@ class FeedsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1390,23 +1378,23 @@ class FeedsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFeedDocument'
+     * Create request for operation 'getFeedDocument'.
      *
-     * @param  string $feed_document_id
-     *  The identifier of the feed document. (required)
+     * @param string $feed_document_id
+     *                                 The identifier of the feed document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFeedDocumentRequest(
         string $feed_document_id
     ): Request {
         // verify the required parameter 'feed_document_id' is set
-        if ($feed_document_id === null || (is_array($feed_document_id) && count($feed_document_id) === 0)) {
+        if (null === $feed_document_id || (is_array($feed_document_id) && 0 === count($feed_document_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $feed_document_id when calling getFeedDocument'
             );
@@ -1419,21 +1407,17 @@ class FeedsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($feed_document_id !== null) {
+        if (null !== $feed_document_id) {
             $resourcePath = str_replace(
-                '{' . 'feedDocumentId' . '}',
+                '{feedDocumentId}',
                 ObjectSerializer::toPathValue($feed_document_id),
                 $resourcePath
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1447,22 +1431,19 @@ class FeedsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1476,36 +1457,36 @@ class FeedsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFeeds
+     * Operation getFeeds.
      *
-     * @param  string[]|null $feed_types
-     *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of feeds to return in a single call. (optional, default to 10)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter feeds. (optional)
-     * @param  \DateTime|null $created_since
-     *  The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $feed_types
+     *                                            A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter feeds. (optional)
+     * @param null|\DateTime $created_since
+     *                                            The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\feeds\v2021_06_30\GetFeedsResponse
      */
     public function getFeeds(
         ?array $feed_types = null,
@@ -1516,33 +1497,35 @@ class FeedsApi
         ?\DateTime $created_until = null,
         ?string $next_token = null,
         ?string $restrictedDataToken = null
-    ): \SpApi\Model\feeds\v2021_06_30\GetFeedsResponse {
-        list($response) = $this->getFeedsWithHttpInfo($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token,,,,,,,$restrictedDataToken);
+    ): GetFeedsResponse {
+        list($response) = $this->getFeedsWithHttpInfo($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token, $restrictedDataToken);
+
         return $response;
     }
 
     /**
-     * Operation getFeedsWithHttpInfo
+     * Operation getFeedsWithHttpInfo.
      *
-     * @param  string[]|null $feed_types
-     *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of feeds to return in a single call. (optional, default to 10)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter feeds. (optional)
-     * @param  \DateTime|null $created_since
-     *  The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $feed_types
+     *                                            A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter feeds. (optional)
+     * @param null|\DateTime $created_since
+     *                                            The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\feeds\v2021_06_30\GetFeedsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getFeedsWithHttpInfo(
         ?array $feed_types = null,
@@ -1555,13 +1538,15 @@ class FeedsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-getFeeds");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeeds');
         } else {
             $request = $this->config->sign($request);
         }
+
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFeedsRateLimiter->consume()->ensureAccepted();
@@ -1597,51 +1582,51 @@ class FeedsApi
                     (string) $response->getBody()
                 );
             }
-                if ('\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse' !== 'string') {
-                        $content = json_decode($content);
-                    }
+            if ('\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse' !== 'string') {
+                    $content = json_decode($content);
                 }
+            }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\feeds\v2021_06_30\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\feeds\v2021_06_30\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
 
     /**
-     * Operation getFeedsAsync
+     * Operation getFeedsAsync.
      *
-     * @param  string[]|null $feed_types
-     *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of feeds to return in a single call. (optional, default to 10)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter feeds. (optional)
-     * @param  \DateTime|null $created_since
-     *  The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $feed_types
+     *                                            A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter feeds. (optional)
+     * @param null|\DateTime $created_since
+     *                                            The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeedsAsync(
         ?array $feed_types = null,
@@ -1657,29 +1642,29 @@ class FeedsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getFeedsAsyncWithHttpInfo
+     * Operation getFeedsAsyncWithHttpInfo.
      *
-     * @param  string[]|null $feed_types
-     *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of feeds to return in a single call. (optional, default to 10)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter feeds. (optional)
-     * @param  \DateTime|null $created_since
-     *  The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $feed_types
+     *                                            A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter feeds. (optional)
+     * @param null|\DateTime $created_since
+     *                                            The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getFeedsAsyncWithHttpInfo(
         ?array $feed_types = null,
@@ -1689,12 +1674,12 @@ class FeedsApi
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
         ?string $next_token = null,
-    ?string $restrictedDataToken = null
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse';
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
-        if ($restrictedDataToken !== null) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FeedsApi-getFeeds");
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeeds');
         } else {
             $request = $this->config->sign($request);
         }
@@ -1706,11 +1691,11 @@ class FeedsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1718,12 +1703,13 @@ class FeedsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1735,29 +1721,29 @@ class FeedsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getFeeds'
+     * Create request for operation 'getFeeds'.
      *
-     * @param  string[]|null $feed_types
-     *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of feeds to return in a single call. (optional, default to 10)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter feeds. (optional)
-     * @param  \DateTime|null $created_since
-     *  The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $feed_types
+     *                                            A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter feeds. The feeds returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter feeds. (optional)
+     * @param null|\DateTime $created_since
+     *                                            The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getFeedsRequest(
         ?array $feed_types = null,
@@ -1768,31 +1754,30 @@ class FeedsApi
         ?\DateTime $created_until = null,
         ?string $next_token = null
     ): Request {
-        if ($feed_types !== null && count($feed_types) > 10) {
+        if (null !== $feed_types && count($feed_types) > 10) {
             throw new \InvalidArgumentException('invalid value for "$feed_types" when calling FeedsApi.getFeeds, number of items must be less than or equal to 10.');
         }
-        if ($feed_types !== null && count($feed_types) < 1) {
+        if (null !== $feed_types && count($feed_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$feed_types" when calling FeedsApi.getFeeds, number of items must be greater than or equal to 1.');
         }
 
-        if ($marketplace_ids !== null && count($marketplace_ids) > 10) {
+        if (null !== $marketplace_ids && count($marketplace_ids) > 10) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling FeedsApi.getFeeds, number of items must be less than or equal to 10.');
         }
-        if ($marketplace_ids !== null && count($marketplace_ids) < 1) {
+        if (null !== $marketplace_ids && count($marketplace_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling FeedsApi.getFeeds, number of items must be greater than or equal to 1.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FeedsApi.getFeeds, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling FeedsApi.getFeeds, must be bigger than or equal to 1.');
         }
 
-        if ($processing_statuses !== null && count($processing_statuses) < 1) {
+        if (null !== $processing_statuses && count($processing_statuses) < 1) {
             throw new \InvalidArgumentException('invalid value for "$processing_statuses" when calling FeedsApi.getFeeds, number of items must be greater than or equal to 1.');
         }
-
 
         $resourcePath = '/feeds/2021-06-30/feeds';
         $formParams = [];
@@ -1872,12 +1857,8 @@ class FeedsApi
             $this->config
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            
             '',
             $multipart
         );
@@ -1891,22 +1872,19 @@ class FeedsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1920,19 +1898,21 @@ class FeedsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1940,7 +1920,7 @@ class FeedsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
