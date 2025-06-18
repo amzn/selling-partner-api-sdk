@@ -169,7 +169,7 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
         ?string $restrictedDataToken = null
     ){{#returnType}}: {{#responses}}{{#-first}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
         {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},$restrictedDataToken);{{#returnType}}
@@ -215,7 +215,7 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}WithHttpInfo(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
@@ -388,8 +388,8 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}AsyncWithHttpInfo(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}},
-        ?string $restrictedDataToken = null
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
