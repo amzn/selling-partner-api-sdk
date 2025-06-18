@@ -100,7 +100,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -118,7 +118,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -246,7 +246,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -264,7 +264,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -526,8 +526,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipmentDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipmentDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetShipmentDetailsResponse>(localVarResponse.StatusCode,
@@ -656,8 +659,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipmentDetails", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipmentDetails", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetShipmentDetailsResponse>(localVarResponse.StatusCode,
@@ -671,7 +677,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -690,7 +696,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -738,8 +744,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipmentLabels", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipmentLabels", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetShipmentLabels>(localVarResponse.StatusCode,
@@ -753,7 +762,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -773,7 +782,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">The limit to the number of records returned. Default value is 50 records. (optional)</param>
         /// <param name="sortOrder">Sort the list by shipment label creation date in ascending or descending order. (optional)</param>
-        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="labelCreatedAfter">Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="labelCreatedBefore">Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format. (optional)</param>
         /// <param name="buyerReferenceNumber">Get Shipment labels by passing buyer reference number. (optional)</param>
@@ -820,8 +829,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetShipmentLabels", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetShipmentLabels", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetShipmentLabels>(localVarResponse.StatusCode,
@@ -892,8 +904,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitShipmentConfirmations", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitShipmentConfirmations", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitShipmentConfirmationsResponse>(localVarResponse.StatusCode,
@@ -964,8 +979,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitShipmentConfirmations", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitShipmentConfirmations", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitShipmentConfirmationsResponse>(localVarResponse.StatusCode,
@@ -1036,8 +1054,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitShipments", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitShipments", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitShipmentConfirmationsResponse>(localVarResponse.StatusCode,
@@ -1108,8 +1129,11 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitShipments", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitShipments", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitShipmentConfirmationsResponse>(localVarResponse.StatusCode,

@@ -93,6 +93,9 @@ jobs:
         working-directory: ./selling-partner-api-sdk/csharp/sdk/src/software.amzn.spapi/
         run: |
             dotnet build --configuration Release --no-restore
+      - name: copy README here
+        working-directory: ./selling-partner-api-sdk/csharp/sdk/src/software.amzn.spapi/
+        run: cp ../../../README.md .
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:

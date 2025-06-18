@@ -219,8 +219,11 @@ namespace software.amzn.spapi.Api.replenishment.v2022_11_07
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetSellingPartnerMetrics", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetSellingPartnerMetrics", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetSellingPartnerMetricsResponse>(localVarResponse.StatusCode,
@@ -288,8 +291,11 @@ namespace software.amzn.spapi.Api.replenishment.v2022_11_07
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetSellingPartnerMetrics", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetSellingPartnerMetrics", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetSellingPartnerMetricsResponse>(localVarResponse.StatusCode,

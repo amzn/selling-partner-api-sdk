@@ -317,8 +317,11 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetDefinitionsProductType", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetDefinitionsProductType", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ProductTypeDefinition>(localVarResponse.StatusCode,
@@ -402,8 +405,11 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetDefinitionsProductType", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetDefinitionsProductType", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ProductTypeDefinition>(localVarResponse.StatusCode,
@@ -478,8 +484,11 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SearchDefinitionsProductTypes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SearchDefinitionsProductTypes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ProductTypeList>(localVarResponse.StatusCode,
@@ -554,8 +563,11 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SearchDefinitionsProductTypes", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SearchDefinitionsProductTypes", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ProductTypeList>(localVarResponse.StatusCode,

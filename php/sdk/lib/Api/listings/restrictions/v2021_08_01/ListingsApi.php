@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList;
@@ -126,15 +127,16 @@ class ListingsApi
      * Operation getListingsRestrictions.
      *
      * @param string      $asin
-     *                                     The Amazon Standard Identification Number (ASIN) of the item. (required)
+     *                                         The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param string      $seller_id
-     *                                     A selling partner identifier, such as a merchant account. (required)
+     *                                         A selling partner identifier, such as a merchant account. (required)
      * @param string[]    $marketplace_ids
-     *                                     A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     *                                         A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param null|string $condition_type
-     *                                     The condition used to filter restrictions. (optional)
+     *                                         The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
-     *                                     A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     *                                         A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -144,9 +146,10 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $restrictedDataToken = null
     ): RestrictionList {
-        list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
+        list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $restrictedDataToken);
 
         return $response;
     }
@@ -155,15 +158,16 @@ class ListingsApi
      * Operation getListingsRestrictionsWithHttpInfo.
      *
      * @param string      $asin
-     *                                     The Amazon Standard Identification Number (ASIN) of the item. (required)
+     *                                         The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param string      $seller_id
-     *                                     A selling partner identifier, such as a merchant account. (required)
+     *                                         A selling partner identifier, such as a merchant account. (required)
      * @param string[]    $marketplace_ids
-     *                                     A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     *                                         A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param null|string $condition_type
-     *                                     The condition used to filter restrictions. (optional)
+     *                                         The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
-     *                                     A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     *                                         A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList, HTTP status code, HTTP response headers (array of strings)
      *
@@ -175,10 +179,15 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsRestrictions');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -297,11 +306,16 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList';
         $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsRestrictions');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getListingsRestrictionsRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest;
@@ -132,15 +133,17 @@ class OffersApi
      * Operation listOfferMetrics.
      *
      * @param null|ListOfferMetricsRequest $body
-     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     *                                                          The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listOfferMetrics(
-        ?ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): ListOfferMetricsResponse {
-        list($response) = $this->listOfferMetricsWithHttpInfo($body);
+        list($response) = $this->listOfferMetricsWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -149,7 +152,8 @@ class OffersApi
      * Operation listOfferMetricsWithHttpInfo.
      *
      * @param null|ListOfferMetricsRequest $body
-     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     *                                                          The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -157,10 +161,15 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOfferMetricsWithHttpInfo(
-        ?ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listOfferMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OffersApi-listOfferMetrics');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,11 +264,16 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOfferMetricsAsyncWithHttpInfo(
-        ?ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
         $request = $this->listOfferMetricsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OffersApi-listOfferMetrics');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listOfferMetricsRateLimiter->consume()->ensureAccepted();
         }
@@ -380,15 +394,17 @@ class OffersApi
      * Operation listOffers.
      *
      * @param null|ListOffersRequest $body
-     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
+     *                                                    The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listOffers(
-        ?ListOffersRequest $body = null
+        ?ListOffersRequest $body = null,
+        ?string $restrictedDataToken = null
     ): ListOffersResponse {
-        list($response) = $this->listOffersWithHttpInfo($body);
+        list($response) = $this->listOffersWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -397,7 +413,8 @@ class OffersApi
      * Operation listOffersWithHttpInfo.
      *
      * @param null|ListOffersRequest $body
-     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
+     *                                                    The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -405,10 +422,15 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOffersWithHttpInfo(
-        ?ListOffersRequest $body = null
+        ?ListOffersRequest $body = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listOffersRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OffersApi-listOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -503,11 +525,16 @@ class OffersApi
      * @throws \InvalidArgumentException
      */
     public function listOffersAsyncWithHttpInfo(
-        ?ListOffersRequest $body = null
+        ?ListOffersRequest $body = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse';
         $request = $this->listOffersRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OffersApi-listOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listOffersRateLimiter->consume()->ensureAccepted();
         }

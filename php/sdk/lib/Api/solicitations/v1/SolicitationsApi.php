@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse;
@@ -129,19 +130,21 @@ class SolicitationsApi
     /**
      * Operation createProductReviewAndSellerFeedbackSolicitation.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createProductReviewAndSellerFeedbackSolicitation(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): CreateProductReviewAndSellerFeedbackSolicitationResponse {
-        list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -149,10 +152,11 @@ class SolicitationsApi
     /**
      * Operation createProductReviewAndSellerFeedbackSolicitationWithHttpInfo.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which a solicitation is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -161,10 +165,15 @@ class SolicitationsApi
      */
     public function createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -265,11 +274,16 @@ class SolicitationsApi
      */
     public function createProductReviewAndSellerFeedbackSolicitationAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createProductReviewAndSellerFeedbackSolicitationRateLimiter->consume()->ensureAccepted();
         }
@@ -422,19 +436,21 @@ class SolicitationsApi
     /**
      * Operation getSolicitationActionsForOrder.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getSolicitationActionsForOrder(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): GetSolicitationActionsForOrderResponse {
-        list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -442,10 +458,11 @@ class SolicitationsApi
     /**
      * Operation getSolicitationActionsForOrderWithHttpInfo.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which you want a list of available solicitation types. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -454,10 +471,15 @@ class SolicitationsApi
      */
     public function getSolicitationActionsForOrderWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-getSolicitationActionsForOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -558,11 +580,16 @@ class SolicitationsApi
      */
     public function getSolicitationActionsForOrderAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SolicitationsApi-getSolicitationActionsForOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSolicitationActionsForOrderRateLimiter->consume()->ensureAccepted();
         }

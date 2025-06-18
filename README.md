@@ -1,4 +1,8 @@
-<img src="docs/logo.png" alt="Selling Partner API SDK logo" width="700"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-white.png">
+  <source media="(prefers-color-scheme: light)" srcset="docs/logo-dark.png">
+  <img alt="Selling Partner API SDK logo" src="docs/logo-fallback.png" width="700">
+</picture>
 
 [![Maven](https://img.shields.io/maven-central/v/software.amazon.spapi/spapi-sdk.svg?label=Maven)](https://central.sonatype.com/artifact/software.amazon.spapi/spapi-sdk)
 [![Packagist](https://img.shields.io/packagist/v/amzn-spapi/sdk?label=Packagist)](https://packagist.org/packages/amzn-spapi/sdk)
@@ -32,6 +36,15 @@ You can get started with the SDK in minutes following the instructions for your 
 * [Python](https://github.com/amzn/selling-partner-api-sdk/tree/main/python)
 * [C#](https://github.com/amzn/selling-partner-api-sdk/tree/main/csharp)
 
+### Feature Overview
+
+| Programming language | Basic API Support | RDT Support  | Rate Limiter |
+|----------------------|:-----------------:|:------------:|:------------:|
+| Java                 |         ✅        |      ❌      |      ✅      |
+| PHP                  |         ✅        |      ❌      |      ✅      |
+| JavaScript           |         ✅        |      ❌      |      ✅      |
+| Python               |         ✅        |      ❌      |      ❌      |
+| C#                   |         ✅        |      ❌      |      ❌      |
 
 ### Giving Feedback
 

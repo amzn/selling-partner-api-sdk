@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\invoicing\v0\GetInvoiceStatusResponse;
@@ -134,16 +135,18 @@ class ShipmentInvoiceApi
     /**
      * Operation getInvoiceStatus.
      *
-     * @param string $shipment_id
-     *                            The shipment identifier for the shipment. (required)
+     * @param string      $shipment_id
+     *                                         The shipment identifier for the shipment. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getInvoiceStatus(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetInvoiceStatusResponse {
-        list($response) = $this->getInvoiceStatusWithHttpInfo($shipment_id);
+        list($response) = $this->getInvoiceStatusWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -151,8 +154,9 @@ class ShipmentInvoiceApi
     /**
      * Operation getInvoiceStatusWithHttpInfo.
      *
-     * @param string $shipment_id
-     *                            The shipment identifier for the shipment. (required)
+     * @param string      $shipment_id
+     *                                         The shipment identifier for the shipment. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoicing\v0\GetInvoiceStatusResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -160,10 +164,15 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getInvoiceStatusWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getInvoiceStatusRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-getInvoiceStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -258,11 +267,16 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getInvoiceStatusAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse';
         $request = $this->getInvoiceStatusRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-getInvoiceStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getInvoiceStatusRateLimiter->consume()->ensureAccepted();
         }
@@ -392,16 +406,18 @@ class ShipmentInvoiceApi
     /**
      * Operation getShipmentDetails.
      *
-     * @param string $shipment_id
-     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string      $shipment_id
+     *                                         The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getShipmentDetails(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): GetShipmentDetailsResponse {
-        list($response) = $this->getShipmentDetailsWithHttpInfo($shipment_id);
+        list($response) = $this->getShipmentDetailsWithHttpInfo($shipment_id, $restrictedDataToken);
 
         return $response;
     }
@@ -409,8 +425,9 @@ class ShipmentInvoiceApi
     /**
      * Operation getShipmentDetailsWithHttpInfo.
      *
-     * @param string $shipment_id
-     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string      $shipment_id
+     *                                         The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoicing\v0\GetShipmentDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -418,10 +435,15 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentDetailsWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentDetailsRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-getShipmentDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -516,11 +538,16 @@ class ShipmentInvoiceApi
      * @throws \InvalidArgumentException
      */
     public function getShipmentDetailsAsyncWithHttpInfo(
-        string $shipment_id
+        string $shipment_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse';
         $request = $this->getShipmentDetailsRequest($shipment_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-getShipmentDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -651,18 +678,20 @@ class ShipmentInvoiceApi
      * Operation submitInvoice.
      *
      * @param string               $shipment_id
-     *                                          The identifier for the shipment. (required)
+     *                                                  The identifier for the shipment. (required)
      * @param SubmitInvoiceRequest $body
-     *                                          body (required)
+     *                                                  body (required)
+     * @param null|string          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function submitInvoice(
         string $shipment_id,
-        SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): SubmitInvoiceResponse {
-        list($response) = $this->submitInvoiceWithHttpInfo($shipment_id, $body);
+        list($response) = $this->submitInvoiceWithHttpInfo($shipment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -671,9 +700,10 @@ class ShipmentInvoiceApi
      * Operation submitInvoiceWithHttpInfo.
      *
      * @param string               $shipment_id
-     *                                          The identifier for the shipment. (required)
+     *                                                  The identifier for the shipment. (required)
      * @param SubmitInvoiceRequest $body
-     *                                          (required)
+     *                                                  (required)
+     * @param null|string          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoicing\v0\SubmitInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -682,10 +712,15 @@ class ShipmentInvoiceApi
      */
     public function submitInvoiceWithHttpInfo(
         string $shipment_id,
-        SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitInvoiceRequest($shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-submitInvoice');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -786,11 +821,16 @@ class ShipmentInvoiceApi
      */
     public function submitInvoiceAsyncWithHttpInfo(
         string $shipment_id,
-        SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($shipment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-submitInvoice');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
         }

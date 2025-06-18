@@ -394,8 +394,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEventGroups", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEventGroups", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventGroupsResponse>(localVarResponse.StatusCode,
@@ -464,8 +467,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEventGroups", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEventGroups", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventGroupsResponse>(localVarResponse.StatusCode,
@@ -534,8 +540,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEvents", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEvents", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
@@ -604,8 +613,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEvents", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEvents", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
@@ -680,8 +692,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEventsByGroupId", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEventsByGroupId", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
@@ -756,8 +771,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEventsByGroupId", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEventsByGroupId", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
@@ -826,8 +844,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEventsByOrderId", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEventsByOrderId", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
@@ -896,8 +917,11 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("ListFinancialEventsByOrderId", localVarResponse.ErrorException);
+                // Exception exception = new Exception("ListFinancialEventsByOrderId", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,

@@ -31,9 +31,9 @@ public class Shipment {
     private String vendorShipmentIdentifier = null;
 
     /**
-     * Indicates the type of transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each
-     * transactiontype has a unique set of operation and there are corresponding details to be populated for each
-     * operation.
+     * Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each
+     * &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated
+     * for each operation.
      */
     @JsonAdapter(TransactionTypeEnum.Adapter.class)
     public enum TransactionTypeEnum {
@@ -158,9 +158,7 @@ public class Shipment {
     @SerializedName("packageLabelCreateDate")
     private OffsetDateTime packageLabelCreateDate = null;
 
-    /**
-     * Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.
-     */
+    /** Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required. */
     @JsonAdapter(ShipmentFreightTermEnum.Adapter.class)
     public enum ShipmentFreightTermEnum {
         @SerializedName("Collect")
@@ -264,16 +262,16 @@ public class Shipment {
     }
 
     /**
-     * Indicates the type of transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each
-     * transactiontype has a unique set of operation and there are corresponding details to be populated for each
-     * operation.
+     * Indicates the type of transportation request (for example, &#x60;New&#x60; or &#x60;Cancel&#x60;). Each
+     * &#x60;transactionType&#x60; has a unique set of operations and there are corresponding details to be populated
+     * for each operation.
      *
      * @return transactionType
      */
     @Schema(
             required = true,
             description =
-                    "Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.")
+                    "Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.")
     public TransactionTypeEnum getTransactionType() {
         return transactionType;
     }
@@ -459,13 +457,11 @@ public class Shipment {
     }
 
     /**
-     * Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.
+     * Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.
      *
      * @return shipmentFreightTerm
      */
-    @Schema(
-            description =
-                    "Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.")
+    @Schema(description = "Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.")
     public ShipmentFreightTermEnum getShipmentFreightTerm() {
         return shipmentFreightTerm;
     }

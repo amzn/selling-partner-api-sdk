@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview;
@@ -127,16 +128,17 @@ class TransferPreviewApi
      *
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
-     * @param string $source_country_code
-     *                                          Country code of the source transaction account in ISO 3166 format. (required)
-     * @param string $source_currency_code
-     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param string $destination_country_code
-     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param string $destination_currency_code
-     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param float  $base_amount
-     *                                          The base transaction amount without any markup fees. (required)
+     * @param string      $source_country_code
+     *                                               Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string      $source_currency_code
+     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string      $destination_country_code
+     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string      $destination_currency_code
+     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float       $base_amount
+     *                                               The base transaction amount without any markup fees. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -146,9 +148,10 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        ?string $restrictedDataToken = null
     ): TransferRatePreview {
-        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
+        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $restrictedDataToken);
 
         return $response;
     }
@@ -158,16 +161,17 @@ class TransferPreviewApi
      *
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
-     * @param string $source_country_code
-     *                                          Country code of the source transaction account in ISO 3166 format. (required)
-     * @param string $source_currency_code
-     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param string $destination_country_code
-     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param string $destination_currency_code
-     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
-     * @param float  $base_amount
-     *                                          The base transaction amount without any markup fees. (required)
+     * @param string      $source_country_code
+     *                                               Country code of the source transaction account in ISO 3166 format. (required)
+     * @param string      $source_currency_code
+     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param string      $destination_country_code
+     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param string      $destination_currency_code
+     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
+     * @param float       $base_amount
+     *                                               The base transaction amount without any markup fees. (required)
+     * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview, HTTP status code, HTTP response headers (array of strings)
      *
@@ -179,10 +183,15 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferPreviewApi-getTransferPreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -305,11 +314,16 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview';
         $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferPreviewApi-getTransferPreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransferPreviewRateLimiter->consume()->ensureAccepted();
         }

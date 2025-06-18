@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest;
@@ -146,16 +147,18 @@ class SupplySourcesApi
     /**
      * Operation archiveSupplySource.
      *
-     * @param string $supply_source_id
-     *                                 The unique identifier of a supply source. (required)
+     * @param string      $supply_source_id
+     *                                         The unique identifier of a supply source. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function archiveSupplySource(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): ErrorList {
-        list($response) = $this->archiveSupplySourceWithHttpInfo($supply_source_id);
+        list($response) = $this->archiveSupplySourceWithHttpInfo($supply_source_id, $restrictedDataToken);
 
         return $response;
     }
@@ -163,8 +166,9 @@ class SupplySourcesApi
     /**
      * Operation archiveSupplySourceWithHttpInfo.
      *
-     * @param string $supply_source_id
-     *                                 The unique identifier of a supply source. (required)
+     * @param string      $supply_source_id
+     *                                         The unique identifier of a supply source. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\supplySources\v2020_07_01\ErrorList, HTTP status code, HTTP response headers (array of strings)
      *
@@ -172,10 +176,15 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function archiveSupplySourceWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->archiveSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-archiveSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,11 +279,16 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function archiveSupplySourceAsyncWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->archiveSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-archiveSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->archiveSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -405,15 +419,17 @@ class SupplySourcesApi
      * Operation createSupplySource.
      *
      * @param CreateSupplySourceRequest $payload
-     *                                           A request to create a supply source. (required)
+     *                                                       A request to create a supply source. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createSupplySource(
-        CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload,
+        ?string $restrictedDataToken = null
     ): CreateSupplySourceResponse {
-        list($response) = $this->createSupplySourceWithHttpInfo($payload);
+        list($response) = $this->createSupplySourceWithHttpInfo($payload, $restrictedDataToken);
 
         return $response;
     }
@@ -422,7 +438,8 @@ class SupplySourcesApi
      * Operation createSupplySourceWithHttpInfo.
      *
      * @param CreateSupplySourceRequest $payload
-     *                                           A request to create a supply source. (required)
+     *                                                       A request to create a supply source. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -430,10 +447,15 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function createSupplySourceWithHttpInfo(
-        CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createSupplySourceRequest($payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-createSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -528,11 +550,16 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function createSupplySourceAsyncWithHttpInfo(
-        CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse';
         $request = $this->createSupplySourceRequest($payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-createSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -659,16 +686,18 @@ class SupplySourcesApi
     /**
      * Operation getSupplySource.
      *
-     * @param string $supply_source_id
-     *                                 The unique identifier of a supply source. (required)
+     * @param string      $supply_source_id
+     *                                         The unique identifier of a supply source. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getSupplySource(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): SupplySource {
-        list($response) = $this->getSupplySourceWithHttpInfo($supply_source_id);
+        list($response) = $this->getSupplySourceWithHttpInfo($supply_source_id, $restrictedDataToken);
 
         return $response;
     }
@@ -676,8 +705,9 @@ class SupplySourcesApi
     /**
      * Operation getSupplySourceWithHttpInfo.
      *
-     * @param string $supply_source_id
-     *                                 The unique identifier of a supply source. (required)
+     * @param string      $supply_source_id
+     *                                         The unique identifier of a supply source. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\supplySources\v2020_07_01\SupplySource, HTTP status code, HTTP response headers (array of strings)
      *
@@ -685,10 +715,15 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function getSupplySourceWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-getSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -783,11 +818,16 @@ class SupplySourcesApi
      * @throws \InvalidArgumentException
      */
     public function getSupplySourceAsyncWithHttpInfo(
-        string $supply_source_id
+        string $supply_source_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\SupplySource';
         $request = $this->getSupplySourceRequest($supply_source_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-getSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -918,18 +958,20 @@ class SupplySourcesApi
      * Operation getSupplySources.
      *
      * @param null|string $next_page_token
-     *                                     The pagination token to retrieve a specific page of results. (optional)
+     *                                         The pagination token to retrieve a specific page of results. (optional)
      * @param null|float  $page_size
-     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
+     *                                         The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getSupplySources(
         ?string $next_page_token = null,
-        ?float $page_size = 10.0
+        ?float $page_size = 10.0,
+        ?string $restrictedDataToken = null
     ): GetSupplySourcesResponse {
-        list($response) = $this->getSupplySourcesWithHttpInfo($next_page_token, $page_size);
+        list($response) = $this->getSupplySourcesWithHttpInfo($next_page_token, $page_size, $restrictedDataToken);
 
         return $response;
     }
@@ -938,9 +980,10 @@ class SupplySourcesApi
      * Operation getSupplySourcesWithHttpInfo.
      *
      * @param null|string $next_page_token
-     *                                     The pagination token to retrieve a specific page of results. (optional)
+     *                                         The pagination token to retrieve a specific page of results. (optional)
      * @param null|float  $page_size
-     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
+     *                                         The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -949,10 +992,15 @@ class SupplySourcesApi
      */
     public function getSupplySourcesWithHttpInfo(
         ?string $next_page_token = null,
-        ?float $page_size = 10.0
+        ?float $page_size = 10.0,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSupplySourcesRequest($next_page_token, $page_size);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-getSupplySources');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1053,11 +1101,16 @@ class SupplySourcesApi
      */
     public function getSupplySourcesAsyncWithHttpInfo(
         ?string $next_page_token = null,
-        ?float $page_size = 10.0
+        ?float $page_size = 10.0,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse';
         $request = $this->getSupplySourcesRequest($next_page_token, $page_size);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-getSupplySources');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSupplySourcesRateLimiter->consume()->ensureAccepted();
         }
@@ -1196,18 +1249,20 @@ class SupplySourcesApi
      * Operation updateSupplySource.
      *
      * @param string                         $supply_source_id
-     *                                                         The unique identitier of a supply source. (required)
+     *                                                            The unique identitier of a supply source. (required)
      * @param null|UpdateSupplySourceRequest $payload
-     *                                                         payload (optional)
+     *                                                            payload (optional)
+     * @param null|string                    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateSupplySource(
         string $supply_source_id,
-        ?UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): ErrorList {
-        list($response) = $this->updateSupplySourceWithHttpInfo($supply_source_id, $payload);
+        list($response) = $this->updateSupplySourceWithHttpInfo($supply_source_id, $payload, $restrictedDataToken);
 
         return $response;
     }
@@ -1216,9 +1271,10 @@ class SupplySourcesApi
      * Operation updateSupplySourceWithHttpInfo.
      *
      * @param string                         $supply_source_id
-     *                                                         The unique identitier of a supply source. (required)
+     *                                                            The unique identitier of a supply source. (required)
      * @param null|UpdateSupplySourceRequest $payload
-     *                                                         (optional)
+     *                                                            (optional)
+     * @param null|string                    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\supplySources\v2020_07_01\ErrorList, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1227,10 +1283,15 @@ class SupplySourcesApi
      */
     public function updateSupplySourceWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-updateSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1331,11 +1392,16 @@ class SupplySourcesApi
      */
     public function updateSupplySourceAsyncWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-updateSupplySource');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateSupplySourceRateLimiter->consume()->ensureAccepted();
         }
@@ -1475,18 +1541,20 @@ class SupplySourcesApi
      * Operation updateSupplySourceStatus.
      *
      * @param string                               $supply_source_id
-     *                                                               The unique identifier of a supply source. (required)
+     *                                                                  The unique identifier of a supply source. (required)
      * @param null|UpdateSupplySourceStatusRequest $payload
-     *                                                               payload (optional)
+     *                                                                  payload (optional)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateSupplySourceStatus(
         string $supply_source_id,
-        ?UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): ErrorList {
-        list($response) = $this->updateSupplySourceStatusWithHttpInfo($supply_source_id, $payload);
+        list($response) = $this->updateSupplySourceStatusWithHttpInfo($supply_source_id, $payload, $restrictedDataToken);
 
         return $response;
     }
@@ -1495,9 +1563,10 @@ class SupplySourcesApi
      * Operation updateSupplySourceStatusWithHttpInfo.
      *
      * @param string                               $supply_source_id
-     *                                                               The unique identifier of a supply source. (required)
+     *                                                                  The unique identifier of a supply source. (required)
      * @param null|UpdateSupplySourceStatusRequest $payload
-     *                                                               (optional)
+     *                                                                  (optional)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\supplySources\v2020_07_01\ErrorList, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1506,10 +1575,15 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-updateSupplySourceStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1610,11 +1684,16 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusAsyncWithHttpInfo(
         string $supply_source_id,
-        ?UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-updateSupplySourceStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateSupplySourceStatusRateLimiter->consume()->ensureAccepted();
         }

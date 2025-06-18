@@ -33,7 +33,7 @@ export class Shipment {
    * @alias module:vendorshipments_v1/model/Shipment
    * @class
    * @param vendorShipmentIdentifier {String} Unique Transportation ID created by Vendor (Should not be used over the last 365 days).
-   * @param transactionType {module:vendorshipments_v1/model/Shipment.TransactionTypeEnum} Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.
+   * @param transactionType {module:vendorshipments_v1/model/Shipment.TransactionTypeEnum} Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.
    * @param transactionDate {Date} Date on which the transportation request was submitted.
    * @param sellingParty {module:vendorshipments_v1/model/PartyIdentification}
    * @param shipFromParty {module:vendorshipments_v1/model/PartyIdentification}
@@ -121,7 +121,7 @@ Shipment.TransactionTypeEnum = {
 }
 
 /**
- * Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.
+ * Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.
  * @member {module:vendorshipments_v1/model/Shipment.TransactionTypeEnum} transactionType
  */
 Shipment.prototype.transactionType = undefined
@@ -227,7 +227,7 @@ Shipment.ShipmentFreightTermEnum = {
 }
 
 /**
- * Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.
+ * Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.
  * @member {module:vendorshipments_v1/model/Shipment.ShipmentFreightTermEnum} shipmentFreightTerm
  */
 Shipment.prototype.shipmentFreightTerm = undefined

@@ -324,8 +324,11 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetCatalogItem", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetCatalogItem", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Item>(localVarResponse.StatusCode,
@@ -400,8 +403,11 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetCatalogItem", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetCatalogItem", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<Item>(localVarResponse.StatusCode,
@@ -497,8 +503,11 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SearchCatalogItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SearchCatalogItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ItemSearchResults>(localVarResponse.StatusCode,
@@ -594,8 +603,11 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SearchCatalogItems", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SearchCatalogItems", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<ItemSearchResults>(localVarResponse.StatusCode,

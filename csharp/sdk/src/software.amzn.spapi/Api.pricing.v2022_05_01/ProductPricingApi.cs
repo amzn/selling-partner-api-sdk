@@ -264,8 +264,11 @@ namespace software.amzn.spapi.Api.pricing.v2022_05_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetCompetitiveSummary", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetCompetitiveSummary", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CompetitiveSummaryBatchResponse>(localVarResponse.StatusCode,
@@ -336,8 +339,11 @@ namespace software.amzn.spapi.Api.pricing.v2022_05_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetCompetitiveSummary", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetCompetitiveSummary", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<CompetitiveSummaryBatchResponse>(localVarResponse.StatusCode,
@@ -408,8 +414,11 @@ namespace software.amzn.spapi.Api.pricing.v2022_05_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetFeaturedOfferExpectedPriceBatch", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetFeaturedOfferExpectedPriceBatch", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse>(localVarResponse.StatusCode,
@@ -480,8 +489,11 @@ namespace software.amzn.spapi.Api.pricing.v2022_05_01
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetFeaturedOfferExpectedPriceBatch", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetFeaturedOfferExpectedPriceBatch", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse>(localVarResponse.StatusCode,

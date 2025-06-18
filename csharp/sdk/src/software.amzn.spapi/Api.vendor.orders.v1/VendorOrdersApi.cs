@@ -432,8 +432,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPurchaseOrder", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPurchaseOrder", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPurchaseOrderResponse>(localVarResponse.StatusCode,
@@ -496,8 +499,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPurchaseOrder", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPurchaseOrder", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPurchaseOrderResponse>(localVarResponse.StatusCode,
@@ -591,8 +597,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPurchaseOrders", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPurchaseOrders", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPurchaseOrdersResponse>(localVarResponse.StatusCode,
@@ -686,8 +695,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPurchaseOrders", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPurchaseOrders", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPurchaseOrdersResponse>(localVarResponse.StatusCode,
@@ -783,8 +795,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPurchaseOrdersStatus", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPurchaseOrdersStatus", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPurchaseOrdersStatusResponse>(localVarResponse.StatusCode,
@@ -880,8 +895,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetPurchaseOrdersStatus", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetPurchaseOrdersStatus", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetPurchaseOrdersStatusResponse>(localVarResponse.StatusCode,
@@ -952,8 +970,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitAcknowledgement", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitAcknowledgement", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitAcknowledgementResponse>(localVarResponse.StatusCode,
@@ -1024,8 +1045,11 @@ namespace software.amzn.spapi.Api.vendor.orders.v1
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("SubmitAcknowledgement", localVarResponse.ErrorException);
+                // Exception exception = new Exception("SubmitAcknowledgement", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<SubmitAcknowledgementResponse>(localVarResponse.StatusCode,

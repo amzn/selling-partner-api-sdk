@@ -171,7 +171,7 @@ class Shipment(object):
     def transaction_type(self):
         """Gets the transaction_type of this Shipment.  # noqa: E501
 
-        Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.  # noqa: E501
+        Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.  # noqa: E501
 
         :return: The transaction_type of this Shipment.  # noqa: E501
         :rtype: str
@@ -182,7 +182,7 @@ class Shipment(object):
     def transaction_type(self, transaction_type):
         """Sets the transaction_type of this Shipment.
 
-        Indicates the type of  transportation request such as (New,Cancel,Confirm and PackageLabelRequest). Each transactiontype has a unique set of operation and there are corresponding details to be populated for each operation.  # noqa: E501
+        Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.  # noqa: E501
 
         :param transaction_type: The transaction_type of this Shipment.  # noqa: E501
         :type: str
@@ -396,7 +396,7 @@ class Shipment(object):
     def shipment_freight_term(self):
         """Gets the shipment_freight_term of this Shipment.  # noqa: E501
 
-        Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.  # noqa: E501
+        Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.  # noqa: E501
 
         :return: The shipment_freight_term of this Shipment.  # noqa: E501
         :rtype: str
@@ -407,7 +407,7 @@ class Shipment(object):
     def shipment_freight_term(self, shipment_freight_term):
         """Sets the shipment_freight_term of this Shipment.
 
-        Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information.  # noqa: E501
+        Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.  # noqa: E501
 
         :param shipment_freight_term: The shipment_freight_term of this Shipment.  # noqa: E501
         :type: str

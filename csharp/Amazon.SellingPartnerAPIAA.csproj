@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>software.amzn.spapi</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Description>Amazon Selling Partner API Csharp SDK</Description>
     <TargetFramework>net7.0</TargetFramework> <!-- Matches 7.0.x SDK -->
     <ImplicitUsings>enable</ImplicitUsings>  <!-- Less boilerplate -->

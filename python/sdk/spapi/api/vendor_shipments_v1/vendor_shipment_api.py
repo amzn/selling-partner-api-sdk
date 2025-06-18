@@ -235,7 +235,7 @@ class VendorShipmentApi(object):
         :param async_req bool
         :param int limit: The limit to the number of records returned. Default value is 50 records.
         :param str sort_order: Sort the list by shipment label creation date in ascending or descending order.
-        :param str next_token: A token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
+        :param str next_token: A token that you use to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
         :param datetime label_created_after: Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
         :param datetime label_created_before: Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
         :param str buyer_reference_number: Get Shipment labels by passing buyer reference number.
@@ -264,7 +264,7 @@ class VendorShipmentApi(object):
         :param async_req bool
         :param int limit: The limit to the number of records returned. Default value is 50 records.
         :param str sort_order: Sort the list by shipment label creation date in ascending or descending order.
-        :param str next_token: A token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
+        :param str next_token: A token that you use to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
         :param datetime label_created_after: Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
         :param datetime label_created_before: Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
         :param str buyer_reference_number: Get Shipment labels by passing buyer reference number.

@@ -320,8 +320,11 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetMyFeesEstimateForASIN", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetMyFeesEstimateForASIN", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
@@ -398,8 +401,11 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetMyFeesEstimateForASIN", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetMyFeesEstimateForASIN", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
@@ -476,8 +482,11 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetMyFeesEstimateForSKU", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetMyFeesEstimateForSKU", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
@@ -554,8 +563,11 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetMyFeesEstimateForSKU", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetMyFeesEstimateForSKU", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
@@ -626,8 +638,11 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetMyFeesEstimates", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetMyFeesEstimates", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<List<FeesEstimateResult>>(localVarResponse.StatusCode,
@@ -698,8 +713,11 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                Exception exception = new Exception("GetMyFeesEstimates", localVarResponse.ErrorException);
+                // Exception exception = new Exception("GetMyFeesEstimates", localVarResponse.ErrorException);
                 // if (exception != null) throw exception;
+                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
+                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
+                throw exception;
             }
 
             return new ApiResponse<List<FeesEstimateResult>>(localVarResponse.StatusCode,

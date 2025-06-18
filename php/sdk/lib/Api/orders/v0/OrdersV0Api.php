@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\orders\v0\ConfirmShipmentRequest;
@@ -158,27 +159,30 @@ class OrdersV0Api
      * Operation confirmShipment.
      *
      * @param string                 $order_id
-     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                    An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param ConfirmShipmentRequest $payload
-     *                                         Request body of &#x60;confirmShipment&#x60;. (required)
+     *                                                    Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function confirmShipment(
         string $order_id,
-        ConfirmShipmentRequest $payload
+        ConfirmShipmentRequest $payload,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->confirmShipmentWithHttpInfo($order_id, $payload);
+        $this->confirmShipmentWithHttpInfo($order_id, $payload, $restrictedDataToken);
     }
 
     /**
      * Operation confirmShipmentWithHttpInfo.
      *
      * @param string                 $order_id
-     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                    An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param ConfirmShipmentRequest $payload
-     *                                         Request body of &#x60;confirmShipment&#x60;. (required)
+     *                                                    Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -187,10 +191,15 @@ class OrdersV0Api
      */
     public function confirmShipmentWithHttpInfo(
         string $order_id,
-        ConfirmShipmentRequest $payload
+        ConfirmShipmentRequest $payload,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmShipmentRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-confirmShipment');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -279,11 +288,16 @@ class OrdersV0Api
      */
     public function confirmShipmentAsyncWithHttpInfo(
         string $order_id,
-        ConfirmShipmentRequest $payload
+        ConfirmShipmentRequest $payload,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->confirmShipmentRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-confirmShipment');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmShipmentRateLimiter->consume()->ensureAccepted();
         }
@@ -415,16 +429,18 @@ class OrdersV0Api
     /**
      * Operation getOrder.
      *
-     * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getOrder(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): GetOrderResponse {
-        list($response) = $this->getOrderWithHttpInfo($order_id);
+        list($response) = $this->getOrderWithHttpInfo($order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -432,8 +448,9 @@ class OrdersV0Api
     /**
      * Operation getOrderWithHttpInfo.
      *
-     * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -441,10 +458,15 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -539,11 +561,16 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrderResponse';
         $request = $this->getOrderRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -673,16 +700,18 @@ class OrdersV0Api
     /**
      * Operation getOrderAddress.
      *
-     * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getOrderAddress(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): GetOrderAddressResponse {
-        list($response) = $this->getOrderAddressWithHttpInfo($order_id);
+        list($response) = $this->getOrderAddressWithHttpInfo($order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -690,8 +719,9 @@ class OrdersV0Api
     /**
      * Operation getOrderAddressWithHttpInfo.
      *
-     * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderAddressResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -699,10 +729,15 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderAddressWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderAddressRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderAddress');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -797,11 +832,16 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderAddressAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrderAddressResponse';
         $request = $this->getOrderAddressRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderAddress');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderAddressRateLimiter->consume()->ensureAccepted();
         }
@@ -931,16 +971,18 @@ class OrdersV0Api
     /**
      * Operation getOrderBuyerInfo.
      *
-     * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getOrderBuyerInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): GetOrderBuyerInfoResponse {
-        list($response) = $this->getOrderBuyerInfoWithHttpInfo($order_id);
+        list($response) = $this->getOrderBuyerInfoWithHttpInfo($order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -948,8 +990,9 @@ class OrdersV0Api
     /**
      * Operation getOrderBuyerInfoWithHttpInfo.
      *
-     * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -957,10 +1000,15 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderBuyerInfoWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderBuyerInfoRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderBuyerInfo');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1055,11 +1103,16 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderBuyerInfoAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse';
         $request = $this->getOrderBuyerInfoRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderBuyerInfo');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderBuyerInfoRateLimiter->consume()->ensureAccepted();
         }
@@ -1190,18 +1243,20 @@ class OrdersV0Api
      * Operation getOrderItems.
      *
      * @param string      $order_id
-     *                                An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param null|string $next_token
-     *                                A string token returned in the response of your previous request. (optional)
+     *                                         A string token returned in the response of your previous request. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getOrderItems(
         string $order_id,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetOrderItemsResponse {
-        list($response) = $this->getOrderItemsWithHttpInfo($order_id, $next_token);
+        list($response) = $this->getOrderItemsWithHttpInfo($order_id, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1210,9 +1265,10 @@ class OrdersV0Api
      * Operation getOrderItemsWithHttpInfo.
      *
      * @param string      $order_id
-     *                                An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param null|string $next_token
-     *                                A string token returned in the response of your previous request. (optional)
+     *                                         A string token returned in the response of your previous request. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderItemsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1221,10 +1277,15 @@ class OrdersV0Api
      */
     public function getOrderItemsWithHttpInfo(
         string $order_id,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderItemsRequest($order_id, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1325,11 +1386,16 @@ class OrdersV0Api
      */
     public function getOrderItemsAsyncWithHttpInfo(
         string $order_id,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrderItemsResponse';
         $request = $this->getOrderItemsRequest($order_id, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderItems');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderItemsRateLimiter->consume()->ensureAccepted();
         }
@@ -1474,18 +1540,20 @@ class OrdersV0Api
      * Operation getOrderItemsBuyerInfo.
      *
      * @param string      $order_id
-     *                                An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param null|string $next_token
-     *                                A string token returned in the response of your previous request. (optional)
+     *                                         A string token returned in the response of your previous request. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getOrderItemsBuyerInfo(
         string $order_id,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetOrderItemsBuyerInfoResponse {
-        list($response) = $this->getOrderItemsBuyerInfoWithHttpInfo($order_id, $next_token);
+        list($response) = $this->getOrderItemsBuyerInfoWithHttpInfo($order_id, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1494,9 +1562,10 @@ class OrdersV0Api
      * Operation getOrderItemsBuyerInfoWithHttpInfo.
      *
      * @param string      $order_id
-     *                                An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param null|string $next_token
-     *                                A string token returned in the response of your previous request. (optional)
+     *                                         A string token returned in the response of your previous request. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1505,10 +1574,15 @@ class OrdersV0Api
      */
     public function getOrderItemsBuyerInfoWithHttpInfo(
         string $order_id,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderItemsBuyerInfoRequest($order_id, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderItemsBuyerInfo');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1609,11 +1683,16 @@ class OrdersV0Api
      */
     public function getOrderItemsBuyerInfoAsyncWithHttpInfo(
         string $order_id,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse';
         $request = $this->getOrderItemsBuyerInfoRequest($order_id, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderItemsBuyerInfo');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderItemsBuyerInfoRateLimiter->consume()->ensureAccepted();
         }
@@ -1757,16 +1836,18 @@ class OrdersV0Api
     /**
      * Operation getOrderRegulatedInfo.
      *
-     * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getOrderRegulatedInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): GetOrderRegulatedInfoResponse {
-        list($response) = $this->getOrderRegulatedInfoWithHttpInfo($order_id);
+        list($response) = $this->getOrderRegulatedInfoWithHttpInfo($order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1774,8 +1855,9 @@ class OrdersV0Api
     /**
      * Operation getOrderRegulatedInfoWithHttpInfo.
      *
-     * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param string      $order_id
+     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1783,10 +1865,15 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderRegulatedInfoWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrderRegulatedInfoRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderRegulatedInfo');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1881,11 +1968,16 @@ class OrdersV0Api
      * @throws \InvalidArgumentException
      */
     public function getOrderRegulatedInfoAsyncWithHttpInfo(
-        string $order_id
+        string $order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse';
         $request = $this->getOrderRegulatedInfoRequest($order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderRegulatedInfo');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrderRegulatedInfoRateLimiter->consume()->ensureAccepted();
         }
@@ -2059,6 +2151,7 @@ class OrdersV0Api
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after
      *                                                           Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param null|string   $restrictedDataToken                 Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2085,9 +2178,10 @@ class OrdersV0Api
         ?string $earliest_delivery_date_before = null,
         ?string $earliest_delivery_date_after = null,
         ?string $latest_delivery_date_before = null,
-        ?string $latest_delivery_date_after = null
+        ?string $latest_delivery_date_after = null,
+        ?string $restrictedDataToken = null
     ): GetOrdersResponse {
-        list($response) = $this->getOrdersWithHttpInfo($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
+        list($response) = $this->getOrdersWithHttpInfo($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after, $restrictedDataToken);
 
         return $response;
     }
@@ -2139,6 +2233,7 @@ class OrdersV0Api
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after
      *                                                           Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param null|string   $restrictedDataToken                 Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrdersResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2167,10 +2262,15 @@ class OrdersV0Api
         ?string $earliest_delivery_date_before = null,
         ?string $earliest_delivery_date_after = null,
         ?string $latest_delivery_date_before = null,
-        ?string $latest_delivery_date_after = null
+        ?string $latest_delivery_date_after = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getOrdersRequest($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrders');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2391,11 +2491,16 @@ class OrdersV0Api
         ?string $earliest_delivery_date_before = null,
         ?string $earliest_delivery_date_after = null,
         ?string $latest_delivery_date_before = null,
-        ?string $latest_delivery_date_after = null
+        ?string $latest_delivery_date_after = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\orders\v0\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrders');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getOrdersRateLimiter->consume()->ensureAccepted();
         }
@@ -2808,27 +2913,30 @@ class OrdersV0Api
      * Operation updateVerificationStatus.
      *
      * @param string                          $order_id
-     *                                                  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                             An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
-     *                                                  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     *                                                             The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateVerificationStatus(
         string $order_id,
-        UpdateVerificationStatusRequest $payload
+        UpdateVerificationStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateVerificationStatusWithHttpInfo($order_id, $payload);
+        $this->updateVerificationStatusWithHttpInfo($order_id, $payload, $restrictedDataToken);
     }
 
     /**
      * Operation updateVerificationStatusWithHttpInfo.
      *
      * @param string                          $order_id
-     *                                                  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                             An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
-     *                                                  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     *                                                             The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -2837,10 +2945,15 @@ class OrdersV0Api
      */
     public function updateVerificationStatusWithHttpInfo(
         string $order_id,
-        UpdateVerificationStatusRequest $payload
+        UpdateVerificationStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-updateVerificationStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2929,11 +3042,16 @@ class OrdersV0Api
      */
     public function updateVerificationStatusAsyncWithHttpInfo(
         string $order_id,
-        UpdateVerificationStatusRequest $payload
+        UpdateVerificationStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-updateVerificationStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateVerificationStatusRateLimiter->consume()->ensureAccepted();
         }

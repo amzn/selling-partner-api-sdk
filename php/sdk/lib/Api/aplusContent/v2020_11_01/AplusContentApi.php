@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse;
@@ -166,15 +167,17 @@ class AplusContentApi
      *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param PostContentDocumentRequest $post_content_document_request
      *                                                                  The content document request details. (required)
+     * @param null|string                $restrictedDataToken           Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createContentDocument(
         string $marketplace_id,
-        PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request,
+        ?string $restrictedDataToken = null
     ): PostContentDocumentResponse {
-        list($response) = $this->createContentDocumentWithHttpInfo($marketplace_id, $post_content_document_request);
+        list($response) = $this->createContentDocumentWithHttpInfo($marketplace_id, $post_content_document_request, $restrictedDataToken);
 
         return $response;
     }
@@ -186,6 +189,7 @@ class AplusContentApi
      *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param PostContentDocumentRequest $post_content_document_request
      *                                                                  The content document request details. (required)
+     * @param null|string                $restrictedDataToken           Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -194,10 +198,15 @@ class AplusContentApi
      */
     public function createContentDocumentWithHttpInfo(
         string $marketplace_id,
-        PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createContentDocumentRequest($marketplace_id, $post_content_document_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-createContentDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -298,11 +307,16 @@ class AplusContentApi
      */
     public function createContentDocumentAsyncWithHttpInfo(
         string $marketplace_id,
-        PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
         $request = $this->createContentDocumentRequest($marketplace_id, $post_content_document_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-createContentDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createContentDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -453,12 +467,13 @@ class AplusContentApi
     /**
      * Operation getContentDocument.
      *
-     * @param string   $content_reference_key
-     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param string   $marketplace_id
-     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param string[] $included_data_set
-     *                                        The set of A+ Content data types to include in the response. (required)
+     * @param string      $content_reference_key
+     *                                           The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string      $marketplace_id
+     *                                           The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $included_data_set
+     *                                           The set of A+ Content data types to include in the response. (required)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -466,9 +481,10 @@ class AplusContentApi
     public function getContentDocument(
         string $content_reference_key,
         string $marketplace_id,
-        array $included_data_set
+        array $included_data_set,
+        ?string $restrictedDataToken = null
     ): GetContentDocumentResponse {
-        list($response) = $this->getContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set);
+        list($response) = $this->getContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set, $restrictedDataToken);
 
         return $response;
     }
@@ -476,12 +492,13 @@ class AplusContentApi
     /**
      * Operation getContentDocumentWithHttpInfo.
      *
-     * @param string   $content_reference_key
-     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param string   $marketplace_id
-     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param string[] $included_data_set
-     *                                        The set of A+ Content data types to include in the response. (required)
+     * @param string      $content_reference_key
+     *                                           The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string      $marketplace_id
+     *                                           The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[]    $included_data_set
+     *                                           The set of A+ Content data types to include in the response. (required)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -491,10 +508,15 @@ class AplusContentApi
     public function getContentDocumentWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        array $included_data_set
+        array $included_data_set,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getContentDocumentRequest($content_reference_key, $marketplace_id, $included_data_set);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-getContentDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -601,11 +623,16 @@ class AplusContentApi
     public function getContentDocumentAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        array $included_data_set
+        array $included_data_set,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse';
         $request = $this->getContentDocumentRequest($content_reference_key, $marketplace_id, $included_data_set);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-getContentDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getContentDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -795,6 +822,7 @@ class AplusContentApi
      *                                             The set of ASINs. (optional)
      * @param null|string   $page_token
      *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -804,9 +832,10 @@ class AplusContentApi
         string $marketplace_id,
         ?array $included_data_set = null,
         ?array $asin_set = null,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): ListContentDocumentAsinRelationsResponse {
-        list($response) = $this->listContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
+        list($response) = $this->listContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -824,6 +853,7 @@ class AplusContentApi
      *                                             The set of ASINs. (optional)
      * @param null|string   $page_token
      *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string   $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -835,10 +865,15 @@ class AplusContentApi
         string $marketplace_id,
         ?array $included_data_set = null,
         ?array $asin_set = null,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-listContentDocumentAsinRelations');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -957,11 +992,16 @@ class AplusContentApi
         string $marketplace_id,
         ?array $included_data_set = null,
         ?array $asin_set = null,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse';
         $request = $this->listContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-listContentDocumentAsinRelations');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listContentDocumentAsinRelationsRateLimiter->consume()->ensureAccepted();
         }
@@ -1165,19 +1205,21 @@ class AplusContentApi
     /**
      * Operation postContentDocumentApprovalSubmission.
      *
-     * @param string $content_reference_key
-     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param string $marketplace_id
-     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $content_reference_key
+     *                                           The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string      $marketplace_id
+     *                                           The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function postContentDocumentApprovalSubmission(
         string $content_reference_key,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PostContentDocumentApprovalSubmissionResponse {
-        list($response) = $this->postContentDocumentApprovalSubmissionWithHttpInfo($content_reference_key, $marketplace_id);
+        list($response) = $this->postContentDocumentApprovalSubmissionWithHttpInfo($content_reference_key, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1185,10 +1227,11 @@ class AplusContentApi
     /**
      * Operation postContentDocumentApprovalSubmissionWithHttpInfo.
      *
-     * @param string $content_reference_key
-     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param string $marketplace_id
-     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $content_reference_key
+     *                                           The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string      $marketplace_id
+     *                                           The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1197,10 +1240,15 @@ class AplusContentApi
      */
     public function postContentDocumentApprovalSubmissionWithHttpInfo(
         string $content_reference_key,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->postContentDocumentApprovalSubmissionRequest($content_reference_key, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-postContentDocumentApprovalSubmission');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1301,11 +1349,16 @@ class AplusContentApi
      */
     public function postContentDocumentApprovalSubmissionAsyncWithHttpInfo(
         string $content_reference_key,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse';
         $request = $this->postContentDocumentApprovalSubmissionRequest($content_reference_key, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-postContentDocumentApprovalSubmission');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->postContentDocumentApprovalSubmissionRateLimiter->consume()->ensureAccepted();
         }
@@ -1468,6 +1521,7 @@ class AplusContentApi
      *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *                                                                                              The request details for the content document ASIN relations. (required)
+     * @param null|string                             $restrictedDataToken                          Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1475,9 +1529,10 @@ class AplusContentApi
     public function postContentDocumentAsinRelations(
         string $content_reference_key,
         string $marketplace_id,
-        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request,
+        ?string $restrictedDataToken = null
     ): PostContentDocumentAsinRelationsResponse {
-        list($response) = $this->postContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
+        list($response) = $this->postContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request, $restrictedDataToken);
 
         return $response;
     }
@@ -1491,6 +1546,7 @@ class AplusContentApi
      *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *                                                                                              The request details for the content document ASIN relations. (required)
+     * @param null|string                             $restrictedDataToken                          Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1500,10 +1556,15 @@ class AplusContentApi
     public function postContentDocumentAsinRelationsWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->postContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-postContentDocumentAsinRelations');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1610,11 +1671,16 @@ class AplusContentApi
     public function postContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
         $request = $this->postContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-postContentDocumentAsinRelations');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->postContentDocumentAsinRelationsRateLimiter->consume()->ensureAccepted();
         }
@@ -1787,19 +1853,21 @@ class AplusContentApi
     /**
      * Operation postContentDocumentSuspendSubmission.
      *
-     * @param string $content_reference_key
-     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param string $marketplace_id
-     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $content_reference_key
+     *                                           The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string      $marketplace_id
+     *                                           The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function postContentDocumentSuspendSubmission(
         string $content_reference_key,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PostContentDocumentSuspendSubmissionResponse {
-        list($response) = $this->postContentDocumentSuspendSubmissionWithHttpInfo($content_reference_key, $marketplace_id);
+        list($response) = $this->postContentDocumentSuspendSubmissionWithHttpInfo($content_reference_key, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1807,10 +1875,11 @@ class AplusContentApi
     /**
      * Operation postContentDocumentSuspendSubmissionWithHttpInfo.
      *
-     * @param string $content_reference_key
-     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param string $marketplace_id
-     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $content_reference_key
+     *                                           The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string      $marketplace_id
+     *                                           The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1819,10 +1888,15 @@ class AplusContentApi
      */
     public function postContentDocumentSuspendSubmissionWithHttpInfo(
         string $content_reference_key,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->postContentDocumentSuspendSubmissionRequest($content_reference_key, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-postContentDocumentSuspendSubmission');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1923,11 +1997,16 @@ class AplusContentApi
      */
     public function postContentDocumentSuspendSubmissionAsyncWithHttpInfo(
         string $content_reference_key,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse';
         $request = $this->postContentDocumentSuspendSubmissionRequest($content_reference_key, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-postContentDocumentSuspendSubmission');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->postContentDocumentSuspendSubmissionRateLimiter->consume()->ensureAccepted();
         }
@@ -2085,18 +2164,20 @@ class AplusContentApi
      * Operation searchContentDocuments.
      *
      * @param string      $marketplace_id
-     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                         The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $page_token
-     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     *                                         A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function searchContentDocuments(
         string $marketplace_id,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): SearchContentDocumentsResponse {
-        list($response) = $this->searchContentDocumentsWithHttpInfo($marketplace_id, $page_token);
+        list($response) = $this->searchContentDocumentsWithHttpInfo($marketplace_id, $page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -2105,9 +2186,10 @@ class AplusContentApi
      * Operation searchContentDocumentsWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                         The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $page_token
-     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     *                                         A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2116,10 +2198,15 @@ class AplusContentApi
      */
     public function searchContentDocumentsWithHttpInfo(
         string $marketplace_id,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchContentDocumentsRequest($marketplace_id, $page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-searchContentDocuments');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2220,11 +2307,16 @@ class AplusContentApi
      */
     public function searchContentDocumentsAsyncWithHttpInfo(
         string $marketplace_id,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse';
         $request = $this->searchContentDocumentsRequest($marketplace_id, $page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-searchContentDocuments');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->searchContentDocumentsRateLimiter->consume()->ensureAccepted();
         }
@@ -2377,11 +2469,12 @@ class AplusContentApi
      * Operation searchContentPublishRecords.
      *
      * @param string      $marketplace_id
-     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                         The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     *                                         The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
      * @param null|string $page_token
-     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     *                                         A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2389,9 +2482,10 @@ class AplusContentApi
     public function searchContentPublishRecords(
         string $marketplace_id,
         string $asin,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): SearchContentPublishRecordsResponse {
-        list($response) = $this->searchContentPublishRecordsWithHttpInfo($marketplace_id, $asin, $page_token);
+        list($response) = $this->searchContentPublishRecordsWithHttpInfo($marketplace_id, $asin, $page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -2400,11 +2494,12 @@ class AplusContentApi
      * Operation searchContentPublishRecordsWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                         The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     *                                         The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
      * @param null|string $page_token
-     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     *                                         A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2414,10 +2509,15 @@ class AplusContentApi
     public function searchContentPublishRecordsWithHttpInfo(
         string $marketplace_id,
         string $asin,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchContentPublishRecordsRequest($marketplace_id, $asin, $page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-searchContentPublishRecords');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2524,11 +2624,16 @@ class AplusContentApi
     public function searchContentPublishRecordsAsyncWithHttpInfo(
         string $marketplace_id,
         string $asin,
-        ?string $page_token = null
+        ?string $page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse';
         $request = $this->searchContentPublishRecordsRequest($marketplace_id, $asin, $page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-searchContentPublishRecords');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->searchContentPublishRecordsRateLimiter->consume()->ensureAccepted();
         }
@@ -2709,6 +2814,7 @@ class AplusContentApi
      *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param PostContentDocumentRequest $post_content_document_request
      *                                                                  The content document request details. (required)
+     * @param null|string                $restrictedDataToken           Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2716,9 +2822,10 @@ class AplusContentApi
     public function updateContentDocument(
         string $content_reference_key,
         string $marketplace_id,
-        PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request,
+        ?string $restrictedDataToken = null
     ): PostContentDocumentResponse {
-        list($response) = $this->updateContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request);
+        list($response) = $this->updateContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request, $restrictedDataToken);
 
         return $response;
     }
@@ -2732,6 +2839,7 @@ class AplusContentApi
      *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param PostContentDocumentRequest $post_content_document_request
      *                                                                  The content document request details. (required)
+     * @param null|string                $restrictedDataToken           Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2741,10 +2849,15 @@ class AplusContentApi
     public function updateContentDocumentWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateContentDocumentRequest($content_reference_key, $marketplace_id, $post_content_document_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-updateContentDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2851,11 +2964,16 @@ class AplusContentApi
     public function updateContentDocumentAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
         $request = $this->updateContentDocumentRequest($content_reference_key, $marketplace_id, $post_content_document_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-updateContentDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateContentDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -3034,6 +3152,7 @@ class AplusContentApi
      *                                                                  The content document request details. (required)
      * @param null|string[]              $asin_set
      *                                                                  The set of ASINs. (optional)
+     * @param null|string                $restrictedDataToken           Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3041,9 +3160,10 @@ class AplusContentApi
     public function validateContentDocumentAsinRelations(
         string $marketplace_id,
         PostContentDocumentRequest $post_content_document_request,
-        ?array $asin_set = null
+        ?array $asin_set = null,
+        ?string $restrictedDataToken = null
     ): ValidateContentDocumentAsinRelationsResponse {
-        list($response) = $this->validateContentDocumentAsinRelationsWithHttpInfo($marketplace_id, $post_content_document_request, $asin_set);
+        list($response) = $this->validateContentDocumentAsinRelationsWithHttpInfo($marketplace_id, $post_content_document_request, $asin_set, $restrictedDataToken);
 
         return $response;
     }
@@ -3057,6 +3177,7 @@ class AplusContentApi
      *                                                                  The content document request details. (required)
      * @param null|string[]              $asin_set
      *                                                                  The set of ASINs. (optional)
+     * @param null|string                $restrictedDataToken           Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3066,10 +3187,15 @@ class AplusContentApi
     public function validateContentDocumentAsinRelationsWithHttpInfo(
         string $marketplace_id,
         PostContentDocumentRequest $post_content_document_request,
-        ?array $asin_set = null
+        ?array $asin_set = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->validateContentDocumentAsinRelationsRequest($marketplace_id, $post_content_document_request, $asin_set);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-validateContentDocumentAsinRelations');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3176,11 +3302,16 @@ class AplusContentApi
     public function validateContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $marketplace_id,
         PostContentDocumentRequest $post_content_document_request,
-        ?array $asin_set = null
+        ?array $asin_set = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
         $request = $this->validateContentDocumentAsinRelationsRequest($marketplace_id, $post_content_document_request, $asin_set);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AplusContentApi-validateContentDocumentAsinRelations');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->validateContentDocumentAsinRelationsRateLimiter->consume()->ensureAccepted();
         }
