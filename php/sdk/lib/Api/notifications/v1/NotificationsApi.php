@@ -444,7 +444,7 @@ class NotificationsApi
         \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\notifications\v1\CreateSubscriptionResponse {
-        list($response) = $this->createSubscriptionWithHttpInfo($notification_type, $body,$restrictedDataToken);
+        list($response) = $this->createSubscriptionWithHttpInfo($notification_type, $body,,$restrictedDataToken);
         return $response;
     }
 
@@ -1017,7 +1017,7 @@ class NotificationsApi
         string $notification_type,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse {
-        list($response) = $this->deleteSubscriptionByIdWithHttpInfo($subscription_id, $notification_type,$restrictedDataToken);
+        list($response) = $this->deleteSubscriptionByIdWithHttpInfo($subscription_id, $notification_type,,$restrictedDataToken);
         return $response;
     }
 
@@ -1587,7 +1587,7 @@ class NotificationsApi
     
         ?string $restrictedDataToken = null
     ): \SpApi\Model\notifications\v1\GetDestinationsResponse {
-        list($response) = $this->getDestinationsWithHttpInfo(,$restrictedDataToken);
+        list($response) = $this->getDestinationsWithHttpInfo($restrictedDataToken);
         return $response;
     }
 
@@ -1841,7 +1841,7 @@ class NotificationsApi
         ?string $payload_version = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\notifications\v1\GetSubscriptionResponse {
-        list($response) = $this->getSubscriptionWithHttpInfo($notification_type, $payload_version,$restrictedDataToken);
+        list($response) = $this->getSubscriptionWithHttpInfo($notification_type, $payload_version,,$restrictedDataToken);
         return $response;
     }
 
@@ -2139,7 +2139,7 @@ class NotificationsApi
         string $notification_type,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\notifications\v1\GetSubscriptionByIdResponse {
-        list($response) = $this->getSubscriptionByIdWithHttpInfo($subscription_id, $notification_type,$restrictedDataToken);
+        list($response) = $this->getSubscriptionByIdWithHttpInfo($subscription_id, $notification_type,,$restrictedDataToken);
         return $response;
     }
 

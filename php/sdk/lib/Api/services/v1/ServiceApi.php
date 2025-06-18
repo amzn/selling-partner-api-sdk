@@ -1,18 +1,16 @@
 <?php
-
 /**
  * ServiceApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services.
+ * Selling Partner API for Services
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -37,50 +35,47 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\services\v1\AddAppointmentRequest;
-use SpApi\Model\services\v1\AssignAppointmentResourcesRequest;
-use SpApi\Model\services\v1\AssignAppointmentResourcesResponse;
-use SpApi\Model\services\v1\CancelReservationResponse;
-use SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse;
-use SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse;
-use SpApi\Model\services\v1\CreateReservationRequest;
-use SpApi\Model\services\v1\CreateReservationResponse;
-use SpApi\Model\services\v1\CreateServiceDocumentUploadDestination;
-use SpApi\Model\services\v1\FixedSlotCapacity;
-use SpApi\Model\services\v1\FixedSlotCapacityQuery;
-use SpApi\Model\services\v1\GetAppointmentSlotsResponse;
-use SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse;
-use SpApi\Model\services\v1\GetServiceJobsResponse;
-use SpApi\Model\services\v1\RangeSlotCapacity;
-use SpApi\Model\services\v1\RangeSlotCapacityQuery;
-use SpApi\Model\services\v1\RescheduleAppointmentRequest;
-use SpApi\Model\services\v1\ServiceUploadDocument;
-use SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest;
-use SpApi\Model\services\v1\SetAppointmentResponse;
-use SpApi\Model\services\v1\UpdateReservationRequest;
-use SpApi\Model\services\v1\UpdateReservationResponse;
-use SpApi\Model\services\v1\UpdateScheduleRequest;
-use SpApi\Model\services\v1\UpdateScheduleResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * ServiceApi Class Doc Comment.
+ * ServiceApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class ServiceApi
 {
+    /**
+     * @var ClientInterface
+     */
+    protected ClientInterface $client;
+
+    /**
+     * @var Configuration
+     */
+    protected Configuration $config;
+
+    /**
+     * @var HeaderSelector
+     */
+    protected HeaderSelector $headerSelector;
+
+    /**
+     * @var int Host index
+     */
+    protected int $hostIndex;
+
+    private Bool $rateLimiterEnabled;
+    private InMemoryStorage $rateLimitStorage;
     public ?LimiterInterface $addAppointmentForServiceJobByServiceJobIdRateLimiter;
     public ?LimiterInterface $assignAppointmentResourcesRateLimiter;
     public ?LimiterInterface $cancelReservationRateLimiter;
@@ -98,27 +93,18 @@ class ServiceApi
     public ?LimiterInterface $setAppointmentFulfillmentDataRateLimiter;
     public ?LimiterInterface $updateReservationRateLimiter;
     public ?LimiterInterface $updateScheduleRateLimiter;
-    protected ClientInterface $client;
-
-    protected Configuration $config;
-
-    protected HeaderSelector $headerSelector;
 
     /**
-     * @var int Host index
-     */
-    protected int $hostIndex;
-
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
-    /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -128,40 +114,40 @@ class ServiceApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-addAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->addAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-addAppointmentForServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-assignAppointmentResources'), $this->rateLimitStorage);
-            $this->assignAppointmentResourcesRateLimiter = $factory->create('ServiceApi-assignAppointmentResources');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-cancelReservation'), $this->rateLimitStorage);
-            $this->cancelReservationRateLimiter = $factory->create('ServiceApi-cancelReservation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-cancelServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->cancelServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-cancelServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-completeServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->completeServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-completeServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-createReservation'), $this->rateLimitStorage);
-            $this->createReservationRateLimiter = $factory->create('ServiceApi-createReservation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-createServiceDocumentUploadDestination'), $this->rateLimitStorage);
-            $this->createServiceDocumentUploadDestinationRateLimiter = $factory->create('ServiceApi-createServiceDocumentUploadDestination');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getAppointmentSlots'), $this->rateLimitStorage);
-            $this->getAppointmentSlotsRateLimiter = $factory->create('ServiceApi-getAppointmentSlots');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getAppointmmentSlotsByJobId'), $this->rateLimitStorage);
-            $this->getAppointmmentSlotsByJobIdRateLimiter = $factory->create('ServiceApi-getAppointmmentSlotsByJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getFixedSlotCapacity'), $this->rateLimitStorage);
-            $this->getFixedSlotCapacityRateLimiter = $factory->create('ServiceApi-getFixedSlotCapacity');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getRangeSlotCapacity'), $this->rateLimitStorage);
-            $this->getRangeSlotCapacityRateLimiter = $factory->create('ServiceApi-getRangeSlotCapacity');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->getServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-getServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getServiceJobs'), $this->rateLimitStorage);
-            $this->getServiceJobsRateLimiter = $factory->create('ServiceApi-getServiceJobs');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-setAppointmentFulfillmentData'), $this->rateLimitStorage);
-            $this->setAppointmentFulfillmentDataRateLimiter = $factory->create('ServiceApi-setAppointmentFulfillmentData');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-updateReservation'), $this->rateLimitStorage);
-            $this->updateReservationRateLimiter = $factory->create('ServiceApi-updateReservation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-updateSchedule'), $this->rateLimitStorage);
-            $this->updateScheduleRateLimiter = $factory->create('ServiceApi-updateSchedule');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-addAppointmentForServiceJobByServiceJobId"), $this->rateLimitStorage);
+            $this->addAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create("ServiceApi-addAppointmentForServiceJobByServiceJobId");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-assignAppointmentResources"), $this->rateLimitStorage);
+            $this->assignAppointmentResourcesRateLimiter = $factory->create("ServiceApi-assignAppointmentResources");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-cancelReservation"), $this->rateLimitStorage);
+            $this->cancelReservationRateLimiter = $factory->create("ServiceApi-cancelReservation");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-cancelServiceJobByServiceJobId"), $this->rateLimitStorage);
+            $this->cancelServiceJobByServiceJobIdRateLimiter = $factory->create("ServiceApi-cancelServiceJobByServiceJobId");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-completeServiceJobByServiceJobId"), $this->rateLimitStorage);
+            $this->completeServiceJobByServiceJobIdRateLimiter = $factory->create("ServiceApi-completeServiceJobByServiceJobId");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-createReservation"), $this->rateLimitStorage);
+            $this->createReservationRateLimiter = $factory->create("ServiceApi-createReservation");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-createServiceDocumentUploadDestination"), $this->rateLimitStorage);
+            $this->createServiceDocumentUploadDestinationRateLimiter = $factory->create("ServiceApi-createServiceDocumentUploadDestination");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-getAppointmentSlots"), $this->rateLimitStorage);
+            $this->getAppointmentSlotsRateLimiter = $factory->create("ServiceApi-getAppointmentSlots");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-getAppointmmentSlotsByJobId"), $this->rateLimitStorage);
+            $this->getAppointmmentSlotsByJobIdRateLimiter = $factory->create("ServiceApi-getAppointmmentSlotsByJobId");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-getFixedSlotCapacity"), $this->rateLimitStorage);
+            $this->getFixedSlotCapacityRateLimiter = $factory->create("ServiceApi-getFixedSlotCapacity");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-getRangeSlotCapacity"), $this->rateLimitStorage);
+            $this->getRangeSlotCapacityRateLimiter = $factory->create("ServiceApi-getRangeSlotCapacity");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-getServiceJobByServiceJobId"), $this->rateLimitStorage);
+            $this->getServiceJobByServiceJobIdRateLimiter = $factory->create("ServiceApi-getServiceJobByServiceJobId");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-getServiceJobs"), $this->rateLimitStorage);
+            $this->getServiceJobsRateLimiter = $factory->create("ServiceApi-getServiceJobs");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId"), $this->rateLimitStorage);
+            $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create("ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-setAppointmentFulfillmentData"), $this->rateLimitStorage);
+            $this->setAppointmentFulfillmentDataRateLimiter = $factory->create("ServiceApi-setAppointmentFulfillmentData");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-updateReservation"), $this->rateLimitStorage);
+            $this->updateReservationRateLimiter = $factory->create("ServiceApi-updateReservation");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ServiceApi-updateSchedule"), $this->rateLimitStorage);
+            $this->updateScheduleRateLimiter = $factory->create("ServiceApi-updateSchedule");
         }
 
         $this->client = $client ?: new Client();
@@ -170,7 +156,7 @@ class ServiceApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -180,7 +166,7 @@ class ServiceApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -189,62 +175,61 @@ class ServiceApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation addAppointmentForServiceJobByServiceJobId.
+     * Operation addAppointmentForServiceJobByServiceJobId
      *
-     * @param string                $service_job_id
-     *                                                   An Amazon defined service job identifier. (required)
-     * @param AddAppointmentRequest $body
-     *                                                   Add appointment operation input details. (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
+     *  Add appointment operation input details. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\SetAppointmentResponse
      */
     public function addAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
-        AddAppointmentRequest $body,
+        \SpApi\Model\services\v1\AddAppointmentRequest $body,
         ?string $restrictedDataToken = null
-    ): SetAppointmentResponse {
-        list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\SetAppointmentResponse {
+        list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation addAppointmentForServiceJobByServiceJobIdWithHttpInfo.
+     * Operation addAppointmentForServiceJobByServiceJobIdWithHttpInfo
      *
-     * @param string                $service_job_id
-     *                                                   An Amazon defined service job identifier. (required)
-     * @param AddAppointmentRequest $body
-     *                                                   Add appointment operation input details. (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
+     *  Add appointment operation input details. (required)
      *
-     * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
-        AddAppointmentRequest $body,
+        \SpApi\Model\services\v1\AddAppointmentRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-addAppointmentForServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-addAppointmentForServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->addAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
@@ -280,74 +265,74 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\SetAppointmentResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\SetAppointmentResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation addAppointmentForServiceJobByServiceJobIdAsync.
+     * Operation addAppointmentForServiceJobByServiceJobIdAsync
      *
-     * @param string                $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
-     * @param AddAppointmentRequest $body
-     *                                              Add appointment operation input details. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
+     *  Add appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function addAppointmentForServiceJobByServiceJobIdAsync(
         string $service_job_id,
-        AddAppointmentRequest $body
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
     ): PromiseInterface {
         return $this->addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo($service_job_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo.
+     * Operation addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo
      *
-     * @param string                $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
-     * @param AddAppointmentRequest $body
-     *                                              Add appointment operation input details. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
+     *  Add appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        AddAppointmentRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\AddAppointmentRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-addAppointmentForServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-addAppointmentForServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
@@ -359,11 +344,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -371,13 +356,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -389,26 +373,26 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'addAppointmentForServiceJobByServiceJobId'.
+     * Create request for operation 'addAppointmentForServiceJobByServiceJobId'
      *
-     * @param string                $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
-     * @param AddAppointmentRequest $body
-     *                                              Add appointment operation input details. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
+     *  Add appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function addAppointmentForServiceJobByServiceJobIdRequest(
         string $service_job_id,
-        AddAppointmentRequest $body
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling addAppointmentForServiceJobByServiceJobId'
             );
@@ -421,7 +405,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling addAppointmentForServiceJobByServiceJobId'
             );
@@ -434,24 +418,28 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -464,19 +452,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -490,72 +481,68 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation assignAppointmentResources.
+     * Operation assignAppointmentResources
      *
-     * @param string                            $service_job_id
-     *                                                               An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                            $appointment_id
-     *                                                               An Amazon-defined identifier of active service job appointment. (required)
-     * @param AssignAppointmentResourcesRequest $body
-     *                                                               body (required)
-     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
+     *  body (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\AssignAppointmentResourcesResponse
      */
     public function assignAppointmentResources(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body,
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body,
         ?string $restrictedDataToken = null
-    ): AssignAppointmentResourcesResponse {
-        list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\AssignAppointmentResourcesResponse {
+        list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation assignAppointmentResourcesWithHttpInfo.
+     * Operation assignAppointmentResourcesWithHttpInfo
      *
-     * @param string                            $service_job_id
-     *                                                               An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                            $appointment_id
-     *                                                               An Amazon-defined identifier of active service job appointment. (required)
-     * @param AssignAppointmentResourcesRequest $body
-     *                                                               (required)
-     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
+     *  (required)
      *
-     * @return array of \SpApi\Model\services\v1\AssignAppointmentResourcesResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\AssignAppointmentResourcesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function assignAppointmentResourcesWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body,
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-assignAppointmentResources');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-assignAppointmentResources");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->assignAppointmentResourcesRateLimiter->consume()->ensureAccepted();
@@ -591,80 +578,80 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation assignAppointmentResourcesAsync.
+     * Operation assignAppointmentResourcesAsync
      *
-     * @param string                            $service_job_id
-     *                                                          An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                            $appointment_id
-     *                                                          An Amazon-defined identifier of active service job appointment. (required)
-     * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
+     *  (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function assignAppointmentResourcesAsync(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
     ): PromiseInterface {
         return $this->assignAppointmentResourcesAsyncWithHttpInfo($service_job_id, $appointment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation assignAppointmentResourcesAsyncWithHttpInfo.
+     * Operation assignAppointmentResourcesAsyncWithHttpInfo
      *
-     * @param string                            $service_job_id
-     *                                                          An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                            $appointment_id
-     *                                                          An Amazon-defined identifier of active service job appointment. (required)
-     * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
+     *  (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function assignAppointmentResourcesAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse';
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-assignAppointmentResources');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-assignAppointmentResources");
         } else {
             $request = $this->config->sign($request);
         }
@@ -676,11 +663,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -688,13 +675,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -706,29 +692,29 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'assignAppointmentResources'.
+     * Create request for operation 'assignAppointmentResources'
      *
-     * @param string                            $service_job_id
-     *                                                          An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                            $appointment_id
-     *                                                          An Amazon-defined identifier of active service job appointment. (required)
-     * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
+     *  (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function assignAppointmentResourcesRequest(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling assignAppointmentResources'
             );
@@ -741,7 +727,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'appointment_id' is set
-        if (null === $appointment_id || (is_array($appointment_id) && 0 === count($appointment_id))) {
+        if ($appointment_id === null || (is_array($appointment_id) && count($appointment_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $appointment_id when calling assignAppointmentResources'
             );
@@ -754,7 +740,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling assignAppointmentResources'
             );
@@ -767,32 +753,36 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
         // path params
-        if (null !== $appointment_id) {
+        if ($appointment_id !== null) {
             $resourcePath = str_replace(
-                '{appointmentId}',
+                '{' . 'appointmentId' . '}',
                 ObjectSerializer::toPathValue($appointment_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -805,19 +795,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -831,50 +824,48 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation cancelReservation.
+     * Operation cancelReservation
      *
-     * @param string      $reservation_id
-     *                                         Reservation Identifier (required)
-     * @param string[]    $marketplace_ids
-     *                                         An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\CancelReservationResponse
      */
     public function cancelReservation(
         string $reservation_id,
         array $marketplace_ids,
         ?string $restrictedDataToken = null
-    ): CancelReservationResponse {
-        list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\CancelReservationResponse {
+        list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation cancelReservationWithHttpInfo.
+     * Operation cancelReservationWithHttpInfo
      *
-     * @param string      $reservation_id
-     *                                         Reservation Identifier (required)
-     * @param string[]    $marketplace_ids
-     *                                         An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
      *
-     * @return array of \SpApi\Model\services\v1\CancelReservationResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\CancelReservationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelReservationWithHttpInfo(
         string $reservation_id,
@@ -882,15 +873,13 @@ class ServiceApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelReservation');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-cancelReservation");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelReservationRateLimiter->consume()->ensureAccepted();
@@ -926,41 +915,41 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\CancelReservationResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\CancelReservationResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation cancelReservationAsync.
+     * Operation cancelReservationAsync
      *
-     * @param string   $reservation_id
-     *                                  Reservation Identifier (required)
-     * @param string[] $marketplace_ids
-     *                                  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function cancelReservationAsync(
         string $reservation_id,
@@ -971,29 +960,29 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation cancelReservationAsyncWithHttpInfo.
+     * Operation cancelReservationAsyncWithHttpInfo
      *
-     * @param string   $reservation_id
-     *                                  Reservation Identifier (required)
-     * @param string[] $marketplace_ids
-     *                                  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function cancelReservationAsyncWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CancelReservationResponse';
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelReservation');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-cancelReservation");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1005,11 +994,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1017,13 +1006,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1035,26 +1023,26 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'cancelReservation'.
+     * Create request for operation 'cancelReservation'
      *
-     * @param string   $reservation_id
-     *                                  Reservation Identifier (required)
-     * @param string[] $marketplace_ids
-     *                                  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function cancelReservationRequest(
         string $reservation_id,
         array $marketplace_ids
     ): Request {
         // verify the required parameter 'reservation_id' is set
-        if (null === $reservation_id || (is_array($reservation_id) && 0 === count($reservation_id))) {
+        if ($reservation_id === null || (is_array($reservation_id) && count($reservation_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $reservation_id when calling cancelReservation'
             );
@@ -1067,7 +1055,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling cancelReservation'
             );
@@ -1075,6 +1063,7 @@ class ServiceApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.cancelReservation, number of items must be less than or equal to 1.');
         }
+
 
         $resourcePath = '/service/v1/reservation/{reservationId}';
         $formParams = [];
@@ -1094,17 +1083,20 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $reservation_id) {
+        if ($reservation_id !== null) {
             $resourcePath = str_replace(
-                '{reservationId}',
+                '{' . 'reservationId' . '}',
                 ObjectSerializer::toPathValue($reservation_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -1118,19 +1110,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1144,50 +1139,48 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'DELETE',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation cancelServiceJobByServiceJobId.
+     * Operation cancelServiceJobByServiceJobId
      *
-     * @param string      $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
-     * @param string      $cancellation_reason_code
-     *                                              A cancel reason code that specifies the reason for cancelling a service job. (required)
-     * @param null|string $restrictedDataToken      Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $cancellation_reason_code
+     *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse
      */
     public function cancelServiceJobByServiceJobId(
         string $service_job_id,
         string $cancellation_reason_code,
         ?string $restrictedDataToken = null
-    ): CancelServiceJobByServiceJobIdResponse {
-        list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse {
+        list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation cancelServiceJobByServiceJobIdWithHttpInfo.
+     * Operation cancelServiceJobByServiceJobIdWithHttpInfo
      *
-     * @param string      $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
-     * @param string      $cancellation_reason_code
-     *                                              A cancel reason code that specifies the reason for cancelling a service job. (required)
-     * @param null|string $restrictedDataToken      Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $cancellation_reason_code
+     *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
-     * @return array of \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
@@ -1195,15 +1188,13 @@ class ServiceApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-cancelServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->cancelServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
@@ -1239,41 +1230,41 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation cancelServiceJobByServiceJobIdAsync.
+     * Operation cancelServiceJobByServiceJobIdAsync
      *
-     * @param string $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param string $cancellation_reason_code
-     *                                         A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $cancellation_reason_code
+     *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function cancelServiceJobByServiceJobIdAsync(
         string $service_job_id,
@@ -1284,29 +1275,29 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation cancelServiceJobByServiceJobIdAsyncWithHttpInfo.
+     * Operation cancelServiceJobByServiceJobIdAsyncWithHttpInfo
      *
-     * @param string $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param string $cancellation_reason_code
-     *                                         A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $cancellation_reason_code
+     *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function cancelServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
         string $cancellation_reason_code,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-cancelServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1318,11 +1309,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1330,13 +1321,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1348,26 +1338,26 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'cancelServiceJobByServiceJobId'.
+     * Create request for operation 'cancelServiceJobByServiceJobId'
      *
-     * @param string $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param string $cancellation_reason_code
-     *                                         A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $cancellation_reason_code
+     *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function cancelServiceJobByServiceJobIdRequest(
         string $service_job_id,
         string $cancellation_reason_code
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling cancelServiceJobByServiceJobId'
             );
@@ -1380,7 +1370,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'cancellation_reason_code' is set
-        if (null === $cancellation_reason_code || (is_array($cancellation_reason_code) && 0 === count($cancellation_reason_code))) {
+        if ($cancellation_reason_code === null || (is_array($cancellation_reason_code) && count($cancellation_reason_code) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $cancellation_reason_code when calling cancelServiceJobByServiceJobId'
             );
@@ -1391,9 +1381,10 @@ class ServiceApi
         if (strlen($cancellation_reason_code) < 1) {
             throw new \InvalidArgumentException('invalid length for "$cancellation_reason_code" when calling ServiceApi.cancelServiceJobByServiceJobId, must be bigger than or equal to 1.');
         }
-        if (!preg_match('/^[A-Z0-9_]*$/', $cancellation_reason_code)) {
-            throw new \InvalidArgumentException('invalid value for "cancellation_reason_code" when calling ServiceApi.cancelServiceJobByServiceJobId, must conform to the pattern /^[A-Z0-9_]*$/.');
+        if (!preg_match("/^[A-Z0-9_]*$/", $cancellation_reason_code)) {
+            throw new \InvalidArgumentException("invalid value for \"cancellation_reason_code\" when calling ServiceApi.cancelServiceJobByServiceJobId, must conform to the pattern /^[A-Z0-9_]*$/.");
         }
+
 
         $resourcePath = '/service/v1/serviceJobs/{serviceJobId}/cancellations';
         $formParams = [];
@@ -1413,17 +1404,20 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -1437,19 +1431,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1463,60 +1460,56 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation completeServiceJobByServiceJobId.
+     * Operation completeServiceJobByServiceJobId
      *
-     * @param string      $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse
      */
     public function completeServiceJobByServiceJobId(
         string $service_job_id,
         ?string $restrictedDataToken = null
-    ): CompleteServiceJobByServiceJobIdResponse {
-        list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse {
+        list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation completeServiceJobByServiceJobIdWithHttpInfo.
+     * Operation completeServiceJobByServiceJobIdWithHttpInfo
      *
-     * @param string      $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
      *
-     * @return array of \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function completeServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-completeServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-completeServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->completeServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
@@ -1552,39 +1545,39 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation completeServiceJobByServiceJobIdAsync.
+     * Operation completeServiceJobByServiceJobIdAsync
      *
-     * @param string $service_job_id
-     *                               An Amazon defined service job identifier. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function completeServiceJobByServiceJobIdAsync(
         string $service_job_id
@@ -1594,26 +1587,26 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation completeServiceJobByServiceJobIdAsyncWithHttpInfo.
+     * Operation completeServiceJobByServiceJobIdAsyncWithHttpInfo
      *
-     * @param string $service_job_id
-     *                               An Amazon defined service job identifier. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function completeServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-completeServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-completeServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1625,11 +1618,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1637,13 +1630,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1655,23 +1647,23 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'completeServiceJobByServiceJobId'.
+     * Create request for operation 'completeServiceJobByServiceJobId'
      *
-     * @param string $service_job_id
-     *                               An Amazon defined service job identifier. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function completeServiceJobByServiceJobIdRequest(
         string $service_job_id
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling completeServiceJobByServiceJobId'
             );
@@ -1683,6 +1675,7 @@ class ServiceApi
             throw new \InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.completeServiceJobByServiceJobId, must be bigger than or equal to 1.');
         }
 
+
         $resourcePath = '/service/v1/serviceJobs/{serviceJobId}/completions';
         $formParams = [];
         $queryParams = [];
@@ -1690,17 +1683,21 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -1714,19 +1711,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1740,66 +1740,62 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createReservation.
+     * Operation createReservation
      *
-     * @param string[]                 $marketplace_ids
-     *                                                      An identifier for the marketplace in which the resource operates. (required)
-     * @param CreateReservationRequest $body
-     *                                                      Reservation details (required)
-     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
+     *  Reservation details (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\CreateReservationResponse
      */
     public function createReservation(
         array $marketplace_ids,
-        CreateReservationRequest $body,
+        \SpApi\Model\services\v1\CreateReservationRequest $body,
         ?string $restrictedDataToken = null
-    ): CreateReservationResponse {
-        list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\CreateReservationResponse {
+        list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation createReservationWithHttpInfo.
+     * Operation createReservationWithHttpInfo
      *
-     * @param string[]                 $marketplace_ids
-     *                                                      An identifier for the marketplace in which the resource operates. (required)
-     * @param CreateReservationRequest $body
-     *                                                      Reservation details (required)
-     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
+     *  Reservation details (required)
      *
-     * @return array of \SpApi\Model\services\v1\CreateReservationResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\CreateReservationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReservationWithHttpInfo(
         array $marketplace_ids,
-        CreateReservationRequest $body,
+        \SpApi\Model\services\v1\CreateReservationRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReservationRequest($marketplace_ids, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createReservation');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-createReservation");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createReservationRateLimiter->consume()->ensureAccepted();
@@ -1835,74 +1831,74 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\CreateReservationResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\CreateReservationResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation createReservationAsync.
+     * Operation createReservationAsync
      *
-     * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
-     * @param CreateReservationRequest $body
-     *                                                  Reservation details (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
+     *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createReservationAsync(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        \SpApi\Model\services\v1\CreateReservationRequest $body
     ): PromiseInterface {
         return $this->createReservationAsyncWithHttpInfo($marketplace_ids, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation createReservationAsyncWithHttpInfo.
+     * Operation createReservationAsyncWithHttpInfo
      *
-     * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
-     * @param CreateReservationRequest $body
-     *                                                  Reservation details (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
+     *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createReservationAsyncWithHttpInfo(
         array $marketplace_ids,
-        CreateReservationRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\CreateReservationRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CreateReservationResponse';
         $request = $this->createReservationRequest($marketplace_ids, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createReservation');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-createReservation");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1914,11 +1910,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1926,13 +1922,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1944,26 +1939,26 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'createReservation'.
+     * Create request for operation 'createReservation'
      *
-     * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
-     * @param CreateReservationRequest $body
-     *                                                  Reservation details (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
+     *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function createReservationRequest(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        \SpApi\Model\services\v1\CreateReservationRequest $body
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling createReservation'
             );
@@ -1973,7 +1968,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createReservation'
             );
@@ -1997,15 +1992,19 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -2018,19 +2017,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2044,60 +2046,56 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createServiceDocumentUploadDestination.
+     * Operation createServiceDocumentUploadDestination
      *
-     * @param ServiceUploadDocument $body
-     *                                                   Upload document operation input details. (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
+     *  Upload document operation input details. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination
      */
     public function createServiceDocumentUploadDestination(
-        ServiceUploadDocument $body,
+        \SpApi\Model\services\v1\ServiceUploadDocument $body,
         ?string $restrictedDataToken = null
-    ): CreateServiceDocumentUploadDestination {
-        list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination {
+        list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation createServiceDocumentUploadDestinationWithHttpInfo.
+     * Operation createServiceDocumentUploadDestinationWithHttpInfo
      *
-     * @param ServiceUploadDocument $body
-     *                                                   Upload document operation input details. (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
+     *  Upload document operation input details. (required)
      *
-     * @return array of \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination, HTTP status code, HTTP response headers (array of strings)
      */
     public function createServiceDocumentUploadDestinationWithHttpInfo(
-        ServiceUploadDocument $body,
+        \SpApi\Model\services\v1\ServiceUploadDocument $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createServiceDocumentUploadDestination');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-createServiceDocumentUploadDestination");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createServiceDocumentUploadDestinationRateLimiter->consume()->ensureAccepted();
@@ -2133,68 +2131,68 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation createServiceDocumentUploadDestinationAsync.
+     * Operation createServiceDocumentUploadDestinationAsync
      *
-     * @param ServiceUploadDocument $body
-     *                                    Upload document operation input details. (required)
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
+     *  Upload document operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createServiceDocumentUploadDestinationAsync(
-        ServiceUploadDocument $body
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
     ): PromiseInterface {
         return $this->createServiceDocumentUploadDestinationAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation createServiceDocumentUploadDestinationAsyncWithHttpInfo.
+     * Operation createServiceDocumentUploadDestinationAsyncWithHttpInfo
      *
-     * @param ServiceUploadDocument $body
-     *                                    Upload document operation input details. (required)
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
+     *  Upload document operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createServiceDocumentUploadDestinationAsyncWithHttpInfo(
-        ServiceUploadDocument $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\ServiceUploadDocument $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination';
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createServiceDocumentUploadDestination');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-createServiceDocumentUploadDestination");
         } else {
             $request = $this->config->sign($request);
         }
@@ -2206,11 +2204,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -2218,13 +2216,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2236,23 +2233,23 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'createServiceDocumentUploadDestination'.
+     * Create request for operation 'createServiceDocumentUploadDestination'
      *
-     * @param ServiceUploadDocument $body
-     *                                    Upload document operation input details. (required)
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
+     *  Upload document operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function createServiceDocumentUploadDestinationRequest(
-        ServiceUploadDocument $body
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
     ): Request {
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createServiceDocumentUploadDestination'
             );
@@ -2265,15 +2262,20 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -2286,19 +2288,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2312,32 +2317,32 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getAppointmentSlots.
+     * Operation getAppointmentSlots
      *
-     * @param string      $asin
-     *                                         ASIN associated with the service. (required)
-     * @param string      $store_id
-     *                                         Store identifier defining the region scope to retrive appointment slots. (required)
-     * @param string[]    $marketplace_ids
-     *                                         An identifier for the marketplace for which appointment slots are queried (required)
-     * @param null|string $start_time
-     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $asin
+     *  ASIN associated with the service. (required)
+     * @param  string $store_id
+     *  Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace for which appointment slots are queried (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\GetAppointmentSlotsResponse
      */
     public function getAppointmentSlots(
         string $asin,
@@ -2346,31 +2351,29 @@ class ServiceApi
         ?string $start_time = null,
         ?string $end_time = null,
         ?string $restrictedDataToken = null
-    ): GetAppointmentSlotsResponse {
-        list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\GetAppointmentSlotsResponse {
+        list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time,,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getAppointmentSlotsWithHttpInfo.
+     * Operation getAppointmentSlotsWithHttpInfo
      *
-     * @param string      $asin
-     *                                         ASIN associated with the service. (required)
-     * @param string      $store_id
-     *                                         Store identifier defining the region scope to retrive appointment slots. (required)
-     * @param string[]    $marketplace_ids
-     *                                         An identifier for the marketplace for which appointment slots are queried (required)
-     * @param null|string $start_time
-     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $asin
+     *  ASIN associated with the service. (required)
+     * @param  string $store_id
+     *  Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace for which appointment slots are queried (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppointmentSlotsWithHttpInfo(
         string $asin,
@@ -2381,15 +2384,13 @@ class ServiceApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmentSlots');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getAppointmentSlots");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getAppointmentSlotsRateLimiter->consume()->ensureAccepted();
@@ -2425,47 +2426,47 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getAppointmentSlotsAsync.
+     * Operation getAppointmentSlotsAsync
      *
-     * @param string      $asin
-     *                                     ASIN associated with the service. (required)
-     * @param string      $store_id
-     *                                     Store identifier defining the region scope to retrive appointment slots. (required)
-     * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace for which appointment slots are queried (required)
-     * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param  string $asin
+     *  ASIN associated with the service. (required)
+     * @param  string $store_id
+     *  Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace for which appointment slots are queried (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getAppointmentSlotsAsync(
         string $asin,
@@ -2479,25 +2480,25 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getAppointmentSlotsAsyncWithHttpInfo.
+     * Operation getAppointmentSlotsAsyncWithHttpInfo
      *
-     * @param string      $asin
-     *                                     ASIN associated with the service. (required)
-     * @param string      $store_id
-     *                                     Store identifier defining the region scope to retrive appointment slots. (required)
-     * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace for which appointment slots are queried (required)
-     * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param  string $asin
+     *  ASIN associated with the service. (required)
+     * @param  string $store_id
+     *  Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace for which appointment slots are queried (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getAppointmentSlotsAsyncWithHttpInfo(
         string $asin,
@@ -2505,12 +2506,12 @@ class ServiceApi
         array $marketplace_ids,
         ?string $start_time = null,
         ?string $end_time = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmentSlots');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getAppointmentSlots");
         } else {
             $request = $this->config->sign($request);
         }
@@ -2522,11 +2523,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -2534,13 +2535,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2552,25 +2552,25 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getAppointmentSlots'.
+     * Create request for operation 'getAppointmentSlots'
      *
-     * @param string      $asin
-     *                                     ASIN associated with the service. (required)
-     * @param string      $store_id
-     *                                     Store identifier defining the region scope to retrive appointment slots. (required)
-     * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace for which appointment slots are queried (required)
-     * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param  string $asin
+     *  ASIN associated with the service. (required)
+     * @param  string $store_id
+     *  Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace for which appointment slots are queried (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getAppointmentSlotsRequest(
         string $asin,
@@ -2580,13 +2580,13 @@ class ServiceApi
         ?string $end_time = null
     ): Request {
         // verify the required parameter 'asin' is set
-        if (null === $asin || (is_array($asin) && 0 === count($asin))) {
+        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $asin when calling getAppointmentSlots'
             );
         }
         // verify the required parameter 'store_id' is set
-        if (null === $store_id || (is_array($store_id) && 0 === count($store_id))) {
+        if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $store_id when calling getAppointmentSlots'
             );
@@ -2599,7 +2599,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getAppointmentSlots'
             );
@@ -2607,6 +2607,7 @@ class ServiceApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getAppointmentSlots, number of items must be less than or equal to 1.');
         }
+
 
         $resourcePath = '/service/v1/appointmentSlots';
         $formParams = [];
@@ -2666,8 +2667,12 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -2681,19 +2686,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2707,30 +2715,30 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getAppointmmentSlotsByJobId.
+     * Operation getAppointmmentSlotsByJobId
      *
-     * @param string      $service_job_id
-     *                                         A service job identifier to retrive appointment slots for associated service. (required)
-     * @param string[]    $marketplace_ids
-     *                                         An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $start_time
-     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  A service job identifier to retrive appointment slots for associated service. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\GetAppointmentSlotsResponse
      */
     public function getAppointmmentSlotsByJobId(
         string $service_job_id,
@@ -2738,29 +2746,27 @@ class ServiceApi
         ?string $start_time = null,
         ?string $end_time = null,
         ?string $restrictedDataToken = null
-    ): GetAppointmentSlotsResponse {
-        list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\GetAppointmentSlotsResponse {
+        list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getAppointmmentSlotsByJobIdWithHttpInfo.
+     * Operation getAppointmmentSlotsByJobIdWithHttpInfo
      *
-     * @param string      $service_job_id
-     *                                         A service job identifier to retrive appointment slots for associated service. (required)
-     * @param string[]    $marketplace_ids
-     *                                         An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $start_time
-     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  A service job identifier to retrive appointment slots for associated service. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppointmmentSlotsByJobIdWithHttpInfo(
         string $service_job_id,
@@ -2770,15 +2776,13 @@ class ServiceApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmmentSlotsByJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getAppointmmentSlotsByJobId");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getAppointmmentSlotsByJobIdRateLimiter->consume()->ensureAccepted();
@@ -2814,45 +2818,45 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getAppointmmentSlotsByJobIdAsync.
+     * Operation getAppointmmentSlotsByJobIdAsync
      *
-     * @param string      $service_job_id
-     *                                     A service job identifier to retrive appointment slots for associated service. (required)
-     * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param  string $service_job_id
+     *  A service job identifier to retrive appointment slots for associated service. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getAppointmmentSlotsByJobIdAsync(
         string $service_job_id,
@@ -2865,35 +2869,35 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getAppointmmentSlotsByJobIdAsyncWithHttpInfo.
+     * Operation getAppointmmentSlotsByJobIdAsyncWithHttpInfo
      *
-     * @param string      $service_job_id
-     *                                     A service job identifier to retrive appointment slots for associated service. (required)
-     * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param  string $service_job_id
+     *  A service job identifier to retrive appointment slots for associated service. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getAppointmmentSlotsByJobIdAsyncWithHttpInfo(
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
         ?string $end_time = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmmentSlotsByJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getAppointmmentSlotsByJobId");
         } else {
             $request = $this->config->sign($request);
         }
@@ -2905,11 +2909,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -2917,13 +2921,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2935,23 +2938,23 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getAppointmmentSlotsByJobId'.
+     * Create request for operation 'getAppointmmentSlotsByJobId'
      *
-     * @param string      $service_job_id
-     *                                     A service job identifier to retrive appointment slots for associated service. (required)
-     * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace in which the resource operates. (required)
-     * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
-     * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param  string $service_job_id
+     *  A service job identifier to retrive appointment slots for associated service. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  string|null $start_time
+     *  A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param  string|null $end_time
+     *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getAppointmmentSlotsByJobIdRequest(
         string $service_job_id,
@@ -2960,7 +2963,7 @@ class ServiceApi
         ?string $end_time = null
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling getAppointmmentSlotsByJobId'
             );
@@ -2973,7 +2976,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getAppointmmentSlotsByJobId'
             );
@@ -2981,6 +2984,7 @@ class ServiceApi
         if (count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getAppointmmentSlotsByJobId, number of items must be less than or equal to 1.');
         }
+
 
         $resourcePath = '/service/v1/serviceJobs/{serviceJobId}/appointmentSlots';
         $formParams = [];
@@ -3020,17 +3024,20 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -3044,19 +3051,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3070,78 +3080,74 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getFixedSlotCapacity.
+     * Operation getFixedSlotCapacity
      *
-     * @param string                 $resource_id
-     *                                                    Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                    An identifier for the marketplace in which the resource operates. (required)
-     * @param FixedSlotCapacityQuery $body
-     *                                                    Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                    Next page token returned in the response of your previous request. (optional)
-     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\FixedSlotCapacity
      */
     public function getFixedSlotCapacity(
         string $resource_id,
         array $marketplace_ids,
-        FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
-    ): FixedSlotCapacity {
-        list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\FixedSlotCapacity {
+        list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getFixedSlotCapacityWithHttpInfo.
+     * Operation getFixedSlotCapacityWithHttpInfo
      *
-     * @param string                 $resource_id
-     *                                                    Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                    An identifier for the marketplace in which the resource operates. (required)
-     * @param FixedSlotCapacityQuery $body
-     *                                                    Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                    Next page token returned in the response of your previous request. (optional)
-     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
-     * @return array of \SpApi\Model\services\v1\FixedSlotCapacity, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\FixedSlotCapacity, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFixedSlotCapacityWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getFixedSlotCapacity');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getFixedSlotCapacity");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getFixedSlotCapacityRateLimiter->consume()->ensureAccepted();
@@ -3177,50 +3183,50 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\FixedSlotCapacity' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\FixedSlotCapacity' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\FixedSlotCapacity' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacity' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacity', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacity', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getFixedSlotCapacityAsync.
+     * Operation getFixedSlotCapacityAsync
      *
-     * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
-     * @param FixedSlotCapacityQuery $body
-     *                                                Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getFixedSlotCapacityAsync(
         string $resource_id,
         array $marketplace_ids,
-        FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): PromiseInterface {
         return $this->getFixedSlotCapacityAsyncWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token)
@@ -3228,35 +3234,35 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getFixedSlotCapacityAsyncWithHttpInfo.
+     * Operation getFixedSlotCapacityAsyncWithHttpInfo
      *
-     * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
-     * @param FixedSlotCapacityQuery $body
-     *                                                Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getFixedSlotCapacityAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\FixedSlotCapacity';
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getFixedSlotCapacity');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getFixedSlotCapacity");
         } else {
             $request = $this->config->sign($request);
         }
@@ -3268,11 +3274,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -3280,13 +3286,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3298,32 +3303,32 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getFixedSlotCapacity'.
+     * Create request for operation 'getFixedSlotCapacity'
      *
-     * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
-     * @param FixedSlotCapacityQuery $body
-     *                                                Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getFixedSlotCapacityRequest(
         string $resource_id,
         array $marketplace_ids,
-        FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'resource_id' is set
-        if (null === $resource_id || (is_array($resource_id) && 0 === count($resource_id))) {
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $resource_id when calling getFixedSlotCapacity'
             );
@@ -3336,7 +3341,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getFixedSlotCapacity'
             );
@@ -3346,7 +3351,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling getFixedSlotCapacity'
             );
@@ -3380,24 +3385,27 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $resource_id) {
+        if ($resource_id !== null) {
             $resourcePath = str_replace(
-                '{resourceId}',
+                '{' . 'resourceId' . '}',
                 ObjectSerializer::toPathValue($resource_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -3410,19 +3418,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3436,78 +3447,74 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getRangeSlotCapacity.
+     * Operation getRangeSlotCapacity
      *
-     * @param string                 $resource_id
-     *                                                    Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                    An identifier for the marketplace in which the resource operates. (required)
-     * @param RangeSlotCapacityQuery $body
-     *                                                    Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                    Next page token returned in the response of your previous request. (optional)
-     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\RangeSlotCapacity
      */
     public function getRangeSlotCapacity(
         string $resource_id,
         array $marketplace_ids,
-        RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
-    ): RangeSlotCapacity {
-        list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\RangeSlotCapacity {
+        list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getRangeSlotCapacityWithHttpInfo.
+     * Operation getRangeSlotCapacityWithHttpInfo
      *
-     * @param string                 $resource_id
-     *                                                    Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                    An identifier for the marketplace in which the resource operates. (required)
-     * @param RangeSlotCapacityQuery $body
-     *                                                    Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                    Next page token returned in the response of your previous request. (optional)
-     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
-     * @return array of \SpApi\Model\services\v1\RangeSlotCapacity, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\RangeSlotCapacity, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRangeSlotCapacityWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getRangeSlotCapacity');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getRangeSlotCapacity");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getRangeSlotCapacityRateLimiter->consume()->ensureAccepted();
@@ -3543,50 +3550,50 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\RangeSlotCapacity' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\RangeSlotCapacity' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\RangeSlotCapacity' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacity' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacity', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacity', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getRangeSlotCapacityAsync.
+     * Operation getRangeSlotCapacityAsync
      *
-     * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
-     * @param RangeSlotCapacityQuery $body
-     *                                                Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getRangeSlotCapacityAsync(
         string $resource_id,
         array $marketplace_ids,
-        RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): PromiseInterface {
         return $this->getRangeSlotCapacityAsyncWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token)
@@ -3594,35 +3601,35 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getRangeSlotCapacityAsyncWithHttpInfo.
+     * Operation getRangeSlotCapacityAsyncWithHttpInfo
      *
-     * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
-     * @param RangeSlotCapacityQuery $body
-     *                                                Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getRangeSlotCapacityAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\RangeSlotCapacity';
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getRangeSlotCapacity');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getRangeSlotCapacity");
         } else {
             $request = $this->config->sign($request);
         }
@@ -3634,11 +3641,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -3646,13 +3653,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3664,32 +3670,32 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getRangeSlotCapacity'.
+     * Create request for operation 'getRangeSlotCapacity'
      *
-     * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
-     * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
-     * @param RangeSlotCapacityQuery $body
-     *                                                Request body. (required)
-     * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     * @param  string $resource_id
+     *  Resource Identifier. (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
+     *  Request body. (required)
+     * @param  string|null $next_page_token
+     *  Next page token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getRangeSlotCapacityRequest(
         string $resource_id,
         array $marketplace_ids,
-        RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'resource_id' is set
-        if (null === $resource_id || (is_array($resource_id) && 0 === count($resource_id))) {
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $resource_id when calling getRangeSlotCapacity'
             );
@@ -3702,7 +3708,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getRangeSlotCapacity'
             );
@@ -3712,7 +3718,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling getRangeSlotCapacity'
             );
@@ -3746,24 +3752,27 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $resource_id) {
+        if ($resource_id !== null) {
             $resourcePath = str_replace(
-                '{resourceId}',
+                '{' . 'resourceId' . '}',
                 ObjectSerializer::toPathValue($resource_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -3776,19 +3785,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3802,60 +3814,56 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getServiceJobByServiceJobId.
+     * Operation getServiceJobByServiceJobId
      *
-     * @param string      $service_job_id
-     *                                         A service job identifier. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  A service job identifier. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse
      */
     public function getServiceJobByServiceJobId(
         string $service_job_id,
         ?string $restrictedDataToken = null
-    ): GetServiceJobByServiceJobIdResponse {
-        list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse {
+        list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getServiceJobByServiceJobIdWithHttpInfo.
+     * Operation getServiceJobByServiceJobIdWithHttpInfo
      *
-     * @param string      $service_job_id
-     *                                         A service job identifier. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  A service job identifier. (required)
      *
-     * @return array of \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
@@ -3891,39 +3899,39 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getServiceJobByServiceJobIdAsync.
+     * Operation getServiceJobByServiceJobIdAsync
      *
-     * @param string $service_job_id
-     *                               A service job identifier. (required)
+     * @param  string $service_job_id
+     *  A service job identifier. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getServiceJobByServiceJobIdAsync(
         string $service_job_id
@@ -3933,26 +3941,26 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getServiceJobByServiceJobIdAsyncWithHttpInfo.
+     * Operation getServiceJobByServiceJobIdAsyncWithHttpInfo
      *
-     * @param string $service_job_id
-     *                               A service job identifier. (required)
+     * @param  string $service_job_id
+     *  A service job identifier. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse';
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
@@ -3964,11 +3972,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -3976,13 +3984,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3994,23 +4001,23 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getServiceJobByServiceJobId'.
+     * Create request for operation 'getServiceJobByServiceJobId'
      *
-     * @param string $service_job_id
-     *                               A service job identifier. (required)
+     * @param  string $service_job_id
+     *  A service job identifier. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getServiceJobByServiceJobIdRequest(
         string $service_job_id
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling getServiceJobByServiceJobId'
             );
@@ -4022,6 +4029,7 @@ class ServiceApi
             throw new \InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.getServiceJobByServiceJobId, must be bigger than or equal to 1.');
         }
 
+
         $resourcePath = '/service/v1/serviceJobs/{serviceJobId}';
         $formParams = [];
         $queryParams = [];
@@ -4029,17 +4037,21 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -4053,19 +4065,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4079,54 +4094,54 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getServiceJobs.
+     * Operation getServiceJobs
      *
-     * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
-     * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
-     * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
-     * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
-     * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
-     * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
-     * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
-     * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
-     * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
-     * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string[] $marketplace_ids
+     *  Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param  string[]|null $service_order_ids
+     *  List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param  string[]|null $service_job_status
+     *  A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param  string|null $page_token
+     *  String returned in the response of your previous request. (optional)
+     * @param  int|null $page_size
+     *  A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     * @param  string|null $sort_field
+     *  Sort fields on which you want to sort the output. (optional)
+     * @param  string|null $sort_order
+     *  Sort order for the query you want to perform. (optional)
+     * @param  string|null $created_after
+     *  A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $created_before
+     *  A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $last_updated_after
+     *  A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $last_updated_before
+     *  A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $schedule_start_date
+     *  A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string|null $schedule_end_date
+     *  A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string[]|null $asins
+     *  List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param  string[]|null $required_skills
+     *  A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param  string[]|null $store_ids
+     *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\GetServiceJobsResponse
      */
     public function getServiceJobs(
         array $marketplace_ids,
@@ -4146,53 +4161,51 @@ class ServiceApi
         ?array $required_skills = null,
         ?array $store_ids = null,
         ?string $restrictedDataToken = null
-    ): GetServiceJobsResponse {
-        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\GetServiceJobsResponse {
+        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids,,,,,,,,,,,,,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getServiceJobsWithHttpInfo.
+     * Operation getServiceJobsWithHttpInfo
      *
-     * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
-     * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
-     * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
-     * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
-     * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
-     * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
-     * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
-     * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
-     * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
-     * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string[] $marketplace_ids
+     *  Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param  string[]|null $service_order_ids
+     *  List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param  string[]|null $service_job_status
+     *  A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param  string|null $page_token
+     *  String returned in the response of your previous request. (optional)
+     * @param  int|null $page_size
+     *  A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     * @param  string|null $sort_field
+     *  Sort fields on which you want to sort the output. (optional)
+     * @param  string|null $sort_order
+     *  Sort order for the query you want to perform. (optional)
+     * @param  string|null $created_after
+     *  A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $created_before
+     *  A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $last_updated_after
+     *  A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $last_updated_before
+     *  A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $schedule_start_date
+     *  A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string|null $schedule_end_date
+     *  A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string[]|null $asins
+     *  List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param  string[]|null $required_skills
+     *  A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param  string[]|null $store_ids
+     *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
-     * @return array of \SpApi\Model\services\v1\GetServiceJobsResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\GetServiceJobsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getServiceJobsWithHttpInfo(
         array $marketplace_ids,
@@ -4214,15 +4227,13 @@ class ServiceApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getServiceJobs");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getServiceJobsRateLimiter->consume()->ensureAccepted();
@@ -4258,69 +4269,69 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\GetServiceJobsResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\GetServiceJobsResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getServiceJobsAsync.
+     * Operation getServiceJobsAsync
      *
-     * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
-     * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
-     * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
-     * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
-     * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
-     * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
-     * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
-     * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
-     * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
-     * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param  string[] $marketplace_ids
+     *  Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param  string[]|null $service_order_ids
+     *  List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param  string[]|null $service_job_status
+     *  A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param  string|null $page_token
+     *  String returned in the response of your previous request. (optional)
+     * @param  int|null $page_size
+     *  A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     * @param  string|null $sort_field
+     *  Sort fields on which you want to sort the output. (optional)
+     * @param  string|null $sort_order
+     *  Sort order for the query you want to perform. (optional)
+     * @param  string|null $created_after
+     *  A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $created_before
+     *  A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $last_updated_after
+     *  A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $last_updated_before
+     *  A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $schedule_start_date
+     *  A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string|null $schedule_end_date
+     *  A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string[]|null $asins
+     *  List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param  string[]|null $required_skills
+     *  A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param  string[]|null $store_ids
+     *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getServiceJobsAsync(
         array $marketplace_ids,
@@ -4345,47 +4356,47 @@ class ServiceApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getServiceJobsAsyncWithHttpInfo.
+     * Operation getServiceJobsAsyncWithHttpInfo
      *
-     * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
-     * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
-     * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
-     * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
-     * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
-     * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
-     * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
-     * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
-     * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
-     * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param  string[] $marketplace_ids
+     *  Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param  string[]|null $service_order_ids
+     *  List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param  string[]|null $service_job_status
+     *  A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param  string|null $page_token
+     *  String returned in the response of your previous request. (optional)
+     * @param  int|null $page_size
+     *  A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     * @param  string|null $sort_field
+     *  Sort fields on which you want to sort the output. (optional)
+     * @param  string|null $sort_order
+     *  Sort order for the query you want to perform. (optional)
+     * @param  string|null $created_after
+     *  A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $created_before
+     *  A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $last_updated_after
+     *  A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $last_updated_before
+     *  A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $schedule_start_date
+     *  A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string|null $schedule_end_date
+     *  A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string[]|null $asins
+     *  List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param  string[]|null $required_skills
+     *  A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param  string[]|null $store_ids
+     *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getServiceJobsAsyncWithHttpInfo(
         array $marketplace_ids,
@@ -4404,12 +4415,12 @@ class ServiceApi
         ?array $asins = null,
         ?array $required_skills = null,
         ?array $store_ids = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-getServiceJobs");
         } else {
             $request = $this->config->sign($request);
         }
@@ -4421,11 +4432,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -4433,13 +4444,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4451,47 +4461,47 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getServiceJobs'.
+     * Create request for operation 'getServiceJobs'
      *
-     * @param string[]      $marketplace_ids
-     *                                           Used to select jobs that were placed in the specified marketplaces. (required)
-     * @param null|string[] $service_order_ids
-     *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
-     * @param null|string[] $service_job_status
-     *                                           A list of one or more job status by which to filter the list of jobs. (optional)
-     * @param null|string   $page_token
-     *                                           String returned in the response of your previous request. (optional)
-     * @param null|int      $page_size
-     *                                           A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
-     * @param null|string   $sort_field
-     *                                           Sort fields on which you want to sort the output. (optional)
-     * @param null|string   $sort_order
-     *                                           Sort order for the query you want to perform. (optional)
-     * @param null|string   $created_after
-     *                                           A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $created_before
-     *                                           A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $last_updated_after
-     *                                           A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
-     * @param null|string   $last_updated_before
-     *                                           A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
-     * @param null|string   $schedule_start_date
-     *                                           A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string   $schedule_end_date
-     *                                           A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
-     * @param null|string[] $asins
-     *                                           List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
-     * @param null|string[] $required_skills
-     *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
-     * @param null|string[] $store_ids
-     *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param  string[] $marketplace_ids
+     *  Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param  string[]|null $service_order_ids
+     *  List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param  string[]|null $service_job_status
+     *  A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param  string|null $page_token
+     *  String returned in the response of your previous request. (optional)
+     * @param  int|null $page_size
+     *  A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
+     * @param  string|null $sort_field
+     *  Sort fields on which you want to sort the output. (optional)
+     * @param  string|null $sort_order
+     *  Sort order for the query you want to perform. (optional)
+     * @param  string|null $created_after
+     *  A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $created_before
+     *  A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $last_updated_after
+     *  A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param  string|null $last_updated_before
+     *  A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param  string|null $schedule_start_date
+     *  A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string|null $schedule_end_date
+     *  A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param  string[]|null $asins
+     *  List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param  string[]|null $required_skills
+     *  A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param  string[]|null $store_ids
+     *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getServiceJobsRequest(
         array $marketplace_ids,
@@ -4512,7 +4522,7 @@ class ServiceApi
         ?array $store_ids = null
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getServiceJobs'
             );
@@ -4521,40 +4531,41 @@ class ServiceApi
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 1.');
         }
 
-        if (null !== $service_order_ids && count($service_order_ids) > 20) {
+        if ($service_order_ids !== null && count($service_order_ids) > 20) {
             throw new \InvalidArgumentException('invalid value for "$service_order_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
         }
-        if (null !== $service_order_ids && count($service_order_ids) < 1) {
+        if ($service_order_ids !== null && count($service_order_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$service_order_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
 
-        if (null !== $page_size && $page_size > 20) {
+        if ($page_size !== null && $page_size > 20) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ServiceApi.getServiceJobs, must be smaller than or equal to 20.');
         }
-        if (null !== $page_size && $page_size < 1) {
+        if ($page_size !== null && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ServiceApi.getServiceJobs, must be bigger than or equal to 1.');
         }
 
-        if (null !== $asins && count($asins) > 20) {
+        if ($asins !== null && count($asins) > 20) {
             throw new \InvalidArgumentException('invalid value for "$asins" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
         }
-        if (null !== $asins && count($asins) < 1) {
+        if ($asins !== null && count($asins) < 1) {
             throw new \InvalidArgumentException('invalid value for "$asins" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
 
-        if (null !== $required_skills && count($required_skills) > 20) {
+        if ($required_skills !== null && count($required_skills) > 20) {
             throw new \InvalidArgumentException('invalid value for "$required_skills" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
         }
-        if (null !== $required_skills && count($required_skills) < 1) {
+        if ($required_skills !== null && count($required_skills) < 1) {
             throw new \InvalidArgumentException('invalid value for "$required_skills" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
 
-        if (null !== $store_ids && count($store_ids) > 50) {
+        if ($store_ids !== null && count($store_ids) > 50) {
             throw new \InvalidArgumentException('invalid value for "$store_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 50.');
         }
-        if (null !== $store_ids && count($store_ids) < 1) {
+        if ($store_ids !== null && count($store_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$store_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
+
 
         $resourcePath = '/service/v1/serviceJobs';
         $formParams = [];
@@ -4724,8 +4735,12 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -4739,19 +4754,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4765,72 +4783,68 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation rescheduleAppointmentForServiceJobByServiceJobId.
+     * Operation rescheduleAppointmentForServiceJobByServiceJobId
      *
-     * @param string                       $service_job_id
-     *                                                          An Amazon defined service job identifier. (required)
-     * @param string                       $appointment_id
-     *                                                          An existing appointment identifier for the Service Job. (required)
-     * @param RescheduleAppointmentRequest $body
-     *                                                          Reschedule appointment operation input details. (required)
-     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $appointment_id
+     *  An existing appointment identifier for the Service Job. (required)
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
+     *  Reschedule appointment operation input details. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\SetAppointmentResponse
      */
     public function rescheduleAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body,
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body,
         ?string $restrictedDataToken = null
-    ): SetAppointmentResponse {
-        list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\SetAppointmentResponse {
+        list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo.
+     * Operation rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo
      *
-     * @param string                       $service_job_id
-     *                                                          An Amazon defined service job identifier. (required)
-     * @param string                       $appointment_id
-     *                                                          An existing appointment identifier for the Service Job. (required)
-     * @param RescheduleAppointmentRequest $body
-     *                                                          Reschedule appointment operation input details. (required)
-     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $appointment_id
+     *  An existing appointment identifier for the Service Job. (required)
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
+     *  Reschedule appointment operation input details. (required)
      *
-     * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body,
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
@@ -4866,80 +4880,80 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\SetAppointmentResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\SetAppointmentResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation rescheduleAppointmentForServiceJobByServiceJobIdAsync.
+     * Operation rescheduleAppointmentForServiceJobByServiceJobIdAsync
      *
-     * @param string                       $service_job_id
-     *                                                     An Amazon defined service job identifier. (required)
-     * @param string                       $appointment_id
-     *                                                     An existing appointment identifier for the Service Job. (required)
-     * @param RescheduleAppointmentRequest $body
-     *                                                     Reschedule appointment operation input details. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $appointment_id
+     *  An existing appointment identifier for the Service Job. (required)
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
+     *  Reschedule appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function rescheduleAppointmentForServiceJobByServiceJobIdAsync(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
     ): PromiseInterface {
         return $this->rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo($service_job_id, $appointment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo.
+     * Operation rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo
      *
-     * @param string                       $service_job_id
-     *                                                     An Amazon defined service job identifier. (required)
-     * @param string                       $appointment_id
-     *                                                     An existing appointment identifier for the Service Job. (required)
-     * @param RescheduleAppointmentRequest $body
-     *                                                     Reschedule appointment operation input details. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $appointment_id
+     *  An existing appointment identifier for the Service Job. (required)
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
+     *  Reschedule appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId");
         } else {
             $request = $this->config->sign($request);
         }
@@ -4951,11 +4965,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -4963,13 +4977,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4981,29 +4994,29 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'rescheduleAppointmentForServiceJobByServiceJobId'.
+     * Create request for operation 'rescheduleAppointmentForServiceJobByServiceJobId'
      *
-     * @param string                       $service_job_id
-     *                                                     An Amazon defined service job identifier. (required)
-     * @param string                       $appointment_id
-     *                                                     An existing appointment identifier for the Service Job. (required)
-     * @param RescheduleAppointmentRequest $body
-     *                                                     Reschedule appointment operation input details. (required)
+     * @param  string $service_job_id
+     *  An Amazon defined service job identifier. (required)
+     * @param  string $appointment_id
+     *  An existing appointment identifier for the Service Job. (required)
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
+     *  Reschedule appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function rescheduleAppointmentForServiceJobByServiceJobIdRequest(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling rescheduleAppointmentForServiceJobByServiceJobId'
             );
@@ -5016,7 +5029,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'appointment_id' is set
-        if (null === $appointment_id || (is_array($appointment_id) && 0 === count($appointment_id))) {
+        if ($appointment_id === null || (is_array($appointment_id) && count($appointment_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $appointment_id when calling rescheduleAppointmentForServiceJobByServiceJobId'
             );
@@ -5029,7 +5042,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling rescheduleAppointmentForServiceJobByServiceJobId'
             );
@@ -5042,32 +5055,36 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
         // path params
-        if (null !== $appointment_id) {
+        if ($appointment_id !== null) {
             $resourcePath = str_replace(
-                '{appointmentId}',
+                '{' . 'appointmentId' . '}',
                 ObjectSerializer::toPathValue($appointment_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -5080,19 +5097,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5106,72 +5126,68 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation setAppointmentFulfillmentData.
+     * Operation setAppointmentFulfillmentData
      *
-     * @param string                               $service_job_id
-     *                                                                  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                               $appointment_id
-     *                                                                  An Amazon-defined identifier of active service job appointment. (required)
-     * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                                  Appointment fulfillment data collection details. (required)
-     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     *  Appointment fulfillment data collection details. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return string
      */
     public function setAppointmentFulfillmentData(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body,
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body,
         ?string $restrictedDataToken = null
     ): string {
-        list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
-
+        list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation setAppointmentFulfillmentDataWithHttpInfo.
+     * Operation setAppointmentFulfillmentDataWithHttpInfo
      *
-     * @param string                               $service_job_id
-     *                                                                  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                               $appointment_id
-     *                                                                  An Amazon-defined identifier of active service job appointment. (required)
-     * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                                  Appointment fulfillment data collection details. (required)
-     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     *  Appointment fulfillment data collection details. (required)
      *
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function setAppointmentFulfillmentDataWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body,
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-setAppointmentFulfillmentData');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-setAppointmentFulfillmentData");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->setAppointmentFulfillmentDataRateLimiter->consume()->ensureAccepted();
@@ -5207,80 +5223,80 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('string' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('string' !== 'string') {
-                    $content = json_decode($content);
+                if ('string' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('string' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, 'string', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, 'string', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\Error[]',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\Error[]',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation setAppointmentFulfillmentDataAsync.
+     * Operation setAppointmentFulfillmentDataAsync
      *
-     * @param string                               $service_job_id
-     *                                                             An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                               $appointment_id
-     *                                                             An Amazon-defined identifier of active service job appointment. (required)
-     * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                             Appointment fulfillment data collection details. (required)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     *  Appointment fulfillment data collection details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function setAppointmentFulfillmentDataAsync(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): PromiseInterface {
         return $this->setAppointmentFulfillmentDataAsyncWithHttpInfo($service_job_id, $appointment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation setAppointmentFulfillmentDataAsyncWithHttpInfo.
+     * Operation setAppointmentFulfillmentDataAsyncWithHttpInfo
      *
-     * @param string                               $service_job_id
-     *                                                             An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                               $appointment_id
-     *                                                             An Amazon-defined identifier of active service job appointment. (required)
-     * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                             Appointment fulfillment data collection details. (required)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     *  Appointment fulfillment data collection details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function setAppointmentFulfillmentDataAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = 'string';
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-setAppointmentFulfillmentData');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-setAppointmentFulfillmentData");
         } else {
             $request = $this->config->sign($request);
         }
@@ -5292,11 +5308,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -5304,13 +5320,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -5322,29 +5337,29 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'setAppointmentFulfillmentData'.
+     * Create request for operation 'setAppointmentFulfillmentData'
      *
-     * @param string                               $service_job_id
-     *                                                             An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
-     * @param string                               $appointment_id
-     *                                                             An Amazon-defined identifier of active service job appointment. (required)
-     * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                             Appointment fulfillment data collection details. (required)
+     * @param  string $service_job_id
+     *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param  string $appointment_id
+     *  An Amazon-defined identifier of active service job appointment. (required)
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     *  Appointment fulfillment data collection details. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function setAppointmentFulfillmentDataRequest(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
-        if (null === $service_job_id || (is_array($service_job_id) && 0 === count($service_job_id))) {
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $service_job_id when calling setAppointmentFulfillmentData'
             );
@@ -5357,7 +5372,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'appointment_id' is set
-        if (null === $appointment_id || (is_array($appointment_id) && 0 === count($appointment_id))) {
+        if ($appointment_id === null || (is_array($appointment_id) && count($appointment_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $appointment_id when calling setAppointmentFulfillmentData'
             );
@@ -5370,7 +5385,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling setAppointmentFulfillmentData'
             );
@@ -5383,32 +5398,36 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $service_job_id) {
+        if ($service_job_id !== null) {
             $resourcePath = str_replace(
-                '{serviceJobId}',
+                '{' . 'serviceJobId' . '}',
                 ObjectSerializer::toPathValue($service_job_id),
                 $resourcePath
             );
         }
         // path params
-        if (null !== $appointment_id) {
+        if ($appointment_id !== null) {
             $resourcePath = str_replace(
-                '{appointmentId}',
+                '{' . 'appointmentId' . '}',
                 ObjectSerializer::toPathValue($appointment_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -5421,19 +5440,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5447,72 +5469,68 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateReservation.
+     * Operation updateReservation
      *
-     * @param string                   $reservation_id
-     *                                                      Reservation Identifier (required)
-     * @param string[]                 $marketplace_ids
-     *                                                      An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateReservationRequest $body
-     *                                                      Reservation details (required)
-     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
+     *  Reservation details (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\UpdateReservationResponse
      */
     public function updateReservation(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body,
+        \SpApi\Model\services\v1\UpdateReservationRequest $body,
         ?string $restrictedDataToken = null
-    ): UpdateReservationResponse {
-        list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\UpdateReservationResponse {
+        list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation updateReservationWithHttpInfo.
+     * Operation updateReservationWithHttpInfo
      *
-     * @param string                   $reservation_id
-     *                                                      Reservation Identifier (required)
-     * @param string[]                 $marketplace_ids
-     *                                                      An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateReservationRequest $body
-     *                                                      Reservation details (required)
-     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
+     *  Reservation details (required)
      *
-     * @return array of \SpApi\Model\services\v1\UpdateReservationResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\UpdateReservationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateReservationWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body,
+        \SpApi\Model\services\v1\UpdateReservationRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateReservation');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-updateReservation");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateReservationRateLimiter->consume()->ensureAccepted();
@@ -5548,80 +5566,80 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\UpdateReservationResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\UpdateReservationResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation updateReservationAsync.
+     * Operation updateReservationAsync
      *
-     * @param string                   $reservation_id
-     *                                                  Reservation Identifier (required)
-     * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateReservationRequest $body
-     *                                                  Reservation details (required)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
+     *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateReservationAsync(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
     ): PromiseInterface {
         return $this->updateReservationAsyncWithHttpInfo($reservation_id, $marketplace_ids, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation updateReservationAsyncWithHttpInfo.
+     * Operation updateReservationAsyncWithHttpInfo
      *
-     * @param string                   $reservation_id
-     *                                                  Reservation Identifier (required)
-     * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateReservationRequest $body
-     *                                                  Reservation details (required)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
+     *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateReservationAsyncWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\UpdateReservationRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\UpdateReservationResponse';
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateReservation');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-updateReservation");
         } else {
             $request = $this->config->sign($request);
         }
@@ -5633,11 +5651,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -5645,13 +5663,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -5663,29 +5680,29 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'updateReservation'.
+     * Create request for operation 'updateReservation'
      *
-     * @param string                   $reservation_id
-     *                                                  Reservation Identifier (required)
-     * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateReservationRequest $body
-     *                                                  Reservation details (required)
+     * @param  string $reservation_id
+     *  Reservation Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
+     *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function updateReservationRequest(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
     ): Request {
         // verify the required parameter 'reservation_id' is set
-        if (null === $reservation_id || (is_array($reservation_id) && 0 === count($reservation_id))) {
+        if ($reservation_id === null || (is_array($reservation_id) && count($reservation_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $reservation_id when calling updateReservation'
             );
@@ -5698,7 +5715,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling updateReservation'
             );
@@ -5708,7 +5725,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateReservation'
             );
@@ -5732,24 +5749,27 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $reservation_id) {
+        if ($reservation_id !== null) {
             $resourcePath = str_replace(
-                '{reservationId}',
+                '{' . 'reservationId' . '}',
                 ObjectSerializer::toPathValue($reservation_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -5762,19 +5782,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5788,72 +5811,68 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateSchedule.
+     * Operation updateSchedule
      *
-     * @param string                $resource_id
-     *                                                   Resource (store) Identifier (required)
-     * @param string[]              $marketplace_ids
-     *                                                   An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateScheduleRequest $body
-     *                                                   Schedule details (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $resource_id
+     *  Resource (store) Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
+     *  Schedule details (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\services\v1\UpdateScheduleResponse
      */
     public function updateSchedule(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body,
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body,
         ?string $restrictedDataToken = null
-    ): UpdateScheduleResponse {
-        list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\services\v1\UpdateScheduleResponse {
+        list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation updateScheduleWithHttpInfo.
+     * Operation updateScheduleWithHttpInfo
      *
-     * @param string                $resource_id
-     *                                                   Resource (store) Identifier (required)
-     * @param string[]              $marketplace_ids
-     *                                                   An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateScheduleRequest $body
-     *                                                   Schedule details (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $resource_id
+     *  Resource (store) Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
+     *  Schedule details (required)
      *
-     * @return array of \SpApi\Model\services\v1\UpdateScheduleResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\services\v1\UpdateScheduleResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateScheduleWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body,
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-updateSchedule");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateScheduleRateLimiter->consume()->ensureAccepted();
@@ -5889,80 +5908,80 @@ class ServiceApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\services\v1\UpdateScheduleResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\services\v1\UpdateScheduleResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation updateScheduleAsync.
+     * Operation updateScheduleAsync
      *
-     * @param string                $resource_id
-     *                                               Resource (store) Identifier (required)
-     * @param string[]              $marketplace_ids
-     *                                               An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateScheduleRequest $body
-     *                                               Schedule details (required)
+     * @param  string $resource_id
+     *  Resource (store) Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
+     *  Schedule details (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateScheduleAsync(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
     ): PromiseInterface {
         return $this->updateScheduleAsyncWithHttpInfo($resource_id, $marketplace_ids, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation updateScheduleAsyncWithHttpInfo.
+     * Operation updateScheduleAsyncWithHttpInfo
      *
-     * @param string                $resource_id
-     *                                               Resource (store) Identifier (required)
-     * @param string[]              $marketplace_ids
-     *                                               An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateScheduleRequest $body
-     *                                               Schedule details (required)
+     * @param  string $resource_id
+     *  Resource (store) Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
+     *  Schedule details (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateScheduleAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\UpdateScheduleResponse';
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ServiceApi-updateSchedule");
         } else {
             $request = $this->config->sign($request);
         }
@@ -5974,11 +5993,11 @@ class ServiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -5986,13 +6005,12 @@ class ServiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -6004,29 +6022,29 @@ class ServiceApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'updateSchedule'.
+     * Create request for operation 'updateSchedule'
      *
-     * @param string                $resource_id
-     *                                               Resource (store) Identifier (required)
-     * @param string[]              $marketplace_ids
-     *                                               An identifier for the marketplace in which the resource operates. (required)
-     * @param UpdateScheduleRequest $body
-     *                                               Schedule details (required)
+     * @param  string $resource_id
+     *  Resource (store) Identifier (required)
+     * @param  string[] $marketplace_ids
+     *  An identifier for the marketplace in which the resource operates. (required)
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
+     *  Schedule details (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function updateScheduleRequest(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
     ): Request {
         // verify the required parameter 'resource_id' is set
-        if (null === $resource_id || (is_array($resource_id) && 0 === count($resource_id))) {
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $resource_id when calling updateSchedule'
             );
@@ -6039,7 +6057,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling updateSchedule'
             );
@@ -6049,7 +6067,7 @@ class ServiceApi
         }
 
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateSchedule'
             );
@@ -6073,24 +6091,27 @@ class ServiceApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $resource_id) {
+        if ($resource_id !== null) {
             $resourcePath = str_replace(
-                '{resourceId}',
+                '{' . 'resourceId' . '}',
                 ObjectSerializer::toPathValue($resource_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -6103,19 +6124,22 @@ class ServiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6129,21 +6153,19 @@ class ServiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -6151,7 +6173,7 @@ class ServiceApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 

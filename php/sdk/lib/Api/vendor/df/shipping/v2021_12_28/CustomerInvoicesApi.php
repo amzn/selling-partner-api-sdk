@@ -454,7 +454,7 @@ class CustomerInvoicesApi
         ?string $next_token = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList {
-        list($response) = $this->getCustomerInvoicesWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,$restrictedDataToken);
+        list($response) = $this->getCustomerInvoicesWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,,,,,,$restrictedDataToken);
         return $response;
     }
 

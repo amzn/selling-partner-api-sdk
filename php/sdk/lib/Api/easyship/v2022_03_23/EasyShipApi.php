@@ -1,18 +1,16 @@
 <?php
-
 /**
  * EasyShipApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Easy Ship.
+ * Selling Partner API for Easy Ship
  *
  * Use the Selling Partner API for Easy Ship to build applications for sellers to manage and ship Amazon Easy Ship orders. With this API, you can get available time slots, schedule and reschedule Easy Ship orders, and print shipping labels, invoices, and warranties. To review the differences in Easy Ship operations by marketplace, refer to [Marketplace support](https://developer-docs.amazon.com/sp-api/docs/easyship-api-v2022-03-23-use-case-guide#marketplace-support).
  *
@@ -37,43 +35,38 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest;
-use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest;
-use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse;
-use SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest;
-use SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse;
-use SpApi\Model\easyship\v2022_03_23\Package;
-use SpApi\Model\easyship\v2022_03_23\Packages;
-use SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * EasyShipApi Class Doc Comment.
+ * EasyShipApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class EasyShipApi
 {
-    public ?LimiterInterface $createScheduledPackageRateLimiter;
-    public ?LimiterInterface $createScheduledPackageBulkRateLimiter;
-    public ?LimiterInterface $getScheduledPackageRateLimiter;
-    public ?LimiterInterface $listHandoverSlotsRateLimiter;
-    public ?LimiterInterface $updateScheduledPackagesRateLimiter;
+    /**
+     * @var ClientInterface
+     */
     protected ClientInterface $client;
 
+    /**
+     * @var Configuration
+     */
     protected Configuration $config;
 
+    /**
+     * @var HeaderSelector
+     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -81,16 +74,25 @@ class EasyShipApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
+    private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
+    public ?LimiterInterface $createScheduledPackageRateLimiter;
+    public ?LimiterInterface $createScheduledPackageBulkRateLimiter;
+    public ?LimiterInterface $getScheduledPackageRateLimiter;
+    public ?LimiterInterface $listHandoverSlotsRateLimiter;
+    public ?LimiterInterface $updateScheduledPackagesRateLimiter;
 
     /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -100,16 +102,16 @@ class EasyShipApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackage'), $this->rateLimitStorage);
-            $this->createScheduledPackageRateLimiter = $factory->create('EasyShipApi-createScheduledPackage');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackageBulk'), $this->rateLimitStorage);
-            $this->createScheduledPackageBulkRateLimiter = $factory->create('EasyShipApi-createScheduledPackageBulk');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-getScheduledPackage'), $this->rateLimitStorage);
-            $this->getScheduledPackageRateLimiter = $factory->create('EasyShipApi-getScheduledPackage');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-listHandoverSlots'), $this->rateLimitStorage);
-            $this->listHandoverSlotsRateLimiter = $factory->create('EasyShipApi-listHandoverSlots');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-updateScheduledPackages'), $this->rateLimitStorage);
-            $this->updateScheduledPackagesRateLimiter = $factory->create('EasyShipApi-updateScheduledPackages');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("EasyShipApi-createScheduledPackage"), $this->rateLimitStorage);
+            $this->createScheduledPackageRateLimiter = $factory->create("EasyShipApi-createScheduledPackage");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("EasyShipApi-createScheduledPackageBulk"), $this->rateLimitStorage);
+            $this->createScheduledPackageBulkRateLimiter = $factory->create("EasyShipApi-createScheduledPackageBulk");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("EasyShipApi-getScheduledPackage"), $this->rateLimitStorage);
+            $this->getScheduledPackageRateLimiter = $factory->create("EasyShipApi-getScheduledPackage");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("EasyShipApi-listHandoverSlots"), $this->rateLimitStorage);
+            $this->listHandoverSlotsRateLimiter = $factory->create("EasyShipApi-listHandoverSlots");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("EasyShipApi-updateScheduledPackages"), $this->rateLimitStorage);
+            $this->updateScheduledPackagesRateLimiter = $factory->create("EasyShipApi-updateScheduledPackages");
         }
 
         $this->client = $client ?: new Client();
@@ -118,7 +120,7 @@ class EasyShipApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -128,7 +130,7 @@ class EasyShipApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -137,56 +139,55 @@ class EasyShipApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation createScheduledPackage.
+     * Operation createScheduledPackage
      *
-     * @param CreateScheduledPackageRequest $create_scheduled_package_request
-     *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
-     * @param null|string                   $restrictedDataToken              Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\easyship\v2022_03_23\Package
      */
     public function createScheduledPackage(
-        CreateScheduledPackageRequest $create_scheduled_package_request,
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request,
         ?string $restrictedDataToken = null
-    ): Package {
-        list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request, $restrictedDataToken);
-
+    ): \SpApi\Model\easyship\v2022_03_23\Package {
+        list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation createScheduledPackageWithHttpInfo.
+     * Operation createScheduledPackageWithHttpInfo
      *
-     * @param CreateScheduledPackageRequest $create_scheduled_package_request
-     *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
-     * @param null|string                   $restrictedDataToken              Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
-     * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
      */
     public function createScheduledPackageWithHttpInfo(
-        CreateScheduledPackageRequest $create_scheduled_package_request,
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackage');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-createScheduledPackage");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
@@ -222,68 +223,68 @@ class EasyShipApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\easyship\v2022_03_23\Package' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\easyship\v2022_03_23\Package' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Package', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Package', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\easyship\v2022_03_23\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\easyship\v2022_03_23\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation createScheduledPackageAsync.
+     * Operation createScheduledPackageAsync
      *
-     * @param CreateScheduledPackageRequest $create_scheduled_package_request
-     *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createScheduledPackageAsync(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
     ): PromiseInterface {
         return $this->createScheduledPackageAsyncWithHttpInfo($create_scheduled_package_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation createScheduledPackageAsyncWithHttpInfo.
+     * Operation createScheduledPackageAsyncWithHttpInfo
      *
-     * @param CreateScheduledPackageRequest $create_scheduled_package_request
-     *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createScheduledPackageAsyncWithHttpInfo(
-        CreateScheduledPackageRequest $create_scheduled_package_request,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackage');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-createScheduledPackage");
         } else {
             $request = $this->config->sign($request);
         }
@@ -295,11 +296,11 @@ class EasyShipApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -307,13 +308,12 @@ class EasyShipApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -325,23 +325,23 @@ class EasyShipApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'createScheduledPackage'.
+     * Create request for operation 'createScheduledPackage'
      *
-     * @param CreateScheduledPackageRequest $create_scheduled_package_request
-     *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function createScheduledPackageRequest(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
     ): Request {
         // verify the required parameter 'create_scheduled_package_request' is set
-        if (null === $create_scheduled_package_request || (is_array($create_scheduled_package_request) && 0 === count($create_scheduled_package_request))) {
+        if ($create_scheduled_package_request === null || (is_array($create_scheduled_package_request) && count($create_scheduled_package_request) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $create_scheduled_package_request when calling createScheduledPackage'
             );
@@ -354,15 +354,20 @@ class EasyShipApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($create_scheduled_package_request)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_scheduled_package_request));
             } else {
                 $httpBody = $create_scheduled_package_request;
@@ -375,19 +380,22 @@ class EasyShipApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -401,60 +409,56 @@ class EasyShipApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createScheduledPackageBulk.
+     * Operation createScheduledPackageBulk
      *
-     * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
-     *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
-     * @param null|string                    $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse
      */
     public function createScheduledPackageBulk(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request,
         ?string $restrictedDataToken = null
-    ): CreateScheduledPackagesResponse {
-        list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request, $restrictedDataToken);
-
+    ): \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse {
+        list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation createScheduledPackageBulkWithHttpInfo.
+     * Operation createScheduledPackageBulkWithHttpInfo
      *
-     * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
-     *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
-     * @param null|string                    $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
-     * @return array of \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createScheduledPackageBulkWithHttpInfo(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackageBulk');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-createScheduledPackageBulk");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
@@ -490,68 +494,68 @@ class EasyShipApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\easyship\v2022_03_23\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\easyship\v2022_03_23\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation createScheduledPackageBulkAsync.
+     * Operation createScheduledPackageBulkAsync
      *
-     * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
-     *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createScheduledPackageBulkAsync(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
     ): PromiseInterface {
         return $this->createScheduledPackageBulkAsyncWithHttpInfo($create_scheduled_packages_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation createScheduledPackageBulkAsyncWithHttpInfo.
+     * Operation createScheduledPackageBulkAsyncWithHttpInfo
      *
-     * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
-     *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createScheduledPackageBulkAsyncWithHttpInfo(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackageBulk');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-createScheduledPackageBulk");
         } else {
             $request = $this->config->sign($request);
         }
@@ -563,11 +567,11 @@ class EasyShipApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -575,13 +579,12 @@ class EasyShipApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -593,23 +596,23 @@ class EasyShipApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'createScheduledPackageBulk'.
+     * Create request for operation 'createScheduledPackageBulk'
      *
-     * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
-     *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function createScheduledPackageBulkRequest(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
     ): Request {
         // verify the required parameter 'create_scheduled_packages_request' is set
-        if (null === $create_scheduled_packages_request || (is_array($create_scheduled_packages_request) && 0 === count($create_scheduled_packages_request))) {
+        if ($create_scheduled_packages_request === null || (is_array($create_scheduled_packages_request) && count($create_scheduled_packages_request) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $create_scheduled_packages_request when calling createScheduledPackageBulk'
             );
@@ -622,15 +625,20 @@ class EasyShipApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($create_scheduled_packages_request)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_scheduled_packages_request));
             } else {
                 $httpBody = $create_scheduled_packages_request;
@@ -643,19 +651,22 @@ class EasyShipApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -669,50 +680,48 @@ class EasyShipApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getScheduledPackage.
+     * Operation getScheduledPackage
      *
-     * @param string      $amazon_order_id
-     *                                         An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string      $marketplace_id
-     *                                         An identifier for the marketplace in which the seller is selling. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $amazon_order_id
+     *  An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param  string $marketplace_id
+     *  An identifier for the marketplace in which the seller is selling. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\easyship\v2022_03_23\Package
      */
     public function getScheduledPackage(
         string $amazon_order_id,
         string $marketplace_id,
         ?string $restrictedDataToken = null
-    ): Package {
-        list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id, $restrictedDataToken);
-
+    ): \SpApi\Model\easyship\v2022_03_23\Package {
+        list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getScheduledPackageWithHttpInfo.
+     * Operation getScheduledPackageWithHttpInfo
      *
-     * @param string      $amazon_order_id
-     *                                         An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string      $marketplace_id
-     *                                         An identifier for the marketplace in which the seller is selling. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $amazon_order_id
+     *  An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param  string $marketplace_id
+     *  An identifier for the marketplace in which the seller is selling. (required)
      *
-     * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
      */
     public function getScheduledPackageWithHttpInfo(
         string $amazon_order_id,
@@ -720,15 +729,13 @@ class EasyShipApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-getScheduledPackage');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-getScheduledPackage");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
@@ -764,41 +771,41 @@ class EasyShipApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\easyship\v2022_03_23\Package' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\easyship\v2022_03_23\Package' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Package', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Package', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\easyship\v2022_03_23\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\easyship\v2022_03_23\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getScheduledPackageAsync.
+     * Operation getScheduledPackageAsync
      *
-     * @param string $amazon_order_id
-     *                                An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string $marketplace_id
-     *                                An identifier for the marketplace in which the seller is selling. (required)
+     * @param  string $amazon_order_id
+     *  An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param  string $marketplace_id
+     *  An identifier for the marketplace in which the seller is selling. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getScheduledPackageAsync(
         string $amazon_order_id,
@@ -809,29 +816,29 @@ class EasyShipApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getScheduledPackageAsyncWithHttpInfo.
+     * Operation getScheduledPackageAsyncWithHttpInfo
      *
-     * @param string $amazon_order_id
-     *                                An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string $marketplace_id
-     *                                An identifier for the marketplace in which the seller is selling. (required)
+     * @param  string $amazon_order_id
+     *  An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param  string $marketplace_id
+     *  An identifier for the marketplace in which the seller is selling. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getScheduledPackageAsyncWithHttpInfo(
         string $amazon_order_id,
         string $marketplace_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-getScheduledPackage');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-getScheduledPackage");
         } else {
             $request = $this->config->sign($request);
         }
@@ -843,11 +850,11 @@ class EasyShipApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -855,13 +862,12 @@ class EasyShipApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -873,26 +879,26 @@ class EasyShipApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getScheduledPackage'.
+     * Create request for operation 'getScheduledPackage'
      *
-     * @param string $amazon_order_id
-     *                                An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string $marketplace_id
-     *                                An identifier for the marketplace in which the seller is selling. (required)
+     * @param  string $amazon_order_id
+     *  An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param  string $marketplace_id
+     *  An identifier for the marketplace in which the seller is selling. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getScheduledPackageRequest(
         string $amazon_order_id,
         string $marketplace_id
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
-        if (null === $amazon_order_id || (is_array($amazon_order_id) && 0 === count($amazon_order_id))) {
+        if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amazon_order_id when calling getScheduledPackage'
             );
@@ -905,7 +911,7 @@ class EasyShipApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getScheduledPackage'
             );
@@ -916,6 +922,7 @@ class EasyShipApi
         if (strlen($marketplace_id) < 1) {
             throw new \InvalidArgumentException('invalid length for "$marketplace_id" when calling EasyShipApi.getScheduledPackage, must be bigger than or equal to 1.');
         }
+
 
         $resourcePath = '/easyShip/2022-03-23/package';
         $formParams = [];
@@ -945,8 +952,12 @@ class EasyShipApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -960,19 +971,22 @@ class EasyShipApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -986,60 +1000,56 @@ class EasyShipApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listHandoverSlots.
+     * Operation listHandoverSlots
      *
-     * @param null|ListHandoverSlotsRequest $list_handover_slots_request
-     *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
-     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse
      */
     public function listHandoverSlots(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null,
         ?string $restrictedDataToken = null
-    ): ListHandoverSlotsResponse {
-        list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request, $restrictedDataToken);
-
+    ): \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse {
+        list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation listHandoverSlotsWithHttpInfo.
+     * Operation listHandoverSlotsWithHttpInfo
      *
-     * @param null|ListHandoverSlotsRequest $list_handover_slots_request
-     *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
-     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
-     * @return array of \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listHandoverSlotsWithHttpInfo(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-listHandoverSlots');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-listHandoverSlots");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
@@ -1075,68 +1085,68 @@ class EasyShipApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\easyship\v2022_03_23\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\easyship\v2022_03_23\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation listHandoverSlotsAsync.
+     * Operation listHandoverSlotsAsync
      *
-     * @param null|ListHandoverSlotsRequest $list_handover_slots_request
-     *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function listHandoverSlotsAsync(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
     ): PromiseInterface {
         return $this->listHandoverSlotsAsyncWithHttpInfo($list_handover_slots_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation listHandoverSlotsAsyncWithHttpInfo.
+     * Operation listHandoverSlotsAsyncWithHttpInfo
      *
-     * @param null|ListHandoverSlotsRequest $list_handover_slots_request
-     *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function listHandoverSlotsAsyncWithHttpInfo(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
-        ?string $restrictedDataToken = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-listHandoverSlots');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-listHandoverSlots");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1148,11 +1158,11 @@ class EasyShipApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1160,13 +1170,12 @@ class EasyShipApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1178,21 +1187,22 @@ class EasyShipApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'listHandoverSlots'.
+     * Create request for operation 'listHandoverSlots'
      *
-     * @param null|ListHandoverSlotsRequest $list_handover_slots_request
-     *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function listHandoverSlotsRequest(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
     ): Request {
+
         $resourcePath = '/easyShip/2022-03-23/timeSlot';
         $formParams = [];
         $queryParams = [];
@@ -1200,15 +1210,20 @@ class EasyShipApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($list_handover_slots_request)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($list_handover_slots_request));
             } else {
                 $httpBody = $list_handover_slots_request;
@@ -1221,19 +1236,22 @@ class EasyShipApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1247,60 +1265,56 @@ class EasyShipApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateScheduledPackages.
+     * Operation updateScheduledPackages
      *
-     * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
-     *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
-     * @param null|string                         $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\easyship\v2022_03_23\Packages
      */
     public function updateScheduledPackages(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
         ?string $restrictedDataToken = null
-    ): Packages {
-        list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request, $restrictedDataToken);
-
+    ): \SpApi\Model\easyship\v2022_03_23\Packages {
+        list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation updateScheduledPackagesWithHttpInfo.
+     * Operation updateScheduledPackagesWithHttpInfo
      *
-     * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
-     *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
-     * @param null|string                         $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
-     * @return array of \SpApi\Model\easyship\v2022_03_23\Packages, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\easyship\v2022_03_23\Packages, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateScheduledPackagesWithHttpInfo(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-updateScheduledPackages');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-updateScheduledPackages");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
@@ -1336,68 +1350,68 @@ class EasyShipApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\easyship\v2022_03_23\Packages' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\easyship\v2022_03_23\Packages' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\easyship\v2022_03_23\Packages' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\easyship\v2022_03_23\Packages' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Packages', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Packages', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\easyship\v2022_03_23\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\easyship\v2022_03_23\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation updateScheduledPackagesAsync.
+     * Operation updateScheduledPackagesAsync
      *
-     * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
-     *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateScheduledPackagesAsync(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
     ): PromiseInterface {
         return $this->updateScheduledPackagesAsyncWithHttpInfo($update_scheduled_packages_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation updateScheduledPackagesAsyncWithHttpInfo.
+     * Operation updateScheduledPackagesAsyncWithHttpInfo
      *
-     * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
-     *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateScheduledPackagesAsyncWithHttpInfo(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
-        ?string $restrictedDataToken = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Packages';
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-updateScheduledPackages');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "EasyShipApi-updateScheduledPackages");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1409,11 +1423,11 @@ class EasyShipApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1421,13 +1435,12 @@ class EasyShipApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1439,21 +1452,22 @@ class EasyShipApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'updateScheduledPackages'.
+     * Create request for operation 'updateScheduledPackages'
      *
-     * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
-     *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function updateScheduledPackagesRequest(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
     ): Request {
+
         $resourcePath = '/easyShip/2022-03-23/package';
         $formParams = [];
         $queryParams = [];
@@ -1461,15 +1475,20 @@ class EasyShipApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($update_scheduled_packages_request)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_scheduled_packages_request));
             } else {
                 $httpBody = $update_scheduled_packages_request;
@@ -1482,19 +1501,22 @@ class EasyShipApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1508,21 +1530,19 @@ class EasyShipApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PATCH',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1530,7 +1550,7 @@ class EasyShipApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 

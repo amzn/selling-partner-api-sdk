@@ -1,18 +1,16 @@
 <?php
-
 /**
  * DefinitionsApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Product Type Definitions.
+ * Selling Partner API for Product Type Definitions
  *
  * The Selling Partner API for Product Type Definitions provides programmatic access to attribute and data requirements for product types in the Amazon catalog. Use this API to return the JSON Schema for a product type that you can then use with other Selling Partner APIs, such as the Selling Partner API for Listings Items, the Selling Partner API for Catalog Items, and the Selling Partner API for Feeds (for JSON-based listing feeds).  For more information, see the [Product Type Definitions API Use Case Guide](doc:product-type-api-use-case-guide).
  *
@@ -37,34 +35,38 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition;
-use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * DefinitionsApi Class Doc Comment.
+ * DefinitionsApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class DefinitionsApi
 {
-    public ?LimiterInterface $getDefinitionsProductTypeRateLimiter;
-    public ?LimiterInterface $searchDefinitionsProductTypesRateLimiter;
+    /**
+     * @var ClientInterface
+     */
     protected ClientInterface $client;
 
+    /**
+     * @var Configuration
+     */
     protected Configuration $config;
 
+    /**
+     * @var HeaderSelector
+     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -72,16 +74,22 @@ class DefinitionsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
+    private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
+    public ?LimiterInterface $getDefinitionsProductTypeRateLimiter;
+    public ?LimiterInterface $searchDefinitionsProductTypesRateLimiter;
 
     /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -91,10 +99,10 @@ class DefinitionsApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-getDefinitionsProductType'), $this->rateLimitStorage);
-            $this->getDefinitionsProductTypeRateLimiter = $factory->create('DefinitionsApi-getDefinitionsProductType');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-searchDefinitionsProductTypes'), $this->rateLimitStorage);
-            $this->searchDefinitionsProductTypesRateLimiter = $factory->create('DefinitionsApi-searchDefinitionsProductTypes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("DefinitionsApi-getDefinitionsProductType"), $this->rateLimitStorage);
+            $this->getDefinitionsProductTypeRateLimiter = $factory->create("DefinitionsApi-getDefinitionsProductType");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("DefinitionsApi-searchDefinitionsProductTypes"), $this->rateLimitStorage);
+            $this->searchDefinitionsProductTypesRateLimiter = $factory->create("DefinitionsApi-searchDefinitionsProductTypes");
         }
 
         $this->client = $client ?: new Client();
@@ -103,7 +111,7 @@ class DefinitionsApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -113,7 +121,7 @@ class DefinitionsApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -122,32 +130,35 @@ class DefinitionsApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation getDefinitionsProductType.
+     * Operation getDefinitionsProductType
      *
-     * @param string      $product_type
-     *                                           The Amazon product type name. (required)
-     * @param string[]    $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
-     * @param null|string $seller_id
-     *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
-     * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
-     * @param null|string $requirements
-     *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
-     * @param null|string $requirements_enforced
-     *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
-     * @param null|string $locale
-     *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
-     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $product_type
+     *  The Amazon product type name. (required)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
+     * @param  string|null $seller_id
+     *  A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
+     * @param  string|null $product_type_version
+     *  The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     * @param  string|null $requirements
+     *  The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
+     * @param  string|null $requirements_enforced
+     *  Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
+     * @param  string|null $locale
+     *  Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition
      */
     public function getDefinitionsProductType(
         string $product_type,
@@ -158,35 +169,33 @@ class DefinitionsApi
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT',
         ?string $restrictedDataToken = null
-    ): ProductTypeDefinition {
-        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $restrictedDataToken);
-
+    ): \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition {
+        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale,,,,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getDefinitionsProductTypeWithHttpInfo.
+     * Operation getDefinitionsProductTypeWithHttpInfo
      *
-     * @param string      $product_type
-     *                                           The Amazon product type name. (required)
-     * @param string[]    $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
-     * @param null|string $seller_id
-     *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
-     * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
-     * @param null|string $requirements
-     *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
-     * @param null|string $requirements_enforced
-     *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
-     * @param null|string $locale
-     *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
-     * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $product_type
+     *  The Amazon product type name. (required)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
+     * @param  string|null $seller_id
+     *  A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
+     * @param  string|null $product_type_version
+     *  The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     * @param  string|null $requirements
+     *  The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
+     * @param  string|null $requirements_enforced
+     *  Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
+     * @param  string|null $locale
+     *  Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
      *
-     * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDefinitionsProductTypeWithHttpInfo(
         string $product_type,
@@ -199,15 +208,13 @@ class DefinitionsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefinitionsApi-getDefinitionsProductType");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getDefinitionsProductTypeRateLimiter->consume()->ensureAccepted();
@@ -243,51 +250,51 @@ class DefinitionsApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getDefinitionsProductTypeAsync.
+     * Operation getDefinitionsProductTypeAsync
      *
-     * @param string      $product_type
-     *                                           The Amazon product type name. (required)
-     * @param string[]    $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
-     * @param null|string $seller_id
-     *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
-     * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
-     * @param null|string $requirements
-     *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
-     * @param null|string $requirements_enforced
-     *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
-     * @param null|string $locale
-     *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param  string $product_type
+     *  The Amazon product type name. (required)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
+     * @param  string|null $seller_id
+     *  A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
+     * @param  string|null $product_type_version
+     *  The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     * @param  string|null $requirements
+     *  The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
+     * @param  string|null $requirements_enforced
+     *  Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
+     * @param  string|null $locale
+     *  Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getDefinitionsProductTypeAsync(
         string $product_type,
@@ -303,29 +310,29 @@ class DefinitionsApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getDefinitionsProductTypeAsyncWithHttpInfo.
+     * Operation getDefinitionsProductTypeAsyncWithHttpInfo
      *
-     * @param string      $product_type
-     *                                           The Amazon product type name. (required)
-     * @param string[]    $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
-     * @param null|string $seller_id
-     *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
-     * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
-     * @param null|string $requirements
-     *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
-     * @param null|string $requirements_enforced
-     *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
-     * @param null|string $locale
-     *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param  string $product_type
+     *  The Amazon product type name. (required)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
+     * @param  string|null $seller_id
+     *  A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
+     * @param  string|null $product_type_version
+     *  The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     * @param  string|null $requirements
+     *  The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
+     * @param  string|null $requirements_enforced
+     *  Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
+     * @param  string|null $locale
+     *  Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getDefinitionsProductTypeAsyncWithHttpInfo(
         string $product_type,
@@ -335,12 +342,12 @@ class DefinitionsApi
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT',
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition';
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefinitionsApi-getDefinitionsProductType");
         } else {
             $request = $this->config->sign($request);
         }
@@ -352,11 +359,11 @@ class DefinitionsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -364,13 +371,12 @@ class DefinitionsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -382,29 +388,29 @@ class DefinitionsApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getDefinitionsProductType'.
+     * Create request for operation 'getDefinitionsProductType'
      *
-     * @param string      $product_type
-     *                                           The Amazon product type name. (required)
-     * @param string[]    $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
-     * @param null|string $seller_id
-     *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
-     * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
-     * @param null|string $requirements
-     *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
-     * @param null|string $requirements_enforced
-     *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
-     * @param null|string $locale
-     *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param  string $product_type
+     *  The Amazon product type name. (required)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
+     * @param  string|null $seller_id
+     *  A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
+     * @param  string|null $product_type_version
+     *  The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     * @param  string|null $requirements
+     *  The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
+     * @param  string|null $requirements_enforced
+     *  Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
+     * @param  string|null $locale
+     *  Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getDefinitionsProductTypeRequest(
         string $product_type,
@@ -416,13 +422,13 @@ class DefinitionsApi
         ?string $locale = 'DEFAULT'
     ): Request {
         // verify the required parameter 'product_type' is set
-        if (null === $product_type || (is_array($product_type) && 0 === count($product_type))) {
+        if ($product_type === null || (is_array($product_type) && count($product_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $product_type when calling getDefinitionsProductType'
             );
         }
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling getDefinitionsProductType'
             );
@@ -496,17 +502,20 @@ class DefinitionsApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $product_type) {
+        if ($product_type !== null) {
             $resourcePath = str_replace(
-                '{productType}',
+                '{' . 'productType' . '}',
                 ObjectSerializer::toPathValue($product_type),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -520,19 +529,22 @@ class DefinitionsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -546,32 +558,32 @@ class DefinitionsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation searchDefinitionsProductTypes.
+     * Operation searchDefinitionsProductTypes
      *
-     * @param string[]      $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param null|string[] $keywords
-     *                                           A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
-     * @param null|string   $item_name
-     *                                           The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
-     * @param null|string   $locale
-     *                                           The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $search_locale
-     *                                           The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param  string[]|null $keywords
+     *  A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     * @param  string|null $item_name
+     *  The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     * @param  string|null $locale
+     *  The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string|null $search_locale
+     *  The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList
      */
     public function searchDefinitionsProductTypes(
         array $marketplace_ids,
@@ -580,31 +592,29 @@ class DefinitionsApi
         ?string $locale = null,
         ?string $search_locale = null,
         ?string $restrictedDataToken = null
-    ): ProductTypeList {
-        list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale, $restrictedDataToken);
-
+    ): \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList {
+        list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale,,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation searchDefinitionsProductTypesWithHttpInfo.
+     * Operation searchDefinitionsProductTypesWithHttpInfo
      *
-     * @param string[]      $marketplace_ids
-     *                                           A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param null|string[] $keywords
-     *                                           A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
-     * @param null|string   $item_name
-     *                                           The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
-     * @param null|string   $locale
-     *                                           The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $search_locale
-     *                                           The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param  string[]|null $keywords
+     *  A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     * @param  string|null $item_name
+     *  The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     * @param  string|null $locale
+     *  The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string|null $search_locale
+     *  The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
      *
-     * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchDefinitionsProductTypesWithHttpInfo(
         array $marketplace_ids,
@@ -615,15 +625,13 @@ class DefinitionsApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-searchDefinitionsProductTypes');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefinitionsApi-searchDefinitionsProductTypes");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->searchDefinitionsProductTypesRateLimiter->consume()->ensureAccepted();
@@ -659,47 +667,47 @@ class DefinitionsApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation searchDefinitionsProductTypesAsync.
+     * Operation searchDefinitionsProductTypesAsync
      *
-     * @param string[]      $marketplace_ids
-     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param null|string[] $keywords
-     *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
-     * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
-     * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param  string[]|null $keywords
+     *  A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     * @param  string|null $item_name
+     *  The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     * @param  string|null $locale
+     *  The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string|null $search_locale
+     *  The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function searchDefinitionsProductTypesAsync(
         array $marketplace_ids,
@@ -713,25 +721,25 @@ class DefinitionsApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation searchDefinitionsProductTypesAsyncWithHttpInfo.
+     * Operation searchDefinitionsProductTypesAsyncWithHttpInfo
      *
-     * @param string[]      $marketplace_ids
-     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param null|string[] $keywords
-     *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
-     * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
-     * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param  string[]|null $keywords
+     *  A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     * @param  string|null $item_name
+     *  The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     * @param  string|null $locale
+     *  The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string|null $search_locale
+     *  The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function searchDefinitionsProductTypesAsyncWithHttpInfo(
         array $marketplace_ids,
@@ -739,12 +747,12 @@ class DefinitionsApi
         ?string $item_name = null,
         ?string $locale = null,
         ?string $search_locale = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList';
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-searchDefinitionsProductTypes');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefinitionsApi-searchDefinitionsProductTypes");
         } else {
             $request = $this->config->sign($request);
         }
@@ -756,11 +764,11 @@ class DefinitionsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -768,13 +776,12 @@ class DefinitionsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -786,25 +793,25 @@ class DefinitionsApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'searchDefinitionsProductTypes'.
+     * Create request for operation 'searchDefinitionsProductTypes'
      *
-     * @param string[]      $marketplace_ids
-     *                                       A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param null|string[] $keywords
-     *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
-     * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
-     * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
-     * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string[] $marketplace_ids
+     *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param  string[]|null $keywords
+     *  A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
+     * @param  string|null $item_name
+     *  The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     * @param  string|null $locale
+     *  The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     * @param  string|null $search_locale
+     *  The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function searchDefinitionsProductTypesRequest(
         array $marketplace_ids,
@@ -814,7 +821,7 @@ class DefinitionsApi
         ?string $search_locale = null
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
-        if (null === $marketplace_ids || (is_array($marketplace_ids) && 0 === count($marketplace_ids))) {
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_ids when calling searchDefinitionsProductTypes'
             );
@@ -878,8 +885,12 @@ class DefinitionsApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -893,19 +904,22 @@ class DefinitionsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -919,21 +933,19 @@ class DefinitionsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -941,7 +953,7 @@ class DefinitionsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 

@@ -152,7 +152,7 @@ class UpdateInventoryApi
         \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse {
-        list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body,$restrictedDataToken);
+        list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body,,$restrictedDataToken);
         return $response;
     }
 
