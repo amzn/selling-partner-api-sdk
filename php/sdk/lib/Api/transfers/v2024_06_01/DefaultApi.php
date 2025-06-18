@@ -1,14 +1,12 @@
 <?php
-
 /**
  * DefaultApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
@@ -37,35 +35,38 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse;
-use SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest;
-use SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * DefaultApi Class Doc Comment.
+ * DefaultApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class DefaultApi
 {
-    public ?LimiterInterface $getPaymentMethodsRateLimiter;
-    public ?LimiterInterface $initiatePayoutRateLimiter;
+    /**
+     * @var ClientInterface
+     */
     protected ClientInterface $client;
 
+    /**
+     * @var Configuration
+     */
     protected Configuration $config;
 
+    /**
+     * @var HeaderSelector
+     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -73,16 +74,22 @@ class DefaultApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
+    private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
+    public ?LimiterInterface $getPaymentMethodsRateLimiter;
+    public ?LimiterInterface $initiatePayoutRateLimiter;
 
     /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -92,10 +99,10 @@ class DefaultApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-getPaymentMethods'), $this->rateLimitStorage);
-            $this->getPaymentMethodsRateLimiter = $factory->create('DefaultApi-getPaymentMethods');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-initiatePayout'), $this->rateLimitStorage);
-            $this->initiatePayoutRateLimiter = $factory->create('DefaultApi-initiatePayout');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("DefaultApi-getPaymentMethods"), $this->rateLimitStorage);
+            $this->getPaymentMethodsRateLimiter = $factory->create("DefaultApi-getPaymentMethods");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("DefaultApi-initiatePayout"), $this->rateLimitStorage);
+            $this->initiatePayoutRateLimiter = $factory->create("DefaultApi-initiatePayout");
         }
 
         $this->client = $client ?: new Client();
@@ -104,7 +111,7 @@ class DefaultApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -114,7 +121,7 @@ class DefaultApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -123,46 +130,47 @@ class DefaultApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation getPaymentMethods.
+     * Operation getPaymentMethods
      *
-     * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param null|string[] $payment_method_types
-     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
-     * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param  string[]|null $payment_method_types
+     *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse
      */
     public function getPaymentMethods(
         string $marketplace_id,
         ?array $payment_method_types = null,
         ?string $restrictedDataToken = null
-    ): GetPaymentMethodsResponse {
-        list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types, $restrictedDataToken);
-
+    ): \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse {
+        list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getPaymentMethodsWithHttpInfo.
+     * Operation getPaymentMethodsWithHttpInfo
      *
-     * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param null|string[] $payment_method_types
-     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
-     * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param  string[]|null $payment_method_types
+     *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
-     * @return array of \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPaymentMethodsWithHttpInfo(
         string $marketplace_id,
@@ -170,15 +178,13 @@ class DefaultApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-getPaymentMethods');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefaultApi-getPaymentMethods");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getPaymentMethodsRateLimiter->consume()->ensureAccepted();
@@ -214,41 +220,41 @@ class DefaultApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\transfers\v2024_06_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\transfers\v2024_06_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getPaymentMethodsAsync.
+     * Operation getPaymentMethodsAsync
      *
-     * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param null|string[] $payment_method_types
-     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param  string $marketplace_id
+     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param  string[]|null $payment_method_types
+     *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getPaymentMethodsAsync(
         string $marketplace_id,
@@ -259,29 +265,29 @@ class DefaultApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getPaymentMethodsAsyncWithHttpInfo.
+     * Operation getPaymentMethodsAsyncWithHttpInfo
      *
-     * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param null|string[] $payment_method_types
-     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param  string $marketplace_id
+     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param  string[]|null $payment_method_types
+     *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getPaymentMethodsAsyncWithHttpInfo(
         string $marketplace_id,
         ?array $payment_method_types = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-getPaymentMethods');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefaultApi-getPaymentMethods");
         } else {
             $request = $this->config->sign($request);
         }
@@ -293,11 +299,11 @@ class DefaultApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -305,13 +311,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -323,33 +328,34 @@ class DefaultApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getPaymentMethods'.
+     * Create request for operation 'getPaymentMethods'
      *
-     * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param null|string[] $payment_method_types
-     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param  string $marketplace_id
+     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param  string[]|null $payment_method_types
+     *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getPaymentMethodsRequest(
         string $marketplace_id,
         ?array $payment_method_types = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getPaymentMethods'
             );
         }
-        if (null !== $payment_method_types && count($payment_method_types) < 1) {
+        if ($payment_method_types !== null && count($payment_method_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$payment_method_types" when calling DefaultApi.getPaymentMethods, number of items must be greater than or equal to 1.');
         }
+
 
         $resourcePath = '/finances/transfers/2024-06-01/paymentMethods';
         $formParams = [];
@@ -379,8 +385,12 @@ class DefaultApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -394,19 +404,22 @@ class DefaultApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -420,60 +433,56 @@ class DefaultApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation initiatePayout.
+     * Operation initiatePayout
      *
-     * @param InitiatePayoutRequest $body
-     *                                                   The request body for the &#x60;initiatePayout&#x60; operation. (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse
      */
     public function initiatePayout(
-        InitiatePayoutRequest $body,
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body,
         ?string $restrictedDataToken = null
-    ): InitiatePayoutResponse {
-        list($response) = $this->initiatePayoutWithHttpInfo($body, $restrictedDataToken);
-
+    ): \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse {
+        list($response) = $this->initiatePayoutWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation initiatePayoutWithHttpInfo.
+     * Operation initiatePayoutWithHttpInfo
      *
-     * @param InitiatePayoutRequest $body
-     *                                                   The request body for the &#x60;initiatePayout&#x60; operation. (required)
-     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
-     * @return array of \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function initiatePayoutWithHttpInfo(
-        InitiatePayoutRequest $body,
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->initiatePayoutRequest($body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-initiatePayout');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefaultApi-initiatePayout");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->initiatePayoutRateLimiter->consume()->ensureAccepted();
@@ -509,68 +518,68 @@ class DefaultApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\transfers\v2024_06_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\transfers\v2024_06_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation initiatePayoutAsync.
+     * Operation initiatePayoutAsync
      *
-     * @param InitiatePayoutRequest $body
-     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function initiatePayoutAsync(
-        InitiatePayoutRequest $body
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
     ): PromiseInterface {
         return $this->initiatePayoutAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation initiatePayoutAsyncWithHttpInfo.
+     * Operation initiatePayoutAsyncWithHttpInfo
      *
-     * @param InitiatePayoutRequest $body
-     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function initiatePayoutAsyncWithHttpInfo(
-        InitiatePayoutRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
         $request = $this->initiatePayoutRequest($body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-initiatePayout');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "DefaultApi-initiatePayout");
         } else {
             $request = $this->config->sign($request);
         }
@@ -582,11 +591,11 @@ class DefaultApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -594,13 +603,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -612,23 +620,23 @@ class DefaultApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'initiatePayout'.
+     * Create request for operation 'initiatePayout'
      *
-     * @param InitiatePayoutRequest $body
-     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function initiatePayoutRequest(
-        InitiatePayoutRequest $body
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling initiatePayout'
             );
@@ -641,15 +649,20 @@ class DefaultApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -662,19 +675,22 @@ class DefaultApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -688,21 +704,19 @@ class DefaultApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -710,7 +724,7 @@ class DefaultApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 

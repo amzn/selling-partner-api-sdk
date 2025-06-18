@@ -1,18 +1,16 @@
 <?php
-
 /**
  * TransferScheduleApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -37,39 +35,38 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule;
-use SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule;
-use SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing;
-use SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * TransferScheduleApi Class Doc Comment.
+ * TransferScheduleApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class TransferScheduleApi
 {
-    public ?LimiterInterface $createTransferScheduleRateLimiter;
-    public ?LimiterInterface $deleteScheduleTransactionRateLimiter;
-    public ?LimiterInterface $getTransferScheduleRateLimiter;
-    public ?LimiterInterface $listTransferSchedulesRateLimiter;
-    public ?LimiterInterface $updateTransferScheduleRateLimiter;
+    /**
+     * @var ClientInterface
+     */
     protected ClientInterface $client;
 
+    /**
+     * @var Configuration
+     */
     protected Configuration $config;
 
+    /**
+     * @var HeaderSelector
+     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -77,16 +74,25 @@ class TransferScheduleApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
+    private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
+    public ?LimiterInterface $createTransferScheduleRateLimiter;
+    public ?LimiterInterface $deleteScheduleTransactionRateLimiter;
+    public ?LimiterInterface $getTransferScheduleRateLimiter;
+    public ?LimiterInterface $listTransferSchedulesRateLimiter;
+    public ?LimiterInterface $updateTransferScheduleRateLimiter;
 
     /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -96,16 +102,16 @@ class TransferScheduleApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-createTransferSchedule'), $this->rateLimitStorage);
-            $this->createTransferScheduleRateLimiter = $factory->create('TransferScheduleApi-createTransferSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-deleteScheduleTransaction'), $this->rateLimitStorage);
-            $this->deleteScheduleTransactionRateLimiter = $factory->create('TransferScheduleApi-deleteScheduleTransaction');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-getTransferSchedule'), $this->rateLimitStorage);
-            $this->getTransferScheduleRateLimiter = $factory->create('TransferScheduleApi-getTransferSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-listTransferSchedules'), $this->rateLimitStorage);
-            $this->listTransferSchedulesRateLimiter = $factory->create('TransferScheduleApi-listTransferSchedules');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-updateTransferSchedule'), $this->rateLimitStorage);
-            $this->updateTransferScheduleRateLimiter = $factory->create('TransferScheduleApi-updateTransferSchedule');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransferScheduleApi-createTransferSchedule"), $this->rateLimitStorage);
+            $this->createTransferScheduleRateLimiter = $factory->create("TransferScheduleApi-createTransferSchedule");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransferScheduleApi-deleteScheduleTransaction"), $this->rateLimitStorage);
+            $this->deleteScheduleTransactionRateLimiter = $factory->create("TransferScheduleApi-deleteScheduleTransaction");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransferScheduleApi-getTransferSchedule"), $this->rateLimitStorage);
+            $this->getTransferScheduleRateLimiter = $factory->create("TransferScheduleApi-getTransferSchedule");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransferScheduleApi-listTransferSchedules"), $this->rateLimitStorage);
+            $this->listTransferSchedulesRateLimiter = $factory->create("TransferScheduleApi-listTransferSchedules");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("TransferScheduleApi-updateTransferSchedule"), $this->rateLimitStorage);
+            $this->updateTransferScheduleRateLimiter = $factory->create("TransferScheduleApi-updateTransferSchedule");
         }
 
         $this->client = $client ?: new Client();
@@ -114,7 +120,7 @@ class TransferScheduleApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -124,7 +130,7 @@ class TransferScheduleApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -133,72 +139,71 @@ class TransferScheduleApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation createTransferSchedule.
+     * Operation createTransferSchedule
      *
      * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string                  $dest_account_digital_signature
-     *                                                                Digital signature for the destination bank account details. (required)
-     * @param string                  $amount_digital_signature
-     *                                                                Digital signature for the source currency transaction amount. (required)
-     * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
-     * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
+     *  The payload of the request. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule
      */
     public function createTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body,
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body,
         ?string $restrictedDataToken = null
-    ): TransferSchedule {
-        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule {
+        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation createTransferScheduleWithHttpInfo.
+     * Operation createTransferScheduleWithHttpInfo
      *
      * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string                  $dest_account_digital_signature
-     *                                                                Digital signature for the destination bank account details. (required)
-     * @param string                  $amount_digital_signature
-     *                                                                Digital signature for the source currency transaction amount. (required)
-     * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
-     * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
+     *  The payload of the request. (required)
      *
-     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body,
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-createTransferSchedule");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->createTransferScheduleRateLimiter->consume()->ensureAccepted();
@@ -234,84 +239,84 @@ class TransferScheduleApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation createTransferScheduleAsync.
+     * Operation createTransferScheduleAsync
      *
      * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string                  $dest_account_digital_signature
-     *                                                                Digital signature for the destination bank account details. (required)
-     * @param string                  $amount_digital_signature
-     *                                                                Digital signature for the source currency transaction amount. (required)
-     * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
+     *  The payload of the request. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createTransferScheduleAsync(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
     ): PromiseInterface {
         return $this->createTransferScheduleAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation createTransferScheduleAsyncWithHttpInfo.
+     * Operation createTransferScheduleAsyncWithHttpInfo
      *
      * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string                  $dest_account_digital_signature
-     *                                                                Digital signature for the destination bank account details. (required)
-     * @param string                  $amount_digital_signature
-     *                                                                Digital signature for the source currency transaction amount. (required)
-     * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
+     *  The payload of the request. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function createTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-createTransferSchedule");
         } else {
             $request = $this->config->sign($request);
         }
@@ -323,11 +328,11 @@ class TransferScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -335,13 +340,12 @@ class TransferScheduleApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -353,41 +357,41 @@ class TransferScheduleApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'createTransferSchedule'.
+     * Create request for operation 'createTransferSchedule'
      *
-     * @param string                  $dest_account_digital_signature
-     *                                                                Digital signature for the destination bank account details. (required)
-     * @param string                  $amount_digital_signature
-     *                                                                Digital signature for the source currency transaction amount. (required)
-     * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
+     *  The payload of the request. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function createTransferScheduleRequest(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferScheduleRequest $body
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest $body
     ): Request {
         // verify the required parameter 'dest_account_digital_signature' is set
-        if (null === $dest_account_digital_signature || (is_array($dest_account_digital_signature) && 0 === count($dest_account_digital_signature))) {
+        if ($dest_account_digital_signature === null || (is_array($dest_account_digital_signature) && count($dest_account_digital_signature) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $dest_account_digital_signature when calling createTransferSchedule'
             );
         }
         // verify the required parameter 'amount_digital_signature' is set
-        if (null === $amount_digital_signature || (is_array($amount_digital_signature) && 0 === count($amount_digital_signature))) {
+        if ($amount_digital_signature === null || (is_array($amount_digital_signature) && count($amount_digital_signature) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amount_digital_signature when calling createTransferSchedule'
             );
         }
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createTransferSchedule'
             );
@@ -400,24 +404,28 @@ class TransferScheduleApi
         $httpBody = '';
         $multipart = false;
 
+
         // header params
-        if (null !== $dest_account_digital_signature) {
+        if ($dest_account_digital_signature !== null) {
             $headerParams['destAccountDigitalSignature'] = ObjectSerializer::toHeaderValue($dest_account_digital_signature);
         }
         // header params
-        if (null !== $amount_digital_signature) {
+        if ($amount_digital_signature !== null) {
             $headerParams['amountDigitalSignature'] = ObjectSerializer::toHeaderValue($amount_digital_signature);
         }
 
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -430,19 +438,22 @@ class TransferScheduleApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -456,64 +467,60 @@ class TransferScheduleApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation deleteScheduleTransaction.
+     * Operation deleteScheduleTransaction
      *
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string      $transfer_schedule_id
-     *                                          A unique reference ID for a scheduled transfer. (required)
-     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $transfer_schedule_id
+     *  A unique reference ID for a scheduled transfer. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule
      */
     public function deleteScheduleTransaction(
         string $transfer_schedule_id,
         ?string $restrictedDataToken = null
-    ): DeleteTransferSchedule {
-        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
-
+    ): \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule {
+        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation deleteScheduleTransactionWithHttpInfo.
+     * Operation deleteScheduleTransactionWithHttpInfo
      *
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string      $transfer_schedule_id
-     *                                          A unique reference ID for a scheduled transfer. (required)
-     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $transfer_schedule_id
+     *  A unique reference ID for a scheduled transfer. (required)
      *
-     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteScheduleTransactionWithHttpInfo(
         string $transfer_schedule_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-deleteScheduleTransaction");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->deleteScheduleTransactionRateLimiter->consume()->ensureAccepted();
@@ -549,41 +556,41 @@ class TransferScheduleApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation deleteScheduleTransactionAsync.
+     * Operation deleteScheduleTransactionAsync
      *
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param  string $transfer_schedule_id
+     *  A unique reference ID for a scheduled transfer. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function deleteScheduleTransactionAsync(
         string $transfer_schedule_id
@@ -593,28 +600,28 @@ class TransferScheduleApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation deleteScheduleTransactionAsyncWithHttpInfo.
+     * Operation deleteScheduleTransactionAsyncWithHttpInfo
      *
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
-     * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param  string $transfer_schedule_id
+     *  A unique reference ID for a scheduled transfer. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function deleteScheduleTransactionAsyncWithHttpInfo(
         string $transfer_schedule_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule';
         $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-deleteScheduleTransaction");
         } else {
             $request = $this->config->sign($request);
         }
@@ -626,11 +633,11 @@ class TransferScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -638,13 +645,12 @@ class TransferScheduleApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -656,23 +662,23 @@ class TransferScheduleApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'deleteScheduleTransaction'.
+     * Create request for operation 'deleteScheduleTransaction'
      *
-     * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param  string $transfer_schedule_id
+     *  A unique reference ID for a scheduled transfer. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function deleteScheduleTransactionRequest(
         string $transfer_schedule_id
     ): Request {
         // verify the required parameter 'transfer_schedule_id' is set
-        if (null === $transfer_schedule_id || (is_array($transfer_schedule_id) && 0 === count($transfer_schedule_id))) {
+        if ($transfer_schedule_id === null || (is_array($transfer_schedule_id) && count($transfer_schedule_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $transfer_schedule_id when calling deleteScheduleTransaction'
             );
@@ -685,17 +691,21 @@ class TransferScheduleApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $transfer_schedule_id) {
+        if ($transfer_schedule_id !== null) {
             $resourcePath = str_replace(
-                '{transferScheduleId}',
+                '{' . 'transferScheduleId' . '}',
                 ObjectSerializer::toPathValue($transfer_schedule_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -709,19 +719,22 @@ class TransferScheduleApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -735,64 +748,60 @@ class TransferScheduleApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'DELETE',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getTransferSchedule.
+     * Operation getTransferSchedule
      *
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
-     * @param string      $transfer_schedule_id
-     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
-     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $transfer_schedule_id
+     *  The schedule ID of the Amazon Seller Wallet transfer. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule
      */
     public function getTransferSchedule(
         string $transfer_schedule_id,
         ?string $restrictedDataToken = null
-    ): TransferSchedule {
-        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
-
+    ): \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule {
+        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getTransferScheduleWithHttpInfo.
+     * Operation getTransferScheduleWithHttpInfo
      *
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
-     * @param string      $transfer_schedule_id
-     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
-     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $transfer_schedule_id
+     *  The schedule ID of the Amazon Seller Wallet transfer. (required)
      *
-     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransferScheduleWithHttpInfo(
         string $transfer_schedule_id,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransferScheduleRequest($transfer_schedule_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-getTransferSchedule");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getTransferScheduleRateLimiter->consume()->ensureAccepted();
@@ -828,41 +837,41 @@ class TransferScheduleApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getTransferScheduleAsync.
+     * Operation getTransferScheduleAsync
      *
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
-     * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param  string $transfer_schedule_id
+     *  The schedule ID of the Amazon Seller Wallet transfer. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getTransferScheduleAsync(
         string $transfer_schedule_id
@@ -872,28 +881,28 @@ class TransferScheduleApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getTransferScheduleAsyncWithHttpInfo.
+     * Operation getTransferScheduleAsyncWithHttpInfo
      *
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
-     * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param  string $transfer_schedule_id
+     *  The schedule ID of the Amazon Seller Wallet transfer. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getTransferScheduleAsyncWithHttpInfo(
         string $transfer_schedule_id,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->getTransferScheduleRequest($transfer_schedule_id);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-getTransferSchedule");
         } else {
             $request = $this->config->sign($request);
         }
@@ -905,11 +914,11 @@ class TransferScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -917,13 +926,12 @@ class TransferScheduleApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -935,23 +943,23 @@ class TransferScheduleApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getTransferSchedule'.
+     * Create request for operation 'getTransferSchedule'
      *
-     * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param  string $transfer_schedule_id
+     *  The schedule ID of the Amazon Seller Wallet transfer. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getTransferScheduleRequest(
         string $transfer_schedule_id
     ): Request {
         // verify the required parameter 'transfer_schedule_id' is set
-        if (null === $transfer_schedule_id || (is_array($transfer_schedule_id) && 0 === count($transfer_schedule_id))) {
+        if ($transfer_schedule_id === null || (is_array($transfer_schedule_id) && count($transfer_schedule_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $transfer_schedule_id when calling getTransferSchedule'
             );
@@ -964,17 +972,21 @@ class TransferScheduleApi
         $httpBody = '';
         $multipart = false;
 
+
+
         // path params
-        if (null !== $transfer_schedule_id) {
+        if ($transfer_schedule_id !== null) {
             $resourcePath = str_replace(
-                '{transferScheduleId}',
+                '{' . 'transferScheduleId' . '}',
                 ObjectSerializer::toPathValue($transfer_schedule_id),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -988,19 +1000,22 @@ class TransferScheduleApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1014,54 +1029,52 @@ class TransferScheduleApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listTransferSchedules.
+     * Operation listTransferSchedules
      *
      * The API will return all the transfer schedules for a given Amazon Seller Wallet account
      *
-     * @param string      $account_id
-     *                                         The ID of the Amazon Seller Wallet account. (required)
-     * @param null|string $next_page_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $account_id
+     *  The ID of the Amazon Seller Wallet account. (required)
+     * @param  string|null $next_page_token
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing
      */
     public function listTransferSchedules(
         string $account_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
-    ): TransferScheduleListing {
-        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
-
+    ): \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing {
+        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation listTransferSchedulesWithHttpInfo.
+     * Operation listTransferSchedulesWithHttpInfo
      *
      * The API will return all the transfer schedules for a given Amazon Seller Wallet account
      *
-     * @param string      $account_id
-     *                                         The ID of the Amazon Seller Wallet account. (required)
-     * @param null|string $next_page_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $account_id
+     *  The ID of the Amazon Seller Wallet account. (required)
+     * @param  string|null $next_page_token
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTransferSchedulesWithHttpInfo(
         string $account_id,
@@ -1069,15 +1082,13 @@ class TransferScheduleApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-listTransferSchedules");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->listTransferSchedulesRateLimiter->consume()->ensureAccepted();
@@ -1113,43 +1124,43 @@ class TransferScheduleApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation listTransferSchedulesAsync.
+     * Operation listTransferSchedulesAsync
      *
      * The API will return all the transfer schedules for a given Amazon Seller Wallet account
      *
-     * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
-     * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param  string $account_id
+     *  The ID of the Amazon Seller Wallet account. (required)
+     * @param  string|null $next_page_token
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function listTransferSchedulesAsync(
         string $account_id,
@@ -1160,31 +1171,31 @@ class TransferScheduleApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation listTransferSchedulesAsyncWithHttpInfo.
+     * Operation listTransferSchedulesAsyncWithHttpInfo
      *
      * The API will return all the transfer schedules for a given Amazon Seller Wallet account
      *
-     * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
-     * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param  string $account_id
+     *  The ID of the Amazon Seller Wallet account. (required)
+     * @param  string|null $next_page_token
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function listTransferSchedulesAsyncWithHttpInfo(
         string $account_id,
         ?string $next_page_token = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing';
         $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-listTransferSchedules");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1196,11 +1207,11 @@ class TransferScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1208,13 +1219,12 @@ class TransferScheduleApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1226,26 +1236,26 @@ class TransferScheduleApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'listTransferSchedules'.
+     * Create request for operation 'listTransferSchedules'
      *
-     * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
-     * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param  string $account_id
+     *  The ID of the Amazon Seller Wallet account. (required)
+     * @param  string|null $next_page_token
+     *  A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function listTransferSchedulesRequest(
         string $account_id,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'account_id' is set
-        if (null === $account_id || (is_array($account_id) && 0 === count($account_id))) {
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling listTransferSchedules'
             );
@@ -1279,8 +1289,12 @@ class TransferScheduleApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -1294,19 +1308,22 @@ class TransferScheduleApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1320,76 +1337,72 @@ class TransferScheduleApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateTransferSchedule.
+     * Operation updateTransferSchedule
      *
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
      *
-     * @param string           $dest_account_digital_signature
-     *                                                         Digital signature for the destination bank account details. (required)
-     * @param string           $amount_digital_signature
-     *                                                         Digital signature for the source currency transaction amount. (required)
-     * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
-     * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
+     *  The payload of the scheduled transfer request that is to be updated. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule
      */
     public function updateTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body,
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body,
         ?string $restrictedDataToken = null
-    ): TransferSchedule {
-        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
-
+    ): \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule {
+        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation updateTransferScheduleWithHttpInfo.
+     * Operation updateTransferScheduleWithHttpInfo
      *
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
      *
-     * @param string           $dest_account_digital_signature
-     *                                                         Digital signature for the destination bank account details. (required)
-     * @param string           $amount_digital_signature
-     *                                                         Digital signature for the source currency transaction amount. (required)
-     * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
-     * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
+     *  The payload of the scheduled transfer request that is to be updated. (required)
      *
-     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body,
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-updateTransferSchedule");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->updateTransferScheduleRateLimiter->consume()->ensureAccepted();
@@ -1425,84 +1438,84 @@ class TransferScheduleApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\sellerWallet\v2024_03_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation updateTransferScheduleAsync.
+     * Operation updateTransferScheduleAsync
      *
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
      *
-     * @param string           $dest_account_digital_signature
-     *                                                         Digital signature for the destination bank account details. (required)
-     * @param string           $amount_digital_signature
-     *                                                         Digital signature for the source currency transaction amount. (required)
-     * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
+     *  The payload of the scheduled transfer request that is to be updated. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateTransferScheduleAsync(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
     ): PromiseInterface {
         return $this->updateTransferScheduleAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation updateTransferScheduleAsyncWithHttpInfo.
+     * Operation updateTransferScheduleAsyncWithHttpInfo
      *
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
      *
-     * @param string           $dest_account_digital_signature
-     *                                                         Digital signature for the destination bank account details. (required)
-     * @param string           $amount_digital_signature
-     *                                                         Digital signature for the source currency transaction amount. (required)
-     * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
+     *  The payload of the scheduled transfer request that is to be updated. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function updateTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
         $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "TransferScheduleApi-updateTransferSchedule");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1514,11 +1527,11 @@ class TransferScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1526,13 +1539,12 @@ class TransferScheduleApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1544,41 +1556,41 @@ class TransferScheduleApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'updateTransferSchedule'.
+     * Create request for operation 'updateTransferSchedule'
      *
-     * @param string           $dest_account_digital_signature
-     *                                                         Digital signature for the destination bank account details. (required)
-     * @param string           $amount_digital_signature
-     *                                                         Digital signature for the source currency transaction amount. (required)
-     * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     * @param  string $dest_account_digital_signature
+     *  Digital signature for the destination bank account details. (required)
+     * @param  string $amount_digital_signature
+     *  Digital signature for the source currency transaction amount. (required)
+     * @param  \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
+     *  The payload of the scheduled transfer request that is to be updated. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function updateTransferScheduleRequest(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
-        TransferSchedule $body
+        \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule $body
     ): Request {
         // verify the required parameter 'dest_account_digital_signature' is set
-        if (null === $dest_account_digital_signature || (is_array($dest_account_digital_signature) && 0 === count($dest_account_digital_signature))) {
+        if ($dest_account_digital_signature === null || (is_array($dest_account_digital_signature) && count($dest_account_digital_signature) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $dest_account_digital_signature when calling updateTransferSchedule'
             );
         }
         // verify the required parameter 'amount_digital_signature' is set
-        if (null === $amount_digital_signature || (is_array($amount_digital_signature) && 0 === count($amount_digital_signature))) {
+        if ($amount_digital_signature === null || (is_array($amount_digital_signature) && count($amount_digital_signature) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amount_digital_signature when calling updateTransferSchedule'
             );
         }
         // verify the required parameter 'body' is set
-        if (null === $body || (is_array($body) && 0 === count($body))) {
+        if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateTransferSchedule'
             );
@@ -1591,24 +1603,28 @@ class TransferScheduleApi
         $httpBody = '';
         $multipart = false;
 
+
         // header params
-        if (null !== $dest_account_digital_signature) {
+        if ($dest_account_digital_signature !== null) {
             $headerParams['destAccountDigitalSignature'] = ObjectSerializer::toHeaderValue($dest_account_digital_signature);
         }
         // header params
-        if (null !== $amount_digital_signature) {
+        if ($amount_digital_signature !== null) {
             $headerParams['amountDigitalSignature'] = ObjectSerializer::toHeaderValue($amount_digital_signature);
         }
 
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1621,19 +1637,22 @@ class TransferScheduleApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1647,21 +1666,19 @@ class TransferScheduleApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'PUT',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1669,7 +1686,7 @@ class TransferScheduleApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 

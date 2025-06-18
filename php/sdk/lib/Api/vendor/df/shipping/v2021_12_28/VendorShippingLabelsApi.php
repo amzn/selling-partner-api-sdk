@@ -163,7 +163,7 @@ class VendorShippingLabelsApi
         \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel {
-        list($response) = $this->createShippingLabelsWithHttpInfo($purchase_order_number, $body,$restrictedDataToken);
+        list($response) = $this->createShippingLabelsWithHttpInfo($purchase_order_number, $body,,$restrictedDataToken);
         return $response;
     }
 
@@ -772,7 +772,7 @@ class VendorShippingLabelsApi
         ?string $next_token = null,
         ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList {
-        list($response) = $this->getShippingLabelsWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,$restrictedDataToken);
+        list($response) = $this->getShippingLabelsWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,,,,,,$restrictedDataToken);
         return $response;
     }
 

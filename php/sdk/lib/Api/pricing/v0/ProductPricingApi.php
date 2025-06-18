@@ -1,18 +1,16 @@
 <?php
-
 /**
  * ProductPricingApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing.
+ * Selling Partner API for Pricing
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer information for Amazon Marketplace products.
  *
@@ -37,42 +35,38 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\pricing\v0\GetItemOffersBatchRequest;
-use SpApi\Model\pricing\v0\GetItemOffersBatchResponse;
-use SpApi\Model\pricing\v0\GetListingOffersBatchRequest;
-use SpApi\Model\pricing\v0\GetListingOffersBatchResponse;
-use SpApi\Model\pricing\v0\GetOffersResponse;
-use SpApi\Model\pricing\v0\GetPricingResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * ProductPricingApi Class Doc Comment.
+ * ProductPricingApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class ProductPricingApi
 {
-    public ?LimiterInterface $getCompetitivePricingRateLimiter;
-    public ?LimiterInterface $getItemOffersRateLimiter;
-    public ?LimiterInterface $getItemOffersBatchRateLimiter;
-    public ?LimiterInterface $getListingOffersRateLimiter;
-    public ?LimiterInterface $getListingOffersBatchRateLimiter;
-    public ?LimiterInterface $getPricingRateLimiter;
+    /**
+     * @var ClientInterface
+     */
     protected ClientInterface $client;
 
+    /**
+     * @var Configuration
+     */
     protected Configuration $config;
 
+    /**
+     * @var HeaderSelector
+     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -80,16 +74,26 @@ class ProductPricingApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
+    private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
+    public ?LimiterInterface $getCompetitivePricingRateLimiter;
+    public ?LimiterInterface $getItemOffersRateLimiter;
+    public ?LimiterInterface $getItemOffersBatchRateLimiter;
+    public ?LimiterInterface $getListingOffersRateLimiter;
+    public ?LimiterInterface $getListingOffersBatchRateLimiter;
+    public ?LimiterInterface $getPricingRateLimiter;
 
     /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -99,18 +103,18 @@ class ProductPricingApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getCompetitivePricing'), $this->rateLimitStorage);
-            $this->getCompetitivePricingRateLimiter = $factory->create('ProductPricingApi-getCompetitivePricing');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffers'), $this->rateLimitStorage);
-            $this->getItemOffersRateLimiter = $factory->create('ProductPricingApi-getItemOffers');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffersBatch'), $this->rateLimitStorage);
-            $this->getItemOffersBatchRateLimiter = $factory->create('ProductPricingApi-getItemOffersBatch');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffers'), $this->rateLimitStorage);
-            $this->getListingOffersRateLimiter = $factory->create('ProductPricingApi-getListingOffers');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffersBatch'), $this->rateLimitStorage);
-            $this->getListingOffersBatchRateLimiter = $factory->create('ProductPricingApi-getListingOffersBatch');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getPricing'), $this->rateLimitStorage);
-            $this->getPricingRateLimiter = $factory->create('ProductPricingApi-getPricing');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ProductPricingApi-getCompetitivePricing"), $this->rateLimitStorage);
+            $this->getCompetitivePricingRateLimiter = $factory->create("ProductPricingApi-getCompetitivePricing");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ProductPricingApi-getItemOffers"), $this->rateLimitStorage);
+            $this->getItemOffersRateLimiter = $factory->create("ProductPricingApi-getItemOffers");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ProductPricingApi-getItemOffersBatch"), $this->rateLimitStorage);
+            $this->getItemOffersBatchRateLimiter = $factory->create("ProductPricingApi-getItemOffersBatch");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ProductPricingApi-getListingOffers"), $this->rateLimitStorage);
+            $this->getListingOffersRateLimiter = $factory->create("ProductPricingApi-getListingOffers");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ProductPricingApi-getListingOffersBatch"), $this->rateLimitStorage);
+            $this->getListingOffersBatchRateLimiter = $factory->create("ProductPricingApi-getListingOffersBatch");
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("ProductPricingApi-getPricing"), $this->rateLimitStorage);
+            $this->getPricingRateLimiter = $factory->create("ProductPricingApi-getPricing");
         }
 
         $this->client = $client ?: new Client();
@@ -119,7 +123,7 @@ class ProductPricingApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -129,7 +133,7 @@ class ProductPricingApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -138,28 +142,31 @@ class ProductPricingApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation getCompetitivePricing.
+     * Operation getCompetitivePricing
      *
-     * @param string        $marketplace_id
-     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
-     * @param null|string[] $asins
-     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $customer_type
-     *                                           Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $customer_type
+     *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\pricing\v0\GetPricingResponse
      */
     public function getCompetitivePricing(
         string $marketplace_id,
@@ -168,31 +175,29 @@ class ProductPricingApi
         ?array $skus = null,
         ?string $customer_type = null,
         ?string $restrictedDataToken = null
-    ): GetPricingResponse {
-        list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type, $restrictedDataToken);
-
+    ): \SpApi\Model\pricing\v0\GetPricingResponse {
+        list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type,,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getCompetitivePricingWithHttpInfo.
+     * Operation getCompetitivePricingWithHttpInfo
      *
-     * @param string        $marketplace_id
-     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
-     * @param null|string[] $asins
-     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $customer_type
-     *                                           Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $customer_type
+     *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
-     * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCompetitivePricingWithHttpInfo(
         string $marketplace_id,
@@ -203,15 +208,13 @@ class ProductPricingApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitivePricing');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getCompetitivePricing");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
@@ -247,47 +250,47 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetPricingResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetPricingResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getCompetitivePricingAsync.
+     * Operation getCompetitivePricingAsync
      *
-     * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
-     * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $customer_type
-     *                                      Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $customer_type
+     *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getCompetitivePricingAsync(
         string $marketplace_id,
@@ -301,25 +304,25 @@ class ProductPricingApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getCompetitivePricingAsyncWithHttpInfo.
+     * Operation getCompetitivePricingAsyncWithHttpInfo
      *
-     * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
-     * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $customer_type
-     *                                      Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $customer_type
+     *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getCompetitivePricingAsyncWithHttpInfo(
         string $marketplace_id,
@@ -327,12 +330,12 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $customer_type = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitivePricing');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getCompetitivePricing");
         } else {
             $request = $this->config->sign($request);
         }
@@ -344,11 +347,11 @@ class ProductPricingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -356,13 +359,12 @@ class ProductPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -374,25 +376,25 @@ class ProductPricingApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getCompetitivePricing'.
+     * Create request for operation 'getCompetitivePricing'
      *
-     * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
-     * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $customer_type
-     *                                      Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $customer_type
+     *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getCompetitivePricingRequest(
         string $marketplace_id,
@@ -402,24 +404,25 @@ class ProductPricingApi
         ?string $customer_type = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getCompetitivePricing'
             );
         }
         // verify the required parameter 'item_type' is set
-        if (null === $item_type || (is_array($item_type) && 0 === count($item_type))) {
+        if ($item_type === null || (is_array($item_type) && count($item_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $item_type when calling getCompetitivePricing'
             );
         }
-        if (null !== $asins && count($asins) > 20) {
+        if ($asins !== null && count($asins) > 20) {
             throw new \InvalidArgumentException('invalid value for "$asins" when calling ProductPricingApi.getCompetitivePricing, number of items must be less than or equal to 20.');
         }
 
-        if (null !== $skus && count($skus) > 20) {
+        if ($skus !== null && count($skus) > 20) {
             throw new \InvalidArgumentException('invalid value for "$skus" when calling ProductPricingApi.getCompetitivePricing, number of items must be less than or equal to 20.');
         }
+
 
         $resourcePath = '/products/pricing/v0/competitivePrice';
         $formParams = [];
@@ -479,8 +482,12 @@ class ProductPricingApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -494,19 +501,22 @@ class ProductPricingApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -520,30 +530,30 @@ class ProductPricingApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getItemOffers.
+     * Operation getItemOffers
      *
-     * @param string      $marketplace_id
-     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                         Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $asin
-     *                                         The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param null|string $customer_type
-     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $asin
+     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\pricing\v0\GetOffersResponse
      */
     public function getItemOffers(
         string $marketplace_id,
@@ -551,29 +561,27 @@ class ProductPricingApi
         string $asin,
         ?string $customer_type = null,
         ?string $restrictedDataToken = null
-    ): GetOffersResponse {
-        list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type, $restrictedDataToken);
-
+    ): \SpApi\Model\pricing\v0\GetOffersResponse {
+        list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getItemOffersWithHttpInfo.
+     * Operation getItemOffersWithHttpInfo
      *
-     * @param string      $marketplace_id
-     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                         Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $asin
-     *                                         The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param null|string $customer_type
-     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $asin
+     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getItemOffersWithHttpInfo(
         string $marketplace_id,
@@ -583,15 +591,13 @@ class ProductPricingApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffers');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getItemOffers");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getItemOffersRateLimiter->consume()->ensureAccepted();
@@ -627,45 +633,45 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetOffersResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetOffersResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getItemOffersAsync.
+     * Operation getItemOffersAsync
      *
-     * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                    Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $asin
+     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getItemOffersAsync(
         string $marketplace_id,
@@ -678,35 +684,35 @@ class ProductPricingApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getItemOffersAsyncWithHttpInfo.
+     * Operation getItemOffersAsyncWithHttpInfo
      *
-     * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                    Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $asin
+     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getItemOffersAsyncWithHttpInfo(
         string $marketplace_id,
         string $item_condition,
         string $asin,
         ?string $customer_type = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffers');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getItemOffers");
         } else {
             $request = $this->config->sign($request);
         }
@@ -718,11 +724,11 @@ class ProductPricingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -730,13 +736,12 @@ class ProductPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -748,23 +753,23 @@ class ProductPricingApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getItemOffers'.
+     * Create request for operation 'getItemOffers'
      *
-     * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                    Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $asin
+     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getItemOffersRequest(
         string $marketplace_id,
@@ -773,19 +778,19 @@ class ProductPricingApi
         ?string $customer_type = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getItemOffers'
             );
         }
         // verify the required parameter 'item_condition' is set
-        if (null === $item_condition || (is_array($item_condition) && 0 === count($item_condition))) {
+        if ($item_condition === null || (is_array($item_condition) && count($item_condition) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $item_condition when calling getItemOffers'
             );
         }
         // verify the required parameter 'asin' is set
-        if (null === $asin || (is_array($asin) && 0 === count($asin))) {
+        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $asin when calling getItemOffers'
             );
@@ -829,17 +834,20 @@ class ProductPricingApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $asin) {
+        if ($asin !== null) {
             $resourcePath = str_replace(
-                '{Asin}',
+                '{' . 'Asin' . '}',
                 ObjectSerializer::toPathValue($asin),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -853,19 +861,22 @@ class ProductPricingApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -879,60 +890,56 @@ class ProductPricingApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getItemOffersBatch.
+     * Operation getItemOffersBatch
      *
-     * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
-     * @param null|string               $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\pricing\v0\GetItemOffersBatchResponse
      */
     public function getItemOffersBatch(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body,
         ?string $restrictedDataToken = null
-    ): GetItemOffersBatchResponse {
-        list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body, $restrictedDataToken);
-
+    ): \SpApi\Model\pricing\v0\GetItemOffersBatchResponse {
+        list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getItemOffersBatchWithHttpInfo.
+     * Operation getItemOffersBatchWithHttpInfo
      *
-     * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
-     * @param null|string               $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
-     * @return array of \SpApi\Model\pricing\v0\GetItemOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\pricing\v0\GetItemOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getItemOffersBatchWithHttpInfo(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffersBatch');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getItemOffersBatch");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
@@ -968,68 +975,68 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\Errors',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\Errors',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getItemOffersBatchAsync.
+     * Operation getItemOffersBatchAsync
      *
-     * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getItemOffersBatchAsync(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
     ): PromiseInterface {
         return $this->getItemOffersBatchAsyncWithHttpInfo($get_item_offers_batch_request_body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getItemOffersBatchAsyncWithHttpInfo.
+     * Operation getItemOffersBatchAsyncWithHttpInfo
      *
-     * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getItemOffersBatchAsyncWithHttpInfo(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse';
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffersBatch');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getItemOffersBatch");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1041,11 +1048,11 @@ class ProductPricingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1053,13 +1060,12 @@ class ProductPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1071,23 +1077,23 @@ class ProductPricingApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getItemOffersBatch'.
+     * Create request for operation 'getItemOffersBatch'
      *
-     * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getItemOffersBatchRequest(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
     ): Request {
         // verify the required parameter 'get_item_offers_batch_request_body' is set
-        if (null === $get_item_offers_batch_request_body || (is_array($get_item_offers_batch_request_body) && 0 === count($get_item_offers_batch_request_body))) {
+        if ($get_item_offers_batch_request_body === null || (is_array($get_item_offers_batch_request_body) && count($get_item_offers_batch_request_body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $get_item_offers_batch_request_body when calling getItemOffersBatch'
             );
@@ -1100,15 +1106,20 @@ class ProductPricingApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($get_item_offers_batch_request_body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($get_item_offers_batch_request_body));
             } else {
                 $httpBody = $get_item_offers_batch_request_body;
@@ -1121,19 +1132,22 @@ class ProductPricingApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1147,30 +1161,30 @@ class ProductPricingApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getListingOffers.
+     * Operation getListingOffers
      *
-     * @param string      $marketplace_id
-     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                         Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $seller_sku
-     *                                         Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param null|string $customer_type
-     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $seller_sku
+     *  Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\pricing\v0\GetOffersResponse
      */
     public function getListingOffers(
         string $marketplace_id,
@@ -1178,29 +1192,27 @@ class ProductPricingApi
         string $seller_sku,
         ?string $customer_type = null,
         ?string $restrictedDataToken = null
-    ): GetOffersResponse {
-        list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type, $restrictedDataToken);
-
+    ): \SpApi\Model\pricing\v0\GetOffersResponse {
+        list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getListingOffersWithHttpInfo.
+     * Operation getListingOffersWithHttpInfo
      *
-     * @param string      $marketplace_id
-     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                         Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $seller_sku
-     *                                         Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param null|string $customer_type
-     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $seller_sku
+     *  Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getListingOffersWithHttpInfo(
         string $marketplace_id,
@@ -1210,15 +1222,13 @@ class ProductPricingApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffers');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getListingOffers");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getListingOffersRateLimiter->consume()->ensureAccepted();
@@ -1254,45 +1264,45 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetOffersResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetOffersResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getListingOffersAsync.
+     * Operation getListingOffersAsync
      *
-     * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                    Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $seller_sku
-     *                                    Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $seller_sku
+     *  Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getListingOffersAsync(
         string $marketplace_id,
@@ -1305,35 +1315,35 @@ class ProductPricingApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getListingOffersAsyncWithHttpInfo.
+     * Operation getListingOffersAsyncWithHttpInfo
      *
-     * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                    Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $seller_sku
-     *                                    Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $seller_sku
+     *  Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getListingOffersAsyncWithHttpInfo(
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
         ?string $customer_type = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffers');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getListingOffers");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1345,11 +1355,11 @@ class ProductPricingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1357,13 +1367,12 @@ class ProductPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1375,23 +1384,23 @@ class ProductPricingApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getListingOffers'.
+     * Create request for operation 'getListingOffers'
      *
-     * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string      $item_condition
-     *                                    Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
-     * @param string      $seller_sku
-     *                                    Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     * @param  string $seller_sku
+     *  Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param  string|null $customer_type
+     *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getListingOffersRequest(
         string $marketplace_id,
@@ -1400,19 +1409,19 @@ class ProductPricingApi
         ?string $customer_type = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getListingOffers'
             );
         }
         // verify the required parameter 'item_condition' is set
-        if (null === $item_condition || (is_array($item_condition) && 0 === count($item_condition))) {
+        if ($item_condition === null || (is_array($item_condition) && count($item_condition) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $item_condition when calling getListingOffers'
             );
         }
         // verify the required parameter 'seller_sku' is set
-        if (null === $seller_sku || (is_array($seller_sku) && 0 === count($seller_sku))) {
+        if ($seller_sku === null || (is_array($seller_sku) && count($seller_sku) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_sku when calling getListingOffers'
             );
@@ -1456,17 +1465,20 @@ class ProductPricingApi
             $this->config
         ) ?? []);
 
+
         // path params
-        if (null !== $seller_sku) {
+        if ($seller_sku !== null) {
             $resourcePath = str_replace(
-                '{SellerSKU}',
+                '{' . 'SellerSKU' . '}',
                 ObjectSerializer::toPathValue($seller_sku),
                 $resourcePath
             );
         }
 
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -1480,19 +1492,22 @@ class ProductPricingApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1506,60 +1521,56 @@ class ProductPricingApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getListingOffersBatch.
+     * Operation getListingOffersBatch
      *
-     * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
-     * @param null|string                  $restrictedDataToken                   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\pricing\v0\GetListingOffersBatchResponse
      */
     public function getListingOffersBatch(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
         ?string $restrictedDataToken = null
-    ): GetListingOffersBatchResponse {
-        list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body, $restrictedDataToken);
-
+    ): \SpApi\Model\pricing\v0\GetListingOffersBatchResponse {
+        list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getListingOffersBatchWithHttpInfo.
+     * Operation getListingOffersBatchWithHttpInfo
      *
-     * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
-     * @param null|string                  $restrictedDataToken                   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
-     * @return array of \SpApi\Model\pricing\v0\GetListingOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\pricing\v0\GetListingOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getListingOffersBatchWithHttpInfo(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffersBatch');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getListingOffersBatch");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
@@ -1595,68 +1606,68 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\Errors',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\Errors',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getListingOffersBatchAsync.
+     * Operation getListingOffersBatchAsync
      *
-     * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getListingOffersBatchAsync(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
     ): PromiseInterface {
         return $this->getListingOffersBatchAsyncWithHttpInfo($get_listing_offers_batch_request_body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getListingOffersBatchAsyncWithHttpInfo.
+     * Operation getListingOffersBatchAsyncWithHttpInfo
      *
-     * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getListingOffersBatchAsyncWithHttpInfo(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
-        ?string $restrictedDataToken = null
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse';
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffersBatch');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getListingOffersBatch");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1668,11 +1679,11 @@ class ProductPricingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -1680,13 +1691,12 @@ class ProductPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1698,23 +1708,23 @@ class ProductPricingApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getListingOffersBatch'.
+     * Create request for operation 'getListingOffersBatch'
      *
-     * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getListingOffersBatchRequest(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
     ): Request {
         // verify the required parameter 'get_listing_offers_batch_request_body' is set
-        if (null === $get_listing_offers_batch_request_body || (is_array($get_listing_offers_batch_request_body) && 0 === count($get_listing_offers_batch_request_body))) {
+        if ($get_listing_offers_batch_request_body === null || (is_array($get_listing_offers_batch_request_body) && count($get_listing_offers_batch_request_body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $get_listing_offers_batch_request_body when calling getListingOffersBatch'
             );
@@ -1727,15 +1737,20 @@ class ProductPricingApi
         $httpBody = '';
         $multipart = false;
 
+
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
-            'application/json',
+            'application/json'
+            ,
             $multipart
         );
 
         // for model (json/xml)
         if (isset($get_listing_offers_batch_request_body)) {
-            if ('application/json' === $headers['Content-Type']) {
+            if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($get_listing_offers_batch_request_body));
             } else {
                 $httpBody = $get_listing_offers_batch_request_body;
@@ -1748,19 +1763,22 @@ class ProductPricingApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1774,34 +1792,34 @@ class ProductPricingApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'POST',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getPricing.
+     * Operation getPricing
      *
-     * @param string        $marketplace_id
-     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
-     * @param null|string[] $asins
-     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $item_condition
-     *                                           Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
-     * @param null|string   $offer_type
-     *                                           Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     * @param  string|null $offer_type
+     *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\pricing\v0\GetPricingResponse
      */
     public function getPricing(
         string $marketplace_id,
@@ -1811,33 +1829,31 @@ class ProductPricingApi
         ?string $item_condition = null,
         ?string $offer_type = null,
         ?string $restrictedDataToken = null
-    ): GetPricingResponse {
-        list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type, $restrictedDataToken);
-
+    ): \SpApi\Model\pricing\v0\GetPricingResponse {
+        list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type,,,,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getPricingWithHttpInfo.
+     * Operation getPricingWithHttpInfo
      *
-     * @param string        $marketplace_id
-     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
-     * @param null|string[] $asins
-     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $item_condition
-     *                                           Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
-     * @param null|string   $offer_type
-     *                                           Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     * @param  string|null $offer_type
+     *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
-     * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPricingWithHttpInfo(
         string $marketplace_id,
@@ -1849,15 +1865,13 @@ class ProductPricingApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getPricing');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getPricing");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getPricingRateLimiter->consume()->ensureAccepted();
@@ -1893,49 +1907,49 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetPricingResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetPricingResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getPricingAsync.
+     * Operation getPricingAsync
      *
-     * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
-     * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $item_condition
-     *                                      Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
-     * @param null|string   $offer_type
-     *                                      Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     * @param  string|null $offer_type
+     *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getPricingAsync(
         string $marketplace_id,
@@ -1950,27 +1964,27 @@ class ProductPricingApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getPricingAsyncWithHttpInfo.
+     * Operation getPricingAsyncWithHttpInfo
      *
-     * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
-     * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $item_condition
-     *                                      Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
-     * @param null|string   $offer_type
-     *                                      Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     * @param  string|null $offer_type
+     *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getPricingAsyncWithHttpInfo(
         string $marketplace_id,
@@ -1979,12 +1993,12 @@ class ProductPricingApi
         ?array $skus = null,
         ?string $item_condition = null,
         ?string $offer_type = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getPricing');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "ProductPricingApi-getPricing");
         } else {
             $request = $this->config->sign($request);
         }
@@ -1996,11 +2010,11 @@ class ProductPricingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -2008,13 +2022,12 @@ class ProductPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2026,27 +2039,27 @@ class ProductPricingApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getPricing'.
+     * Create request for operation 'getPricing'
      *
-     * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
-     * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
-     * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
-     * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
-     * @param null|string   $item_condition
-     *                                      Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
-     * @param null|string   $offer_type
-     *                                      Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     * @param  string $marketplace_id
+     *  A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     * @param  string $item_type
+     *  Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     * @param  string[]|null $asins
+     *  A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     * @param  string[]|null $skus
+     *  A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param  string|null $item_condition
+     *  Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     * @param  string|null $offer_type
+     *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getPricingRequest(
         string $marketplace_id,
@@ -2057,24 +2070,25 @@ class ProductPricingApi
         ?string $offer_type = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getPricing'
             );
         }
         // verify the required parameter 'item_type' is set
-        if (null === $item_type || (is_array($item_type) && 0 === count($item_type))) {
+        if ($item_type === null || (is_array($item_type) && count($item_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $item_type when calling getPricing'
             );
         }
-        if (null !== $asins && count($asins) > 20) {
+        if ($asins !== null && count($asins) > 20) {
             throw new \InvalidArgumentException('invalid value for "$asins" when calling ProductPricingApi.getPricing, number of items must be less than or equal to 20.');
         }
 
-        if (null !== $skus && count($skus) > 20) {
+        if ($skus !== null && count($skus) > 20) {
             throw new \InvalidArgumentException('invalid value for "$skus" when calling ProductPricingApi.getPricing, number of items must be less than or equal to 20.');
         }
+
 
         $resourcePath = '/products/pricing/v0/price';
         $formParams = [];
@@ -2144,8 +2158,12 @@ class ProductPricingApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
+            
             '',
             $multipart
         );
@@ -2159,19 +2177,22 @@ class ProductPricingApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2185,21 +2206,19 @@ class ProductPricingApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -2207,7 +2226,7 @@ class ProductPricingApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 

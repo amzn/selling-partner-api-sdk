@@ -1,18 +1,16 @@
 <?php
-
 /**
  * FbaInboundApi
- * PHP version 8.3.
+ * PHP version 8.3
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for FBA Inbound Eligibilty.
+ * Selling Partner API for FBA Inbound Eligibilty
  *
  * With the FBA Inbound Eligibility API, you can build applications that let sellers get eligibility previews for items before shipping them to Amazon's fulfillment centers. With this API you can find out if an item is eligible for inbound shipment to Amazon's fulfillment centers in a specific marketplace. You can also find out if an item is eligible for using the manufacturer barcode for FBA inventory tracking. Sellers can use this information to inform their decisions about which items to ship Amazon's fulfillment centers.
  *
@@ -37,32 +35,38 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\ApiException;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
+use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
-use SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FbaInboundApi Class Doc Comment.
+ * FbaInboundApi Class Doc Comment
  *
  * @category Class
- *
+ * @package  SpApi
  * @author   OpenAPI Generator team
- *
- * @see     https://openapi-generator.tech
+ * @link     https://openapi-generator.tech
  */
 class FbaInboundApi
 {
-    public ?LimiterInterface $getItemEligibilityPreviewRateLimiter;
+    /**
+     * @var ClientInterface
+     */
     protected ClientInterface $client;
 
+    /**
+     * @var Configuration
+     */
     protected Configuration $config;
 
+    /**
+     * @var HeaderSelector
+     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -70,16 +74,21 @@ class FbaInboundApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
+    private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
+    public ?LimiterInterface $getItemEligibilityPreviewRateLimiter;
 
     /**
+     * @param Configuration   $config
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
+        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
@@ -89,8 +98,8 @@ class FbaInboundApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getItemEligibilityPreview'), $this->rateLimitStorage);
-            $this->getItemEligibilityPreviewRateLimiter = $factory->create('FbaInboundApi-getItemEligibilityPreview');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("FbaInboundApi-getItemEligibilityPreview"), $this->rateLimitStorage);
+            $this->getItemEligibilityPreviewRateLimiter = $factory->create("FbaInboundApi-getItemEligibilityPreview");
         }
 
         $this->client = $client ?: new Client();
@@ -99,7 +108,7 @@ class FbaInboundApi
     }
 
     /**
-     * Set the host index.
+     * Set the host index
      *
      * @param int $hostIndex Host index (required)
      */
@@ -109,7 +118,7 @@ class FbaInboundApi
     }
 
     /**
-     * Get the host index.
+     * Get the host index
      *
      * @return int Host index
      */
@@ -118,51 +127,52 @@ class FbaInboundApi
         return $this->hostIndex;
     }
 
+    /**
+     * @return Configuration
+     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
-
     /**
-     * Operation getItemEligibilityPreview.
+     * Operation getItemEligibilityPreview
      *
-     * @param string        $asin
-     *                                           The ASIN of the item for which you want an eligibility preview. (required)
-     * @param string        $program
-     *                                           The program that you want to check eligibility against. (required)
-     * @param null|string[] $marketplace_ids
-     *                                           The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $asin
+     *  The ASIN of the item for which you want an eligibility preview. (required)
+     * @param  string $program
+     *  The program that you want to check eligibility against. (required)
+     * @param  string[]|null $marketplace_ids
+     *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse
      */
     public function getItemEligibilityPreview(
         string $asin,
         string $program,
         ?array $marketplace_ids = null,
         ?string $restrictedDataToken = null
-    ): GetItemEligibilityPreviewResponse {
-        list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids, $restrictedDataToken);
-
+    ): \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse {
+        list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids,,,$restrictedDataToken);
         return $response;
     }
 
     /**
-     * Operation getItemEligibilityPreviewWithHttpInfo.
+     * Operation getItemEligibilityPreviewWithHttpInfo
      *
-     * @param string        $asin
-     *                                           The ASIN of the item for which you want an eligibility preview. (required)
-     * @param string        $program
-     *                                           The program that you want to check eligibility against. (required)
-     * @param null|string[] $marketplace_ids
-     *                                           The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
-     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param  string $asin
+     *  The ASIN of the item for which you want an eligibility preview. (required)
+     * @param  string $program
+     *  The program that you want to check eligibility against. (required)
+     * @param  string[]|null $marketplace_ids
+     *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
-     * @return array of \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse, HTTP status code, HTTP response headers (array of strings)
-     *
-     * @throws ApiException              on non-2xx response
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getItemEligibilityPreviewWithHttpInfo(
         string $asin,
@@ -171,15 +181,13 @@ class FbaInboundApi
         ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getItemEligibilityPreview');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getItemEligibilityPreview");
         } else {
             $request = $this->config->sign($request);
         }
-
         try {
             $options = $this->createHttpClientOption();
-
             try {
                 if ($this->rateLimiterEnabled) {
                     $this->getItemEligibilityPreviewRateLimiter->consume()->ensureAccepted();
@@ -215,43 +223,43 @@ class FbaInboundApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
-                    $content = json_decode($content);
+                if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
 
     /**
-     * Operation getItemEligibilityPreviewAsync.
+     * Operation getItemEligibilityPreviewAsync
      *
-     * @param string        $asin
-     *                                       The ASIN of the item for which you want an eligibility preview. (required)
-     * @param string        $program
-     *                                       The program that you want to check eligibility against. (required)
-     * @param null|string[] $marketplace_ids
-     *                                       The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     * @param  string $asin
+     *  The ASIN of the item for which you want an eligibility preview. (required)
+     * @param  string $program
+     *  The program that you want to check eligibility against. (required)
+     * @param  string[]|null $marketplace_ids
+     *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getItemEligibilityPreviewAsync(
         string $asin,
@@ -263,32 +271,32 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Operation getItemEligibilityPreviewAsyncWithHttpInfo.
+     * Operation getItemEligibilityPreviewAsyncWithHttpInfo
      *
-     * @param string        $asin
-     *                                       The ASIN of the item for which you want an eligibility preview. (required)
-     * @param string        $program
-     *                                       The program that you want to check eligibility against. (required)
-     * @param null|string[] $marketplace_ids
-     *                                       The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     * @param  string $asin
+     *  The ASIN of the item for which you want an eligibility preview. (required)
+     * @param  string $program
+     *  The program that you want to check eligibility against. (required)
+     * @param  string[]|null $marketplace_ids
+     *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return PromiseInterface
      */
     public function getItemEligibilityPreviewAsyncWithHttpInfo(
         string $asin,
         string $program,
         ?array $marketplace_ids = null,
-        ?string $restrictedDataToken = null
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
-        if (null !== $restrictedDataToken) {
-            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getItemEligibilityPreview');
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "FbaInboundApi-getItemEligibilityPreview");
         } else {
             $request = $this->config->sign($request);
         }
@@ -300,11 +308,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ('\SplFileObject' === $returnType) {
-                        $content = $response->getBody(); // stream goes to serializer
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== $returnType) {
+                        if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
                     }
@@ -312,13 +320,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders(),
+                        $response->getHeaders()
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
-
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -330,21 +337,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            )
-        ;
+            );
     }
 
     /**
-     * Create request for operation 'getItemEligibilityPreview'.
+     * Create request for operation 'getItemEligibilityPreview'
      *
-     * @param string        $asin
-     *                                       The ASIN of the item for which you want an eligibility preview. (required)
-     * @param string        $program
-     *                                       The program that you want to check eligibility against. (required)
-     * @param null|string[] $marketplace_ids
-     *                                       The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     * @param  string $asin
+     *  The ASIN of the item for which you want an eligibility preview. (required)
+     * @param  string $program
+     *  The program that you want to check eligibility against. (required)
+     * @param  string[]|null $marketplace_ids
+     *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
      * @throws \InvalidArgumentException
+     * @return Request
      */
     public function getItemEligibilityPreviewRequest(
         string $asin,
@@ -352,20 +359,21 @@ class FbaInboundApi
         ?array $marketplace_ids = null
     ): Request {
         // verify the required parameter 'asin' is set
-        if (null === $asin || (is_array($asin) && 0 === count($asin))) {
+        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $asin when calling getItemEligibilityPreview'
             );
         }
         // verify the required parameter 'program' is set
-        if (null === $program || (is_array($program) && 0 === count($program))) {
+        if ($program === null || (is_array($program) && count($program) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $program when calling getItemEligibilityPreview'
             );
         }
-        if (null !== $marketplace_ids && count($marketplace_ids) > 1) {
+        if ($marketplace_ids !== null && count($marketplace_ids) > 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling FbaInboundApi.getItemEligibilityPreview, number of items must be less than or equal to 1.');
         }
+
 
         $resourcePath = '/fba/inbound/v1/eligibility/itemPreview';
         $formParams = [];
@@ -405,8 +413,12 @@ class FbaInboundApi
             $this->config
         ) ?? []);
 
+
+
+
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'ItemEligibilityPreview'],
+            
             '',
             $multipart
         );
@@ -420,19 +432,22 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem,
+                            'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif ('application/json' === $headers['Content-Type']) {
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
+
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -446,21 +461,19 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-
         return new Request(
             'GET',
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option.
-     *
-     * @return array of http client options
+     * Create http client option
      *
      * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -468,7 +481,7 @@ class FbaInboundApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 
