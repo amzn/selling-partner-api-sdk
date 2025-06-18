@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse;
@@ -126,11 +127,12 @@ class FbaInboundApi
      * Operation getItemEligibilityPreview.
      *
      * @param string        $asin
-     *                                       The ASIN of the item for which you want an eligibility preview. (required)
+     *                                           The ASIN of the item for which you want an eligibility preview. (required)
      * @param string        $program
-     *                                       The program that you want to check eligibility against. (required)
+     *                                           The program that you want to check eligibility against. (required)
      * @param null|string[] $marketplace_ids
-     *                                       The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     *                                           The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -138,9 +140,10 @@ class FbaInboundApi
     public function getItemEligibilityPreview(
         string $asin,
         string $program,
-        ?array $marketplace_ids = null
+        ?array $marketplace_ids = null,
+        ?string $restrictedDataToken = null
     ): GetItemEligibilityPreviewResponse {
-        list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids);
+        list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -149,11 +152,12 @@ class FbaInboundApi
      * Operation getItemEligibilityPreviewWithHttpInfo.
      *
      * @param string        $asin
-     *                                       The ASIN of the item for which you want an eligibility preview. (required)
+     *                                           The ASIN of the item for which you want an eligibility preview. (required)
      * @param string        $program
-     *                                       The program that you want to check eligibility against. (required)
+     *                                           The program that you want to check eligibility against. (required)
      * @param null|string[] $marketplace_ids
-     *                                       The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     *                                           The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -163,10 +167,15 @@ class FbaInboundApi
     public function getItemEligibilityPreviewWithHttpInfo(
         string $asin,
         string $program,
-        ?array $marketplace_ids = null
+        ?array $marketplace_ids = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getItemEligibilityPreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -273,11 +282,16 @@ class FbaInboundApi
     public function getItemEligibilityPreviewAsyncWithHttpInfo(
         string $asin,
         string $program,
-        ?array $marketplace_ids = null
+        ?array $marketplace_ids = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getItemEligibilityPreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getItemEligibilityPreviewRateLimiter->consume()->ensureAccepted();
         }

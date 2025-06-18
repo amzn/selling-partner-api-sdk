@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sellerWallet\v2024_03_01\BalanceListing;
@@ -135,16 +136,18 @@ class AccountsApi
      *
      * Find particular Amazon Seller Wallet account by Amazon account identifier
      *
-     * @param string $account_id
-     *                           The ID of the Amazon Seller Wallet account. (required)
+     * @param string      $account_id
+     *                                         The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getAccount(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): BankAccount {
-        list($response) = $this->getAccountWithHttpInfo($account_id);
+        list($response) = $this->getAccountWithHttpInfo($account_id, $restrictedDataToken);
 
         return $response;
     }
@@ -154,8 +157,9 @@ class AccountsApi
      *
      * Find particular Amazon Seller Wallet account by Amazon account identifier
      *
-     * @param string $account_id
-     *                           The ID of the Amazon Seller Wallet account. (required)
+     * @param string      $account_id
+     *                                         The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\BankAccount, HTTP status code, HTTP response headers (array of strings)
      *
@@ -163,10 +167,15 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function getAccountWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAccountRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-getAccount');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -265,11 +274,16 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function getAccountAsyncWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BankAccount';
         $request = $this->getAccountRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-getAccount');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAccountRateLimiter->consume()->ensureAccepted();
         }
@@ -401,16 +415,18 @@ class AccountsApi
      *
      * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      *
-     * @param string $account_id
-     *                           The ID of the Amazon Seller Wallet account. (required)
+     * @param string      $account_id
+     *                                         The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listAccountBalances(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): BalanceListing {
-        list($response) = $this->listAccountBalancesWithHttpInfo($account_id);
+        list($response) = $this->listAccountBalancesWithHttpInfo($account_id, $restrictedDataToken);
 
         return $response;
     }
@@ -420,8 +436,9 @@ class AccountsApi
      *
      * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      *
-     * @param string $account_id
-     *                           The ID of the Amazon Seller Wallet account. (required)
+     * @param string      $account_id
+     *                                         The ID of the Amazon Seller Wallet account. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\BalanceListing, HTTP status code, HTTP response headers (array of strings)
      *
@@ -429,10 +446,15 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountBalancesRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-listAccountBalances');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -531,11 +553,16 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesAsyncWithHttpInfo(
-        string $account_id
+        string $account_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BalanceListing';
         $request = $this->listAccountBalancesRequest($account_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-listAccountBalances');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAccountBalancesRateLimiter->consume()->ensureAccepted();
         }
@@ -667,16 +694,18 @@ class AccountsApi
      *
      * Get all Amazon Seller Wallet accounts for the seller
      *
-     * @param string $marketplace_id
-     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listAccounts(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): BankAccountListing {
-        list($response) = $this->listAccountsWithHttpInfo($marketplace_id);
+        list($response) = $this->listAccountsWithHttpInfo($marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -686,8 +715,9 @@ class AccountsApi
      *
      * Get all Amazon Seller Wallet accounts for the seller
      *
-     * @param string $marketplace_id
-     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\BankAccountListing, HTTP status code, HTTP response headers (array of strings)
      *
@@ -695,10 +725,15 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountsWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAccountsRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-listAccounts');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -797,11 +832,16 @@ class AccountsApi
      * @throws \InvalidArgumentException
      */
     public function listAccountsAsyncWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BankAccountListing';
         $request = $this->listAccountsRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-listAccounts');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAccountsRateLimiter->consume()->ensureAccepted();
         }

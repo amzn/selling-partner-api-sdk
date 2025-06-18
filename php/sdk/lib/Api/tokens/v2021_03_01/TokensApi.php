@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest;
@@ -127,15 +128,17 @@ class TokensApi
      * Operation createRestrictedDataToken.
      *
      * @param CreateRestrictedDataTokenRequest $body
-     *                                               The restricted data token request details. (required)
+     *                                                              The restricted data token request details. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createRestrictedDataToken(
-        CreateRestrictedDataTokenRequest $body
+        CreateRestrictedDataTokenRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateRestrictedDataTokenResponse {
-        list($response) = $this->createRestrictedDataTokenWithHttpInfo($body);
+        list($response) = $this->createRestrictedDataTokenWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -144,7 +147,8 @@ class TokensApi
      * Operation createRestrictedDataTokenWithHttpInfo.
      *
      * @param CreateRestrictedDataTokenRequest $body
-     *                                               The restricted data token request details. (required)
+     *                                                              The restricted data token request details. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -152,10 +156,15 @@ class TokensApi
      * @throws \InvalidArgumentException
      */
     public function createRestrictedDataTokenWithHttpInfo(
-        CreateRestrictedDataTokenRequest $body
+        CreateRestrictedDataTokenRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createRestrictedDataTokenRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TokensApi-createRestrictedDataToken');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -250,11 +259,16 @@ class TokensApi
      * @throws \InvalidArgumentException
      */
     public function createRestrictedDataTokenAsyncWithHttpInfo(
-        CreateRestrictedDataTokenRequest $body
+        CreateRestrictedDataTokenRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse';
         $request = $this->createRestrictedDataTokenRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TokensApi-createRestrictedDataToken');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createRestrictedDataTokenRateLimiter->consume()->ensureAccepted();
         }

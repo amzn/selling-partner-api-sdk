@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\reports\v2021_06_30\CreateReportResponse;
@@ -157,23 +158,26 @@ class ReportsApi
     /**
      * Operation cancelReport.
      *
-     * @param string $report_id
-     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelReport(
-        string $report_id
+        string $report_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelReportWithHttpInfo($report_id);
+        $this->cancelReportWithHttpInfo($report_id, $restrictedDataToken);
     }
 
     /**
      * Operation cancelReportWithHttpInfo.
      *
-     * @param string $report_id
-     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -181,10 +185,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function cancelReportWithHttpInfo(
-        string $report_id
+        string $report_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReportRequest($report_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReport');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -267,11 +276,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function cancelReportAsyncWithHttpInfo(
-        string $report_id
+        string $report_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelReportRequest($report_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReport');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelReportRateLimiter->consume()->ensureAccepted();
         }
@@ -388,23 +402,26 @@ class ReportsApi
     /**
      * Operation cancelReportSchedule.
      *
-     * @param string $report_schedule_id
-     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelReportSchedule(
-        string $report_schedule_id
+        string $report_schedule_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelReportScheduleWithHttpInfo($report_schedule_id);
+        $this->cancelReportScheduleWithHttpInfo($report_schedule_id, $restrictedDataToken);
     }
 
     /**
      * Operation cancelReportScheduleWithHttpInfo.
      *
-     * @param string $report_schedule_id
-     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -412,10 +429,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function cancelReportScheduleWithHttpInfo(
-        string $report_schedule_id
+        string $report_schedule_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReportScheduleRequest($report_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReportSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -498,11 +520,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function cancelReportScheduleAsyncWithHttpInfo(
-        string $report_schedule_id
+        string $report_schedule_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelReportScheduleRequest($report_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReportSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelReportScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -620,15 +647,17 @@ class ReportsApi
      * Operation createReport.
      *
      * @param CreateReportSpecification $body
-     *                                        Information required to create the report. (required)
+     *                                                       Information required to create the report. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createReport(
-        CreateReportSpecification $body
+        CreateReportSpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateReportResponse {
-        list($response) = $this->createReportWithHttpInfo($body);
+        list($response) = $this->createReportWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -637,7 +666,8 @@ class ReportsApi
      * Operation createReportWithHttpInfo.
      *
      * @param CreateReportSpecification $body
-     *                                        Information required to create the report. (required)
+     *                                                       Information required to create the report. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -645,10 +675,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function createReportWithHttpInfo(
-        CreateReportSpecification $body
+        CreateReportSpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReportRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReport');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -743,11 +778,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function createReportAsyncWithHttpInfo(
-        CreateReportSpecification $body
+        CreateReportSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
         $request = $this->createReportRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReport');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createReportRateLimiter->consume()->ensureAccepted();
         }
@@ -875,15 +915,17 @@ class ReportsApi
      * Operation createReportSchedule.
      *
      * @param CreateReportScheduleSpecification $body
-     *                                                Information required to create the report schedule. (required)
+     *                                                               Information required to create the report schedule. (required)
+     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createReportSchedule(
-        CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateReportScheduleResponse {
-        list($response) = $this->createReportScheduleWithHttpInfo($body);
+        list($response) = $this->createReportScheduleWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -892,7 +934,8 @@ class ReportsApi
      * Operation createReportScheduleWithHttpInfo.
      *
      * @param CreateReportScheduleSpecification $body
-     *                                                Information required to create the report schedule. (required)
+     *                                                               Information required to create the report schedule. (required)
+     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -900,10 +943,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function createReportScheduleWithHttpInfo(
-        CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReportScheduleRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReportSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -998,11 +1046,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function createReportScheduleAsyncWithHttpInfo(
-        CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
         $request = $this->createReportScheduleRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReportSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createReportScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -1129,16 +1182,18 @@ class ReportsApi
     /**
      * Operation getReport.
      *
-     * @param string $report_id
-     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getReport(
-        string $report_id
+        string $report_id,
+        ?string $restrictedDataToken = null
     ): Report {
-        list($response) = $this->getReportWithHttpInfo($report_id);
+        list($response) = $this->getReportWithHttpInfo($report_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1146,8 +1201,9 @@ class ReportsApi
     /**
      * Operation getReportWithHttpInfo.
      *
-     * @param string $report_id
-     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_id
+     *                                         The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\Report, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1155,10 +1211,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportWithHttpInfo(
-        string $report_id
+        string $report_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportRequest($report_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReport');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1253,11 +1314,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportAsyncWithHttpInfo(
-        string $report_id
+        string $report_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\Report';
         $request = $this->getReportRequest($report_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReport');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getReportRateLimiter->consume()->ensureAccepted();
         }
@@ -1387,16 +1453,18 @@ class ReportsApi
     /**
      * Operation getReportDocument.
      *
-     * @param string $report_document_id
-     *                                   The identifier for the report document. (required)
+     * @param string      $report_document_id
+     *                                         The identifier for the report document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getReportDocument(
-        string $report_document_id
+        string $report_document_id,
+        ?string $restrictedDataToken = null
     ): ReportDocument {
-        list($response) = $this->getReportDocumentWithHttpInfo($report_document_id);
+        list($response) = $this->getReportDocumentWithHttpInfo($report_document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1404,8 +1472,9 @@ class ReportsApi
     /**
      * Operation getReportDocumentWithHttpInfo.
      *
-     * @param string $report_document_id
-     *                                   The identifier for the report document. (required)
+     * @param string      $report_document_id
+     *                                         The identifier for the report document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportDocument, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1413,10 +1482,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportDocumentWithHttpInfo(
-        string $report_document_id
+        string $report_document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportDocumentRequest($report_document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1511,11 +1585,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportDocumentAsyncWithHttpInfo(
-        string $report_document_id
+        string $report_document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
         $request = $this->getReportDocumentRequest($report_document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getReportDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -1645,16 +1724,18 @@ class ReportsApi
     /**
      * Operation getReportSchedule.
      *
-     * @param string $report_schedule_id
-     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getReportSchedule(
-        string $report_schedule_id
+        string $report_schedule_id,
+        ?string $restrictedDataToken = null
     ): ReportSchedule {
-        list($response) = $this->getReportScheduleWithHttpInfo($report_schedule_id);
+        list($response) = $this->getReportScheduleWithHttpInfo($report_schedule_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1662,8 +1743,9 @@ class ReportsApi
     /**
      * Operation getReportScheduleWithHttpInfo.
      *
-     * @param string $report_schedule_id
-     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $report_schedule_id
+     *                                         The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportSchedule, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1671,10 +1753,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportScheduleWithHttpInfo(
-        string $report_schedule_id
+        string $report_schedule_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportScheduleRequest($report_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1769,11 +1856,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportScheduleAsyncWithHttpInfo(
-        string $report_schedule_id
+        string $report_schedule_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportSchedule';
         $request = $this->getReportScheduleRequest($report_schedule_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getReportScheduleRateLimiter->consume()->ensureAccepted();
         }
@@ -1903,16 +1995,18 @@ class ReportsApi
     /**
      * Operation getReportSchedules.
      *
-     * @param string[] $report_types
-     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[]    $report_types
+     *                                         A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getReportSchedules(
-        array $report_types
+        array $report_types,
+        ?string $restrictedDataToken = null
     ): ReportScheduleList {
-        list($response) = $this->getReportSchedulesWithHttpInfo($report_types);
+        list($response) = $this->getReportSchedulesWithHttpInfo($report_types, $restrictedDataToken);
 
         return $response;
     }
@@ -1920,8 +2014,9 @@ class ReportsApi
     /**
      * Operation getReportSchedulesWithHttpInfo.
      *
-     * @param string[] $report_types
-     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[]    $report_types
+     *                                         A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportScheduleList, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1929,10 +2024,15 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportSchedulesWithHttpInfo(
-        array $report_types
+        array $report_types,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportSchedulesRequest($report_types);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedules');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2027,11 +2127,16 @@ class ReportsApi
      * @throws \InvalidArgumentException
      */
     public function getReportSchedulesAsyncWithHttpInfo(
-        array $report_types
+        array $report_types,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportScheduleList';
         $request = $this->getReportSchedulesRequest($report_types);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedules');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getReportSchedulesRateLimiter->consume()->ensureAccepted();
         }
@@ -2183,6 +2288,7 @@ class ReportsApi
      *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
      * @param null|string    $next_token
      *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2194,9 +2300,10 @@ class ReportsApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetReportsResponse {
-        list($response) = $this->getReportsWithHttpInfo($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
+        list($response) = $this->getReportsWithHttpInfo($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -2218,6 +2325,7 @@ class ReportsApi
      *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
      * @param null|string    $next_token
      *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\GetReportsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2231,10 +2339,15 @@ class ReportsApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getReportsRequest($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReports');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2365,11 +2478,16 @@ class ReportsApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\GetReportsResponse';
         $request = $this->getReportsRequest($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReports');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getReportsRateLimiter->consume()->ensureAccepted();
         }

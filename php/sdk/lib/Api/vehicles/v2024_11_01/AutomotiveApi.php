@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\vehicles\v2024_11_01\VehiclesResponse;
@@ -126,13 +127,14 @@ class AutomotiveApi
      * Operation getVehicles_0.
      *
      * @param string      $marketplace_id
-     *                                    An identifier for the marketplace in which the resource operates. (required)
+     *                                         An identifier for the marketplace in which the resource operates. (required)
      * @param string      $vehicle_type
-     *                                    An identifier for vehicle type. (required)
+     *                                         An identifier for vehicle type. (required)
      * @param null|string $page_token
-     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. (optional)
      * @param null|string $updated_after
-     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     *                                         Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -141,9 +143,10 @@ class AutomotiveApi
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
-        ?string $updated_after = null
+        ?string $updated_after = null,
+        ?string $restrictedDataToken = null
     ): VehiclesResponse {
-        list($response) = $this->getVehicles_0WithHttpInfo($marketplace_id, $vehicle_type, $page_token, $updated_after);
+        list($response) = $this->getVehicles_0WithHttpInfo($marketplace_id, $vehicle_type, $page_token, $updated_after, $restrictedDataToken);
 
         return $response;
     }
@@ -152,13 +155,14 @@ class AutomotiveApi
      * Operation getVehicles_0WithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                    An identifier for the marketplace in which the resource operates. (required)
+     *                                         An identifier for the marketplace in which the resource operates. (required)
      * @param string      $vehicle_type
-     *                                    An identifier for vehicle type. (required)
+     *                                         An identifier for vehicle type. (required)
      * @param null|string $page_token
-     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     *                                         A token to fetch a certain page when there are multiple pages worth of results. (optional)
      * @param null|string $updated_after
-     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     *                                         Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\vehicles\v2024_11_01\VehiclesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -169,10 +173,15 @@ class AutomotiveApi
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
-        ?string $updated_after = null
+        ?string $updated_after = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getVehicles_0Request($marketplace_id, $vehicle_type, $page_token, $updated_after);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AutomotiveApi-getVehicles_0');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -285,11 +294,16 @@ class AutomotiveApi
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
-        ?string $updated_after = null
+        ?string $updated_after = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vehicles\v2024_11_01\VehiclesResponse';
         $request = $this->getVehicles_0Request($marketplace_id, $vehicle_type, $page_token, $updated_after);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AutomotiveApi-getVehicles_0');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getVehicles_0RateLimiter->consume()->ensureAccepted();
         }

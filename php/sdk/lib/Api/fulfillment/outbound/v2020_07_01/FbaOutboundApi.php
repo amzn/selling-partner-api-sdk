@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse;
@@ -183,16 +184,18 @@ class FbaOutboundApi
     /**
      * Operation cancelFulfillmentOrder.
      *
-     * @param string $seller_fulfillment_order_id
-     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelFulfillmentOrder(
-        string $seller_fulfillment_order_id
+        string $seller_fulfillment_order_id,
+        ?string $restrictedDataToken = null
     ): CancelFulfillmentOrderResponse {
-        list($response) = $this->cancelFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id);
+        list($response) = $this->cancelFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -200,8 +203,9 @@ class FbaOutboundApi
     /**
      * Operation cancelFulfillmentOrderWithHttpInfo.
      *
-     * @param string $seller_fulfillment_order_id
-     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -209,10 +213,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelFulfillmentOrderWithHttpInfo(
-        string $seller_fulfillment_order_id
+        string $seller_fulfillment_order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelFulfillmentOrderRequest($seller_fulfillment_order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-cancelFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -307,11 +316,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function cancelFulfillmentOrderAsyncWithHttpInfo(
-        string $seller_fulfillment_order_id
+        string $seller_fulfillment_order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse';
         $request = $this->cancelFulfillmentOrderRequest($seller_fulfillment_order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-cancelFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelFulfillmentOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -445,15 +459,17 @@ class FbaOutboundApi
      * Operation createFulfillmentOrder.
      *
      * @param CreateFulfillmentOrderRequest $body
-     *                                            CreateFulfillmentOrderRequest parameter (required)
+     *                                                           CreateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createFulfillmentOrder(
-        CreateFulfillmentOrderRequest $body
+        CreateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateFulfillmentOrderResponse {
-        list($response) = $this->createFulfillmentOrderWithHttpInfo($body);
+        list($response) = $this->createFulfillmentOrderWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -462,7 +478,8 @@ class FbaOutboundApi
      * Operation createFulfillmentOrderWithHttpInfo.
      *
      * @param CreateFulfillmentOrderRequest $body
-     *                                            CreateFulfillmentOrderRequest parameter (required)
+     *                                                           CreateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -470,10 +487,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function createFulfillmentOrderWithHttpInfo(
-        CreateFulfillmentOrderRequest $body
+        CreateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFulfillmentOrderRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -568,11 +590,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function createFulfillmentOrderAsyncWithHttpInfo(
-        CreateFulfillmentOrderRequest $body
+        CreateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse';
         $request = $this->createFulfillmentOrderRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createFulfillmentOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -703,15 +730,17 @@ class FbaOutboundApi
      *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
      *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     * @param null|string                    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createFulfillmentReturn(
         string $seller_fulfillment_order_id,
-        CreateFulfillmentReturnRequest $body
+        CreateFulfillmentReturnRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateFulfillmentReturnResponse {
-        list($response) = $this->createFulfillmentReturnWithHttpInfo($seller_fulfillment_order_id, $body);
+        list($response) = $this->createFulfillmentReturnWithHttpInfo($seller_fulfillment_order_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -723,6 +752,7 @@ class FbaOutboundApi
      *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
      *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     * @param null|string                    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -731,10 +761,15 @@ class FbaOutboundApi
      */
     public function createFulfillmentReturnWithHttpInfo(
         string $seller_fulfillment_order_id,
-        CreateFulfillmentReturnRequest $body
+        CreateFulfillmentReturnRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFulfillmentReturnRequest($seller_fulfillment_order_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentReturn');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -835,11 +870,16 @@ class FbaOutboundApi
      */
     public function createFulfillmentReturnAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-        CreateFulfillmentReturnRequest $body
+        CreateFulfillmentReturnRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse';
         $request = $this->createFulfillmentReturnRequest($seller_fulfillment_order_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-createFulfillmentReturn');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createFulfillmentReturnRateLimiter->consume()->ensureAccepted();
         }
@@ -985,15 +1025,17 @@ class FbaOutboundApi
      * Operation deliveryOffers.
      *
      * @param GetDeliveryOffersRequest $body
-     *                                       GetDeliveryOffersRequest parameter (required)
+     *                                                      GetDeliveryOffersRequest parameter (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function deliveryOffers(
-        GetDeliveryOffersRequest $body
+        GetDeliveryOffersRequest $body,
+        ?string $restrictedDataToken = null
     ): GetDeliveryOffersResponse {
-        list($response) = $this->deliveryOffersWithHttpInfo($body);
+        list($response) = $this->deliveryOffersWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -1002,7 +1044,8 @@ class FbaOutboundApi
      * Operation deliveryOffersWithHttpInfo.
      *
      * @param GetDeliveryOffersRequest $body
-     *                                       GetDeliveryOffersRequest parameter (required)
+     *                                                      GetDeliveryOffersRequest parameter (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1010,10 +1053,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function deliveryOffersWithHttpInfo(
-        GetDeliveryOffersRequest $body
+        GetDeliveryOffersRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deliveryOffersRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-deliveryOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1108,11 +1156,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function deliveryOffersAsyncWithHttpInfo(
-        GetDeliveryOffersRequest $body
+        GetDeliveryOffersRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse';
         $request = $this->deliveryOffersRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-deliveryOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deliveryOffersRateLimiter->consume()->ensureAccepted();
         }
@@ -1240,13 +1293,14 @@ class FbaOutboundApi
      * Operation getFeatureInventory.
      *
      * @param string         $marketplace_id
-     *                                         The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     *                                            The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
      * @param string         $feature_name
-     *                                         The name of the feature for which to return a list of eligible inventory. (required)
+     *                                            The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1255,9 +1309,10 @@ class FbaOutboundApi
         string $marketplace_id,
         string $feature_name,
         ?string $next_token = null,
-        ?\DateTime $query_start_date = null
+        ?\DateTime $query_start_date = null,
+        ?string $restrictedDataToken = null
     ): GetFeatureInventoryResponse {
-        list($response) = $this->getFeatureInventoryWithHttpInfo($marketplace_id, $feature_name, $next_token, $query_start_date);
+        list($response) = $this->getFeatureInventoryWithHttpInfo($marketplace_id, $feature_name, $next_token, $query_start_date, $restrictedDataToken);
 
         return $response;
     }
@@ -1266,13 +1321,14 @@ class FbaOutboundApi
      * Operation getFeatureInventoryWithHttpInfo.
      *
      * @param string         $marketplace_id
-     *                                         The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
+     *                                            The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
      * @param string         $feature_name
-     *                                         The name of the feature for which to return a list of eligible inventory. (required)
+     *                                            The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1283,10 +1339,15 @@ class FbaOutboundApi
         string $marketplace_id,
         string $feature_name,
         ?string $next_token = null,
-        ?\DateTime $query_start_date = null
+        ?\DateTime $query_start_date = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeatureInventoryRequest($marketplace_id, $feature_name, $next_token, $query_start_date);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureInventory');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1399,11 +1460,16 @@ class FbaOutboundApi
         string $marketplace_id,
         string $feature_name,
         ?string $next_token = null,
-        ?\DateTime $query_start_date = null
+        ?\DateTime $query_start_date = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse';
         $request = $this->getFeatureInventoryRequest($marketplace_id, $feature_name, $next_token, $query_start_date);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureInventory');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeatureInventoryRateLimiter->consume()->ensureAccepted();
         }
@@ -1579,12 +1645,13 @@ class FbaOutboundApi
     /**
      * Operation getFeatureSKU.
      *
-     * @param string $marketplace_id
-     *                               The marketplace for which to return the count. (required)
-     * @param string $feature_name
-     *                               The name of the feature. (required)
-     * @param string $seller_sku
-     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the count. (required)
+     * @param string      $feature_name
+     *                                         The name of the feature. (required)
+     * @param string      $seller_sku
+     *                                         Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1592,9 +1659,10 @@ class FbaOutboundApi
     public function getFeatureSKU(
         string $marketplace_id,
         string $feature_name,
-        string $seller_sku
+        string $seller_sku,
+        ?string $restrictedDataToken = null
     ): GetFeatureSkuResponse {
-        list($response) = $this->getFeatureSKUWithHttpInfo($marketplace_id, $feature_name, $seller_sku);
+        list($response) = $this->getFeatureSKUWithHttpInfo($marketplace_id, $feature_name, $seller_sku, $restrictedDataToken);
 
         return $response;
     }
@@ -1602,12 +1670,13 @@ class FbaOutboundApi
     /**
      * Operation getFeatureSKUWithHttpInfo.
      *
-     * @param string $marketplace_id
-     *                               The marketplace for which to return the count. (required)
-     * @param string $feature_name
-     *                               The name of the feature. (required)
-     * @param string $seller_sku
-     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the count. (required)
+     * @param string      $feature_name
+     *                                         The name of the feature. (required)
+     * @param string      $seller_sku
+     *                                         Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1617,10 +1686,15 @@ class FbaOutboundApi
     public function getFeatureSKUWithHttpInfo(
         string $marketplace_id,
         string $feature_name,
-        string $seller_sku
+        string $seller_sku,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeatureSKURequest($marketplace_id, $feature_name, $seller_sku);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureSKU');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1727,11 +1801,16 @@ class FbaOutboundApi
     public function getFeatureSKUAsyncWithHttpInfo(
         string $marketplace_id,
         string $feature_name,
-        string $seller_sku
+        string $seller_sku,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse';
         $request = $this->getFeatureSKURequest($marketplace_id, $feature_name, $seller_sku);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatureSKU');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeatureSKURateLimiter->consume()->ensureAccepted();
         }
@@ -1898,16 +1977,18 @@ class FbaOutboundApi
     /**
      * Operation getFeatures.
      *
-     * @param string $marketplace_id
-     *                               The marketplace for which to return the list of features. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the list of features. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFeatures(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): GetFeaturesResponse {
-        list($response) = $this->getFeaturesWithHttpInfo($marketplace_id);
+        list($response) = $this->getFeaturesWithHttpInfo($marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1915,8 +1996,9 @@ class FbaOutboundApi
     /**
      * Operation getFeaturesWithHttpInfo.
      *
-     * @param string $marketplace_id
-     *                               The marketplace for which to return the list of features. (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which to return the list of features. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1924,10 +2006,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturesWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeaturesRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatures');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2022,11 +2109,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getFeaturesAsyncWithHttpInfo(
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse';
         $request = $this->getFeaturesRequest($marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFeatures');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeaturesRateLimiter->consume()->ensureAccepted();
         }
@@ -2158,16 +2250,18 @@ class FbaOutboundApi
     /**
      * Operation getFulfillmentOrder.
      *
-     * @param string $seller_fulfillment_order_id
-     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFulfillmentOrder(
-        string $seller_fulfillment_order_id
+        string $seller_fulfillment_order_id,
+        ?string $restrictedDataToken = null
     ): GetFulfillmentOrderResponse {
-        list($response) = $this->getFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id);
+        list($response) = $this->getFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $restrictedDataToken);
 
         return $response;
     }
@@ -2175,8 +2269,9 @@ class FbaOutboundApi
     /**
      * Operation getFulfillmentOrderWithHttpInfo.
      *
-     * @param string $seller_fulfillment_order_id
-     *                                            The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param string      $seller_fulfillment_order_id
+     *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2184,10 +2279,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getFulfillmentOrderWithHttpInfo(
-        string $seller_fulfillment_order_id
+        string $seller_fulfillment_order_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFulfillmentOrderRequest($seller_fulfillment_order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2282,11 +2382,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getFulfillmentOrderAsyncWithHttpInfo(
-        string $seller_fulfillment_order_id
+        string $seller_fulfillment_order_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse';
         $request = $this->getFulfillmentOrderRequest($seller_fulfillment_order_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFulfillmentOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -2420,15 +2525,17 @@ class FbaOutboundApi
      * Operation getFulfillmentPreview.
      *
      * @param GetFulfillmentPreviewRequest $body
-     *                                           GetFulfillmentPreviewRequest parameter (required)
+     *                                                          GetFulfillmentPreviewRequest parameter (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFulfillmentPreview(
-        GetFulfillmentPreviewRequest $body
+        GetFulfillmentPreviewRequest $body,
+        ?string $restrictedDataToken = null
     ): GetFulfillmentPreviewResponse {
-        list($response) = $this->getFulfillmentPreviewWithHttpInfo($body);
+        list($response) = $this->getFulfillmentPreviewWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -2437,7 +2544,8 @@ class FbaOutboundApi
      * Operation getFulfillmentPreviewWithHttpInfo.
      *
      * @param GetFulfillmentPreviewRequest $body
-     *                                           GetFulfillmentPreviewRequest parameter (required)
+     *                                                          GetFulfillmentPreviewRequest parameter (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2445,10 +2553,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getFulfillmentPreviewWithHttpInfo(
-        GetFulfillmentPreviewRequest $body
+        GetFulfillmentPreviewRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFulfillmentPreviewRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentPreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2543,11 +2656,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getFulfillmentPreviewAsyncWithHttpInfo(
-        GetFulfillmentPreviewRequest $body
+        GetFulfillmentPreviewRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse';
         $request = $this->getFulfillmentPreviewRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getFulfillmentPreview');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFulfillmentPreviewRateLimiter->consume()->ensureAccepted();
         }
@@ -2674,16 +2792,18 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetails.
      *
-     * @param int $package_number
-     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int         $package_number
+     *                                         The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetails(
-        int $package_number
+        int $package_number,
+        ?string $restrictedDataToken = null
     ): GetPackageTrackingDetailsResponse {
-        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number);
+        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number, $restrictedDataToken);
 
         return $response;
     }
@@ -2691,8 +2811,9 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsWithHttpInfo.
      *
-     * @param int $package_number
-     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param int         $package_number
+     *                                         The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2700,10 +2821,15 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsWithHttpInfo(
-        int $package_number
+        int $package_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPackageTrackingDetailsRequest($package_number);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2798,11 +2924,16 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsAsyncWithHttpInfo(
-        int $package_number
+        int $package_number,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse';
         $request = $this->getPackageTrackingDetailsRequest($package_number);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPackageTrackingDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -2935,18 +3066,20 @@ class FbaOutboundApi
      * Operation listAllFulfillmentOrders.
      *
      * @param null|\DateTime $query_start_date
-     *                                         A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     *                                            A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request. (optional)
+     *                                            A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listAllFulfillmentOrders(
         ?\DateTime $query_start_date = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListAllFulfillmentOrdersResponse {
-        list($response) = $this->listAllFulfillmentOrdersWithHttpInfo($query_start_date, $next_token);
+        list($response) = $this->listAllFulfillmentOrdersWithHttpInfo($query_start_date, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -2955,9 +3088,10 @@ class FbaOutboundApi
      * Operation listAllFulfillmentOrdersWithHttpInfo.
      *
      * @param null|\DateTime $query_start_date
-     *                                         A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
+     *                                            A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order. (optional)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request. (optional)
+     *                                            A string token returned in the response to your previous request. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2966,10 +3100,15 @@ class FbaOutboundApi
      */
     public function listAllFulfillmentOrdersWithHttpInfo(
         ?\DateTime $query_start_date = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listAllFulfillmentOrdersRequest($query_start_date, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listAllFulfillmentOrders');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3070,11 +3209,16 @@ class FbaOutboundApi
      */
     public function listAllFulfillmentOrdersAsyncWithHttpInfo(
         ?\DateTime $query_start_date = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse';
         $request = $this->listAllFulfillmentOrdersRequest($query_start_date, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listAllFulfillmentOrders');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listAllFulfillmentOrdersRateLimiter->consume()->ensureAccepted();
         }
@@ -3220,6 +3364,7 @@ class FbaOutboundApi
      *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
      * @param null|string $language
      *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3228,9 +3373,10 @@ class FbaOutboundApi
         string $seller_sku,
         ?string $marketplace_id = null,
         ?string $seller_fulfillment_order_id = null,
-        ?string $language = null
+        ?string $language = null,
+        ?string $restrictedDataToken = null
     ): ListReturnReasonCodesResponse {
-        list($response) = $this->listReturnReasonCodesWithHttpInfo($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language);
+        list($response) = $this->listReturnReasonCodesWithHttpInfo($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language, $restrictedDataToken);
 
         return $response;
     }
@@ -3246,6 +3392,7 @@ class FbaOutboundApi
      *                                                 The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes. (optional)
      * @param null|string $language
      *                                                 The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
+     * @param null|string $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3256,10 +3403,15 @@ class FbaOutboundApi
         string $seller_sku,
         ?string $marketplace_id = null,
         ?string $seller_fulfillment_order_id = null,
-        ?string $language = null
+        ?string $language = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listReturnReasonCodesRequest($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listReturnReasonCodes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3372,11 +3524,16 @@ class FbaOutboundApi
         string $seller_sku,
         ?string $marketplace_id = null,
         ?string $seller_fulfillment_order_id = null,
-        ?string $language = null
+        ?string $language = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse';
         $request = $this->listReturnReasonCodesRequest($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-listReturnReasonCodes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listReturnReasonCodesRateLimiter->consume()->ensureAccepted();
         }
@@ -3551,15 +3708,17 @@ class FbaOutboundApi
      *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param SubmitFulfillmentOrderStatusUpdateRequest $body
      *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string                               $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function submitFulfillmentOrderStatusUpdate(
         string $seller_fulfillment_order_id,
-        SubmitFulfillmentOrderStatusUpdateRequest $body
+        SubmitFulfillmentOrderStatusUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): SubmitFulfillmentOrderStatusUpdateResponse {
-        list($response) = $this->submitFulfillmentOrderStatusUpdateWithHttpInfo($seller_fulfillment_order_id, $body);
+        list($response) = $this->submitFulfillmentOrderStatusUpdateWithHttpInfo($seller_fulfillment_order_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3571,6 +3730,7 @@ class FbaOutboundApi
      *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param SubmitFulfillmentOrderStatusUpdateRequest $body
      *                                                                               The identifier assigned to the item by the seller when the fulfillment order was created. (required)
+     * @param null|string                               $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3579,10 +3739,15 @@ class FbaOutboundApi
      */
     public function submitFulfillmentOrderStatusUpdateWithHttpInfo(
         string $seller_fulfillment_order_id,
-        SubmitFulfillmentOrderStatusUpdateRequest $body
+        SubmitFulfillmentOrderStatusUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitFulfillmentOrderStatusUpdateRequest($seller_fulfillment_order_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3683,11 +3848,16 @@ class FbaOutboundApi
      */
     public function submitFulfillmentOrderStatusUpdateAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-        SubmitFulfillmentOrderStatusUpdateRequest $body
+        SubmitFulfillmentOrderStatusUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse';
         $request = $this->submitFulfillmentOrderStatusUpdateRequest($seller_fulfillment_order_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-submitFulfillmentOrderStatusUpdate');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitFulfillmentOrderStatusUpdateRateLimiter->consume()->ensureAccepted();
         }
@@ -3840,15 +4010,17 @@ class FbaOutboundApi
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
      *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateFulfillmentOrder(
         string $seller_fulfillment_order_id,
-        UpdateFulfillmentOrderRequest $body
+        UpdateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateFulfillmentOrderResponse {
-        list($response) = $this->updateFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $body);
+        list($response) = $this->updateFulfillmentOrderWithHttpInfo($seller_fulfillment_order_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3860,6 +4032,7 @@ class FbaOutboundApi
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
      *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3868,10 +4041,15 @@ class FbaOutboundApi
      */
     public function updateFulfillmentOrderWithHttpInfo(
         string $seller_fulfillment_order_id,
-        UpdateFulfillmentOrderRequest $body
+        UpdateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateFulfillmentOrderRequest($seller_fulfillment_order_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-updateFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3972,11 +4150,16 @@ class FbaOutboundApi
      */
     public function updateFulfillmentOrderAsyncWithHttpInfo(
         string $seller_fulfillment_order_id,
-        UpdateFulfillmentOrderRequest $body
+        UpdateFulfillmentOrderRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse';
         $request = $this->updateFulfillmentOrderRequest($seller_fulfillment_order_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-updateFulfillmentOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateFulfillmentOrderRateLimiter->consume()->ensureAccepted();
         }

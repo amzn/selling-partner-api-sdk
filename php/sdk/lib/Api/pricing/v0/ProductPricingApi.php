@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\pricing\v0\GetItemOffersBatchRequest;
@@ -146,15 +147,16 @@ class ProductPricingApi
      * Operation getCompetitivePricing.
      *
      * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
      * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
      * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
      * @param null|string   $customer_type
-     *                                      Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     *                                           Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -164,9 +166,10 @@ class ProductPricingApi
         string $item_type,
         ?array $asins = null,
         ?array $skus = null,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): GetPricingResponse {
-        list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type);
+        list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -175,15 +178,16 @@ class ProductPricingApi
      * Operation getCompetitivePricingWithHttpInfo.
      *
      * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. (required)
      * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
      * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
      * @param null|string   $customer_type
-     *                                      Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     *                                           Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -195,10 +199,15 @@ class ProductPricingApi
         string $item_type,
         ?array $asins = null,
         ?array $skus = null,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitivePricing');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -317,11 +326,16 @@ class ProductPricingApi
         string $item_type,
         ?array $asins = null,
         ?array $skus = null,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitivePricing');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
         }
@@ -519,13 +533,14 @@ class ProductPricingApi
      * Operation getItemOffers.
      *
      * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string      $item_condition
-     *                                    Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     *                                         Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
      * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) of the item. (required)
+     *                                         The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -534,9 +549,10 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $asin,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): GetOffersResponse {
-        list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type);
+        list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -545,13 +561,14 @@ class ProductPricingApi
      * Operation getItemOffersWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string      $item_condition
-     *                                    Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     *                                         Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
      * @param string      $asin
-     *                                    The Amazon Standard Identification Number (ASIN) of the item. (required)
+     *                                         The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -562,10 +579,15 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $asin,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -678,11 +700,16 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $asin,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getItemOffersRateLimiter->consume()->ensureAccepted();
         }
@@ -866,14 +893,16 @@ class ProductPricingApi
      *
      * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param null|string               $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getItemOffersBatch(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): GetItemOffersBatchResponse {
-        list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body);
+        list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -883,6 +912,7 @@ class ProductPricingApi
      *
      * @param GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *                                                                      The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param null|string               $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v0\GetItemOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -890,10 +920,15 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getItemOffersBatchWithHttpInfo(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffersBatch');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -988,11 +1023,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getItemOffersBatchAsyncWithHttpInfo(
-        GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        GetItemOffersBatchRequest $get_item_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse';
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffersBatch');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
         }
@@ -1120,13 +1160,14 @@ class ProductPricingApi
      * Operation getListingOffers.
      *
      * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string      $item_condition
-     *                                    Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     *                                         Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
      * @param string      $seller_sku
-     *                                    Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     *                                         Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1135,9 +1176,10 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): GetOffersResponse {
-        list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type);
+        list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -1146,13 +1188,14 @@ class ProductPricingApi
      * Operation getListingOffersWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                    A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                         A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string      $item_condition
-     *                                    Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
+     *                                         Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (required)
      * @param string      $seller_sku
-     *                                    Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     *                                         Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param null|string $customer_type
-     *                                    Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     *                                         Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1163,10 +1206,15 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1279,11 +1327,16 @@ class ProductPricingApi
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
-        ?string $customer_type = null
+        ?string $customer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffers');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getListingOffersRateLimiter->consume()->ensureAccepted();
         }
@@ -1467,14 +1520,16 @@ class ProductPricingApi
      *
      * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param null|string                  $restrictedDataToken                   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getListingOffersBatch(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): GetListingOffersBatchResponse {
-        list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body);
+        list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body, $restrictedDataToken);
 
         return $response;
     }
@@ -1484,6 +1539,7 @@ class ProductPricingApi
      *
      * @param GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *                                                                            The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param null|string                  $restrictedDataToken                   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v0\GetListingOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1491,10 +1547,15 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getListingOffersBatchWithHttpInfo(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffersBatch');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1589,11 +1650,16 @@ class ProductPricingApi
      * @throws \InvalidArgumentException
      */
     public function getListingOffersBatchAsyncWithHttpInfo(
-        GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        GetListingOffersBatchRequest $get_listing_offers_batch_request_body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse';
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffersBatch');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
         }
@@ -1721,17 +1787,18 @@ class ProductPricingApi
      * Operation getPricing.
      *
      * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
      * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
      * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
      * @param null|string   $item_condition
-     *                                      Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     *                                           Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
      * @param null|string   $offer_type
-     *                                      Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     *                                           Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1742,9 +1809,10 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $item_condition = null,
-        ?string $offer_type = null
+        ?string $offer_type = null,
+        ?string $restrictedDataToken = null
     ): GetPricingResponse {
-        list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
+        list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type, $restrictedDataToken);
 
         return $response;
     }
@@ -1753,17 +1821,18 @@ class ProductPricingApi
      * Operation getPricingWithHttpInfo.
      *
      * @param string        $marketplace_id
-     *                                      A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
+     *                                           A marketplace identifier. Specifies the marketplace for which prices are returned. (required)
      * @param string        $item_type
-     *                                      Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
+     *                                           Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. (required)
      * @param null|string[] $asins
-     *                                      A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. (optional)
      * @param null|string[] $skus
-     *                                      A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     *                                           A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
      * @param null|string   $item_condition
-     *                                      Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
+     *                                           Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. (optional)
      * @param null|string   $offer_type
-     *                                      Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     *                                           Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1776,10 +1845,15 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $item_condition = null,
-        ?string $offer_type = null
+        ?string $offer_type = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getPricing');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1904,11 +1978,16 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $item_condition = null,
-        ?string $offer_type = null
+        ?string $offer_type = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getPricing');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPricingRateLimiter->consume()->ensureAccepted();
         }

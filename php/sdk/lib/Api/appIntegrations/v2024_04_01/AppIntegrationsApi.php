@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest;
@@ -135,15 +136,17 @@ class AppIntegrationsApi
      * Operation createNotification.
      *
      * @param CreateNotificationRequest $body
-     *                                        The request body for the &#x60;createNotification&#x60; operation. (required)
+     *                                                       The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createNotification(
-        CreateNotificationRequest $body
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateNotificationResponse {
-        list($response) = $this->createNotificationWithHttpInfo($body);
+        list($response) = $this->createNotificationWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -152,7 +155,8 @@ class AppIntegrationsApi
      * Operation createNotificationWithHttpInfo.
      *
      * @param CreateNotificationRequest $body
-     *                                        The request body for the &#x60;createNotification&#x60; operation. (required)
+     *                                                       The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -160,10 +164,15 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function createNotificationWithHttpInfo(
-        CreateNotificationRequest $body
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createNotificationRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-createNotification');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -258,11 +267,16 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function createNotificationAsyncWithHttpInfo(
-        CreateNotificationRequest $body
+        CreateNotificationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
         $request = $this->createNotificationRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-createNotification');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createNotificationRateLimiter->consume()->ensureAccepted();
         }
@@ -390,22 +404,25 @@ class AppIntegrationsApi
      * Operation deleteNotifications.
      *
      * @param DeleteNotificationsRequest $body
-     *                                         The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     *                                                        The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param null|string                $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function deleteNotifications(
-        DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->deleteNotificationsWithHttpInfo($body);
+        $this->deleteNotificationsWithHttpInfo($body, $restrictedDataToken);
     }
 
     /**
      * Operation deleteNotificationsWithHttpInfo.
      *
      * @param DeleteNotificationsRequest $body
-     *                                         The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     *                                                        The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param null|string                $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -413,10 +430,15 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteNotificationsWithHttpInfo(
-        DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteNotificationsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-deleteNotifications');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -499,11 +521,16 @@ class AppIntegrationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteNotificationsAsyncWithHttpInfo(
-        DeleteNotificationsRequest $body
+        DeleteNotificationsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteNotificationsRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-deleteNotifications');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
         }
@@ -618,27 +645,30 @@ class AppIntegrationsApi
      * Operation recordActionFeedback.
      *
      * @param string                      $notification_id
-     *                                                     A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     *                                                         A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
      * @param RecordActionFeedbackRequest $body
-     *                                                     The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     *                                                         The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function recordActionFeedback(
         string $notification_id,
-        RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->recordActionFeedbackWithHttpInfo($notification_id, $body);
+        $this->recordActionFeedbackWithHttpInfo($notification_id, $body, $restrictedDataToken);
     }
 
     /**
      * Operation recordActionFeedbackWithHttpInfo.
      *
      * @param string                      $notification_id
-     *                                                     A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     *                                                         A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
      * @param RecordActionFeedbackRequest $body
-     *                                                     The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     *                                                         The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -647,10 +677,15 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackWithHttpInfo(
         string $notification_id,
-        RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-recordActionFeedback');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -739,11 +774,16 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackAsyncWithHttpInfo(
         string $notification_id,
-        RecordActionFeedbackRequest $body
+        RecordActionFeedbackRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-recordActionFeedback');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
         }

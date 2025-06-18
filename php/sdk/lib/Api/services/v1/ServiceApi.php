@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\services\v1\AddAppointmentRequest;
@@ -197,18 +198,20 @@ class ServiceApi
      * Operation addAppointmentForServiceJobByServiceJobId.
      *
      * @param string                $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
+     *                                                   An Amazon defined service job identifier. (required)
      * @param AddAppointmentRequest $body
-     *                                              Add appointment operation input details. (required)
+     *                                                   Add appointment operation input details. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function addAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
-        AddAppointmentRequest $body
+        AddAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): SetAppointmentResponse {
-        list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body);
+        list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -217,9 +220,10 @@ class ServiceApi
      * Operation addAppointmentForServiceJobByServiceJobIdWithHttpInfo.
      *
      * @param string                $service_job_id
-     *                                              An Amazon defined service job identifier. (required)
+     *                                                   An Amazon defined service job identifier. (required)
      * @param AddAppointmentRequest $body
-     *                                              Add appointment operation input details. (required)
+     *                                                   Add appointment operation input details. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -228,10 +232,15 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
-        AddAppointmentRequest $body
+        AddAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-addAppointmentForServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -332,11 +341,16 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        AddAppointmentRequest $body
+        AddAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-addAppointmentForServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->addAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -489,11 +503,12 @@ class ServiceApi
      * Operation assignAppointmentResources.
      *
      * @param string                            $service_job_id
-     *                                                          An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     *                                                               An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param string                            $appointment_id
-     *                                                          An Amazon-defined identifier of active service job appointment. (required)
+     *                                                               An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                          body (required)
+     *                                                               body (required)
+     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -501,9 +516,10 @@ class ServiceApi
     public function assignAppointmentResources(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        AssignAppointmentResourcesRequest $body,
+        ?string $restrictedDataToken = null
     ): AssignAppointmentResourcesResponse {
-        list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body);
+        list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -512,11 +528,12 @@ class ServiceApi
      * Operation assignAppointmentResourcesWithHttpInfo.
      *
      * @param string                            $service_job_id
-     *                                                          An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     *                                                               An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param string                            $appointment_id
-     *                                                          An Amazon-defined identifier of active service job appointment. (required)
+     *                                                               An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     *                                                               (required)
+     * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\AssignAppointmentResourcesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -526,10 +543,15 @@ class ServiceApi
     public function assignAppointmentResourcesWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        AssignAppointmentResourcesRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-assignAppointmentResources');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -636,11 +658,16 @@ class ServiceApi
     public function assignAppointmentResourcesAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        AssignAppointmentResourcesRequest $body
+        AssignAppointmentResourcesRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse';
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-assignAppointmentResources');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->assignAppointmentResourcesRateLimiter->consume()->ensureAccepted();
         }
@@ -816,19 +843,21 @@ class ServiceApi
     /**
      * Operation cancelReservation.
      *
-     * @param string   $reservation_id
-     *                                  Reservation Identifier (required)
-     * @param string[] $marketplace_ids
-     *                                  An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $reservation_id
+     *                                         Reservation Identifier (required)
+     * @param string[]    $marketplace_ids
+     *                                         An identifier for the marketplace in which the resource operates. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelReservation(
         string $reservation_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): CancelReservationResponse {
-        list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids);
+        list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -836,10 +865,11 @@ class ServiceApi
     /**
      * Operation cancelReservationWithHttpInfo.
      *
-     * @param string   $reservation_id
-     *                                  Reservation Identifier (required)
-     * @param string[] $marketplace_ids
-     *                                  An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $reservation_id
+     *                                         Reservation Identifier (required)
+     * @param string[]    $marketplace_ids
+     *                                         An identifier for the marketplace in which the resource operates. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\CancelReservationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -848,10 +878,15 @@ class ServiceApi
      */
     public function cancelReservationWithHttpInfo(
         string $reservation_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelReservation');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -952,11 +987,16 @@ class ServiceApi
      */
     public function cancelReservationAsyncWithHttpInfo(
         string $reservation_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CancelReservationResponse';
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelReservation');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelReservationRateLimiter->consume()->ensureAccepted();
         }
@@ -1116,19 +1156,21 @@ class ServiceApi
     /**
      * Operation cancelServiceJobByServiceJobId.
      *
-     * @param string $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param string $cancellation_reason_code
-     *                                         A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param string      $service_job_id
+     *                                              An Amazon defined service job identifier. (required)
+     * @param string      $cancellation_reason_code
+     *                                              A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param null|string $restrictedDataToken      Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelServiceJobByServiceJobId(
         string $service_job_id,
-        string $cancellation_reason_code
+        string $cancellation_reason_code,
+        ?string $restrictedDataToken = null
     ): CancelServiceJobByServiceJobIdResponse {
-        list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code);
+        list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code, $restrictedDataToken);
 
         return $response;
     }
@@ -1136,10 +1178,11 @@ class ServiceApi
     /**
      * Operation cancelServiceJobByServiceJobIdWithHttpInfo.
      *
-     * @param string $service_job_id
-     *                                         An Amazon defined service job identifier. (required)
-     * @param string $cancellation_reason_code
-     *                                         A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param string      $service_job_id
+     *                                              An Amazon defined service job identifier. (required)
+     * @param string      $cancellation_reason_code
+     *                                              A cancel reason code that specifies the reason for cancelling a service job. (required)
+     * @param null|string $restrictedDataToken      Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1148,10 +1191,15 @@ class ServiceApi
      */
     public function cancelServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
-        string $cancellation_reason_code
+        string $cancellation_reason_code,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1252,11 +1300,16 @@ class ServiceApi
      */
     public function cancelServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        string $cancellation_reason_code
+        string $cancellation_reason_code,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1422,16 +1475,18 @@ class ServiceApi
     /**
      * Operation completeServiceJobByServiceJobId.
      *
-     * @param string $service_job_id
-     *                               An Amazon defined service job identifier. (required)
+     * @param string      $service_job_id
+     *                                         An Amazon defined service job identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function completeServiceJobByServiceJobId(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): CompleteServiceJobByServiceJobIdResponse {
-        list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id);
+        list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1439,8 +1494,9 @@ class ServiceApi
     /**
      * Operation completeServiceJobByServiceJobIdWithHttpInfo.
      *
-     * @param string $service_job_id
-     *                               An Amazon defined service job identifier. (required)
+     * @param string      $service_job_id
+     *                                         An Amazon defined service job identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1448,10 +1504,15 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function completeServiceJobByServiceJobIdWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-completeServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1546,11 +1607,16 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function completeServiceJobByServiceJobIdAsyncWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-completeServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->completeServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1687,18 +1753,20 @@ class ServiceApi
      * Operation createReservation.
      *
      * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
+     *                                                      An identifier for the marketplace in which the resource operates. (required)
      * @param CreateReservationRequest $body
-     *                                                  Reservation details (required)
+     *                                                      Reservation details (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createReservation(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        CreateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateReservationResponse {
-        list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body);
+        list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1707,9 +1775,10 @@ class ServiceApi
      * Operation createReservationWithHttpInfo.
      *
      * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
+     *                                                      An identifier for the marketplace in which the resource operates. (required)
      * @param CreateReservationRequest $body
-     *                                                  Reservation details (required)
+     *                                                      Reservation details (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\CreateReservationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1718,10 +1787,15 @@ class ServiceApi
      */
     public function createReservationWithHttpInfo(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        CreateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createReservationRequest($marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createReservation');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1822,11 +1896,16 @@ class ServiceApi
      */
     public function createReservationAsyncWithHttpInfo(
         array $marketplace_ids,
-        CreateReservationRequest $body
+        CreateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CreateReservationResponse';
         $request = $this->createReservationRequest($marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createReservation');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createReservationRateLimiter->consume()->ensureAccepted();
         }
@@ -1978,15 +2057,17 @@ class ServiceApi
      * Operation createServiceDocumentUploadDestination.
      *
      * @param ServiceUploadDocument $body
-     *                                    Upload document operation input details. (required)
+     *                                                   Upload document operation input details. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createServiceDocumentUploadDestination(
-        ServiceUploadDocument $body
+        ServiceUploadDocument $body,
+        ?string $restrictedDataToken = null
     ): CreateServiceDocumentUploadDestination {
-        list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body);
+        list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -1995,7 +2076,8 @@ class ServiceApi
      * Operation createServiceDocumentUploadDestinationWithHttpInfo.
      *
      * @param ServiceUploadDocument $body
-     *                                    Upload document operation input details. (required)
+     *                                                   Upload document operation input details. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2003,10 +2085,15 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function createServiceDocumentUploadDestinationWithHttpInfo(
-        ServiceUploadDocument $body
+        ServiceUploadDocument $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createServiceDocumentUploadDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2101,11 +2188,16 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function createServiceDocumentUploadDestinationAsyncWithHttpInfo(
-        ServiceUploadDocument $body
+        ServiceUploadDocument $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination';
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createServiceDocumentUploadDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createServiceDocumentUploadDestinationRateLimiter->consume()->ensureAccepted();
         }
@@ -2233,15 +2325,16 @@ class ServiceApi
      * Operation getAppointmentSlots.
      *
      * @param string      $asin
-     *                                     ASIN associated with the service. (required)
+     *                                         ASIN associated with the service. (required)
      * @param string      $store_id
-     *                                     Store identifier defining the region scope to retrive appointment slots. (required)
+     *                                         Store identifier defining the region scope to retrive appointment slots. (required)
      * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace for which appointment slots are queried (required)
+     *                                         An identifier for the marketplace for which appointment slots are queried (required)
      * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
      * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2251,9 +2344,10 @@ class ServiceApi
         string $store_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): GetAppointmentSlotsResponse {
-        list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time);
+        list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time, $restrictedDataToken);
 
         return $response;
     }
@@ -2262,15 +2356,16 @@ class ServiceApi
      * Operation getAppointmentSlotsWithHttpInfo.
      *
      * @param string      $asin
-     *                                     ASIN associated with the service. (required)
+     *                                         ASIN associated with the service. (required)
      * @param string      $store_id
-     *                                     Store identifier defining the region scope to retrive appointment slots. (required)
+     *                                         Store identifier defining the region scope to retrive appointment slots. (required)
      * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace for which appointment slots are queried (required)
+     *                                         An identifier for the marketplace for which appointment slots are queried (required)
      * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
      * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2282,10 +2377,15 @@ class ServiceApi
         string $store_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmentSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2404,11 +2504,16 @@ class ServiceApi
         string $store_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmentSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -2615,13 +2720,14 @@ class ServiceApi
      * Operation getAppointmmentSlotsByJobId.
      *
      * @param string      $service_job_id
-     *                                     A service job identifier to retrive appointment slots for associated service. (required)
+     *                                         A service job identifier to retrive appointment slots for associated service. (required)
      * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace in which the resource operates. (required)
+     *                                         An identifier for the marketplace in which the resource operates. (required)
      * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
      * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2630,9 +2736,10 @@ class ServiceApi
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): GetAppointmentSlotsResponse {
-        list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time);
+        list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time, $restrictedDataToken);
 
         return $response;
     }
@@ -2641,13 +2748,14 @@ class ServiceApi
      * Operation getAppointmmentSlotsByJobIdWithHttpInfo.
      *
      * @param string      $service_job_id
-     *                                     A service job identifier to retrive appointment slots for associated service. (required)
+     *                                         A service job identifier to retrive appointment slots for associated service. (required)
      * @param string[]    $marketplace_ids
-     *                                     An identifier for the marketplace in which the resource operates. (required)
+     *                                         An identifier for the marketplace in which the resource operates. (required)
      * @param null|string $start_time
-     *                                     A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     *                                         A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
      * @param null|string $end_time
-     *                                     A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *                                         A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2658,10 +2766,15 @@ class ServiceApi
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmmentSlotsByJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2774,11 +2887,16 @@ class ServiceApi
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
-        ?string $end_time = null
+        ?string $end_time = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmmentSlotsByJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAppointmmentSlotsByJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -2965,13 +3083,14 @@ class ServiceApi
      * Operation getFixedSlotCapacity.
      *
      * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
+     *                                                    Resource Identifier. (required)
      * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
+     *                                                    An identifier for the marketplace in which the resource operates. (required)
      * @param FixedSlotCapacityQuery $body
-     *                                                Request body. (required)
+     *                                                    Request body. (required)
      * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     *                                                    Next page token returned in the response of your previous request. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2980,9 +3099,10 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         FixedSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): FixedSlotCapacity {
-        list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token);
+        list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -2991,13 +3111,14 @@ class ServiceApi
      * Operation getFixedSlotCapacityWithHttpInfo.
      *
      * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
+     *                                                    Resource Identifier. (required)
      * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
+     *                                                    An identifier for the marketplace in which the resource operates. (required)
      * @param FixedSlotCapacityQuery $body
-     *                                                Request body. (required)
+     *                                                    Request body. (required)
      * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     *                                                    Next page token returned in the response of your previous request. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\FixedSlotCapacity, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3008,10 +3129,15 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         FixedSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getFixedSlotCapacity');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3124,11 +3250,16 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         FixedSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\FixedSlotCapacity';
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getFixedSlotCapacity');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFixedSlotCapacityRateLimiter->consume()->ensureAccepted();
         }
@@ -3318,13 +3449,14 @@ class ServiceApi
      * Operation getRangeSlotCapacity.
      *
      * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
+     *                                                    Resource Identifier. (required)
      * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
+     *                                                    An identifier for the marketplace in which the resource operates. (required)
      * @param RangeSlotCapacityQuery $body
-     *                                                Request body. (required)
+     *                                                    Request body. (required)
      * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     *                                                    Next page token returned in the response of your previous request. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3333,9 +3465,10 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         RangeSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): RangeSlotCapacity {
-        list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token);
+        list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -3344,13 +3477,14 @@ class ServiceApi
      * Operation getRangeSlotCapacityWithHttpInfo.
      *
      * @param string                 $resource_id
-     *                                                Resource Identifier. (required)
+     *                                                    Resource Identifier. (required)
      * @param string[]               $marketplace_ids
-     *                                                An identifier for the marketplace in which the resource operates. (required)
+     *                                                    An identifier for the marketplace in which the resource operates. (required)
      * @param RangeSlotCapacityQuery $body
-     *                                                Request body. (required)
+     *                                                    Request body. (required)
      * @param null|string            $next_page_token
-     *                                                Next page token returned in the response of your previous request. (optional)
+     *                                                    Next page token returned in the response of your previous request. (optional)
+     * @param null|string            $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\RangeSlotCapacity, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3361,10 +3495,15 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         RangeSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getRangeSlotCapacity');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3477,11 +3616,16 @@ class ServiceApi
         string $resource_id,
         array $marketplace_ids,
         RangeSlotCapacityQuery $body,
-        ?string $next_page_token = null
+        ?string $next_page_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\RangeSlotCapacity';
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getRangeSlotCapacity');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getRangeSlotCapacityRateLimiter->consume()->ensureAccepted();
         }
@@ -3670,16 +3814,18 @@ class ServiceApi
     /**
      * Operation getServiceJobByServiceJobId.
      *
-     * @param string $service_job_id
-     *                               A service job identifier. (required)
+     * @param string      $service_job_id
+     *                                         A service job identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getServiceJobByServiceJobId(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): GetServiceJobByServiceJobIdResponse {
-        list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id);
+        list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id, $restrictedDataToken);
 
         return $response;
     }
@@ -3687,8 +3833,9 @@ class ServiceApi
     /**
      * Operation getServiceJobByServiceJobIdWithHttpInfo.
      *
-     * @param string $service_job_id
-     *                               A service job identifier. (required)
+     * @param string      $service_job_id
+     *                                         A service job identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3696,10 +3843,15 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function getServiceJobByServiceJobIdWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3794,11 +3946,16 @@ class ServiceApi
      * @throws \InvalidArgumentException
      */
     public function getServiceJobByServiceJobIdAsyncWithHttpInfo(
-        string $service_job_id
+        string $service_job_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse';
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -3966,6 +4123,7 @@ class ServiceApi
      *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
      *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3986,9 +4144,10 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?string $restrictedDataToken = null
     ): GetServiceJobsResponse {
-        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
+        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -4028,6 +4187,7 @@ class ServiceApi
      *                                           A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
      * @param null|string[] $store_ids
      *                                           List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\GetServiceJobsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4050,10 +4210,15 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4238,11 +4403,16 @@ class ServiceApi
         ?string $schedule_end_date = null,
         ?array $asins = null,
         ?array $required_skills = null,
-        ?array $store_ids = null
+        ?array $store_ids = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getServiceJobsRateLimiter->consume()->ensureAccepted();
         }
@@ -4608,11 +4778,12 @@ class ServiceApi
      * Operation rescheduleAppointmentForServiceJobByServiceJobId.
      *
      * @param string                       $service_job_id
-     *                                                     An Amazon defined service job identifier. (required)
+     *                                                          An Amazon defined service job identifier. (required)
      * @param string                       $appointment_id
-     *                                                     An existing appointment identifier for the Service Job. (required)
+     *                                                          An existing appointment identifier for the Service Job. (required)
      * @param RescheduleAppointmentRequest $body
-     *                                                     Reschedule appointment operation input details. (required)
+     *                                                          Reschedule appointment operation input details. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -4620,9 +4791,10 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        RescheduleAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): SetAppointmentResponse {
-        list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body);
+        list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4631,11 +4803,12 @@ class ServiceApi
      * Operation rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo.
      *
      * @param string                       $service_job_id
-     *                                                     An Amazon defined service job identifier. (required)
+     *                                                          An Amazon defined service job identifier. (required)
      * @param string                       $appointment_id
-     *                                                     An existing appointment identifier for the Service Job. (required)
+     *                                                          An existing appointment identifier for the Service Job. (required)
      * @param RescheduleAppointmentRequest $body
-     *                                                     Reschedule appointment operation input details. (required)
+     *                                                          Reschedule appointment operation input details. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4645,10 +4818,15 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        RescheduleAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4755,11 +4933,16 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        RescheduleAppointmentRequest $body
+        RescheduleAppointmentRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
@@ -4936,11 +5119,12 @@ class ServiceApi
      * Operation setAppointmentFulfillmentData.
      *
      * @param string                               $service_job_id
-     *                                                             An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     *                                                                  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param string                               $appointment_id
-     *                                                             An Amazon-defined identifier of active service job appointment. (required)
+     *                                                                  An Amazon-defined identifier of active service job appointment. (required)
      * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                             Appointment fulfillment data collection details. (required)
+     *                                                                  Appointment fulfillment data collection details. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -4948,9 +5132,10 @@ class ServiceApi
     public function setAppointmentFulfillmentData(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        SetAppointmentFulfillmentDataRequest $body,
+        ?string $restrictedDataToken = null
     ): string {
-        list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body);
+        list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -4959,11 +5144,12 @@ class ServiceApi
      * Operation setAppointmentFulfillmentDataWithHttpInfo.
      *
      * @param string                               $service_job_id
-     *                                                             An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     *                                                                  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param string                               $appointment_id
-     *                                                             An Amazon-defined identifier of active service job appointment. (required)
+     *                                                                  An Amazon-defined identifier of active service job appointment. (required)
      * @param SetAppointmentFulfillmentDataRequest $body
-     *                                                             Appointment fulfillment data collection details. (required)
+     *                                                                  Appointment fulfillment data collection details. (required)
+     * @param null|string                          $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      *
@@ -4973,10 +5159,15 @@ class ServiceApi
     public function setAppointmentFulfillmentDataWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        SetAppointmentFulfillmentDataRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-setAppointmentFulfillmentData');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5083,11 +5274,16 @@ class ServiceApi
     public function setAppointmentFulfillmentDataAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        SetAppointmentFulfillmentDataRequest $body
+        SetAppointmentFulfillmentDataRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = 'string';
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-setAppointmentFulfillmentData');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->setAppointmentFulfillmentDataRateLimiter->consume()->ensureAccepted();
         }
@@ -5264,11 +5460,12 @@ class ServiceApi
      * Operation updateReservation.
      *
      * @param string                   $reservation_id
-     *                                                  Reservation Identifier (required)
+     *                                                      Reservation Identifier (required)
      * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
+     *                                                      An identifier for the marketplace in which the resource operates. (required)
      * @param UpdateReservationRequest $body
-     *                                                  Reservation details (required)
+     *                                                      Reservation details (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -5276,9 +5473,10 @@ class ServiceApi
     public function updateReservation(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        UpdateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateReservationResponse {
-        list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body);
+        list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -5287,11 +5485,12 @@ class ServiceApi
      * Operation updateReservationWithHttpInfo.
      *
      * @param string                   $reservation_id
-     *                                                  Reservation Identifier (required)
+     *                                                      Reservation Identifier (required)
      * @param string[]                 $marketplace_ids
-     *                                                  An identifier for the marketplace in which the resource operates. (required)
+     *                                                      An identifier for the marketplace in which the resource operates. (required)
      * @param UpdateReservationRequest $body
-     *                                                  Reservation details (required)
+     *                                                      Reservation details (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\UpdateReservationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -5301,10 +5500,15 @@ class ServiceApi
     public function updateReservationWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        UpdateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateReservation');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5411,11 +5615,16 @@ class ServiceApi
     public function updateReservationAsyncWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        UpdateReservationRequest $body
+        UpdateReservationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\UpdateReservationResponse';
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateReservation');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateReservationRateLimiter->consume()->ensureAccepted();
         }
@@ -5592,11 +5801,12 @@ class ServiceApi
      * Operation updateSchedule.
      *
      * @param string                $resource_id
-     *                                               Resource (store) Identifier (required)
+     *                                                   Resource (store) Identifier (required)
      * @param string[]              $marketplace_ids
-     *                                               An identifier for the marketplace in which the resource operates. (required)
+     *                                                   An identifier for the marketplace in which the resource operates. (required)
      * @param UpdateScheduleRequest $body
-     *                                               Schedule details (required)
+     *                                                   Schedule details (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -5604,9 +5814,10 @@ class ServiceApi
     public function updateSchedule(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        UpdateScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): UpdateScheduleResponse {
-        list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body);
+        list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -5615,11 +5826,12 @@ class ServiceApi
      * Operation updateScheduleWithHttpInfo.
      *
      * @param string                $resource_id
-     *                                               Resource (store) Identifier (required)
+     *                                                   Resource (store) Identifier (required)
      * @param string[]              $marketplace_ids
-     *                                               An identifier for the marketplace in which the resource operates. (required)
+     *                                                   An identifier for the marketplace in which the resource operates. (required)
      * @param UpdateScheduleRequest $body
-     *                                               Schedule details (required)
+     *                                                   Schedule details (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\UpdateScheduleResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -5629,10 +5841,15 @@ class ServiceApi
     public function updateScheduleWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        UpdateScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -5739,11 +5956,16 @@ class ServiceApi
     public function updateScheduleAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        UpdateScheduleRequest $body
+        UpdateScheduleRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\UpdateScheduleResponse';
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateSchedule');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateScheduleRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\productFees\v0\FeesEstimateByIdRequest;
@@ -135,18 +136,20 @@ class FeesApi
      * Operation getMyFeesEstimateForASIN.
      *
      * @param string                   $asin
-     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     *                                                      The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                       body (required)
+     *                                                      body (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimateForASIN(
         string $asin,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): GetMyFeesEstimateResponse {
-        list($response) = $this->getMyFeesEstimateForASINWithHttpInfo($asin, $body);
+        list($response) = $this->getMyFeesEstimateForASINWithHttpInfo($asin, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -155,9 +158,10 @@ class FeesApi
      * Operation getMyFeesEstimateForASINWithHttpInfo.
      *
      * @param string                   $asin
-     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     *                                                      The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                       (required)
+     *                                                      (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -166,10 +170,15 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINWithHttpInfo(
         string $asin,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeesApi-getMyFeesEstimateForASIN');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,11 +279,16 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINAsyncWithHttpInfo(
         string $asin,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeesApi-getMyFeesEstimateForASIN');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMyFeesEstimateForASINRateLimiter->consume()->ensureAccepted();
         }
@@ -420,18 +434,20 @@ class FeesApi
      * Operation getMyFeesEstimateForSKU.
      *
      * @param string                   $seller_sku
-     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     *                                                      Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                             body (required)
+     *                                                      body (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimateForSKU(
         string $seller_sku,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): GetMyFeesEstimateResponse {
-        list($response) = $this->getMyFeesEstimateForSKUWithHttpInfo($seller_sku, $body);
+        list($response) = $this->getMyFeesEstimateForSKUWithHttpInfo($seller_sku, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -440,9 +456,10 @@ class FeesApi
      * Operation getMyFeesEstimateForSKUWithHttpInfo.
      *
      * @param string                   $seller_sku
-     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     *                                                      Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                             (required)
+     *                                                      (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -451,10 +468,15 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKUWithHttpInfo(
         string $seller_sku,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeesApi-getMyFeesEstimateForSKU');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -555,11 +577,16 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKUAsyncWithHttpInfo(
         string $seller_sku,
-        GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeesApi-getMyFeesEstimateForSKU');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMyFeesEstimateForSKURateLimiter->consume()->ensureAccepted();
         }
@@ -705,7 +732,8 @@ class FeesApi
      * Operation getMyFeesEstimates.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                        body (required)
+     *                                                       body (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return FeesEstimateResult[]
      *
@@ -713,9 +741,10 @@ class FeesApi
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimates(
-        array $body
+        array $body,
+        ?string $restrictedDataToken = null
     ): array {
-        list($response) = $this->getMyFeesEstimatesWithHttpInfo($body);
+        list($response) = $this->getMyFeesEstimatesWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -724,7 +753,8 @@ class FeesApi
      * Operation getMyFeesEstimatesWithHttpInfo.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                        (required)
+     *                                                       (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productFees\v0\FeesEstimateResult[], HTTP status code, HTTP response headers (array of strings)
      *
@@ -732,10 +762,15 @@ class FeesApi
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimatesWithHttpInfo(
-        array $body
+        array $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMyFeesEstimatesRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeesApi-getMyFeesEstimates');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -830,11 +865,16 @@ class FeesApi
      * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimatesAsyncWithHttpInfo(
-        array $body
+        array $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\FeesEstimateResult[]';
         $request = $this->getMyFeesEstimatesRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeesApi-getMyFeesEstimates');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMyFeesEstimatesRateLimiter->consume()->ensureAccepted();
         }
