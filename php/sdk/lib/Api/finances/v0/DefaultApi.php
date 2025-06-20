@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\finances\v0\ListFinancialEventGroupsResponse;
@@ -143,6 +144,7 @@ class DefaultApi
      *                                                             A date used for selecting financial event groups that opened after (or at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The date-time must be no later than two minutes before the request was submitted. (optional)
      * @param null|string    $next_token
      *                                                             A string token returned in the response of your previous request. (optional)
+     * @param null|string    $restrictedDataToken                  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -151,9 +153,10 @@ class DefaultApi
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventGroupsResponse {
-        list($response) = $this->listFinancialEventGroupsWithHttpInfo($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
+        list($response) = $this->listFinancialEventGroupsWithHttpInfo($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -169,6 +172,7 @@ class DefaultApi
      *                                                             A date used for selecting financial event groups that opened after (or at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The date-time must be no later than two minutes before the request was submitted. (optional)
      * @param null|string    $next_token
      *                                                             A string token returned in the response of your previous request. (optional)
+     * @param null|string    $restrictedDataToken                  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\finances\v0\ListFinancialEventGroupsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -179,10 +183,15 @@ class DefaultApi
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventGroupsRequest($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventGroups');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -295,11 +304,16 @@ class DefaultApi
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse';
         $request = $this->listFinancialEventGroupsRequest($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventGroups');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventGroupsRateLimiter->consume()->ensureAccepted();
         }
@@ -478,6 +492,7 @@ class DefaultApi
      *                                             A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
      * @param null|string    $next_token
      *                                             A string token returned in the response of your previous request. (optional)
+     * @param null|string    $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -486,9 +501,10 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventsResponse {
-        list($response) = $this->listFinancialEventsWithHttpInfo($max_results_per_page, $posted_after, $posted_before, $next_token);
+        list($response) = $this->listFinancialEventsWithHttpInfo($max_results_per_page, $posted_after, $posted_before, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -504,6 +520,7 @@ class DefaultApi
      *                                             A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
      * @param null|string    $next_token
      *                                             A string token returned in the response of your previous request. (optional)
+     * @param null|string    $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -514,10 +531,15 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventsRequest($max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEvents');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -630,11 +652,16 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsRequest($max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEvents');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventsRateLimiter->consume()->ensureAccepted();
         }
@@ -815,6 +842,7 @@ class DefaultApi
      *                                             A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60; parameter. Default: Now minus two minutes. (optional)
      * @param null|string    $next_token
      *                                             A string token returned in the response of your previous request. (optional)
+     * @param null|string    $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -824,9 +852,10 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventsResponse {
-        list($response) = $this->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
+        list($response) = $this->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -844,6 +873,7 @@ class DefaultApi
      *                                             A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60; parameter. Default: Now minus two minutes. (optional)
      * @param null|string    $next_token
      *                                             A string token returned in the response of your previous request. (optional)
+     * @param null|string    $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -855,10 +885,15 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventsByGroupIdRequest($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventsByGroupId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -977,11 +1012,16 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByGroupIdRequest($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventsByGroupId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventsByGroupIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1176,6 +1216,7 @@ class DefaultApi
      *                                          The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with &#39;InvalidInput&#39;. (optional, default to 100)
      * @param null|string $next_token
      *                                          A string token returned in the response of your previous request. (optional)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1183,9 +1224,10 @@ class DefaultApi
     public function listFinancialEventsByOrderId(
         string $order_id,
         ?int $max_results_per_page = 100,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): ListFinancialEventsResponse {
-        list($response) = $this->listFinancialEventsByOrderIdWithHttpInfo($order_id, $max_results_per_page, $next_token);
+        list($response) = $this->listFinancialEventsByOrderIdWithHttpInfo($order_id, $max_results_per_page, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1199,6 +1241,7 @@ class DefaultApi
      *                                          The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with &#39;InvalidInput&#39;. (optional, default to 100)
      * @param null|string $next_token
      *                                          A string token returned in the response of your previous request. (optional)
+     * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1208,10 +1251,15 @@ class DefaultApi
     public function listFinancialEventsByOrderIdWithHttpInfo(
         string $order_id,
         ?int $max_results_per_page = 100,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listFinancialEventsByOrderIdRequest($order_id, $max_results_per_page, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventsByOrderId');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1318,11 +1366,16 @@ class DefaultApi
     public function listFinancialEventsByOrderIdAsyncWithHttpInfo(
         string $order_id,
         ?int $max_results_per_page = 100,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByOrderIdRequest($order_id, $max_results_per_page, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventsByOrderId');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listFinancialEventsByOrderIdRateLimiter->consume()->ensureAccepted();
         }

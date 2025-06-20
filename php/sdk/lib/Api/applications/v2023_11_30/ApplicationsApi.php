@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\ObjectSerializer;
@@ -124,16 +125,21 @@ class ApplicationsApi
     /**
      * Operation rotateApplicationClientSecret.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function rotateApplicationClientSecret(
+        ?string $restrictedDataToken = null
     ): void {
-        $this->rotateApplicationClientSecretWithHttpInfo();
+        $this->rotateApplicationClientSecretWithHttpInfo($restrictedDataToken);
     }
 
     /**
      * Operation rotateApplicationClientSecretWithHttpInfo.
+     *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -141,9 +147,14 @@ class ApplicationsApi
      * @throws \InvalidArgumentException
      */
     public function rotateApplicationClientSecretWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->rotateApplicationClientSecretRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ApplicationsApi-rotateApplicationClientSecret');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -219,10 +230,15 @@ class ApplicationsApi
      * @throws \InvalidArgumentException
      */
     public function rotateApplicationClientSecretAsyncWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->rotateApplicationClientSecretRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ApplicationsApi-rotateApplicationClientSecret');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->rotateApplicationClientSecretRateLimiter->consume()->ensureAccepted();
         }

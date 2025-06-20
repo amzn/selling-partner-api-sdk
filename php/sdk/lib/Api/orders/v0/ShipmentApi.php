@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\orders\v0\UpdateShipmentStatusRequest;
@@ -126,27 +127,30 @@ class ShipmentApi
      * Operation updateShipmentStatus.
      *
      * @param string                      $order_id
-     *                                              An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param UpdateShipmentStatusRequest $payload
-     *                                              The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     *                                                         The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateShipmentStatus(
         string $order_id,
-        UpdateShipmentStatusRequest $payload
+        UpdateShipmentStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->updateShipmentStatusWithHttpInfo($order_id, $payload);
+        $this->updateShipmentStatusWithHttpInfo($order_id, $payload, $restrictedDataToken);
     }
 
     /**
      * Operation updateShipmentStatusWithHttpInfo.
      *
      * @param string                      $order_id
-     *                                              An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param UpdateShipmentStatusRequest $payload
-     *                                              The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     *                                                         The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -155,10 +159,15 @@ class ShipmentApi
      */
     public function updateShipmentStatusWithHttpInfo(
         string $order_id,
-        UpdateShipmentStatusRequest $payload
+        UpdateShipmentStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentApi-updateShipmentStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -247,11 +256,16 @@ class ShipmentApi
      */
     public function updateShipmentStatusAsyncWithHttpInfo(
         string $order_id,
-        UpdateShipmentStatusRequest $payload
+        UpdateShipmentStatusRequest $payload,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentApi-updateShipmentStatus');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateShipmentStatusRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\sellers\v1\GetAccountResponse;
@@ -129,12 +130,15 @@ class SellersApi
     /**
      * Operation getAccount.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getAccount(
+        ?string $restrictedDataToken = null
     ): GetAccountResponse {
-        list($response) = $this->getAccountWithHttpInfo();
+        list($response) = $this->getAccountWithHttpInfo($restrictedDataToken);
 
         return $response;
     }
@@ -142,15 +146,22 @@ class SellersApi
     /**
      * Operation getAccountWithHttpInfo.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @return array of \SpApi\Model\sellers\v1\GetAccountResponse, HTTP status code, HTTP response headers (array of strings)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getAccountWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAccountRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellersApi-getAccount');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -238,10 +249,15 @@ class SellersApi
      * @throws \InvalidArgumentException
      */
     public function getAccountAsyncWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellers\v1\GetAccountResponse';
         $request = $this->getAccountRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellersApi-getAccount');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAccountRateLimiter->consume()->ensureAccepted();
         }
@@ -351,12 +367,15 @@ class SellersApi
     /**
      * Operation getMarketplaceParticipations.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getMarketplaceParticipations(
+        ?string $restrictedDataToken = null
     ): GetMarketplaceParticipationsResponse {
-        list($response) = $this->getMarketplaceParticipationsWithHttpInfo();
+        list($response) = $this->getMarketplaceParticipationsWithHttpInfo($restrictedDataToken);
 
         return $response;
     }
@@ -364,15 +383,22 @@ class SellersApi
     /**
      * Operation getMarketplaceParticipationsWithHttpInfo.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @return array of \SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse, HTTP status code, HTTP response headers (array of strings)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getMarketplaceParticipationsWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMarketplaceParticipationsRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellersApi-getMarketplaceParticipations');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -460,10 +486,15 @@ class SellersApi
      * @throws \InvalidArgumentException
      */
     public function getMarketplaceParticipationsAsyncWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse';
         $request = $this->getMarketplaceParticipationsRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellersApi-getMarketplaceParticipations');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMarketplaceParticipationsRateLimiter->consume()->ensureAccepted();
         }

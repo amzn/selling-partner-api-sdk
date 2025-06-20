@@ -3,8 +3,8 @@
 require_once '../sdk/vendor/autoload.php';
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
-use SpApi\Api\orders\v0\OrdersV0Api;
 use SpApi\Configuration;
+use SpApi\Api\Orders\v0\OrdersV0Api;
 use Dotenv\Dotenv;
 
 // Set the credentials, region and marketplace in .env file
@@ -18,25 +18,25 @@ $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
     "refreshToken" => $_ENV['SP_API_REFRESH_TOKEN'],
     "endpoint" => $_ENV['SP_API_ENDPOINT']
 ]);
-//Initialize config
+//Initialize config and set SP-API endpoint region
 $config = new Configuration([], $lwaAuthorizationCredentials);
-
-// Setting SP-API endpoint region
-$config->setHost($_ENV['SP_API_ENDPOINT_HOST']);
-
-// Create a new HTTP client
-$client = new GuzzleHttp\Client();
+$config->setHost("https://sellingpartnerapi-na.amazon.com");
 
 // Create an instance of the Orders Api
-$api = new OrdersV0Api($config, $client);
+$ordersApi = new OrdersV0Api($config);
 
 try {
     // Call getOrders
-    $result = $api->getOrders(
-        $marketplace_ids = ['ATVPDKIKX0DER'],
-        $created_after = '2024-01-01'
+    $response = $ordersApi
+    ->getOrders(
+        ['ATVPDKIKX0DER'], // MarketplaceIds
+        '2023-01-01T00:00:00Z' // CreatedAfter
     );
-    print_r($result);
+
+    // Process Orders API response
+    echo "Order API Response:\n";
+    print_r($response);
+
 } catch (Exception $e) {
     echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
 }

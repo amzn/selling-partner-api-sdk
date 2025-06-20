@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class VendorInvoiceApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $submitInvoiceRateLimiter;
 
     /**
@@ -134,21 +134,22 @@ class VendorInvoiceApi
     {
         return $this->config;
     }
-
     /**
      * Operation submitInvoice
      *
      * @param  \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceResponse
      */
     public function submitInvoice(
-        \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body
+        \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceResponse {
-        list($response) = $this->submitInvoiceWithHttpInfo($body);
+        list($response) = $this->submitInvoiceWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -158,16 +159,21 @@ class VendorInvoiceApi
      * @param  \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitInvoiceWithHttpInfo(
-        \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body
+        \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitInvoiceRequest($body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorInvoiceApi-submitInvoice");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -260,11 +266,16 @@ class VendorInvoiceApi
      * @return PromiseInterface
      */
     public function submitInvoiceAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body
+        \SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\payments\v1\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorInvoiceApi-submitInvoice");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
         }

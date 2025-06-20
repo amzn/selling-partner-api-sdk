@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class CustomerInvoicesApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getCustomerInvoiceRateLimiter;
     public ?LimiterInterface $getCustomerInvoicesRateLimiter;
 
@@ -137,7 +137,6 @@ class CustomerInvoicesApi
     {
         return $this->config;
     }
-
     /**
      * Operation getCustomerInvoice
      *
@@ -146,14 +145,16 @@ class CustomerInvoicesApi
      * @param  string $purchase_order_number
      *  Purchase order number of the shipment for which to return the invoice. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice
      */
     public function getCustomerInvoice(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice {
-        list($response) = $this->getCustomerInvoiceWithHttpInfo($purchase_order_number);
+        list($response) = $this->getCustomerInvoiceWithHttpInfo($purchase_order_number,$restrictedDataToken);
         return $response;
     }
 
@@ -165,16 +166,21 @@ class CustomerInvoicesApi
      * @param  string $purchase_order_number
      *  Purchase order number of the shipment for which to return the invoice. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCustomerInvoiceWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCustomerInvoiceRequest($purchase_order_number);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoice");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -271,11 +277,16 @@ class CustomerInvoicesApi
      * @return PromiseInterface
      */
     public function getCustomerInvoiceAsyncWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice';
         $request = $this->getCustomerInvoiceRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoice");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCustomerInvoiceRateLimiter->consume()->ensureAccepted();
         }
@@ -429,6 +440,7 @@ class CustomerInvoicesApi
      * @param  string|null $next_token
      *  Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList
@@ -439,9 +451,10 @@ class CustomerInvoicesApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList {
-        list($response) = $this->getCustomerInvoicesWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
+        list($response) = $this->getCustomerInvoicesWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,$restrictedDataToken);
         return $response;
     }
 
@@ -463,6 +476,7 @@ class CustomerInvoicesApi
      * @param  string|null $next_token
      *  Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList, HTTP status code, HTTP response headers (array of strings)
@@ -473,11 +487,15 @@ class CustomerInvoicesApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getCustomerInvoicesRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoices");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -604,11 +622,16 @@ class CustomerInvoicesApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList';
         $request = $this->getCustomerInvoicesRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoices");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getCustomerInvoicesRateLimiter->consume()->ensureAccepted();
         }

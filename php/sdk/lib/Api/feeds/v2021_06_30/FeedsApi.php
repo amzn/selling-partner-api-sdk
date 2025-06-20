@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse;
@@ -146,23 +147,26 @@ class FeedsApi
     /**
      * Operation cancelFeed.
      *
-     * @param string $feed_id
-     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelFeed(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelFeedWithHttpInfo($feed_id);
+        $this->cancelFeedWithHttpInfo($feed_id, $restrictedDataToken);
     }
 
     /**
      * Operation cancelFeedWithHttpInfo.
      *
-     * @param string $feed_id
-     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -170,10 +174,15 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function cancelFeedWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-cancelFeed');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -256,11 +265,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function cancelFeedAsyncWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-cancelFeed');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelFeedRateLimiter->consume()->ensureAccepted();
         }
@@ -378,15 +392,17 @@ class FeedsApi
      * Operation createFeed.
      *
      * @param CreateFeedSpecification $body
-     *                                      Information required to create the feed. (required)
+     *                                                     Information required to create the feed. (required)
+     * @param null|string             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createFeed(
-        CreateFeedSpecification $body
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateFeedResponse {
-        list($response) = $this->createFeedWithHttpInfo($body);
+        list($response) = $this->createFeedWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -395,7 +411,8 @@ class FeedsApi
      * Operation createFeedWithHttpInfo.
      *
      * @param CreateFeedSpecification $body
-     *                                      Information required to create the feed. (required)
+     *                                                     Information required to create the feed. (required)
+     * @param null|string             $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\feeds\v2021_06_30\CreateFeedResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -403,10 +420,15 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedWithHttpInfo(
-        CreateFeedSpecification $body
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFeedRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeed');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -501,11 +523,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedAsyncWithHttpInfo(
-        CreateFeedSpecification $body
+        CreateFeedSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedResponse';
         $request = $this->createFeedRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeed');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createFeedRateLimiter->consume()->ensureAccepted();
         }
@@ -633,15 +660,17 @@ class FeedsApi
      * Operation createFeedDocument.
      *
      * @param CreateFeedDocumentSpecification $body
-     *                                              Specifies the content type for the createFeedDocument operation. (required)
+     *                                                             Specifies the content type for the createFeedDocument operation. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createFeedDocument(
-        CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateFeedDocumentResponse {
-        list($response) = $this->createFeedDocumentWithHttpInfo($body);
+        list($response) = $this->createFeedDocumentWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -650,7 +679,8 @@ class FeedsApi
      * Operation createFeedDocumentWithHttpInfo.
      *
      * @param CreateFeedDocumentSpecification $body
-     *                                              Specifies the content type for the createFeedDocument operation. (required)
+     *                                                             Specifies the content type for the createFeedDocument operation. (required)
+     * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -658,10 +688,15 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedDocumentWithHttpInfo(
-        CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createFeedDocumentRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeedDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -756,11 +791,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function createFeedDocumentAsyncWithHttpInfo(
-        CreateFeedDocumentSpecification $body
+        CreateFeedDocumentSpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse';
         $request = $this->createFeedDocumentRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeedDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -887,16 +927,18 @@ class FeedsApi
     /**
      * Operation getFeed.
      *
-     * @param string $feed_id
-     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFeed(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): Feed {
-        list($response) = $this->getFeedWithHttpInfo($feed_id);
+        list($response) = $this->getFeedWithHttpInfo($feed_id, $restrictedDataToken);
 
         return $response;
     }
@@ -904,8 +946,9 @@ class FeedsApi
     /**
      * Operation getFeedWithHttpInfo.
      *
-     * @param string $feed_id
-     *                        The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param string      $feed_id
+     *                                         The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\feeds\v2021_06_30\Feed, HTTP status code, HTTP response headers (array of strings)
      *
@@ -913,10 +956,15 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeed');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1011,11 +1059,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedAsyncWithHttpInfo(
-        string $feed_id
+        string $feed_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\Feed';
         $request = $this->getFeedRequest($feed_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeed');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeedRateLimiter->consume()->ensureAccepted();
         }
@@ -1145,16 +1198,18 @@ class FeedsApi
     /**
      * Operation getFeedDocument.
      *
-     * @param string $feed_document_id
-     *                                 The identifier of the feed document. (required)
+     * @param string      $feed_document_id
+     *                                         The identifier of the feed document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFeedDocument(
-        string $feed_document_id
+        string $feed_document_id,
+        ?string $restrictedDataToken = null
     ): FeedDocument {
-        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id);
+        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1162,8 +1217,9 @@ class FeedsApi
     /**
      * Operation getFeedDocumentWithHttpInfo.
      *
-     * @param string $feed_document_id
-     *                                 The identifier of the feed document. (required)
+     * @param string      $feed_document_id
+     *                                         The identifier of the feed document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\feeds\v2021_06_30\FeedDocument, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1171,10 +1227,15 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentWithHttpInfo(
-        string $feed_document_id
+        string $feed_document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedDocumentRequest($feed_document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1269,11 +1330,16 @@ class FeedsApi
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentAsyncWithHttpInfo(
-        string $feed_document_id
+        string $feed_document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\FeedDocument';
         $request = $this->getFeedDocumentRequest($feed_document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -1417,6 +1483,7 @@ class FeedsApi
      *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
      * @param null|string    $next_token
      *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1428,9 +1495,10 @@ class FeedsApi
         ?array $processing_statuses = null,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): GetFeedsResponse {
-        list($response) = $this->getFeedsWithHttpInfo($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
+        list($response) = $this->getFeedsWithHttpInfo($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1452,6 +1520,7 @@ class FeedsApi
      *                                            The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)
      * @param null|string    $next_token
      *                                            A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\feeds\v2021_06_30\GetFeedsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1465,10 +1534,15 @@ class FeedsApi
         ?array $processing_statuses = null,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeeds');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1599,11 +1673,16 @@ class FeedsApi
         ?array $processing_statuses = null,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\GetFeedsResponse';
         $request = $this->getFeedsRequest($feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeeds');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getFeedsRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class VendorShippingLabelsApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $createShippingLabelsRateLimiter;
     public ?LimiterInterface $getShippingLabelRateLimiter;
     public ?LimiterInterface $getShippingLabelsRateLimiter;
@@ -143,7 +143,6 @@ class VendorShippingLabelsApi
     {
         return $this->config;
     }
-
     /**
      * Operation createShippingLabels
      *
@@ -154,15 +153,17 @@ class VendorShippingLabelsApi
      * @param  \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body
      *  The request payload that contains the parameters for creating shipping labels. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel
      */
     public function createShippingLabels(
         string $purchase_order_number,
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel {
-        list($response) = $this->createShippingLabelsWithHttpInfo($purchase_order_number, $body);
+        list($response) = $this->createShippingLabelsWithHttpInfo($purchase_order_number, $body,$restrictedDataToken);
         return $response;
     }
 
@@ -176,17 +177,22 @@ class VendorShippingLabelsApi
      * @param  \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body
      *  The request payload that contains the parameters for creating shipping labels. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel, HTTP status code, HTTP response headers (array of strings)
      */
     public function createShippingLabelsWithHttpInfo(
         string $purchase_order_number,
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createShippingLabelsRequest($purchase_order_number, $body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-createShippingLabels");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -289,11 +295,16 @@ class VendorShippingLabelsApi
      */
     public function createShippingLabelsAsyncWithHttpInfo(
         string $purchase_order_number,
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel';
         $request = $this->createShippingLabelsRequest($purchase_order_number, $body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-createShippingLabels");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createShippingLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -452,14 +463,16 @@ class VendorShippingLabelsApi
      * @param  string $purchase_order_number
      *  The purchase order number for which you want to return the shipping label. It should be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel
      */
     public function getShippingLabel(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel {
-        list($response) = $this->getShippingLabelWithHttpInfo($purchase_order_number);
+        list($response) = $this->getShippingLabelWithHttpInfo($purchase_order_number,$restrictedDataToken);
         return $response;
     }
 
@@ -471,16 +484,21 @@ class VendorShippingLabelsApi
      * @param  string $purchase_order_number
      *  The purchase order number for which you want to return the shipping label. It should be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShippingLabelWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShippingLabelRequest($purchase_order_number);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-getShippingLabel");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -577,11 +595,16 @@ class VendorShippingLabelsApi
      * @return PromiseInterface
      */
     public function getShippingLabelAsyncWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel';
         $request = $this->getShippingLabelRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-getShippingLabel");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShippingLabelRateLimiter->consume()->ensureAccepted();
         }
@@ -735,6 +758,7 @@ class VendorShippingLabelsApi
      * @param  string|null $next_token
      *  Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList
@@ -745,9 +769,10 @@ class VendorShippingLabelsApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = 'ASC',
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList {
-        list($response) = $this->getShippingLabelsWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
+        list($response) = $this->getShippingLabelsWithHttpInfo($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token,$restrictedDataToken);
         return $response;
     }
 
@@ -769,6 +794,7 @@ class VendorShippingLabelsApi
      * @param  string|null $next_token
      *  Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList, HTTP status code, HTTP response headers (array of strings)
@@ -779,11 +805,15 @@ class VendorShippingLabelsApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = 'ASC',
-        ?string $next_token = null
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShippingLabelsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-getShippingLabels");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -910,11 +940,16 @@ class VendorShippingLabelsApi
         ?string $ship_from_party_id = null,
         ?int $limit = null,
         ?string $sort_order = 'ASC',
-        ?string $next_token = null
+        ?string $next_token = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList';
         $request = $this->getShippingLabelsRequest($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-getShippingLabels");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShippingLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -1134,14 +1169,16 @@ class VendorShippingLabelsApi
      * @param  \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body
      *  The request body that contains the shipping labels data. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference
      */
     public function submitShippingLabelRequest(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference {
-        list($response) = $this->submitShippingLabelRequestWithHttpInfo($body);
+        list($response) = $this->submitShippingLabelRequestWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1153,16 +1190,21 @@ class VendorShippingLabelsApi
      * @param  \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body
      *  The request body that contains the shipping labels data. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShippingLabelRequestWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShippingLabelRequestRequest($body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-submitShippingLabelRequest");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -1259,11 +1301,16 @@ class VendorShippingLabelsApi
      * @return PromiseInterface
      */
     public function submitShippingLabelRequestAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference';
         $request = $this->submitShippingLabelRequestRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-submitShippingLabelRequest");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShippingLabelRequestRateLimiter->consume()->ensureAccepted();
         }

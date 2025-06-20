@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse;
@@ -141,23 +142,26 @@ class QueriesApi
     /**
      * Operation cancelQuery.
      *
-     * @param string $query_id
-     *                         The identifier for the query. This identifier is unique only in combination with a selling partner account ID. (required)
+     * @param string      $query_id
+     *                                         The identifier for the query. This identifier is unique only in combination with a selling partner account ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function cancelQuery(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): void {
-        $this->cancelQueryWithHttpInfo($query_id);
+        $this->cancelQueryWithHttpInfo($query_id, $restrictedDataToken);
     }
 
     /**
      * Operation cancelQueryWithHttpInfo.
      *
-     * @param string $query_id
-     *                         The identifier for the query. This identifier is unique only in combination with a selling partner account ID. (required)
+     * @param string      $query_id
+     *                                         The identifier for the query. This identifier is unique only in combination with a selling partner account ID. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      *
@@ -165,10 +169,15 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function cancelQueryWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->cancelQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-cancelQuery');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -251,11 +260,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function cancelQueryAsyncWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '';
         $request = $this->cancelQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-cancelQuery');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->cancelQueryRateLimiter->consume()->ensureAccepted();
         }
@@ -373,15 +387,17 @@ class QueriesApi
      * Operation createQuery.
      *
      * @param CreateQuerySpecification $body
-     *                                       The body of the request. (required)
+     *                                                      The body of the request. (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createQuery(
-        CreateQuerySpecification $body
+        CreateQuerySpecification $body,
+        ?string $restrictedDataToken = null
     ): CreateQueryResponse {
-        list($response) = $this->createQueryWithHttpInfo($body);
+        list($response) = $this->createQueryWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -390,7 +406,8 @@ class QueriesApi
      * Operation createQueryWithHttpInfo.
      *
      * @param CreateQuerySpecification $body
-     *                                       The body of the request. (required)
+     *                                                      The body of the request. (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -398,10 +415,15 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function createQueryWithHttpInfo(
-        CreateQuerySpecification $body
+        CreateQuerySpecification $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createQueryRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-createQuery');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -496,11 +518,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function createQueryAsyncWithHttpInfo(
-        CreateQuerySpecification $body
+        CreateQuerySpecification $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse';
         $request = $this->createQueryRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-createQuery');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createQueryRateLimiter->consume()->ensureAccepted();
         }
@@ -627,16 +654,18 @@ class QueriesApi
     /**
      * Operation getDocument.
      *
-     * @param string $document_id
-     *                            The identifier for the Data Kiosk document. (required)
+     * @param string      $document_id
+     *                                         The identifier for the Data Kiosk document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getDocument(
-        string $document_id
+        string $document_id,
+        ?string $restrictedDataToken = null
     ): GetDocumentResponse {
-        list($response) = $this->getDocumentWithHttpInfo($document_id);
+        list($response) = $this->getDocumentWithHttpInfo($document_id, $restrictedDataToken);
 
         return $response;
     }
@@ -644,8 +673,9 @@ class QueriesApi
     /**
      * Operation getDocumentWithHttpInfo.
      *
-     * @param string $document_id
-     *                            The identifier for the Data Kiosk document. (required)
+     * @param string      $document_id
+     *                                         The identifier for the Data Kiosk document. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -653,10 +683,15 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getDocumentWithHttpInfo(
-        string $document_id
+        string $document_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDocumentRequest($document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -751,11 +786,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getDocumentAsyncWithHttpInfo(
-        string $document_id
+        string $document_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse';
         $request = $this->getDocumentRequest($document_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getDocument');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDocumentRateLimiter->consume()->ensureAccepted();
         }
@@ -895,6 +935,7 @@ class QueriesApi
      *                                            The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)
      * @param null|string    $pagination_token
      *                                            A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -904,9 +945,10 @@ class QueriesApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): GetQueriesResponse {
-        list($response) = $this->getQueriesWithHttpInfo($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
+        list($response) = $this->getQueriesWithHttpInfo($processing_statuses, $page_size, $created_since, $created_until, $pagination_token, $restrictedDataToken);
 
         return $response;
     }
@@ -924,6 +966,7 @@ class QueriesApi
      *                                            The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)
      * @param null|string    $pagination_token
      *                                            A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -935,10 +978,15 @@ class QueriesApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getQueriesRequest($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getQueries');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1057,11 +1105,16 @@ class QueriesApi
         ?int $page_size = 10,
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
-        ?string $pagination_token = null
+        ?string $pagination_token = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse';
         $request = $this->getQueriesRequest($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getQueries');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getQueriesRateLimiter->consume()->ensureAccepted();
         }
@@ -1249,16 +1302,18 @@ class QueriesApi
     /**
      * Operation getQuery.
      *
-     * @param string $query_id
-     *                         The query identifier. (required)
+     * @param string      $query_id
+     *                                         The query identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getQuery(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): Query {
-        list($response) = $this->getQueryWithHttpInfo($query_id);
+        list($response) = $this->getQueryWithHttpInfo($query_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1266,8 +1321,9 @@ class QueriesApi
     /**
      * Operation getQueryWithHttpInfo.
      *
-     * @param string $query_id
-     *                         The query identifier. (required)
+     * @param string      $query_id
+     *                                         The query identifier. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\datakiosk\v2023_11_15\Query, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1275,10 +1331,15 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getQueryWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getQuery');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1373,11 +1434,16 @@ class QueriesApi
      * @throws \InvalidArgumentException
      */
     public function getQueryAsyncWithHttpInfo(
-        string $query_id
+        string $query_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\datakiosk\v2023_11_15\Query';
         $request = $this->getQueryRequest($query_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getQuery');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getQueryRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\notifications\v1\CreateDestinationRequest;
@@ -156,15 +157,17 @@ class NotificationsApi
      * Operation createDestination.
      *
      * @param CreateDestinationRequest $body
-     *                                       body (required)
+     *                                                      body (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createDestination(
-        CreateDestinationRequest $body
+        CreateDestinationRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateDestinationResponse {
-        list($response) = $this->createDestinationWithHttpInfo($body);
+        list($response) = $this->createDestinationWithHttpInfo($body, $restrictedDataToken);
 
         return $response;
     }
@@ -173,7 +176,8 @@ class NotificationsApi
      * Operation createDestinationWithHttpInfo.
      *
      * @param CreateDestinationRequest $body
-     *                                       (required)
+     *                                                      (required)
+     * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\CreateDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -181,10 +185,15 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function createDestinationWithHttpInfo(
-        CreateDestinationRequest $body
+        CreateDestinationRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createDestinationRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-createDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -279,11 +288,16 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function createDestinationAsyncWithHttpInfo(
-        CreateDestinationRequest $body
+        CreateDestinationRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\CreateDestinationResponse';
         $request = $this->createDestinationRequest($body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-createDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createDestinationRateLimiter->consume()->ensureAccepted();
         }
@@ -411,18 +425,20 @@ class NotificationsApi
      * Operation createSubscription.
      *
      * @param string                    $notification_type
-     *                                                     The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                     body (required)
+     *                                                       body (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createSubscription(
         string $notification_type,
-        CreateSubscriptionRequest $body
+        CreateSubscriptionRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateSubscriptionResponse {
-        list($response) = $this->createSubscriptionWithHttpInfo($notification_type, $body);
+        list($response) = $this->createSubscriptionWithHttpInfo($notification_type, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -431,9 +447,10 @@ class NotificationsApi
      * Operation createSubscriptionWithHttpInfo.
      *
      * @param string                    $notification_type
-     *                                                     The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                     (required)
+     *                                                       (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\CreateSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -442,10 +459,15 @@ class NotificationsApi
      */
     public function createSubscriptionWithHttpInfo(
         string $notification_type,
-        CreateSubscriptionRequest $body
+        CreateSubscriptionRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createSubscriptionRequest($notification_type, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-createSubscription');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -546,11 +568,16 @@ class NotificationsApi
      */
     public function createSubscriptionAsyncWithHttpInfo(
         string $notification_type,
-        CreateSubscriptionRequest $body
+        CreateSubscriptionRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\CreateSubscriptionResponse';
         $request = $this->createSubscriptionRequest($notification_type, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-createSubscription');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createSubscriptionRateLimiter->consume()->ensureAccepted();
         }
@@ -695,16 +722,18 @@ class NotificationsApi
     /**
      * Operation deleteDestination.
      *
-     * @param string $destination_id
-     *                               The identifier for the destination that you want to delete. (required)
+     * @param string      $destination_id
+     *                                         The identifier for the destination that you want to delete. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function deleteDestination(
-        string $destination_id
+        string $destination_id,
+        ?string $restrictedDataToken = null
     ): DeleteDestinationResponse {
-        list($response) = $this->deleteDestinationWithHttpInfo($destination_id);
+        list($response) = $this->deleteDestinationWithHttpInfo($destination_id, $restrictedDataToken);
 
         return $response;
     }
@@ -712,8 +741,9 @@ class NotificationsApi
     /**
      * Operation deleteDestinationWithHttpInfo.
      *
-     * @param string $destination_id
-     *                               The identifier for the destination that you want to delete. (required)
+     * @param string      $destination_id
+     *                                         The identifier for the destination that you want to delete. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\DeleteDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -721,10 +751,15 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteDestinationWithHttpInfo(
-        string $destination_id
+        string $destination_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteDestinationRequest($destination_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-deleteDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -819,11 +854,16 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function deleteDestinationAsyncWithHttpInfo(
-        string $destination_id
+        string $destination_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\DeleteDestinationResponse';
         $request = $this->deleteDestinationRequest($destination_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-deleteDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteDestinationRateLimiter->consume()->ensureAccepted();
         }
@@ -953,19 +993,21 @@ class NotificationsApi
     /**
      * Operation deleteSubscriptionById.
      *
-     * @param string $subscription_id
-     *                                  The identifier for the subscription that you want to delete. (required)
-     * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param string      $subscription_id
+     *                                         The identifier for the subscription that you want to delete. (required)
+     * @param string      $notification_type
+     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function deleteSubscriptionById(
         string $subscription_id,
-        string $notification_type
+        string $notification_type,
+        ?string $restrictedDataToken = null
     ): DeleteSubscriptionByIdResponse {
-        list($response) = $this->deleteSubscriptionByIdWithHttpInfo($subscription_id, $notification_type);
+        list($response) = $this->deleteSubscriptionByIdWithHttpInfo($subscription_id, $notification_type, $restrictedDataToken);
 
         return $response;
     }
@@ -973,10 +1015,11 @@ class NotificationsApi
     /**
      * Operation deleteSubscriptionByIdWithHttpInfo.
      *
-     * @param string $subscription_id
-     *                                  The identifier for the subscription that you want to delete. (required)
-     * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param string      $subscription_id
+     *                                         The identifier for the subscription that you want to delete. (required)
+     * @param string      $notification_type
+     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -985,10 +1028,15 @@ class NotificationsApi
      */
     public function deleteSubscriptionByIdWithHttpInfo(
         string $subscription_id,
-        string $notification_type
+        string $notification_type,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->deleteSubscriptionByIdRequest($subscription_id, $notification_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-deleteSubscriptionById');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1089,11 +1137,16 @@ class NotificationsApi
      */
     public function deleteSubscriptionByIdAsyncWithHttpInfo(
         string $subscription_id,
-        string $notification_type
+        string $notification_type,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse';
         $request = $this->deleteSubscriptionByIdRequest($subscription_id, $notification_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-deleteSubscriptionById');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->deleteSubscriptionByIdRateLimiter->consume()->ensureAccepted();
         }
@@ -1240,16 +1293,18 @@ class NotificationsApi
     /**
      * Operation getDestination.
      *
-     * @param string $destination_id
-     *                               The identifier generated when you created the destination. (required)
+     * @param string      $destination_id
+     *                                         The identifier generated when you created the destination. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getDestination(
-        string $destination_id
+        string $destination_id,
+        ?string $restrictedDataToken = null
     ): GetDestinationResponse {
-        list($response) = $this->getDestinationWithHttpInfo($destination_id);
+        list($response) = $this->getDestinationWithHttpInfo($destination_id, $restrictedDataToken);
 
         return $response;
     }
@@ -1257,8 +1312,9 @@ class NotificationsApi
     /**
      * Operation getDestinationWithHttpInfo.
      *
-     * @param string $destination_id
-     *                               The identifier generated when you created the destination. (required)
+     * @param string      $destination_id
+     *                                         The identifier generated when you created the destination. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\GetDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1266,10 +1322,15 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function getDestinationWithHttpInfo(
-        string $destination_id
+        string $destination_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDestinationRequest($destination_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1364,11 +1425,16 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function getDestinationAsyncWithHttpInfo(
-        string $destination_id
+        string $destination_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetDestinationResponse';
         $request = $this->getDestinationRequest($destination_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getDestination');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDestinationRateLimiter->consume()->ensureAccepted();
         }
@@ -1498,12 +1564,15 @@ class NotificationsApi
     /**
      * Operation getDestinations.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getDestinations(
+        ?string $restrictedDataToken = null
     ): GetDestinationsResponse {
-        list($response) = $this->getDestinationsWithHttpInfo();
+        list($response) = $this->getDestinationsWithHttpInfo($restrictedDataToken);
 
         return $response;
     }
@@ -1511,15 +1580,22 @@ class NotificationsApi
     /**
      * Operation getDestinationsWithHttpInfo.
      *
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
      * @return array of \SpApi\Model\notifications\v1\GetDestinationsResponse, HTTP status code, HTTP response headers (array of strings)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getDestinationsWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getDestinationsRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getDestinations');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1607,10 +1683,15 @@ class NotificationsApi
      * @throws \InvalidArgumentException
      */
     public function getDestinationsAsyncWithHttpInfo(
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetDestinationsResponse';
         $request = $this->getDestinationsRequest();
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getDestinations');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getDestinationsRateLimiter->consume()->ensureAccepted();
         }
@@ -1721,18 +1802,20 @@ class NotificationsApi
      * Operation getSubscription.
      *
      * @param string      $notification_type
-     *                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      * @param null|string $payload_version
-     *                                       The version of the payload object to be used in the notification. (optional)
+     *                                         The version of the payload object to be used in the notification. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getSubscription(
         string $notification_type,
-        ?string $payload_version = null
+        ?string $payload_version = null,
+        ?string $restrictedDataToken = null
     ): GetSubscriptionResponse {
-        list($response) = $this->getSubscriptionWithHttpInfo($notification_type, $payload_version);
+        list($response) = $this->getSubscriptionWithHttpInfo($notification_type, $payload_version, $restrictedDataToken);
 
         return $response;
     }
@@ -1741,9 +1824,10 @@ class NotificationsApi
      * Operation getSubscriptionWithHttpInfo.
      *
      * @param string      $notification_type
-     *                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      * @param null|string $payload_version
-     *                                       The version of the payload object to be used in the notification. (optional)
+     *                                         The version of the payload object to be used in the notification. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\GetSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1752,10 +1836,15 @@ class NotificationsApi
      */
     public function getSubscriptionWithHttpInfo(
         string $notification_type,
-        ?string $payload_version = null
+        ?string $payload_version = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSubscriptionRequest($notification_type, $payload_version);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscription');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1856,11 +1945,16 @@ class NotificationsApi
      */
     public function getSubscriptionAsyncWithHttpInfo(
         string $notification_type,
-        ?string $payload_version = null
+        ?string $payload_version = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionResponse';
         $request = $this->getSubscriptionRequest($notification_type, $payload_version);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscription');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSubscriptionRateLimiter->consume()->ensureAccepted();
         }
@@ -2004,19 +2098,21 @@ class NotificationsApi
     /**
      * Operation getSubscriptionById.
      *
-     * @param string $subscription_id
-     *                                  The identifier for the subscription that you want to get. (required)
-     * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param string      $subscription_id
+     *                                         The identifier for the subscription that you want to get. (required)
+     * @param string      $notification_type
+     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getSubscriptionById(
         string $subscription_id,
-        string $notification_type
+        string $notification_type,
+        ?string $restrictedDataToken = null
     ): GetSubscriptionByIdResponse {
-        list($response) = $this->getSubscriptionByIdWithHttpInfo($subscription_id, $notification_type);
+        list($response) = $this->getSubscriptionByIdWithHttpInfo($subscription_id, $notification_type, $restrictedDataToken);
 
         return $response;
     }
@@ -2024,10 +2120,11 @@ class NotificationsApi
     /**
      * Operation getSubscriptionByIdWithHttpInfo.
      *
-     * @param string $subscription_id
-     *                                  The identifier for the subscription that you want to get. (required)
-     * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param string      $subscription_id
+     *                                         The identifier for the subscription that you want to get. (required)
+     * @param string      $notification_type
+     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\GetSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2036,10 +2133,15 @@ class NotificationsApi
      */
     public function getSubscriptionByIdWithHttpInfo(
         string $subscription_id,
-        string $notification_type
+        string $notification_type,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getSubscriptionByIdRequest($subscription_id, $notification_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscriptionById');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2140,11 +2242,16 @@ class NotificationsApi
      */
     public function getSubscriptionByIdAsyncWithHttpInfo(
         string $subscription_id,
-        string $notification_type
+        string $notification_type,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse';
         $request = $this->getSubscriptionByIdRequest($subscription_id, $notification_type);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscriptionById');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getSubscriptionByIdRateLimiter->consume()->ensureAccepted();
         }

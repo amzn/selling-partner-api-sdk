@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class UpdateInventoryApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $submitInventoryUpdateRateLimiter;
 
     /**
@@ -134,7 +134,6 @@ class UpdateInventoryApi
     {
         return $this->config;
     }
-
     /**
      * Operation submitInventoryUpdate
      *
@@ -143,15 +142,17 @@ class UpdateInventoryApi
      * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse
      */
     public function submitInventoryUpdate(
         string $warehouse_id,
-        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse {
-        list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body);
+        list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body,$restrictedDataToken);
         return $response;
     }
 
@@ -163,17 +164,22 @@ class UpdateInventoryApi
      * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitInventoryUpdateWithHttpInfo(
         string $warehouse_id,
-        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "UpdateInventoryApi-submitInventoryUpdate");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -272,11 +278,16 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdateAsyncWithHttpInfo(
         string $warehouse_id,
-        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "UpdateInventoryApi-submitInventoryUpdate");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitInventoryUpdateRateLimiter->consume()->ensureAccepted();
         }

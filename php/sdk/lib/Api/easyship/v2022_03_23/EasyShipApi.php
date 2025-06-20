@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest;
@@ -146,14 +147,16 @@ class EasyShipApi
      *
      * @param CreateScheduledPackageRequest $create_scheduled_package_request
      *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param null|string                   $restrictedDataToken              Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackage(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        CreateScheduledPackageRequest $create_scheduled_package_request,
+        ?string $restrictedDataToken = null
     ): Package {
-        list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request);
+        list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request, $restrictedDataToken);
 
         return $response;
     }
@@ -163,6 +166,7 @@ class EasyShipApi
      *
      * @param CreateScheduledPackageRequest $create_scheduled_package_request
      *                                                                        The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param null|string                   $restrictedDataToken              Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
      *
@@ -170,10 +174,15 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageWithHttpInfo(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        CreateScheduledPackageRequest $create_scheduled_package_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackage');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -268,11 +277,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageAsyncWithHttpInfo(
-        CreateScheduledPackageRequest $create_scheduled_package_request
+        CreateScheduledPackageRequest $create_scheduled_package_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackage');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
         }
@@ -401,14 +415,16 @@ class EasyShipApi
      *
      * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
      *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param null|string                    $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageBulk(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        ?string $restrictedDataToken = null
     ): CreateScheduledPackagesResponse {
-        list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request);
+        list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request, $restrictedDataToken);
 
         return $response;
     }
@@ -418,6 +434,7 @@ class EasyShipApi
      *
      * @param CreateScheduledPackagesRequest $create_scheduled_packages_request
      *                                                                          The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param null|string                    $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -425,10 +442,15 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageBulkWithHttpInfo(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackageBulk');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -523,11 +545,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function createScheduledPackageBulkAsyncWithHttpInfo(
-        CreateScheduledPackagesRequest $create_scheduled_packages_request
+        CreateScheduledPackagesRequest $create_scheduled_packages_request,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackageBulk');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
         }
@@ -654,19 +681,21 @@ class EasyShipApi
     /**
      * Operation getScheduledPackage.
      *
-     * @param string $amazon_order_id
-     *                                An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string $marketplace_id
-     *                                An identifier for the marketplace in which the seller is selling. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param string      $marketplace_id
+     *                                         An identifier for the marketplace in which the seller is selling. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getScheduledPackage(
         string $amazon_order_id,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): Package {
-        list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id);
+        list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -674,10 +703,11 @@ class EasyShipApi
     /**
      * Operation getScheduledPackageWithHttpInfo.
      *
-     * @param string $amazon_order_id
-     *                                An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
-     * @param string $marketplace_id
-     *                                An identifier for the marketplace in which the seller is selling. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required)
+     * @param string      $marketplace_id
+     *                                         An identifier for the marketplace in which the seller is selling. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
      *
@@ -686,10 +716,15 @@ class EasyShipApi
      */
     public function getScheduledPackageWithHttpInfo(
         string $amazon_order_id,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-getScheduledPackage');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -790,11 +825,16 @@ class EasyShipApi
      */
     public function getScheduledPackageAsyncWithHttpInfo(
         string $amazon_order_id,
-        string $marketplace_id
+        string $marketplace_id,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-getScheduledPackage');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
         }
@@ -960,14 +1000,16 @@ class EasyShipApi
      *
      * @param null|ListHandoverSlotsRequest $list_handover_slots_request
      *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function listHandoverSlots(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?string $restrictedDataToken = null
     ): ListHandoverSlotsResponse {
-        list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request);
+        list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request, $restrictedDataToken);
 
         return $response;
     }
@@ -977,6 +1019,7 @@ class EasyShipApi
      *
      * @param null|ListHandoverSlotsRequest $list_handover_slots_request
      *                                                                   The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -984,10 +1027,15 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function listHandoverSlotsWithHttpInfo(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-listHandoverSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1082,11 +1130,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function listHandoverSlotsAsyncWithHttpInfo(
-        ?ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?ListHandoverSlotsRequest $list_handover_slots_request = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-listHandoverSlots');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
         }
@@ -1208,14 +1261,16 @@ class EasyShipApi
      *
      * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
      *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param null|string                         $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function updateScheduledPackages(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?string $restrictedDataToken = null
     ): Packages {
-        list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request);
+        list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request, $restrictedDataToken);
 
         return $response;
     }
@@ -1225,6 +1280,7 @@ class EasyShipApi
      *
      * @param null|UpdateScheduledPackagesRequest $update_scheduled_packages_request
      *                                                                               The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param null|string                         $restrictedDataToken               Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\easyship\v2022_03_23\Packages, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1232,10 +1288,15 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function updateScheduledPackagesWithHttpInfo(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-updateScheduledPackages');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1330,11 +1391,16 @@ class EasyShipApi
      * @throws \InvalidArgumentException
      */
     public function updateScheduledPackagesAsyncWithHttpInfo(
-        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?UpdateScheduledPackagesRequest $update_scheduled_packages_request = null,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\easyship\v2022_03_23\Packages';
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-updateScheduledPackages');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
         }

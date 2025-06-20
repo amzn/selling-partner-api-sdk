@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class VendorTransactionApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getTransactionRateLimiter;
 
     /**
@@ -134,21 +134,22 @@ class VendorTransactionApi
     {
         return $this->config;
     }
-
     /**
      * Operation getTransaction
      *
      * @param  string $transaction_id
      *  The GUID provided by Amazon in the &#39;transactionId&#39; field in response to the post request of a specific transaction. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse
      */
     public function getTransaction(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse {
-        list($response) = $this->getTransactionWithHttpInfo($transaction_id);
+        list($response) = $this->getTransactionWithHttpInfo($transaction_id,$restrictedDataToken);
         return $response;
     }
 
@@ -158,16 +159,21 @@ class VendorTransactionApi
      * @param  string $transaction_id
      *  The GUID provided by Amazon in the &#39;transactionId&#39; field in response to the post request of a specific transaction. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getTransactionRequest($transaction_id);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorTransactionApi-getTransaction");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -260,11 +266,16 @@ class VendorTransactionApi
      * @return PromiseInterface
      */
     public function getTransactionAsyncWithHttpInfo(
-        string $transaction_id
+        string $transaction_id,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse';
         $request = $this->getTransactionRequest($transaction_id);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorTransactionApi-getTransaction");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getTransactionRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\messaging\v1\CreateAmazonMotorsRequest;
@@ -184,11 +185,12 @@ class MessagingApi
      * Operation confirmCustomizationDetails.
      *
      * @param string                                   $amazon_order_id
-     *                                                                  An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                                      An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                                 $marketplace_ids
-     *                                                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                                      A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmCustomizationDetailsRequest $body
-     *                                                                  This contains the message body for a message. (required)
+     *                                                                      This contains the message body for a message. (required)
+     * @param null|string                              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -196,9 +198,10 @@ class MessagingApi
     public function confirmCustomizationDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmCustomizationDetailsRequest $body
+        CreateConfirmCustomizationDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateConfirmCustomizationDetailsResponse {
-        list($response) = $this->confirmCustomizationDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->confirmCustomizationDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -207,11 +210,12 @@ class MessagingApi
      * Operation confirmCustomizationDetailsWithHttpInfo.
      *
      * @param string                                   $amazon_order_id
-     *                                                                  An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                                      An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                                 $marketplace_ids
-     *                                                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                                      A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmCustomizationDetailsRequest $body
-     *                                                                  This contains the message body for a message. (required)
+     *                                                                      This contains the message body for a message. (required)
+     * @param null|string                              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -221,10 +225,15 @@ class MessagingApi
     public function confirmCustomizationDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmCustomizationDetailsRequest $body
+        CreateConfirmCustomizationDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->confirmCustomizationDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-confirmCustomizationDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -331,11 +340,16 @@ class MessagingApi
     public function confirmCustomizationDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmCustomizationDetailsRequest $body
+        CreateConfirmCustomizationDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
         $request = $this->confirmCustomizationDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-confirmCustomizationDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->confirmCustomizationDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -505,11 +519,12 @@ class MessagingApi
      * Operation createAmazonMotors.
      *
      * @param string                    $amazon_order_id
-     *                                                   An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                       An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                  $marketplace_ids
-     *                                                   A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                       A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateAmazonMotorsRequest $body
-     *                                                   This contains the message body for a message. (required)
+     *                                                       This contains the message body for a message. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -517,9 +532,10 @@ class MessagingApi
     public function createAmazonMotors(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateAmazonMotorsRequest $body
+        CreateAmazonMotorsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateAmazonMotorsResponse {
-        list($response) = $this->createAmazonMotorsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createAmazonMotorsWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -528,11 +544,12 @@ class MessagingApi
      * Operation createAmazonMotorsWithHttpInfo.
      *
      * @param string                    $amazon_order_id
-     *                                                   An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                       An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                  $marketplace_ids
-     *                                                   A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                       A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateAmazonMotorsRequest $body
-     *                                                   This contains the message body for a message. (required)
+     *                                                       This contains the message body for a message. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateAmazonMotorsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -542,10 +559,15 @@ class MessagingApi
     public function createAmazonMotorsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateAmazonMotorsRequest $body
+        CreateAmazonMotorsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createAmazonMotorsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createAmazonMotors');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -652,11 +674,16 @@ class MessagingApi
     public function createAmazonMotorsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateAmazonMotorsRequest $body
+        CreateAmazonMotorsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse';
         $request = $this->createAmazonMotorsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createAmazonMotors');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createAmazonMotorsRateLimiter->consume()->ensureAccepted();
         }
@@ -826,11 +853,12 @@ class MessagingApi
      * Operation createConfirmDeliveryDetails.
      *
      * @param string                              $amazon_order_id
-     *                                                             An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                                 An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                            $marketplace_ids
-     *                                                             A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                                 A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmDeliveryDetailsRequest $body
-     *                                                             This contains the message body for a message. (required)
+     *                                                                 This contains the message body for a message. (required)
+     * @param null|string                         $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -838,9 +866,10 @@ class MessagingApi
     public function createConfirmDeliveryDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmDeliveryDetailsRequest $body
+        CreateConfirmDeliveryDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateConfirmDeliveryDetailsResponse {
-        list($response) = $this->createConfirmDeliveryDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createConfirmDeliveryDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -849,11 +878,12 @@ class MessagingApi
      * Operation createConfirmDeliveryDetailsWithHttpInfo.
      *
      * @param string                              $amazon_order_id
-     *                                                             An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                                 An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                            $marketplace_ids
-     *                                                             A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                                 A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmDeliveryDetailsRequest $body
-     *                                                             This contains the message body for a message. (required)
+     *                                                                 This contains the message body for a message. (required)
+     * @param null|string                         $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -863,10 +893,15 @@ class MessagingApi
     public function createConfirmDeliveryDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmDeliveryDetailsRequest $body
+        CreateConfirmDeliveryDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createConfirmDeliveryDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmDeliveryDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -973,11 +1008,16 @@ class MessagingApi
     public function createConfirmDeliveryDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmDeliveryDetailsRequest $body
+        CreateConfirmDeliveryDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
         $request = $this->createConfirmDeliveryDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmDeliveryDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createConfirmDeliveryDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -1147,11 +1187,12 @@ class MessagingApi
      * Operation createConfirmOrderDetails.
      *
      * @param string                           $amazon_order_id
-     *                                                          An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                              An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                         $marketplace_ids
-     *                                                          A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                              A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmOrderDetailsRequest $body
-     *                                                          This contains the message body for a message. (required)
+     *                                                              This contains the message body for a message. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1159,9 +1200,10 @@ class MessagingApi
     public function createConfirmOrderDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmOrderDetailsRequest $body
+        CreateConfirmOrderDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateConfirmOrderDetailsResponse {
-        list($response) = $this->createConfirmOrderDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createConfirmOrderDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1170,11 +1212,12 @@ class MessagingApi
      * Operation createConfirmOrderDetailsWithHttpInfo.
      *
      * @param string                           $amazon_order_id
-     *                                                          An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                              An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                         $marketplace_ids
-     *                                                          A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                              A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmOrderDetailsRequest $body
-     *                                                          This contains the message body for a message. (required)
+     *                                                              This contains the message body for a message. (required)
+     * @param null|string                      $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1184,10 +1227,15 @@ class MessagingApi
     public function createConfirmOrderDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmOrderDetailsRequest $body
+        CreateConfirmOrderDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createConfirmOrderDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmOrderDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1294,11 +1342,16 @@ class MessagingApi
     public function createConfirmOrderDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmOrderDetailsRequest $body
+        CreateConfirmOrderDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
         $request = $this->createConfirmOrderDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmOrderDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createConfirmOrderDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -1468,11 +1521,12 @@ class MessagingApi
      * Operation createConfirmServiceDetails.
      *
      * @param string                             $amazon_order_id
-     *                                                            An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                                An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                           $marketplace_ids
-     *                                                            A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                                A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmServiceDetailsRequest $body
-     *                                                            This contains the message body for a message. (required)
+     *                                                                This contains the message body for a message. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1480,9 +1534,10 @@ class MessagingApi
     public function createConfirmServiceDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmServiceDetailsRequest $body
+        CreateConfirmServiceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateConfirmServiceDetailsResponse {
-        list($response) = $this->createConfirmServiceDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createConfirmServiceDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1491,11 +1546,12 @@ class MessagingApi
      * Operation createConfirmServiceDetailsWithHttpInfo.
      *
      * @param string                             $amazon_order_id
-     *                                                            An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                                An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                           $marketplace_ids
-     *                                                            A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                                A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateConfirmServiceDetailsRequest $body
-     *                                                            This contains the message body for a message. (required)
+     *                                                                This contains the message body for a message. (required)
+     * @param null|string                        $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1505,10 +1561,15 @@ class MessagingApi
     public function createConfirmServiceDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmServiceDetailsRequest $body
+        CreateConfirmServiceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createConfirmServiceDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmServiceDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1615,11 +1676,16 @@ class MessagingApi
     public function createConfirmServiceDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateConfirmServiceDetailsRequest $body
+        CreateConfirmServiceDetailsRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
         $request = $this->createConfirmServiceDetailsRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmServiceDetails');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createConfirmServiceDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -1789,11 +1855,12 @@ class MessagingApi
      * Operation createDigitalAccessKey.
      *
      * @param string                        $amazon_order_id
-     *                                                       An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                           An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                      $marketplace_ids
-     *                                                       A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                           A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateDigitalAccessKeyRequest $body
-     *                                                       This contains the message body for a message. (required)
+     *                                                           This contains the message body for a message. (required)
+     * @param null|string                   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -1801,9 +1868,10 @@ class MessagingApi
     public function createDigitalAccessKey(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateDigitalAccessKeyRequest $body
+        CreateDigitalAccessKeyRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateDigitalAccessKeyResponse {
-        list($response) = $this->createDigitalAccessKeyWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createDigitalAccessKeyWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1812,11 +1880,12 @@ class MessagingApi
      * Operation createDigitalAccessKeyWithHttpInfo.
      *
      * @param string                        $amazon_order_id
-     *                                                       An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                           An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                      $marketplace_ids
-     *                                                       A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                           A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateDigitalAccessKeyRequest $body
-     *                                                       This contains the message body for a message. (required)
+     *                                                           This contains the message body for a message. (required)
+     * @param null|string                   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1826,10 +1895,15 @@ class MessagingApi
     public function createDigitalAccessKeyWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateDigitalAccessKeyRequest $body
+        CreateDigitalAccessKeyRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createDigitalAccessKeyRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createDigitalAccessKey');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -1936,11 +2010,16 @@ class MessagingApi
     public function createDigitalAccessKeyAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateDigitalAccessKeyRequest $body
+        CreateDigitalAccessKeyRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse';
         $request = $this->createDigitalAccessKeyRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createDigitalAccessKey');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createDigitalAccessKeyRateLimiter->consume()->ensureAccepted();
         }
@@ -2110,11 +2189,12 @@ class MessagingApi
      * Operation createLegalDisclosure.
      *
      * @param string                       $amazon_order_id
-     *                                                      An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                          An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                     $marketplace_ids
-     *                                                      A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                          A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateLegalDisclosureRequest $body
-     *                                                      This contains the message body for a message. (required)
+     *                                                          This contains the message body for a message. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2122,9 +2202,10 @@ class MessagingApi
     public function createLegalDisclosure(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateLegalDisclosureRequest $body
+        CreateLegalDisclosureRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateLegalDisclosureResponse {
-        list($response) = $this->createLegalDisclosureWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createLegalDisclosureWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -2133,11 +2214,12 @@ class MessagingApi
      * Operation createLegalDisclosureWithHttpInfo.
      *
      * @param string                       $amazon_order_id
-     *                                                      An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                          An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                     $marketplace_ids
-     *                                                      A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                          A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateLegalDisclosureRequest $body
-     *                                                      This contains the message body for a message. (required)
+     *                                                          This contains the message body for a message. (required)
+     * @param null|string                  $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateLegalDisclosureResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2147,10 +2229,15 @@ class MessagingApi
     public function createLegalDisclosureWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateLegalDisclosureRequest $body
+        CreateLegalDisclosureRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createLegalDisclosureRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createLegalDisclosure');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2257,11 +2344,16 @@ class MessagingApi
     public function createLegalDisclosureAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateLegalDisclosureRequest $body
+        CreateLegalDisclosureRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse';
         $request = $this->createLegalDisclosureRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createLegalDisclosure');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createLegalDisclosureRateLimiter->consume()->ensureAccepted();
         }
@@ -2430,19 +2522,21 @@ class MessagingApi
     /**
      * Operation createNegativeFeedbackRemoval.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This identifies the order for which a message is sent. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function createNegativeFeedbackRemoval(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): CreateNegativeFeedbackRemovalResponse {
-        list($response) = $this->createNegativeFeedbackRemovalWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->createNegativeFeedbackRemovalWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -2450,10 +2544,11 @@ class MessagingApi
     /**
      * Operation createNegativeFeedbackRemovalWithHttpInfo.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This identifies the order for which a message is sent. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2462,10 +2557,15 @@ class MessagingApi
      */
     public function createNegativeFeedbackRemovalWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createNegativeFeedbackRemovalRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createNegativeFeedbackRemoval');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2566,11 +2666,16 @@ class MessagingApi
      */
     public function createNegativeFeedbackRemovalAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
         $request = $this->createNegativeFeedbackRemovalRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createNegativeFeedbackRemoval');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createNegativeFeedbackRemovalRateLimiter->consume()->ensureAccepted();
         }
@@ -2724,11 +2829,12 @@ class MessagingApi
      * Operation createUnexpectedProblem.
      *
      * @param string                         $amazon_order_id
-     *                                                        An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                            An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                       $marketplace_ids
-     *                                                        A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                            A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateUnexpectedProblemRequest $body
-     *                                                        This contains the message body for a message. (required)
+     *                                                            This contains the message body for a message. (required)
+     * @param null|string                    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -2736,9 +2842,10 @@ class MessagingApi
     public function createUnexpectedProblem(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateUnexpectedProblemRequest $body
+        CreateUnexpectedProblemRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateUnexpectedProblemResponse {
-        list($response) = $this->createUnexpectedProblemWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createUnexpectedProblemWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -2747,11 +2854,12 @@ class MessagingApi
      * Operation createUnexpectedProblemWithHttpInfo.
      *
      * @param string                         $amazon_order_id
-     *                                                        An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                            An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]                       $marketplace_ids
-     *                                                        A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                            A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateUnexpectedProblemRequest $body
-     *                                                        This contains the message body for a message. (required)
+     *                                                            This contains the message body for a message. (required)
+     * @param null|string                    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2761,10 +2869,15 @@ class MessagingApi
     public function createUnexpectedProblemWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateUnexpectedProblemRequest $body
+        CreateUnexpectedProblemRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createUnexpectedProblemRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createUnexpectedProblem');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -2871,11 +2984,16 @@ class MessagingApi
     public function createUnexpectedProblemAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateUnexpectedProblemRequest $body
+        CreateUnexpectedProblemRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse';
         $request = $this->createUnexpectedProblemRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createUnexpectedProblem');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createUnexpectedProblemRateLimiter->consume()->ensureAccepted();
         }
@@ -3045,11 +3163,12 @@ class MessagingApi
      * Operation createWarranty.
      *
      * @param string                $amazon_order_id
-     *                                               An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                   An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]              $marketplace_ids
-     *                                               A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                   A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateWarrantyRequest $body
-     *                                               This contains the message body for a message. (required)
+     *                                                   This contains the message body for a message. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3057,9 +3176,10 @@ class MessagingApi
     public function createWarranty(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateWarrantyRequest $body
+        CreateWarrantyRequest $body,
+        ?string $restrictedDataToken = null
     ): CreateWarrantyResponse {
-        list($response) = $this->createWarrantyWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->createWarrantyWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3068,11 +3188,12 @@ class MessagingApi
      * Operation createWarrantyWithHttpInfo.
      *
      * @param string                $amazon_order_id
-     *                                               An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                                   An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]              $marketplace_ids
-     *                                               A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                                   A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param CreateWarrantyRequest $body
-     *                                               This contains the message body for a message. (required)
+     *                                                   This contains the message body for a message. (required)
+     * @param null|string           $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\CreateWarrantyResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3082,10 +3203,15 @@ class MessagingApi
     public function createWarrantyWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateWarrantyRequest $body
+        CreateWarrantyRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createWarrantyRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createWarranty');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3192,11 +3318,16 @@ class MessagingApi
     public function createWarrantyAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        CreateWarrantyRequest $body
+        CreateWarrantyRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\CreateWarrantyResponse';
         $request = $this->createWarrantyRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createWarranty');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createWarrantyRateLimiter->consume()->ensureAccepted();
         }
@@ -3365,19 +3496,21 @@ class MessagingApi
     /**
      * Operation getAttributes.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This identifies the order for which a message is sent. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getAttributes(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): GetAttributesResponse {
-        list($response) = $this->getAttributesWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->getAttributesWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -3385,10 +3518,11 @@ class MessagingApi
     /**
      * Operation getAttributesWithHttpInfo.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This identifies the order for which a message is sent. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\GetAttributesResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3397,10 +3531,15 @@ class MessagingApi
      */
     public function getAttributesWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getAttributesRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-getAttributes');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3501,11 +3640,16 @@ class MessagingApi
      */
     public function getAttributesAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\GetAttributesResponse';
         $request = $this->getAttributesRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-getAttributes');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getAttributesRateLimiter->consume()->ensureAccepted();
         }
@@ -3658,19 +3802,21 @@ class MessagingApi
     /**
      * Operation getMessagingActionsForOrder.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getMessagingActionsForOrder(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): GetMessagingActionsForOrderResponse {
-        list($response) = $this->getMessagingActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids);
+        list($response) = $this->getMessagingActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -3678,10 +3824,11 @@ class MessagingApi
     /**
      * Operation getMessagingActionsForOrderWithHttpInfo.
      *
-     * @param string   $amazon_order_id
-     *                                  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
-     * @param string[] $marketplace_ids
-     *                                  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param string      $amazon_order_id
+     *                                         An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
+     * @param string[]    $marketplace_ids
+     *                                         A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3690,10 +3837,15 @@ class MessagingApi
      */
     public function getMessagingActionsForOrderWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getMessagingActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-getMessagingActionsForOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -3794,11 +3946,16 @@ class MessagingApi
      */
     public function getMessagingActionsForOrderAsyncWithHttpInfo(
         string $amazon_order_id,
-        array $marketplace_ids
+        array $marketplace_ids,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse';
         $request = $this->getMessagingActionsForOrderRequest($amazon_order_id, $marketplace_ids);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-getMessagingActionsForOrder');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getMessagingActionsForOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -3952,11 +4109,12 @@ class MessagingApi
      * Operation sendInvoice.
      *
      * @param string         $amazon_order_id
-     *                                        An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                            An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]       $marketplace_ids
-     *                                        A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                            A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param InvoiceRequest $body
-     *                                        This contains the message body for a message. (required)
+     *                                            This contains the message body for a message. (required)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -3964,9 +4122,10 @@ class MessagingApi
     public function sendInvoice(
         string $amazon_order_id,
         array $marketplace_ids,
-        InvoiceRequest $body
+        InvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): InvoiceResponse {
-        list($response) = $this->sendInvoiceWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
+        list($response) = $this->sendInvoiceWithHttpInfo($amazon_order_id, $marketplace_ids, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -3975,11 +4134,12 @@ class MessagingApi
      * Operation sendInvoiceWithHttpInfo.
      *
      * @param string         $amazon_order_id
-     *                                        An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     *                                            An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param string[]       $marketplace_ids
-     *                                        A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
+     *                                            A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param InvoiceRequest $body
-     *                                        This contains the message body for a message. (required)
+     *                                            This contains the message body for a message. (required)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\messaging\v1\InvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -3989,10 +4149,15 @@ class MessagingApi
     public function sendInvoiceWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        InvoiceRequest $body
+        InvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->sendInvoiceRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-sendInvoice');
+        } else {
+            $request = $this->config->sign($request);
+        }
 
         try {
             $options = $this->createHttpClientOption();
@@ -4099,11 +4264,16 @@ class MessagingApi
     public function sendInvoiceAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        InvoiceRequest $body
+        InvoiceRequest $body,
+        ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\messaging\v1\InvoiceResponse';
         $request = $this->sendInvoiceRequest($amazon_order_id, $marketplace_ids, $body);
-        $request = $this->config->sign($request);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-sendInvoice');
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->sendInvoiceRateLimiter->consume()->ensureAccepted();
         }

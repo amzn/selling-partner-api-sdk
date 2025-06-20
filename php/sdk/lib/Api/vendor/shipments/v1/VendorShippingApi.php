@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class VendorShippingApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getShipmentDetailsRateLimiter;
     public ?LimiterInterface $getShipmentLabelsRateLimiter;
     public ?LimiterInterface $submitShipmentConfirmationsRateLimiter;
@@ -143,7 +143,6 @@ class VendorShippingApi
     {
         return $this->config;
     }
-
     /**
      * Operation getShipmentDetails
      *
@@ -198,6 +197,7 @@ class VendorShippingApi
      * @param  string|null $seller_warehouse_code
      *  Get Shipping Details based on vendor warehouse code. This value should be same as &#39;sellingParty.partyId&#39; in the Shipment. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse
@@ -226,9 +226,10 @@ class VendorShippingApi
         ?string $vendor_shipment_identifier = null,
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse {
-        list($response) = $this->getShipmentDetailsWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
+        list($response) = $this->getShipmentDetailsWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code,$restrictedDataToken);
         return $response;
     }
 
@@ -286,6 +287,7 @@ class VendorShippingApi
      * @param  string|null $seller_warehouse_code
      *  Get Shipping Details based on vendor warehouse code. This value should be same as &#39;sellingParty.partyId&#39; in the Shipment. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse, HTTP status code, HTTP response headers (array of strings)
@@ -314,11 +316,15 @@ class VendorShippingApi
         ?string $vendor_shipment_identifier = null,
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentDetailsRequest($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-getShipmentDetails");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -553,11 +559,16 @@ class VendorShippingApi
         ?string $vendor_shipment_identifier = null,
         ?string $buyer_reference_number = null,
         ?string $buyer_warehouse_code = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\GetShipmentDetailsResponse';
         $request = $this->getShipmentDetailsRequest($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-getShipmentDetails");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
         }
@@ -1011,6 +1022,7 @@ class VendorShippingApi
      * @param  string|null $seller_warehouse_code
      *  Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\shipments\v1\GetShipmentLabels
@@ -1023,9 +1035,10 @@ class VendorShippingApi
         ?\DateTime $label_created_before = null,
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\GetShipmentLabels {
-        list($response) = $this->getShipmentLabelsWithHttpInfo($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
+        list($response) = $this->getShipmentLabelsWithHttpInfo($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code,$restrictedDataToken);
         return $response;
     }
 
@@ -1049,6 +1062,7 @@ class VendorShippingApi
      * @param  string|null $seller_warehouse_code
      *  Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\shipments\v1\GetShipmentLabels, HTTP status code, HTTP response headers (array of strings)
@@ -1061,11 +1075,15 @@ class VendorShippingApi
         ?\DateTime $label_created_before = null,
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getShipmentLabelsRequest($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-getShipmentLabels");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -1200,11 +1218,16 @@ class VendorShippingApi
         ?\DateTime $label_created_before = null,
         ?string $buyer_reference_number = null,
         ?string $vendor_shipment_identifier = null,
-        ?string $seller_warehouse_code = null
+        ?string $seller_warehouse_code = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\GetShipmentLabels';
         $request = $this->getShipmentLabelsRequest($limit, $sort_order, $next_token, $label_created_after, $label_created_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-getShipmentLabels");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getShipmentLabelsRateLimiter->consume()->ensureAccepted();
         }
@@ -1438,14 +1461,16 @@ class VendorShippingApi
      * @param  \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
      *  A request to submit shipment confirmation. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse
      */
     public function submitShipmentConfirmations(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse {
-        list($response) = $this->submitShipmentConfirmationsWithHttpInfo($body);
+        list($response) = $this->submitShipmentConfirmationsWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1457,16 +1482,21 @@ class VendorShippingApi
      * @param  \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
      *  A request to submit shipment confirmation. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShipmentConfirmationsWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShipmentConfirmationsRequest($body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-submitShipmentConfirmations");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -1563,11 +1593,16 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function submitShipmentConfirmationsAsyncWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse';
         $request = $this->submitShipmentConfirmationsRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-submitShipmentConfirmations");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShipmentConfirmationsRateLimiter->consume()->ensureAccepted();
         }
@@ -1705,14 +1740,16 @@ class VendorShippingApi
      * @param  \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
      *  A request to submit shipment request. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse
      */
     public function submitShipments(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse {
-        list($response) = $this->submitShipmentsWithHttpInfo($body);
+        list($response) = $this->submitShipmentsWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1724,16 +1761,21 @@ class VendorShippingApi
      * @param  \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
      *  A request to submit shipment request. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitShipmentsWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitShipmentsRequest($body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-submitShipments");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -1830,11 +1872,16 @@ class VendorShippingApi
      * @return PromiseInterface
      */
     public function submitShipmentsAsyncWithHttpInfo(
-        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body
+        \SpApi\Model\vendor\shipments\v1\SubmitShipments $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse';
         $request = $this->submitShipmentsRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-submitShipments");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitShipmentsRateLimiter->consume()->ensureAccepted();
         }

@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class VendorOrdersApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $getPurchaseOrderRateLimiter;
     public ?LimiterInterface $getPurchaseOrdersRateLimiter;
     public ?LimiterInterface $getPurchaseOrdersStatusRateLimiter;
@@ -143,21 +143,22 @@ class VendorOrdersApi
     {
         return $this->config;
     }
-
     /**
      * Operation getPurchaseOrder
      *
      * @param  string $purchase_order_number
      *  The purchase order identifier for the order that you want. Formatting Notes: 8-character alpha-numeric code. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\orders\v1\GetPurchaseOrderResponse
      */
     public function getPurchaseOrder(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\orders\v1\GetPurchaseOrderResponse {
-        list($response) = $this->getPurchaseOrderWithHttpInfo($purchase_order_number);
+        list($response) = $this->getPurchaseOrderWithHttpInfo($purchase_order_number,$restrictedDataToken);
         return $response;
     }
 
@@ -167,16 +168,21 @@ class VendorOrdersApi
      * @param  string $purchase_order_number
      *  The purchase order identifier for the order that you want. Formatting Notes: 8-character alpha-numeric code. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\orders\v1\GetPurchaseOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPurchaseOrderWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPurchaseOrderRequest($purchase_order_number);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrder");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -269,11 +275,16 @@ class VendorOrdersApi
      * @return PromiseInterface
      */
     public function getPurchaseOrderAsyncWithHttpInfo(
-        string $purchase_order_number
+        string $purchase_order_number,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\GetPurchaseOrderResponse';
         $request = $this->getPurchaseOrderRequest($purchase_order_number);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrder");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPurchaseOrderRateLimiter->consume()->ensureAccepted();
         }
@@ -433,6 +444,7 @@ class VendorOrdersApi
      * @param  string|null $ordering_vendor_code
      *  Filters purchase orders based on the specified ordering vendor code. This value should be same as &#39;sellingParty.partyId&#39; in the purchase order. If not included in the filter, all purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client application are returned. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersResponse
@@ -449,9 +461,10 @@ class VendorOrdersApi
         ?string $po_item_state = null,
         ?bool $is_po_changed = null,
         ?string $purchase_order_state = null,
-        ?string $ordering_vendor_code = null
+        ?string $ordering_vendor_code = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersResponse {
-        list($response) = $this->getPurchaseOrdersWithHttpInfo($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code);
+        list($response) = $this->getPurchaseOrdersWithHttpInfo($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code,$restrictedDataToken);
         return $response;
     }
 
@@ -483,6 +496,7 @@ class VendorOrdersApi
      * @param  string|null $ordering_vendor_code
      *  Filters purchase orders based on the specified ordering vendor code. This value should be same as &#39;sellingParty.partyId&#39; in the purchase order. If not included in the filter, all purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client application are returned. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersResponse, HTTP status code, HTTP response headers (array of strings)
@@ -499,11 +513,15 @@ class VendorOrdersApi
         ?string $po_item_state = null,
         ?bool $is_po_changed = null,
         ?string $purchase_order_state = null,
-        ?string $ordering_vendor_code = null
+        ?string $ordering_vendor_code = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPurchaseOrdersRequest($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrders");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -662,11 +680,16 @@ class VendorOrdersApi
         ?string $po_item_state = null,
         ?bool $is_po_changed = null,
         ?string $purchase_order_state = null,
-        ?string $ordering_vendor_code = null
+        ?string $ordering_vendor_code = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\GetPurchaseOrdersResponse';
         $request = $this->getPurchaseOrdersRequest($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrders");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPurchaseOrdersRateLimiter->consume()->ensureAccepted();
         }
@@ -974,6 +997,7 @@ class VendorOrdersApi
      * @param  string|null $ship_to_party_id
      *  Filters purchase orders for a specific buyer&#39;s Fulfillment Center/warehouse by providing ship to location id here. This value should be same as &#39;shipToParty.partyId&#39; in the purchase order. If not included in filter, this will return purchase orders for all the buyer&#39;s warehouses used for vendor group purchase orders. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersStatusResponse
@@ -991,9 +1015,10 @@ class VendorOrdersApi
         ?string $item_confirmation_status = null,
         ?string $item_receive_status = null,
         ?string $ordering_vendor_code = null,
-        ?string $ship_to_party_id = null
+        ?string $ship_to_party_id = null,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersStatusResponse {
-        list($response) = $this->getPurchaseOrdersStatusWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id);
+        list($response) = $this->getPurchaseOrdersStatusWithHttpInfo($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id,$restrictedDataToken);
         return $response;
     }
 
@@ -1027,6 +1052,7 @@ class VendorOrdersApi
      * @param  string|null $ship_to_party_id
      *  Filters purchase orders for a specific buyer&#39;s Fulfillment Center/warehouse by providing ship to location id here. This value should be same as &#39;shipToParty.partyId&#39; in the purchase order. If not included in filter, this will return purchase orders for all the buyer&#39;s warehouses used for vendor group purchase orders. (optional)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\orders\v1\GetPurchaseOrdersStatusResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1044,11 +1070,15 @@ class VendorOrdersApi
         ?string $item_confirmation_status = null,
         ?string $item_receive_status = null,
         ?string $ordering_vendor_code = null,
-        ?string $ship_to_party_id = null
+        ?string $ship_to_party_id = null,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->getPurchaseOrdersStatusRequest($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrdersStatus");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -1213,11 +1243,16 @@ class VendorOrdersApi
         ?string $item_confirmation_status = null,
         ?string $item_receive_status = null,
         ?string $ordering_vendor_code = null,
-        ?string $ship_to_party_id = null
+        ?string $ship_to_party_id = null,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\GetPurchaseOrdersStatusResponse';
         $request = $this->getPurchaseOrdersStatusRequest($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrdersStatus");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->getPurchaseOrdersStatusRateLimiter->consume()->ensureAccepted();
         }
@@ -1514,14 +1549,16 @@ class VendorOrdersApi
      * @param  \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body
      *  Submits acknowledgements for one or more purchase orders from a vendor. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse
      */
     public function submitAcknowledgement(
-        \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body
+        \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse {
-        list($response) = $this->submitAcknowledgementWithHttpInfo($body);
+        list($response) = $this->submitAcknowledgementWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -1531,16 +1568,21 @@ class VendorOrdersApi
      * @param  \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body
      *  Submits acknowledgements for one or more purchase orders from a vendor. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitAcknowledgementWithHttpInfo(
-        \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body
+        \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->submitAcknowledgementRequest($body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -1633,11 +1675,16 @@ class VendorOrdersApi
      * @return PromiseInterface
      */
     public function submitAcknowledgementAsyncWithHttpInfo(
-        \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body
+        \SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse';
         $request = $this->submitAcknowledgementRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->submitAcknowledgementRateLimiter->consume()->ensureAccepted();
         }

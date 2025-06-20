@@ -38,6 +38,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
@@ -75,7 +76,6 @@ class CreateContainerLabelApi
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     public ?LimiterInterface $createContainerLabelRateLimiter;
 
     /**
@@ -134,7 +134,6 @@ class CreateContainerLabelApi
     {
         return $this->config;
     }
-
     /**
      * Operation createContainerLabel
      *
@@ -143,14 +142,16 @@ class CreateContainerLabelApi
      * @param  \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
      *  Request body containing the container label data. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse
      */
     public function createContainerLabel(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
+        ?string $restrictedDataToken = null
     ): \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse {
-        list($response) = $this->createContainerLabelWithHttpInfo($body);
+        list($response) = $this->createContainerLabelWithHttpInfo($body,$restrictedDataToken);
         return $response;
     }
 
@@ -162,16 +163,21 @@ class CreateContainerLabelApi
      * @param  \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
      *  Request body containing the container label data. (required)
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createContainerLabelWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->createContainerLabelRequest($body);
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CreateContainerLabelApi-createContainerLabel");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -268,11 +274,16 @@ class CreateContainerLabelApi
      * @return PromiseInterface
      */
     public function createContainerLabelAsyncWithHttpInfo(
-        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body
+        \SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest $body,
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse';
         $request = $this->createContainerLabelRequest($body);
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "CreateContainerLabelApi-createContainerLabel");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->createContainerLabelRateLimiter->consume()->ensureAccepted();
         }

@@ -29,6 +29,7 @@ use GuzzleHttp\RequestOptions;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use {{invokerPackage}}\ApiException;
 use {{invokerPackage}}\Configuration;
 use {{invokerPackage}}\HeaderSelector;
@@ -66,7 +67,6 @@ use {{invokerPackage}}\ObjectSerializer;
 
     private Bool $rateLimiterEnabled;
     private InMemoryStorage $rateLimitStorage;
-
     {{#operation}}
     public ?LimiterInterface ${{operationId}}RateLimiter;
     {{/operation}}
@@ -129,7 +129,6 @@ use {{invokerPackage}}\ObjectSerializer;
     {
         return $this->config;
     }
-
 {{#operation}}
     /**
      * Operation {{{operationId}}}
@@ -160,6 +159,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * {{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return {{#returnType}}{{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{^responses}}void{{/responses}}{{/returnType}}
@@ -169,9 +169,10 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
+        ?string $restrictedDataToken = null
     ){{#returnType}}: {{#responses}}{{#-first}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
-        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});{{#returnType}}
+        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{#allParams}},{{/allParams}}{{/vendorExtensions.x-group-parameters}}$restrictedDataToken);{{#returnType}}
         return $response;{{/returnType}}
     }
 
@@ -204,6 +205,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * {{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
+     * @param  string|null $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of {{#returnType}}{{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{^responses}}void{{/responses}}{{/returnType}}, HTTP status code, HTTP response headers (array of strings)
@@ -213,11 +215,15 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}WithHttpInfo(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
+        ?string $restrictedDataToken = null
     ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        $request = $this->config->sign($request);
-
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "{{classname}}-{{operationId}}");
+        } else {
+            $request = $this->config->sign($request);
+        }
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -382,11 +388,16 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}AsyncWithHttpInfo(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
-    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}{{#allParams}}{{#-last}},{{/-last}}{{/allParams}}
+    ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
-        $request = $this->config->sign($request);
+        if ($restrictedDataToken !== null) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "{{classname}}-{{operationId}}");
+        } else {
+            $request = $this->config->sign($request);
+        }
         if ($this->rateLimiterEnabled) {
             $this->{{operationId}}RateLimiter->consume()->ensureAccepted();
         }

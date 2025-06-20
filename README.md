@@ -41,7 +41,7 @@ You can get started with the SDK in minutes following the instructions for your 
 | Programming language | Basic API Support | RDT Support  | Rate Limiter |
 |----------------------|:-----------------:|:------------:|:------------:|
 | Java                 |         ✅        |      ❌      |      ✅      |
-| PHP                  |         ✅        |      ❌      |      ✅      |
+| PHP                  |         ✅        |      ✅      |      ✅      |
 | JavaScript           |         ✅        |      ❌      |      ✅      |
 | Python               |         ✅        |      ❌      |      ❌      |
 | C#                   |         ✅        |      ❌      |      ❌      |
