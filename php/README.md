@@ -155,7 +155,7 @@ $response = $ordersApi->getOrders(
     restrictedDataToken: $rdtToken  // Pass RDT token
 );
 ```
-Check the full implementation [example](../examples/getOrdersWithRestrictedDataToken.php). If you pass the Restricted Data Token to operations which does not require it, the SDK will return an exception error. `Operation does not require a Restricted Data Token (RDT). Remove the RDT parameter for non-restricted operations.`
+Check the full implementation [example](https://github.com/amzn/selling-partner-api-sdk/tree/main/php/examples/getOrdersWithRestrictedDataToken.php). If you pass the Restricted Data Token to operations which does not require it, the SDK will return an exception error. `Operation does not require a Restricted Data Token (RDT). Remove the RDT parameter for non-restricted operations.`
 
 ### Giving Feedback
 
