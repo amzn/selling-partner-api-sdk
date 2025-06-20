@@ -116,6 +116,46 @@ $rateLimitConfiguration = [
 $factory = new RateLimiterFactory($rateLimitConfiguration, new InMemoryStorage());
 $api->getOrderRateLimiter = $factory->create("<insert-unique-id>"); // Use unique id in create-method
 ```
+### Restricted Data Token (RDT) Support
+
+The SDK provides built-in support for working with Restricted Data Tokens (RDTs), which are required to access personally identifiable information (PII) in [certain API operations](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide#restricted-operations).
+
+To use Restricted Data Token with the SDK:
+
+1. **Request an RDT token** using the Tokens API.
+
+```php
+// Create a restricted resource
+$resource = new RestrictedResource();
+$resource->setMethod('GET');
+$resource->setPath('/orders/v0/orders');
+$resource->setDataElements([
+    'buyerInfo',
+    'shippingAddress'
+]);
+
+// Get a Restricted Data Token
+$tokensApi = new TokensApi($config);
+$request = new CreateRestrictedDataTokenRequest();
+$request->setRestrictedResources([$resource]);
+$response = $tokensApi->createRestrictedDataToken($request);
+$rdtToken = $response->getRestrictedDataToken();
+```
+2. Use the token when calling restricted operations:
+
+```php
+// Pass the RDT token to the API call
+$response = $ordersApi->getOrders(
+    ['ATVPDKIKX0DER'],  // marketplace_ids
+    '2023-01-01T00:00:00Z',  // createdAfter
+    null,  // createdBefore
+    null,  // lastUpdatedAfter
+    null,  // lastUpdatedBefore
+    ['Shipped'],  // orderStatuses
+    restrictedDataToken: $rdtToken  // Pass RDT token
+);
+```
+Check the full implementation [example](../examples/getOrdersWithRestrictedDataToken.php). If you pass the Restricted Data Token to operations which does not require it, the SDK will return an exception error. `Operation does not require a Restricted Data Token (RDT). Remove the RDT parameter for non-restricted operations.`
 
 ### Giving Feedback
 
