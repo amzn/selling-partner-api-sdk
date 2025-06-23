@@ -107,4 +107,4 @@ jobs:
           delete-branch: true  # Overwrite if branch exists
           assignees: xujiache
           path: ./selling-partner-api-sdk
-          token: ${{ secrets.MAFGE_PAT}}
+          # token: ${{ secrets.MAFGE_PAT}}
