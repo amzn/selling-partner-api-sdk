@@ -32,7 +32,7 @@ Add the following lines to the dependencies in your `yourProject.csproj` file:
 ```xml
    <ItemGroup>
     <Compile Include="Yourtest.cs" />
-    <PackageReference Include="software.amzn.spapi" Version="1.1.1" />
+    <PackageReference Include="software.amzn.spapi" Version="1.1.2" />
   </ItemGroup>
 ```
 
