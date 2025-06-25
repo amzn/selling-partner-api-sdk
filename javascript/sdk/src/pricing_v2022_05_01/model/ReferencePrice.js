@@ -25,7 +25,7 @@ export class ReferencePrice {
    * The reference price for the specified ASIN &#x60;marketplaceId&#x60; combination.
    * @alias module:pricing_v2022_05_01/model/ReferencePrice
    * @class
-   * @param name {String} The name of the reference price, such as `CompetitivePriceThreshold` and `WasPrice`. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+   * @param name {String} Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
    * @param price {module:pricing_v2022_05_01/model/MoneyType}
    */
   constructor (name, price) {
@@ -62,7 +62,7 @@ export class ReferencePrice {
 }
 
 /**
- * The name of the reference price, such as `CompetitivePriceThreshold` and `WasPrice`. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+ * Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  * @member {String} name
  */
 ReferencePrice.prototype.name = undefined

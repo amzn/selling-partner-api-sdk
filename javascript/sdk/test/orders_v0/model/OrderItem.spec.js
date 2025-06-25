@@ -437,16 +437,6 @@ describe('OrderItem', () => {
     expect(instance.amazonPrograms).to.equal(expectedValue);
   });
 
-  it('should have the property exportInfo', () => {
-    // verify property exists
-    expect(instance).to.have.property('exportInfo');
-
-    // set and verify value
-    const expectedValue = generateMockData('ExportInfo');
-    instance.exportInfo = expectedValue;
-    expect(instance.exportInfo).to.equal(expectedValue);
-  });
-
 });
 
 // Helper function to generate random test data

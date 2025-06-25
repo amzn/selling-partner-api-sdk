@@ -21,10 +21,10 @@ import { ApiClient } from '../ApiClient.js'
 export class AmazonPrograms {
   /**
    * Constructs a new <code>AmazonPrograms</code>.
-   * Contains the list of programs that are associated with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products.
+   * Contains the list of programs that Amazon associates with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products. - **FBM Ship+**: Unlocks expedited shipping without the extra cost. Helps you to provide accurate and fast delivery dates to Amazon customers. You also receive protection from late deliveries, a discount on expedited shipping rates, and cash back when you ship.
    * @alias module:orders_v0/model/AmazonPrograms
    * @class
-   * @param programs {Array.<String>} A list of the programs that are associated with the specified order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`
+   * @param programs {Array.<String>} A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`
    */
   constructor (programs) {
     this.programs = programs
@@ -58,7 +58,7 @@ export class AmazonPrograms {
 }
 
 /**
- * A list of the programs that are associated with the specified order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`
+ * A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`
  * @member {Array.<String>} programs
  */
 AmazonPrograms.prototype.programs = undefined

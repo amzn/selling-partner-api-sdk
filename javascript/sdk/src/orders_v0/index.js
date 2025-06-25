@@ -33,7 +33,6 @@ import { EasyShipShipmentStatus } from './model/EasyShipShipmentStatus.js'
 import { ElectronicInvoiceStatus } from './model/ElectronicInvoiceStatus.js'
 import { Error } from './model/Error.js'
 import { ExceptionDates } from './model/ExceptionDates.js'
-import { ExportInfo } from './model/ExportInfo.js'
 import { FulfillmentInstruction } from './model/FulfillmentInstruction.js'
 import { GetOrderAddressResponse } from './model/GetOrderAddressResponse.js'
 import { GetOrderBuyerInfoResponse } from './model/GetOrderBuyerInfoResponse.js'
@@ -224,12 +223,6 @@ export {
      * @property {module:orders_v0/model/ExceptionDates}
      */
   ExceptionDates,
-
-  /**
-     * The ExportInfo model constructor.
-     * @property {module:orders_v0/model/ExportInfo}
-     */
-  ExportInfo,
 
   /**
      * The FulfillmentInstruction model constructor.

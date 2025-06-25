@@ -86,7 +86,7 @@ PackageDetail.prototype.packageReferenceId = undefined
 PackageDetail.prototype.carrierCode = undefined
 
 /**
- * Carrier Name that will deliver the package. Required when `carrierCode` is \"Others\"
+ * Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"
  * @member {String} carrierName
  */
 PackageDetail.prototype.carrierName = undefined
