@@ -131,7 +131,7 @@ class Context(object):
     def store_name(self):
         """Gets the store_name of this Context.  # noqa: E501
 
-        Store name related to transaction.  # noqa: E501
+        The store name associated with the transaction.  # noqa: E501
 
         :return: The store_name of this Context.  # noqa: E501
         :rtype: str
@@ -142,11 +142,18 @@ class Context(object):
     def store_name(self, store_name):
         """Sets the store_name of this Context.
 
-        Store name related to transaction.  # noqa: E501
+        The store name associated with the transaction.  # noqa: E501
 
         :param store_name: The store_name of this Context.  # noqa: E501
         :type: str
         """
+        allowed_values = ["AMAZON_HAUL"]  # noqa: E501
+        if (self._configuration.client_side_validation and
+                store_name not in allowed_values):
+            raise ValueError(
+                "Invalid value for `store_name` ({0}), must be one of {1}"  # noqa: E501
+                .format(store_name, allowed_values)
+            )
 
         self._store_name = store_name
 

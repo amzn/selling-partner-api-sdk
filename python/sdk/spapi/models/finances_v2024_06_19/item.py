@@ -144,7 +144,7 @@ class Item(object):
     def breakdowns(self):
         """Gets the breakdowns of this Item.  # noqa: E501
 
-        List of breakdowns which will provide the details on how the total amount is calculated for the financial transaction.  # noqa: E501
+        A list of breakdowns that detail how the total amount is calculated for the transaction.  # noqa: E501
 
         :return: The breakdowns of this Item.  # noqa: E501
         :rtype: List[Breakdown]
@@ -155,7 +155,7 @@ class Item(object):
     def breakdowns(self, breakdowns):
         """Sets the breakdowns of this Item.
 
-        List of breakdowns which will provide the details on how the total amount is calculated for the financial transaction.  # noqa: E501
+        A list of breakdowns that detail how the total amount is calculated for the transaction.  # noqa: E501
 
         :param breakdowns: The breakdowns of this Item.  # noqa: E501
         :type: List[Breakdown]

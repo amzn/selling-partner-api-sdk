@@ -16,6 +16,7 @@
 # import models into model package
 from spapi.models.finances_v2024_06_19.amazon_pay_context import AmazonPayContext
 from spapi.models.finances_v2024_06_19.breakdown import Breakdown
+from spapi.models.finances_v2024_06_19.business_context import BusinessContext
 from spapi.models.finances_v2024_06_19.context import Context
 from spapi.models.finances_v2024_06_19.currency import Currency
 from spapi.models.finances_v2024_06_19.deferred_context import DeferredContext
@@ -31,3 +32,4 @@ from spapi.models.finances_v2024_06_19.related_identifier import RelatedIdentifi
 from spapi.models.finances_v2024_06_19.selling_partner_metadata import SellingPartnerMetadata
 from spapi.models.finances_v2024_06_19.time_range_context import TimeRangeContext
 from spapi.models.finances_v2024_06_19.transaction import Transaction
+from spapi.models.finances_v2024_06_19.transactions_payload import TransactionsPayload

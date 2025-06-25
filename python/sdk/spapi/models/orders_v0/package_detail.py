@@ -137,7 +137,7 @@ class PackageDetail(object):
     def carrier_name(self):
         """Gets the carrier_name of this PackageDetail.  # noqa: E501
 
-        Carrier Name that will deliver the package. Required when `carrierCode` is \"Others\"   # noqa: E501
+        Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"   # noqa: E501
 
         :return: The carrier_name of this PackageDetail.  # noqa: E501
         :rtype: str
@@ -148,7 +148,7 @@ class PackageDetail(object):
     def carrier_name(self, carrier_name):
         """Sets the carrier_name of this PackageDetail.
 
-        Carrier Name that will deliver the package. Required when `carrierCode` is \"Others\"   # noqa: E501
+        Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"   # noqa: E501
 
         :param carrier_name: The carrier_name of this PackageDetail.  # noqa: E501
         :type: str

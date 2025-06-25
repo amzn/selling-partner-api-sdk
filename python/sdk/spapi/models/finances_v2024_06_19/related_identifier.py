@@ -78,7 +78,7 @@ class RelatedIdentifier(object):
         :param related_identifier_name: The related_identifier_name of this RelatedIdentifier.  # noqa: E501
         :type: str
         """
-        allowed_values = ["ORDER_ID", "SHIPMENT_ID", "EVENT_GROUP_ID", "REFUND_ID", "INVOICE_ID", "DISBURSEMENT_ID", "TRANSFER_ID", "DEFERRED_TRANSACTION_ID", "RELEASE_TRANSACTION_ID"]  # noqa: E501
+        allowed_values = ["ORDER_ID", "SHIPMENT_ID", "FINANCIAL_EVENT_GROUP_ID", "REFUND_ID", "INVOICE_ID", "DISBURSEMENT_ID", "TRANSFER_ID", "DEFERRED_TRANSACTION_ID", "RELEASE_TRANSACTION_ID", "SETTLEMENT_ID"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 related_identifier_name not in allowed_values):
             raise ValueError(

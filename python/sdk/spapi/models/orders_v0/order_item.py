@@ -74,7 +74,6 @@ class OrderItem(object):
         'measurement': 'Measurement',
         'shipping_constraints': 'ShippingConstraints',
         'amazon_programs': 'AmazonPrograms',
-        'export_info': 'ExportInfo',
     }
 
     attribute_map = {
@@ -118,10 +117,9 @@ class OrderItem(object):
         'measurement': 'Measurement',
         'shipping_constraints': 'ShippingConstraints',
         'amazon_programs': 'AmazonPrograms',
-        'export_info': 'ExportInfo',
     }
 
-    def __init__(self, asin=None, seller_sku=None, order_item_id=None, associated_items=None, title=None, quantity_ordered=None, quantity_shipped=None, product_info=None, points_granted=None, item_price=None, shipping_price=None, item_tax=None, shipping_tax=None, shipping_discount=None, shipping_discount_tax=None, promotion_discount=None, promotion_discount_tax=None, promotion_ids=None, cod_fee=None, cod_fee_discount=None, is_gift=None, condition_note=None, condition_id=None, condition_subtype_id=None, scheduled_delivery_start_date=None, scheduled_delivery_end_date=None, price_designation=None, tax_collection=None, serial_number_required=None, is_transparency=None, ioss_number=None, store_chain_store_id=None, deemed_reseller_category=None, buyer_info=None, buyer_requested_cancel=None, serial_numbers=None, substitution_preferences=None, measurement=None, shipping_constraints=None, amazon_programs=None, export_info=None, _configuration=None):  # noqa: E501
+    def __init__(self, asin=None, seller_sku=None, order_item_id=None, associated_items=None, title=None, quantity_ordered=None, quantity_shipped=None, product_info=None, points_granted=None, item_price=None, shipping_price=None, item_tax=None, shipping_tax=None, shipping_discount=None, shipping_discount_tax=None, promotion_discount=None, promotion_discount_tax=None, promotion_ids=None, cod_fee=None, cod_fee_discount=None, is_gift=None, condition_note=None, condition_id=None, condition_subtype_id=None, scheduled_delivery_start_date=None, scheduled_delivery_end_date=None, price_designation=None, tax_collection=None, serial_number_required=None, is_transparency=None, ioss_number=None, store_chain_store_id=None, deemed_reseller_category=None, buyer_info=None, buyer_requested_cancel=None, serial_numbers=None, substitution_preferences=None, measurement=None, shipping_constraints=None, amazon_programs=None, _configuration=None):  # noqa: E501
         """OrderItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -167,7 +165,6 @@ class OrderItem(object):
         self._measurement = None
         self._shipping_constraints = None
         self._amazon_programs = None
-        self._export_info = None
         self.discriminator = None
 
         self.asin = asin
@@ -247,8 +244,6 @@ class OrderItem(object):
             self.shipping_constraints = shipping_constraints
         if amazon_programs is not None:
             self.amazon_programs = amazon_programs
-        if export_info is not None:
-            self.export_info = export_info
 
     @property
     def asin(self):
@@ -1144,27 +1139,6 @@ class OrderItem(object):
         """
 
         self._amazon_programs = amazon_programs
-
-    @property
-    def export_info(self):
-        """Gets the export_info of this OrderItem.  # noqa: E501
-
-
-        :return: The export_info of this OrderItem.  # noqa: E501
-        :rtype: ExportInfo
-        """
-        return self._export_info
-
-    @export_info.setter
-    def export_info(self, export_info):
-        """Sets the export_info of this OrderItem.
-
-
-        :param export_info: The export_info of this OrderItem.  # noqa: E501
-        :type: ExportInfo
-        """
-
-        self._export_info = export_info
 
     def to_dict(self):
         """Returns the model properties as a dict"""

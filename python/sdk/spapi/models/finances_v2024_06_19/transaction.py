@@ -202,7 +202,7 @@ class Transaction(object):
     def transaction_status(self):
         """Gets the transaction_status of this Transaction.  # noqa: E501
 
-        The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. Deferred transactions will have their status updated to `DEFERRED_RELEASED` when released.  # noqa: E501
+        The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.  # noqa: E501
 
         :return: The transaction_status of this Transaction.  # noqa: E501
         :rtype: str
@@ -213,7 +213,7 @@ class Transaction(object):
     def transaction_status(self, transaction_status):
         """Sets the transaction_status of this Transaction.
 
-        The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. Deferred transactions will have their status updated to `DEFERRED_RELEASED` when released.  # noqa: E501
+        The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.  # noqa: E501
 
         :param transaction_status: The transaction_status of this Transaction.  # noqa: E501
         :type: str
@@ -359,7 +359,7 @@ class Transaction(object):
     def breakdowns(self):
         """Gets the breakdowns of this Transaction.  # noqa: E501
 
-        List of breakdowns which will provide the details on how the total amount is calculated for the financial transaction.  # noqa: E501
+        A list of breakdowns that detail how the total amount is calculated for the transaction.  # noqa: E501
 
         :return: The breakdowns of this Transaction.  # noqa: E501
         :rtype: List[Breakdown]
@@ -370,7 +370,7 @@ class Transaction(object):
     def breakdowns(self, breakdowns):
         """Sets the breakdowns of this Transaction.
 
-        List of breakdowns which will provide the details on how the total amount is calculated for the financial transaction.  # noqa: E501
+        A list of breakdowns that detail how the total amount is calculated for the transaction.  # noqa: E501
 
         :param breakdowns: The breakdowns of this Transaction.  # noqa: E501
         :type: List[Breakdown]

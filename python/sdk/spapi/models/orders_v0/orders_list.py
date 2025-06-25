@@ -119,7 +119,7 @@ class OrdersList(object):
     def last_updated_before(self):
         """Gets the last_updated_before of this OrdersList.  # noqa: E501
 
-        Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. All dates must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
+        Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. Use [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format for all dates.  # noqa: E501
 
         :return: The last_updated_before of this OrdersList.  # noqa: E501
         :rtype: str
@@ -130,7 +130,7 @@ class OrdersList(object):
     def last_updated_before(self, last_updated_before):
         """Sets the last_updated_before of this OrdersList.
 
-        Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. All dates must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  # noqa: E501
+        Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. Use [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format for all dates.  # noqa: E501
 
         :param last_updated_before: The last_updated_before of this OrdersList.  # noqa: E501
         :type: str

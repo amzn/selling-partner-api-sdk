@@ -35,7 +35,6 @@ from spapi.models.orders_v0.easy_ship_shipment_status import EasyShipShipmentSta
 from spapi.models.orders_v0.electronic_invoice_status import ElectronicInvoiceStatus
 from spapi.models.orders_v0.error import Error
 from spapi.models.orders_v0.exception_dates import ExceptionDates
-from spapi.models.orders_v0.export_info import ExportInfo
 from spapi.models.orders_v0.fulfillment_instruction import FulfillmentInstruction
 from spapi.models.orders_v0.get_order_address_response import GetOrderAddressResponse
 from spapi.models.orders_v0.get_order_buyer_info_response import GetOrderBuyerInfoResponse

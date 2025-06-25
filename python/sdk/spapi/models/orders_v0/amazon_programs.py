@@ -56,7 +56,7 @@ class AmazonPrograms(object):
     def programs(self):
         """Gets the programs of this AmazonPrograms.  # noqa: E501
 
-        A list of the programs that are associated with the specified order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`  # noqa: E501
+        A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`  # noqa: E501
 
         :return: The programs of this AmazonPrograms.  # noqa: E501
         :rtype: List[str]
@@ -67,7 +67,7 @@ class AmazonPrograms(object):
     def programs(self, programs):
         """Sets the programs of this AmazonPrograms.
 
-        A list of the programs that are associated with the specified order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`  # noqa: E501
+        A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`  # noqa: E501
 
         :param programs: The programs of this AmazonPrograms.  # noqa: E501
         :type: List[str]

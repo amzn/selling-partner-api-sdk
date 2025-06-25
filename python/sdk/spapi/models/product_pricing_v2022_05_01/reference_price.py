@@ -60,7 +60,7 @@ class ReferencePrice(object):
     def name(self):
         """Gets the name of this ReferencePrice.  # noqa: E501
 
-        The name of the reference price, such as `CompetitivePriceThreshold` and `WasPrice`. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).  # noqa: E501
+        Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).  # noqa: E501
 
         :return: The name of this ReferencePrice.  # noqa: E501
         :rtype: str
@@ -71,7 +71,7 @@ class ReferencePrice(object):
     def name(self, name):
         """Sets the name of this ReferencePrice.
 
-        The name of the reference price, such as `CompetitivePriceThreshold` and `WasPrice`. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).  # noqa: E501
+        Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).  # noqa: E501
 
         :param name: The name of this ReferencePrice.  # noqa: E501
         :type: str
