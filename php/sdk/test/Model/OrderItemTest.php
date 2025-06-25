@@ -510,16 +510,4 @@ class OrderItemTest extends TestCase
         $this->model->setAmazonPrograms($testValue);
         $this->assertEquals($testValue, $this->model->getAmazonPrograms());
     }
-
-    /**
-     * Test attribute "export_info"
-     */
-    public function testPropertyExportInfo()
-    {
-        
-        $testValue = new \SpApi\Model\orders\v0\ExportInfo();
-        
-        $this->model->setExportInfo($testValue);
-        $this->assertEquals($testValue, $this->model->getExportInfo());
-    }
 }

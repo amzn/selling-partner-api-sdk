@@ -358,7 +358,7 @@ class PackageDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets carrier_name.
      *
-     * @param null|string $carrier_name Carrier Name that will deliver the package. Required when `carrierCode` is \"Others\"
+     * @param null|string $carrier_name Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"
      */
     public function setCarrierName(?string $carrier_name): self
     {

@@ -701,7 +701,7 @@ class OrdersV0Api
      * Operation getOrderAddress.
      *
      * @param string      $order_id
-     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -720,7 +720,7 @@ class OrdersV0Api
      * Operation getOrderAddressWithHttpInfo.
      *
      * @param string      $order_id
-     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderAddressResponse, HTTP status code, HTTP response headers (array of strings)
@@ -807,7 +807,7 @@ class OrdersV0Api
      * Operation getOrderAddressAsync.
      *
      * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -827,7 +827,7 @@ class OrdersV0Api
      * Operation getOrderAddressAsyncWithHttpInfo.
      *
      * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -888,7 +888,7 @@ class OrdersV0Api
      * Create request for operation 'getOrderAddress'.
      *
      * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -972,7 +972,7 @@ class OrdersV0Api
      * Operation getOrderBuyerInfo.
      *
      * @param string      $order_id
-     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -991,7 +991,7 @@ class OrdersV0Api
      * Operation getOrderBuyerInfoWithHttpInfo.
      *
      * @param string      $order_id
-     *                                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1078,7 +1078,7 @@ class OrdersV0Api
      * Operation getOrderBuyerInfoAsync.
      *
      * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1098,7 +1098,7 @@ class OrdersV0Api
      * Operation getOrderBuyerInfoAsyncWithHttpInfo.
      *
      * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1159,7 +1159,7 @@ class OrdersV0Api
      * Create request for operation 'getOrderBuyerInfo'.
      *
      * @param string $order_id
-     *                         An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1837,7 +1837,7 @@ class OrdersV0Api
      * Operation getOrderRegulatedInfo.
      *
      * @param string      $order_id
-     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1856,7 +1856,7 @@ class OrdersV0Api
      * Operation getOrderRegulatedInfoWithHttpInfo.
      *
      * @param string      $order_id
-     *                                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1943,7 +1943,7 @@ class OrdersV0Api
      * Operation getOrderRegulatedInfoAsync.
      *
      * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1963,7 +1963,7 @@ class OrdersV0Api
      * Operation getOrderRegulatedInfoAsyncWithHttpInfo.
      *
      * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -2024,7 +2024,7 @@ class OrdersV0Api
      * Create request for operation 'getOrderRegulatedInfo'.
      *
      * @param string $order_id
-     *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -2913,7 +2913,7 @@ class OrdersV0Api
      * Operation updateVerificationStatus.
      *
      * @param string                          $order_id
-     *                                                             An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                             The Amazon order identifier in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
      *                                                             The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -2933,7 +2933,7 @@ class OrdersV0Api
      * Operation updateVerificationStatusWithHttpInfo.
      *
      * @param string                          $order_id
-     *                                                             An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                             The Amazon order identifier in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
      *                                                             The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      * @param null|string                     $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -3011,7 +3011,7 @@ class OrdersV0Api
      * Operation updateVerificationStatusAsync.
      *
      * @param string                          $order_id
-     *                                                  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                  The Amazon order identifier in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
      *                                                  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
@@ -3034,7 +3034,7 @@ class OrdersV0Api
      * Operation updateVerificationStatusAsyncWithHttpInfo.
      *
      * @param string                          $order_id
-     *                                                  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                  The Amazon order identifier in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
      *                                                  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
@@ -3085,7 +3085,7 @@ class OrdersV0Api
      * Create request for operation 'updateVerificationStatus'.
      *
      * @param string                          $order_id
-     *                                                  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     *                                                  The Amazon order identifier in 3-7-7 format. (required)
      * @param UpdateVerificationStatusRequest $payload
      *                                                  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
