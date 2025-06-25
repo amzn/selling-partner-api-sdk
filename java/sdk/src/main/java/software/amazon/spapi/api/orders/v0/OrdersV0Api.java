@@ -153,11 +153,11 @@ public class OrdersV0Api {
 
     /**
      * Updates the shipment confirmation status for a specified order. **Usage Plan:** | Rate (requests per second) |
-     * Burst | | ---- | ---- | | 2 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
-     * rate limits that were applied to the requested operation, when available. The preceding table contains the
-     * default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Burst | | ---- | ---- | | 2 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan
+     * rate limits for the operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput might have higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Request body of &#x60;confirmShipment&#x60;. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -170,11 +170,11 @@ public class OrdersV0Api {
 
     /**
      * Updates the shipment confirmation status for a specified order. **Usage Plan:** | Rate (requests per second) |
-     * Burst | | ---- | ---- | | 2 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
-     * rate limits that were applied to the requested operation, when available. The preceding table contains the
-     * default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Burst | | ---- | ---- | | 2 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan
+     * rate limits for the operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput might have higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Request body of &#x60;confirmShipment&#x60;. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -192,11 +192,10 @@ public class OrdersV0Api {
 
     /**
      * (asynchronously) Updates the shipment confirmation status for a specified order. **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 2 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
-     * contains the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may receive higher rate and burst values then those shown here. For more information, refer to
-     * [Usage Plans and Rate
+     * per second) | Burst | | ---- | ---- | | 2 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains
+     * the usage plan rate limits for the operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput might have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Request body of &#x60;confirmShipment&#x60;. (required)
@@ -280,10 +279,10 @@ public class OrdersV0Api {
 
     /**
      * Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
-     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
-     * applied to the requested operation, when available. The preceding table contains the default rate and burst
-     * values for this operation. Selling partners whose business demands require higher throughput may receive higher
-     * rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -298,10 +297,10 @@ public class OrdersV0Api {
 
     /**
      * Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
-     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
-     * applied to the requested operation, when available. The preceding table contains the default rate and burst
-     * values for this operation. Selling partners whose business demands require higher throughput may receive higher
-     * rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -319,10 +318,10 @@ public class OrdersV0Api {
 
     /**
      * (asynchronously) Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
-     * ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The preceding table contains the default
-     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * receive higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -350,7 +349,7 @@ public class OrdersV0Api {
     /**
      * Build call for getOrderAddress
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -405,13 +404,13 @@ public class OrdersV0Api {
 
     /**
      * Returns the shipping address for the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The preceding table contains the default
-     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * receive higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan
+     * rate limits for the operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput might have higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return GetOrderAddressResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -423,13 +422,13 @@ public class OrdersV0Api {
 
     /**
      * Returns the shipping address for the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The preceding table contains the default
-     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * receive higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan
+     * rate limits for the operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput might have higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return ApiResponse&lt;GetOrderAddressResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -445,14 +444,13 @@ public class OrdersV0Api {
 
     /**
      * (asynchronously) Returns the shipping address for the order that you specify. **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
-     * contains the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may receive higher rate and burst values then those shown here. For more information, refer to
-     * [Usage Plans and Rate
+     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * contains the usage plan rate limits for the operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput might
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -477,7 +475,7 @@ public class OrdersV0Api {
     /**
      * Build call for getOrderBuyerInfo
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -532,13 +530,13 @@ public class OrdersV0Api {
 
     /**
      * Returns buyer information for the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst |
-     * | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The preceding table contains the default
-     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * receive higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return GetOrderBuyerInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -550,13 +548,13 @@ public class OrdersV0Api {
 
     /**
      * Returns buyer information for the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst |
-     * | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The preceding table contains the default
-     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * receive higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate
+     * | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return ApiResponse&lt;GetOrderBuyerInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -572,13 +570,13 @@ public class OrdersV0Api {
 
     /**
      * (asynchronously) Returns buyer information for the order that you specify. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains
+     * the usage plan rate limits for the operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput might have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -666,11 +664,10 @@ public class OrdersV0Api {
      * After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped,
      * Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes,
      * shipping charges, gift status and promotions for the order items in the order. **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
-     * contains the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may receive higher rate and burst values then those shown here. For more information, refer to
-     * [Usage Plans and Rate
+     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * contains the usage plan rate limits for the operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput might
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -692,11 +689,10 @@ public class OrdersV0Api {
      * After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped,
      * Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes,
      * shipping charges, gift status and promotions for the order items in the order. **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
-     * contains the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may receive higher rate and burst values then those shown here. For more information, refer to
-     * [Usage Plans and Rate
+     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * contains the usage plan rate limits for the operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput might
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -723,11 +719,10 @@ public class OrdersV0Api {
      * Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing,
      * taxes, shipping charges, gift status and promotions for the order items in the order. **Usage Plan:** | Rate
      * (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
-     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
-     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may receive higher rate and burst values then those shown here. For more
-     * information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
@@ -814,11 +809,11 @@ public class OrdersV0Api {
 
     /**
      * Returns buyer information for the order items in the order that you specify. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains
+     * the usage plan rate limits for the operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput might have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
@@ -834,11 +829,11 @@ public class OrdersV0Api {
 
     /**
      * Returns buyer information for the order items in the order that you specify. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains
+     * the usage plan rate limits for the operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput might have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
@@ -858,11 +853,10 @@ public class OrdersV0Api {
     /**
      * (asynchronously) Returns buyer information for the order items in the order that you specify. **Usage Plan:** |
      * Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
-     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
-     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may receive higher rate and burst values then those shown here. For more
-     * information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
@@ -891,7 +885,7 @@ public class OrdersV0Api {
     /**
      * Build call for getOrderRegulatedInfo
      *
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -947,13 +941,13 @@ public class OrdersV0Api {
 
     /**
      * Returns regulated information for the order that you specify. **Usage Plan:** | Rate (requests per second) |
-     * Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
-     * plan rate limits that were applied to the requested operation, when available. The preceding table contains the
-     * default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return GetOrderRegulatedInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -965,13 +959,13 @@ public class OrdersV0Api {
 
     /**
      * Returns regulated information for the order that you specify. **Usage Plan:** | Rate (requests per second) |
-     * Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
-     * plan rate limits that were applied to the requested operation, when available. The preceding table contains the
-     * default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may receive higher rate and burst values then those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return ApiResponse&lt;GetOrderRegulatedInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -987,14 +981,13 @@ public class OrdersV0Api {
 
     /**
      * (asynchronously) Returns regulated information for the order that you specify. **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
-     * contains the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may receive higher rate and burst values then those shown here. For more information, refer to
-     * [Usage Plans and Rate
+     * per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * contains the usage plan rate limits for the operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput might
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1282,12 +1275,10 @@ public class OrdersV0Api {
      * of orders, you can apply filters to your request. &#x60;NextToken&#x60; doesn&#x27;t affect any filters that you
      * include in your request; it only impacts the pagination for the filtered orders response. **Usage Plan:** | Rate
      * (requests per second) | Burst | | ---- | ---- | | 0.0167 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
-     * header returns the usage plan rate limits that are applied to the requested operation, when available. The
-     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may receive higher rate and burst values then those shown here. For more
-     * information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
-     * Partner API documentation.
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceIds A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the
      *     specified marketplaces. Refer to [Marketplace
@@ -1441,12 +1432,10 @@ public class OrdersV0Api {
      * of orders, you can apply filters to your request. &#x60;NextToken&#x60; doesn&#x27;t affect any filters that you
      * include in your request; it only impacts the pagination for the filtered orders response. **Usage Plan:** | Rate
      * (requests per second) | Burst | | ---- | ---- | | 0.0167 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
-     * header returns the usage plan rate limits that are applied to the requested operation, when available. The
-     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may receive higher rate and burst values then those shown here. For more
-     * information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
-     * Partner API documentation.
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceIds A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the
      *     specified marketplaces. Refer to [Marketplace
@@ -1604,12 +1593,11 @@ public class OrdersV0Api {
      * return specific types of orders, you can apply filters to your request. &#x60;NextToken&#x60; doesn&#x27;t affect
      * any filters that you include in your request; it only impacts the pagination for the filtered orders response.
      * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 20 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may receive higher rate and burst
-     * values then those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
-     * Partner API documentation.
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceIds A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the
      *     specified marketplaces. Refer to [Marketplace
@@ -1775,7 +1763,7 @@ public class OrdersV0Api {
      * Build call for updateVerificationStatus
      *
      * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1840,14 +1828,14 @@ public class OrdersV0Api {
     /**
      * Updates (approves or rejects) the verification status of an order containing regulated products. **Usage Plan:**
      * | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
-     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
-     * The preceding table contains the default rate and burst values for this operation. Selling partners whose
-     * business demands require higher throughput may receive higher rate and burst values then those shown here. For
-     * more information, refer to [Usage Plans and Rate
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
@@ -1859,14 +1847,14 @@ public class OrdersV0Api {
     /**
      * Updates (approves or rejects) the verification status of an order containing regulated products. **Usage Plan:**
      * | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
-     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
-     * The preceding table contains the default rate and burst values for this operation. Selling partners whose
-     * business demands require higher throughput may receive higher rate and burst values then those shown here. For
-     * more information, refer to [Usage Plans and Rate
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1882,14 +1870,14 @@ public class OrdersV0Api {
     /**
      * (asynchronously) Updates (approves or rejects) the verification status of an order containing regulated products.
      * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may receive higher rate and burst
-     * values then those shown here. For more information, refer to [Usage Plans and Rate
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
-     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

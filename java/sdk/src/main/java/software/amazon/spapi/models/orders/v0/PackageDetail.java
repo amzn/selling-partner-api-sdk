@@ -93,11 +93,11 @@ public class PackageDetail {
     }
 
     /**
-     * Carrier Name that will deliver the package. Required when &#x60;carrierCode&#x60; is \&quot;Others\&quot;
+     * Carrier name that will deliver the package. Required when &#x60;carrierCode&#x60; is \&quot;Other\&quot;
      *
      * @return carrierName
      */
-    @Schema(description = "Carrier Name that will deliver the package. Required when `carrierCode` is \"Others\" ")
+    @Schema(description = "Carrier name that will deliver the package. Required when `carrierCode` is \"Other\" ")
     public String getCarrierName() {
         return carrierName;
     }
