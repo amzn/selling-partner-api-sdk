@@ -32,7 +32,7 @@ Add the following lines to the dependencies in your `yourProject.csproj` file:
 ```xml
    <ItemGroup>
     <Compile Include="Yourtest.cs" />
-    <PackageReference Include="software.amzn.spapi" Version="1.1.1" />
+    <PackageReference Include="software.amzn.spapi" Version="1.1.2" />
   </ItemGroup>
 ```
 
@@ -57,7 +57,7 @@ using software.amzn.spapi;
 using software.amzn.spapi.Client;
 using software.amzn.spapi.Api;
 using software.amzn.spapi.Model;
-using software.amzn.spapi.Auth;
+using Amazon.SellingPartnerAPIAA;
 using software.amzn.spapi.Api.sellers.v1;
 using software.amzn.spapi.Model.sellers.v1;
 using System.Threading;

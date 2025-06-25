@@ -413,14 +413,5 @@ namespace software.amzn.spapi.Test.Model
         {
             // TODO unit test for the property 'AmazonPrograms'
         }
-
-        /// <summary>
-        /// Test the property 'ExportInfo'
-        /// </summary>
-        [Fact]
-        public void ExportInfoTest()
-        {
-            // TODO unit test for the property 'ExportInfo'
-        }
     }
 }

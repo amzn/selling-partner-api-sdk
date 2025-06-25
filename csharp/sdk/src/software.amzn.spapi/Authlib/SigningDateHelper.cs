@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Amazon.SellingPartnerAPIAA
+namespace software.amzn.spapi.Auth
 {
     public class SigningDateHelper : IDateHelper
     {

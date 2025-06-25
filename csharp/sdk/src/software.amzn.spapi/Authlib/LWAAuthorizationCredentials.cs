@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Amazon.SellingPartnerAPIAA
+namespace software.amzn.spapi.Auth
 {
     public class LWAAuthorizationCredentials
     {

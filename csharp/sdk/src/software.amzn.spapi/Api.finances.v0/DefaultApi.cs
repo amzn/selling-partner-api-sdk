@@ -13,7 +13,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using software.amzn.spapi.Client;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using software.amzn.spapi.Model.finances.v0;
 
 namespace software.amzn.spapi.Api.finances.v0
@@ -394,15 +395,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEventGroups", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEventGroups", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventGroupsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventGroupsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventGroupsResponse)));
         }
 
@@ -467,15 +465,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEventGroups", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEventGroups", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventGroupsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventGroupsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventGroupsResponse)));
         }
 
@@ -540,15 +535,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEvents", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEvents", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventsResponse)));
         }
 
@@ -613,15 +605,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEvents", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEvents", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventsResponse)));
         }
 
@@ -692,15 +681,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEventsByGroupId", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEventsByGroupId", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventsResponse)));
         }
 
@@ -771,15 +757,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEventsByGroupId", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEventsByGroupId", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventsResponse)));
         }
 
@@ -844,15 +827,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEventsByOrderId", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEventsByOrderId", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventsResponse)));
         }
 
@@ -917,15 +897,12 @@ namespace software.amzn.spapi.Api.finances.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("ListFinancialEventsByOrderId", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("ListFinancialEventsByOrderId", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<ListFinancialEventsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (ListFinancialEventsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListFinancialEventsResponse)));
         }
 
@@ -970,7 +947,7 @@ namespace software.amzn.spapi.Api.finances.v0
             }
         }
         
-        private static Multimap<string, string> ConvertToMultimap(RestResponse response)
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
         {
             var multimap = new Multimap<string, string>();
             foreach (var header in response.Headers)

@@ -13,7 +13,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using software.amzn.spapi.Client;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using software.amzn.spapi.Model.tokens.v2021_03_01;
 
 namespace software.amzn.spapi.Api.tokens.v2021_03_01
@@ -222,15 +223,12 @@ namespace software.amzn.spapi.Api.tokens.v2021_03_01
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("CreateRestrictedDataToken", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("CreateRestrictedDataToken", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<CreateRestrictedDataTokenResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (CreateRestrictedDataTokenResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateRestrictedDataTokenResponse)));
         }
 
@@ -297,15 +295,12 @@ namespace software.amzn.spapi.Api.tokens.v2021_03_01
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("CreateRestrictedDataToken", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("CreateRestrictedDataToken", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<CreateRestrictedDataTokenResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (CreateRestrictedDataTokenResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateRestrictedDataTokenResponse)));
         }
 
@@ -350,7 +345,7 @@ namespace software.amzn.spapi.Api.tokens.v2021_03_01
             }
         }
         
-        private static Multimap<string, string> ConvertToMultimap(RestResponse response)
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
         {
             var multimap = new Multimap<string, string>();
             foreach (var header in response.Headers)

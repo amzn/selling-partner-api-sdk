@@ -13,7 +13,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using software.amzn.spapi.Client;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using software.amzn.spapi.Model.vendor.df.inventory.v1;
 
 namespace software.amzn.spapi.Api.vendor.df.inventory.v1
@@ -232,15 +233,12 @@ namespace software.amzn.spapi.Api.vendor.df.inventory.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("SubmitInventoryUpdate", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("SubmitInventoryUpdate", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<SubmitInventoryUpdateResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (SubmitInventoryUpdateResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SubmitInventoryUpdateResponse)));
         }
 
@@ -313,15 +311,12 @@ namespace software.amzn.spapi.Api.vendor.df.inventory.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("SubmitInventoryUpdate", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("SubmitInventoryUpdate", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<SubmitInventoryUpdateResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (SubmitInventoryUpdateResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SubmitInventoryUpdateResponse)));
         }
 
@@ -366,7 +361,7 @@ namespace software.amzn.spapi.Api.vendor.df.inventory.v1
             }
         }
         
-        private static Multimap<string, string> ConvertToMultimap(RestResponse response)
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
         {
             var multimap = new Multimap<string, string>();
             foreach (var header in response.Headers)

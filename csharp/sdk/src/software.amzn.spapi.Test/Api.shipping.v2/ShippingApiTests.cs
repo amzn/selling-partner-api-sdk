@@ -16,7 +16,7 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
 
 using software.amzn.spapi.Client;
 using software.amzn.spapi.Api.shipping.v2;

@@ -13,7 +13,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using software.amzn.spapi.Client;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using software.amzn.spapi.Model.vendor.df.transactions.v2021_12_28;
 
 namespace software.amzn.spapi.Api.vendor.df.transactions.v2021_12_28
@@ -214,15 +215,12 @@ namespace software.amzn.spapi.Api.vendor.df.transactions.v2021_12_28
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetTransactionStatus", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetTransactionStatus", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<TransactionStatus>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (TransactionStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionStatus)));
         }
 
@@ -281,15 +279,12 @@ namespace software.amzn.spapi.Api.vendor.df.transactions.v2021_12_28
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetTransactionStatus", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetTransactionStatus", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<TransactionStatus>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (TransactionStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionStatus)));
         }
 
@@ -334,7 +329,7 @@ namespace software.amzn.spapi.Api.vendor.df.transactions.v2021_12_28
             }
         }
         
-        private static Multimap<string, string> ConvertToMultimap(RestResponse response)
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
         {
             var multimap = new Multimap<string, string>();
             foreach (var header in response.Headers)

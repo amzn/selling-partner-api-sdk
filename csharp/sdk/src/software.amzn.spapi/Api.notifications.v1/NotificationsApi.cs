@@ -13,7 +13,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using software.amzn.spapi.Client;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using software.amzn.spapi.Model.notifications.v1;
 
 namespace software.amzn.spapi.Api.notifications.v1
@@ -529,15 +530,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("CreateDestination", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("CreateDestination", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<CreateDestinationResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (CreateDestinationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateDestinationResponse)));
         }
 
@@ -605,15 +603,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("CreateDestination", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("CreateDestination", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<CreateDestinationResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (CreateDestinationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateDestinationResponse)));
         }
 
@@ -687,15 +682,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("CreateSubscription", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("CreateSubscription", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<CreateSubscriptionResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (CreateSubscriptionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSubscriptionResponse)));
         }
 
@@ -769,15 +761,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("CreateSubscription", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("CreateSubscription", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<CreateSubscriptionResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (CreateSubscriptionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSubscriptionResponse)));
         }
 
@@ -837,15 +826,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("DeleteDestination", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("DeleteDestination", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<DeleteDestinationResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (DeleteDestinationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeleteDestinationResponse)));
         }
 
@@ -905,15 +891,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("DeleteDestination", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("DeleteDestination", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<DeleteDestinationResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (DeleteDestinationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeleteDestinationResponse)));
         }
 
@@ -979,15 +962,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("DeleteSubscriptionById", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("DeleteSubscriptionById", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<DeleteSubscriptionByIdResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (DeleteSubscriptionByIdResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeleteSubscriptionByIdResponse)));
         }
 
@@ -1053,15 +1033,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("DeleteSubscriptionById", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("DeleteSubscriptionById", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<DeleteSubscriptionByIdResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (DeleteSubscriptionByIdResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeleteSubscriptionByIdResponse)));
         }
 
@@ -1121,15 +1098,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetDestination", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetDestination", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetDestinationResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetDestinationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetDestinationResponse)));
         }
 
@@ -1189,15 +1163,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetDestination", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetDestination", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetDestinationResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetDestinationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetDestinationResponse)));
         }
 
@@ -1251,15 +1222,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetDestinations", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetDestinations", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetDestinationsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetDestinationsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetDestinationsResponse)));
         }
 
@@ -1313,15 +1281,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetDestinations", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetDestinations", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetDestinationsResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetDestinationsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetDestinationsResponse)));
         }
 
@@ -1384,15 +1349,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetSubscription", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetSubscription", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetSubscriptionResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetSubscriptionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionResponse)));
         }
 
@@ -1455,15 +1417,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetSubscription", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetSubscription", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetSubscriptionResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetSubscriptionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionResponse)));
         }
 
@@ -1529,15 +1488,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetSubscriptionById", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetSubscriptionById", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetSubscriptionByIdResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetSubscriptionByIdResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionByIdResponse)));
         }
 
@@ -1603,15 +1559,12 @@ namespace software.amzn.spapi.Api.notifications.v1
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetSubscriptionById", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetSubscriptionById", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetSubscriptionByIdResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetSubscriptionByIdResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionByIdResponse)));
         }
 
@@ -1656,7 +1609,7 @@ namespace software.amzn.spapi.Api.notifications.v1
             }
         }
         
-        private static Multimap<string, string> ConvertToMultimap(RestResponse response)
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
         {
             var multimap = new Multimap<string, string>();
             foreach (var header in response.Headers)

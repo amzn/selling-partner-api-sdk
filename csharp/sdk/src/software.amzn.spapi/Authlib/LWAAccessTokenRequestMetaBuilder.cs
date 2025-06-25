@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Amazon.SellingPartnerAPIAA
+namespace software.amzn.spapi.Auth
 {
     public class LWAAccessTokenRequestMetaBuilder
     {

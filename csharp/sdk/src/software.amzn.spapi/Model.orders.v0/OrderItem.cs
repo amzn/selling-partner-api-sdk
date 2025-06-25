@@ -106,8 +106,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="measurement">measurement.</param>
         /// <param name="shippingConstraints">shippingConstraints.</param>
         /// <param name="amazonPrograms">amazonPrograms.</param>
-        /// <param name="exportInfo">exportInfo.</param>
-        public OrderItem(string aSIN = default(string), string sellerSKU = default(string), string orderItemId = default(string), List<AssociatedItem> associatedItems = default(List<AssociatedItem>), string title = default(string), int quantityOrdered = default(int), int quantityShipped = default(int), ProductInfoDetail productInfo = default(ProductInfoDetail), PointsGrantedDetail pointsGranted = default(PointsGrantedDetail), Money itemPrice = default(Money), Money shippingPrice = default(Money), Money itemTax = default(Money), Money shippingTax = default(Money), Money shippingDiscount = default(Money), Money shippingDiscountTax = default(Money), Money promotionDiscount = default(Money), Money promotionDiscountTax = default(Money), List<string> promotionIds = default(List<string>), Money cODFee = default(Money), Money cODFeeDiscount = default(Money), string isGift = default(string), string conditionNote = default(string), string conditionId = default(string), string conditionSubtypeId = default(string), string scheduledDeliveryStartDate = default(string), string scheduledDeliveryEndDate = default(string), string priceDesignation = default(string), TaxCollection taxCollection = default(TaxCollection), bool serialNumberRequired = default(bool), bool isTransparency = default(bool), string iossNumber = default(string), string storeChainStoreId = default(string), DeemedResellerCategoryEnum? deemedResellerCategory = default(DeemedResellerCategoryEnum?), ItemBuyerInfo buyerInfo = default(ItemBuyerInfo), BuyerRequestedCancel buyerRequestedCancel = default(BuyerRequestedCancel), List<string> serialNumbers = default(List<string>), SubstitutionPreferences substitutionPreferences = default(SubstitutionPreferences), Measurement measurement = default(Measurement), ShippingConstraints shippingConstraints = default(ShippingConstraints), AmazonPrograms amazonPrograms = default(AmazonPrograms), ExportInfo exportInfo = default(ExportInfo))
+        public OrderItem(string aSIN = default(string), string sellerSKU = default(string), string orderItemId = default(string), List<AssociatedItem> associatedItems = default(List<AssociatedItem>), string title = default(string), int quantityOrdered = default(int), int quantityShipped = default(int), ProductInfoDetail productInfo = default(ProductInfoDetail), PointsGrantedDetail pointsGranted = default(PointsGrantedDetail), Money itemPrice = default(Money), Money shippingPrice = default(Money), Money itemTax = default(Money), Money shippingTax = default(Money), Money shippingDiscount = default(Money), Money shippingDiscountTax = default(Money), Money promotionDiscount = default(Money), Money promotionDiscountTax = default(Money), List<string> promotionIds = default(List<string>), Money cODFee = default(Money), Money cODFeeDiscount = default(Money), string isGift = default(string), string conditionNote = default(string), string conditionId = default(string), string conditionSubtypeId = default(string), string scheduledDeliveryStartDate = default(string), string scheduledDeliveryEndDate = default(string), string priceDesignation = default(string), TaxCollection taxCollection = default(TaxCollection), bool serialNumberRequired = default(bool), bool isTransparency = default(bool), string iossNumber = default(string), string storeChainStoreId = default(string), DeemedResellerCategoryEnum? deemedResellerCategory = default(DeemedResellerCategoryEnum?), ItemBuyerInfo buyerInfo = default(ItemBuyerInfo), BuyerRequestedCancel buyerRequestedCancel = default(BuyerRequestedCancel), List<string> serialNumbers = default(List<string>), SubstitutionPreferences substitutionPreferences = default(SubstitutionPreferences), Measurement measurement = default(Measurement), ShippingConstraints shippingConstraints = default(ShippingConstraints), AmazonPrograms amazonPrograms = default(AmazonPrograms))
         {
             // to ensure "aSIN" is required (not null)
             if (aSIN == null)
@@ -159,7 +158,6 @@ namespace software.amzn.spapi.Model.orders.v0
             this.Measurement = measurement;
             this.ShippingConstraints = shippingConstraints;
             this.AmazonPrograms = amazonPrograms;
-            this.ExportInfo = exportInfo;
         }
 
         /// <summary>
@@ -417,12 +415,6 @@ namespace software.amzn.spapi.Model.orders.v0
         public AmazonPrograms AmazonPrograms { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExportInfo
-        /// </summary>
-        [DataMember(Name = "ExportInfo", EmitDefaultValue = false)]
-        public ExportInfo ExportInfo { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -470,7 +462,6 @@ namespace software.amzn.spapi.Model.orders.v0
             sb.Append("  Measurement: ").Append(Measurement).Append("\n");
             sb.Append("  ShippingConstraints: ").Append(ShippingConstraints).Append("\n");
             sb.Append("  AmazonPrograms: ").Append(AmazonPrograms).Append("\n");
-            sb.Append("  ExportInfo: ").Append(ExportInfo).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

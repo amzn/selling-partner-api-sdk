@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Amazon.SellingPartnerAPIAA
+namespace software.amzn.spapi.Auth
 {
     public class LWAClient
     {

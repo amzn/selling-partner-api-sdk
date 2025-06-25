@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v0
 {
     /// <summary>
-    /// Contains the list of programs that are associated with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products.
+    /// Contains the list of programs that Amazon associates with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products. - **FBM Ship+**: Unlocks expedited shipping without the extra cost. Helps you to provide accurate and fast delivery dates to Amazon customers. You also receive protection from late deliveries, a discount on expedited shipping rates, and cash back when you ship.
     /// </summary>
     [DataContract(Name = "AmazonPrograms")]
     public partial class AmazonPrograms : IValidatableObject
@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="AmazonPrograms" /> class.
         /// </summary>
-        /// <param name="programs">A list of the programs that are associated with the specified order item.  **Possible values**: &#x60;SUBSCRIBE_AND_SAVE&#x60; (required).</param>
+        /// <param name="programs">A list of the programs that Amazon associates with the order item.  **Possible values**: &#x60;SUBSCRIBE_AND_SAVE&#x60;, &#x60;FBM_SHIP_PLUS&#x60; (required).</param>
         public AmazonPrograms(List<string> programs = default(List<string>))
         {
             // to ensure "programs" is required (not null)
@@ -51,9 +51,9 @@ namespace software.amzn.spapi.Model.orders.v0
         }
 
         /// <summary>
-        /// A list of the programs that are associated with the specified order item.  **Possible values**: &#x60;SUBSCRIBE_AND_SAVE&#x60;
+        /// A list of the programs that Amazon associates with the order item.  **Possible values**: &#x60;SUBSCRIBE_AND_SAVE&#x60;, &#x60;FBM_SHIP_PLUS&#x60;
         /// </summary>
-        /// <value>A list of the programs that are associated with the specified order item.  **Possible values**: &#x60;SUBSCRIBE_AND_SAVE&#x60;</value>
+        /// <value>A list of the programs that Amazon associates with the order item.  **Possible values**: &#x60;SUBSCRIBE_AND_SAVE&#x60;, &#x60;FBM_SHIP_PLUS&#x60;</value>
         [DataMember(Name = "Programs", IsRequired = true, EmitDefaultValue = true)]
         public List<string> Programs { get; set; }
 

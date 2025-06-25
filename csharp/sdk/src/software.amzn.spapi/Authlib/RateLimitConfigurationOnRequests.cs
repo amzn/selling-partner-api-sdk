@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Amazon.SellingPartnerAPIAA
+namespace software.amzn.spapi.Auth
 {
     public class RateLimitConfigurationOnRequests : RateLimitConfiguration
     {

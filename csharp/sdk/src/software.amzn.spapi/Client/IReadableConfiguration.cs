@@ -9,7 +9,7 @@
 
 
 using System.Collections.Generic;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
 
 namespace software.amzn.spapi.Client
 {

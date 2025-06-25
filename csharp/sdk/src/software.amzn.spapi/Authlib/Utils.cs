@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Globalization;
 
-namespace Amazon.SellingPartnerAPIAA
+namespace software.amzn.spapi.Auth
 {
     public static class Utils
     {

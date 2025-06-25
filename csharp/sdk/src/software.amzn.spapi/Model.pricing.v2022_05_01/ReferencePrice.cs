@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ReferencePrice" /> class.
         /// </summary>
-        /// <param name="name">The name of the reference price, such as &#x60;CompetitivePriceThreshold&#x60; and &#x60;WasPrice&#x60;. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide). (required).</param>
+        /// <param name="name">Reference price type (e.g., &#x60;CompetitivePriceThreshold&#x60;, &#x60;WasPrice&#x60;, &#x60;CompetitivePrice&#x60;). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide). (required).</param>
         /// <param name="price">price (required).</param>
         public ReferencePrice(string name = default(string), MoneyType price = default(MoneyType))
         {
@@ -58,9 +58,9 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         }
 
         /// <summary>
-        /// The name of the reference price, such as &#x60;CompetitivePriceThreshold&#x60; and &#x60;WasPrice&#x60;. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+        /// Reference price type (e.g., &#x60;CompetitivePriceThreshold&#x60;, &#x60;WasPrice&#x60;, &#x60;CompetitivePrice&#x60;). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
         /// </summary>
-        /// <value>The name of the reference price, such as &#x60;CompetitivePriceThreshold&#x60; and &#x60;WasPrice&#x60;. For reference price definitions, refer to the [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).</value>
+        /// <value>Reference price type (e.g., &#x60;CompetitivePriceThreshold&#x60;, &#x60;WasPrice&#x60;, &#x60;CompetitivePrice&#x60;). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

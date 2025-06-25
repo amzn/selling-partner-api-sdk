@@ -19,7 +19,8 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using Polly;
 using System.Threading;
 using Polly.Timeout;
@@ -43,7 +44,7 @@ namespace software.amzn.spapi.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        /// <exception cref="Amazon.SellingPartnerAPIAA.LWAException">Thrown when there is an error during LWA Authorization</exception>
+        /// <exception cref="software.amzn.spapi.Auth.LWAException">Thrown when there is an error during LWA Authorization</exception>
         private void InterceptRequest(RestRequest request)
         {
             lwaAuthorizationSigner.Sign(request);

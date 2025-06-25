@@ -13,7 +13,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using software.amzn.spapi.Client;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
+
 using software.amzn.spapi.Model.productFees.v0;
 
 namespace software.amzn.spapi.Api.productFees.v0
@@ -320,15 +321,12 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetMyFeesEstimateForASIN", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetMyFeesEstimateForASIN", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetMyFeesEstimateResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetMyFeesEstimateResponse)));
         }
 
@@ -401,15 +399,12 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetMyFeesEstimateForASIN", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetMyFeesEstimateForASIN", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetMyFeesEstimateResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetMyFeesEstimateResponse)));
         }
 
@@ -482,15 +477,12 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetMyFeesEstimateForSKU", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetMyFeesEstimateForSKU", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetMyFeesEstimateResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetMyFeesEstimateResponse)));
         }
 
@@ -563,15 +555,12 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetMyFeesEstimateForSKU", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetMyFeesEstimateForSKU", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<GetMyFeesEstimateResponse>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (GetMyFeesEstimateResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetMyFeesEstimateResponse)));
         }
 
@@ -638,15 +627,12 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetMyFeesEstimates", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetMyFeesEstimates", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<List<FeesEstimateResult>>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (List<FeesEstimateResult>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FeesEstimateResult>)));
         }
 
@@ -713,15 +699,12 @@ namespace software.amzn.spapi.Api.productFees.v0
 
             if (ExceptionFactory != null)
             {
-                // Exception exception = new Exception("GetMyFeesEstimates", localVarResponse.ErrorException);
-                // if (exception != null) throw exception;
-                string requestId = localVarResponse.GetHeaderValue("x-amzn-RequestId");
-                ApiException exception = new ApiException(localVarStatusCode, "x-amzn-RequestId: " + requestId + "\n" + localVarResponse.Content);
-                throw exception;
+                Exception exception = ExceptionFactory("GetMyFeesEstimates", localVarResponse);
+                if (exception != null) throw exception;
             }
 
             return new ApiResponse<List<FeesEstimateResult>>(localVarResponse.StatusCode,
-                ConvertToMultimap(localVarResponse),
+                ConvertHeadersToMultimap(localVarResponse),
                 (List<FeesEstimateResult>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FeesEstimateResult>)));
         }
 
@@ -766,7 +749,7 @@ namespace software.amzn.spapi.Api.productFees.v0
             }
         }
         
-        private static Multimap<string, string> ConvertToMultimap(RestResponse response)
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
         {
             var multimap = new Multimap<string, string>();
             foreach (var header in response.Headers)

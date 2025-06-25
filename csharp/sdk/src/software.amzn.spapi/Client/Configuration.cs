@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Auth;
 using RestSharp;
 
 namespace software.amzn.spapi.Client
@@ -30,7 +30,7 @@ namespace software.amzn.spapi.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.1.1";
+        public const string Version = "1.1.2";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -56,15 +56,25 @@ namespace software.amzn.spapi.Client
             {
                 return new ApiException(status,
                     string.Format("Error calling {0}: {1}", methodName, response.Content),
-                    response.Content);
+                    response.Content, ConvertHeadersToMultimap(response));
             }
             if (status == 0)
             {
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorText), response.ErrorText);
+                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
             }
             return null;
         };
+
+        private static Multimap<string, string> ConvertHeadersToMultimap(RestResponse response)
+        {
+            var multimap = new Multimap<string, string>();
+            foreach (var header in response.Headers)
+            {
+                multimap.Add(header.Name, header.Value?.ToString());
+            }
+            return multimap;
+        }
 
         /// <summary>
         /// Gets or sets the default Configuration.
@@ -115,7 +125,7 @@ namespace software.amzn.spapi.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "amazon-selling-partner-api-sdk/1.1.1/csharp";
+            UserAgent = "amazon-selling-partner-api-sdk/1.1.2/csharp";
             BasePath = "https://sellingpartnerapi-na.amazon.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -185,7 +195,7 @@ namespace software.amzn.spapi.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.1.1/csharp"
+            string userAgent = "Swagger-Codegen/1.1.2/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -468,7 +478,7 @@ namespace software.amzn.spapi.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2024-11-01\n";
-            report += "    SDK Package Version: 1.1.1\n";
+            report += "    SDK Package Version: 1.1.2\n";
 
             return report;
         }
