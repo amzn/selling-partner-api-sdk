@@ -72,7 +72,7 @@ public class ApiClient {
 
         // Set default User-Agent.
         String version = this.getClass().getPackage().getImplementationVersion();
-        setUserAgent("amazon-selling-partner-api-sdk/" + version != null ? version : "undefined" + "/Java");
+        setUserAgent("amazon-selling-partner-api-sdk/" + (version != null ? version : "undefined") + "/Java");
     }
 
     /**
