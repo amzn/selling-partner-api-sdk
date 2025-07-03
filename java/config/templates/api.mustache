@@ -259,7 +259,7 @@ public class {{classname}} {
         }
 
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}progressRequestListener);
-    
+
         if (restrictedDataToken != null) {
             okhttp3.Request {{localVariablePrefix}}request = {{localVariablePrefix}}call.request();
             {{localVariablePrefix}}request = RestrictedDataTokenSigner.sign({{localVariablePrefix}}request, restrictedDataToken, "{{classname}}-{{operationId}}");
