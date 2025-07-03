@@ -259,8 +259,7 @@ public class {{classname}} {
         }
 
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}progressRequestListener);
-        
-        // Apply RDT signing if token is provided (matching PHP implementation)
+    
         if (restrictedDataToken != null) {
             okhttp3.Request {{localVariablePrefix}}request = {{localVariablePrefix}}call.request();
             {{localVariablePrefix}}request = RestrictedDataTokenSigner.sign({{localVariablePrefix}}request, restrictedDataToken, "{{classname}}-{{operationId}}");
