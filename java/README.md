@@ -101,6 +101,65 @@ BucketConfiguration newConfiguration = BucketConfiguration.builder()
 // Each API exposes a bucket for each operation
 sellersApi.getMarketplaceParticipationsBucket.replaceConfiguration(newConfiguration, TokensInheritanceStrategy.RESET);
 ```
+### Restricted Data Token (RDT) Support
+
+The SDK provides built-in support for working with Restricted Data Tokens (RDTs), which are required to access personally identifiable information (PII) in [certain API operations](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide#restricted-operations).
+
+To use Restricted Data Token with the SDK:
+
+1. **Request an RDT token** using the Tokens API.
+
+```java
+// Create a restricted resource specifying the API endpoint and required data elements
+RestrictedResource resource = new RestrictedResource();
+            resource.setMethod(RestrictedResource.MethodEnum.GET);
+            resource.setPath("/orders/v0/orders");
+            resource.setDataElements(Arrays.asList("buyerInfo", "shippingAddress"));
+
+// Get a Restricted Data Token for accessing PII data
+TokensApi tokensApi = new TokensApi.Builder()
+        .lwaAuthorizationCredentials(lwaCredentials)
+        .endpoint("https://sellingpartnerapi-na.amazon.com")
+        .build();
+```
+2. Use the token when calling restricted operations:
+
+```java
+// Make the API call with RDT token
+List<String> marketplaceIds = Arrays.asList("ATVPDKIKX0DER");
+List<String> orderStatuses = Arrays.asList("Shipped");
+String createdAfter = "2023-01-01T00:00:00Z";
+
+
+GetOrdersResponse response = ordersApi.getOrders(
+        marketplaceIds,     // marketplaceIds
+        createdAfter,       // createdAfter
+        null,               // createdBefore
+        null,               // lastUpdatedAfter
+        null,               // lastUpdatedBefore
+        orderStatuses,      // orderStatuses
+        null,               // fulfillmentChannels
+        null,               // paymentMethods
+        null,               // buyerEmail
+        null,               // sellerOrderId
+        100,                // maxResultsPerPage
+        null,               // easyShipShipmentStatuses
+        null,               // electronicInvoiceStatuses
+        null,               // nextToken
+        null,               // amazonOrderIds
+        null,               // actualFulfillmentSupplySourceId
+        null,               // isISPU
+        null,               // storeChainStoreId
+        null,               // earliestDeliveryDateBefore
+        null,               // earliestDeliveryDateAfter
+        null,               // latestDeliveryDateBefore
+        null,               // latestDeliveryDateAfter
+        rdtToken            // restrictedDataToken
+);
+```
+Check the full implementation [example](https://github.com/amzn/selling-partner-api-sdk/tree/main/java/sdk/src/main/java/examples/getOrdersWithRestrictedDataToken.java). If you pass the Restricted Data Token to operations which does not require it, the SDK will return an exception error. `Operation does not require a Restricted Data Token (RDT). Remove the RDT parameter for non-restricted operations.`
+
+
 
 ### Additional documentation
 

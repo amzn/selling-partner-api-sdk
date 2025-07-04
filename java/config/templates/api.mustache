@@ -34,6 +34,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 
 {{#operations}}
 public class {{classname}} {
@@ -125,6 +126,30 @@ public class {{classname}} {
     /**
      * {{summary}}
      * {{notes}}{{#allParams}}
+     * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
+     * @param restrictedDataToken Restricted Data Token (optional){{#returnType}}
+     * @return {{returnType}}{{/returnType}}
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     {{#isDeprecated}}
+     * @deprecated
+     {{/isDeprecated}}
+        {{#externalDocs}}
+     * {{description}}
+     * @see <a href="{{url}}">{{summary}} Documentation</a>
+        {{/externalDocs}}
+     */
+    {{#isDeprecated}}
+    @Deprecated
+    {{/isDeprecated}}
+    public {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}String restrictedDataToken) throws ApiException,LWAException {
+        {{#returnType}}ApiResponse<{{{returnType}}}> {{localVariablePrefix}}resp = {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}, {{/allParams}}restrictedDataToken);{{#returnType}}
+        return {{localVariablePrefix}}resp.getData();{{/returnType}}
+    }
+
+    /**
+     * {{summary}}
+     * {{notes}}{{#allParams}}
      * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}{{#returnType}}
      * @return {{returnType}}{{/returnType}}
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -141,8 +166,42 @@ public class {{classname}} {
     @Deprecated
     {{/isDeprecated}}
     public {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}) throws ApiException,LWAException {
-        {{#returnType}}ApiResponse<{{{returnType}}}> {{localVariablePrefix}}resp = {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{#returnType}}
+        {{#returnType}}ApiResponse<{{{returnType}}}> {{localVariablePrefix}}resp = {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}, {{/allParams}}null);{{#returnType}}
         return {{localVariablePrefix}}resp.getData();{{/returnType}}
+    }
+
+    /**
+     * {{summary}}
+     * {{notes}}{{#allParams}}
+     * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}Void{{/returnType}}&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     {{#isDeprecated}}
+     * @deprecated
+     {{/isDeprecated}}
+        {{#externalDocs}}
+     * {{description}}
+     * @see <a href="{{url}}">{{summary}} Documentation</a>
+        {{/externalDocs}}
+     */
+    {{#isDeprecated}}
+    @Deprecated
+    {{/isDeprecated}}
+    public ApiResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}String restrictedDataToken) throws ApiException,LWAException {
+        okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request {{localVariablePrefix}}request = {{localVariablePrefix}}call.request();
+            {{localVariablePrefix}}request = RestrictedDataTokenSigner.sign({{localVariablePrefix}}request, restrictedDataToken, "{{classname}}-{{operationId}}");
+            {{localVariablePrefix}}call = {{localVariablePrefix}}apiClient.getHttpClient().newCall({{localVariablePrefix}}request);
+        }
+        
+        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
+            {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+            return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
+        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
     }
 
     /**
@@ -164,11 +223,7 @@ public class {{classname}} {
     @Deprecated
     {{/isDeprecated}}
     public ApiResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{#useBeanValidation}}{{>beanValidationQueryParams}}{{/useBeanValidation}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}) throws ApiException,LWAException {
-        okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}null);
-        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
-            {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-            return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
-        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
+        return {{operationId}}WithHttpInfo({{#allParams}}{{paramName}}, {{/allParams}}null);
     }
 
     /**
@@ -176,6 +231,7 @@ public class {{classname}} {
      * {{notes}}{{#allParams}}
      * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -191,6 +247,29 @@ public class {{classname}} {
     @Deprecated
     {{/isDeprecated}}
     public okhttp3.Call {{operationId}}Async({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ApiCallback<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{localVariablePrefix}}callback) throws ApiException, LWAException {
+        return {{operationId}}Async({{#allParams}}{{paramName}}, {{/allParams}}{{localVariablePrefix}}callback, null);
+    }
+    /**
+     * {{summary}} (asynchronously)
+     * {{notes}}{{#allParams}}
+     * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     {{#isDeprecated}}
+     * @deprecated
+     {{/isDeprecated}}
+        {{#externalDocs}}
+     * {{description}}
+     * @see <a href="{{url}}">{{summary}} Documentation</a>
+        {{/externalDocs}}
+     */
+    {{#isDeprecated}}
+    @Deprecated
+    {{/isDeprecated}}
+    public okhttp3.Call {{operationId}}Async({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ApiCallback<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{localVariablePrefix}}callback, String restrictedDataToken) throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -199,6 +278,13 @@ public class {{classname}} {
         }
 
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request {{localVariablePrefix}}request = {{localVariablePrefix}}call.request();
+            {{localVariablePrefix}}request = RestrictedDataTokenSigner.sign({{localVariablePrefix}}request, restrictedDataToken, "{{classname}}-{{operationId}}");
+            {{localVariablePrefix}}call = {{localVariablePrefix}}apiClient.getHttpClient().newCall({{localVariablePrefix}}request);
+        }
+        
         if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
             {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
             {{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType, {{localVariablePrefix}}callback);{{/returnType}}{{^returnType}}{{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}callback);{{/returnType}}
