@@ -35,7 +35,7 @@ public class RestrictedDataTokenSigner {
      * @param operationName The operation name in format 'ClassName-operationId'
      * @return True if the operation requires RDT, false otherwise
      */
-    public static boolean isRestrictedOperation(String operationName) {
+    private static boolean isRestrictedOperation(String operationName) {
         List<String> restrictedOperations = Arrays.asList(
                 // Direct Fulfillment Orders API
                 "VendorOrdersApi-getOrders",

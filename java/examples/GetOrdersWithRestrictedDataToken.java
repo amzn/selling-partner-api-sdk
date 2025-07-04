@@ -42,7 +42,6 @@ public class GetOrdersWithRestrictedDataToken {
 
             CreateRestrictedDataTokenResponse tokenResponse = tokensApi.createRestrictedDataToken(request);
             String rdtToken = tokenResponse.getRestrictedDataToken();
-            System.out.println("RDT Token: " + rdtToken);
 
             // Create Orders API client
             OrdersV0Api ordersApi = new OrdersV0Api.Builder()
