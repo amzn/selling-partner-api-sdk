@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -153,6 +154,29 @@ public class TransferScheduleApi {
      * @param body The payload of the request. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransferSchedule
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransferSchedule createTransferSchedule(
+            TransferScheduleRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<TransferSchedule> resp = createTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create
+     * a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     *
+     * @param body The payload of the request. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -161,8 +185,42 @@ public class TransferScheduleApi {
             TransferScheduleRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
             throws ApiException, LWAException {
         ApiResponse<TransferSchedule> resp =
-                createTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature);
+                createTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
         return resp.getData();
+    }
+
+    /**
+     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create
+     * a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     *
+     * @param body The payload of the request. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransferSchedule&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransferSchedule> createTransferScheduleWithHttpInfo(
+            TransferScheduleRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createTransferScheduleValidateBeforeCall(
+                body, destAccountDigitalSignature, amountDigitalSignature, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-createTransferSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createTransferScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createTransferSchedule operation exceeds rate limit");
     }
 
     /**
@@ -179,12 +237,7 @@ public class TransferScheduleApi {
     public ApiResponse<TransferSchedule> createTransferScheduleWithHttpInfo(
             TransferScheduleRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
             throws ApiException, LWAException {
-        okhttp3.Call call = createTransferScheduleValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, null);
-        if (disableRateLimiting || createTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createTransferSchedule operation exceeds rate limit");
+        return createTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
     }
 
     /**
@@ -196,6 +249,7 @@ public class TransferScheduleApi {
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -206,6 +260,29 @@ public class TransferScheduleApi {
             String amountDigitalSignature,
             final ApiCallback<TransferSchedule> callback)
             throws ApiException, LWAException {
+        return createTransferScheduleAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
+    }
+    /**
+     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
+     * (asynchronously) Create a transfer schedule request from an Amazon Seller Wallet account to another
+     * customer-provided account.
+     *
+     * @param body The payload of the request. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createTransferScheduleAsync(
+            TransferScheduleRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            final ApiCallback<TransferSchedule> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -215,6 +292,14 @@ public class TransferScheduleApi {
 
         okhttp3.Call call = createTransferScheduleValidateBeforeCall(
                 body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-createTransferSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createTransferScheduleBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -285,14 +370,60 @@ public class TransferScheduleApi {
      * customer-provided account.
      *
      * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return DeleteTransferSchedule
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public DeleteTransferSchedule deleteScheduleTransaction(String transferScheduleId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<DeleteTransferSchedule> resp =
+                deleteScheduleTransactionWithHttpInfo(transferScheduleId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
+     * customer-provided account.
+     *
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
      * @return DeleteTransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public DeleteTransferSchedule deleteScheduleTransaction(String transferScheduleId)
             throws ApiException, LWAException {
-        ApiResponse<DeleteTransferSchedule> resp = deleteScheduleTransactionWithHttpInfo(transferScheduleId);
+        ApiResponse<DeleteTransferSchedule> resp = deleteScheduleTransactionWithHttpInfo(transferScheduleId, null);
         return resp.getData();
+    }
+
+    /**
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
+     * customer-provided account.
+     *
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;DeleteTransferSchedule&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<DeleteTransferSchedule> deleteScheduleTransactionWithHttpInfo(
+            String transferScheduleId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = deleteScheduleTransactionValidateBeforeCall(transferScheduleId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-deleteScheduleTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deleteScheduleTransactionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteScheduleTransaction operation exceeds rate limit");
     }
 
     /**
@@ -307,11 +438,7 @@ public class TransferScheduleApi {
      */
     public ApiResponse<DeleteTransferSchedule> deleteScheduleTransactionWithHttpInfo(String transferScheduleId)
             throws ApiException, LWAException {
-        okhttp3.Call call = deleteScheduleTransactionValidateBeforeCall(transferScheduleId, null);
-        if (disableRateLimiting || deleteScheduleTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteScheduleTransaction operation exceeds rate limit");
+        return deleteScheduleTransactionWithHttpInfo(transferScheduleId, null);
     }
 
     /**
@@ -321,12 +448,30 @@ public class TransferScheduleApi {
      *
      * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteScheduleTransactionAsync(
             String transferScheduleId, final ApiCallback<DeleteTransferSchedule> callback)
+            throws ApiException, LWAException {
+        return deleteScheduleTransactionAsync(transferScheduleId, callback, null);
+    }
+    /**
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account (asynchronously) Delete a transaction request that is scheduled from Amazon Seller Wallet account to
+     * another customer-provided account.
+     *
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deleteScheduleTransactionAsync(
+            String transferScheduleId, final ApiCallback<DeleteTransferSchedule> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -336,6 +481,14 @@ public class TransferScheduleApi {
         }
 
         okhttp3.Call call = deleteScheduleTransactionValidateBeforeCall(transferScheduleId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-deleteScheduleTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || deleteScheduleTransactionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -405,13 +558,56 @@ public class TransferScheduleApi {
      * particular Amazon Seller Wallet account transfer schedule.
      *
      * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransferSchedule
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransferSchedule getTransferSchedule(String transferScheduleId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<TransferSchedule> resp = getTransferScheduleWithHttpInfo(transferScheduleId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
+     * particular Amazon Seller Wallet account transfer schedule.
+     *
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransferSchedule getTransferSchedule(String transferScheduleId) throws ApiException, LWAException {
-        ApiResponse<TransferSchedule> resp = getTransferScheduleWithHttpInfo(transferScheduleId);
+        ApiResponse<TransferSchedule> resp = getTransferScheduleWithHttpInfo(transferScheduleId, null);
         return resp.getData();
+    }
+
+    /**
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
+     * particular Amazon Seller Wallet account transfer schedule.
+     *
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransferSchedule&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransferSchedule> getTransferScheduleWithHttpInfo(
+            String transferScheduleId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getTransferScheduleValidateBeforeCall(transferScheduleId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-getTransferSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getTransferScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTransferSchedule operation exceeds rate limit");
     }
 
     /**
@@ -425,11 +621,7 @@ public class TransferScheduleApi {
      */
     public ApiResponse<TransferSchedule> getTransferScheduleWithHttpInfo(String transferScheduleId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getTransferScheduleValidateBeforeCall(transferScheduleId, null);
-        if (disableRateLimiting || getTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTransferSchedule operation exceeds rate limit");
+        return getTransferScheduleWithHttpInfo(transferScheduleId, null);
     }
 
     /**
@@ -438,12 +630,29 @@ public class TransferScheduleApi {
      *
      * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransferScheduleAsync(
             String transferScheduleId, final ApiCallback<TransferSchedule> callback) throws ApiException, LWAException {
+        return getTransferScheduleAsync(transferScheduleId, callback, null);
+    }
+    /**
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * (asynchronously) Find a particular Amazon Seller Wallet account transfer schedule.
+     *
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getTransferScheduleAsync(
+            String transferScheduleId, final ApiCallback<TransferSchedule> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -452,6 +661,14 @@ public class TransferScheduleApi {
         }
 
         okhttp3.Call call = getTransferScheduleValidateBeforeCall(transferScheduleId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-getTransferSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getTransferScheduleBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -536,14 +753,68 @@ public class TransferScheduleApi {
      *     the next page of results, call the operation with this token and include the same arguments as the call that
      *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransferScheduleListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransferScheduleListing listTransferSchedules(
+            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<TransferScheduleListing> resp =
+                listTransferSchedulesWithHttpInfo(accountId, nextPageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * The API will return all the transfer schedules for a given Amazon Seller Wallet account Returns all transfer
+     * schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
+     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
      * @return TransferScheduleListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransferScheduleListing listTransferSchedules(String accountId, String nextPageToken)
             throws ApiException, LWAException {
-        ApiResponse<TransferScheduleListing> resp = listTransferSchedulesWithHttpInfo(accountId, nextPageToken);
+        ApiResponse<TransferScheduleListing> resp = listTransferSchedulesWithHttpInfo(accountId, nextPageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * The API will return all the transfer schedules for a given Amazon Seller Wallet account Returns all transfer
+     * schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
+     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransferScheduleListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransferScheduleListing> listTransferSchedulesWithHttpInfo(
+            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = listTransferSchedulesValidateBeforeCall(accountId, nextPageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-listTransferSchedules");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listTransferSchedulesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listTransferSchedules operation exceeds rate limit");
     }
 
     /**
@@ -562,11 +833,7 @@ public class TransferScheduleApi {
      */
     public ApiResponse<TransferScheduleListing> listTransferSchedulesWithHttpInfo(
             String accountId, String nextPageToken) throws ApiException, LWAException {
-        okhttp3.Call call = listTransferSchedulesValidateBeforeCall(accountId, nextPageToken, null);
-        if (disableRateLimiting || listTransferSchedulesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listTransferSchedules operation exceeds rate limit");
+        return listTransferSchedulesWithHttpInfo(accountId, nextPageToken, null);
     }
 
     /**
@@ -580,12 +847,37 @@ public class TransferScheduleApi {
      *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listTransferSchedulesAsync(
             String accountId, String nextPageToken, final ApiCallback<TransferScheduleListing> callback)
+            throws ApiException, LWAException {
+        return listTransferSchedulesAsync(accountId, nextPageToken, callback, null);
+    }
+    /**
+     * The API will return all the transfer schedules for a given Amazon Seller Wallet account (asynchronously) Returns
+     * all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
+     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listTransferSchedulesAsync(
+            String accountId,
+            String nextPageToken,
+            final ApiCallback<TransferScheduleListing> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -595,6 +887,14 @@ public class TransferScheduleApi {
         }
 
         okhttp3.Call call = listTransferSchedulesValidateBeforeCall(accountId, nextPageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-listTransferSchedules");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listTransferSchedulesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -687,6 +987,30 @@ public class TransferScheduleApi {
      * @param body The payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransferSchedule
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransferSchedule updateTransferSchedule(
+            TransferSchedule body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<TransferSchedule> resp = updateTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
+     * transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a
+     * transfer belonging to the updated scheduled transfer request.
+     *
+     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -695,8 +1019,43 @@ public class TransferScheduleApi {
             TransferSchedule body, String destAccountDigitalSignature, String amountDigitalSignature)
             throws ApiException, LWAException {
         ApiResponse<TransferSchedule> resp =
-                updateTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature);
+                updateTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
         return resp.getData();
+    }
+
+    /**
+     * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
+     * transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a
+     * transfer belonging to the updated scheduled transfer request.
+     *
+     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransferSchedule&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransferSchedule> updateTransferScheduleWithHttpInfo(
+            TransferSchedule body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateTransferScheduleValidateBeforeCall(
+                body, destAccountDigitalSignature, amountDigitalSignature, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-updateTransferSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateTransferScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateTransferSchedule operation exceeds rate limit");
     }
 
     /**
@@ -714,12 +1073,7 @@ public class TransferScheduleApi {
     public ApiResponse<TransferSchedule> updateTransferScheduleWithHttpInfo(
             TransferSchedule body, String destAccountDigitalSignature, String amountDigitalSignature)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateTransferScheduleValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, null);
-        if (disableRateLimiting || updateTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateTransferSchedule operation exceeds rate limit");
+        return updateTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
     }
 
     /**
@@ -731,6 +1085,7 @@ public class TransferScheduleApi {
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -741,6 +1096,29 @@ public class TransferScheduleApi {
             String amountDigitalSignature,
             final ApiCallback<TransferSchedule> callback)
             throws ApiException, LWAException {
+        return updateTransferScheduleAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
+    }
+    /**
+     * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
+     * transferScheduleStatus) in the request body can be updated. (asynchronously) Update transfer schedule
+     * information. Returns a transfer belonging to the updated scheduled transfer request.
+     *
+     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateTransferScheduleAsync(
+            TransferSchedule body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            final ApiCallback<TransferSchedule> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -750,6 +1128,14 @@ public class TransferScheduleApi {
 
         okhttp3.Call call = updateTransferScheduleValidateBeforeCall(
                 body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferScheduleApi-updateTransferSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateTransferScheduleBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

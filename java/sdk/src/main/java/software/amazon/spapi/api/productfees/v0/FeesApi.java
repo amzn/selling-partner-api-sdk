@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -145,14 +146,85 @@ public class FeesApi {
      *
      * @param body (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetMyFeesEstimateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetMyFeesEstimateResponse getMyFeesEstimateForASIN(
+            GetMyFeesEstimateRequest body, String asin, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetMyFeesEstimateResponse> resp =
+                getMyFeesEstimateForASINWithHttpInfo(body, asin, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the estimated fees for the item indicated by the specified ASIN in the marketplace specified in the
+     * request body. You can call &#x60;getMyFeesEstimateForASIN&#x60; for an item on behalf of a selling partner before
+     * the selling partner sets the item&#x27;s price. The selling partner can then take estimated fees into account.
+     * Each fees request must include an original identifier. This identifier is included in the fees estimate so you
+     * can correlate a fees estimate with the original request. **Note:** This identifier value is used to identify an
+     * estimate. Actual costs may vary. Search \&quot;fees\&quot; in [Seller Central](https://sellercentral.amazon.com/)
+     * and consult the store-specific fee schedule for the most up-to-date information. **Note:** When using the
+     * &#x60;getMyFeesEstimateForASIN&#x60; operation with an ASIN, the fee estimates might be different. This is
+     * because these estimates use the item&#x27;s catalog size, which might not always match the actual size of the
+     * item sent to Amazon. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @return GetMyFeesEstimateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetMyFeesEstimateResponse getMyFeesEstimateForASIN(GetMyFeesEstimateRequest body, String asin)
             throws ApiException, LWAException {
-        ApiResponse<GetMyFeesEstimateResponse> resp = getMyFeesEstimateForASINWithHttpInfo(body, asin);
+        ApiResponse<GetMyFeesEstimateResponse> resp = getMyFeesEstimateForASINWithHttpInfo(body, asin, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the estimated fees for the item indicated by the specified ASIN in the marketplace specified in the
+     * request body. You can call &#x60;getMyFeesEstimateForASIN&#x60; for an item on behalf of a selling partner before
+     * the selling partner sets the item&#x27;s price. The selling partner can then take estimated fees into account.
+     * Each fees request must include an original identifier. This identifier is included in the fees estimate so you
+     * can correlate a fees estimate with the original request. **Note:** This identifier value is used to identify an
+     * estimate. Actual costs may vary. Search \&quot;fees\&quot; in [Seller Central](https://sellercentral.amazon.com/)
+     * and consult the store-specific fee schedule for the most up-to-date information. **Note:** When using the
+     * &#x60;getMyFeesEstimateForASIN&#x60; operation with an ASIN, the fee estimates might be different. This is
+     * because these estimates use the item&#x27;s catalog size, which might not always match the actual size of the
+     * item sent to Amazon. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetMyFeesEstimateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForASINWithHttpInfo(
+            GetMyFeesEstimateRequest body, String asin, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeesApi-getMyFeesEstimateForASIN");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getMyFeesEstimateForASINBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForASIN operation exceeds rate limit");
     }
 
     /**
@@ -180,11 +252,7 @@ public class FeesApi {
      */
     public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForASINWithHttpInfo(
             GetMyFeesEstimateRequest body, String asin) throws ApiException, LWAException {
-        okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, null);
-        if (disableRateLimiting || getMyFeesEstimateForASINBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForASIN operation exceeds rate limit");
+        return getMyFeesEstimateForASINWithHttpInfo(body, asin, null);
     }
 
     /**
@@ -207,12 +275,46 @@ public class FeesApi {
      * @param body (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getMyFeesEstimateForASINAsync(
             GetMyFeesEstimateRequest body, String asin, final ApiCallback<GetMyFeesEstimateResponse> callback)
+            throws ApiException, LWAException {
+        return getMyFeesEstimateForASINAsync(body, asin, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the estimated fees for the item indicated by the specified ASIN in the marketplace
+     * specified in the request body. You can call &#x60;getMyFeesEstimateForASIN&#x60; for an item on behalf of a
+     * selling partner before the selling partner sets the item&#x27;s price. The selling partner can then take
+     * estimated fees into account. Each fees request must include an original identifier. This identifier is included
+     * in the fees estimate so you can correlate a fees estimate with the original request. **Note:** This identifier
+     * value is used to identify an estimate. Actual costs may vary. Search \&quot;fees\&quot; in [Seller
+     * Central](https://sellercentral.amazon.com/) and consult the store-specific fee schedule for the most up-to-date
+     * information. **Note:** When using the &#x60;getMyFeesEstimateForASIN&#x60; operation with an ASIN, the fee
+     * estimates might be different. This is because these estimates use the item&#x27;s catalog size, which might not
+     * always match the actual size of the item sent to Amazon. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getMyFeesEstimateForASINAsync(
+            GetMyFeesEstimateRequest body,
+            String asin,
+            final ApiCallback<GetMyFeesEstimateResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -222,6 +324,13 @@ public class FeesApi {
         }
 
         okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(body, asin, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeesApi-getMyFeesEstimateForASIN");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getMyFeesEstimateForASINBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -316,14 +425,93 @@ public class FeesApi {
      * @param body (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetMyFeesEstimateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetMyFeesEstimateResponse getMyFeesEstimateForSKU(
+            GetMyFeesEstimateRequest body, String sellerSKU, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetMyFeesEstimateResponse> resp =
+                getMyFeesEstimateForSKUWithHttpInfo(body, sellerSKU, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the estimated fees for the item indicated by the specified seller SKU in the marketplace specified in the
+     * request body. **Note:** The parameters associated with this operation may contain special characters that require
+     * URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). You can call
+     * &#x60;getMyFeesEstimateForSKU&#x60; for an item on behalf of a selling partner before the selling partner sets
+     * the item&#x27;s price. The selling partner can then take any estimated fees into account. Each fees estimate
+     * request must include an original identifier. This identifier is included in the fees estimate so that you can
+     * correlate a fees estimate with the original request. **Note:** This identifier value is used to identify an
+     * estimate. Actual costs may vary. Search \&quot;fees\&quot; in [Seller Central](https://sellercentral.amazon.com/)
+     * and consult the store-specific fee schedule for the most up-to-date information. **Note:** When sellers use the
+     * &#x60;getMyFeesEstimateForSKU&#x60; operation with their &#x60;SellerSKU&#x60;, they get accurate fees based on
+     * real item measurements, but only after they&#x27;ve sent their items to Amazon. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
+     *     SellerId, which is included with every operation that you submit. (required)
      * @return GetMyFeesEstimateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetMyFeesEstimateResponse getMyFeesEstimateForSKU(GetMyFeesEstimateRequest body, String sellerSKU)
             throws ApiException, LWAException {
-        ApiResponse<GetMyFeesEstimateResponse> resp = getMyFeesEstimateForSKUWithHttpInfo(body, sellerSKU);
+        ApiResponse<GetMyFeesEstimateResponse> resp = getMyFeesEstimateForSKUWithHttpInfo(body, sellerSKU, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the estimated fees for the item indicated by the specified seller SKU in the marketplace specified in the
+     * request body. **Note:** The parameters associated with this operation may contain special characters that require
+     * URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). You can call
+     * &#x60;getMyFeesEstimateForSKU&#x60; for an item on behalf of a selling partner before the selling partner sets
+     * the item&#x27;s price. The selling partner can then take any estimated fees into account. Each fees estimate
+     * request must include an original identifier. This identifier is included in the fees estimate so that you can
+     * correlate a fees estimate with the original request. **Note:** This identifier value is used to identify an
+     * estimate. Actual costs may vary. Search \&quot;fees\&quot; in [Seller Central](https://sellercentral.amazon.com/)
+     * and consult the store-specific fee schedule for the most up-to-date information. **Note:** When sellers use the
+     * &#x60;getMyFeesEstimateForSKU&#x60; operation with their &#x60;SellerSKU&#x60;, they get accurate fees based on
+     * real item measurements, but only after they&#x27;ve sent their items to Amazon. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
+     *     SellerId, which is included with every operation that you submit. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetMyFeesEstimateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForSKUWithHttpInfo(
+            GetMyFeesEstimateRequest body, String sellerSKU, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeesApi-getMyFeesEstimateForSKU");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getMyFeesEstimateForSKUBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForSKU operation exceeds rate limit");
     }
 
     /**
@@ -354,11 +542,7 @@ public class FeesApi {
      */
     public ApiResponse<GetMyFeesEstimateResponse> getMyFeesEstimateForSKUWithHttpInfo(
             GetMyFeesEstimateRequest body, String sellerSKU) throws ApiException, LWAException {
-        okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, null);
-        if (disableRateLimiting || getMyFeesEstimateForSKUBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimateForSKU operation exceeds rate limit");
+        return getMyFeesEstimateForSKUWithHttpInfo(body, sellerSKU, null);
     }
 
     /**
@@ -384,12 +568,49 @@ public class FeesApi {
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getMyFeesEstimateForSKUAsync(
             GetMyFeesEstimateRequest body, String sellerSKU, final ApiCallback<GetMyFeesEstimateResponse> callback)
+            throws ApiException, LWAException {
+        return getMyFeesEstimateForSKUAsync(body, sellerSKU, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the estimated fees for the item indicated by the specified seller SKU in the marketplace
+     * specified in the request body. **Note:** The parameters associated with this operation may contain special
+     * characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). You can call
+     * &#x60;getMyFeesEstimateForSKU&#x60; for an item on behalf of a selling partner before the selling partner sets
+     * the item&#x27;s price. The selling partner can then take any estimated fees into account. Each fees estimate
+     * request must include an original identifier. This identifier is included in the fees estimate so that you can
+     * correlate a fees estimate with the original request. **Note:** This identifier value is used to identify an
+     * estimate. Actual costs may vary. Search \&quot;fees\&quot; in [Seller Central](https://sellercentral.amazon.com/)
+     * and consult the store-specific fee schedule for the most up-to-date information. **Note:** When sellers use the
+     * &#x60;getMyFeesEstimateForSKU&#x60; operation with their &#x60;SellerSKU&#x60;, they get accurate fees based on
+     * real item measurements, but only after they&#x27;ve sent their items to Amazon. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
+     *     SellerId, which is included with every operation that you submit. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getMyFeesEstimateForSKUAsync(
+            GetMyFeesEstimateRequest body,
+            String sellerSKU,
+            final ApiCallback<GetMyFeesEstimateResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -399,6 +620,13 @@ public class FeesApi {
         }
 
         okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(body, sellerSKU, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeesApi-getMyFeesEstimateForSKU");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getMyFeesEstimateForSKUBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMyFeesEstimateResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -470,14 +698,64 @@ public class FeesApi {
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetMyFeesEstimatesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetMyFeesEstimatesResponse getMyFeesEstimates(List<FeesEstimateByIdRequest> body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetMyFeesEstimatesResponse> resp = getMyFeesEstimatesWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the estimated fees for a list of products. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
      * @return GetMyFeesEstimatesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetMyFeesEstimatesResponse getMyFeesEstimates(List<FeesEstimateByIdRequest> body)
             throws ApiException, LWAException {
-        ApiResponse<GetMyFeesEstimatesResponse> resp = getMyFeesEstimatesWithHttpInfo(body);
+        ApiResponse<GetMyFeesEstimatesResponse> resp = getMyFeesEstimatesWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the estimated fees for a list of products. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetMyFeesEstimatesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetMyFeesEstimatesResponse> getMyFeesEstimatesWithHttpInfo(
+            List<FeesEstimateByIdRequest> body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeesApi-getMyFeesEstimates");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getMyFeesEstimatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimates operation exceeds rate limit");
     }
 
     /**
@@ -495,11 +773,7 @@ public class FeesApi {
      */
     public ApiResponse<GetMyFeesEstimatesResponse> getMyFeesEstimatesWithHttpInfo(List<FeesEstimateByIdRequest> body)
             throws ApiException, LWAException {
-        okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, null);
-        if (disableRateLimiting || getMyFeesEstimatesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMyFeesEstimates operation exceeds rate limit");
+        return getMyFeesEstimatesWithHttpInfo(body, null);
     }
 
     /**
@@ -512,12 +786,35 @@ public class FeesApi {
      *
      * @param body (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getMyFeesEstimatesAsync(
             List<FeesEstimateByIdRequest> body, final ApiCallback<GetMyFeesEstimatesResponse> callback)
+            throws ApiException, LWAException {
+        return getMyFeesEstimatesAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the estimated fees for a list of products. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getMyFeesEstimatesAsync(
+            List<FeesEstimateByIdRequest> body,
+            final ApiCallback<GetMyFeesEstimatesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -527,6 +824,13 @@ public class FeesApi {
         }
 
         okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeesApi-getMyFeesEstimates");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getMyFeesEstimatesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

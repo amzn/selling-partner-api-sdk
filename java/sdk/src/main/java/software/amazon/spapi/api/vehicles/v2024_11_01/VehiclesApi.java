@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -133,6 +134,27 @@ public class VehiclesApi {
      * @param pageToken A token to fetch a certain page when there are multiple pages worth of results. (optional)
      * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
      *     catalog after this date will be returned. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return VehiclesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public VehiclesResponse getVehicles(
+            String marketplaceId, String vehicleType, String pageToken, String updatedAfter, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<VehiclesResponse> resp =
+                getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Get the latest collection of vehicles
+     *
+     * @param marketplaceId An identifier for the marketplace in which the resource operates. (required)
+     * @param vehicleType An identifier for vehicle type. (required)
+     * @param pageToken A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
+     *     catalog after this date will be returned. (optional)
      * @return VehiclesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -140,8 +162,38 @@ public class VehiclesApi {
     public VehiclesResponse getVehicles(String marketplaceId, String vehicleType, String pageToken, String updatedAfter)
             throws ApiException, LWAException {
         ApiResponse<VehiclesResponse> resp =
-                getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter);
+                getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, null);
         return resp.getData();
+    }
+
+    /**
+     * Get the latest collection of vehicles
+     *
+     * @param marketplaceId An identifier for the marketplace in which the resource operates. (required)
+     * @param vehicleType An identifier for vehicle type. (required)
+     * @param pageToken A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
+     *     catalog after this date will be returned. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;VehiclesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<VehiclesResponse> getVehiclesWithHttpInfo(
+            String marketplaceId, String vehicleType, String pageToken, String updatedAfter, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getVehiclesValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VehiclesApi-getVehicles");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getVehiclesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getVehicles operation exceeds rate limit");
     }
 
     /**
@@ -159,11 +211,7 @@ public class VehiclesApi {
     public ApiResponse<VehiclesResponse> getVehiclesWithHttpInfo(
             String marketplaceId, String vehicleType, String pageToken, String updatedAfter)
             throws ApiException, LWAException {
-        okhttp3.Call call = getVehiclesValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null);
-        if (disableRateLimiting || getVehiclesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getVehicles operation exceeds rate limit");
+        return getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, null);
     }
 
     /**
@@ -175,6 +223,7 @@ public class VehiclesApi {
      * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
      *     catalog after this date will be returned. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -186,6 +235,30 @@ public class VehiclesApi {
             String updatedAfter,
             final ApiCallback<VehiclesResponse> callback)
             throws ApiException, LWAException {
+        return getVehiclesAsync(marketplaceId, vehicleType, pageToken, updatedAfter, callback, null);
+    }
+    /**
+     * (asynchronously) Get the latest collection of vehicles
+     *
+     * @param marketplaceId An identifier for the marketplace in which the resource operates. (required)
+     * @param vehicleType An identifier for vehicle type. (required)
+     * @param pageToken A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#x27;s
+     *     catalog after this date will be returned. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getVehiclesAsync(
+            String marketplaceId,
+            String vehicleType,
+            String pageToken,
+            String updatedAfter,
+            final ApiCallback<VehiclesResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -195,6 +268,13 @@ public class VehiclesApi {
 
         okhttp3.Call call = getVehiclesValidateBeforeCall(
                 marketplaceId, vehicleType, pageToken, updatedAfter, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VehiclesApi-getVehicles");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getVehiclesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

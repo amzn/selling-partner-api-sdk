@@ -1,8 +1,8 @@
 package com.amazon.SellingPartnerAPIAA;
 
-import okhttp3.Request;
 import java.util.Arrays;
 import java.util.List;
+import okhttp3.Request;
 
 public class RestrictedDataTokenSigner {
 
@@ -19,9 +19,8 @@ public class RestrictedDataTokenSigner {
         boolean isRestricted = isRestrictedOperation(operationName);
         if (!isRestricted) {
             throw new IllegalArgumentException(
-                    "Operation '" + operationName + "' does not require a Restricted Data Token (RDT). " +
-                            "Remove the RDT parameter for non-restricted operations."
-            );
+                    "Operation '" + operationName + "' does not require a Restricted Data Token (RDT). "
+                            + "Remove the RDT parameter for non-restricted operations.");
         }
 
         return request.newBuilder()
@@ -71,8 +70,7 @@ public class RestrictedDataTokenSigner {
                 "ShipmentInvoiceApi-getShipmentDetails",
 
                 // Reports API
-                "ReportsApi-getReportDocument"
-        );
+                "ReportsApi-getReportDocument");
 
         return restrictedOperations.contains(operationName);
     }

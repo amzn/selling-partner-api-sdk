@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -112,14 +113,68 @@ public class SellingpartnersApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSellingPartnerMetricsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSellingPartnerMetricsResponse getSellingPartnerMetrics(
+            GetSellingPartnerMetricsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetSellingPartnerMetricsResponse> resp =
+                getSellingPartnerMetricsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns aggregated replenishment program metrics for a selling partner. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
      * @return GetSellingPartnerMetricsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetSellingPartnerMetricsResponse getSellingPartnerMetrics(GetSellingPartnerMetricsRequest body)
             throws ApiException, LWAException {
-        ApiResponse<GetSellingPartnerMetricsResponse> resp = getSellingPartnerMetricsWithHttpInfo(body);
+        ApiResponse<GetSellingPartnerMetricsResponse> resp = getSellingPartnerMetricsWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns aggregated replenishment program metrics for a selling partner. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSellingPartnerMetricsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSellingPartnerMetricsResponse> getSellingPartnerMetricsWithHttpInfo(
+            GetSellingPartnerMetricsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SellingpartnersApi-getSellingPartnerMetrics");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSellingPartnerMetrics operation exceeds rate limit");
     }
 
     /**
@@ -138,11 +193,7 @@ public class SellingpartnersApi {
      */
     public ApiResponse<GetSellingPartnerMetricsResponse> getSellingPartnerMetricsWithHttpInfo(
             GetSellingPartnerMetricsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, null);
-        if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSellingPartnerMetrics operation exceeds rate limit");
+        return getSellingPartnerMetricsWithHttpInfo(body, null);
     }
 
     /**
@@ -156,12 +207,36 @@ public class SellingpartnersApi {
      *
      * @param body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getSellingPartnerMetricsAsync(
             GetSellingPartnerMetricsRequest body, final ApiCallback<GetSellingPartnerMetricsResponse> callback)
+            throws ApiException, LWAException {
+        return getSellingPartnerMetricsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns aggregated replenishment program metrics for a selling partner. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSellingPartnerMetricsAsync(
+            GetSellingPartnerMetricsRequest body,
+            final ApiCallback<GetSellingPartnerMetricsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,6 +246,14 @@ public class SellingpartnersApi {
         }
 
         okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SellingpartnersApi-getSellingPartnerMetrics");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

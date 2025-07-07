@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -111,13 +112,62 @@ public class SellersApi {
      * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAccountResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAccountResponse getAccount(String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetAccountResponse> resp = getAccountWithHttpInfo(restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about a seller account and its marketplaces. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.016 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The preceding table indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
      * @return GetAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetAccountResponse getAccount() throws ApiException, LWAException {
-        ApiResponse<GetAccountResponse> resp = getAccountWithHttpInfo();
+        ApiResponse<GetAccountResponse> resp = getAccountWithHttpInfo(null);
         return resp.getData();
+    }
+
+    /**
+     * Returns information about a seller account and its marketplaces. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.016 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The preceding table indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAccountResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAccountResponse> getAccountWithHttpInfo(String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getAccountValidateBeforeCall(null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SellersApi-getAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
     }
 
     /**
@@ -134,11 +184,7 @@ public class SellersApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetAccountResponse> getAccountWithHttpInfo() throws ApiException, LWAException {
-        okhttp3.Call call = getAccountValidateBeforeCall(null);
-        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
+        return getAccountWithHttpInfo(null);
     }
 
     /**
@@ -151,11 +197,31 @@ public class SellersApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getAccountAsync(final ApiCallback<GetAccountResponse> callback)
+            throws ApiException, LWAException {
+        return getAccountAsync(callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about a seller account and its marketplaces. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.016 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAccountAsync(final ApiCallback<GetAccountResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -165,6 +231,13 @@ public class SellersApi {
         }
 
         okhttp3.Call call = getAccountValidateBeforeCall(progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SellersApi-getAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -230,13 +303,65 @@ public class SellersApi {
      * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
      * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetMarketplaceParticipationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetMarketplaceParticipationsResponse getMarketplaceParticipations(String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetMarketplaceParticipationsResponse> resp =
+                getMarketplaceParticipationsWithHttpInfo(restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of marketplaces where the seller can list items and information about the seller&#x27;s
+     * participation in those marketplaces. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.016 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
      * @return GetMarketplaceParticipationsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetMarketplaceParticipationsResponse getMarketplaceParticipations() throws ApiException, LWAException {
-        ApiResponse<GetMarketplaceParticipationsResponse> resp = getMarketplaceParticipationsWithHttpInfo();
+        ApiResponse<GetMarketplaceParticipationsResponse> resp = getMarketplaceParticipationsWithHttpInfo(null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of marketplaces where the seller can list items and information about the seller&#x27;s
+     * participation in those marketplaces. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.016 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetMarketplaceParticipationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetMarketplaceParticipationsResponse> getMarketplaceParticipationsWithHttpInfo(
+            String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SellersApi-getMarketplaceParticipations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMarketplaceParticipations operation exceeds rate limit");
     }
 
     /**
@@ -254,11 +379,7 @@ public class SellersApi {
      */
     public ApiResponse<GetMarketplaceParticipationsResponse> getMarketplaceParticipationsWithHttpInfo()
             throws ApiException, LWAException {
-        okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(null);
-        if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMarketplaceParticipations operation exceeds rate limit");
+        return getMarketplaceParticipationsWithHttpInfo(null);
     }
 
     /**
@@ -272,12 +393,34 @@ public class SellersApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getMarketplaceParticipationsAsync(
             final ApiCallback<GetMarketplaceParticipationsResponse> callback) throws ApiException, LWAException {
+        return getMarketplaceParticipationsAsync(callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of marketplaces where the seller can list items and information about the
+     * seller&#x27;s participation in those marketplaces. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 0.016 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getMarketplaceParticipationsAsync(
+            final ApiCallback<GetMarketplaceParticipationsResponse> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -286,6 +429,14 @@ public class SellersApi {
         }
 
         okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SellersApi-getMarketplaceParticipations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

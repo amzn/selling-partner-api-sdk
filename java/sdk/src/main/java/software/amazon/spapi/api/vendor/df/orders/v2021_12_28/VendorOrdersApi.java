@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -129,13 +130,64 @@ public class VendorOrdersApi {
      *
      * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
      *     alpha-numeric code. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Order
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Order getOrder(String purchaseOrderNumber, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<Order> resp = getOrderWithHttpInfo(purchaseOrderNumber, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns purchase order information for the purchaseOrderNumber that you specify. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
+     *     alpha-numeric code. (required)
      * @return Order
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Order getOrder(String purchaseOrderNumber) throws ApiException, LWAException {
-        ApiResponse<Order> resp = getOrderWithHttpInfo(purchaseOrderNumber);
+        ApiResponse<Order> resp = getOrderWithHttpInfo(purchaseOrderNumber, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns purchase order information for the purchaseOrderNumber that you specify. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
+     *     alpha-numeric code. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Order&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Order> getOrderWithHttpInfo(String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Order>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
     }
 
     /**
@@ -153,11 +205,7 @@ public class VendorOrdersApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Order> getOrderWithHttpInfo(String purchaseOrderNumber) throws ApiException, LWAException {
-        okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, null);
-        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Order>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
+        return getOrderWithHttpInfo(purchaseOrderNumber, null);
     }
 
     /**
@@ -172,11 +220,34 @@ public class VendorOrdersApi {
      * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
      *     alpha-numeric code. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getOrderAsync(String purchaseOrderNumber, final ApiCallback<Order> callback)
+            throws ApiException, LWAException {
+        return getOrderAsync(purchaseOrderNumber, callback, null);
+    }
+    /**
+     * (asynchronously) Returns purchase order information for the purchaseOrderNumber that you specify. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values then those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
+     *     alpha-numeric code. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getOrderAsync(
+            String purchaseOrderNumber, final ApiCallback<Order> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -186,6 +257,13 @@ public class VendorOrdersApi {
         }
 
         okhttp3.Call call = getOrderValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Order>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -326,6 +404,61 @@ public class VendorOrdersApi {
      *     value is returned in the previous API call. (optional)
      * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
      *     numbers are returned. (optional, default to true)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return OrderList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OrderList getOrders(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            String status,
+            Long limit,
+            String sortOrder,
+            String nextToken,
+            String includeDetails,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<OrderList> resp = getOrdersWithHttpInfo(
+                createdAfter,
+                createdBefore,
+                shipFromPartyId,
+                status,
+                limit,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of purchase orders created during the time frame that you specify. You define the time frame using
+     * the createdAfter and createdBefore parameters. You must use both parameters. You can choose to get only the
+     * purchase order numbers by setting the includeDetails parameter to false. In that case, the operation returns a
+     * list of purchase order numbers. You can then call the getOrder operation to return the details of a specific
+     * order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param createdAfter Purchase orders that became available after this date and time will be included in the
+     *     result. Must be in ISO-8601 date/time format. (required)
+     * @param createdBefore Purchase orders that became available before this date and time will be included in the
+     *     result. Must be in ISO-8601 date/time format. (required)
+     * @param shipFromPartyId The vendor warehouse identifier for the fulfillment warehouse. If not specified, the
+     *     result will contain orders for all warehouses. (optional)
+     * @param status Returns only the purchase orders that match the specified status. If not specified, the result will
+     *     contain orders that match any status. (optional)
+     * @param limit The limit to the number of purchase orders returned. (optional)
+     * @param sortOrder Sort the list in ascending or descending order by order creation date. (optional)
+     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
+     *     value is returned in the previous API call. (optional)
+     * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
+     *     numbers are returned. (optional, default to true)
      * @return OrderList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -341,8 +474,81 @@ public class VendorOrdersApi {
             String includeDetails)
             throws ApiException, LWAException {
         ApiResponse<OrderList> resp = getOrdersWithHttpInfo(
-                createdAfter, createdBefore, shipFromPartyId, status, limit, sortOrder, nextToken, includeDetails);
+                createdAfter,
+                createdBefore,
+                shipFromPartyId,
+                status,
+                limit,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of purchase orders created during the time frame that you specify. You define the time frame using
+     * the createdAfter and createdBefore parameters. You must use both parameters. You can choose to get only the
+     * purchase order numbers by setting the includeDetails parameter to false. In that case, the operation returns a
+     * list of purchase order numbers. You can then call the getOrder operation to return the details of a specific
+     * order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param createdAfter Purchase orders that became available after this date and time will be included in the
+     *     result. Must be in ISO-8601 date/time format. (required)
+     * @param createdBefore Purchase orders that became available before this date and time will be included in the
+     *     result. Must be in ISO-8601 date/time format. (required)
+     * @param shipFromPartyId The vendor warehouse identifier for the fulfillment warehouse. If not specified, the
+     *     result will contain orders for all warehouses. (optional)
+     * @param status Returns only the purchase orders that match the specified status. If not specified, the result will
+     *     contain orders that match any status. (optional)
+     * @param limit The limit to the number of purchase orders returned. (optional)
+     * @param sortOrder Sort the list in ascending or descending order by order creation date. (optional)
+     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
+     *     value is returned in the previous API call. (optional)
+     * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
+     *     numbers are returned. (optional, default to true)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;OrderList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OrderList> getOrdersWithHttpInfo(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            String status,
+            Long limit,
+            String sortOrder,
+            String nextToken,
+            String includeDetails,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getOrdersValidateBeforeCall(
+                createdAfter,
+                createdBefore,
+                shipFromPartyId,
+                status,
+                limit,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getOrders");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
     }
 
     /**
@@ -385,7 +591,7 @@ public class VendorOrdersApi {
             String nextToken,
             String includeDetails)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrdersValidateBeforeCall(
+        return getOrdersWithHttpInfo(
                 createdAfter,
                 createdBefore,
                 shipFromPartyId,
@@ -395,10 +601,6 @@ public class VendorOrdersApi {
                 nextToken,
                 includeDetails,
                 null);
-        if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
     }
 
     /**
@@ -428,6 +630,7 @@ public class VendorOrdersApi {
      * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
      *     numbers are returned. (optional, default to true)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -442,6 +645,62 @@ public class VendorOrdersApi {
             String nextToken,
             String includeDetails,
             final ApiCallback<OrderList> callback)
+            throws ApiException, LWAException {
+        return getOrdersAsync(
+                createdAfter,
+                createdBefore,
+                shipFromPartyId,
+                status,
+                limit,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Returns a list of purchase orders created during the time frame that you specify. You define the
+     * time frame using the createdAfter and createdBefore parameters. You must use both parameters. You can choose to
+     * get only the purchase order numbers by setting the includeDetails parameter to false. In that case, the operation
+     * returns a list of purchase order numbers. You can then call the getOrder operation to return the details of a
+     * specific order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param createdAfter Purchase orders that became available after this date and time will be included in the
+     *     result. Must be in ISO-8601 date/time format. (required)
+     * @param createdBefore Purchase orders that became available before this date and time will be included in the
+     *     result. Must be in ISO-8601 date/time format. (required)
+     * @param shipFromPartyId The vendor warehouse identifier for the fulfillment warehouse. If not specified, the
+     *     result will contain orders for all warehouses. (optional)
+     * @param status Returns only the purchase orders that match the specified status. If not specified, the result will
+     *     contain orders that match any status. (optional)
+     * @param limit The limit to the number of purchase orders returned. (optional)
+     * @param sortOrder Sort the list in ascending or descending order by order creation date. (optional)
+     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
+     *     value is returned in the previous API call. (optional)
+     * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
+     *     numbers are returned. (optional, default to true)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getOrdersAsync(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            String status,
+            Long limit,
+            String sortOrder,
+            String nextToken,
+            String includeDetails,
+            final ApiCallback<OrderList> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -460,6 +719,13 @@ public class VendorOrdersApi {
                 nextToken,
                 includeDetails,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getOrders");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<OrderList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -531,13 +797,64 @@ public class VendorOrdersApi {
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body containing the acknowledgement to an order (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransactionId
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransactionId submitAcknowledgement(SubmitAcknowledgementRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<TransactionId> resp = submitAcknowledgementWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submits acknowledgements for one or more purchase orders. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the acknowledgement to an order (required)
      * @return TransactionId
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransactionId submitAcknowledgement(SubmitAcknowledgementRequest body) throws ApiException, LWAException {
-        ApiResponse<TransactionId> resp = submitAcknowledgementWithHttpInfo(body);
+        ApiResponse<TransactionId> resp = submitAcknowledgementWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Submits acknowledgements for one or more purchase orders. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the acknowledgement to an order (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransactionId&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransactionId> submitAcknowledgementWithHttpInfo(
+            SubmitAcknowledgementRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitAcknowledgement operation exceeds rate limit");
     }
 
     /**
@@ -555,11 +872,7 @@ public class VendorOrdersApi {
      */
     public ApiResponse<TransactionId> submitAcknowledgementWithHttpInfo(SubmitAcknowledgementRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null);
-        if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitAcknowledgement operation exceeds rate limit");
+        return submitAcknowledgementWithHttpInfo(body, null);
     }
 
     /**
@@ -572,12 +885,33 @@ public class VendorOrdersApi {
      *
      * @param body The request body containing the acknowledgement to an order (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitAcknowledgementAsync(
             SubmitAcknowledgementRequest body, final ApiCallback<TransactionId> callback)
+            throws ApiException, LWAException {
+        return submitAcknowledgementAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Submits acknowledgements for one or more purchase orders. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the acknowledgement to an order (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitAcknowledgementAsync(
+            SubmitAcknowledgementRequest body, final ApiCallback<TransactionId> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -587,6 +921,14 @@ public class VendorOrdersApi {
         }
 
         okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransactionId>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

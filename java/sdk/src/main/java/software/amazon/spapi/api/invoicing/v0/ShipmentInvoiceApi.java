@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -125,13 +126,64 @@ public class ShipmentInvoiceApi {
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The shipment identifier for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetInvoiceStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetInvoiceStatusResponse getInvoiceStatus(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetInvoiceStatusResponse> resp = getInvoiceStatusWithHttpInfo(shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the invoice status for the shipment you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier for the shipment. (required)
      * @return GetInvoiceStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetInvoiceStatusResponse getInvoiceStatus(String shipmentId) throws ApiException, LWAException {
-        ApiResponse<GetInvoiceStatusResponse> resp = getInvoiceStatusWithHttpInfo(shipmentId);
+        ApiResponse<GetInvoiceStatusResponse> resp = getInvoiceStatusWithHttpInfo(shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the invoice status for the shipment you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetInvoiceStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetInvoiceStatusResponse> getInvoiceStatusWithHttpInfo(
+            String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShipmentInvoiceApi-getInvoiceStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInvoiceStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetInvoiceStatusResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInvoiceStatus operation exceeds rate limit");
     }
 
     /**
@@ -149,11 +201,7 @@ public class ShipmentInvoiceApi {
      */
     public ApiResponse<GetInvoiceStatusResponse> getInvoiceStatusWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, null);
-        if (disableRateLimiting || getInvoiceStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoiceStatusResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoiceStatus operation exceeds rate limit");
+        return getInvoiceStatusWithHttpInfo(shipmentId, null);
     }
 
     /**
@@ -166,11 +214,32 @@ public class ShipmentInvoiceApi {
      *
      * @param shipmentId The shipment identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInvoiceStatusAsync(String shipmentId, final ApiCallback<GetInvoiceStatusResponse> callback)
+            throws ApiException, LWAException {
+        return getInvoiceStatusAsync(shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the invoice status for the shipment you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier for the shipment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInvoiceStatusAsync(
+            String shipmentId, final ApiCallback<GetInvoiceStatusResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -180,6 +249,14 @@ public class ShipmentInvoiceApi {
         }
 
         okhttp3.Call call = getInvoiceStatusValidateBeforeCall(shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShipmentInvoiceApi-getInvoiceStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInvoiceStatusBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetInvoiceStatusResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -256,13 +333,68 @@ public class ShipmentInvoiceApi {
      * @param shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus
      *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
      *     Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetShipmentDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetShipmentDetailsResponse getShipmentDetails(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetShipmentDetailsResponse> resp = getShipmentDetailsWithHttpInfo(shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the shipment details required to issue an invoice for the specified shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus
+     *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
+     *     Guide](doc:notifications-api-v1-use-case-guide). (required)
      * @return GetShipmentDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetShipmentDetailsResponse getShipmentDetails(String shipmentId) throws ApiException, LWAException {
-        ApiResponse<GetShipmentDetailsResponse> resp = getShipmentDetailsWithHttpInfo(shipmentId);
+        ApiResponse<GetShipmentDetailsResponse> resp = getShipmentDetailsWithHttpInfo(shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the shipment details required to issue an invoice for the specified shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus
+     *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
+     *     Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetShipmentDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetShipmentDetailsResponse> getShipmentDetailsWithHttpInfo(
+            String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShipmentInvoiceApi-getShipmentDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShipmentDetails operation exceeds rate limit");
     }
 
     /**
@@ -282,11 +414,7 @@ public class ShipmentInvoiceApi {
      */
     public ApiResponse<GetShipmentDetailsResponse> getShipmentDetailsWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, null);
-        if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShipmentDetails operation exceeds rate limit");
+        return getShipmentDetailsWithHttpInfo(shipmentId, null);
     }
 
     /**
@@ -302,12 +430,36 @@ public class ShipmentInvoiceApi {
      *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
      *     Guide](doc:notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getShipmentDetailsAsync(
             String shipmentId, final ApiCallback<GetShipmentDetailsResponse> callback)
+            throws ApiException, LWAException {
+        return getShipmentDetailsAsync(shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the shipment details required to issue an invoice for the specified shipment. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus
+     *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
+     *     Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShipmentDetailsAsync(
+            String shipmentId, final ApiCallback<GetShipmentDetailsResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -317,6 +469,14 @@ public class ShipmentInvoiceApi {
         }
 
         okhttp3.Call call = getShipmentDetailsValidateBeforeCall(shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShipmentInvoiceApi-getShipmentDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShipmentDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -397,14 +557,67 @@ public class ShipmentInvoiceApi {
      *
      * @param body (required)
      * @param shipmentId The identifier for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SubmitInvoiceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SubmitInvoiceResponse submitInvoice(SubmitInvoiceRequest body, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SubmitInvoiceResponse> resp = submitInvoiceWithHttpInfo(body, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submits a shipment invoice document for a given shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param shipmentId The identifier for the shipment. (required)
      * @return SubmitInvoiceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SubmitInvoiceResponse submitInvoice(SubmitInvoiceRequest body, String shipmentId)
             throws ApiException, LWAException {
-        ApiResponse<SubmitInvoiceResponse> resp = submitInvoiceWithHttpInfo(body, shipmentId);
+        ApiResponse<SubmitInvoiceResponse> resp = submitInvoiceWithHttpInfo(body, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Submits a shipment invoice document for a given shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param shipmentId The identifier for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SubmitInvoiceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SubmitInvoiceResponse> submitInvoiceWithHttpInfo(
+            SubmitInvoiceRequest body, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShipmentInvoiceApi-submitInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitInvoice operation exceeds rate limit");
     }
 
     /**
@@ -423,11 +636,7 @@ public class ShipmentInvoiceApi {
      */
     public ApiResponse<SubmitInvoiceResponse> submitInvoiceWithHttpInfo(SubmitInvoiceRequest body, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitInvoiceValidateBeforeCall(body, shipmentId, null);
-        if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitInvoice operation exceeds rate limit");
+        return submitInvoiceWithHttpInfo(body, shipmentId, null);
     }
 
     /**
@@ -441,12 +650,37 @@ public class ShipmentInvoiceApi {
      * @param body (required)
      * @param shipmentId The identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitInvoiceAsync(
             SubmitInvoiceRequest body, String shipmentId, final ApiCallback<SubmitInvoiceResponse> callback)
+            throws ApiException, LWAException {
+        return submitInvoiceAsync(body, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Submits a shipment invoice document for a given shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1.133 | 25 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param shipmentId The identifier for the shipment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitInvoiceAsync(
+            SubmitInvoiceRequest body,
+            String shipmentId,
+            final ApiCallback<SubmitInvoiceResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -456,6 +690,13 @@ public class ShipmentInvoiceApi {
         }
 
         okhttp3.Call call = submitInvoiceValidateBeforeCall(body, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShipmentInvoiceApi-submitInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInvoiceResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

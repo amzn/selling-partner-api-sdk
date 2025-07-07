@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -134,13 +135,65 @@ public class VendorShippingApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PackingSlip
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PackingSlip getPackingSlip(String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PackingSlip> resp = getPackingSlipWithHttpInfo(purchaseOrderNumber, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * getPackingSlip Returns a packing slip based on the purchaseOrderNumber that you specify. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
      * @return PackingSlip
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public PackingSlip getPackingSlip(String purchaseOrderNumber) throws ApiException, LWAException {
-        ApiResponse<PackingSlip> resp = getPackingSlipWithHttpInfo(purchaseOrderNumber);
+        ApiResponse<PackingSlip> resp = getPackingSlipWithHttpInfo(purchaseOrderNumber, null);
         return resp.getData();
+    }
+
+    /**
+     * getPackingSlip Returns a packing slip based on the purchaseOrderNumber that you specify. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PackingSlip&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PackingSlip> getPackingSlipWithHttpInfo(String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getPackingSlipValidateBeforeCall(purchaseOrderNumber, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorShippingApi-getPackingSlip");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPackingSlipBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PackingSlip>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPackingSlip operation exceeds rate limit");
     }
 
     /**
@@ -159,11 +212,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<PackingSlip> getPackingSlipWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPackingSlipValidateBeforeCall(purchaseOrderNumber, null);
-        if (disableRateLimiting || getPackingSlipBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PackingSlip>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPackingSlip operation exceeds rate limit");
+        return getPackingSlipWithHttpInfo(purchaseOrderNumber, null);
     }
 
     /**
@@ -177,11 +226,33 @@ public class VendorShippingApi {
      *
      * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getPackingSlipAsync(String purchaseOrderNumber, final ApiCallback<PackingSlip> callback)
+            throws ApiException, LWAException {
+        return getPackingSlipAsync(purchaseOrderNumber, callback, null);
+    }
+    /**
+     * getPackingSlip (asynchronously) Returns a packing slip based on the purchaseOrderNumber that you specify. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPackingSlipAsync(
+            String purchaseOrderNumber, final ApiCallback<PackingSlip> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -191,6 +262,13 @@ public class VendorShippingApi {
         }
 
         okhttp3.Call call = getPackingSlipValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorShippingApi-getPackingSlip");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPackingSlipBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PackingSlip>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -310,6 +388,46 @@ public class VendorShippingApi {
      *     default to ASC)
      * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
      *     token value is returned in the previous API call. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PackingSlipList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PackingSlipList getPackingSlips(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PackingSlipList> resp = getPackingSlipsWithHttpInfo(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * getPackingSlips Returns a list of packing slips for the purchase orders that match the criteria specified. Date
+     * range to search must not be more than 7 days. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Packing slips that become available after this date and time will be included in the result.
+     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param createdBefore Packing slips that became available before this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
+     *     contains orders for all warehouses. (optional)
+     * @param limit The maximum number of records to return. (optional)
+     * @param sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (optional,
+     *     default to ASC)
+     * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
+     *     token value is returned in the previous API call. (optional)
      * @return PackingSlipList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -322,9 +440,59 @@ public class VendorShippingApi {
             String sortOrder,
             String nextToken)
             throws ApiException, LWAException {
-        ApiResponse<PackingSlipList> resp =
-                getPackingSlipsWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
+        ApiResponse<PackingSlipList> resp = getPackingSlipsWithHttpInfo(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
         return resp.getData();
+    }
+
+    /**
+     * getPackingSlips Returns a list of packing slips for the purchase orders that match the criteria specified. Date
+     * range to search must not be more than 7 days. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Packing slips that become available after this date and time will be included in the result.
+     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param createdBefore Packing slips that became available before this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
+     *     contains orders for all warehouses. (optional)
+     * @param limit The maximum number of records to return. (optional)
+     * @param sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (optional,
+     *     default to ASC)
+     * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
+     *     token value is returned in the previous API call. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PackingSlipList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PackingSlipList> getPackingSlipsWithHttpInfo(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getPackingSlipsValidateBeforeCall(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorShippingApi-getPackingSlips");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPackingSlipsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PackingSlipList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPackingSlips operation exceeds rate limit");
     }
 
     /**
@@ -360,12 +528,8 @@ public class VendorShippingApi {
             String sortOrder,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPackingSlipsValidateBeforeCall(
+        return getPackingSlipsWithHttpInfo(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
-        if (disableRateLimiting || getPackingSlipsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PackingSlipList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPackingSlips operation exceeds rate limit");
     }
 
     /**
@@ -391,6 +555,7 @@ public class VendorShippingApi {
      * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
      *     token value is returned in the previous API call. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -404,6 +569,47 @@ public class VendorShippingApi {
             String nextToken,
             final ApiCallback<PackingSlipList> callback)
             throws ApiException, LWAException {
+        return getPackingSlipsAsync(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, callback, null);
+    }
+    /**
+     * getPackingSlips (asynchronously) Returns a list of packing slips for the purchase orders that match the criteria
+     * specified. Date range to search must not be more than 7 days. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Packing slips that become available after this date and time will be included in the result.
+     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param createdBefore Packing slips that became available before this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
+     *     contains orders for all warehouses. (optional)
+     * @param limit The maximum number of records to return. (optional)
+     * @param sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (optional,
+     *     default to ASC)
+     * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
+     *     token value is returned in the previous API call. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPackingSlipsAsync(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            final ApiCallback<PackingSlipList> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -413,6 +619,13 @@ public class VendorShippingApi {
 
         okhttp3.Call call = getPackingSlipsValidateBeforeCall(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorShippingApi-getPackingSlips");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPackingSlipsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PackingSlipList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -486,14 +699,67 @@ public class VendorShippingApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param body Request body containing the shipment confirmations data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransactionReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransactionReference submitShipmentConfirmations(
+            SubmitShipmentConfirmationsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<TransactionReference> resp = submitShipmentConfirmationsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * submitShipmentConfirmations Submits one or more shipment confirmations for vendor orders. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body Request body containing the shipment confirmations data. (required)
      * @return TransactionReference
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransactionReference submitShipmentConfirmations(SubmitShipmentConfirmationsRequest body)
             throws ApiException, LWAException {
-        ApiResponse<TransactionReference> resp = submitShipmentConfirmationsWithHttpInfo(body);
+        ApiResponse<TransactionReference> resp = submitShipmentConfirmationsWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * submitShipmentConfirmations Submits one or more shipment confirmations for vendor orders. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body Request body containing the shipment confirmations data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransactionReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransactionReference> submitShipmentConfirmationsWithHttpInfo(
+            SubmitShipmentConfirmationsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingApi-submitShipmentConfirmations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitShipmentConfirmationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitShipmentConfirmations operation exceeds rate limit");
     }
 
     /**
@@ -512,11 +778,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<TransactionReference> submitShipmentConfirmationsWithHttpInfo(
             SubmitShipmentConfirmationsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, null);
-        if (disableRateLimiting || submitShipmentConfirmationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitShipmentConfirmations operation exceeds rate limit");
+        return submitShipmentConfirmationsWithHttpInfo(body, null);
     }
 
     /**
@@ -530,12 +792,36 @@ public class VendorShippingApi {
      *
      * @param body Request body containing the shipment confirmations data. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitShipmentConfirmationsAsync(
             SubmitShipmentConfirmationsRequest body, final ApiCallback<TransactionReference> callback)
+            throws ApiException, LWAException {
+        return submitShipmentConfirmationsAsync(body, callback, null);
+    }
+    /**
+     * submitShipmentConfirmations (asynchronously) Submits one or more shipment confirmations for vendor orders.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body Request body containing the shipment confirmations data. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitShipmentConfirmationsAsync(
+            SubmitShipmentConfirmationsRequest body,
+            final ApiCallback<TransactionReference> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -545,6 +831,14 @@ public class VendorShippingApi {
         }
 
         okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingApi-submitShipmentConfirmations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitShipmentConfirmationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -620,14 +914,71 @@ public class VendorShippingApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param body Request body containing the shipment status update data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransactionReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransactionReference submitShipmentStatusUpdates(
+            SubmitShipmentStatusUpdatesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<TransactionReference> resp = submitShipmentStatusUpdatesWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * submitShipmentStatusUpdates This operation is only to be used by Vendor-Own-Carrier (VOC) vendors. Calling this
+     * API submits a shipment status update for the package that a vendor has shipped. It will provide the Amazon
+     * customer visibility on their order, when the package is outside of Amazon Network visibility. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body Request body containing the shipment status update data. (required)
      * @return TransactionReference
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransactionReference submitShipmentStatusUpdates(SubmitShipmentStatusUpdatesRequest body)
             throws ApiException, LWAException {
-        ApiResponse<TransactionReference> resp = submitShipmentStatusUpdatesWithHttpInfo(body);
+        ApiResponse<TransactionReference> resp = submitShipmentStatusUpdatesWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * submitShipmentStatusUpdates This operation is only to be used by Vendor-Own-Carrier (VOC) vendors. Calling this
+     * API submits a shipment status update for the package that a vendor has shipped. It will provide the Amazon
+     * customer visibility on their order, when the package is outside of Amazon Network visibility. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body Request body containing the shipment status update data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransactionReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransactionReference> submitShipmentStatusUpdatesWithHttpInfo(
+            SubmitShipmentStatusUpdatesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitShipmentStatusUpdatesValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingApi-submitShipmentStatusUpdates");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitShipmentStatusUpdatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitShipmentStatusUpdates operation exceeds rate limit");
     }
 
     /**
@@ -648,11 +999,7 @@ public class VendorShippingApi {
      */
     public ApiResponse<TransactionReference> submitShipmentStatusUpdatesWithHttpInfo(
             SubmitShipmentStatusUpdatesRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitShipmentStatusUpdatesValidateBeforeCall(body, null);
-        if (disableRateLimiting || submitShipmentStatusUpdatesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitShipmentStatusUpdates operation exceeds rate limit");
+        return submitShipmentStatusUpdatesWithHttpInfo(body, null);
     }
 
     /**
@@ -668,12 +1015,38 @@ public class VendorShippingApi {
      *
      * @param body Request body containing the shipment status update data. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitShipmentStatusUpdatesAsync(
             SubmitShipmentStatusUpdatesRequest body, final ApiCallback<TransactionReference> callback)
+            throws ApiException, LWAException {
+        return submitShipmentStatusUpdatesAsync(body, callback, null);
+    }
+    /**
+     * submitShipmentStatusUpdates (asynchronously) This operation is only to be used by Vendor-Own-Carrier (VOC)
+     * vendors. Calling this API submits a shipment status update for the package that a vendor has shipped. It will
+     * provide the Amazon customer visibility on their order, when the package is outside of Amazon Network visibility.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body Request body containing the shipment status update data. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitShipmentStatusUpdatesAsync(
+            SubmitShipmentStatusUpdatesRequest body,
+            final ApiCallback<TransactionReference> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -683,6 +1056,14 @@ public class VendorShippingApi {
         }
 
         okhttp3.Call call = submitShipmentStatusUpdatesValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingApi-submitShipmentStatusUpdates");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitShipmentStatusUpdatesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

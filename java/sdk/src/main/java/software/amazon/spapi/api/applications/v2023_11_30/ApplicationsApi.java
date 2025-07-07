@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import io.github.bucket4j.Bucket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -109,11 +110,66 @@ public class ApplicationsApi {
      * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void rotateApplicationClientSecret(String restrictedDataToken) throws ApiException, LWAException {
+        rotateApplicationClientSecretWithHttpInfo(restrictedDataToken);
+    }
+
+    /**
+     * Rotates application client secrets for a developer application. Developers must register a destination queue in
+     * the developer console before calling this operation. When this operation is called a new client secret is
+     * generated and sent to the developer-registered queue. For more information, refer to [Rotate your application
+     * client
+     * secret](https://developer-docs.amazon.com/sp-api/v0/docs/application-management-api-v2023-11-30-use-case-guide#tutorial-rotate-your-applications-client-secret).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void rotateApplicationClientSecret() throws ApiException, LWAException {
-        rotateApplicationClientSecretWithHttpInfo();
+        rotateApplicationClientSecretWithHttpInfo(null);
+    }
+
+    /**
+     * Rotates application client secrets for a developer application. Developers must register a destination queue in
+     * the developer console before calling this operation. When this operation is called a new client secret is
+     * generated and sent to the developer-registered queue. For more information, refer to [Rotate your application
+     * client
+     * secret](https://developer-docs.amazon.com/sp-api/v0/docs/application-management-api-v2023-11-30-use-case-guide#tutorial-rotate-your-applications-client-secret).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> rotateApplicationClientSecretWithHttpInfo(String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ApplicationsApi-rotateApplicationClientSecret");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || rotateApplicationClientSecretBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("rotateApplicationClientSecret operation exceeds rate limit");
     }
 
     /**
@@ -134,10 +190,7 @@ public class ApplicationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> rotateApplicationClientSecretWithHttpInfo() throws ApiException, LWAException {
-        okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(null);
-        if (disableRateLimiting || rotateApplicationClientSecretBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("rotateApplicationClientSecret operation exceeds rate limit");
+        return rotateApplicationClientSecretWithHttpInfo(null);
     }
 
     /**
@@ -154,11 +207,35 @@ public class ApplicationsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call rotateApplicationClientSecretAsync(final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return rotateApplicationClientSecretAsync(callback, null);
+    }
+    /**
+     * (asynchronously) Rotates application client secrets for a developer application. Developers must register a
+     * destination queue in the developer console before calling this operation. When this operation is called a new
+     * client secret is generated and sent to the developer-registered queue. For more information, refer to [Rotate
+     * your application client
+     * secret](https://developer-docs.amazon.com/sp-api/v0/docs/application-management-api-v2023-11-30-use-case-guide#tutorial-rotate-your-applications-client-secret).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call rotateApplicationClientSecretAsync(final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -168,6 +245,14 @@ public class ApplicationsApi {
         }
 
         okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ApplicationsApi-rotateApplicationClientSecret");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || rotateApplicationClientSecretBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;

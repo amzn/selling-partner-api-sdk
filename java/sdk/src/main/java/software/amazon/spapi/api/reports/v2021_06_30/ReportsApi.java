@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -157,11 +158,63 @@ public class ReportsApi {
      *
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void cancelReport(String reportId, String restrictedDataToken) throws ApiException, LWAException {
+        cancelReportWithHttpInfo(reportId, restrictedDataToken);
+    }
+
+    /**
+     * Cancels the report that you specify. Only reports with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be
+     * cancelled. Cancelled reports are returned in subsequent calls to the &#x60;getReport&#x60; and
+     * &#x60;getReports&#x60; operations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
+     *     (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void cancelReport(String reportId) throws ApiException, LWAException {
-        cancelReportWithHttpInfo(reportId);
+        cancelReportWithHttpInfo(reportId, null);
+    }
+
+    /**
+     * Cancels the report that you specify. Only reports with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be
+     * cancelled. Cancelled reports are returned in subsequent calls to the &#x60;getReport&#x60; and
+     * &#x60;getReports&#x60; operations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> cancelReportWithHttpInfo(String reportId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelReportValidateBeforeCall(reportId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-cancelReport");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelReportBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelReport operation exceeds rate limit");
     }
 
     /**
@@ -181,10 +234,7 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> cancelReportWithHttpInfo(String reportId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelReportValidateBeforeCall(reportId, null);
-        if (disableRateLimiting || cancelReportBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelReport operation exceeds rate limit");
+        return cancelReportWithHttpInfo(reportId, null);
     }
 
     /**
@@ -201,11 +251,35 @@ public class ReportsApi {
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelReportAsync(String reportId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return cancelReportAsync(reportId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels the report that you specify. Only reports with
+     * &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled. Cancelled reports are returned in subsequent calls
+     * to the &#x60;getReport&#x60; and &#x60;getReports&#x60; operations. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelReportAsync(String reportId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -215,6 +289,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = cancelReportValidateBeforeCall(reportId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-cancelReport");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelReportBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -288,11 +369,60 @@ public class ReportsApi {
      *
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void cancelReportSchedule(String reportScheduleId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        cancelReportScheduleWithHttpInfo(reportScheduleId, restrictedDataToken);
+    }
+
+    /**
+     * Cancels the report schedule that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
+     *     with a seller ID. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void cancelReportSchedule(String reportScheduleId) throws ApiException, LWAException {
-        cancelReportScheduleWithHttpInfo(reportScheduleId);
+        cancelReportScheduleWithHttpInfo(reportScheduleId, null);
+    }
+
+    /**
+     * Cancels the report schedule that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
+     *     with a seller ID. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> cancelReportScheduleWithHttpInfo(String reportScheduleId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-cancelReportSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelReportScheduleBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelReportSchedule operation exceeds rate limit");
     }
 
     /**
@@ -311,10 +441,7 @@ public class ReportsApi {
      */
     public ApiResponse<Void> cancelReportScheduleWithHttpInfo(String reportScheduleId)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, null);
-        if (disableRateLimiting || cancelReportScheduleBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelReportSchedule operation exceeds rate limit");
+        return cancelReportScheduleWithHttpInfo(reportScheduleId, null);
     }
 
     /**
@@ -329,11 +456,34 @@ public class ReportsApi {
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelReportScheduleAsync(String reportScheduleId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return cancelReportScheduleAsync(reportScheduleId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels the report schedule that you specify. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
+     *     with a seller ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelReportScheduleAsync(
+            String reportScheduleId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -343,6 +493,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-cancelReportSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelReportScheduleBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -411,13 +568,63 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Information required to create the report. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateReportResponse createReport(CreateReportSpecification body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateReportResponse> resp = createReportWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a report. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Information required to create the report. (required)
      * @return CreateReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateReportResponse createReport(CreateReportSpecification body) throws ApiException, LWAException {
-        ApiResponse<CreateReportResponse> resp = createReportWithHttpInfo(body);
+        ApiResponse<CreateReportResponse> resp = createReportWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a report. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Information required to create the report. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateReportResponse> createReportWithHttpInfo(
+            CreateReportSpecification body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createReportValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-createReport");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createReportBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReport operation exceeds rate limit");
     }
 
     /**
@@ -435,11 +642,7 @@ public class ReportsApi {
      */
     public ApiResponse<CreateReportResponse> createReportWithHttpInfo(CreateReportSpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createReportValidateBeforeCall(body, null);
-        if (disableRateLimiting || createReportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createReport operation exceeds rate limit");
+        return createReportWithHttpInfo(body, null);
     }
 
     /**
@@ -452,12 +655,35 @@ public class ReportsApi {
      *
      * @param body Information required to create the report. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createReportAsync(
             CreateReportSpecification body, final ApiCallback<CreateReportResponse> callback)
+            throws ApiException, LWAException {
+        return createReportAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a report. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.0167 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Information required to create the report. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createReportAsync(
+            CreateReportSpecification body,
+            final ApiCallback<CreateReportResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -467,6 +693,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = createReportValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-createReport");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createReportBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -539,14 +772,66 @@ public class ReportsApi {
      * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Information required to create the report schedule. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateReportScheduleResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateReportScheduleResponse createReportSchedule(
+            CreateReportScheduleSpecification body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CreateReportScheduleResponse> resp = createReportScheduleWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a report schedule. If a report schedule with the same report type and marketplace IDs already exists, it
+     * will be cancelled and replaced with this one. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Information required to create the report schedule. (required)
      * @return CreateReportScheduleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateReportScheduleResponse createReportSchedule(CreateReportScheduleSpecification body)
             throws ApiException, LWAException {
-        ApiResponse<CreateReportScheduleResponse> resp = createReportScheduleWithHttpInfo(body);
+        ApiResponse<CreateReportScheduleResponse> resp = createReportScheduleWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a report schedule. If a report schedule with the same report type and marketplace IDs already exists, it
+     * will be cancelled and replaced with this one. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Information required to create the report schedule. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateReportScheduleResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateReportScheduleResponse> createReportScheduleWithHttpInfo(
+            CreateReportScheduleSpecification body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createReportScheduleValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-createReportSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createReportScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReportSchedule operation exceeds rate limit");
     }
 
     /**
@@ -565,11 +850,7 @@ public class ReportsApi {
      */
     public ApiResponse<CreateReportScheduleResponse> createReportScheduleWithHttpInfo(
             CreateReportScheduleSpecification body) throws ApiException, LWAException {
-        okhttp3.Call call = createReportScheduleValidateBeforeCall(body, null);
-        if (disableRateLimiting || createReportScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createReportSchedule operation exceeds rate limit");
+        return createReportScheduleWithHttpInfo(body, null);
     }
 
     /**
@@ -584,12 +865,37 @@ public class ReportsApi {
      *
      * @param body Information required to create the report schedule. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createReportScheduleAsync(
             CreateReportScheduleSpecification body, final ApiCallback<CreateReportScheduleResponse> callback)
+            throws ApiException, LWAException {
+        return createReportScheduleAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a report schedule. If a report schedule with the same report type and marketplace IDs
+     * already exists, it will be cancelled and replaced with this one. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Information required to create the report schedule. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createReportScheduleAsync(
+            CreateReportScheduleSpecification body,
+            final ApiCallback<CreateReportScheduleResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -599,6 +905,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = createReportScheduleValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-createReportSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createReportScheduleBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -673,13 +986,66 @@ public class ReportsApi {
      *
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Report
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Report getReport(String reportId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<Report> resp = getReportWithHttpInfo(reportId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns report details (including the &#x60;reportDocumentId&#x60;, if available) for the report that you
+     * specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
+     *     (required)
      * @return Report
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Report getReport(String reportId) throws ApiException, LWAException {
-        ApiResponse<Report> resp = getReportWithHttpInfo(reportId);
+        ApiResponse<Report> resp = getReportWithHttpInfo(reportId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns report details (including the &#x60;reportDocumentId&#x60;, if available) for the report that you
+     * specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Report&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Report> getReportWithHttpInfo(String reportId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getReportValidateBeforeCall(reportId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReport");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReportBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Report>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReport operation exceeds rate limit");
     }
 
     /**
@@ -698,11 +1064,7 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Report> getReportWithHttpInfo(String reportId) throws ApiException, LWAException {
-        okhttp3.Call call = getReportValidateBeforeCall(reportId, null);
-        if (disableRateLimiting || getReportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Report>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReport operation exceeds rate limit");
+        return getReportWithHttpInfo(reportId, null);
     }
 
     /**
@@ -717,11 +1079,33 @@ public class ReportsApi {
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportAsync(String reportId, final ApiCallback<Report> callback)
+            throws ApiException, LWAException {
+        return getReportAsync(reportId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns report details (including the &#x60;reportDocumentId&#x60;, if available) for the report
+     * that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReportAsync(String reportId, final ApiCallback<Report> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -731,6 +1115,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = getReportValidateBeforeCall(reportId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReport");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getReportBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Report>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -804,13 +1195,65 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ReportDocument
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReportDocument getReportDocument(String reportDocumentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ReportDocument> resp = getReportDocumentWithHttpInfo(reportDocumentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the information required for retrieving a report document&#x27;s contents. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, refer
+     * to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportDocumentId The identifier for the report document. (required)
      * @return ReportDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ReportDocument getReportDocument(String reportDocumentId) throws ApiException, LWAException {
-        ApiResponse<ReportDocument> resp = getReportDocumentWithHttpInfo(reportDocumentId);
+        ApiResponse<ReportDocument> resp = getReportDocumentWithHttpInfo(reportDocumentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the information required for retrieving a report document&#x27;s contents. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, refer
+     * to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportDocumentId The identifier for the report document. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ReportDocument&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(
+            String reportDocumentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReportDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReportDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReportDocument operation exceeds rate limit");
     }
 
     /**
@@ -829,11 +1272,7 @@ public class ReportsApi {
      */
     public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(String reportDocumentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, null);
-        if (disableRateLimiting || getReportDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReportDocument operation exceeds rate limit");
+        return getReportDocumentWithHttpInfo(reportDocumentId, null);
     }
 
     /**
@@ -847,11 +1286,33 @@ public class ReportsApi {
      *
      * @param reportDocumentId The identifier for the report document. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportDocumentAsync(String reportDocumentId, final ApiCallback<ReportDocument> callback)
+            throws ApiException, LWAException {
+        return getReportDocumentAsync(reportDocumentId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the information required for retrieving a report document&#x27;s contents. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportDocumentId The identifier for the report document. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReportDocumentAsync(
+            String reportDocumentId, final ApiCallback<ReportDocument> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -861,6 +1322,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReportDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getReportDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -936,13 +1404,67 @@ public class ReportsApi {
      *
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ReportSchedule
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReportSchedule getReportSchedule(String reportScheduleId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ReportSchedule> resp = getReportScheduleWithHttpInfo(reportScheduleId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns report schedule details for the report schedule that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
+     *     with a seller ID. (required)
      * @return ReportSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ReportSchedule getReportSchedule(String reportScheduleId) throws ApiException, LWAException {
-        ApiResponse<ReportSchedule> resp = getReportScheduleWithHttpInfo(reportScheduleId);
+        ApiResponse<ReportSchedule> resp = getReportScheduleWithHttpInfo(reportScheduleId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns report schedule details for the report schedule that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
+     *     with a seller ID. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ReportSchedule&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReportSchedule> getReportScheduleWithHttpInfo(
+            String reportScheduleId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReportSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReportScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReportSchedule operation exceeds rate limit");
     }
 
     /**
@@ -962,11 +1484,7 @@ public class ReportsApi {
      */
     public ApiResponse<ReportSchedule> getReportScheduleWithHttpInfo(String reportScheduleId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, null);
-        if (disableRateLimiting || getReportScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReportSchedule operation exceeds rate limit");
+        return getReportScheduleWithHttpInfo(reportScheduleId, null);
     }
 
     /**
@@ -981,11 +1499,34 @@ public class ReportsApi {
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportScheduleAsync(String reportScheduleId, final ApiCallback<ReportSchedule> callback)
+            throws ApiException, LWAException {
+        return getReportScheduleAsync(reportScheduleId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns report schedule details for the report schedule that you specify. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, refer
+     * to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
+     *     with a seller ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReportScheduleAsync(
+            String reportScheduleId, final ApiCallback<ReportSchedule> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -995,6 +1536,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReportSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getReportScheduleBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1071,13 +1619,67 @@ public class ReportsApi {
      *
      * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
      *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ReportScheduleList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReportScheduleList getReportSchedules(List<String> reportTypes, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ReportScheduleList> resp = getReportSchedulesWithHttpInfo(reportTypes, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns report schedule details that match the filters that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
+     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      * @return ReportScheduleList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ReportScheduleList getReportSchedules(List<String> reportTypes) throws ApiException, LWAException {
-        ApiResponse<ReportScheduleList> resp = getReportSchedulesWithHttpInfo(reportTypes);
+        ApiResponse<ReportScheduleList> resp = getReportSchedulesWithHttpInfo(reportTypes, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns report schedule details that match the filters that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
+     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ReportScheduleList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReportScheduleList> getReportSchedulesWithHttpInfo(
+            List<String> reportTypes, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReportSchedules");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReportSchedulesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReportSchedules operation exceeds rate limit");
     }
 
     /**
@@ -1097,11 +1699,7 @@ public class ReportsApi {
      */
     public ApiResponse<ReportScheduleList> getReportSchedulesWithHttpInfo(List<String> reportTypes)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, null);
-        if (disableRateLimiting || getReportSchedulesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReportSchedules operation exceeds rate limit");
+        return getReportSchedulesWithHttpInfo(reportTypes, null);
     }
 
     /**
@@ -1116,12 +1714,35 @@ public class ReportsApi {
      * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
      *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportSchedulesAsync(
             List<String> reportTypes, final ApiCallback<ReportScheduleList> callback)
+            throws ApiException, LWAException {
+        return getReportSchedulesAsync(reportTypes, callback, null);
+    }
+    /**
+     * (asynchronously) Returns report schedule details that match the filters that you specify. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, refer
+     * to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
+     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReportSchedulesAsync(
+            List<String> reportTypes, final ApiCallback<ReportScheduleList> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1131,6 +1752,13 @@ public class ReportsApi {
         }
 
         okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReportSchedules");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getReportSchedulesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1265,6 +1893,60 @@ public class ReportsApi {
      *     returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of
      *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
      *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetReportsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetReportsResponse getReports(
+            List<String> reportTypes,
+            List<String> processingStatuses,
+            List<String> marketplaceIds,
+            Integer pageSize,
+            OffsetDateTime createdSince,
+            OffsetDateTime createdUntil,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetReportsResponse> resp = getReportsWithHttpInfo(
+                reportTypes,
+                processingStatuses,
+                marketplaceIds,
+                pageSize,
+                createdSince,
+                createdUntil,
+                nextToken,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns report details for the reports that match the filters that you specify. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportTypes A list of report types used to filter reports. Refer to [Report Type
+     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When
+     *     reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince,
+     *     createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param processingStatuses A list of processing statuses used to filter reports. (optional)
+     * @param marketplaceIds A list of marketplace identifiers used to filter reports. The reports returned will match
+     *     at least one of the marketplaces that you specify. (optional)
+     * @param pageSize The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param createdSince The earliest report creation date and time for reports to include in the response, in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
+     *     format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param createdUntil The latest report creation date and time for reports to include in the response, in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
+     *     format. The default is now. (optional)
+     * @param nextToken A string token returned in the response to your previous request. &#x60;nextToken&#x60; is
+     *     returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of
+     *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
+     *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      * @return GetReportsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1279,8 +1961,65 @@ public class ReportsApi {
             String nextToken)
             throws ApiException, LWAException {
         ApiResponse<GetReportsResponse> resp = getReportsWithHttpInfo(
-                reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken);
+                reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns report details for the reports that match the filters that you specify. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportTypes A list of report types used to filter reports. Refer to [Report Type
+     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When
+     *     reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince,
+     *     createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param processingStatuses A list of processing statuses used to filter reports. (optional)
+     * @param marketplaceIds A list of marketplace identifiers used to filter reports. The reports returned will match
+     *     at least one of the marketplaces that you specify. (optional)
+     * @param pageSize The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param createdSince The earliest report creation date and time for reports to include in the response, in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
+     *     format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param createdUntil The latest report creation date and time for reports to include in the response, in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
+     *     format. The default is now. (optional)
+     * @param nextToken A string token returned in the response to your previous request. &#x60;nextToken&#x60; is
+     *     returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of
+     *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
+     *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetReportsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetReportsResponse> getReportsWithHttpInfo(
+            List<String> reportTypes,
+            List<String> processingStatuses,
+            List<String> marketplaceIds,
+            Integer pageSize,
+            OffsetDateTime createdSince,
+            OffsetDateTime createdUntil,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getReportsValidateBeforeCall(
+                reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReports");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReportsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReports operation exceeds rate limit");
     }
 
     /**
@@ -1323,12 +2062,8 @@ public class ReportsApi {
             OffsetDateTime createdUntil,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getReportsValidateBeforeCall(
+        return getReportsWithHttpInfo(
                 reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken, null);
-        if (disableRateLimiting || getReportsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReports operation exceeds rate limit");
     }
 
     /**
@@ -1359,6 +2094,7 @@ public class ReportsApi {
      *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
      *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1372,6 +2108,61 @@ public class ReportsApi {
             OffsetDateTime createdUntil,
             String nextToken,
             final ApiCallback<GetReportsResponse> callback)
+            throws ApiException, LWAException {
+        return getReportsAsync(
+                reportTypes,
+                processingStatuses,
+                marketplaceIds,
+                pageSize,
+                createdSince,
+                createdUntil,
+                nextToken,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Returns report details for the reports that match the filters that you specify. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reportTypes A list of report types used to filter reports. Refer to [Report Type
+     *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When
+     *     reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince,
+     *     createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param processingStatuses A list of processing statuses used to filter reports. (optional)
+     * @param marketplaceIds A list of marketplace identifiers used to filter reports. The reports returned will match
+     *     at least one of the marketplaces that you specify. (optional)
+     * @param pageSize The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param createdSince The earliest report creation date and time for reports to include in the response, in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
+     *     format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param createdUntil The latest report creation date and time for reports to include in the response, in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; date time
+     *     format. The default is now. (optional)
+     * @param nextToken A string token returned in the response to your previous request. &#x60;nextToken&#x60; is
+     *     returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of
+     *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
+     *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReportsAsync(
+            List<String> reportTypes,
+            List<String> processingStatuses,
+            List<String> marketplaceIds,
+            Integer pageSize,
+            OffsetDateTime createdSince,
+            OffsetDateTime createdUntil,
+            String nextToken,
+            final ApiCallback<GetReportsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1389,6 +2180,13 @@ public class ReportsApi {
                 createdUntil,
                 nextToken,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ReportsApi-getReports");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getReportsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

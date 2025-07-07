@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -113,13 +114,63 @@ public class VendorPaymentsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body containing the invoice data to submit. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SubmitInvoicesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SubmitInvoicesResponse submitInvoices(SubmitInvoicesRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SubmitInvoicesResponse> resp = submitInvoicesWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submit new invoices to Amazon. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the invoice data to submit. (required)
      * @return SubmitInvoicesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SubmitInvoicesResponse submitInvoices(SubmitInvoicesRequest body) throws ApiException, LWAException {
-        ApiResponse<SubmitInvoicesResponse> resp = submitInvoicesWithHttpInfo(body);
+        ApiResponse<SubmitInvoicesResponse> resp = submitInvoicesWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Submit new invoices to Amazon. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the invoice data to submit. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SubmitInvoicesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SubmitInvoicesResponse> submitInvoicesWithHttpInfo(
+            SubmitInvoicesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitInvoicesValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorPaymentsApi-submitInvoices");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitInvoicesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInvoicesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitInvoices operation exceeds rate limit");
     }
 
     /**
@@ -137,11 +188,7 @@ public class VendorPaymentsApi {
      */
     public ApiResponse<SubmitInvoicesResponse> submitInvoicesWithHttpInfo(SubmitInvoicesRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitInvoicesValidateBeforeCall(body, null);
-        if (disableRateLimiting || submitInvoicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SubmitInvoicesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitInvoices operation exceeds rate limit");
+        return submitInvoicesWithHttpInfo(body, null);
     }
 
     /**
@@ -154,12 +201,33 @@ public class VendorPaymentsApi {
      *
      * @param body The request body containing the invoice data to submit. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitInvoicesAsync(
             SubmitInvoicesRequest body, final ApiCallback<SubmitInvoicesResponse> callback)
+            throws ApiException, LWAException {
+        return submitInvoicesAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Submit new invoices to Amazon. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the invoice data to submit. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitInvoicesAsync(
+            SubmitInvoicesRequest body, final ApiCallback<SubmitInvoicesResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -169,6 +237,13 @@ public class VendorPaymentsApi {
         }
 
         okhttp3.Call call = submitInvoicesValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorPaymentsApi-submitInvoices");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitInvoicesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInvoicesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

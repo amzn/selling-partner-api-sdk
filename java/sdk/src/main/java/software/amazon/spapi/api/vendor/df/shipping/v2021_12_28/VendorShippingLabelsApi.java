@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -145,14 +146,74 @@ public class VendorShippingLabelsApi {
      * @param body The request payload that contains the parameters for creating shipping labels. (required)
      * @param purchaseOrderNumber The purchase order number for which you want to return the shipping labels. It should
      *     be the same number as the &#x60;purchaseOrderNumber&#x60; in the order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ShippingLabel
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShippingLabel createShippingLabels(
+            CreateShippingLabelsRequest body, String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ShippingLabel> resp =
+                createShippingLabelsWithHttpInfo(body, purchaseOrderNumber, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * createShippingLabels Creates shipping labels for a purchase order and returns the labels. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body The request payload that contains the parameters for creating shipping labels. (required)
+     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping labels. It should
+     *     be the same number as the &#x60;purchaseOrderNumber&#x60; in the order. (required)
      * @return ShippingLabel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ShippingLabel createShippingLabels(CreateShippingLabelsRequest body, String purchaseOrderNumber)
             throws ApiException, LWAException {
-        ApiResponse<ShippingLabel> resp = createShippingLabelsWithHttpInfo(body, purchaseOrderNumber);
+        ApiResponse<ShippingLabel> resp = createShippingLabelsWithHttpInfo(body, purchaseOrderNumber, null);
         return resp.getData();
+    }
+
+    /**
+     * createShippingLabels Creates shipping labels for a purchase order and returns the labels. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body The request payload that contains the parameters for creating shipping labels. (required)
+     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping labels. It should
+     *     be the same number as the &#x60;purchaseOrderNumber&#x60; in the order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ShippingLabel&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShippingLabel> createShippingLabelsWithHttpInfo(
+            CreateShippingLabelsRequest body, String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createShippingLabelsValidateBeforeCall(body, purchaseOrderNumber, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-createShippingLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createShippingLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createShippingLabels operation exceeds rate limit");
     }
 
     /**
@@ -173,11 +234,7 @@ public class VendorShippingLabelsApi {
      */
     public ApiResponse<ShippingLabel> createShippingLabelsWithHttpInfo(
             CreateShippingLabelsRequest body, String purchaseOrderNumber) throws ApiException, LWAException {
-        okhttp3.Call call = createShippingLabelsValidateBeforeCall(body, purchaseOrderNumber, null);
-        if (disableRateLimiting || createShippingLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createShippingLabels operation exceeds rate limit");
+        return createShippingLabelsWithHttpInfo(body, purchaseOrderNumber, null);
     }
 
     /**
@@ -193,12 +250,39 @@ public class VendorShippingLabelsApi {
      * @param purchaseOrderNumber The purchase order number for which you want to return the shipping labels. It should
      *     be the same number as the &#x60;purchaseOrderNumber&#x60; in the order. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createShippingLabelsAsync(
             CreateShippingLabelsRequest body, String purchaseOrderNumber, final ApiCallback<ShippingLabel> callback)
+            throws ApiException, LWAException {
+        return createShippingLabelsAsync(body, purchaseOrderNumber, callback, null);
+    }
+    /**
+     * createShippingLabels (asynchronously) Creates shipping labels for a purchase order and returns the labels.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body The request payload that contains the parameters for creating shipping labels. (required)
+     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping labels. It should
+     *     be the same number as the &#x60;purchaseOrderNumber&#x60; in the order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createShippingLabelsAsync(
+            CreateShippingLabelsRequest body,
+            String purchaseOrderNumber,
+            final ApiCallback<ShippingLabel> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -208,6 +292,14 @@ public class VendorShippingLabelsApi {
         }
 
         okhttp3.Call call = createShippingLabelsValidateBeforeCall(body, purchaseOrderNumber, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-createShippingLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createShippingLabelsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -284,13 +376,68 @@ public class VendorShippingLabelsApi {
      *
      * @param purchaseOrderNumber The purchase order number for which you want to return the shipping label. It should
      *     be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ShippingLabel
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShippingLabel getShippingLabel(String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ShippingLabel> resp = getShippingLabelWithHttpInfo(purchaseOrderNumber, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * getShippingLabel Returns a shipping label for the &#x60;purchaseOrderNumber&#x60; that you specify. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping label. It should
+     *     be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
      * @return ShippingLabel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ShippingLabel getShippingLabel(String purchaseOrderNumber) throws ApiException, LWAException {
-        ApiResponse<ShippingLabel> resp = getShippingLabelWithHttpInfo(purchaseOrderNumber);
+        ApiResponse<ShippingLabel> resp = getShippingLabelWithHttpInfo(purchaseOrderNumber, null);
         return resp.getData();
+    }
+
+    /**
+     * getShippingLabel Returns a shipping label for the &#x60;purchaseOrderNumber&#x60; that you specify. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping label. It should
+     *     be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ShippingLabel&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShippingLabel> getShippingLabelWithHttpInfo(
+            String purchaseOrderNumber, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getShippingLabelValidateBeforeCall(purchaseOrderNumber, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-getShippingLabel");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShippingLabelBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShippingLabel operation exceeds rate limit");
     }
 
     /**
@@ -310,11 +457,7 @@ public class VendorShippingLabelsApi {
      */
     public ApiResponse<ShippingLabel> getShippingLabelWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShippingLabelValidateBeforeCall(purchaseOrderNumber, null);
-        if (disableRateLimiting || getShippingLabelBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShippingLabel operation exceeds rate limit");
+        return getShippingLabelWithHttpInfo(purchaseOrderNumber, null);
     }
 
     /**
@@ -329,11 +472,34 @@ public class VendorShippingLabelsApi {
      * @param purchaseOrderNumber The purchase order number for which you want to return the shipping label. It should
      *     be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getShippingLabelAsync(String purchaseOrderNumber, final ApiCallback<ShippingLabel> callback)
+            throws ApiException, LWAException {
+        return getShippingLabelAsync(purchaseOrderNumber, callback, null);
+    }
+    /**
+     * getShippingLabel (asynchronously) Returns a shipping label for the &#x60;purchaseOrderNumber&#x60; that you
+     * specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber The purchase order number for which you want to return the shipping label. It should
+     *     be the same &#x60;purchaseOrderNumber&#x60; that you received in the order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShippingLabelAsync(
+            String purchaseOrderNumber, final ApiCallback<ShippingLabel> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -343,6 +509,14 @@ public class VendorShippingLabelsApi {
         }
 
         okhttp3.Call call = getShippingLabelValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-getShippingLabel");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShippingLabelBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -467,6 +641,49 @@ public class VendorShippingLabelsApi {
      *     (&#x60;DESC&#x60;) sort order. (optional, default to ASC)
      * @param nextToken Used for pagination when there are more ship labels than the specified result size limit. The
      *     token value is returned in the previous API call. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ShippingLabelList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShippingLabelList getShippingLabels(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ShippingLabelList> resp = getShippingLabelsWithHttpInfo(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * getShippingLabels Returns a list of shipping labels created during the time frame that you specify. Use the
+     * &#x60;createdAfter&#x60; and &#x60;createdBefore&#x60; parameters to define the time frame. You must use both of
+     * these parameters. The date range to search must not be more than seven days. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values then those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Shipping labels that became available after this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param createdBefore Shipping labels that became available before this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
+     *     contains orders for all warehouses. (optional)
+     * @param limit The limit to the number of records returned. (optional)
+     * @param sortOrder The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending
+     *     (&#x60;DESC&#x60;) sort order. (optional, default to ASC)
+     * @param nextToken Used for pagination when there are more ship labels than the specified result size limit. The
+     *     token value is returned in the previous API call. (optional)
      * @return ShippingLabelList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -480,8 +697,62 @@ public class VendorShippingLabelsApi {
             String nextToken)
             throws ApiException, LWAException {
         ApiResponse<ShippingLabelList> resp = getShippingLabelsWithHttpInfo(
-                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
         return resp.getData();
+    }
+
+    /**
+     * getShippingLabels Returns a list of shipping labels created during the time frame that you specify. Use the
+     * &#x60;createdAfter&#x60; and &#x60;createdBefore&#x60; parameters to define the time frame. You must use both of
+     * these parameters. The date range to search must not be more than seven days. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values then those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Shipping labels that became available after this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param createdBefore Shipping labels that became available before this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
+     *     contains orders for all warehouses. (optional)
+     * @param limit The limit to the number of records returned. (optional)
+     * @param sortOrder The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending
+     *     (&#x60;DESC&#x60;) sort order. (optional, default to ASC)
+     * @param nextToken Used for pagination when there are more ship labels than the specified result size limit. The
+     *     token value is returned in the previous API call. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ShippingLabelList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShippingLabelList> getShippingLabelsWithHttpInfo(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getShippingLabelsValidateBeforeCall(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-getShippingLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShippingLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShippingLabels operation exceeds rate limit");
     }
 
     /**
@@ -520,12 +791,8 @@ public class VendorShippingLabelsApi {
             String sortOrder,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShippingLabelsValidateBeforeCall(
+        return getShippingLabelsWithHttpInfo(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
-        if (disableRateLimiting || getShippingLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShippingLabels operation exceeds rate limit");
     }
 
     /**
@@ -553,6 +820,7 @@ public class VendorShippingLabelsApi {
      * @param nextToken Used for pagination when there are more ship labels than the specified result size limit. The
      *     token value is returned in the previous API call. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -566,6 +834,49 @@ public class VendorShippingLabelsApi {
             String nextToken,
             final ApiCallback<ShippingLabelList> callback)
             throws ApiException, LWAException {
+        return getShippingLabelsAsync(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, callback, null);
+    }
+    /**
+     * getShippingLabels (asynchronously) Returns a list of shipping labels created during the time frame that you
+     * specify. Use the &#x60;createdAfter&#x60; and &#x60;createdBefore&#x60; parameters to define the time frame. You
+     * must use both of these parameters. The date range to search must not be more than seven days. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Shipping labels that became available after this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param createdBefore Shipping labels that became available before this date and time will be included in the
+     *     result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *     (required)
+     * @param shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result
+     *     contains orders for all warehouses. (optional)
+     * @param limit The limit to the number of records returned. (optional)
+     * @param sortOrder The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending
+     *     (&#x60;DESC&#x60;) sort order. (optional, default to ASC)
+     * @param nextToken Used for pagination when there are more ship labels than the specified result size limit. The
+     *     token value is returned in the previous API call. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShippingLabelsAsync(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            final ApiCallback<ShippingLabelList> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -575,6 +886,14 @@ public class VendorShippingLabelsApi {
 
         okhttp3.Call call = getShippingLabelsValidateBeforeCall(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-getShippingLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShippingLabelsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -646,14 +965,67 @@ public class VendorShippingLabelsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param body The request body that contains the shipping labels data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransactionReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransactionReference submitShippingLabelRequest(SubmitShippingLabelsRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<TransactionReference> resp = submitShippingLabelRequestWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * submitShippingLabelRequest Creates a shipping label for a purchase order and returns a &#x60;transactionId&#x60;
+     * for reference. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body The request body that contains the shipping labels data. (required)
      * @return TransactionReference
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransactionReference submitShippingLabelRequest(SubmitShippingLabelsRequest body)
             throws ApiException, LWAException {
-        ApiResponse<TransactionReference> resp = submitShippingLabelRequestWithHttpInfo(body);
+        ApiResponse<TransactionReference> resp = submitShippingLabelRequestWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * submitShippingLabelRequest Creates a shipping label for a purchase order and returns a &#x60;transactionId&#x60;
+     * for reference. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body The request body that contains the shipping labels data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransactionReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransactionReference> submitShippingLabelRequestWithHttpInfo(
+            SubmitShippingLabelsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitShippingLabelRequestValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-submitShippingLabelRequest");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitShippingLabelRequestBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitShippingLabelRequest operation exceeds rate limit");
     }
 
     /**
@@ -672,11 +1044,7 @@ public class VendorShippingLabelsApi {
      */
     public ApiResponse<TransactionReference> submitShippingLabelRequestWithHttpInfo(SubmitShippingLabelsRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = submitShippingLabelRequestValidateBeforeCall(body, null);
-        if (disableRateLimiting || submitShippingLabelRequestBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitShippingLabelRequest operation exceeds rate limit");
+        return submitShippingLabelRequestWithHttpInfo(body, null);
     }
 
     /**
@@ -690,12 +1058,36 @@ public class VendorShippingLabelsApi {
      *
      * @param body The request body that contains the shipping labels data. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitShippingLabelRequestAsync(
             SubmitShippingLabelsRequest body, final ApiCallback<TransactionReference> callback)
+            throws ApiException, LWAException {
+        return submitShippingLabelRequestAsync(body, callback, null);
+    }
+    /**
+     * submitShippingLabelRequest (asynchronously) Creates a shipping label for a purchase order and returns a
+     * &#x60;transactionId&#x60; for reference. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param body The request body that contains the shipping labels data. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitShippingLabelRequestAsync(
+            SubmitShippingLabelsRequest body,
+            final ApiCallback<TransactionReference> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -705,6 +1097,14 @@ public class VendorShippingLabelsApi {
         }
 
         okhttp3.Call call = submitShippingLabelRequestValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingLabelsApi-submitShippingLabelRequest");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitShippingLabelRequestBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

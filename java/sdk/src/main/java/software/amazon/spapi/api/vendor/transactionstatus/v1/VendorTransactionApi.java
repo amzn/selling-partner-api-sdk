@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -116,13 +117,66 @@ public class VendorTransactionApi {
      *
      * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
      *     request of a specific transaction. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetTransactionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetTransactionResponse getTransaction(String transactionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetTransactionResponse> resp = getTransactionWithHttpInfo(transactionId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the status of the transaction that you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 10 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
+     *     request of a specific transaction. (required)
      * @return GetTransactionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetTransactionResponse getTransaction(String transactionId) throws ApiException, LWAException {
-        ApiResponse<GetTransactionResponse> resp = getTransactionWithHttpInfo(transactionId);
+        ApiResponse<GetTransactionResponse> resp = getTransactionWithHttpInfo(transactionId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the status of the transaction that you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 10 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
+     *     request of a specific transaction. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetTransactionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetTransactionResponse> getTransactionWithHttpInfo(
+            String transactionId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorTransactionApi-getTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getTransactionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTransaction operation exceeds rate limit");
     }
 
     /**
@@ -141,11 +195,7 @@ public class VendorTransactionApi {
      */
     public ApiResponse<GetTransactionResponse> getTransactionWithHttpInfo(String transactionId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null);
-        if (disableRateLimiting || getTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTransaction operation exceeds rate limit");
+        return getTransactionWithHttpInfo(transactionId, null);
     }
 
     /**
@@ -160,11 +210,34 @@ public class VendorTransactionApi {
      * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
      *     request of a specific transaction. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransactionAsync(String transactionId, final ApiCallback<GetTransactionResponse> callback)
+            throws ApiException, LWAException {
+        return getTransactionAsync(transactionId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the status of the transaction that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param transactionId The GUID provided by Amazon in the &#x27;transactionId&#x27; field in response to the post
+     *     request of a specific transaction. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getTransactionAsync(
+            String transactionId, final ApiCallback<GetTransactionResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -174,6 +247,14 @@ public class VendorTransactionApi {
         }
 
         okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorTransactionApi-getTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getTransactionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetTransactionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

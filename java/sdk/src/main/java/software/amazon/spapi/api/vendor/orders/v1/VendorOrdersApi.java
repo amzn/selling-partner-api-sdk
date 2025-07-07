@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -136,13 +137,68 @@ public class VendorOrdersApi {
      *
      * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
      *     8-character alpha-numeric code. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetPurchaseOrderResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetPurchaseOrderResponse getPurchaseOrder(String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPurchaseOrderResponse> resp =
+                getPurchaseOrderWithHttpInfo(purchaseOrderNumber, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a purchase order based on the &#x60;purchaseOrderNumber&#x60; value that you specify. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
+     *     8-character alpha-numeric code. (required)
      * @return GetPurchaseOrderResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetPurchaseOrderResponse getPurchaseOrder(String purchaseOrderNumber) throws ApiException, LWAException {
-        ApiResponse<GetPurchaseOrderResponse> resp = getPurchaseOrderWithHttpInfo(purchaseOrderNumber);
+        ApiResponse<GetPurchaseOrderResponse> resp = getPurchaseOrderWithHttpInfo(purchaseOrderNumber, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a purchase order based on the &#x60;purchaseOrderNumber&#x60; value that you specify. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
+     *     8-character alpha-numeric code. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetPurchaseOrderResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetPurchaseOrderResponse> getPurchaseOrderWithHttpInfo(
+            String purchaseOrderNumber, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getPurchaseOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPurchaseOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPurchaseOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPurchaseOrder operation exceeds rate limit");
     }
 
     /**
@@ -162,11 +218,7 @@ public class VendorOrdersApi {
      */
     public ApiResponse<GetPurchaseOrderResponse> getPurchaseOrderWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, null);
-        if (disableRateLimiting || getPurchaseOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPurchaseOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPurchaseOrder operation exceeds rate limit");
+        return getPurchaseOrderWithHttpInfo(purchaseOrderNumber, null);
     }
 
     /**
@@ -181,12 +233,37 @@ public class VendorOrdersApi {
      * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
      *     8-character alpha-numeric code. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getPurchaseOrderAsync(
             String purchaseOrderNumber, final ApiCallback<GetPurchaseOrderResponse> callback)
+            throws ApiException, LWAException {
+        return getPurchaseOrderAsync(purchaseOrderNumber, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a purchase order based on the &#x60;purchaseOrderNumber&#x60; value that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
+     *     8-character alpha-numeric code. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPurchaseOrderAsync(
+            String purchaseOrderNumber,
+            final ApiCallback<GetPurchaseOrderResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -196,6 +273,13 @@ public class VendorOrdersApi {
         }
 
         okhttp3.Call call = getPurchaseOrderValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getPurchaseOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPurchaseOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetPurchaseOrderResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -369,6 +453,81 @@ public class VendorOrdersApi {
      *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in the filter, all
      *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
      *     application are returned. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetPurchaseOrdersResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetPurchaseOrdersResponse getPurchaseOrders(
+            Long limit,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String sortOrder,
+            String nextToken,
+            String includeDetails,
+            OffsetDateTime changedAfter,
+            OffsetDateTime changedBefore,
+            String poItemState,
+            String isPOChanged,
+            String purchaseOrderState,
+            String orderingVendorCode,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPurchaseOrdersResponse> resp = getPurchaseOrdersWithHttpInfo(
+                limit,
+                createdAfter,
+                createdBefore,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                changedAfter,
+                changedBefore,
+                poItemState,
+                isPOChanged,
+                purchaseOrderState,
+                orderingVendorCode,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of purchase orders created or changed during the time frame that you specify. You define the time
+     * frame using the &#x60;createdAfter&#x60;, &#x60;createdBefore&#x60;, &#x60;changedAfter&#x60; and
+     * &#x60;changedBefore&#x60; parameters. The date range to search must not be more than 7 days. You can choose to
+     * get only the purchase order numbers by setting &#x60;includeDetails&#x60; to false. You can then use the
+     * &#x60;getPurchaseOrder&#x60; operation to receive details for a specific purchase order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param limit The limit to the number of records returned. Default value is 100 records. (optional)
+     * @param createdAfter Purchase orders that became available after this time will be included in the result. Must be
+     *     in ISO-8601 date/time format. (optional)
+     * @param createdBefore Purchase orders that became available before this time will be included in the result. Must
+     *     be in ISO-8601 date/time format. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there is more purchase orders than the specified result size limit. The
+     *     token value is returned in the previous API call (optional)
+     * @param includeDetails When true, returns purchase orders with complete details. Otherwise, only purchase order
+     *     numbers are returned. Default value is true. (optional)
+     * @param changedAfter Purchase orders that changed after this timestamp will be included in the result. Must be in
+     *     ISO-8601 date/time format. (optional)
+     * @param changedBefore Purchase orders that changed before this timestamp will be included in the result. Must be
+     *     in ISO-8601 date/time format. (optional)
+     * @param poItemState Current state of the purchase order item. If this value is Cancelled, this API will return
+     *     purchase orders which have one or more items cancelled by Amazon with updated item quantity as zero.
+     *     (optional)
+     * @param isPOChanged When true, returns purchase orders which were modified after the order was placed. Vendors are
+     *     required to pull the changed purchase order and fulfill the updated purchase order and not the original one.
+     *     Default value is false. (optional)
+     * @param purchaseOrderState Filters purchase orders based on the purchase order state. (optional)
+     * @param orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should
+     *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in the filter, all
+     *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
+     *     application are returned. (optional)
      * @return GetPurchaseOrdersResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -399,8 +558,94 @@ public class VendorOrdersApi {
                 poItemState,
                 isPOChanged,
                 purchaseOrderState,
-                orderingVendorCode);
+                orderingVendorCode,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of purchase orders created or changed during the time frame that you specify. You define the time
+     * frame using the &#x60;createdAfter&#x60;, &#x60;createdBefore&#x60;, &#x60;changedAfter&#x60; and
+     * &#x60;changedBefore&#x60; parameters. The date range to search must not be more than 7 days. You can choose to
+     * get only the purchase order numbers by setting &#x60;includeDetails&#x60; to false. You can then use the
+     * &#x60;getPurchaseOrder&#x60; operation to receive details for a specific purchase order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param limit The limit to the number of records returned. Default value is 100 records. (optional)
+     * @param createdAfter Purchase orders that became available after this time will be included in the result. Must be
+     *     in ISO-8601 date/time format. (optional)
+     * @param createdBefore Purchase orders that became available before this time will be included in the result. Must
+     *     be in ISO-8601 date/time format. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there is more purchase orders than the specified result size limit. The
+     *     token value is returned in the previous API call (optional)
+     * @param includeDetails When true, returns purchase orders with complete details. Otherwise, only purchase order
+     *     numbers are returned. Default value is true. (optional)
+     * @param changedAfter Purchase orders that changed after this timestamp will be included in the result. Must be in
+     *     ISO-8601 date/time format. (optional)
+     * @param changedBefore Purchase orders that changed before this timestamp will be included in the result. Must be
+     *     in ISO-8601 date/time format. (optional)
+     * @param poItemState Current state of the purchase order item. If this value is Cancelled, this API will return
+     *     purchase orders which have one or more items cancelled by Amazon with updated item quantity as zero.
+     *     (optional)
+     * @param isPOChanged When true, returns purchase orders which were modified after the order was placed. Vendors are
+     *     required to pull the changed purchase order and fulfill the updated purchase order and not the original one.
+     *     Default value is false. (optional)
+     * @param purchaseOrderState Filters purchase orders based on the purchase order state. (optional)
+     * @param orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should
+     *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in the filter, all
+     *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
+     *     application are returned. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetPurchaseOrdersResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetPurchaseOrdersResponse> getPurchaseOrdersWithHttpInfo(
+            Long limit,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String sortOrder,
+            String nextToken,
+            String includeDetails,
+            OffsetDateTime changedAfter,
+            OffsetDateTime changedBefore,
+            String poItemState,
+            String isPOChanged,
+            String purchaseOrderState,
+            String orderingVendorCode,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getPurchaseOrdersValidateBeforeCall(
+                limit,
+                createdAfter,
+                createdBefore,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                changedAfter,
+                changedBefore,
+                poItemState,
+                isPOChanged,
+                purchaseOrderState,
+                orderingVendorCode,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getPurchaseOrders");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPurchaseOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPurchaseOrdersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPurchaseOrders operation exceeds rate limit");
     }
 
     /**
@@ -459,7 +704,7 @@ public class VendorOrdersApi {
             String purchaseOrderState,
             String orderingVendorCode)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPurchaseOrdersValidateBeforeCall(
+        return getPurchaseOrdersWithHttpInfo(
                 limit,
                 createdAfter,
                 createdBefore,
@@ -473,10 +718,6 @@ public class VendorOrdersApi {
                 purchaseOrderState,
                 orderingVendorCode,
                 null);
-        if (disableRateLimiting || getPurchaseOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPurchaseOrdersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPurchaseOrders operation exceeds rate limit");
     }
 
     /**
@@ -518,6 +759,7 @@ public class VendorOrdersApi {
      *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
      *     application are returned. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -536,6 +778,82 @@ public class VendorOrdersApi {
             String purchaseOrderState,
             String orderingVendorCode,
             final ApiCallback<GetPurchaseOrdersResponse> callback)
+            throws ApiException, LWAException {
+        return getPurchaseOrdersAsync(
+                limit,
+                createdAfter,
+                createdBefore,
+                sortOrder,
+                nextToken,
+                includeDetails,
+                changedAfter,
+                changedBefore,
+                poItemState,
+                isPOChanged,
+                purchaseOrderState,
+                orderingVendorCode,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Returns a list of purchase orders created or changed during the time frame that you specify. You
+     * define the time frame using the &#x60;createdAfter&#x60;, &#x60;createdBefore&#x60;, &#x60;changedAfter&#x60; and
+     * &#x60;changedBefore&#x60; parameters. The date range to search must not be more than 7 days. You can choose to
+     * get only the purchase order numbers by setting &#x60;includeDetails&#x60; to false. You can then use the
+     * &#x60;getPurchaseOrder&#x60; operation to receive details for a specific purchase order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param limit The limit to the number of records returned. Default value is 100 records. (optional)
+     * @param createdAfter Purchase orders that became available after this time will be included in the result. Must be
+     *     in ISO-8601 date/time format. (optional)
+     * @param createdBefore Purchase orders that became available before this time will be included in the result. Must
+     *     be in ISO-8601 date/time format. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there is more purchase orders than the specified result size limit. The
+     *     token value is returned in the previous API call (optional)
+     * @param includeDetails When true, returns purchase orders with complete details. Otherwise, only purchase order
+     *     numbers are returned. Default value is true. (optional)
+     * @param changedAfter Purchase orders that changed after this timestamp will be included in the result. Must be in
+     *     ISO-8601 date/time format. (optional)
+     * @param changedBefore Purchase orders that changed before this timestamp will be included in the result. Must be
+     *     in ISO-8601 date/time format. (optional)
+     * @param poItemState Current state of the purchase order item. If this value is Cancelled, this API will return
+     *     purchase orders which have one or more items cancelled by Amazon with updated item quantity as zero.
+     *     (optional)
+     * @param isPOChanged When true, returns purchase orders which were modified after the order was placed. Vendors are
+     *     required to pull the changed purchase order and fulfill the updated purchase order and not the original one.
+     *     Default value is false. (optional)
+     * @param purchaseOrderState Filters purchase orders based on the purchase order state. (optional)
+     * @param orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should
+     *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in the filter, all
+     *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
+     *     application are returned. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPurchaseOrdersAsync(
+            Long limit,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String sortOrder,
+            String nextToken,
+            String includeDetails,
+            OffsetDateTime changedAfter,
+            OffsetDateTime changedBefore,
+            String poItemState,
+            String isPOChanged,
+            String purchaseOrderState,
+            String orderingVendorCode,
+            final ApiCallback<GetPurchaseOrdersResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -558,6 +876,13 @@ public class VendorOrdersApi {
                 purchaseOrderState,
                 orderingVendorCode,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "VendorOrdersApi-getPurchaseOrders");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPurchaseOrdersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetPurchaseOrdersResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -743,6 +1068,84 @@ public class VendorOrdersApi {
      *     providing ship to location id here. This value should be same as &#x27;shipToParty.partyId&#x27; in the
      *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
      *     warehouses used for vendor group purchase orders. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetPurchaseOrdersStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetPurchaseOrdersStatusResponse getPurchaseOrdersStatus(
+            Long limit,
+            String sortOrder,
+            String nextToken,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String purchaseOrderNumber,
+            String purchaseOrderStatus,
+            String itemConfirmationStatus,
+            String itemReceiveStatus,
+            String orderingVendorCode,
+            String shipToPartyId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPurchaseOrdersStatusResponse> resp = getPurchaseOrdersStatusWithHttpInfo(
+                limit,
+                sortOrder,
+                nextToken,
+                createdAfter,
+                createdBefore,
+                updatedAfter,
+                updatedBefore,
+                purchaseOrderNumber,
+                purchaseOrderStatus,
+                itemConfirmationStatus,
+                itemReceiveStatus,
+                orderingVendorCode,
+                shipToPartyId,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns purchase order statuses based on the filters that you specify. Date range to search must not be more than
+     * 7 days. You can return a list of purchase order statuses using the available filters, or a single purchase order
+     * status by providing the purchase order number. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param limit The limit to the number of records returned. Default value is 100 records. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there are more purchase orders than the specified result size limit.
+     *     (optional)
+     * @param createdAfter Purchase orders that became available after this timestamp will be included in the result.
+     *     Must be in ISO-8601 date/time format. (optional)
+     * @param createdBefore Purchase orders that became available before this timestamp will be included in the result.
+     *     Must be in ISO-8601 date/time format. (optional)
+     * @param updatedAfter Purchase orders for which the last purchase order update happened after this timestamp will
+     *     be included in the result. Must be in ISO-8601 date/time format. (optional)
+     * @param updatedBefore Purchase orders for which the last purchase order update happened before this timestamp will
+     *     be included in the result. Must be in ISO-8601 date/time format. (optional)
+     * @param purchaseOrderNumber Provides purchase order status for the specified purchase order number. (optional)
+     * @param purchaseOrderStatus Filters purchase orders based on the specified purchase order status. If not included
+     *     in filter, this will return purchase orders for all statuses. (optional)
+     * @param itemConfirmationStatus Filters purchase orders based on their item confirmation status. If the item
+     *     confirmation status is not included in the filter, purchase orders for all confirmation statuses are
+     *     included. (optional)
+     * @param itemReceiveStatus Filters purchase orders based on the purchase order&#x27;s item receive status. If the
+     *     item receive status is not included in the filter, purchase orders for all receive statuses are included.
+     *     (optional)
+     * @param orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should
+     *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in filter, all purchase
+     *     orders for all the vendor codes that exist in the vendor group used to authorize API client application are
+     *     returned. (optional)
+     * @param shipToPartyId Filters purchase orders for a specific buyer&#x27;s Fulfillment Center/warehouse by
+     *     providing ship to location id here. This value should be same as &#x27;shipToParty.partyId&#x27; in the
+     *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
+     *     warehouses used for vendor group purchase orders. (optional)
      * @return GetPurchaseOrdersStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -775,8 +1178,98 @@ public class VendorOrdersApi {
                 itemConfirmationStatus,
                 itemReceiveStatus,
                 orderingVendorCode,
-                shipToPartyId);
+                shipToPartyId,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Returns purchase order statuses based on the filters that you specify. Date range to search must not be more than
+     * 7 days. You can return a list of purchase order statuses using the available filters, or a single purchase order
+     * status by providing the purchase order number. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param limit The limit to the number of records returned. Default value is 100 records. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there are more purchase orders than the specified result size limit.
+     *     (optional)
+     * @param createdAfter Purchase orders that became available after this timestamp will be included in the result.
+     *     Must be in ISO-8601 date/time format. (optional)
+     * @param createdBefore Purchase orders that became available before this timestamp will be included in the result.
+     *     Must be in ISO-8601 date/time format. (optional)
+     * @param updatedAfter Purchase orders for which the last purchase order update happened after this timestamp will
+     *     be included in the result. Must be in ISO-8601 date/time format. (optional)
+     * @param updatedBefore Purchase orders for which the last purchase order update happened before this timestamp will
+     *     be included in the result. Must be in ISO-8601 date/time format. (optional)
+     * @param purchaseOrderNumber Provides purchase order status for the specified purchase order number. (optional)
+     * @param purchaseOrderStatus Filters purchase orders based on the specified purchase order status. If not included
+     *     in filter, this will return purchase orders for all statuses. (optional)
+     * @param itemConfirmationStatus Filters purchase orders based on their item confirmation status. If the item
+     *     confirmation status is not included in the filter, purchase orders for all confirmation statuses are
+     *     included. (optional)
+     * @param itemReceiveStatus Filters purchase orders based on the purchase order&#x27;s item receive status. If the
+     *     item receive status is not included in the filter, purchase orders for all receive statuses are included.
+     *     (optional)
+     * @param orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should
+     *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in filter, all purchase
+     *     orders for all the vendor codes that exist in the vendor group used to authorize API client application are
+     *     returned. (optional)
+     * @param shipToPartyId Filters purchase orders for a specific buyer&#x27;s Fulfillment Center/warehouse by
+     *     providing ship to location id here. This value should be same as &#x27;shipToParty.partyId&#x27; in the
+     *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
+     *     warehouses used for vendor group purchase orders. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetPurchaseOrdersStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetPurchaseOrdersStatusResponse> getPurchaseOrdersStatusWithHttpInfo(
+            Long limit,
+            String sortOrder,
+            String nextToken,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String purchaseOrderNumber,
+            String purchaseOrderStatus,
+            String itemConfirmationStatus,
+            String itemReceiveStatus,
+            String orderingVendorCode,
+            String shipToPartyId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getPurchaseOrdersStatusValidateBeforeCall(
+                limit,
+                sortOrder,
+                nextToken,
+                createdAfter,
+                createdBefore,
+                updatedAfter,
+                updatedBefore,
+                purchaseOrderNumber,
+                purchaseOrderStatus,
+                itemConfirmationStatus,
+                itemReceiveStatus,
+                orderingVendorCode,
+                shipToPartyId,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorOrdersApi-getPurchaseOrdersStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPurchaseOrdersStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPurchaseOrdersStatusResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPurchaseOrdersStatus operation exceeds rate limit");
     }
 
     /**
@@ -837,7 +1330,7 @@ public class VendorOrdersApi {
             String orderingVendorCode,
             String shipToPartyId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getPurchaseOrdersStatusValidateBeforeCall(
+        return getPurchaseOrdersStatusWithHttpInfo(
                 limit,
                 sortOrder,
                 nextToken,
@@ -852,10 +1345,6 @@ public class VendorOrdersApi {
                 orderingVendorCode,
                 shipToPartyId,
                 null);
-        if (disableRateLimiting || getPurchaseOrdersStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPurchaseOrdersStatusResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPurchaseOrdersStatus operation exceeds rate limit");
     }
 
     /**
@@ -899,6 +1388,7 @@ public class VendorOrdersApi {
      *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
      *     warehouses used for vendor group purchase orders. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -918,6 +1408,86 @@ public class VendorOrdersApi {
             String orderingVendorCode,
             String shipToPartyId,
             final ApiCallback<GetPurchaseOrdersStatusResponse> callback)
+            throws ApiException, LWAException {
+        return getPurchaseOrdersStatusAsync(
+                limit,
+                sortOrder,
+                nextToken,
+                createdAfter,
+                createdBefore,
+                updatedAfter,
+                updatedBefore,
+                purchaseOrderNumber,
+                purchaseOrderStatus,
+                itemConfirmationStatus,
+                itemReceiveStatus,
+                orderingVendorCode,
+                shipToPartyId,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Returns purchase order statuses based on the filters that you specify. Date range to search must
+     * not be more than 7 days. You can return a list of purchase order statuses using the available filters, or a
+     * single purchase order status by providing the purchase order number. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The preceding table indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param limit The limit to the number of records returned. Default value is 100 records. (optional)
+     * @param sortOrder Sort in ascending or descending order by purchase order creation date. (optional)
+     * @param nextToken Used for pagination when there are more purchase orders than the specified result size limit.
+     *     (optional)
+     * @param createdAfter Purchase orders that became available after this timestamp will be included in the result.
+     *     Must be in ISO-8601 date/time format. (optional)
+     * @param createdBefore Purchase orders that became available before this timestamp will be included in the result.
+     *     Must be in ISO-8601 date/time format. (optional)
+     * @param updatedAfter Purchase orders for which the last purchase order update happened after this timestamp will
+     *     be included in the result. Must be in ISO-8601 date/time format. (optional)
+     * @param updatedBefore Purchase orders for which the last purchase order update happened before this timestamp will
+     *     be included in the result. Must be in ISO-8601 date/time format. (optional)
+     * @param purchaseOrderNumber Provides purchase order status for the specified purchase order number. (optional)
+     * @param purchaseOrderStatus Filters purchase orders based on the specified purchase order status. If not included
+     *     in filter, this will return purchase orders for all statuses. (optional)
+     * @param itemConfirmationStatus Filters purchase orders based on their item confirmation status. If the item
+     *     confirmation status is not included in the filter, purchase orders for all confirmation statuses are
+     *     included. (optional)
+     * @param itemReceiveStatus Filters purchase orders based on the purchase order&#x27;s item receive status. If the
+     *     item receive status is not included in the filter, purchase orders for all receive statuses are included.
+     *     (optional)
+     * @param orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should
+     *     be same as &#x27;sellingParty.partyId&#x27; in the purchase order. If not included in filter, all purchase
+     *     orders for all the vendor codes that exist in the vendor group used to authorize API client application are
+     *     returned. (optional)
+     * @param shipToPartyId Filters purchase orders for a specific buyer&#x27;s Fulfillment Center/warehouse by
+     *     providing ship to location id here. This value should be same as &#x27;shipToParty.partyId&#x27; in the
+     *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
+     *     warehouses used for vendor group purchase orders. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPurchaseOrdersStatusAsync(
+            Long limit,
+            String sortOrder,
+            String nextToken,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String purchaseOrderNumber,
+            String purchaseOrderStatus,
+            String itemConfirmationStatus,
+            String itemReceiveStatus,
+            String orderingVendorCode,
+            String shipToPartyId,
+            final ApiCallback<GetPurchaseOrdersStatusResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -941,6 +1511,14 @@ public class VendorOrdersApi {
                 orderingVendorCode,
                 shipToPartyId,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorOrdersApi-getPurchaseOrdersStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPurchaseOrdersStatusBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetPurchaseOrdersStatusResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1013,14 +1591,67 @@ public class VendorOrdersApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SubmitAcknowledgementResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SubmitAcknowledgementResponse submitAcknowledgement(
+            SubmitAcknowledgementRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<SubmitAcknowledgementResponse> resp = submitAcknowledgementWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submits acknowledgements for one or more purchase orders. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
      * @return SubmitAcknowledgementResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SubmitAcknowledgementResponse submitAcknowledgement(SubmitAcknowledgementRequest body)
             throws ApiException, LWAException {
-        ApiResponse<SubmitAcknowledgementResponse> resp = submitAcknowledgementWithHttpInfo(body);
+        ApiResponse<SubmitAcknowledgementResponse> resp = submitAcknowledgementWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Submits acknowledgements for one or more purchase orders. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SubmitAcknowledgementResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SubmitAcknowledgementResponse> submitAcknowledgementWithHttpInfo(
+            SubmitAcknowledgementRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitAcknowledgementResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitAcknowledgement operation exceeds rate limit");
     }
 
     /**
@@ -1039,11 +1670,7 @@ public class VendorOrdersApi {
      */
     public ApiResponse<SubmitAcknowledgementResponse> submitAcknowledgementWithHttpInfo(
             SubmitAcknowledgementRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, null);
-        if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SubmitAcknowledgementResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitAcknowledgement operation exceeds rate limit");
+        return submitAcknowledgementWithHttpInfo(body, null);
     }
 
     /**
@@ -1057,12 +1684,36 @@ public class VendorOrdersApi {
      *
      * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitAcknowledgementAsync(
             SubmitAcknowledgementRequest body, final ApiCallback<SubmitAcknowledgementResponse> callback)
+            throws ApiException, LWAException {
+        return submitAcknowledgementAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Submits acknowledgements for one or more purchase orders. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitAcknowledgementAsync(
+            SubmitAcknowledgementRequest body,
+            final ApiCallback<SubmitAcknowledgementResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1072,6 +1723,14 @@ public class VendorOrdersApi {
         }
 
         okhttp3.Call call = submitAcknowledgementValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitAcknowledgementBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitAcknowledgementResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

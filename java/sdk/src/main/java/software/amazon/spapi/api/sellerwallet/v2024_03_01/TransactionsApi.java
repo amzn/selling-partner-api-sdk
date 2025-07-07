@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -144,6 +145,29 @@ public class TransactionsApi {
      * @param body The payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Transaction
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Transaction createTransaction(
+            TransactionInitiationRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<Transaction> resp = createTransactionWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a
+     * transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     *
+     * @param body The payload of the request (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return Transaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -152,8 +176,41 @@ public class TransactionsApi {
             TransactionInitiationRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
             throws ApiException, LWAException {
         ApiResponse<Transaction> resp =
-                createTransactionWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature);
+                createTransactionWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
         return resp.getData();
+    }
+
+    /**
+     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a
+     * transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     *
+     * @param body The payload of the request (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Transaction&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Transaction> createTransactionWithHttpInfo(
+            TransactionInitiationRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                createTransactionValidateBeforeCall(body, destAccountDigitalSignature, amountDigitalSignature, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "TransactionsApi-createTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createTransactionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createTransaction operation exceeds rate limit");
     }
 
     /**
@@ -170,12 +227,7 @@ public class TransactionsApi {
     public ApiResponse<Transaction> createTransactionWithHttpInfo(
             TransactionInitiationRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                createTransactionValidateBeforeCall(body, destAccountDigitalSignature, amountDigitalSignature, null);
-        if (disableRateLimiting || createTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createTransaction operation exceeds rate limit");
+        return createTransactionWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
     }
 
     /**
@@ -187,6 +239,7 @@ public class TransactionsApi {
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -197,6 +250,29 @@ public class TransactionsApi {
             String amountDigitalSignature,
             final ApiCallback<Transaction> callback)
             throws ApiException, LWAException {
+        return createTransactionAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
+    }
+    /**
+     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
+     * (asynchronously) Create a transaction request from an Amazon Seller Wallet account to another customer-provided
+     * account.
+     *
+     * @param body The payload of the request (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createTransactionAsync(
+            TransactionInitiationRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            final ApiCallback<Transaction> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -206,6 +282,13 @@ public class TransactionsApi {
 
         okhttp3.Call call = createTransactionValidateBeforeCall(
                 body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "TransactionsApi-createTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createTransactionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -273,13 +356,55 @@ public class TransactionsApi {
      * the Amazon transaction identifier.
      *
      * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Transaction
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Transaction getTransaction(String transactionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by
+     * the Amazon transaction identifier.
+     *
+     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
      * @return Transaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Transaction getTransaction(String transactionId) throws ApiException, LWAException {
-        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId);
+        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId, null);
         return resp.getData();
+    }
+
+    /**
+     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by
+     * the Amazon transaction identifier.
+     *
+     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Transaction&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Transaction> getTransactionWithHttpInfo(String transactionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "TransactionsApi-getTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getTransactionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTransaction operation exceeds rate limit");
     }
 
     /**
@@ -292,11 +417,7 @@ public class TransactionsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Transaction> getTransactionWithHttpInfo(String transactionId) throws ApiException, LWAException {
-        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null);
-        if (disableRateLimiting || getTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTransaction operation exceeds rate limit");
+        return getTransactionWithHttpInfo(transactionId, null);
     }
 
     /**
@@ -305,11 +426,28 @@ public class TransactionsApi {
      *
      * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransactionAsync(String transactionId, final ApiCallback<Transaction> callback)
+            throws ApiException, LWAException {
+        return getTransactionAsync(transactionId, callback, null);
+    }
+    /**
+     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier (asynchronously) Find a
+     * transaction by the Amazon transaction identifier.
+     *
+     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getTransactionAsync(
+            String transactionId, final ApiCallback<Transaction> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -319,6 +457,13 @@ public class TransactionsApi {
         }
 
         okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "TransactionsApi-getTransaction");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getTransactionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -403,14 +548,68 @@ public class TransactionsApi {
      *     operation with this token and include the same arguments as the call that produced the token. To get a
      *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
      *     return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransactionListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransactionListing listAccountTransactions(
+            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<TransactionListing> resp =
+                listAccountTransactionsWithHttpInfo(accountId, nextPageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
+     * request date Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
+     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. To get a
+     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
+     *     return empty pages. (optional)
      * @return TransactionListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransactionListing listAccountTransactions(String accountId, String nextPageToken)
             throws ApiException, LWAException {
-        ApiResponse<TransactionListing> resp = listAccountTransactionsWithHttpInfo(accountId, nextPageToken);
+        ApiResponse<TransactionListing> resp = listAccountTransactionsWithHttpInfo(accountId, nextPageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
+     * request date Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
+     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. To get a
+     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
+     *     return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransactionListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransactionListing> listAccountTransactionsWithHttpInfo(
+            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = listAccountTransactionsValidateBeforeCall(accountId, nextPageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransactionsApi-listAccountTransactions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listAccountTransactionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransactionListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listAccountTransactions operation exceeds rate limit");
     }
 
     /**
@@ -429,11 +628,7 @@ public class TransactionsApi {
      */
     public ApiResponse<TransactionListing> listAccountTransactionsWithHttpInfo(String accountId, String nextPageToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = listAccountTransactionsValidateBeforeCall(accountId, nextPageToken, null);
-        if (disableRateLimiting || listAccountTransactionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listAccountTransactions operation exceeds rate limit");
+        return listAccountTransactionsWithHttpInfo(accountId, nextPageToken, null);
     }
 
     /**
@@ -447,12 +642,37 @@ public class TransactionsApi {
      *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
      *     return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listAccountTransactionsAsync(
             String accountId, String nextPageToken, final ApiCallback<TransactionListing> callback)
+            throws ApiException, LWAException {
+        return listAccountTransactionsAsync(accountId, nextPageToken, callback, null);
+    }
+    /**
+     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
+     * request date (asynchronously) Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
+     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. To get a
+     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
+     *     return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listAccountTransactionsAsync(
+            String accountId,
+            String nextPageToken,
+            final ApiCallback<TransactionListing> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -463,6 +683,14 @@ public class TransactionsApi {
 
         okhttp3.Call call =
                 listAccountTransactionsValidateBeforeCall(accountId, nextPageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransactionsApi-listAccountTransactions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listAccountTransactionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransactionListing>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

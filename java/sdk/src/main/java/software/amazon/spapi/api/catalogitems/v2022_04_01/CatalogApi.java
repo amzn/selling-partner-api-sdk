@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -149,14 +150,87 @@ public class CatalogApi {
      * @param includedData A comma-delimited list of datasets to include in the response. (optional)
      * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
      *     the marketplace. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Item getCatalogItem(
+            String asin,
+            List<String> marketplaceIds,
+            List<String> includedData,
+            String locale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<Item> resp =
+                getCatalogItemWithHttpInfo(asin, marketplaceIds, includedData, locale, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
      * @return Item
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Item getCatalogItem(String asin, List<String> marketplaceIds, List<String> includedData, String locale)
             throws ApiException, LWAException {
-        ApiResponse<Item> resp = getCatalogItemWithHttpInfo(asin, marketplaceIds, includedData, locale);
+        ApiResponse<Item> resp = getCatalogItemWithHttpInfo(asin, marketplaceIds, includedData, locale, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Item> getCatalogItemWithHttpInfo(
+            String asin,
+            List<String> marketplaceIds,
+            List<String> includedData,
+            String locale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "CatalogApi-getCatalogItem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Item>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
     }
 
     /**
@@ -181,11 +255,7 @@ public class CatalogApi {
     public ApiResponse<Item> getCatalogItemWithHttpInfo(
             String asin, List<String> marketplaceIds, List<String> includedData, String locale)
             throws ApiException, LWAException {
-        okhttp3.Call call = getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, null);
-        if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Item>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
+        return getCatalogItemWithHttpInfo(asin, marketplaceIds, includedData, locale, null);
     }
 
     /**
@@ -204,6 +274,7 @@ public class CatalogApi {
      * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
      *     the marketplace. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -215,6 +286,37 @@ public class CatalogApi {
             String locale,
             final ApiCallback<Item> callback)
             throws ApiException, LWAException {
+        return getCatalogItemAsync(asin, marketplaceIds, includedData, locale, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCatalogItemAsync(
+            String asin,
+            List<String> marketplaceIds,
+            List<String> includedData,
+            String locale,
+            final ApiCallback<Item> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -224,6 +326,13 @@ public class CatalogApi {
 
         okhttp3.Call call =
                 getCatalogItemValidateBeforeCall(asin, marketplaceIds, includedData, locale, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "CatalogApi-getCatalogItem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Item>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -402,6 +511,77 @@ public class CatalogApi {
      * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
      *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
      *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ItemSearchResults
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ItemSearchResults searchCatalogItems(
+            List<String> marketplaceIds,
+            List<String> identifiers,
+            String identifiersType,
+            List<String> includedData,
+            String locale,
+            String sellerId,
+            List<String> keywords,
+            List<String> brandNames,
+            List<String> classificationIds,
+            Integer pageSize,
+            String pageToken,
+            String keywordsLocale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ItemSearchResults> resp = searchCatalogItemsWithHttpInfo(
+                marketplaceIds,
+                identifiers,
+                identifiersType,
+                includedData,
+                locale,
+                sellerId,
+                keywords,
+                brandNames,
+                classificationIds,
+                pageSize,
+                pageToken,
+                keywordsLocale,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by
+     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog.
+     *     **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param identifiersType The type of product identifiers that you can use to search the Amazon catalog. **Note:**
+     *     &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param sellerId A selling partner identifier, such as a seller account or vendor code. **Note:** Required when
+     *     &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param keywords A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You
+     *     cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param brandNames A comma-delimited list of brand names that you can use to limit the search in queries based on
+     *     &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param classificationIds A comma-delimited list of classification identifiers that you can use to limit the
+     *     search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param pageSize The number of results to include on each page. (optional, default to 10)
+     * @param pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
+     *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
      * @return ItemSearchResults
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -432,8 +612,90 @@ public class CatalogApi {
                 classificationIds,
                 pageSize,
                 pageToken,
-                keywordsLocale);
+                keywordsLocale,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by
+     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog.
+     *     **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param identifiersType The type of product identifiers that you can use to search the Amazon catalog. **Note:**
+     *     &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param sellerId A selling partner identifier, such as a seller account or vendor code. **Note:** Required when
+     *     &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param keywords A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You
+     *     cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param brandNames A comma-delimited list of brand names that you can use to limit the search in queries based on
+     *     &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param classificationIds A comma-delimited list of classification identifiers that you can use to limit the
+     *     search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param pageSize The number of results to include on each page. (optional, default to 10)
+     * @param pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
+     *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ItemSearchResults&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ItemSearchResults> searchCatalogItemsWithHttpInfo(
+            List<String> marketplaceIds,
+            List<String> identifiers,
+            String identifiersType,
+            List<String> includedData,
+            String locale,
+            String sellerId,
+            List<String> keywords,
+            List<String> brandNames,
+            List<String> classificationIds,
+            Integer pageSize,
+            String pageToken,
+            String keywordsLocale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = searchCatalogItemsValidateBeforeCall(
+                marketplaceIds,
+                identifiers,
+                identifiersType,
+                includedData,
+                locale,
+                sellerId,
+                keywords,
+                brandNames,
+                classificationIds,
+                pageSize,
+                pageToken,
+                keywordsLocale,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "CatalogApi-searchCatalogItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchCatalogItems operation exceeds rate limit");
     }
 
     /**
@@ -488,7 +750,7 @@ public class CatalogApi {
             String pageToken,
             String keywordsLocale)
             throws ApiException, LWAException {
-        okhttp3.Call call = searchCatalogItemsValidateBeforeCall(
+        return searchCatalogItemsWithHttpInfo(
                 marketplaceIds,
                 identifiers,
                 identifiersType,
@@ -502,10 +764,6 @@ public class CatalogApi {
                 pageToken,
                 keywordsLocale,
                 null);
-        if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchCatalogItems operation exceeds rate limit");
     }
 
     /**
@@ -543,6 +801,7 @@ public class CatalogApi {
      *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
      *     (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -561,6 +820,78 @@ public class CatalogApi {
             String pageToken,
             String keywordsLocale,
             final ApiCallback<ItemSearchResults> callback)
+            throws ApiException, LWAException {
+        return searchCatalogItemsAsync(
+                marketplaceIds,
+                identifiers,
+                identifiersType,
+                includedData,
+                locale,
+                sellerId,
+                keywords,
+                brandNames,
+                classificationIds,
+                pageSize,
+                pageToken,
+                keywordsLocale,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Search for a list of Amazon catalog items and item-related information. You can search by
+     * identifier or by keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your
+     *     marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog.
+     *     **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request. (optional)
+     * @param identifiersType The type of product identifiers that you can use to search the Amazon catalog. **Note:**
+     *     &#x60;identifiersType&#x60; is required when &#x60;identifiers&#x60; is in the request. (optional)
+     * @param includedData A comma-delimited list of datasets to include in the response. (optional)
+     * @param locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of
+     *     the marketplace. (optional)
+     * @param sellerId A selling partner identifier, such as a seller account or vendor code. **Note:** Required when
+     *     &#x60;identifiersType&#x60; is &#x60;SKU&#x60;. (optional)
+     * @param keywords A comma-delimited list of keywords that you can use to search the Amazon catalog. **Note:** You
+     *     cannot include &#x60;keywords&#x60; and &#x60;identifiers&#x60; in the same request. (optional)
+     * @param brandNames A comma-delimited list of brand names that you can use to limit the search in queries based on
+     *     &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
+     * @param classificationIds A comma-delimited list of classification identifiers that you can use to limit the
+     *     search in queries based on &#x60;keywords&#x60;. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param pageSize The number of results to include on each page. (optional, default to 10)
+     * @param pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;.
+     *     Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
+     *     (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call searchCatalogItemsAsync(
+            List<String> marketplaceIds,
+            List<String> identifiers,
+            String identifiersType,
+            List<String> includedData,
+            String locale,
+            String sellerId,
+            List<String> keywords,
+            List<String> brandNames,
+            List<String> classificationIds,
+            Integer pageSize,
+            String pageToken,
+            String keywordsLocale,
+            final ApiCallback<ItemSearchResults> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -583,6 +914,13 @@ public class CatalogApi {
                 pageToken,
                 keywordsLocale,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "CatalogApi-searchCatalogItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -137,6 +138,33 @@ public class FbaInboundApi {
      * @param program The program that you want to check eligibility against. (required)
      * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
      *     only when program&#x3D;INBOUND. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetItemEligibilityPreviewResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetItemEligibilityPreviewResponse getItemEligibilityPreview(
+            String asin, String program, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetItemEligibilityPreviewResponse> resp =
+                getItemEligibilityPreviewWithHttpInfo(asin, program, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This operation gets an eligibility preview for an item that you specify. You can specify the type of eligibility
+     * preview that you want (INBOUND or COMMINGLING). For INBOUND previews, you can specify the marketplace in which
+     * you want to determine the item&#x27;s eligibility. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin The ASIN of the item for which you want an eligibility preview. (required)
+     * @param program The program that you want to check eligibility against. (required)
+     * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
+     *     only when program&#x3D;INBOUND. (optional)
      * @return GetItemEligibilityPreviewResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -144,8 +172,45 @@ public class FbaInboundApi {
     public GetItemEligibilityPreviewResponse getItemEligibilityPreview(
             String asin, String program, List<String> marketplaceIds) throws ApiException, LWAException {
         ApiResponse<GetItemEligibilityPreviewResponse> resp =
-                getItemEligibilityPreviewWithHttpInfo(asin, program, marketplaceIds);
+                getItemEligibilityPreviewWithHttpInfo(asin, program, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * This operation gets an eligibility preview for an item that you specify. You can specify the type of eligibility
+     * preview that you want (INBOUND or COMMINGLING). For INBOUND previews, you can specify the marketplace in which
+     * you want to determine the item&#x27;s eligibility. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin The ASIN of the item for which you want an eligibility preview. (required)
+     * @param program The program that you want to check eligibility against. (required)
+     * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
+     *     only when program&#x3D;INBOUND. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetItemEligibilityPreviewResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetItemEligibilityPreviewResponse> getItemEligibilityPreviewWithHttpInfo(
+            String asin, String program, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getItemEligibilityPreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getItemEligibilityPreview operation exceeds rate limit");
     }
 
     /**
@@ -168,11 +233,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GetItemEligibilityPreviewResponse> getItemEligibilityPreviewWithHttpInfo(
             String asin, String program, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, null);
-        if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemEligibilityPreview operation exceeds rate limit");
+        return getItemEligibilityPreviewWithHttpInfo(asin, program, marketplaceIds, null);
     }
 
     /**
@@ -191,6 +252,7 @@ public class FbaInboundApi {
      * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
      *     only when program&#x3D;INBOUND. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -201,6 +263,36 @@ public class FbaInboundApi {
             List<String> marketplaceIds,
             final ApiCallback<GetItemEligibilityPreviewResponse> callback)
             throws ApiException, LWAException {
+        return getItemEligibilityPreviewAsync(asin, program, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) This operation gets an eligibility preview for an item that you specify. You can specify the
+     * type of eligibility preview that you want (INBOUND or COMMINGLING). For INBOUND previews, you can specify the
+     * marketplace in which you want to determine the item&#x27;s eligibility. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin The ASIN of the item for which you want an eligibility preview. (required)
+     * @param program The program that you want to check eligibility against. (required)
+     * @param marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required
+     *     only when program&#x3D;INBOUND. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getItemEligibilityPreviewAsync(
+            String asin,
+            String program,
+            List<String> marketplaceIds,
+            final ApiCallback<GetItemEligibilityPreviewResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -210,6 +302,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 getItemEligibilityPreviewValidateBeforeCall(asin, program, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getItemEligibilityPreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

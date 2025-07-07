@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -123,14 +124,65 @@ public class AppIntegrationsApi {
      * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateNotificationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateNotificationResponse createNotification(CreateNotificationRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateNotificationResponse> resp = createNotificationWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Create a notification for sellers in Seller Central. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Sellers whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;createNotification&#x60; operation. (required)
      * @return CreateNotificationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateNotificationResponse createNotification(CreateNotificationRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateNotificationResponse> resp = createNotificationWithHttpInfo(body);
+        ApiResponse<CreateNotificationResponse> resp = createNotificationWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Create a notification for sellers in Seller Central. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Sellers whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateNotificationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateNotificationResponse> createNotificationWithHttpInfo(
+            CreateNotificationRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createNotificationValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AppIntegrationsApi-createNotification");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createNotificationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createNotification operation exceeds rate limit");
     }
 
     /**
@@ -148,11 +200,7 @@ public class AppIntegrationsApi {
      */
     public ApiResponse<CreateNotificationResponse> createNotificationWithHttpInfo(CreateNotificationRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createNotificationValidateBeforeCall(body, null);
-        if (disableRateLimiting || createNotificationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createNotification operation exceeds rate limit");
+        return createNotificationWithHttpInfo(body, null);
     }
 
     /**
@@ -166,12 +214,36 @@ public class AppIntegrationsApi {
      *
      * @param body The request body for the &#x60;createNotification&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createNotificationAsync(
             CreateNotificationRequest body, final ApiCallback<CreateNotificationResponse> callback)
+            throws ApiException, LWAException {
+        return createNotificationAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Create a notification for sellers in Seller Central. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Sellers whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;createNotification&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createNotificationAsync(
+            CreateNotificationRequest body,
+            final ApiCallback<CreateNotificationResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -181,6 +253,14 @@ public class AppIntegrationsApi {
         }
 
         okhttp3.Call call = createNotificationValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AppIntegrationsApi-createNotification");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createNotificationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -251,11 +331,61 @@ public class AppIntegrationsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void deleteNotifications(DeleteNotificationsRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        deleteNotificationsWithHttpInfo(body, restrictedDataToken);
+    }
+
+    /**
+     * Remove your application&#x27;s notifications from the Appstore notifications dashboard. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table indicates the default rate and burst values for this operation. Sellers whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void deleteNotifications(DeleteNotificationsRequest body) throws ApiException, LWAException {
-        deleteNotificationsWithHttpInfo(body);
+        deleteNotificationsWithHttpInfo(body, null);
+    }
+
+    /**
+     * Remove your application&#x27;s notifications from the Appstore notifications dashboard. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table indicates the default rate and burst values for this operation. Sellers whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> deleteNotificationsWithHttpInfo(
+            DeleteNotificationsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = deleteNotificationsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AppIntegrationsApi-deleteNotifications");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deleteNotificationsBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("deleteNotifications operation exceeds rate limit");
     }
 
     /**
@@ -274,10 +404,7 @@ public class AppIntegrationsApi {
      */
     public ApiResponse<Void> deleteNotificationsWithHttpInfo(DeleteNotificationsRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = deleteNotificationsValidateBeforeCall(body, null);
-        if (disableRateLimiting || deleteNotificationsBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("deleteNotifications operation exceeds rate limit");
+        return deleteNotificationsWithHttpInfo(body, null);
     }
 
     /**
@@ -291,11 +418,33 @@ public class AppIntegrationsApi {
      *
      * @param body The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteNotificationsAsync(DeleteNotificationsRequest body, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return deleteNotificationsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Remove your application&#x27;s notifications from the Appstore notifications dashboard. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Sellers whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;deleteNotifications&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deleteNotificationsAsync(
+            DeleteNotificationsRequest body, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -305,6 +454,14 @@ public class AppIntegrationsApi {
         }
 
         okhttp3.Call call = deleteNotificationsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AppIntegrationsApi-deleteNotifications");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || deleteNotificationsBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -385,12 +542,64 @@ public class AppIntegrationsApi {
      *
      * @param body The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      * @param notificationId A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void recordActionFeedback(
+            RecordActionFeedbackRequest body, String notificationId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        recordActionFeedbackWithHttpInfo(body, notificationId, restrictedDataToken);
+    }
+
+    /**
+     * Records the seller&#x27;s response to a notification. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Sellers whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param notificationId A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void recordActionFeedback(RecordActionFeedbackRequest body, String notificationId)
             throws ApiException, LWAException {
-        recordActionFeedbackWithHttpInfo(body, notificationId);
+        recordActionFeedbackWithHttpInfo(body, notificationId, null);
+    }
+
+    /**
+     * Records the seller&#x27;s response to a notification. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Sellers whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param notificationId A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> recordActionFeedbackWithHttpInfo(
+            RecordActionFeedbackRequest body, String notificationId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = recordActionFeedbackValidateBeforeCall(body, notificationId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AppIntegrationsApi-recordActionFeedback");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || recordActionFeedbackBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("recordActionFeedback operation exceeds rate limit");
     }
 
     /**
@@ -409,10 +618,7 @@ public class AppIntegrationsApi {
      */
     public ApiResponse<Void> recordActionFeedbackWithHttpInfo(RecordActionFeedbackRequest body, String notificationId)
             throws ApiException, LWAException {
-        okhttp3.Call call = recordActionFeedbackValidateBeforeCall(body, notificationId, null);
-        if (disableRateLimiting || recordActionFeedbackBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("recordActionFeedback operation exceeds rate limit");
+        return recordActionFeedbackWithHttpInfo(body, notificationId, null);
     }
 
     /**
@@ -427,12 +633,38 @@ public class AppIntegrationsApi {
      * @param body The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      * @param notificationId A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call recordActionFeedbackAsync(
             RecordActionFeedbackRequest body, String notificationId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return recordActionFeedbackAsync(body, notificationId, callback, null);
+    }
+    /**
+     * (asynchronously) Records the seller&#x27;s response to a notification. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Sellers whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
+     * @param notificationId A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call recordActionFeedbackAsync(
+            RecordActionFeedbackRequest body,
+            String notificationId,
+            final ApiCallback<Void> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -442,6 +674,14 @@ public class AppIntegrationsApi {
         }
 
         okhttp3.Call call = recordActionFeedbackValidateBeforeCall(body, notificationId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AppIntegrationsApi-recordActionFeedback");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || recordActionFeedbackBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;

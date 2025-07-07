@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -123,13 +124,66 @@ public class CustomerInvoicesApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CustomerInvoice
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CustomerInvoice getCustomerInvoice(String purchaseOrderNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CustomerInvoice> resp = getCustomerInvoiceWithHttpInfo(purchaseOrderNumber, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * getCustomerInvoice Returns a customer invoice based on the purchaseOrderNumber that you specify. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
      * @return CustomerInvoice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CustomerInvoice getCustomerInvoice(String purchaseOrderNumber) throws ApiException, LWAException {
-        ApiResponse<CustomerInvoice> resp = getCustomerInvoiceWithHttpInfo(purchaseOrderNumber);
+        ApiResponse<CustomerInvoice> resp = getCustomerInvoiceWithHttpInfo(purchaseOrderNumber, null);
         return resp.getData();
+    }
+
+    /**
+     * getCustomerInvoice Returns a customer invoice based on the purchaseOrderNumber that you specify. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values then those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CustomerInvoice&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CustomerInvoice> getCustomerInvoiceWithHttpInfo(
+            String purchaseOrderNumber, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getCustomerInvoiceValidateBeforeCall(purchaseOrderNumber, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCustomerInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCustomerInvoice operation exceeds rate limit");
     }
 
     /**
@@ -148,11 +202,7 @@ public class CustomerInvoicesApi {
      */
     public ApiResponse<CustomerInvoice> getCustomerInvoiceWithHttpInfo(String purchaseOrderNumber)
             throws ApiException, LWAException {
-        okhttp3.Call call = getCustomerInvoiceValidateBeforeCall(purchaseOrderNumber, null);
-        if (disableRateLimiting || getCustomerInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCustomerInvoice operation exceeds rate limit");
+        return getCustomerInvoiceWithHttpInfo(purchaseOrderNumber, null);
     }
 
     /**
@@ -166,11 +216,33 @@ public class CustomerInvoicesApi {
      *
      * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getCustomerInvoiceAsync(String purchaseOrderNumber, final ApiCallback<CustomerInvoice> callback)
+            throws ApiException, LWAException {
+        return getCustomerInvoiceAsync(purchaseOrderNumber, callback, null);
+    }
+    /**
+     * getCustomerInvoice (asynchronously) Returns a customer invoice based on the purchaseOrderNumber that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCustomerInvoiceAsync(
+            String purchaseOrderNumber, final ApiCallback<CustomerInvoice> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -180,6 +252,14 @@ public class CustomerInvoicesApi {
         }
 
         okhttp3.Call call = getCustomerInvoiceValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCustomerInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CustomerInvoice>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -297,6 +377,45 @@ public class CustomerInvoicesApi {
      * @param sortOrder Sort ASC or DESC by order creation date. (optional)
      * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
      *     value is returned in the previous API call. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CustomerInvoiceList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CustomerInvoiceList getCustomerInvoices(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CustomerInvoiceList> resp = getCustomerInvoicesWithHttpInfo(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * getCustomerInvoices Returns a list of customer invoices created during a time frame that you specify. You define
+     * the time frame using the createdAfter and createdBefore parameters. You must use both of these parameters. The
+     * date range to search must be no more than 7 days. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Orders that became available after this date and time will be included in the result. Values
+     *     are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param createdBefore Orders that became available before this date and time will be included in the result.
+     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param shipFromPartyId The vendor warehouseId for order fulfillment. If not specified, the result will contain
+     *     orders for all warehouses. (optional)
+     * @param limit The limit to the number of records returned (optional)
+     * @param sortOrder Sort ASC or DESC by order creation date. (optional)
+     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
+     *     value is returned in the previous API call. (optional)
      * @return CustomerInvoiceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -310,8 +429,58 @@ public class CustomerInvoicesApi {
             String nextToken)
             throws ApiException, LWAException {
         ApiResponse<CustomerInvoiceList> resp = getCustomerInvoicesWithHttpInfo(
-                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
         return resp.getData();
+    }
+
+    /**
+     * getCustomerInvoices Returns a list of customer invoices created during a time frame that you specify. You define
+     * the time frame using the createdAfter and createdBefore parameters. You must use both of these parameters. The
+     * date range to search must be no more than 7 days. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Orders that became available after this date and time will be included in the result. Values
+     *     are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param createdBefore Orders that became available before this date and time will be included in the result.
+     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param shipFromPartyId The vendor warehouseId for order fulfillment. If not specified, the result will contain
+     *     orders for all warehouses. (optional)
+     * @param limit The limit to the number of records returned (optional)
+     * @param sortOrder Sort ASC or DESC by order creation date. (optional)
+     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
+     *     value is returned in the previous API call. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CustomerInvoiceList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CustomerInvoiceList> getCustomerInvoicesWithHttpInfo(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getCustomerInvoicesValidateBeforeCall(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoices");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCustomerInvoicesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCustomerInvoices operation exceeds rate limit");
     }
 
     /**
@@ -346,12 +515,8 @@ public class CustomerInvoicesApi {
             String sortOrder,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getCustomerInvoicesValidateBeforeCall(
+        return getCustomerInvoicesWithHttpInfo(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, null);
-        if (disableRateLimiting || getCustomerInvoicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCustomerInvoices operation exceeds rate limit");
     }
 
     /**
@@ -376,6 +541,7 @@ public class CustomerInvoicesApi {
      * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
      *     value is returned in the previous API call. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -389,6 +555,46 @@ public class CustomerInvoicesApi {
             String nextToken,
             final ApiCallback<CustomerInvoiceList> callback)
             throws ApiException, LWAException {
+        return getCustomerInvoicesAsync(
+                createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, callback, null);
+    }
+    /**
+     * getCustomerInvoices (asynchronously) Returns a list of customer invoices created during a time frame that you
+     * specify. You define the time frame using the createdAfter and createdBefore parameters. You must use both of
+     * these parameters. The date range to search must be no more than 7 days. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values then those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param createdAfter Orders that became available after this date and time will be included in the result. Values
+     *     are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param createdBefore Orders that became available before this date and time will be included in the result.
+     *     Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. (required)
+     * @param shipFromPartyId The vendor warehouseId for order fulfillment. If not specified, the result will contain
+     *     orders for all warehouses. (optional)
+     * @param limit The limit to the number of records returned (optional)
+     * @param sortOrder Sort ASC or DESC by order creation date. (optional)
+     * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
+     *     value is returned in the previous API call. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCustomerInvoicesAsync(
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String shipFromPartyId,
+            Integer limit,
+            String sortOrder,
+            String nextToken,
+            final ApiCallback<CustomerInvoiceList> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -398,6 +604,14 @@ public class CustomerInvoicesApi {
 
         okhttp3.Call call = getCustomerInvoicesValidateBeforeCall(
                 createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "CustomerInvoicesApi-getCustomerInvoices");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCustomerInvoicesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CustomerInvoiceList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

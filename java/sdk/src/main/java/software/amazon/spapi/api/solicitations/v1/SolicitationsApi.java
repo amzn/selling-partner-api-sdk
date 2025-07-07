@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -140,6 +141,34 @@ public class SolicitationsApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
      *     Only one marketplace can be specified. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateProductReviewAndSellerFeedbackSolicitationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateProductReviewAndSellerFeedbackSolicitationResponse createProductReviewAndSellerFeedbackSolicitation(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse> resp =
+                createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
+                        amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a solicitation to a buyer asking for seller feedback and a product review for the specified order. Send
+     * only one productReviewAndSellerFeedback or free form proactive message per order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a solicitation is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
+     *     Only one marketplace can be specified. (required)
      * @return CreateProductReviewAndSellerFeedbackSolicitationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -147,8 +176,50 @@ public class SolicitationsApi {
     public CreateProductReviewAndSellerFeedbackSolicitationResponse createProductReviewAndSellerFeedbackSolicitation(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse> resp =
-                createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(amazonOrderId, marketplaceIds);
+                createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a solicitation to a buyer asking for seller feedback and a product review for the specified order. Send
+     * only one productReviewAndSellerFeedback or free form proactive message per order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a solicitation is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
+     *     Only one marketplace can be specified. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateProductReviewAndSellerFeedbackSolicitationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse>
+            createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
+                    String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+                    throws ApiException, LWAException {
+        okhttp3.Call call =
+                createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createProductReviewAndSellerFeedbackSolicitationBucket.tryConsume(1)) {
+            Type localVarReturnType =
+                    new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "createProductReviewAndSellerFeedbackSolicitation operation exceeds rate limit");
     }
 
     /**
@@ -172,15 +243,7 @@ public class SolicitationsApi {
     public ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse>
             createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
                     String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call =
-                createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createProductReviewAndSellerFeedbackSolicitationBucket.tryConsume(1)) {
-            Type localVarReturnType =
-                    new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "createProductReviewAndSellerFeedbackSolicitation operation exceeds rate limit");
+        return createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -198,6 +261,7 @@ public class SolicitationsApi {
      * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
      *     Only one marketplace can be specified. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -206,6 +270,34 @@ public class SolicitationsApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             final ApiCallback<CreateProductReviewAndSellerFeedbackSolicitationResponse> callback)
+            throws ApiException, LWAException {
+        return createProductReviewAndSellerFeedbackSolicitationAsync(amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a solicitation to a buyer asking for seller feedback and a product review for the
+     * specified order. Send only one productReviewAndSellerFeedback or free form proactive message per order. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a solicitation is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
+     *     Only one marketplace can be specified. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createProductReviewAndSellerFeedbackSolicitationAsync(
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateProductReviewAndSellerFeedbackSolicitationResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -216,6 +308,14 @@ public class SolicitationsApi {
 
         okhttp3.Call call = createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createProductReviewAndSellerFeedbackSolicitationBucket.tryConsume(1)) {
             Type localVarReturnType =
                     new TypeToken<CreateProductReviewAndSellerFeedbackSolicitationResponse>() {}.getType();
@@ -312,6 +412,35 @@ public class SolicitationsApi {
      *     solicitation types. (required)
      * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
      *     Only one marketplace can be specified. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSolicitationActionsForOrderResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSolicitationActionsForOrderResponse getSolicitationActionsForOrder(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetSolicitationActionsForOrderResponse> resp =
+                getSolicitationActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of solicitation types that are available for an order that you specify. A solicitation type is
+     * represented by an actions object, which contains a path and query parameter(s). You can use the path and
+     * parameter(s) to call an operation that sends a solicitation. Currently only the
+     * productReviewAndSellerFeedbackSolicitation solicitation type is available. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
+     *     solicitation types. (required)
+     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
+     *     Only one marketplace can be specified. (required)
      * @return GetSolicitationActionsForOrderResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -319,8 +448,47 @@ public class SolicitationsApi {
     public GetSolicitationActionsForOrderResponse getSolicitationActionsForOrder(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         ApiResponse<GetSolicitationActionsForOrderResponse> resp =
-                getSolicitationActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds);
+                getSolicitationActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of solicitation types that are available for an order that you specify. A solicitation type is
+     * represented by an actions object, which contains a path and query parameter(s). You can use the path and
+     * parameter(s) to call an operation that sends a solicitation. Currently only the
+     * productReviewAndSellerFeedbackSolicitation solicitation type is available. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
+     *     solicitation types. (required)
+     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
+     *     Only one marketplace can be specified. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSolicitationActionsForOrderResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSolicitationActionsForOrderResponse> getSolicitationActionsForOrderWithHttpInfo(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getSolicitationActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SolicitationsApi-getSolicitationActionsForOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSolicitationActionsForOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSolicitationActionsForOrder operation exceeds rate limit");
     }
 
     /**
@@ -345,11 +513,7 @@ public class SolicitationsApi {
      */
     public ApiResponse<GetSolicitationActionsForOrderResponse> getSolicitationActionsForOrderWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getSolicitationActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || getSolicitationActionsForOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSolicitationActionsForOrder operation exceeds rate limit");
+        return getSolicitationActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -369,6 +533,7 @@ public class SolicitationsApi {
      * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
      *     Only one marketplace can be specified. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -377,6 +542,36 @@ public class SolicitationsApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             final ApiCallback<GetSolicitationActionsForOrderResponse> callback)
+            throws ApiException, LWAException {
+        return getSolicitationActionsForOrderAsync(amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of solicitation types that are available for an order that you specify. A
+     * solicitation type is represented by an actions object, which contains a path and query parameter(s). You can use
+     * the path and parameter(s) to call an operation that sends a solicitation. Currently only the
+     * productReviewAndSellerFeedbackSolicitation solicitation type is available. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
+     *     solicitation types. (required)
+     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
+     *     Only one marketplace can be specified. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSolicitationActionsForOrderAsync(
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<GetSolicitationActionsForOrderResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -387,6 +582,14 @@ public class SolicitationsApi {
 
         okhttp3.Call call = getSolicitationActionsForOrderValidateBeforeCall(
                 amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SolicitationsApi-getSolicitationActionsForOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSolicitationActionsForOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSolicitationActionsForOrderResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

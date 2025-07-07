@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -183,6 +184,46 @@ public class ProductPricingApi {
      * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
      * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
      *     Business buyers. Default is Consumer. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetPricingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetPricingResponse getCompetitivePricing(
+            String marketplaceId,
+            String itemType,
+            List<String> asins,
+            List<String> skus,
+            String customerType,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPricingResponse> resp = getCompetitivePricingWithHttpInfo(
+                marketplaceId, itemType, asins, skus, customerType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns competitive pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN. **Note:**
+     * The parameters associated with this operation may contain special characters that require URL encoding to call
+     * the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
+     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
+     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
+     *     provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
+     *     the given marketplace. (optional)
+     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
+     *     Business buyers. Default is Consumer. (optional)
      * @return GetPricingResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -191,8 +232,59 @@ public class ProductPricingApi {
             String marketplaceId, String itemType, List<String> asins, List<String> skus, String customerType)
             throws ApiException, LWAException {
         ApiResponse<GetPricingResponse> resp =
-                getCompetitivePricingWithHttpInfo(marketplaceId, itemType, asins, skus, customerType);
+                getCompetitivePricingWithHttpInfo(marketplaceId, itemType, asins, skus, customerType, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns competitive pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN. **Note:**
+     * The parameters associated with this operation may contain special characters that require URL encoding to call
+     * the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
+     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
+     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
+     *     provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
+     *     the given marketplace. (optional)
+     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
+     *     Business buyers. Default is Consumer. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetPricingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetPricingResponse> getCompetitivePricingWithHttpInfo(
+            String marketplaceId,
+            String itemType,
+            List<String> asins,
+            List<String> skus,
+            String customerType,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getCompetitivePricingValidateBeforeCall(marketplaceId, itemType, asins, skus, customerType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getCompetitivePricing");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCompetitivePricing operation exceeds rate limit");
     }
 
     /**
@@ -224,12 +316,7 @@ public class ProductPricingApi {
     public ApiResponse<GetPricingResponse> getCompetitivePricingWithHttpInfo(
             String marketplaceId, String itemType, List<String> asins, List<String> skus, String customerType)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getCompetitivePricingValidateBeforeCall(marketplaceId, itemType, asins, skus, customerType, null);
-        if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCompetitivePricing operation exceeds rate limit");
+        return getCompetitivePricingWithHttpInfo(marketplaceId, itemType, asins, skus, customerType, null);
     }
 
     /**
@@ -255,6 +342,7 @@ public class ProductPricingApi {
      * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
      *     Business buyers. Default is Consumer. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -267,6 +355,45 @@ public class ProductPricingApi {
             String customerType,
             final ApiCallback<GetPricingResponse> callback)
             throws ApiException, LWAException {
+        return getCompetitivePricingAsync(marketplaceId, itemType, asins, skus, customerType, callback, null);
+    }
+    /**
+     * (asynchronously) Returns competitive pricing information for a seller&#x27;s offer listings based on seller SKU
+     * or ASIN. **Note:** The parameters associated with this operation may contain special characters that require URL
+     * encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
+     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
+     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
+     *     provide in the Skus parameter. Possible values: Asin, Sku. (required)
+     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
+     *     the given marketplace. (optional)
+     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
+     *     Business buyers. Default is Consumer. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCompetitivePricingAsync(
+            String marketplaceId,
+            String itemType,
+            List<String> asins,
+            List<String> skus,
+            String customerType,
+            final ApiCallback<GetPricingResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -276,6 +403,14 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getCompetitivePricingValidateBeforeCall(
                 marketplaceId, itemType, asins, skus, customerType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getCompetitivePricing");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -378,6 +513,33 @@ public class ProductPricingApi {
      *     Used, Collectible, Refurbished, Club. (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetOffersResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetOffersResponse getItemOffers(
+            String marketplaceId, String itemCondition, String asin, String customerType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetOffersResponse> resp =
+                getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, customerType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a single item based on ASIN. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in
+     * the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemCondition Filters the offer listings to be considered based on item condition. Possible values: New,
+     *     Used, Collectible, Refurbished, Club. (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      * @return GetOffersResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -385,8 +547,44 @@ public class ProductPricingApi {
     public GetOffersResponse getItemOffers(String marketplaceId, String itemCondition, String asin, String customerType)
             throws ApiException, LWAException {
         ApiResponse<GetOffersResponse> resp =
-                getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, customerType);
+                getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, customerType, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a single item based on ASIN. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in
+     * the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemCondition Filters the offer listings to be considered based on item condition. Possible values: New,
+     *     Used, Collectible, Refurbished, Club. (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetOffersResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetOffersResponse> getItemOffersWithHttpInfo(
+            String marketplaceId, String itemCondition, String asin, String customerType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getItemOffersValidateBeforeCall(marketplaceId, itemCondition, asin, customerType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ProductPricingApi-getItemOffers");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getItemOffers operation exceeds rate limit");
     }
 
     /**
@@ -410,11 +608,7 @@ public class ProductPricingApi {
     public ApiResponse<GetOffersResponse> getItemOffersWithHttpInfo(
             String marketplaceId, String itemCondition, String asin, String customerType)
             throws ApiException, LWAException {
-        okhttp3.Call call = getItemOffersValidateBeforeCall(marketplaceId, itemCondition, asin, customerType, null);
-        if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemOffers operation exceeds rate limit");
+        return getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, customerType, null);
     }
 
     /**
@@ -432,6 +626,7 @@ public class ProductPricingApi {
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -443,6 +638,36 @@ public class ProductPricingApi {
             String customerType,
             final ApiCallback<GetOffersResponse> callback)
             throws ApiException, LWAException {
+        return getItemOffersAsync(marketplaceId, itemCondition, asin, customerType, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the lowest priced offers for a single item based on ASIN. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemCondition Filters the offer listings to be considered based on item condition. Possible values: New,
+     *     Used, Collectible, Refurbished, Club. (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getItemOffersAsync(
+            String marketplaceId,
+            String itemCondition,
+            String asin,
+            String customerType,
+            final ApiCallback<GetOffersResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -452,6 +677,13 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getItemOffersValidateBeforeCall(
                 marketplaceId, itemCondition, asin, customerType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ProductPricingApi-getItemOffers");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -522,14 +754,67 @@ public class ProductPricingApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetItemOffersBatchResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetItemOffersBatchResponse getItemOffersBatch(GetItemOffersBatchRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetItemOffersBatchResponse> resp = getItemOffersBatchWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a batch of items based on ASIN. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      * @return GetItemOffersBatchResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetItemOffersBatchResponse getItemOffersBatch(GetItemOffersBatchRequest body)
             throws ApiException, LWAException {
-        ApiResponse<GetItemOffersBatchResponse> resp = getItemOffersBatchWithHttpInfo(body);
+        ApiResponse<GetItemOffersBatchResponse> resp = getItemOffersBatchWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a batch of items based on ASIN. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetItemOffersBatchResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetItemOffersBatchResponse> getItemOffersBatchWithHttpInfo(
+            GetItemOffersBatchRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getItemOffersBatchValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getItemOffersBatch");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getItemOffersBatch operation exceeds rate limit");
     }
 
     /**
@@ -548,11 +833,7 @@ public class ProductPricingApi {
      */
     public ApiResponse<GetItemOffersBatchResponse> getItemOffersBatchWithHttpInfo(GetItemOffersBatchRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = getItemOffersBatchValidateBeforeCall(body, null);
-        if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemOffersBatch operation exceeds rate limit");
+        return getItemOffersBatchWithHttpInfo(body, null);
     }
 
     /**
@@ -566,12 +847,36 @@ public class ProductPricingApi {
      *
      * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getItemOffersBatchAsync(
             GetItemOffersBatchRequest body, final ApiCallback<GetItemOffersBatchResponse> callback)
+            throws ApiException, LWAException {
+        return getItemOffersBatchAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the lowest priced offers for a batch of items based on ASIN. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getItemOffersBatchAsync(
+            GetItemOffersBatchRequest body,
+            final ApiCallback<GetItemOffersBatchResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -581,6 +886,14 @@ public class ProductPricingApi {
         }
 
         okhttp3.Call call = getItemOffersBatchValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getItemOffersBatch");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -690,6 +1003,41 @@ public class ProductPricingApi {
      * @param sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetOffersResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetOffersResponse getListingOffers(
+            String marketplaceId,
+            String itemCondition,
+            String sellerSKU,
+            String customerType,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetOffersResponse> resp = getListingOffersWithHttpInfo(
+                marketplaceId, itemCondition, sellerSKU, customerType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a single SKU listing. **Note:** The parameters associated with this
+     * operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs
+     * when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
+     *     Refurbished, Club. (required)
+     * @param sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
+     *     SellerId, which is included with every operation that you submit. (required)
+     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      * @return GetOffersResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -698,8 +1046,54 @@ public class ProductPricingApi {
             String marketplaceId, String itemCondition, String sellerSKU, String customerType)
             throws ApiException, LWAException {
         ApiResponse<GetOffersResponse> resp =
-                getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, customerType);
+                getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, customerType, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a single SKU listing. **Note:** The parameters associated with this
+     * operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs
+     * when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
+     *     Refurbished, Club. (required)
+     * @param sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
+     *     SellerId, which is included with every operation that you submit. (required)
+     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetOffersResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetOffersResponse> getListingOffersWithHttpInfo(
+            String marketplaceId,
+            String itemCondition,
+            String sellerSKU,
+            String customerType,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getListingOffersValidateBeforeCall(marketplaceId, itemCondition, sellerSKU, customerType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ProductPricingApi-getListingOffers");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getListingOffers operation exceeds rate limit");
     }
 
     /**
@@ -727,12 +1121,7 @@ public class ProductPricingApi {
     public ApiResponse<GetOffersResponse> getListingOffersWithHttpInfo(
             String marketplaceId, String itemCondition, String sellerSKU, String customerType)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getListingOffersValidateBeforeCall(marketplaceId, itemCondition, sellerSKU, customerType, null);
-        if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getListingOffers operation exceeds rate limit");
+        return getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, customerType, null);
     }
 
     /**
@@ -754,6 +1143,7 @@ public class ProductPricingApi {
      *     SellerId, which is included with every operation that you submit. (required)
      * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -765,6 +1155,40 @@ public class ProductPricingApi {
             String customerType,
             final ApiCallback<GetOffersResponse> callback)
             throws ApiException, LWAException {
+        return getListingOffersAsync(marketplaceId, itemCondition, sellerSKU, customerType, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the lowest priced offers for a single SKU listing. **Note:** The parameters associated
+     * with this operation may contain special characters that require URL encoding to call the API. To avoid errors
+     * with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
+     *     Refurbished, Club. (required)
+     * @param sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
+     *     SellerId, which is included with every operation that you submit. (required)
+     * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getListingOffersAsync(
+            String marketplaceId,
+            String itemCondition,
+            String sellerSKU,
+            String customerType,
+            final ApiCallback<GetOffersResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -774,6 +1198,14 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getListingOffersValidateBeforeCall(
                 marketplaceId, itemCondition, sellerSKU, customerType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ProductPricingApi-getListingOffers");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -845,14 +1277,65 @@ public class ProductPricingApi {
      * the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetListingOffersBatchResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetListingOffersBatchResponse getListingOffersBatch(
+            GetListingOffersBatchRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetListingOffersBatchResponse> resp = getListingOffersBatchWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a batch of listings by SKU. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in
+     * the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      * @return GetListingOffersBatchResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetListingOffersBatchResponse getListingOffersBatch(GetListingOffersBatchRequest body)
             throws ApiException, LWAException {
-        ApiResponse<GetListingOffersBatchResponse> resp = getListingOffersBatchWithHttpInfo(body);
+        ApiResponse<GetListingOffersBatchResponse> resp = getListingOffersBatchWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the lowest priced offers for a batch of listings by SKU. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in
+     * the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetListingOffersBatchResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetListingOffersBatchResponse> getListingOffersBatchWithHttpInfo(
+            GetListingOffersBatchRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getListingOffersBatchValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getListingOffersBatch");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getListingOffersBatch operation exceeds rate limit");
     }
 
     /**
@@ -870,11 +1353,7 @@ public class ProductPricingApi {
      */
     public ApiResponse<GetListingOffersBatchResponse> getListingOffersBatchWithHttpInfo(
             GetListingOffersBatchRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getListingOffersBatchValidateBeforeCall(body, null);
-        if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getListingOffersBatch operation exceeds rate limit");
+        return getListingOffersBatchWithHttpInfo(body, null);
     }
 
     /**
@@ -887,12 +1366,35 @@ public class ProductPricingApi {
      *
      * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getListingOffersBatchAsync(
             GetListingOffersBatchRequest body, final ApiCallback<GetListingOffersBatchResponse> callback)
+            throws ApiException, LWAException {
+        return getListingOffersBatchAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the lowest priced offers for a batch of listings by SKU. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getListingOffersBatchAsync(
+            GetListingOffersBatchRequest body,
+            final ApiCallback<GetListingOffersBatchResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -902,6 +1404,14 @@ public class ProductPricingApi {
         }
 
         okhttp3.Call call = getListingOffersBatchValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getListingOffersBatch");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1023,6 +1533,49 @@ public class ProductPricingApi {
      *     Refurbished, Club. (optional)
      * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
      *     Default is B2C. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetPricingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetPricingResponse getPricing(
+            String marketplaceId,
+            String itemType,
+            List<String> asins,
+            List<String> skus,
+            String itemCondition,
+            String offerType,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPricingResponse> resp = getPricingWithHttpInfo(
+                marketplaceId, itemType, asins, skus, itemCondition, offerType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN. **Note:** The
+     * parameters associated with this operation may contain special characters that require URL encoding to call the
+     * API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
+     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
+     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
+     *     provide in the Skus parameter. (required)
+     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
+     *     the given marketplace. (optional)
+     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
+     *     Refurbished, Club. (optional)
+     * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
+     *     Default is B2C. (optional)
      * @return GetPricingResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1036,8 +1589,61 @@ public class ProductPricingApi {
             String offerType)
             throws ApiException, LWAException {
         ApiResponse<GetPricingResponse> resp =
-                getPricingWithHttpInfo(marketplaceId, itemType, asins, skus, itemCondition, offerType);
+                getPricingWithHttpInfo(marketplaceId, itemType, asins, skus, itemCondition, offerType, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN. **Note:** The
+     * parameters associated with this operation may contain special characters that require URL encoding to call the
+     * API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
+     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
+     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
+     *     provide in the Skus parameter. (required)
+     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
+     *     the given marketplace. (optional)
+     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
+     *     Refurbished, Club. (optional)
+     * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
+     *     Default is B2C. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetPricingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetPricingResponse> getPricingWithHttpInfo(
+            String marketplaceId,
+            String itemType,
+            List<String> asins,
+            List<String> skus,
+            String itemCondition,
+            String offerType,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getPricingValidateBeforeCall(marketplaceId, itemType, asins, skus, itemCondition, offerType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ProductPricingApi-getPricing");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPricing operation exceeds rate limit");
     }
 
     /**
@@ -1076,12 +1682,7 @@ public class ProductPricingApi {
             String itemCondition,
             String offerType)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getPricingValidateBeforeCall(marketplaceId, itemType, asins, skus, itemCondition, offerType, null);
-        if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPricing operation exceeds rate limit");
+        return getPricingWithHttpInfo(marketplaceId, itemType, asins, skus, itemCondition, offerType, null);
     }
 
     /**
@@ -1109,6 +1710,7 @@ public class ProductPricingApi {
      * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
      *     Default is B2C. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1122,6 +1724,48 @@ public class ProductPricingApi {
             String offerType,
             final ApiCallback<GetPricingResponse> callback)
             throws ApiException, LWAException {
+        return getPricingAsync(marketplaceId, itemType, asins, skus, itemCondition, offerType, callback, null);
+    }
+    /**
+     * (asynchronously) Returns pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN.
+     * **Note:** The parameters associated with this operation may contain special characters that require URL encoding
+     * to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
+     *     (required)
+     * @param itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify
+     *     Asin, the information in the response will be dependent on the list of Asins you provide in the Asins
+     *     parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you
+     *     provide in the Skus parameter. (required)
+     * @param asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in
+     *     the given marketplace. (optional)
+     * @param skus A list of up to twenty seller SKU values used to identify items in the given marketplace. (optional)
+     * @param itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible,
+     *     Refurbished, Club. (optional)
+     * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
+     *     Default is B2C. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPricingAsync(
+            String marketplaceId,
+            String itemType,
+            List<String> asins,
+            List<String> skus,
+            String itemCondition,
+            String offerType,
+            final ApiCallback<GetPricingResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1131,6 +1775,13 @@ public class ProductPricingApi {
 
         okhttp3.Call call = getPricingValidateBeforeCall(
                 marketplaceId, itemType, asins, skus, itemCondition, offerType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ProductPricingApi-getPricing");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

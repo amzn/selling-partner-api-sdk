@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -114,14 +115,67 @@ public class CreateContainerLabelApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Request body containing the container label data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateContainerLabelResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateContainerLabelResponse createContainerLabel(
+            CreateContainerLabelRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CreateContainerLabelResponse> resp = createContainerLabelWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * createContainerLabel Creates a container (pallet) label for the associated shipment package. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body containing the container label data. (required)
      * @return CreateContainerLabelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateContainerLabelResponse createContainerLabel(CreateContainerLabelRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateContainerLabelResponse> resp = createContainerLabelWithHttpInfo(body);
+        ApiResponse<CreateContainerLabelResponse> resp = createContainerLabelWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * createContainerLabel Creates a container (pallet) label for the associated shipment package. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body containing the container label data. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateContainerLabelResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateContainerLabelResponse> createContainerLabelWithHttpInfo(
+            CreateContainerLabelRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createContainerLabelValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "CreateContainerLabelApi-createContainerLabel");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createContainerLabelBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateContainerLabelResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createContainerLabel operation exceeds rate limit");
     }
 
     /**
@@ -140,11 +194,7 @@ public class CreateContainerLabelApi {
      */
     public ApiResponse<CreateContainerLabelResponse> createContainerLabelWithHttpInfo(CreateContainerLabelRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createContainerLabelValidateBeforeCall(body, null);
-        if (disableRateLimiting || createContainerLabelBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateContainerLabelResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createContainerLabel operation exceeds rate limit");
+        return createContainerLabelWithHttpInfo(body, null);
     }
 
     /**
@@ -158,12 +208,36 @@ public class CreateContainerLabelApi {
      *
      * @param body Request body containing the container label data. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createContainerLabelAsync(
             CreateContainerLabelRequest body, final ApiCallback<CreateContainerLabelResponse> callback)
+            throws ApiException, LWAException {
+        return createContainerLabelAsync(body, callback, null);
+    }
+    /**
+     * createContainerLabel (asynchronously) Creates a container (pallet) label for the associated shipment package.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body containing the container label data. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createContainerLabelAsync(
+            CreateContainerLabelRequest body,
+            final ApiCallback<CreateContainerLabelResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -173,6 +247,14 @@ public class CreateContainerLabelApi {
         }
 
         okhttp3.Call call = createContainerLabelValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "CreateContainerLabelApi-createContainerLabel");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createContainerLabelBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateContainerLabelResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

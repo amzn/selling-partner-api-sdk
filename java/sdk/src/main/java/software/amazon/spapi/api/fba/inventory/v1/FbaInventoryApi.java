@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -141,14 +142,65 @@ public class FbaInventoryApi {
      *
      * @param body List of items to add to Sandbox inventory. (required)
      * @param xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return AddInventoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public AddInventoryResponse addInventory(
+            AddInventoryRequest body, String xAmznIdempotencyToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<AddInventoryResponse> resp =
+                addInventoryWithHttpInfo(body, xAmznIdempotencyToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Requests that Amazon add items to the Sandbox Inventory with desired amount of quantity in the sandbox
+     * environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param body List of items to add to Sandbox inventory. (required)
+     * @param xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency. (required)
      * @return AddInventoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public AddInventoryResponse addInventory(AddInventoryRequest body, String xAmznIdempotencyToken)
             throws ApiException, LWAException {
-        ApiResponse<AddInventoryResponse> resp = addInventoryWithHttpInfo(body, xAmznIdempotencyToken);
+        ApiResponse<AddInventoryResponse> resp = addInventoryWithHttpInfo(body, xAmznIdempotencyToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Requests that Amazon add items to the Sandbox Inventory with desired amount of quantity in the sandbox
+     * environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param body List of items to add to Sandbox inventory. (required)
+     * @param xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;AddInventoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<AddInventoryResponse> addInventoryWithHttpInfo(
+            AddInventoryRequest body, String xAmznIdempotencyToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = addInventoryValidateBeforeCall(body, xAmznIdempotencyToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInventoryApi-addInventory");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || addInventoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("addInventory operation exceeds rate limit");
     }
 
     /**
@@ -165,11 +217,7 @@ public class FbaInventoryApi {
      */
     public ApiResponse<AddInventoryResponse> addInventoryWithHttpInfo(
             AddInventoryRequest body, String xAmznIdempotencyToken) throws ApiException, LWAException {
-        okhttp3.Call call = addInventoryValidateBeforeCall(body, xAmznIdempotencyToken, null);
-        if (disableRateLimiting || addInventoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("addInventory operation exceeds rate limit");
+        return addInventoryWithHttpInfo(body, xAmznIdempotencyToken, null);
     }
 
     /**
@@ -181,12 +229,35 @@ public class FbaInventoryApi {
      * @param body List of items to add to Sandbox inventory. (required)
      * @param xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call addInventoryAsync(
             AddInventoryRequest body, String xAmznIdempotencyToken, final ApiCallback<AddInventoryResponse> callback)
+            throws ApiException, LWAException {
+        return addInventoryAsync(body, xAmznIdempotencyToken, callback, null);
+    }
+    /**
+     * (asynchronously) Requests that Amazon add items to the Sandbox Inventory with desired amount of quantity in the
+     * sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to
+     * [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for
+     * more information.
+     *
+     * @param body List of items to add to Sandbox inventory. (required)
+     * @param xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call addInventoryAsync(
+            AddInventoryRequest body,
+            String xAmznIdempotencyToken,
+            final ApiCallback<AddInventoryResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -196,6 +267,13 @@ public class FbaInventoryApi {
         }
 
         okhttp3.Call call = addInventoryValidateBeforeCall(body, xAmznIdempotencyToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInventoryApi-addInventory");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || addInventoryBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -262,14 +340,59 @@ public class FbaInventoryApi {
      * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      *
      * @param body CreateInventoryItem Request Body Parameter. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateInventoryItemResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateInventoryItemResponse createInventoryItem(CreateInventoryItemRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateInventoryItemResponse> resp = createInventoryItemWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Requests that Amazon create product-details in the Sandbox Inventory in the sandbox environment. This is a
+     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body CreateInventoryItem Request Body Parameter. (required)
      * @return CreateInventoryItemResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateInventoryItemResponse createInventoryItem(CreateInventoryItemRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateInventoryItemResponse> resp = createInventoryItemWithHttpInfo(body);
+        ApiResponse<CreateInventoryItemResponse> resp = createInventoryItemWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Requests that Amazon create product-details in the Sandbox Inventory in the sandbox environment. This is a
+     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body CreateInventoryItem Request Body Parameter. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateInventoryItemResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateInventoryItemResponse> createInventoryItemWithHttpInfo(
+            CreateInventoryItemRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createInventoryItemValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInventoryApi-createInventoryItem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createInventoryItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createInventoryItem operation exceeds rate limit");
     }
 
     /**
@@ -284,11 +407,7 @@ public class FbaInventoryApi {
      */
     public ApiResponse<CreateInventoryItemResponse> createInventoryItemWithHttpInfo(CreateInventoryItemRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createInventoryItemValidateBeforeCall(body, null);
-        if (disableRateLimiting || createInventoryItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createInventoryItem operation exceeds rate limit");
+        return createInventoryItemWithHttpInfo(body, null);
     }
 
     /**
@@ -298,12 +417,32 @@ public class FbaInventoryApi {
      *
      * @param body CreateInventoryItem Request Body Parameter. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createInventoryItemAsync(
             CreateInventoryItemRequest body, final ApiCallback<CreateInventoryItemResponse> callback)
+            throws ApiException, LWAException {
+        return createInventoryItemAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Requests that Amazon create product-details in the Sandbox Inventory in the sandbox environment.
+     * This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body CreateInventoryItem Request Body Parameter. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createInventoryItemAsync(
+            CreateInventoryItemRequest body,
+            final ApiCallback<CreateInventoryItemResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -313,6 +452,14 @@ public class FbaInventoryApi {
         }
 
         okhttp3.Call call = createInventoryItemValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInventoryApi-createInventoryItem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createInventoryItemBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -395,14 +542,62 @@ public class FbaInventoryApi {
      *
      * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
      * @param marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return DeleteInventoryItemResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public DeleteInventoryItemResponse deleteInventoryItem(
+            String sellerSku, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<DeleteInventoryItemResponse> resp =
+                deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Requests that Amazon Deletes an item from the Sandbox Inventory in the sandbox environment. This is a
+     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
      * @return DeleteInventoryItemResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public DeleteInventoryItemResponse deleteInventoryItem(String sellerSku, String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<DeleteInventoryItemResponse> resp = deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId);
+        ApiResponse<DeleteInventoryItemResponse> resp = deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Requests that Amazon Deletes an item from the Sandbox Inventory in the sandbox environment. This is a
+     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;DeleteInventoryItemResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<DeleteInventoryItemResponse> deleteInventoryItemWithHttpInfo(
+            String sellerSku, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = deleteInventoryItemValidateBeforeCall(sellerSku, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInventoryApi-deleteInventoryItem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deleteInventoryItemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteInventoryItem operation exceeds rate limit");
     }
 
     /**
@@ -418,11 +613,7 @@ public class FbaInventoryApi {
      */
     public ApiResponse<DeleteInventoryItemResponse> deleteInventoryItemWithHttpInfo(
             String sellerSku, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call = deleteInventoryItemValidateBeforeCall(sellerSku, marketplaceId, null);
-        if (disableRateLimiting || deleteInventoryItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteInventoryItem operation exceeds rate limit");
+        return deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId, null);
     }
 
     /**
@@ -433,12 +624,34 @@ public class FbaInventoryApi {
      * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
      * @param marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteInventoryItemAsync(
             String sellerSku, String marketplaceId, final ApiCallback<DeleteInventoryItemResponse> callback)
+            throws ApiException, LWAException {
+        return deleteInventoryItemAsync(sellerSku, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Requests that Amazon Deletes an item from the Sandbox Inventory in the sandbox environment. This
+     * is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
+     * @param marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deleteInventoryItemAsync(
+            String sellerSku,
+            String marketplaceId,
+            final ApiCallback<DeleteInventoryItemResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -448,6 +661,14 @@ public class FbaInventoryApi {
         }
 
         okhttp3.Call call = deleteInventoryItemValidateBeforeCall(sellerSku, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInventoryApi-deleteInventoryItem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || deleteInventoryItemBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -603,6 +824,67 @@ public class FbaInventoryApi {
      * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
      * @param nextToken String token returned in the response of your previous request. The string token will expire 30
      *     seconds after being created. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetInventorySummariesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetInventorySummariesResponse getInventorySummaries(
+            String granularityType,
+            String granularityId,
+            List<String> marketplaceIds,
+            Boolean details,
+            OffsetDateTime startDateTime,
+            List<String> sellerSkus,
+            String sellerSku,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetInventorySummariesResponse> resp = getInventorySummariesWithHttpInfo(
+                granularityType,
+                granularityId,
+                marketplaceIds,
+                details,
+                startDateTime,
+                sellerSkus,
+                sellerSku,
+                nextToken,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of inventory summaries. The summaries returned depend on the presence or absence of the
+     * startDateTime, sellerSkus and sellerSku parameters: - All inventory summaries with available details are returned
+     * when the startDateTime, sellerSkus and sellerSku parameters are omitted. - When startDateTime is provided, the
+     * operation returns inventory summaries that have had changes after the date and time specified. The sellerSkus and
+     * sellerSku parameters are ignored. Important: To avoid errors, use both startDateTime and nextToken to get the
+     * next page of inventory summaries that have changed after the date and time specified. - When the sellerSkus
+     * parameter is provided, the operation returns inventory summaries for only the specified sellerSkus. The sellerSku
+     * parameter is ignored. - When the sellerSku parameter is provided, the operation returns inventory summaries for
+     * only the specified sellerSku. Note: The parameters associated with this operation may contain special characters
+     * that must be encoded to successfully call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). Usage Plan: | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 2 | The x-amzn-RateLimit-Limit response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param granularityType The granularity type for the inventory aggregation level. (required)
+     * @param granularityId The granularity ID for the inventory aggregation level. (required)
+     * @param marketplaceIds The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param details true to return inventory summaries with additional summarized inventory details and quantities.
+     *     Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param startDateTime A start date and time in ISO8601 format. If specified, all inventory summaries that have
+     *     changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to
+     *     the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and
+     *     inboundReceivingQuantity are not detected. (optional)
+     * @param sellerSkus A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
+     *     (optional)
+     * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param nextToken String token returned in the response of your previous request. The string token will expire 30
+     *     seconds after being created. (optional)
      * @return GetInventorySummariesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -625,8 +907,81 @@ public class FbaInventoryApi {
                 startDateTime,
                 sellerSkus,
                 sellerSku,
-                nextToken);
+                nextToken,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of inventory summaries. The summaries returned depend on the presence or absence of the
+     * startDateTime, sellerSkus and sellerSku parameters: - All inventory summaries with available details are returned
+     * when the startDateTime, sellerSkus and sellerSku parameters are omitted. - When startDateTime is provided, the
+     * operation returns inventory summaries that have had changes after the date and time specified. The sellerSkus and
+     * sellerSku parameters are ignored. Important: To avoid errors, use both startDateTime and nextToken to get the
+     * next page of inventory summaries that have changed after the date and time specified. - When the sellerSkus
+     * parameter is provided, the operation returns inventory summaries for only the specified sellerSkus. The sellerSku
+     * parameter is ignored. - When the sellerSku parameter is provided, the operation returns inventory summaries for
+     * only the specified sellerSku. Note: The parameters associated with this operation may contain special characters
+     * that must be encoded to successfully call the API. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). Usage Plan: | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 2 | The x-amzn-RateLimit-Limit response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param granularityType The granularity type for the inventory aggregation level. (required)
+     * @param granularityId The granularity ID for the inventory aggregation level. (required)
+     * @param marketplaceIds The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param details true to return inventory summaries with additional summarized inventory details and quantities.
+     *     Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param startDateTime A start date and time in ISO8601 format. If specified, all inventory summaries that have
+     *     changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to
+     *     the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and
+     *     inboundReceivingQuantity are not detected. (optional)
+     * @param sellerSkus A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
+     *     (optional)
+     * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param nextToken String token returned in the response of your previous request. The string token will expire 30
+     *     seconds after being created. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetInventorySummariesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetInventorySummariesResponse> getInventorySummariesWithHttpInfo(
+            String granularityType,
+            String granularityId,
+            List<String> marketplaceIds,
+            Boolean details,
+            OffsetDateTime startDateTime,
+            List<String> sellerSkus,
+            String sellerSku,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getInventorySummariesValidateBeforeCall(
+                granularityType,
+                granularityId,
+                marketplaceIds,
+                details,
+                startDateTime,
+                sellerSkus,
+                sellerSku,
+                nextToken,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInventoryApi-getInventorySummaries");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInventorySummariesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInventorySummaries operation exceeds rate limit");
     }
 
     /**
@@ -675,7 +1030,7 @@ public class FbaInventoryApi {
             String sellerSku,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInventorySummariesValidateBeforeCall(
+        return getInventorySummariesWithHttpInfo(
                 granularityType,
                 granularityId,
                 marketplaceIds,
@@ -685,10 +1040,6 @@ public class FbaInventoryApi {
                 sellerSku,
                 nextToken,
                 null);
-        if (disableRateLimiting || getInventorySummariesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInventorySummaries operation exceeds rate limit");
     }
 
     /**
@@ -725,6 +1076,7 @@ public class FbaInventoryApi {
      * @param nextToken String token returned in the response of your previous request. The string token will expire 30
      *     seconds after being created. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -739,6 +1091,69 @@ public class FbaInventoryApi {
             String sellerSku,
             String nextToken,
             final ApiCallback<GetInventorySummariesResponse> callback)
+            throws ApiException, LWAException {
+        return getInventorySummariesAsync(
+                granularityType,
+                granularityId,
+                marketplaceIds,
+                details,
+                startDateTime,
+                sellerSkus,
+                sellerSku,
+                nextToken,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Returns a list of inventory summaries. The summaries returned depend on the presence or absence
+     * of the startDateTime, sellerSkus and sellerSku parameters: - All inventory summaries with available details are
+     * returned when the startDateTime, sellerSkus and sellerSku parameters are omitted. - When startDateTime is
+     * provided, the operation returns inventory summaries that have had changes after the date and time specified. The
+     * sellerSkus and sellerSku parameters are ignored. Important: To avoid errors, use both startDateTime and nextToken
+     * to get the next page of inventory summaries that have changed after the date and time specified. - When the
+     * sellerSkus parameter is provided, the operation returns inventory summaries for only the specified sellerSkus.
+     * The sellerSku parameter is ignored. - When the sellerSku parameter is provided, the operation returns inventory
+     * summaries for only the specified sellerSku. Note: The parameters associated with this operation may contain
+     * special characters that must be encoded to successfully call the API. To avoid errors with SKUs when encoding
+     * URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). Usage Plan: | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The x-amzn-RateLimit-Limit response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param granularityType The granularity type for the inventory aggregation level. (required)
+     * @param granularityId The granularity ID for the inventory aggregation level. (required)
+     * @param marketplaceIds The marketplace ID for the marketplace for which to return inventory summaries. (required)
+     * @param details true to return inventory summaries with additional summarized inventory details and quantities.
+     *     Otherwise, returns inventory summaries only (default value). (optional, default to false)
+     * @param startDateTime A start date and time in ISO8601 format. If specified, all inventory summaries that have
+     *     changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to
+     *     the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and
+     *     inboundReceivingQuantity are not detected. (optional)
+     * @param sellerSkus A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
+     *     (optional)
+     * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (optional)
+     * @param nextToken String token returned in the response of your previous request. The string token will expire 30
+     *     seconds after being created. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInventorySummariesAsync(
+            String granularityType,
+            String granularityId,
+            List<String> marketplaceIds,
+            Boolean details,
+            OffsetDateTime startDateTime,
+            List<String> sellerSkus,
+            String sellerSku,
+            String nextToken,
+            final ApiCallback<GetInventorySummariesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -757,6 +1172,14 @@ public class FbaInventoryApi {
                 sellerSku,
                 nextToken,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInventoryApi-getInventorySummaries");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInventorySummariesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
