@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -166,6 +167,39 @@ public class TransferPreviewApi {
      * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
      *     (required)
      * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return TransferRatePreview
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public TransferRatePreview getTransferPreview(
+            String sourceCountryCode,
+            String sourceCurrencyCode,
+            String destinationCountryCode,
+            String destinationCurrencyCode,
+            BigDecimal baseAmount,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<TransferRatePreview> resp = getTransferPreviewWithHttpInfo(
+                sourceCountryCode,
+                sourceCurrencyCode,
+                destinationCountryCode,
+                destinationCurrencyCode,
+                baseAmount,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
+     * currency code Retrieve a list of potential fees on a transaction.
+     *
+     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
+     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
+     *     (required)
+     * @param baseAmount The base transaction amount without any markup fees. (required)
      * @return TransferRatePreview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -178,8 +212,57 @@ public class TransferPreviewApi {
             BigDecimal baseAmount)
             throws ApiException, LWAException {
         ApiResponse<TransferRatePreview> resp = getTransferPreviewWithHttpInfo(
-                sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount);
+                sourceCountryCode,
+                sourceCurrencyCode,
+                destinationCountryCode,
+                destinationCurrencyCode,
+                baseAmount,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
+     * currency code Retrieve a list of potential fees on a transaction.
+     *
+     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
+     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
+     *     (required)
+     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;TransferRatePreview&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<TransferRatePreview> getTransferPreviewWithHttpInfo(
+            String sourceCountryCode,
+            String sourceCurrencyCode,
+            String destinationCountryCode,
+            String destinationCurrencyCode,
+            BigDecimal baseAmount,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getTransferPreviewValidateBeforeCall(
+                sourceCountryCode,
+                sourceCurrencyCode,
+                destinationCountryCode,
+                destinationCurrencyCode,
+                baseAmount,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferPreviewApi-getTransferPreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getTransferPreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTransferPreview operation exceeds rate limit");
     }
 
     /**
@@ -203,17 +286,13 @@ public class TransferPreviewApi {
             String destinationCurrencyCode,
             BigDecimal baseAmount)
             throws ApiException, LWAException {
-        okhttp3.Call call = getTransferPreviewValidateBeforeCall(
+        return getTransferPreviewWithHttpInfo(
                 sourceCountryCode,
                 sourceCurrencyCode,
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
                 null);
-        if (disableRateLimiting || getTransferPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTransferPreview operation exceeds rate limit");
     }
 
     /**
@@ -227,6 +306,7 @@ public class TransferPreviewApi {
      *     (required)
      * @param baseAmount The base transaction amount without any markup fees. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -238,6 +318,40 @@ public class TransferPreviewApi {
             String destinationCurrencyCode,
             BigDecimal baseAmount,
             final ApiCallback<TransferRatePreview> callback)
+            throws ApiException, LWAException {
+        return getTransferPreviewAsync(
+                sourceCountryCode,
+                sourceCurrencyCode,
+                destinationCountryCode,
+                destinationCurrencyCode,
+                baseAmount,
+                callback,
+                null);
+    }
+    /**
+     * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
+     * currency code (asynchronously) Retrieve a list of potential fees on a transaction.
+     *
+     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
+     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
+     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
+     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
+     *     (required)
+     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getTransferPreviewAsync(
+            String sourceCountryCode,
+            String sourceCurrencyCode,
+            String destinationCountryCode,
+            String destinationCurrencyCode,
+            BigDecimal baseAmount,
+            final ApiCallback<TransferRatePreview> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -253,6 +367,14 @@ public class TransferPreviewApi {
                 destinationCurrencyCode,
                 baseAmount,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "TransferPreviewApi-getTransferPreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getTransferPreviewBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

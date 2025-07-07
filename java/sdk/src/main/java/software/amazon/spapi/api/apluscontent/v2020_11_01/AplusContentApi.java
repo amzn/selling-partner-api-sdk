@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -175,14 +176,74 @@ public class AplusContentApi {
      * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PostContentDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PostContentDocumentResponse createContentDocument(
+            PostContentDocumentRequest body, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PostContentDocumentResponse> resp =
+                createContentDocumentWithHttpInfo(body, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a new A+ Content document. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 |
+     * 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
      * @return PostContentDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public PostContentDocumentResponse createContentDocument(PostContentDocumentRequest body, String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<PostContentDocumentResponse> resp = createContentDocumentWithHttpInfo(body, marketplaceId);
+        ApiResponse<PostContentDocumentResponse> resp = createContentDocumentWithHttpInfo(body, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a new A+ Content document. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 |
+     * 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PostContentDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PostContentDocumentResponse> createContentDocumentWithHttpInfo(
+            PostContentDocumentRequest body, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createContentDocumentValidateBeforeCall(body, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-createContentDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createContentDocument operation exceeds rate limit");
     }
 
     /**
@@ -203,11 +264,7 @@ public class AplusContentApi {
      */
     public ApiResponse<PostContentDocumentResponse> createContentDocumentWithHttpInfo(
             PostContentDocumentRequest body, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call = createContentDocumentValidateBeforeCall(body, marketplaceId, null);
-        if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createContentDocument operation exceeds rate limit");
+        return createContentDocumentWithHttpInfo(body, marketplaceId, null);
     }
 
     /**
@@ -223,6 +280,7 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -232,6 +290,32 @@ public class AplusContentApi {
             String marketplaceId,
             final ApiCallback<PostContentDocumentResponse> callback)
             throws ApiException, LWAException {
+        return createContentDocumentAsync(body, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a new A+ Content document. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits
+     * for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createContentDocumentAsync(
+            PostContentDocumentRequest body,
+            String marketplaceId,
+            final ApiCallback<PostContentDocumentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -240,6 +324,14 @@ public class AplusContentApi {
         }
 
         okhttp3.Call call = createContentDocumentValidateBeforeCall(body, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-createContentDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -345,6 +437,34 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param includedDataSet The set of A+ Content data types to include in the response. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetContentDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetContentDocumentResponse getContentDocument(
+            String contentReferenceKey, String marketplaceId, List<String> includedDataSet, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetContentDocumentResponse> resp = getContentDocumentWithHttpInfo(
+                contentReferenceKey, marketplaceId, includedDataSet, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns an A+ Content document, if available. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for
+     * the operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. (required)
      * @return GetContentDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -353,8 +473,47 @@ public class AplusContentApi {
             String contentReferenceKey, String marketplaceId, List<String> includedDataSet)
             throws ApiException, LWAException {
         ApiResponse<GetContentDocumentResponse> resp =
-                getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet);
+                getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns an A+ Content document, if available. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for
+     * the operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetContentDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetContentDocumentResponse> getContentDocumentWithHttpInfo(
+            String contentReferenceKey, String marketplaceId, List<String> includedDataSet, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getContentDocumentValidateBeforeCall(contentReferenceKey, marketplaceId, includedDataSet, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AplusContentApi-getContentDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getContentDocument operation exceeds rate limit");
     }
 
     /**
@@ -379,12 +538,7 @@ public class AplusContentApi {
     public ApiResponse<GetContentDocumentResponse> getContentDocumentWithHttpInfo(
             String contentReferenceKey, String marketplaceId, List<String> includedDataSet)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getContentDocumentValidateBeforeCall(contentReferenceKey, marketplaceId, includedDataSet, null);
-        if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getContentDocument operation exceeds rate limit");
+        return getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet, null);
     }
 
     /**
@@ -403,6 +557,7 @@ public class AplusContentApi {
      *     (required)
      * @param includedDataSet The set of A+ Content data types to include in the response. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -413,6 +568,36 @@ public class AplusContentApi {
             List<String> includedDataSet,
             final ApiCallback<GetContentDocumentResponse> callback)
             throws ApiException, LWAException {
+        return getContentDocumentAsync(contentReferenceKey, marketplaceId, includedDataSet, callback, null);
+    }
+    /**
+     * (asynchronously) Returns an A+ Content document, if available. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getContentDocumentAsync(
+            String contentReferenceKey,
+            String marketplaceId,
+            List<String> includedDataSet,
+            final ApiCallback<GetContentDocumentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -422,6 +607,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = getContentDocumentValidateBeforeCall(
                 contentReferenceKey, marketplaceId, includedDataSet, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AplusContentApi-getContentDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -540,6 +733,45 @@ public class AplusContentApi {
      * @param asinSet The set of ASINs. (optional)
      * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
      *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListContentDocumentAsinRelationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListContentDocumentAsinRelationsResponse listContentDocumentAsinRelations(
+            String contentReferenceKey,
+            String marketplaceId,
+            List<String> includedDataSet,
+            List<String> asinSet,
+            String pageToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListContentDocumentAsinRelationsResponse> resp = listContentDocumentAsinRelationsWithHttpInfo(
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of ASINs that are related to the specified A+ Content document, if available. If you don&#x27;t
+     * include the &#x60;asinSet&#x60; parameter, this operation returns all ASINs related to the content document.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. If you don&#x27;t include
+     *     this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param asinSet The set of ASINs. (optional)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
      * @return ListContentDocumentAsinRelationsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -552,8 +784,59 @@ public class AplusContentApi {
             String pageToken)
             throws ApiException, LWAException {
         ApiResponse<ListContentDocumentAsinRelationsResponse> resp = listContentDocumentAsinRelationsWithHttpInfo(
-                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken);
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of ASINs that are related to the specified A+ Content document, if available. If you don&#x27;t
+     * include the &#x60;asinSet&#x60; parameter, this operation returns all ASINs related to the content document.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. If you don&#x27;t include
+     *     this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param asinSet The set of ASINs. (optional)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListContentDocumentAsinRelationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListContentDocumentAsinRelationsResponse> listContentDocumentAsinRelationsWithHttpInfo(
+            String contentReferenceKey,
+            String marketplaceId,
+            List<String> includedDataSet,
+            List<String> asinSet,
+            String pageToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-listContentDocumentAsinRelations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("listContentDocumentAsinRelations operation exceeds rate limit");
     }
 
     /**
@@ -588,13 +871,8 @@ public class AplusContentApi {
             List<String> asinSet,
             String pageToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
+        return listContentDocumentAsinRelationsWithHttpInfo(
                 contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, null);
-        if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("listContentDocumentAsinRelations operation exceeds rate limit");
     }
 
     /**
@@ -619,6 +897,7 @@ public class AplusContentApi {
      * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
      *     (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -631,6 +910,45 @@ public class AplusContentApi {
             String pageToken,
             final ApiCallback<ListContentDocumentAsinRelationsResponse> callback)
             throws ApiException, LWAException {
+        return listContentDocumentAsinRelationsAsync(
+                contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of ASINs that are related to the specified A+ Content document, if available. If
+     * you don&#x27;t include the &#x60;asinSet&#x60; parameter, this operation returns all ASINs related to the content
+     * document. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param includedDataSet The set of A+ Content data types to include in the response. If you don&#x27;t include
+     *     this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param asinSet The set of ASINs. (optional)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listContentDocumentAsinRelationsAsync(
+            String contentReferenceKey,
+            String marketplaceId,
+            List<String> includedDataSet,
+            List<String> asinSet,
+            String pageToken,
+            final ApiCallback<ListContentDocumentAsinRelationsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -640,6 +958,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
                 contentReferenceKey, marketplaceId, includedDataSet, asinSet, pageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-listContentDocumentAsinRelations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -735,6 +1061,34 @@ public class AplusContentApi {
      * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PostContentDocumentApprovalSubmissionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PostContentDocumentApprovalSubmissionResponse postContentDocumentApprovalSubmission(
+            String contentReferenceKey, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PostContentDocumentApprovalSubmissionResponse> resp =
+                postContentDocumentApprovalSubmissionWithHttpInfo(
+                        contentReferenceKey, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submits an A+ Content document for review, approval, and publishing. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
      * @return PostContentDocumentApprovalSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -742,8 +1096,48 @@ public class AplusContentApi {
     public PostContentDocumentApprovalSubmissionResponse postContentDocumentApprovalSubmission(
             String contentReferenceKey, String marketplaceId) throws ApiException, LWAException {
         ApiResponse<PostContentDocumentApprovalSubmissionResponse> resp =
-                postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
+                postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Submits an A+ Content document for review, approval, and publishing. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PostContentDocumentApprovalSubmissionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PostContentDocumentApprovalSubmissionResponse> postContentDocumentApprovalSubmissionWithHttpInfo(
+            String contentReferenceKey, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                postContentDocumentApprovalSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-postContentDocumentApprovalSubmission");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "postContentDocumentApprovalSubmission operation exceeds rate limit");
     }
 
     /**
@@ -766,14 +1160,7 @@ public class AplusContentApi {
      */
     public ApiResponse<PostContentDocumentApprovalSubmissionResponse> postContentDocumentApprovalSubmissionWithHttpInfo(
             String contentReferenceKey, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call =
-                postContentDocumentApprovalSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null);
-        if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "postContentDocumentApprovalSubmission operation exceeds rate limit");
+        return postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId, null);
     }
 
     /**
@@ -791,6 +1178,7 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -799,6 +1187,34 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             final ApiCallback<PostContentDocumentApprovalSubmissionResponse> callback)
+            throws ApiException, LWAException {
+        return postContentDocumentApprovalSubmissionAsync(contentReferenceKey, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Submits an A+ Content document for review, approval, and publishing. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call postContentDocumentApprovalSubmissionAsync(
+            String contentReferenceKey,
+            String marketplaceId,
+            final ApiCallback<PostContentDocumentApprovalSubmissionResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -809,6 +1225,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = postContentDocumentApprovalSubmissionValidateBeforeCall(
                 contentReferenceKey, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-postContentDocumentApprovalSubmission");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -915,6 +1339,39 @@ public class AplusContentApi {
      * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PostContentDocumentAsinRelationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PostContentDocumentAsinRelationsResponse postContentDocumentAsinRelations(
+            PostContentDocumentAsinRelationsRequest body,
+            String contentReferenceKey,
+            String marketplaceId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PostContentDocumentAsinRelationsResponse> resp = postContentDocumentAsinRelationsWithHttpInfo(
+                body, contentReferenceKey, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Replaces all ASINs related to the specified A+ Content document, if available. This operation can add or remove
+     * ASINs, depending on the current set of related ASINs. Removing an ASIN will suspend the content document from
+     * that ASIN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request details for the content document ASIN relations. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
      * @return PostContentDocumentAsinRelationsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -923,8 +1380,53 @@ public class AplusContentApi {
             PostContentDocumentAsinRelationsRequest body, String contentReferenceKey, String marketplaceId)
             throws ApiException, LWAException {
         ApiResponse<PostContentDocumentAsinRelationsResponse> resp =
-                postContentDocumentAsinRelationsWithHttpInfo(body, contentReferenceKey, marketplaceId);
+                postContentDocumentAsinRelationsWithHttpInfo(body, contentReferenceKey, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Replaces all ASINs related to the specified A+ Content document, if available. This operation can add or remove
+     * ASINs, depending on the current set of related ASINs. Removing an ASIN will suspend the content document from
+     * that ASIN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request details for the content document ASIN relations. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PostContentDocumentAsinRelationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PostContentDocumentAsinRelationsResponse> postContentDocumentAsinRelationsWithHttpInfo(
+            PostContentDocumentAsinRelationsRequest body,
+            String contentReferenceKey,
+            String marketplaceId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                postContentDocumentAsinRelationsValidateBeforeCall(body, contentReferenceKey, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-postContentDocumentAsinRelations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("postContentDocumentAsinRelations operation exceeds rate limit");
     }
 
     /**
@@ -951,13 +1453,7 @@ public class AplusContentApi {
     public ApiResponse<PostContentDocumentAsinRelationsResponse> postContentDocumentAsinRelationsWithHttpInfo(
             PostContentDocumentAsinRelationsRequest body, String contentReferenceKey, String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                postContentDocumentAsinRelationsValidateBeforeCall(body, contentReferenceKey, marketplaceId, null);
-        if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("postContentDocumentAsinRelations operation exceeds rate limit");
+        return postContentDocumentAsinRelationsWithHttpInfo(body, contentReferenceKey, marketplaceId, null);
     }
 
     /**
@@ -978,6 +1474,7 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -988,6 +1485,38 @@ public class AplusContentApi {
             String marketplaceId,
             final ApiCallback<PostContentDocumentAsinRelationsResponse> callback)
             throws ApiException, LWAException {
+        return postContentDocumentAsinRelationsAsync(body, contentReferenceKey, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Replaces all ASINs related to the specified A+ Content document, if available. This operation
+     * can add or remove ASINs, depending on the current set of related ASINs. Removing an ASIN will suspend the content
+     * document from that ASIN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request details for the content document ASIN relations. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call postContentDocumentAsinRelationsAsync(
+            PostContentDocumentAsinRelationsRequest body,
+            String contentReferenceKey,
+            String marketplaceId,
+            final ApiCallback<PostContentDocumentAsinRelationsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -997,6 +1526,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = postContentDocumentAsinRelationsValidateBeforeCall(
                 body, contentReferenceKey, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-postContentDocumentAsinRelations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1093,6 +1630,35 @@ public class AplusContentApi {
      * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PostContentDocumentSuspendSubmissionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PostContentDocumentSuspendSubmissionResponse postContentDocumentSuspendSubmission(
+            String contentReferenceKey, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PostContentDocumentSuspendSubmissionResponse> resp =
+                postContentDocumentSuspendSubmissionWithHttpInfo(
+                        contentReferenceKey, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submits a request to suspend visible A+ Content. This doesn&#x27;t delete the content document or the ASIN
+     * relations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
      * @return PostContentDocumentSuspendSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1100,8 +1666,49 @@ public class AplusContentApi {
     public PostContentDocumentSuspendSubmissionResponse postContentDocumentSuspendSubmission(
             String contentReferenceKey, String marketplaceId) throws ApiException, LWAException {
         ApiResponse<PostContentDocumentSuspendSubmissionResponse> resp =
-                postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
+                postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Submits a request to suspend visible A+ Content. This doesn&#x27;t delete the content document or the ASIN
+     * relations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PostContentDocumentSuspendSubmissionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PostContentDocumentSuspendSubmissionResponse> postContentDocumentSuspendSubmissionWithHttpInfo(
+            String contentReferenceKey, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                postContentDocumentSuspendSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-postContentDocumentSuspendSubmission");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "postContentDocumentSuspendSubmission operation exceeds rate limit");
     }
 
     /**
@@ -1125,14 +1732,7 @@ public class AplusContentApi {
      */
     public ApiResponse<PostContentDocumentSuspendSubmissionResponse> postContentDocumentSuspendSubmissionWithHttpInfo(
             String contentReferenceKey, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call =
-                postContentDocumentSuspendSubmissionValidateBeforeCall(contentReferenceKey, marketplaceId, null);
-        if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "postContentDocumentSuspendSubmission operation exceeds rate limit");
+        return postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId, null);
     }
 
     /**
@@ -1151,6 +1751,7 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1159,6 +1760,35 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             final ApiCallback<PostContentDocumentSuspendSubmissionResponse> callback)
+            throws ApiException, LWAException {
+        return postContentDocumentSuspendSubmissionAsync(contentReferenceKey, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Submits a request to suspend visible A+ Content. This doesn&#x27;t delete the content document
+     * or the ASIN relations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call postContentDocumentSuspendSubmissionAsync(
+            String contentReferenceKey,
+            String marketplaceId,
+            final ApiCallback<PostContentDocumentSuspendSubmissionResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1169,6 +1799,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = postContentDocumentSuspendSubmissionValidateBeforeCall(
                 contentReferenceKey, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-postContentDocumentSuspendSubmission");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1259,14 +1897,79 @@ public class AplusContentApi {
      *     (required)
      * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
      *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SearchContentDocumentsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SearchContentDocumentsResponse searchContentDocuments(
+            String marketplaceId, String pageToken, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<SearchContentDocumentsResponse> resp =
+                searchContentDocumentsWithHttpInfo(marketplaceId, pageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of all A+ Content documents, including metadata, that are assigned to a selling partner. To get
+     * the actual contents of the A+ Content documents, call the &#x60;getContentDocument&#x60; operation. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
      * @return SearchContentDocumentsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SearchContentDocumentsResponse searchContentDocuments(String marketplaceId, String pageToken)
             throws ApiException, LWAException {
-        ApiResponse<SearchContentDocumentsResponse> resp = searchContentDocumentsWithHttpInfo(marketplaceId, pageToken);
+        ApiResponse<SearchContentDocumentsResponse> resp =
+                searchContentDocumentsWithHttpInfo(marketplaceId, pageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of all A+ Content documents, including metadata, that are assigned to a selling partner. To get
+     * the actual contents of the A+ Content documents, call the &#x60;getContentDocument&#x60; operation. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SearchContentDocumentsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SearchContentDocumentsResponse> searchContentDocumentsWithHttpInfo(
+            String marketplaceId, String pageToken, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-searchContentDocuments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchContentDocuments operation exceeds rate limit");
     }
 
     /**
@@ -1290,11 +1993,7 @@ public class AplusContentApi {
      */
     public ApiResponse<SearchContentDocumentsResponse> searchContentDocumentsWithHttpInfo(
             String marketplaceId, String pageToken) throws ApiException, LWAException {
-        okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, null);
-        if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchContentDocuments operation exceeds rate limit");
+        return searchContentDocumentsWithHttpInfo(marketplaceId, pageToken, null);
     }
 
     /**
@@ -1313,12 +2012,42 @@ public class AplusContentApi {
      * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
      *     (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call searchContentDocumentsAsync(
             String marketplaceId, String pageToken, final ApiCallback<SearchContentDocumentsResponse> callback)
+            throws ApiException, LWAException {
+        return searchContentDocumentsAsync(marketplaceId, pageToken, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of all A+ Content documents, including metadata, that are assigned to a selling
+     * partner. To get the actual contents of the A+ Content documents, call the &#x60;getContentDocument&#x60;
+     * operation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call searchContentDocumentsAsync(
+            String marketplaceId,
+            String pageToken,
+            final ApiCallback<SearchContentDocumentsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1328,6 +2057,14 @@ public class AplusContentApi {
         }
 
         okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-searchContentDocuments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1426,6 +2163,34 @@ public class AplusContentApi {
      *     marketplace. (required)
      * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
      *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SearchContentPublishRecordsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SearchContentPublishRecordsResponse searchContentPublishRecords(
+            String marketplaceId, String asin, String pageToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SearchContentPublishRecordsResponse> resp =
+                searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, pageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Searches for A+ Content publishing records, if available. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a
+     *     marketplace. (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
      * @return SearchContentPublishRecordsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1433,8 +2198,46 @@ public class AplusContentApi {
     public SearchContentPublishRecordsResponse searchContentPublishRecords(
             String marketplaceId, String asin, String pageToken) throws ApiException, LWAException {
         ApiResponse<SearchContentPublishRecordsResponse> resp =
-                searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, pageToken);
+                searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, pageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Searches for A+ Content publishing records, if available. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a
+     *     marketplace. (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SearchContentPublishRecordsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SearchContentPublishRecordsResponse> searchContentPublishRecordsWithHttpInfo(
+            String marketplaceId, String asin, String pageToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = searchContentPublishRecordsValidateBeforeCall(marketplaceId, asin, pageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-searchContentPublishRecords");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchContentPublishRecords operation exceeds rate limit");
     }
 
     /**
@@ -1458,11 +2261,7 @@ public class AplusContentApi {
      */
     public ApiResponse<SearchContentPublishRecordsResponse> searchContentPublishRecordsWithHttpInfo(
             String marketplaceId, String asin, String pageToken) throws ApiException, LWAException {
-        okhttp3.Call call = searchContentPublishRecordsValidateBeforeCall(marketplaceId, asin, pageToken, null);
-        if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchContentPublishRecords operation exceeds rate limit");
+        return searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, pageToken, null);
     }
 
     /**
@@ -1481,6 +2280,7 @@ public class AplusContentApi {
      * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
      *     (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1491,6 +2291,36 @@ public class AplusContentApi {
             String pageToken,
             final ApiCallback<SearchContentPublishRecordsResponse> callback)
             throws ApiException, LWAException {
+        return searchContentPublishRecordsAsync(marketplaceId, asin, pageToken, callback, null);
+    }
+    /**
+     * (asynchronously) Searches for A+ Content publishing records, if available. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asin The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a
+     *     marketplace. (required)
+     * @param pageToken A token that you use to fetch a specific page when there are multiple pages of results.
+     *     (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call searchContentPublishRecordsAsync(
+            String marketplaceId,
+            String asin,
+            String pageToken,
+            final ApiCallback<SearchContentPublishRecordsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1500,6 +2330,14 @@ public class AplusContentApi {
 
         okhttp3.Call call =
                 searchContentPublishRecordsValidateBeforeCall(marketplaceId, asin, pageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-searchContentPublishRecords");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1601,6 +2439,37 @@ public class AplusContentApi {
      * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PostContentDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PostContentDocumentResponse updateContentDocument(
+            PostContentDocumentRequest body,
+            String contentReferenceKey,
+            String marketplaceId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PostContentDocumentResponse> resp =
+                updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Updates an existing A+ Content document. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
      * @return PostContentDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1609,8 +2478,49 @@ public class AplusContentApi {
             PostContentDocumentRequest body, String contentReferenceKey, String marketplaceId)
             throws ApiException, LWAException {
         ApiResponse<PostContentDocumentResponse> resp =
-                updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId);
+                updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Updates an existing A+ Content document. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PostContentDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PostContentDocumentResponse> updateContentDocumentWithHttpInfo(
+            PostContentDocumentRequest body,
+            String contentReferenceKey,
+            String marketplaceId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateContentDocumentValidateBeforeCall(body, contentReferenceKey, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-updateContentDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateContentDocument operation exceeds rate limit");
     }
 
     /**
@@ -1635,11 +2545,7 @@ public class AplusContentApi {
     public ApiResponse<PostContentDocumentResponse> updateContentDocumentWithHttpInfo(
             PostContentDocumentRequest body, String contentReferenceKey, String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateContentDocumentValidateBeforeCall(body, contentReferenceKey, marketplaceId, null);
-        if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateContentDocument operation exceeds rate limit");
+        return updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId, null);
     }
 
     /**
@@ -1658,6 +2564,7 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1668,6 +2575,36 @@ public class AplusContentApi {
             String marketplaceId,
             final ApiCallback<PostContentDocumentResponse> callback)
             throws ApiException, LWAException {
+        return updateContentDocumentAsync(body, contentReferenceKey, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates an existing A+ Content document. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot
+     *     form a permalink and might change in the future. A content reference key is not guaranteed to match any A+
+     *     Content identifier. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateContentDocumentAsync(
+            PostContentDocumentRequest body,
+            String contentReferenceKey,
+            String marketplaceId,
+            final ApiCallback<PostContentDocumentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1677,6 +2614,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = updateContentDocumentValidateBeforeCall(
                 body, contentReferenceKey, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-updateContentDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1770,6 +2715,32 @@ public class AplusContentApi {
      *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *     (required)
      * @param asinSet The set of ASINs. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ValidateContentDocumentAsinRelationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ValidateContentDocumentAsinRelationsResponse validateContentDocumentAsinRelations(
+            PostContentDocumentRequest body, String marketplaceId, List<String> asinSet, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ValidateContentDocumentAsinRelationsResponse> resp =
+                validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, asinSet, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Checks if the A+ Content document is valid for use on a set of ASINs. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asinSet The set of ASINs. (optional)
      * @return ValidateContentDocumentAsinRelationsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1778,8 +2749,46 @@ public class AplusContentApi {
             PostContentDocumentRequest body, String marketplaceId, List<String> asinSet)
             throws ApiException, LWAException {
         ApiResponse<ValidateContentDocumentAsinRelationsResponse> resp =
-                validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, asinSet);
+                validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, asinSet, null);
         return resp.getData();
+    }
+
+    /**
+     * Checks if the A+ Content document is valid for use on a set of ASINs. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asinSet The set of ASINs. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ValidateContentDocumentAsinRelationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ValidateContentDocumentAsinRelationsResponse> validateContentDocumentAsinRelationsWithHttpInfo(
+            PostContentDocumentRequest body, String marketplaceId, List<String> asinSet, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(body, marketplaceId, asinSet, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-validateContentDocumentAsinRelations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "validateContentDocumentAsinRelations operation exceeds rate limit");
     }
 
     /**
@@ -1802,13 +2811,7 @@ public class AplusContentApi {
     public ApiResponse<ValidateContentDocumentAsinRelationsResponse> validateContentDocumentAsinRelationsWithHttpInfo(
             PostContentDocumentRequest body, String marketplaceId, List<String> asinSet)
             throws ApiException, LWAException {
-        okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(body, marketplaceId, asinSet, null);
-        if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "validateContentDocumentAsinRelations operation exceeds rate limit");
+        return validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, asinSet, null);
     }
 
     /**
@@ -1825,6 +2828,7 @@ public class AplusContentApi {
      *     (required)
      * @param asinSet The set of ASINs. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1835,6 +2839,34 @@ public class AplusContentApi {
             List<String> asinSet,
             final ApiCallback<ValidateContentDocumentAsinRelationsResponse> callback)
             throws ApiException, LWAException {
+        return validateContentDocumentAsinRelationsAsync(body, marketplaceId, asinSet, callback, null);
+    }
+    /**
+     * (asynchronously) Checks if the A+ Content document is valid for use on a set of ASINs. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The content document request details. (required)
+     * @param marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for
+     *     your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (required)
+     * @param asinSet The set of ASINs. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call validateContentDocumentAsinRelationsAsync(
+            PostContentDocumentRequest body,
+            String marketplaceId,
+            List<String> asinSet,
+            final ApiCallback<ValidateContentDocumentAsinRelationsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1844,6 +2876,14 @@ public class AplusContentApi {
 
         okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(
                 body, marketplaceId, asinSet, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AplusContentApi-validateContentDocumentAsinRelations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

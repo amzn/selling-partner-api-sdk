@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -211,6 +212,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateConfirmCustomizationDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateConfirmCustomizationDetailsResponse confirmCustomizationDetails(
+            CreateConfirmCustomizationDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateConfirmCustomizationDetailsResponse> resp =
+                confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images,
+     * initials, etc. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateConfirmCustomizationDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -219,8 +250,48 @@ public class MessagingApi {
             CreateConfirmCustomizationDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateConfirmCustomizationDetailsResponse> resp =
-                confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images,
+     * initials, etc. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateConfirmCustomizationDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateConfirmCustomizationDetailsResponse> confirmCustomizationDetailsWithHttpInfo(
+            CreateConfirmCustomizationDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-confirmCustomizationDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("confirmCustomizationDetails operation exceeds rate limit");
     }
 
     /**
@@ -244,11 +315,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmCustomizationDetailsResponse> confirmCustomizationDetailsWithHttpInfo(
             CreateConfirmCustomizationDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("confirmCustomizationDetails operation exceeds rate limit");
+        return confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -266,6 +333,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -276,6 +344,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateConfirmCustomizationDetailsResponse> callback)
             throws ApiException, LWAException {
+        return confirmCustomizationDetailsAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message asking a buyer to provide or verify customization details such as name spelling,
+     * images, initials, etc. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmCustomizationDetailsAsync(
+            CreateConfirmCustomizationDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateConfirmCustomizationDetailsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -285,6 +382,14 @@ public class MessagingApi {
 
         okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-confirmCustomizationDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -382,6 +487,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateAmazonMotorsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateAmazonMotorsResponse createAmazonMotors(
+            CreateAmazonMotorsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateAmazonMotorsResponse> resp =
+                createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by
+     * Amazon Motors sellers. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateAmazonMotorsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -390,8 +525,47 @@ public class MessagingApi {
             CreateAmazonMotorsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateAmazonMotorsResponse> resp =
-                createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by
+     * Amazon Motors sellers. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateAmazonMotorsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateAmazonMotorsResponse> createAmazonMotorsWithHttpInfo(
+            CreateAmazonMotorsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createAmazonMotors");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createAmazonMotorsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createAmazonMotors operation exceeds rate limit");
     }
 
     /**
@@ -415,11 +589,7 @@ public class MessagingApi {
     public ApiResponse<CreateAmazonMotorsResponse> createAmazonMotorsWithHttpInfo(
             CreateAmazonMotorsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createAmazonMotorsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createAmazonMotors operation exceeds rate limit");
+        return createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -437,6 +607,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -447,6 +618,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateAmazonMotorsResponse> callback)
             throws ApiException, LWAException {
+        return createAmazonMotorsAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message to a buyer to provide details about an Amazon Motors order. This message can
+     * only be sent by Amazon Motors sellers. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1
+     * | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createAmazonMotorsAsync(
+            CreateAmazonMotorsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateAmazonMotorsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -456,6 +656,13 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 createAmazonMotorsValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createAmazonMotors");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createAmazonMotorsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateAmazonMotorsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -554,6 +761,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateConfirmDeliveryDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateConfirmDeliveryDetailsResponse createConfirmDeliveryDetails(
+            CreateConfirmDeliveryDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateConfirmDeliveryDetailsResponse> resp =
+                createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateConfirmDeliveryDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -562,8 +799,48 @@ public class MessagingApi {
             CreateConfirmDeliveryDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateConfirmDeliveryDetailsResponse> resp =
-                createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateConfirmDeliveryDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateConfirmDeliveryDetailsResponse> createConfirmDeliveryDetailsWithHttpInfo(
+            CreateConfirmDeliveryDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createConfirmDeliveryDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createConfirmDeliveryDetails operation exceeds rate limit");
     }
 
     /**
@@ -587,11 +864,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmDeliveryDetailsResponse> createConfirmDeliveryDetailsWithHttpInfo(
             CreateConfirmDeliveryDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createConfirmDeliveryDetails operation exceeds rate limit");
+        return createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -609,6 +882,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -619,6 +893,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateConfirmDeliveryDetailsResponse> callback)
             throws ApiException, LWAException {
+        return createConfirmDeliveryDetailsAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message to a buyer to arrange a delivery or to confirm contact information for making a
+     * delivery. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createConfirmDeliveryDetailsAsync(
+            CreateConfirmDeliveryDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateConfirmDeliveryDetailsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -628,6 +931,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createConfirmDeliveryDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -725,6 +1036,35 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateConfirmOrderDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateConfirmOrderDetailsResponse createConfirmOrderDetails(
+            CreateConfirmOrderDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateConfirmOrderDetailsResponse> resp =
+                createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message to ask a buyer an order-related question prior to shipping their order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * contains the usage plan rate limits for the operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput might
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateConfirmOrderDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -733,8 +1073,47 @@ public class MessagingApi {
             CreateConfirmOrderDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateConfirmOrderDetailsResponse> resp =
-                createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message to ask a buyer an order-related question prior to shipping their order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * contains the usage plan rate limits for the operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput might
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateConfirmOrderDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateConfirmOrderDetailsResponse> createConfirmOrderDetailsWithHttpInfo(
+            CreateConfirmOrderDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createConfirmOrderDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createConfirmOrderDetails operation exceeds rate limit");
     }
 
     /**
@@ -757,11 +1136,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmOrderDetailsResponse> createConfirmOrderDetailsWithHttpInfo(
             CreateConfirmOrderDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createConfirmOrderDetails operation exceeds rate limit");
+        return createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -779,6 +1154,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -789,6 +1165,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateConfirmOrderDetailsResponse> callback)
             throws ApiException, LWAException {
+        return createConfirmOrderDetailsAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message to ask a buyer an order-related question prior to shipping their order. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createConfirmOrderDetailsAsync(
+            CreateConfirmOrderDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateConfirmOrderDetailsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -798,6 +1203,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createConfirmOrderDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -896,6 +1309,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateConfirmServiceDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateConfirmServiceDetailsResponse createConfirmServiceDetails(
+            CreateConfirmServiceDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateConfirmServiceDetailsResponse> resp =
+                createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a
+     * service call. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateConfirmServiceDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -904,8 +1347,48 @@ public class MessagingApi {
             CreateConfirmServiceDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateConfirmServiceDetailsResponse> resp =
-                createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a
+     * service call. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateConfirmServiceDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateConfirmServiceDetailsResponse> createConfirmServiceDetailsWithHttpInfo(
+            CreateConfirmServiceDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createConfirmServiceDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createConfirmServiceDetails operation exceeds rate limit");
     }
 
     /**
@@ -929,11 +1412,7 @@ public class MessagingApi {
     public ApiResponse<CreateConfirmServiceDetailsResponse> createConfirmServiceDetailsWithHttpInfo(
             CreateConfirmServiceDetailsRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createConfirmServiceDetails operation exceeds rate limit");
+        return createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -951,6 +1430,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -961,6 +1441,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateConfirmServiceDetailsResponse> callback)
             throws ApiException, LWAException {
+        return createConfirmServiceDetailsAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message to contact a Home Service customer to arrange a service call or to gather
+     * information prior to a service call. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 |
+     * 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation,
+     * when available. The preceding table contains the default rate and burst values for this operation. Selling
+     * partners whose business demands require higher throughput might have higher rate and burst values than those
+     * shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createConfirmServiceDetailsAsync(
+            CreateConfirmServiceDetailsRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateConfirmServiceDetailsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -970,6 +1479,14 @@ public class MessagingApi {
 
         okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(
                 body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createConfirmServiceDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1067,6 +1584,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateDigitalAccessKeyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateDigitalAccessKeyResponse createDigitalAccessKey(
+            CreateDigitalAccessKeyRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateDigitalAccessKeyResponse> resp =
+                createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateDigitalAccessKeyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1075,8 +1622,48 @@ public class MessagingApi {
             CreateDigitalAccessKeyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateDigitalAccessKeyResponse> resp =
-                createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateDigitalAccessKeyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateDigitalAccessKeyResponse> createDigitalAccessKeyWithHttpInfo(
+            CreateDigitalAccessKeyRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createDigitalAccessKey");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createDigitalAccessKey operation exceeds rate limit");
     }
 
     /**
@@ -1100,11 +1687,7 @@ public class MessagingApi {
     public ApiResponse<CreateDigitalAccessKeyResponse> createDigitalAccessKeyWithHttpInfo(
             CreateDigitalAccessKeyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createDigitalAccessKey operation exceeds rate limit");
+        return createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -1122,6 +1705,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1132,6 +1716,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateDigitalAccessKeyResponse> callback)
             throws ApiException, LWAException {
+        return createDigitalAccessKeyAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a buyer a message to share a digital access key that is required to utilize digital
+     * content in their order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createDigitalAccessKeyAsync(
+            CreateDigitalAccessKeyRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateDigitalAccessKeyResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1141,6 +1754,14 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 createDigitalAccessKeyValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createDigitalAccessKey");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1238,6 +1859,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateLegalDisclosureResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateLegalDisclosureResponse createLegalDisclosure(
+            CreateLegalDisclosureRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateLegalDisclosureResponse> resp =
+                createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This
+     * message should only be used to deliver documents that are required by law. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateLegalDisclosureResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1246,8 +1897,48 @@ public class MessagingApi {
             CreateLegalDisclosureRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateLegalDisclosureResponse> resp =
-                createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This
+     * message should only be used to deliver documents that are required by law. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateLegalDisclosureResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateLegalDisclosureResponse> createLegalDisclosureWithHttpInfo(
+            CreateLegalDisclosureRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createLegalDisclosure");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createLegalDisclosure operation exceeds rate limit");
     }
 
     /**
@@ -1271,11 +1962,7 @@ public class MessagingApi {
     public ApiResponse<CreateLegalDisclosureResponse> createLegalDisclosureWithHttpInfo(
             CreateLegalDisclosureRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createLegalDisclosure operation exceeds rate limit");
+        return createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -1293,6 +1980,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1303,6 +1991,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateLegalDisclosureResponse> callback)
             throws ApiException, LWAException {
+        return createLegalDisclosureAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a critical message that contains documents that a seller is legally obligated to provide
+     * to the buyer. This message should only be used to deliver documents that are required by law. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createLegalDisclosureAsync(
+            CreateLegalDisclosureRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateLegalDisclosureResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1312,6 +2029,14 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 createLegalDisclosureValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createLegalDisclosure");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1402,6 +2127,32 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateNegativeFeedbackRemovalResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateNegativeFeedbackRemovalResponse createNegativeFeedbackRemoval(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateNegativeFeedbackRemovalResponse> resp =
+                createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be
+     * sent after the seller has resolved the buyer&#x27;s problem. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateNegativeFeedbackRemovalResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1409,8 +2160,44 @@ public class MessagingApi {
     public CreateNegativeFeedbackRemovalResponse createNegativeFeedbackRemoval(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         ApiResponse<CreateNegativeFeedbackRemovalResponse> resp =
-                createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds);
+                createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be
+     * sent after the seller has resolved the buyer&#x27;s problem. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateNegativeFeedbackRemovalResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateNegativeFeedbackRemovalResponse> createNegativeFeedbackRemovalWithHttpInfo(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createNegativeFeedbackRemoval");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createNegativeFeedbackRemovalBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createNegativeFeedbackRemoval operation exceeds rate limit");
     }
 
     /**
@@ -1432,11 +2219,7 @@ public class MessagingApi {
      */
     public ApiResponse<CreateNegativeFeedbackRemovalResponse> createNegativeFeedbackRemovalWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createNegativeFeedbackRemovalBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createNegativeFeedbackRemoval operation exceeds rate limit");
+        return createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -1453,6 +2236,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1461,6 +2245,33 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             final ApiCallback<CreateNegativeFeedbackRemovalResponse> callback)
+            throws ApiException, LWAException {
+        return createNegativeFeedbackRemovalAsync(amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a non-critical message that asks a buyer to remove their negative feedback. This message
+     * should only be sent after the seller has resolved the buyer&#x27;s problem. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createNegativeFeedbackRemovalAsync(
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateNegativeFeedbackRemovalResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1471,6 +2282,14 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 createNegativeFeedbackRemovalValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createNegativeFeedbackRemoval");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createNegativeFeedbackRemovalBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateNegativeFeedbackRemovalResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1568,6 +2387,36 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateUnexpectedProblemResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateUnexpectedProblemResponse createUnexpectedProblem(
+            CreateUnexpectedProblemRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateUnexpectedProblemResponse> resp =
+                createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the
+     * order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateUnexpectedProblemResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1576,8 +2425,48 @@ public class MessagingApi {
             CreateUnexpectedProblemRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<CreateUnexpectedProblemResponse> resp =
-                createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds);
+                createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the
+     * order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateUnexpectedProblemResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateUnexpectedProblemResponse> createUnexpectedProblemWithHttpInfo(
+            CreateUnexpectedProblemRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createUnexpectedProblem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createUnexpectedProblem operation exceeds rate limit");
     }
 
     /**
@@ -1601,11 +2490,7 @@ public class MessagingApi {
     public ApiResponse<CreateUnexpectedProblemResponse> createUnexpectedProblemWithHttpInfo(
             CreateUnexpectedProblemRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createUnexpectedProblem operation exceeds rate limit");
+        return createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -1623,6 +2508,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1633,6 +2519,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateUnexpectedProblemResponse> callback)
             throws ApiException, LWAException {
+        return createUnexpectedProblemAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a critical message to a buyer that an unexpected problem was encountered affecting the
+     * completion of the order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createUnexpectedProblemAsync(
+            CreateUnexpectedProblemRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateUnexpectedProblemResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1642,6 +2557,14 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 createUnexpectedProblemValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-createUnexpectedProblem");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1738,6 +2661,33 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateWarrantyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateWarrantyResponse createWarranty(
+            CreateWarrantyRequest body, String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateWarrantyResponse> resp =
+                createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message to a buyer to provide details about warranty information on a purchase in their order. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return CreateWarrantyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1745,8 +2695,45 @@ public class MessagingApi {
     public CreateWarrantyResponse createWarranty(
             CreateWarrantyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        ApiResponse<CreateWarrantyResponse> resp = createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds);
+        ApiResponse<CreateWarrantyResponse> resp =
+                createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message to a buyer to provide details about warranty information on a purchase in their order. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header contains the usage plan rate limits for the operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput might have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateWarrantyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateWarrantyResponse> createWarrantyWithHttpInfo(
+            CreateWarrantyRequest body, String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createWarranty");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createWarranty operation exceeds rate limit");
     }
 
     /**
@@ -1770,11 +2757,7 @@ public class MessagingApi {
     public ApiResponse<CreateWarrantyResponse> createWarrantyWithHttpInfo(
             CreateWarrantyRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createWarranty operation exceeds rate limit");
+        return createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -1792,6 +2775,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1802,6 +2786,35 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateWarrantyResponse> callback)
             throws ApiException, LWAException {
+        return createWarrantyAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message to a buyer to provide details about warranty information on a purchase in their
+     * order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createWarrantyAsync(
+            CreateWarrantyRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateWarrantyResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1811,6 +2824,13 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 createWarrantyValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-createWarranty");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1894,14 +2914,65 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAttributesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAttributesResponse getAttributes(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetAttributesResponse> resp =
+                getAttributesWithHttpInfo(amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a response containing attributes related to an order. This includes buyer preferences. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
+     *
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return GetAttributesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetAttributesResponse getAttributes(String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        ApiResponse<GetAttributesResponse> resp = getAttributesWithHttpInfo(amazonOrderId, marketplaceIds);
+        ApiResponse<GetAttributesResponse> resp = getAttributesWithHttpInfo(amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a response containing attributes related to an order. This includes buyer preferences. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
+     *
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAttributesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAttributesResponse> getAttributesWithHttpInfo(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-getAttributes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAttributes operation exceeds rate limit");
     }
 
     /**
@@ -1918,11 +2989,7 @@ public class MessagingApi {
      */
     public ApiResponse<GetAttributesResponse> getAttributesWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAttributes operation exceeds rate limit");
+        return getAttributesWithHttpInfo(amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -1934,12 +3001,35 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getAttributesAsync(
             String amazonOrderId, List<String> marketplaceIds, final ApiCallback<GetAttributesResponse> callback)
+            throws ApiException, LWAException {
+        return getAttributesAsync(amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a response containing attributes related to an order. This includes buyer preferences.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
+     *
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAttributesAsync(
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<GetAttributesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1949,6 +3039,13 @@ public class MessagingApi {
         }
 
         okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-getAttributes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2040,6 +3137,33 @@ public class MessagingApi {
      *     message types. (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetMessagingActionsForOrderResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetMessagingActionsForOrderResponse getMessagingActionsForOrder(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetMessagingActionsForOrderResponse> resp =
+                getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of message types that are available for an order that you specify. A message type is represented
+     * by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call
+     * an operation that sends a message. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation,
+     * when available. The preceding table contains the default rate and burst values for this operation. Selling
+     * partners whose business demands require higher throughput might have higher rate and burst values than those
+     * shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
+     *     message types. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return GetMessagingActionsForOrderResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2047,8 +3171,45 @@ public class MessagingApi {
     public GetMessagingActionsForOrderResponse getMessagingActionsForOrder(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
         ApiResponse<GetMessagingActionsForOrderResponse> resp =
-                getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds);
+                getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of message types that are available for an order that you specify. A message type is represented
+     * by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call
+     * an operation that sends a message. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation,
+     * when available. The preceding table contains the default rate and burst values for this operation. Selling
+     * partners whose business demands require higher throughput might have higher rate and burst values than those
+     * shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
+     *     message types. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetMessagingActionsForOrderResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetMessagingActionsForOrderResponse> getMessagingActionsForOrderWithHttpInfo(
+            String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-getMessagingActionsForOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getMessagingActionsForOrder operation exceeds rate limit");
     }
 
     /**
@@ -2071,11 +3232,7 @@ public class MessagingApi {
      */
     public ApiResponse<GetMessagingActionsForOrderResponse> getMessagingActionsForOrderWithHttpInfo(
             String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMessagingActionsForOrder operation exceeds rate limit");
+        return getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -2093,6 +3250,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2101,6 +3259,34 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             final ApiCallback<GetMessagingActionsForOrderResponse> callback)
+            throws ApiException, LWAException {
+        return getMessagingActionsForOrderAsync(amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of message types that are available for an order that you specify. A message type
+     * is represented by an actions object, which contains a path and query parameter(s). You can use the path and
+     * parameter(s) to call an operation that sends a message. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available
+     *     message types. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getMessagingActionsForOrderAsync(
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<GetMessagingActionsForOrderResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2111,6 +3297,14 @@ public class MessagingApi {
 
         okhttp3.Call call =
                 getMessagingActionsForOrderValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MessagingApi-getMessagingActionsForOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2200,14 +3394,65 @@ public class MessagingApi {
      *     (required)
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InvoiceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InvoiceResponse sendInvoice(
+            InvoiceRequest body, String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InvoiceResponse> resp =
+                sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a message providing the buyer an invoice
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
      * @return InvoiceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InvoiceResponse sendInvoice(InvoiceRequest body, String amazonOrderId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        ApiResponse<InvoiceResponse> resp = sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds);
+        ApiResponse<InvoiceResponse> resp = sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Sends a message providing the buyer an invoice
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InvoiceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InvoiceResponse> sendInvoiceWithHttpInfo(
+            InvoiceRequest body, String amazonOrderId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-sendInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("sendInvoice operation exceeds rate limit");
     }
 
     /**
@@ -2224,11 +3469,7 @@ public class MessagingApi {
      */
     public ApiResponse<InvoiceResponse> sendInvoiceWithHttpInfo(
             InvoiceRequest body, String amazonOrderId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, null);
-        if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("sendInvoice operation exceeds rate limit");
+        return sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds, null);
     }
 
     /**
@@ -2240,6 +3481,7 @@ public class MessagingApi {
      * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
      *     You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2250,6 +3492,29 @@ public class MessagingApi {
             List<String> marketplaceIds,
             final ApiCallback<InvoiceResponse> callback)
             throws ApiException, LWAException {
+        return sendInvoiceAsync(body, amazonOrderId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a message providing the buyer an invoice
+     *
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
+     *     (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed.
+     *     You can only specify one marketplace. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call sendInvoiceAsync(
+            InvoiceRequest body,
+            String amazonOrderId,
+            List<String> marketplaceIds,
+            final ApiCallback<InvoiceResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2258,6 +3523,13 @@ public class MessagingApi {
         }
 
         okhttp3.Call call = sendInvoiceValidateBeforeCall(body, amazonOrderId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MessagingApi-sendInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

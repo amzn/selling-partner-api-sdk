@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -137,13 +138,64 @@ public class MerchantFulfillmentApi {
      * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CancelShipmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CancelShipmentResponse cancelShipment(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CancelShipmentResponse> resp = cancelShipmentWithHttpInfo(shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Cancel the shipment indicated by the specified shipment identifier. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that are applied to the requested operation when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @return CancelShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CancelShipmentResponse cancelShipment(String shipmentId) throws ApiException, LWAException {
-        ApiResponse<CancelShipmentResponse> resp = cancelShipmentWithHttpInfo(shipmentId);
+        ApiResponse<CancelShipmentResponse> resp = cancelShipmentWithHttpInfo(shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Cancel the shipment indicated by the specified shipment identifier. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that are applied to the requested operation when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CancelShipmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CancelShipmentResponse> cancelShipmentWithHttpInfo(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-cancelShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
     }
 
     /**
@@ -161,11 +213,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<CancelShipmentResponse> cancelShipmentWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, null);
-        if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
+        return cancelShipmentWithHttpInfo(shipmentId, null);
     }
 
     /**
@@ -179,11 +227,33 @@ public class MerchantFulfillmentApi {
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelShipmentAsync(String shipmentId, final ApiCallback<CancelShipmentResponse> callback)
+            throws ApiException, LWAException {
+        return cancelShipmentAsync(shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancel the shipment indicated by the specified shipment identifier. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that are applied to the requested operation when available. The preceding
+     * table indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelShipmentAsync(
+            String shipmentId, final ApiCallback<CancelShipmentResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -193,6 +263,14 @@ public class MerchantFulfillmentApi {
         }
 
         okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-cancelShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -262,13 +340,64 @@ public class MerchantFulfillmentApi {
      * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateShipmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateShipmentResponse createShipment(CreateShipmentRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateShipmentResponse> resp = createShipmentWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Create a shipment with the information provided. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * are applied to the requested operation when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @return CreateShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateShipmentResponse createShipment(CreateShipmentRequest body) throws ApiException, LWAException {
-        ApiResponse<CreateShipmentResponse> resp = createShipmentWithHttpInfo(body);
+        ApiResponse<CreateShipmentResponse> resp = createShipmentWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Create a shipment with the information provided. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * are applied to the requested operation when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateShipmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateShipmentResponse> createShipmentWithHttpInfo(
+            CreateShipmentRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createShipmentValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-createShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createShipment operation exceeds rate limit");
     }
 
     /**
@@ -286,11 +415,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<CreateShipmentResponse> createShipmentWithHttpInfo(CreateShipmentRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createShipmentValidateBeforeCall(body, null);
-        if (disableRateLimiting || createShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createShipment operation exceeds rate limit");
+        return createShipmentWithHttpInfo(body, null);
     }
 
     /**
@@ -303,12 +428,33 @@ public class MerchantFulfillmentApi {
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createShipmentAsync(
             CreateShipmentRequest body, final ApiCallback<CreateShipmentResponse> callback)
+            throws ApiException, LWAException {
+        return createShipmentAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Create a shipment with the information provided. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that are applied to the requested operation when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createShipmentAsync(
+            CreateShipmentRequest body, final ApiCallback<CreateShipmentResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -318,6 +464,14 @@ public class MerchantFulfillmentApi {
         }
 
         okhttp3.Call call = createShipmentValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-createShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -391,14 +545,68 @@ public class MerchantFulfillmentApi {
      * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAdditionalSellerInputsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAdditionalSellerInputsResponse getAdditionalSellerInputs(
+            GetAdditionalSellerInputsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetAdditionalSellerInputsResponse> resp =
+                getAdditionalSellerInputsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Gets a list of additional seller inputs required for a ship method. This is generally used for international
+     * shipping. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
+     * requested operation when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @return GetAdditionalSellerInputsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetAdditionalSellerInputsResponse getAdditionalSellerInputs(GetAdditionalSellerInputsRequest body)
             throws ApiException, LWAException {
-        ApiResponse<GetAdditionalSellerInputsResponse> resp = getAdditionalSellerInputsWithHttpInfo(body);
+        ApiResponse<GetAdditionalSellerInputsResponse> resp = getAdditionalSellerInputsWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Gets a list of additional seller inputs required for a ship method. This is generally used for international
+     * shipping. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
+     * requested operation when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAdditionalSellerInputsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAdditionalSellerInputsResponse> getAdditionalSellerInputsWithHttpInfo(
+            GetAdditionalSellerInputsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getAdditionalSellerInputsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-getAdditionalSellerInputs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAdditionalSellerInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAdditionalSellerInputs operation exceeds rate limit");
     }
 
     /**
@@ -417,11 +625,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<GetAdditionalSellerInputsResponse> getAdditionalSellerInputsWithHttpInfo(
             GetAdditionalSellerInputsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getAdditionalSellerInputsValidateBeforeCall(body, null);
-        if (disableRateLimiting || getAdditionalSellerInputsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAdditionalSellerInputs operation exceeds rate limit");
+        return getAdditionalSellerInputsWithHttpInfo(body, null);
     }
 
     /**
@@ -435,12 +639,36 @@ public class MerchantFulfillmentApi {
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getAdditionalSellerInputsAsync(
             GetAdditionalSellerInputsRequest body, final ApiCallback<GetAdditionalSellerInputsResponse> callback)
+            throws ApiException, LWAException {
+        return getAdditionalSellerInputsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Gets a list of additional seller inputs required for a ship method. This is generally used for
+     * international shipping. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
+     * requested operation when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAdditionalSellerInputsAsync(
+            GetAdditionalSellerInputsRequest body,
+            final ApiCallback<GetAdditionalSellerInputsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -450,6 +678,14 @@ public class MerchantFulfillmentApi {
         }
 
         okhttp3.Call call = getAdditionalSellerInputsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-getAdditionalSellerInputs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAdditionalSellerInputsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -523,14 +759,68 @@ public class MerchantFulfillmentApi {
      * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetEligibleShipmentServicesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetEligibleShipmentServicesResponse getEligibleShipmentServices(
+            GetEligibleShipmentServicesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetEligibleShipmentServicesResponse> resp =
+                getEligibleShipmentServicesWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of shipping service offers that satisfy the specified shipment request details. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 6 | 12 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that are applied to the requested operation when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @return GetEligibleShipmentServicesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetEligibleShipmentServicesResponse getEligibleShipmentServices(GetEligibleShipmentServicesRequest body)
             throws ApiException, LWAException {
-        ApiResponse<GetEligibleShipmentServicesResponse> resp = getEligibleShipmentServicesWithHttpInfo(body);
+        ApiResponse<GetEligibleShipmentServicesResponse> resp = getEligibleShipmentServicesWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of shipping service offers that satisfy the specified shipment request details. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 6 | 12 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that are applied to the requested operation when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetEligibleShipmentServicesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetEligibleShipmentServicesResponse> getEligibleShipmentServicesWithHttpInfo(
+            GetEligibleShipmentServicesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getEligibleShipmentServicesValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-getEligibleShipmentServices");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getEligibleShipmentServicesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getEligibleShipmentServices operation exceeds rate limit");
     }
 
     /**
@@ -549,11 +839,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<GetEligibleShipmentServicesResponse> getEligibleShipmentServicesWithHttpInfo(
             GetEligibleShipmentServicesRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getEligibleShipmentServicesValidateBeforeCall(body, null);
-        if (disableRateLimiting || getEligibleShipmentServicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getEligibleShipmentServices operation exceeds rate limit");
+        return getEligibleShipmentServicesWithHttpInfo(body, null);
     }
 
     /**
@@ -567,12 +853,36 @@ public class MerchantFulfillmentApi {
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getEligibleShipmentServicesAsync(
             GetEligibleShipmentServicesRequest body, final ApiCallback<GetEligibleShipmentServicesResponse> callback)
+            throws ApiException, LWAException {
+        return getEligibleShipmentServicesAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of shipping service offers that satisfy the specified shipment request details.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 6 | 12 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
+     * requested operation when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getEligibleShipmentServicesAsync(
+            GetEligibleShipmentServicesRequest body,
+            final ApiCallback<GetEligibleShipmentServicesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -582,6 +892,14 @@ public class MerchantFulfillmentApi {
         }
 
         okhttp3.Call call = getEligibleShipmentServicesValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "MerchantFulfillmentApi-getEligibleShipmentServices");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getEligibleShipmentServicesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -653,13 +971,64 @@ public class MerchantFulfillmentApi {
      * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetShipmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetShipmentResponse getShipment(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetShipmentResponse> resp = getShipmentWithHttpInfo(shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the shipment information for an existing shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that are applied to the requested operation when available. The preceding table indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @return GetShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetShipmentResponse getShipment(String shipmentId) throws ApiException, LWAException {
-        ApiResponse<GetShipmentResponse> resp = getShipmentWithHttpInfo(shipmentId);
+        ApiResponse<GetShipmentResponse> resp = getShipmentWithHttpInfo(shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the shipment information for an existing shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that are applied to the requested operation when available. The preceding table indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetShipmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetShipmentResponse> getShipmentWithHttpInfo(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MerchantFulfillmentApi-getShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShipment operation exceeds rate limit");
     }
 
     /**
@@ -677,11 +1046,7 @@ public class MerchantFulfillmentApi {
      */
     public ApiResponse<GetShipmentResponse> getShipmentWithHttpInfo(String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, null);
-        if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShipment operation exceeds rate limit");
+        return getShipmentWithHttpInfo(shipmentId, null);
     }
 
     /**
@@ -695,11 +1060,33 @@ public class MerchantFulfillmentApi {
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getShipmentAsync(String shipmentId, final ApiCallback<GetShipmentResponse> callback)
+            throws ApiException, LWAException {
+        return getShipmentAsync(shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the shipment information for an existing shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that are applied to the requested operation when available. The preceding table indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the
+     * SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShipmentAsync(
+            String shipmentId, final ApiCallback<GetShipmentResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -709,6 +1096,14 @@ public class MerchantFulfillmentApi {
         }
 
         okhttp3.Call call = getShipmentValidateBeforeCall(shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "MerchantFulfillmentApi-getShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

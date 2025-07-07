@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -137,13 +138,54 @@ public class SupplySourcesApi {
      * Archive a supply source, making it inactive. Cannot be undone.
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ErrorList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ErrorList archiveSupplySource(String supplySourceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ErrorList> resp = archiveSupplySourceWithHttpInfo(supplySourceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Archive a supply source, making it inactive. Cannot be undone.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
      * @return ErrorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ErrorList archiveSupplySource(String supplySourceId) throws ApiException, LWAException {
-        ApiResponse<ErrorList> resp = archiveSupplySourceWithHttpInfo(supplySourceId);
+        ApiResponse<ErrorList> resp = archiveSupplySourceWithHttpInfo(supplySourceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Archive a supply source, making it inactive. Cannot be undone.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ErrorList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ErrorList> archiveSupplySourceWithHttpInfo(String supplySourceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SupplySourcesApi-archiveSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || archiveSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("archiveSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -156,11 +198,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<ErrorList> archiveSupplySourceWithHttpInfo(String supplySourceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, null);
-        if (disableRateLimiting || archiveSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("archiveSupplySource operation exceeds rate limit");
+        return archiveSupplySourceWithHttpInfo(supplySourceId, null);
     }
 
     /**
@@ -168,11 +206,27 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call archiveSupplySourceAsync(String supplySourceId, final ApiCallback<ErrorList> callback)
+            throws ApiException, LWAException {
+        return archiveSupplySourceAsync(supplySourceId, callback, null);
+    }
+    /**
+     * (asynchronously) Archive a supply source, making it inactive. Cannot be undone.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call archiveSupplySourceAsync(
+            String supplySourceId, final ApiCallback<ErrorList> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -182,6 +236,14 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SupplySourcesApi-archiveSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || archiveSupplySourceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -246,14 +308,55 @@ public class SupplySourcesApi {
      * Create a new supply source.
      *
      * @param body A request to create a supply source. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateSupplySourceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateSupplySourceResponse createSupplySource(CreateSupplySourceRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateSupplySourceResponse> resp = createSupplySourceWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Create a new supply source.
+     *
+     * @param body A request to create a supply source. (required)
      * @return CreateSupplySourceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateSupplySourceResponse createSupplySource(CreateSupplySourceRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateSupplySourceResponse> resp = createSupplySourceWithHttpInfo(body);
+        ApiResponse<CreateSupplySourceResponse> resp = createSupplySourceWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Create a new supply source.
+     *
+     * @param body A request to create a supply source. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateSupplySourceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateSupplySourceResponse> createSupplySourceWithHttpInfo(
+            CreateSupplySourceRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createSupplySourceValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-createSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -266,11 +369,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<CreateSupplySourceResponse> createSupplySourceWithHttpInfo(CreateSupplySourceRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createSupplySourceValidateBeforeCall(body, null);
-        if (disableRateLimiting || createSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createSupplySource operation exceeds rate limit");
+        return createSupplySourceWithHttpInfo(body, null);
     }
 
     /**
@@ -278,12 +377,30 @@ public class SupplySourcesApi {
      *
      * @param body A request to create a supply source. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createSupplySourceAsync(
             CreateSupplySourceRequest body, final ApiCallback<CreateSupplySourceResponse> callback)
+            throws ApiException, LWAException {
+        return createSupplySourceAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Create a new supply source.
+     *
+     * @param body A request to create a supply source. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createSupplySourceAsync(
+            CreateSupplySourceRequest body,
+            final ApiCallback<CreateSupplySourceResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -293,6 +410,14 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = createSupplySourceValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-createSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createSupplySourceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -360,13 +485,53 @@ public class SupplySourcesApi {
      * Retrieve a supply source.
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SupplySource
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SupplySource getSupplySource(String supplySourceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SupplySource> resp = getSupplySourceWithHttpInfo(supplySourceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve a supply source.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
      * @return SupplySource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SupplySource getSupplySource(String supplySourceId) throws ApiException, LWAException {
-        ApiResponse<SupplySource> resp = getSupplySourceWithHttpInfo(supplySourceId);
+        ApiResponse<SupplySource> resp = getSupplySourceWithHttpInfo(supplySourceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieve a supply source.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SupplySource&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SupplySource> getSupplySourceWithHttpInfo(String supplySourceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-getSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -379,11 +544,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<SupplySource> getSupplySourceWithHttpInfo(String supplySourceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, null);
-        if (disableRateLimiting || getSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSupplySource operation exceeds rate limit");
+        return getSupplySourceWithHttpInfo(supplySourceId, null);
     }
 
     /**
@@ -391,11 +552,27 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getSupplySourceAsync(String supplySourceId, final ApiCallback<SupplySource> callback)
+            throws ApiException, LWAException {
+        return getSupplySourceAsync(supplySourceId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieve a supply source.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSupplySourceAsync(
+            String supplySourceId, final ApiCallback<SupplySource> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -405,6 +582,13 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-getSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSupplySourceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -475,14 +659,57 @@ public class SupplySourcesApi {
      *
      * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
      * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSupplySourcesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSupplySourcesResponse getSupplySources(
+            String nextPageToken, BigDecimal pageSize, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetSupplySourcesResponse> resp =
+                getSupplySourcesWithHttpInfo(nextPageToken, pageSize, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * The path to retrieve paginated supply sources.
+     *
+     * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
+     * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
      * @return GetSupplySourcesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetSupplySourcesResponse getSupplySources(String nextPageToken, BigDecimal pageSize)
             throws ApiException, LWAException {
-        ApiResponse<GetSupplySourcesResponse> resp = getSupplySourcesWithHttpInfo(nextPageToken, pageSize);
+        ApiResponse<GetSupplySourcesResponse> resp = getSupplySourcesWithHttpInfo(nextPageToken, pageSize, null);
         return resp.getData();
+    }
+
+    /**
+     * The path to retrieve paginated supply sources.
+     *
+     * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
+     * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSupplySourcesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSupplySourcesResponse> getSupplySourcesWithHttpInfo(
+            String nextPageToken, BigDecimal pageSize, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-getSupplySources");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSupplySourcesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSupplySources operation exceeds rate limit");
     }
 
     /**
@@ -496,11 +723,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<GetSupplySourcesResponse> getSupplySourcesWithHttpInfo(String nextPageToken, BigDecimal pageSize)
             throws ApiException, LWAException {
-        okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, null);
-        if (disableRateLimiting || getSupplySourcesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSupplySources operation exceeds rate limit");
+        return getSupplySourcesWithHttpInfo(nextPageToken, pageSize, null);
     }
 
     /**
@@ -509,12 +732,32 @@ public class SupplySourcesApi {
      * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
      * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getSupplySourcesAsync(
             String nextPageToken, BigDecimal pageSize, final ApiCallback<GetSupplySourcesResponse> callback)
+            throws ApiException, LWAException {
+        return getSupplySourcesAsync(nextPageToken, pageSize, callback, null);
+    }
+    /**
+     * (asynchronously) The path to retrieve paginated supply sources.
+     *
+     * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
+     * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSupplySourcesAsync(
+            String nextPageToken,
+            BigDecimal pageSize,
+            final ApiCallback<GetSupplySourcesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -524,6 +767,13 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-getSupplySources");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSupplySourcesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -596,14 +846,59 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identitier of a supply source. (required)
      * @param body (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ErrorList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ErrorList updateSupplySource(
+            String supplySourceId, UpdateSupplySourceRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ErrorList> resp = updateSupplySourceWithHttpInfo(supplySourceId, body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update the configuration and capabilities of a supply source.
+     *
+     * @param supplySourceId The unique identitier of a supply source. (required)
+     * @param body (optional)
      * @return ErrorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ErrorList updateSupplySource(String supplySourceId, UpdateSupplySourceRequest body)
             throws ApiException, LWAException {
-        ApiResponse<ErrorList> resp = updateSupplySourceWithHttpInfo(supplySourceId, body);
+        ApiResponse<ErrorList> resp = updateSupplySourceWithHttpInfo(supplySourceId, body, null);
         return resp.getData();
+    }
+
+    /**
+     * Update the configuration and capabilities of a supply source.
+     *
+     * @param supplySourceId The unique identitier of a supply source. (required)
+     * @param body (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ErrorList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ErrorList> updateSupplySourceWithHttpInfo(
+            String supplySourceId, UpdateSupplySourceRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-updateSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateSupplySourceBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateSupplySource operation exceeds rate limit");
     }
 
     /**
@@ -617,11 +912,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<ErrorList> updateSupplySourceWithHttpInfo(String supplySourceId, UpdateSupplySourceRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, null);
-        if (disableRateLimiting || updateSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateSupplySource operation exceeds rate limit");
+        return updateSupplySourceWithHttpInfo(supplySourceId, body, null);
     }
 
     /**
@@ -630,12 +921,32 @@ public class SupplySourcesApi {
      * @param supplySourceId The unique identitier of a supply source. (required)
      * @param body (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateSupplySourceAsync(
             String supplySourceId, UpdateSupplySourceRequest body, final ApiCallback<ErrorList> callback)
+            throws ApiException, LWAException {
+        return updateSupplySourceAsync(supplySourceId, body, callback, null);
+    }
+    /**
+     * (asynchronously) Update the configuration and capabilities of a supply source.
+     *
+     * @param supplySourceId The unique identitier of a supply source. (required)
+     * @param body (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateSupplySourceAsync(
+            String supplySourceId,
+            UpdateSupplySourceRequest body,
+            final ApiCallback<ErrorList> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -645,6 +956,14 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "SupplySourcesApi-updateSupplySource");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateSupplySourceBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -717,14 +1036,59 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param body (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ErrorList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ErrorList updateSupplySourceStatus(
+            String supplySourceId, UpdateSupplySourceStatusRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ErrorList> resp = updateSupplySourceStatusWithHttpInfo(supplySourceId, body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update the status of a supply source.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param body (optional)
      * @return ErrorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ErrorList updateSupplySourceStatus(String supplySourceId, UpdateSupplySourceStatusRequest body)
             throws ApiException, LWAException {
-        ApiResponse<ErrorList> resp = updateSupplySourceStatusWithHttpInfo(supplySourceId, body);
+        ApiResponse<ErrorList> resp = updateSupplySourceStatusWithHttpInfo(supplySourceId, body, null);
         return resp.getData();
+    }
+
+    /**
+     * Update the status of a supply source.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param body (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ErrorList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ErrorList> updateSupplySourceStatusWithHttpInfo(
+            String supplySourceId, UpdateSupplySourceStatusRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SupplySourcesApi-updateSupplySourceStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateSupplySourceStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateSupplySourceStatus operation exceeds rate limit");
     }
 
     /**
@@ -738,11 +1102,7 @@ public class SupplySourcesApi {
      */
     public ApiResponse<ErrorList> updateSupplySourceStatusWithHttpInfo(
             String supplySourceId, UpdateSupplySourceStatusRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, null);
-        if (disableRateLimiting || updateSupplySourceStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateSupplySourceStatus operation exceeds rate limit");
+        return updateSupplySourceStatusWithHttpInfo(supplySourceId, body, null);
     }
 
     /**
@@ -751,12 +1111,32 @@ public class SupplySourcesApi {
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param body (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateSupplySourceStatusAsync(
             String supplySourceId, UpdateSupplySourceStatusRequest body, final ApiCallback<ErrorList> callback)
+            throws ApiException, LWAException {
+        return updateSupplySourceStatusAsync(supplySourceId, body, callback, null);
+    }
+    /**
+     * (asynchronously) Update the status of a supply source.
+     *
+     * @param supplySourceId The unique identifier of a supply source. (required)
+     * @param body (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateSupplySourceStatusAsync(
+            String supplySourceId,
+            UpdateSupplySourceStatusRequest body,
+            final ApiCallback<ErrorList> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -766,6 +1146,14 @@ public class SupplySourcesApi {
         }
 
         okhttp3.Call call = updateSupplySourceStatusValidateBeforeCall(supplySourceId, body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "SupplySourcesApi-updateSupplySourceStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateSupplySourceStatusBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

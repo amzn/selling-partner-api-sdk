@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -351,13 +352,67 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CancelInboundPlanResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CancelInboundPlanResponse cancelInboundPlan(String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CancelInboundPlanResponse> resp = cancelInboundPlanWithHttpInfo(inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window
+     * for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload
+     * (LTL) carrier shipments. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return CancelInboundPlanResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CancelInboundPlanResponse cancelInboundPlan(String inboundPlanId) throws ApiException, LWAException {
-        ApiResponse<CancelInboundPlanResponse> resp = cancelInboundPlanWithHttpInfo(inboundPlanId);
+        ApiResponse<CancelInboundPlanResponse> resp = cancelInboundPlanWithHttpInfo(inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window
+     * for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload
+     * (LTL) carrier shipments. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CancelInboundPlanResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CancelInboundPlanResponse> cancelInboundPlanWithHttpInfo(
+            String inboundPlanId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = cancelInboundPlanValidateBeforeCall(inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-cancelInboundPlan");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelInboundPlanBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelInboundPlanResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelInboundPlan operation exceeds rate limit");
     }
 
     /**
@@ -377,11 +432,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<CancelInboundPlanResponse> cancelInboundPlanWithHttpInfo(String inboundPlanId)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelInboundPlanValidateBeforeCall(inboundPlanId, null);
-        if (disableRateLimiting || cancelInboundPlanBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelInboundPlanResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelInboundPlan operation exceeds rate limit");
+        return cancelInboundPlanWithHttpInfo(inboundPlanId, null);
     }
 
     /**
@@ -396,12 +447,35 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelInboundPlanAsync(
             String inboundPlanId, final ApiCallback<CancelInboundPlanResponse> callback)
+            throws ApiException, LWAException {
+        return cancelInboundPlanAsync(inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void
+     * window. The window for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for
+     * Less-Than-Truckload (LTL) carrier shipments. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelInboundPlanAsync(
+            String inboundPlanId, final ApiCallback<CancelInboundPlanResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -411,6 +485,13 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = cancelInboundPlanValidateBeforeCall(inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-cancelInboundPlan");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelInboundPlanBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CancelInboundPlanResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -506,6 +587,32 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CancelSelfShipAppointmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CancelSelfShipAppointmentResponse cancelSelfShipAppointment(
+            CancelSelfShipAppointmentRequest body, String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CancelSelfShipAppointmentResponse> resp =
+                cancelSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Cancels a self-ship appointment slot against a shipment. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return CancelSelfShipAppointmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -514,8 +621,44 @@ public class FbaInboundApi {
             CancelSelfShipAppointmentRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<CancelSelfShipAppointmentResponse> resp =
-                cancelSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId);
+                cancelSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Cancels a self-ship appointment slot against a shipment. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CancelSelfShipAppointmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CancelSelfShipAppointmentResponse> cancelSelfShipAppointmentWithHttpInfo(
+            CancelSelfShipAppointmentRequest body, String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelSelfShipAppointmentValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-cancelSelfShipAppointment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelSelfShipAppointmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelSelfShipAppointmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelSelfShipAppointment operation exceeds rate limit");
     }
 
     /**
@@ -538,11 +681,7 @@ public class FbaInboundApi {
     public ApiResponse<CancelSelfShipAppointmentResponse> cancelSelfShipAppointmentWithHttpInfo(
             CancelSelfShipAppointmentRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelSelfShipAppointmentValidateBeforeCall(body, inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || cancelSelfShipAppointmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelSelfShipAppointmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelSelfShipAppointment operation exceeds rate limit");
+        return cancelSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -559,6 +698,7 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -569,6 +709,34 @@ public class FbaInboundApi {
             String shipmentId,
             final ApiCallback<CancelSelfShipAppointmentResponse> callback)
             throws ApiException, LWAException {
+        return cancelSelfShipAppointmentAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels a self-ship appointment slot against a shipment. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelSelfShipAppointmentAsync(
+            CancelSelfShipAppointmentRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<CancelSelfShipAppointmentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -578,6 +746,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 cancelSelfShipAppointmentValidateBeforeCall(body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-cancelSelfShipAppointment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelSelfShipAppointmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CancelSelfShipAppointmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -681,6 +857,35 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to confirm the delivery window option for. (required)
      * @param deliveryWindowOptionId The id of the delivery window option to be confirmed. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ConfirmDeliveryWindowOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ConfirmDeliveryWindowOptionsResponse confirmDeliveryWindowOptions(
+            String inboundPlanId, String shipmentId, String deliveryWindowOptionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ConfirmDeliveryWindowOptionsResponse> resp = confirmDeliveryWindowOptionsWithHttpInfo(
+                inboundPlanId, shipmentId, deliveryWindowOptionId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Confirms the delivery window option for chosen shipment within an inbound plan. A placement option must be
+     * confirmed prior to use of this API. Once confirmed, new delivery window options cannot be generated, but the
+     * chosen delivery window option can be updated before shipment closure. The window is used to provide the expected
+     * time when a shipment will arrive at the warehouse. All transportation options which have the program
+     * &#x60;CONFIRMED_DELIVERY_WINDOW&#x60; require a delivery window to be confirmed prior to transportation option
+     * confirmation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to confirm the delivery window option for. (required)
+     * @param deliveryWindowOptionId The id of the delivery window option to be confirmed. (required)
      * @return ConfirmDeliveryWindowOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -688,8 +893,48 @@ public class FbaInboundApi {
     public ConfirmDeliveryWindowOptionsResponse confirmDeliveryWindowOptions(
             String inboundPlanId, String shipmentId, String deliveryWindowOptionId) throws ApiException, LWAException {
         ApiResponse<ConfirmDeliveryWindowOptionsResponse> resp =
-                confirmDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, deliveryWindowOptionId);
+                confirmDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, deliveryWindowOptionId, null);
         return resp.getData();
+    }
+
+    /**
+     * Confirms the delivery window option for chosen shipment within an inbound plan. A placement option must be
+     * confirmed prior to use of this API. Once confirmed, new delivery window options cannot be generated, but the
+     * chosen delivery window option can be updated before shipment closure. The window is used to provide the expected
+     * time when a shipment will arrive at the warehouse. All transportation options which have the program
+     * &#x60;CONFIRMED_DELIVERY_WINDOW&#x60; require a delivery window to be confirmed prior to transportation option
+     * confirmation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to confirm the delivery window option for. (required)
+     * @param deliveryWindowOptionId The id of the delivery window option to be confirmed. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ConfirmDeliveryWindowOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ConfirmDeliveryWindowOptionsResponse> confirmDeliveryWindowOptionsWithHttpInfo(
+            String inboundPlanId, String shipmentId, String deliveryWindowOptionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                confirmDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, deliveryWindowOptionId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmDeliveryWindowOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmDeliveryWindowOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ConfirmDeliveryWindowOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("confirmDeliveryWindowOptions operation exceeds rate limit");
     }
 
     /**
@@ -714,12 +959,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ConfirmDeliveryWindowOptionsResponse> confirmDeliveryWindowOptionsWithHttpInfo(
             String inboundPlanId, String shipmentId, String deliveryWindowOptionId) throws ApiException, LWAException {
-        okhttp3.Call call =
-                confirmDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, deliveryWindowOptionId, null);
-        if (disableRateLimiting || confirmDeliveryWindowOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ConfirmDeliveryWindowOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("confirmDeliveryWindowOptions operation exceeds rate limit");
+        return confirmDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, deliveryWindowOptionId, null);
     }
 
     /**
@@ -739,6 +979,7 @@ public class FbaInboundApi {
      * @param shipmentId The shipment to confirm the delivery window option for. (required)
      * @param deliveryWindowOptionId The id of the delivery window option to be confirmed. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -749,6 +990,37 @@ public class FbaInboundApi {
             String deliveryWindowOptionId,
             final ApiCallback<ConfirmDeliveryWindowOptionsResponse> callback)
             throws ApiException, LWAException {
+        return confirmDeliveryWindowOptionsAsync(inboundPlanId, shipmentId, deliveryWindowOptionId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms the delivery window option for chosen shipment within an inbound plan. A placement
+     * option must be confirmed prior to use of this API. Once confirmed, new delivery window options cannot be
+     * generated, but the chosen delivery window option can be updated before shipment closure. The window is used to
+     * provide the expected time when a shipment will arrive at the warehouse. All transportation options which have the
+     * program &#x60;CONFIRMED_DELIVERY_WINDOW&#x60; require a delivery window to be confirmed prior to transportation
+     * option confirmation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to confirm the delivery window option for. (required)
+     * @param deliveryWindowOptionId The id of the delivery window option to be confirmed. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmDeliveryWindowOptionsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            String deliveryWindowOptionId,
+            final ApiCallback<ConfirmDeliveryWindowOptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -758,6 +1030,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = confirmDeliveryWindowOptionsValidateBeforeCall(
                 inboundPlanId, shipmentId, deliveryWindowOptionId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmDeliveryWindowOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmDeliveryWindowOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ConfirmDeliveryWindowOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -844,6 +1124,29 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingOptionId Identifier of a packing option. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ConfirmPackingOptionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ConfirmPackingOptionResponse confirmPackingOption(
+            String inboundPlanId, String packingOptionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ConfirmPackingOptionResponse> resp =
+                confirmPackingOptionWithHttpInfo(inboundPlanId, packingOptionId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Confirms the packing option for an inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingOptionId Identifier of a packing option. (required)
      * @return ConfirmPackingOptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -851,8 +1154,41 @@ public class FbaInboundApi {
     public ConfirmPackingOptionResponse confirmPackingOption(String inboundPlanId, String packingOptionId)
             throws ApiException, LWAException {
         ApiResponse<ConfirmPackingOptionResponse> resp =
-                confirmPackingOptionWithHttpInfo(inboundPlanId, packingOptionId);
+                confirmPackingOptionWithHttpInfo(inboundPlanId, packingOptionId, null);
         return resp.getData();
+    }
+
+    /**
+     * Confirms the packing option for an inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingOptionId Identifier of a packing option. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ConfirmPackingOptionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ConfirmPackingOptionResponse> confirmPackingOptionWithHttpInfo(
+            String inboundPlanId, String packingOptionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmPackingOptionValidateBeforeCall(inboundPlanId, packingOptionId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-confirmPackingOption");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmPackingOptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ConfirmPackingOptionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("confirmPackingOption operation exceeds rate limit");
     }
 
     /**
@@ -871,11 +1207,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ConfirmPackingOptionResponse> confirmPackingOptionWithHttpInfo(
             String inboundPlanId, String packingOptionId) throws ApiException, LWAException {
-        okhttp3.Call call = confirmPackingOptionValidateBeforeCall(inboundPlanId, packingOptionId, null);
-        if (disableRateLimiting || confirmPackingOptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ConfirmPackingOptionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("confirmPackingOption operation exceeds rate limit");
+        return confirmPackingOptionWithHttpInfo(inboundPlanId, packingOptionId, null);
     }
 
     /**
@@ -890,12 +1222,38 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingOptionId Identifier of a packing option. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call confirmPackingOptionAsync(
             String inboundPlanId, String packingOptionId, final ApiCallback<ConfirmPackingOptionResponse> callback)
+            throws ApiException, LWAException {
+        return confirmPackingOptionAsync(inboundPlanId, packingOptionId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms the packing option for an inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingOptionId Identifier of a packing option. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmPackingOptionAsync(
+            String inboundPlanId,
+            String packingOptionId,
+            final ApiCallback<ConfirmPackingOptionResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -906,6 +1264,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 confirmPackingOptionValidateBeforeCall(inboundPlanId, packingOptionId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-confirmPackingOption");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmPackingOptionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ConfirmPackingOptionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -996,6 +1362,31 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits
      *     and destinations of SKUs. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ConfirmPlacementOptionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ConfirmPlacementOptionResponse confirmPlacementOption(
+            String inboundPlanId, String placementOptionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ConfirmPlacementOptionResponse> resp =
+                confirmPlacementOptionWithHttpInfo(inboundPlanId, placementOptionId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits
+     *     and destinations of SKUs. (required)
      * @return ConfirmPlacementOptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1003,8 +1394,43 @@ public class FbaInboundApi {
     public ConfirmPlacementOptionResponse confirmPlacementOption(String inboundPlanId, String placementOptionId)
             throws ApiException, LWAException {
         ApiResponse<ConfirmPlacementOptionResponse> resp =
-                confirmPlacementOptionWithHttpInfo(inboundPlanId, placementOptionId);
+                confirmPlacementOptionWithHttpInfo(inboundPlanId, placementOptionId, null);
         return resp.getData();
+    }
+
+    /**
+     * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits
+     *     and destinations of SKUs. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ConfirmPlacementOptionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ConfirmPlacementOptionResponse> confirmPlacementOptionWithHttpInfo(
+            String inboundPlanId, String placementOptionId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmPlacementOptionValidateBeforeCall(inboundPlanId, placementOptionId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmPlacementOption");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmPlacementOptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ConfirmPlacementOptionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("confirmPlacementOption operation exceeds rate limit");
     }
 
     /**
@@ -1025,11 +1451,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ConfirmPlacementOptionResponse> confirmPlacementOptionWithHttpInfo(
             String inboundPlanId, String placementOptionId) throws ApiException, LWAException {
-        okhttp3.Call call = confirmPlacementOptionValidateBeforeCall(inboundPlanId, placementOptionId, null);
-        if (disableRateLimiting || confirmPlacementOptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ConfirmPlacementOptionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("confirmPlacementOption operation exceeds rate limit");
+        return confirmPlacementOptionWithHttpInfo(inboundPlanId, placementOptionId, null);
     }
 
     /**
@@ -1045,12 +1467,39 @@ public class FbaInboundApi {
      * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits
      *     and destinations of SKUs. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call confirmPlacementOptionAsync(
             String inboundPlanId, String placementOptionId, final ApiCallback<ConfirmPlacementOptionResponse> callback)
+            throws ApiException, LWAException {
+        return confirmPlacementOptionAsync(inboundPlanId, placementOptionId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the
+     * Inbound Plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits
+     *     and destinations of SKUs. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmPlacementOptionAsync(
+            String inboundPlanId,
+            String placementOptionId,
+            final ApiCallback<ConfirmPlacementOptionResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1061,6 +1510,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 confirmPlacementOptionValidateBeforeCall(inboundPlanId, placementOptionId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmPlacementOption");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmPlacementOptionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ConfirmPlacementOptionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1160,15 +1617,78 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param contentUpdatePreviewId Identifier of a content update preview. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ConfirmShipmentContentUpdatePreviewResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ConfirmShipmentContentUpdatePreviewResponse confirmShipmentContentUpdatePreview(
+            String inboundPlanId, String shipmentId, String contentUpdatePreviewId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ConfirmShipmentContentUpdatePreviewResponse> resp = confirmShipmentContentUpdatePreviewWithHttpInfo(
+                inboundPlanId, shipmentId, contentUpdatePreviewId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Confirm a shipment content update preview and accept the changes in transportation cost. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param contentUpdatePreviewId Identifier of a content update preview. (required)
      * @return ConfirmShipmentContentUpdatePreviewResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ConfirmShipmentContentUpdatePreviewResponse confirmShipmentContentUpdatePreview(
             String inboundPlanId, String shipmentId, String contentUpdatePreviewId) throws ApiException, LWAException {
-        ApiResponse<ConfirmShipmentContentUpdatePreviewResponse> resp =
-                confirmShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId);
+        ApiResponse<ConfirmShipmentContentUpdatePreviewResponse> resp = confirmShipmentContentUpdatePreviewWithHttpInfo(
+                inboundPlanId, shipmentId, contentUpdatePreviewId, null);
         return resp.getData();
+    }
+
+    /**
+     * Confirm a shipment content update preview and accept the changes in transportation cost. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param contentUpdatePreviewId Identifier of a content update preview. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ConfirmShipmentContentUpdatePreviewResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ConfirmShipmentContentUpdatePreviewResponse> confirmShipmentContentUpdatePreviewWithHttpInfo(
+            String inboundPlanId, String shipmentId, String contentUpdatePreviewId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmShipmentContentUpdatePreviewValidateBeforeCall(
+                inboundPlanId, shipmentId, contentUpdatePreviewId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmShipmentContentUpdatePreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmShipmentContentUpdatePreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ConfirmShipmentContentUpdatePreviewResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "confirmShipmentContentUpdatePreview operation exceeds rate limit");
     }
 
     /**
@@ -1189,14 +1709,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ConfirmShipmentContentUpdatePreviewResponse> confirmShipmentContentUpdatePreviewWithHttpInfo(
             String inboundPlanId, String shipmentId, String contentUpdatePreviewId) throws ApiException, LWAException {
-        okhttp3.Call call = confirmShipmentContentUpdatePreviewValidateBeforeCall(
-                inboundPlanId, shipmentId, contentUpdatePreviewId, null);
-        if (disableRateLimiting || confirmShipmentContentUpdatePreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ConfirmShipmentContentUpdatePreviewResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "confirmShipmentContentUpdatePreview operation exceeds rate limit");
+        return confirmShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId, null);
     }
 
     /**
@@ -1212,6 +1725,7 @@ public class FbaInboundApi {
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param contentUpdatePreviewId Identifier of a content update preview. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1222,6 +1736,34 @@ public class FbaInboundApi {
             String contentUpdatePreviewId,
             final ApiCallback<ConfirmShipmentContentUpdatePreviewResponse> callback)
             throws ApiException, LWAException {
+        return confirmShipmentContentUpdatePreviewAsync(
+                inboundPlanId, shipmentId, contentUpdatePreviewId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirm a shipment content update preview and accept the changes in transportation cost. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table contains the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param contentUpdatePreviewId Identifier of a content update preview. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmShipmentContentUpdatePreviewAsync(
+            String inboundPlanId,
+            String shipmentId,
+            String contentUpdatePreviewId,
+            final ApiCallback<ConfirmShipmentContentUpdatePreviewResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1231,6 +1773,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = confirmShipmentContentUpdatePreviewValidateBeforeCall(
                 inboundPlanId, shipmentId, contentUpdatePreviewId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmShipmentContentUpdatePreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmShipmentContentUpdatePreviewBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ConfirmShipmentContentUpdatePreviewResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1317,6 +1867,31 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ConfirmTransportationOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ConfirmTransportationOptionsResponse confirmTransportationOptions(
+            ConfirmTransportationOptionsRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ConfirmTransportationOptionsResponse> resp =
+                confirmTransportationOptionsWithHttpInfo(body, inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of
+     * this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return ConfirmTransportationOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1324,8 +1899,43 @@ public class FbaInboundApi {
     public ConfirmTransportationOptionsResponse confirmTransportationOptions(
             ConfirmTransportationOptionsRequest body, String inboundPlanId) throws ApiException, LWAException {
         ApiResponse<ConfirmTransportationOptionsResponse> resp =
-                confirmTransportationOptionsWithHttpInfo(body, inboundPlanId);
+                confirmTransportationOptionsWithHttpInfo(body, inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of
+     * this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ConfirmTransportationOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ConfirmTransportationOptionsResponse> confirmTransportationOptionsWithHttpInfo(
+            ConfirmTransportationOptionsRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmTransportationOptionsValidateBeforeCall(body, inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmTransportationOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmTransportationOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ConfirmTransportationOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("confirmTransportationOptions operation exceeds rate limit");
     }
 
     /**
@@ -1346,11 +1956,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ConfirmTransportationOptionsResponse> confirmTransportationOptionsWithHttpInfo(
             ConfirmTransportationOptionsRequest body, String inboundPlanId) throws ApiException, LWAException {
-        okhttp3.Call call = confirmTransportationOptionsValidateBeforeCall(body, inboundPlanId, null);
-        if (disableRateLimiting || confirmTransportationOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ConfirmTransportationOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("confirmTransportationOptions operation exceeds rate limit");
+        return confirmTransportationOptionsWithHttpInfo(body, inboundPlanId, null);
     }
 
     /**
@@ -1366,6 +1972,7 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1374,6 +1981,32 @@ public class FbaInboundApi {
             ConfirmTransportationOptionsRequest body,
             String inboundPlanId,
             final ApiCallback<ConfirmTransportationOptionsResponse> callback)
+            throws ApiException, LWAException {
+        return confirmTransportationOptionsAsync(body, inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms all the transportation options for an inbound plan. A placement option must be
+     * confirmed prior to use of this API. Once confirmed, new transportation options can not be generated or confirmed
+     * for the Inbound Plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmTransportationOptionsAsync(
+            ConfirmTransportationOptionsRequest body,
+            String inboundPlanId,
+            final ApiCallback<ConfirmTransportationOptionsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1384,6 +2017,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 confirmTransportationOptionsValidateBeforeCall(body, inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-confirmTransportationOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmTransportationOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ConfirmTransportationOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1454,14 +2095,66 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateInboundPlanResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateInboundPlanResponse createInboundPlan(CreateInboundPlanRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateInboundPlanResponse> resp = createInboundPlanWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into
+     * Amazon&#x27;s fufillment network. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
      * @return CreateInboundPlanResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateInboundPlanResponse createInboundPlan(CreateInboundPlanRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateInboundPlanResponse> resp = createInboundPlanWithHttpInfo(body);
+        ApiResponse<CreateInboundPlanResponse> resp = createInboundPlanWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into
+     * Amazon&#x27;s fufillment network. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateInboundPlanResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateInboundPlanResponse> createInboundPlanWithHttpInfo(
+            CreateInboundPlanRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createInboundPlanValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-createInboundPlan");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createInboundPlanBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateInboundPlanResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createInboundPlan operation exceeds rate limit");
     }
 
     /**
@@ -1480,11 +2173,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<CreateInboundPlanResponse> createInboundPlanWithHttpInfo(CreateInboundPlanRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createInboundPlanValidateBeforeCall(body, null);
-        if (disableRateLimiting || createInboundPlanBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateInboundPlanResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createInboundPlan operation exceeds rate limit");
+        return createInboundPlanWithHttpInfo(body, null);
     }
 
     /**
@@ -1498,12 +2187,36 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createInboundPlanAsync(
             CreateInboundPlanRequest body, final ApiCallback<CreateInboundPlanResponse> callback)
+            throws ApiException, LWAException {
+        return createInboundPlanAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates an inbound plan. An inbound plan contains all the necessary information to send
+     * shipments into Amazon&#x27;s fufillment network. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createInboundPlanAsync(
+            CreateInboundPlanRequest body,
+            final ApiCallback<CreateInboundPlanResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1513,6 +2226,13 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = createInboundPlanValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-createInboundPlan");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createInboundPlanBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateInboundPlanResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1586,14 +2306,68 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateMarketplaceItemLabelsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateMarketplaceItemLabelsResponse createMarketplaceItemLabels(
+            CreateMarketplaceItemLabelsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CreateMarketplaceItemLabelsResponse> resp =
+                createMarketplaceItemLabelsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * For a given marketplace - creates labels for a list of MSKUs. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      * @return CreateMarketplaceItemLabelsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateMarketplaceItemLabelsResponse createMarketplaceItemLabels(CreateMarketplaceItemLabelsRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateMarketplaceItemLabelsResponse> resp = createMarketplaceItemLabelsWithHttpInfo(body);
+        ApiResponse<CreateMarketplaceItemLabelsResponse> resp = createMarketplaceItemLabelsWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * For a given marketplace - creates labels for a list of MSKUs. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateMarketplaceItemLabelsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateMarketplaceItemLabelsResponse> createMarketplaceItemLabelsWithHttpInfo(
+            CreateMarketplaceItemLabelsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createMarketplaceItemLabelsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-createMarketplaceItemLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createMarketplaceItemLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateMarketplaceItemLabelsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createMarketplaceItemLabels operation exceeds rate limit");
     }
 
     /**
@@ -1612,11 +2386,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<CreateMarketplaceItemLabelsResponse> createMarketplaceItemLabelsWithHttpInfo(
             CreateMarketplaceItemLabelsRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = createMarketplaceItemLabelsValidateBeforeCall(body, null);
-        if (disableRateLimiting || createMarketplaceItemLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateMarketplaceItemLabelsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createMarketplaceItemLabels operation exceeds rate limit");
+        return createMarketplaceItemLabelsWithHttpInfo(body, null);
     }
 
     /**
@@ -1630,12 +2400,36 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createMarketplaceItemLabelsAsync(
             CreateMarketplaceItemLabelsRequest body, final ApiCallback<CreateMarketplaceItemLabelsResponse> callback)
+            throws ApiException, LWAException {
+        return createMarketplaceItemLabelsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) For a given marketplace - creates labels for a list of MSKUs. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createMarketplaceItemLabelsAsync(
+            CreateMarketplaceItemLabelsRequest body,
+            final ApiCallback<CreateMarketplaceItemLabelsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1645,6 +2439,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = createMarketplaceItemLabelsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-createMarketplaceItemLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createMarketplaceItemLabelsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateMarketplaceItemLabelsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1731,6 +2533,29 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to generate delivery window options for. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GenerateDeliveryWindowOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GenerateDeliveryWindowOptionsResponse generateDeliveryWindowOptions(
+            String inboundPlanId, String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GenerateDeliveryWindowOptionsResponse> resp =
+                generateDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Generates available delivery window options for a given shipment. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to generate delivery window options for. (required)
      * @return GenerateDeliveryWindowOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1738,8 +2563,41 @@ public class FbaInboundApi {
     public GenerateDeliveryWindowOptionsResponse generateDeliveryWindowOptions(String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<GenerateDeliveryWindowOptionsResponse> resp =
-                generateDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId);
+                generateDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Generates available delivery window options for a given shipment. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to generate delivery window options for. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GenerateDeliveryWindowOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GenerateDeliveryWindowOptionsResponse> generateDeliveryWindowOptionsWithHttpInfo(
+            String inboundPlanId, String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = generateDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateDeliveryWindowOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generateDeliveryWindowOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateDeliveryWindowOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("generateDeliveryWindowOptions operation exceeds rate limit");
     }
 
     /**
@@ -1759,11 +2617,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GenerateDeliveryWindowOptionsResponse> generateDeliveryWindowOptionsWithHttpInfo(
             String inboundPlanId, String shipmentId) throws ApiException, LWAException {
-        okhttp3.Call call = generateDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || generateDeliveryWindowOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GenerateDeliveryWindowOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("generateDeliveryWindowOptions operation exceeds rate limit");
+        return generateDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -1778,12 +2632,38 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to generate delivery window options for. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call generateDeliveryWindowOptionsAsync(
             String inboundPlanId, String shipmentId, final ApiCallback<GenerateDeliveryWindowOptionsResponse> callback)
+            throws ApiException, LWAException {
+        return generateDeliveryWindowOptionsAsync(inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Generates available delivery window options for a given shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to generate delivery window options for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generateDeliveryWindowOptionsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<GenerateDeliveryWindowOptionsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1794,6 +2674,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 generateDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateDeliveryWindowOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generateDeliveryWindowOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GenerateDeliveryWindowOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1867,14 +2755,68 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GeneratePackingOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GeneratePackingOptionsResponse generatePackingOptions(String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GeneratePackingOptionsResponse> resp =
+                generatePackingOptionsWithHttpInfo(inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Generates available packing options for the inbound plan. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return GeneratePackingOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GeneratePackingOptionsResponse generatePackingOptions(String inboundPlanId)
             throws ApiException, LWAException {
-        ApiResponse<GeneratePackingOptionsResponse> resp = generatePackingOptionsWithHttpInfo(inboundPlanId);
+        ApiResponse<GeneratePackingOptionsResponse> resp = generatePackingOptionsWithHttpInfo(inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Generates available packing options for the inbound plan. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GeneratePackingOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GeneratePackingOptionsResponse> generatePackingOptionsWithHttpInfo(
+            String inboundPlanId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = generatePackingOptionsValidateBeforeCall(inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generatePackingOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generatePackingOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GeneratePackingOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("generatePackingOptions operation exceeds rate limit");
     }
 
     /**
@@ -1893,11 +2835,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GeneratePackingOptionsResponse> generatePackingOptionsWithHttpInfo(String inboundPlanId)
             throws ApiException, LWAException {
-        okhttp3.Call call = generatePackingOptionsValidateBeforeCall(inboundPlanId, null);
-        if (disableRateLimiting || generatePackingOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GeneratePackingOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("generatePackingOptions operation exceeds rate limit");
+        return generatePackingOptionsWithHttpInfo(inboundPlanId, null);
     }
 
     /**
@@ -1911,12 +2849,36 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call generatePackingOptionsAsync(
             String inboundPlanId, final ApiCallback<GeneratePackingOptionsResponse> callback)
+            throws ApiException, LWAException {
+        return generatePackingOptionsAsync(inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Generates available packing options for the inbound plan. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generatePackingOptionsAsync(
+            String inboundPlanId,
+            final ApiCallback<GeneratePackingOptionsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1926,6 +2888,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = generatePackingOptionsValidateBeforeCall(inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generatePackingOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generatePackingOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GeneratePackingOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2008,14 +2978,71 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GeneratePlacementOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GeneratePlacementOptionsResponse generatePlacementOptions(
+            GeneratePlacementOptionsRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GeneratePlacementOptionsResponse> resp =
+                generatePlacementOptionsWithHttpInfo(body, inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Generates placement options for the inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return GeneratePlacementOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GeneratePlacementOptionsResponse generatePlacementOptions(
             GeneratePlacementOptionsRequest body, String inboundPlanId) throws ApiException, LWAException {
-        ApiResponse<GeneratePlacementOptionsResponse> resp = generatePlacementOptionsWithHttpInfo(body, inboundPlanId);
+        ApiResponse<GeneratePlacementOptionsResponse> resp =
+                generatePlacementOptionsWithHttpInfo(body, inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Generates placement options for the inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GeneratePlacementOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GeneratePlacementOptionsResponse> generatePlacementOptionsWithHttpInfo(
+            GeneratePlacementOptionsRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = generatePlacementOptionsValidateBeforeCall(body, inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generatePlacementOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generatePlacementOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GeneratePlacementOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("generatePlacementOptions operation exceeds rate limit");
     }
 
     /**
@@ -2034,11 +3061,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GeneratePlacementOptionsResponse> generatePlacementOptionsWithHttpInfo(
             GeneratePlacementOptionsRequest body, String inboundPlanId) throws ApiException, LWAException {
-        okhttp3.Call call = generatePlacementOptionsValidateBeforeCall(body, inboundPlanId, null);
-        if (disableRateLimiting || generatePlacementOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GeneratePlacementOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("generatePlacementOptions operation exceeds rate limit");
+        return generatePlacementOptionsWithHttpInfo(body, inboundPlanId, null);
     }
 
     /**
@@ -2053,6 +3076,7 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2062,6 +3086,31 @@ public class FbaInboundApi {
             String inboundPlanId,
             final ApiCallback<GeneratePlacementOptionsResponse> callback)
             throws ApiException, LWAException {
+        return generatePlacementOptionsAsync(body, inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Generates placement options for the inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generatePlacementOptionsAsync(
+            GeneratePlacementOptionsRequest body,
+            String inboundPlanId,
+            final ApiCallback<GeneratePlacementOptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2070,6 +3119,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = generatePlacementOptionsValidateBeforeCall(body, inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generatePlacementOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generatePlacementOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GeneratePlacementOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2165,6 +3222,35 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GenerateSelfShipAppointmentSlotsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GenerateSelfShipAppointmentSlotsResponse generateSelfShipAppointmentSlots(
+            GenerateSelfShipAppointmentSlotsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GenerateSelfShipAppointmentSlotsResponse> resp =
+                generateSelfShipAppointmentSlotsWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Initiates the process of generating the appointment slots list. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return GenerateSelfShipAppointmentSlotsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2173,8 +3259,48 @@ public class FbaInboundApi {
             GenerateSelfShipAppointmentSlotsRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<GenerateSelfShipAppointmentSlotsResponse> resp =
-                generateSelfShipAppointmentSlotsWithHttpInfo(body, inboundPlanId, shipmentId);
+                generateSelfShipAppointmentSlotsWithHttpInfo(body, inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Initiates the process of generating the appointment slots list. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GenerateSelfShipAppointmentSlotsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GenerateSelfShipAppointmentSlotsResponse> generateSelfShipAppointmentSlotsWithHttpInfo(
+            GenerateSelfShipAppointmentSlotsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = generateSelfShipAppointmentSlotsValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateSelfShipAppointmentSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generateSelfShipAppointmentSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateSelfShipAppointmentSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("generateSelfShipAppointmentSlots operation exceeds rate limit");
     }
 
     /**
@@ -2197,12 +3323,7 @@ public class FbaInboundApi {
     public ApiResponse<GenerateSelfShipAppointmentSlotsResponse> generateSelfShipAppointmentSlotsWithHttpInfo(
             GenerateSelfShipAppointmentSlotsRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = generateSelfShipAppointmentSlotsValidateBeforeCall(body, inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || generateSelfShipAppointmentSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GenerateSelfShipAppointmentSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("generateSelfShipAppointmentSlots operation exceeds rate limit");
+        return generateSelfShipAppointmentSlotsWithHttpInfo(body, inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -2219,6 +3340,7 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2229,6 +3351,34 @@ public class FbaInboundApi {
             String shipmentId,
             final ApiCallback<GenerateSelfShipAppointmentSlotsResponse> callback)
             throws ApiException, LWAException {
+        return generateSelfShipAppointmentSlotsAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Initiates the process of generating the appointment slots list. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generateSelfShipAppointmentSlotsAsync(
+            GenerateSelfShipAppointmentSlotsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<GenerateSelfShipAppointmentSlotsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2238,6 +3388,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = generateSelfShipAppointmentSlotsValidateBeforeCall(
                 body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateSelfShipAppointmentSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generateSelfShipAppointmentSlotsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GenerateSelfShipAppointmentSlotsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2334,6 +3492,35 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GenerateShipmentContentUpdatePreviewsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GenerateShipmentContentUpdatePreviewsResponse generateShipmentContentUpdatePreviews(
+            GenerateShipmentContentUpdatePreviewsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GenerateShipmentContentUpdatePreviewsResponse> resp =
+                generateShipmentContentUpdatePreviewsWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Generate a shipment content update preview given a set of intended boxes and/or items for a shipment with a
+     * confirmed carrier. The shipment content update preview will be viewable with the updated costs and contents prior
+     * to confirmation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return GenerateShipmentContentUpdatePreviewsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2342,8 +3529,50 @@ public class FbaInboundApi {
             GenerateShipmentContentUpdatePreviewsRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<GenerateShipmentContentUpdatePreviewsResponse> resp =
-                generateShipmentContentUpdatePreviewsWithHttpInfo(body, inboundPlanId, shipmentId);
+                generateShipmentContentUpdatePreviewsWithHttpInfo(body, inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Generate a shipment content update preview given a set of intended boxes and/or items for a shipment with a
+     * confirmed carrier. The shipment content update preview will be viewable with the updated costs and contents prior
+     * to confirmation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GenerateShipmentContentUpdatePreviewsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GenerateShipmentContentUpdatePreviewsResponse> generateShipmentContentUpdatePreviewsWithHttpInfo(
+            GenerateShipmentContentUpdatePreviewsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                generateShipmentContentUpdatePreviewsValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateShipmentContentUpdatePreviews");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generateShipmentContentUpdatePreviewsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateShipmentContentUpdatePreviewsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "generateShipmentContentUpdatePreviews operation exceeds rate limit");
     }
 
     /**
@@ -2366,14 +3595,7 @@ public class FbaInboundApi {
     public ApiResponse<GenerateShipmentContentUpdatePreviewsResponse> generateShipmentContentUpdatePreviewsWithHttpInfo(
             GenerateShipmentContentUpdatePreviewsRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                generateShipmentContentUpdatePreviewsValidateBeforeCall(body, inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || generateShipmentContentUpdatePreviewsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GenerateShipmentContentUpdatePreviewsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "generateShipmentContentUpdatePreviews operation exceeds rate limit");
+        return generateShipmentContentUpdatePreviewsWithHttpInfo(body, inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -2390,6 +3612,7 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2400,6 +3623,34 @@ public class FbaInboundApi {
             String shipmentId,
             final ApiCallback<GenerateShipmentContentUpdatePreviewsResponse> callback)
             throws ApiException, LWAException {
+        return generateShipmentContentUpdatePreviewsAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Generate a shipment content update preview given a set of intended boxes and/or items for a
+     * shipment with a confirmed carrier. The shipment content update preview will be viewable with the updated costs
+     * and contents prior to confirmation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 |
+     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generateShipmentContentUpdatePreviewsAsync(
+            GenerateShipmentContentUpdatePreviewsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<GenerateShipmentContentUpdatePreviewsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2409,6 +3660,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = generateShipmentContentUpdatePreviewsValidateBeforeCall(
                 body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateShipmentContentUpdatePreviews");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generateShipmentContentUpdatePreviewsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GenerateShipmentContentUpdatePreviewsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2494,6 +3753,30 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GenerateTransportationOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GenerateTransportationOptionsResponse generateTransportationOptions(
+            GenerateTransportationOptionsRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GenerateTransportationOptionsResponse> resp =
+                generateTransportationOptionsWithHttpInfo(body, inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Generates available transportation options for a given placement option. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return GenerateTransportationOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2501,8 +3784,42 @@ public class FbaInboundApi {
     public GenerateTransportationOptionsResponse generateTransportationOptions(
             GenerateTransportationOptionsRequest body, String inboundPlanId) throws ApiException, LWAException {
         ApiResponse<GenerateTransportationOptionsResponse> resp =
-                generateTransportationOptionsWithHttpInfo(body, inboundPlanId);
+                generateTransportationOptionsWithHttpInfo(body, inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Generates available transportation options for a given placement option. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GenerateTransportationOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GenerateTransportationOptionsResponse> generateTransportationOptionsWithHttpInfo(
+            GenerateTransportationOptionsRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = generateTransportationOptionsValidateBeforeCall(body, inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateTransportationOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generateTransportationOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateTransportationOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("generateTransportationOptions operation exceeds rate limit");
     }
 
     /**
@@ -2522,11 +3839,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GenerateTransportationOptionsResponse> generateTransportationOptionsWithHttpInfo(
             GenerateTransportationOptionsRequest body, String inboundPlanId) throws ApiException, LWAException {
-        okhttp3.Call call = generateTransportationOptionsValidateBeforeCall(body, inboundPlanId, null);
-        if (disableRateLimiting || generateTransportationOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GenerateTransportationOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("generateTransportationOptions operation exceeds rate limit");
+        return generateTransportationOptionsWithHttpInfo(body, inboundPlanId, null);
     }
 
     /**
@@ -2541,6 +3854,7 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2549,6 +3863,31 @@ public class FbaInboundApi {
             GenerateTransportationOptionsRequest body,
             String inboundPlanId,
             final ApiCallback<GenerateTransportationOptionsResponse> callback)
+            throws ApiException, LWAException {
+        return generateTransportationOptionsAsync(body, inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Generates available transportation options for a given placement option. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generateTransportationOptionsAsync(
+            GenerateTransportationOptionsRequest body,
+            String inboundPlanId,
+            final ApiCallback<GenerateTransportationOptionsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2559,6 +3898,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 generateTransportationOptionsValidateBeforeCall(body, inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-generateTransportationOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generateTransportationOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GenerateTransportationOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2645,6 +3992,29 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetDeliveryChallanDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetDeliveryChallanDocumentResponse getDeliveryChallanDocument(
+            String inboundPlanId, String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetDeliveryChallanDocumentResponse> resp =
+                getDeliveryChallanDocumentWithHttpInfo(inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provide delivery challan document for PCP transportation in IN marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return GetDeliveryChallanDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2652,8 +4022,41 @@ public class FbaInboundApi {
     public GetDeliveryChallanDocumentResponse getDeliveryChallanDocument(String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<GetDeliveryChallanDocumentResponse> resp =
-                getDeliveryChallanDocumentWithHttpInfo(inboundPlanId, shipmentId);
+                getDeliveryChallanDocumentWithHttpInfo(inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Provide delivery challan document for PCP transportation in IN marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetDeliveryChallanDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetDeliveryChallanDocumentResponse> getDeliveryChallanDocumentWithHttpInfo(
+            String inboundPlanId, String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getDeliveryChallanDocumentValidateBeforeCall(inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getDeliveryChallanDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getDeliveryChallanDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDeliveryChallanDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDeliveryChallanDocument operation exceeds rate limit");
     }
 
     /**
@@ -2673,11 +4076,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<GetDeliveryChallanDocumentResponse> getDeliveryChallanDocumentWithHttpInfo(
             String inboundPlanId, String shipmentId) throws ApiException, LWAException {
-        okhttp3.Call call = getDeliveryChallanDocumentValidateBeforeCall(inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || getDeliveryChallanDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDeliveryChallanDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDeliveryChallanDocument operation exceeds rate limit");
+        return getDeliveryChallanDocumentWithHttpInfo(inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -2692,12 +4091,38 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getDeliveryChallanDocumentAsync(
             String inboundPlanId, String shipmentId, final ApiCallback<GetDeliveryChallanDocumentResponse> callback)
+            throws ApiException, LWAException {
+        return getDeliveryChallanDocumentAsync(inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Provide delivery challan document for PCP transportation in IN marketplace. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getDeliveryChallanDocumentAsync(
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<GetDeliveryChallanDocumentResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2708,6 +4133,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 getDeliveryChallanDocumentValidateBeforeCall(inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getDeliveryChallanDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getDeliveryChallanDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetDeliveryChallanDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2781,13 +4214,67 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param operationId Identifier of an asynchronous operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InboundOperationStatus
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InboundOperationStatus getInboundOperationStatus(String operationId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InboundOperationStatus> resp =
+                getInboundOperationStatusWithHttpInfo(operationId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Gets the status of the processing of an asynchronous API call. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param operationId Identifier of an asynchronous operation. (required)
      * @return InboundOperationStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InboundOperationStatus getInboundOperationStatus(String operationId) throws ApiException, LWAException {
-        ApiResponse<InboundOperationStatus> resp = getInboundOperationStatusWithHttpInfo(operationId);
+        ApiResponse<InboundOperationStatus> resp = getInboundOperationStatusWithHttpInfo(operationId, null);
         return resp.getData();
+    }
+
+    /**
+     * Gets the status of the processing of an asynchronous API call. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param operationId Identifier of an asynchronous operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InboundOperationStatus&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InboundOperationStatus> getInboundOperationStatusWithHttpInfo(
+            String operationId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getInboundOperationStatusValidateBeforeCall(operationId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getInboundOperationStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInboundOperationStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InboundOperationStatus>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInboundOperationStatus operation exceeds rate limit");
     }
 
     /**
@@ -2806,11 +4293,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<InboundOperationStatus> getInboundOperationStatusWithHttpInfo(String operationId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInboundOperationStatusValidateBeforeCall(operationId, null);
-        if (disableRateLimiting || getInboundOperationStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InboundOperationStatus>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInboundOperationStatus operation exceeds rate limit");
+        return getInboundOperationStatusWithHttpInfo(operationId, null);
     }
 
     /**
@@ -2824,12 +4307,34 @@ public class FbaInboundApi {
      *
      * @param operationId Identifier of an asynchronous operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInboundOperationStatusAsync(
             String operationId, final ApiCallback<InboundOperationStatus> callback) throws ApiException, LWAException {
+        return getInboundOperationStatusAsync(operationId, callback, null);
+    }
+    /**
+     * (asynchronously) Gets the status of the processing of an asynchronous API call. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param operationId Identifier of an asynchronous operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInboundOperationStatusAsync(
+            String operationId, final ApiCallback<InboundOperationStatus> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2838,6 +4343,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = getInboundOperationStatusValidateBeforeCall(operationId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getInboundOperationStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInboundOperationStatusBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InboundOperationStatus>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2910,13 +4423,65 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InboundPlan
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InboundPlan getInboundPlan(String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InboundPlan> resp = getInboundPlanWithHttpInfo(inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Fetches the top level information about an inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return InboundPlan
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InboundPlan getInboundPlan(String inboundPlanId) throws ApiException, LWAException {
-        ApiResponse<InboundPlan> resp = getInboundPlanWithHttpInfo(inboundPlanId);
+        ApiResponse<InboundPlan> resp = getInboundPlanWithHttpInfo(inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Fetches the top level information about an inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InboundPlan&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InboundPlan> getInboundPlanWithHttpInfo(String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getInboundPlanValidateBeforeCall(inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-getInboundPlan");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInboundPlanBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InboundPlan>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInboundPlan operation exceeds rate limit");
     }
 
     /**
@@ -2934,11 +4499,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<InboundPlan> getInboundPlanWithHttpInfo(String inboundPlanId) throws ApiException, LWAException {
-        okhttp3.Call call = getInboundPlanValidateBeforeCall(inboundPlanId, null);
-        if (disableRateLimiting || getInboundPlanBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InboundPlan>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInboundPlan operation exceeds rate limit");
+        return getInboundPlanWithHttpInfo(inboundPlanId, null);
     }
 
     /**
@@ -2952,11 +4513,33 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInboundPlanAsync(String inboundPlanId, final ApiCallback<InboundPlan> callback)
+            throws ApiException, LWAException {
+        return getInboundPlanAsync(inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Fetches the top level information about an inbound plan. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInboundPlanAsync(
+            String inboundPlanId, final ApiCallback<InboundPlan> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2966,6 +4549,13 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = getInboundPlanValidateBeforeCall(inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-getInboundPlan");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInboundPlanBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InboundPlan>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3071,6 +4661,40 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSelfShipAppointmentSlotsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSelfShipAppointmentSlotsResponse getSelfShipAppointmentSlots(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetSelfShipAppointmentSlotsResponse> resp = getSelfShipAppointmentSlotsWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only
+     * available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR,
+     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of self ship appointment slots to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return GetSelfShipAppointmentSlotsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3079,8 +4703,53 @@ public class FbaInboundApi {
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<GetSelfShipAppointmentSlotsResponse> resp =
-                getSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
+                getSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only
+     * available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR,
+     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of self ship appointment slots to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSelfShipAppointmentSlotsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSelfShipAppointmentSlotsResponse> getSelfShipAppointmentSlotsWithHttpInfo(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getSelfShipAppointmentSlotsValidateBeforeCall(
+                inboundPlanId, shipmentId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getSelfShipAppointmentSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSelfShipAppointmentSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSelfShipAppointmentSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSelfShipAppointmentSlots operation exceeds rate limit");
     }
 
     /**
@@ -3107,12 +4776,7 @@ public class FbaInboundApi {
     public ApiResponse<GetSelfShipAppointmentSlotsResponse> getSelfShipAppointmentSlotsWithHttpInfo(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getSelfShipAppointmentSlotsValidateBeforeCall(
-                inboundPlanId, shipmentId, pageSize, paginationToken, null);
-        if (disableRateLimiting || getSelfShipAppointmentSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSelfShipAppointmentSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSelfShipAppointmentSlots operation exceeds rate limit");
+        return getSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
     }
 
     /**
@@ -3134,6 +4798,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3145,6 +4810,40 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<GetSelfShipAppointmentSlotsResponse> callback)
             throws ApiException, LWAException {
+        return getSelfShipAppointmentSlotsAsync(inboundPlanId, shipmentId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves a list of available self-ship appointment slots used to drop off a shipment at a
+     * warehouse. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of self ship appointment slots to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSelfShipAppointmentSlotsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<GetSelfShipAppointmentSlotsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3154,6 +4853,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = getSelfShipAppointmentSlotsValidateBeforeCall(
                 inboundPlanId, shipmentId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getSelfShipAppointmentSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSelfShipAppointmentSlotsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSelfShipAppointmentSlotsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3238,13 +4945,69 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Shipment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Shipment getShipment(String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<Shipment> resp = getShipmentWithHttpInfo(inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60;
+     * inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the
+     * shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return Shipment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Shipment getShipment(String inboundPlanId, String shipmentId) throws ApiException, LWAException {
-        ApiResponse<Shipment> resp = getShipmentWithHttpInfo(inboundPlanId, shipmentId);
+        ApiResponse<Shipment> resp = getShipmentWithHttpInfo(inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60;
+     * inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the
+     * shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Shipment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Shipment> getShipmentWithHttpInfo(
+            String inboundPlanId, String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getShipmentValidateBeforeCall(inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-getShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Shipment>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShipment operation exceeds rate limit");
     }
 
     /**
@@ -3265,11 +5028,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<Shipment> getShipmentWithHttpInfo(String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentValidateBeforeCall(inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Shipment>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShipment operation exceeds rate limit");
+        return getShipmentWithHttpInfo(inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -3285,11 +5044,35 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getShipmentAsync(String inboundPlanId, String shipmentId, final ApiCallback<Shipment> callback)
+            throws ApiException, LWAException {
+        return getShipmentAsync(inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Provides the full details for a specific shipment within an inbound plan. The
+     * &#x60;transportationOptionId&#x60; inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the
+     * transportation details for the shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShipmentAsync(
+            String inboundPlanId, String shipmentId, final ApiCallback<Shipment> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3299,6 +5082,13 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = getShipmentValidateBeforeCall(inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-getShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Shipment>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3399,6 +5189,32 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param contentUpdatePreviewId Identifier of a content update preview. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ContentUpdatePreview
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ContentUpdatePreview getShipmentContentUpdatePreview(
+            String inboundPlanId, String shipmentId, String contentUpdatePreviewId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ContentUpdatePreview> resp = getShipmentContentUpdatePreviewWithHttpInfo(
+                inboundPlanId, shipmentId, contentUpdatePreviewId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve a shipment content update preview which provides a summary of the requested shipment content changes
+     * along with the transportation cost implications of the change that can only be confirmed prior to the expiry date
+     * specified. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param contentUpdatePreviewId Identifier of a content update preview. (required)
      * @return ContentUpdatePreview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3406,8 +5222,45 @@ public class FbaInboundApi {
     public ContentUpdatePreview getShipmentContentUpdatePreview(
             String inboundPlanId, String shipmentId, String contentUpdatePreviewId) throws ApiException, LWAException {
         ApiResponse<ContentUpdatePreview> resp =
-                getShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId);
+                getShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieve a shipment content update preview which provides a summary of the requested shipment content changes
+     * along with the transportation cost implications of the change that can only be confirmed prior to the expiry date
+     * specified. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param contentUpdatePreviewId Identifier of a content update preview. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ContentUpdatePreview&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ContentUpdatePreview> getShipmentContentUpdatePreviewWithHttpInfo(
+            String inboundPlanId, String shipmentId, String contentUpdatePreviewId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getShipmentContentUpdatePreviewValidateBeforeCall(
+                inboundPlanId, shipmentId, contentUpdatePreviewId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getShipmentContentUpdatePreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShipmentContentUpdatePreviewBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ContentUpdatePreview>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShipmentContentUpdatePreview operation exceeds rate limit");
     }
 
     /**
@@ -3429,12 +5282,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ContentUpdatePreview> getShipmentContentUpdatePreviewWithHttpInfo(
             String inboundPlanId, String shipmentId, String contentUpdatePreviewId) throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentContentUpdatePreviewValidateBeforeCall(
-                inboundPlanId, shipmentId, contentUpdatePreviewId, null);
-        if (disableRateLimiting || getShipmentContentUpdatePreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ContentUpdatePreview>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShipmentContentUpdatePreview operation exceeds rate limit");
+        return getShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId, null);
     }
 
     /**
@@ -3451,6 +5299,7 @@ public class FbaInboundApi {
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param contentUpdatePreviewId Identifier of a content update preview. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3461,6 +5310,34 @@ public class FbaInboundApi {
             String contentUpdatePreviewId,
             final ApiCallback<ContentUpdatePreview> callback)
             throws ApiException, LWAException {
+        return getShipmentContentUpdatePreviewAsync(inboundPlanId, shipmentId, contentUpdatePreviewId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieve a shipment content update preview which provides a summary of the requested shipment
+     * content changes along with the transportation cost implications of the change that can only be confirmed prior to
+     * the expiry date specified. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param contentUpdatePreviewId Identifier of a content update preview. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShipmentContentUpdatePreviewAsync(
+            String inboundPlanId,
+            String shipmentId,
+            String contentUpdatePreviewId,
+            final ApiCallback<ContentUpdatePreview> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3470,6 +5347,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = getShipmentContentUpdatePreviewValidateBeforeCall(
                 inboundPlanId, shipmentId, contentUpdatePreviewId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-getShipmentContentUpdatePreview");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShipmentContentUpdatePreviewBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ContentUpdatePreview>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3575,6 +5460,40 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListDeliveryWindowOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListDeliveryWindowOptionsResponse listDeliveryWindowOptions(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListDeliveryWindowOptionsResponse> resp = listDeliveryWindowOptionsWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves all delivery window options for a shipment. Delivery window options must first be generated by the
+     * &#x60;generateDeliveryWindowOptions&#x60; operation before becoming available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to get delivery window options for. (required)
+     * @param pageSize The number of delivery window options to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListDeliveryWindowOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3583,8 +5502,53 @@ public class FbaInboundApi {
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListDeliveryWindowOptionsResponse> resp =
-                listDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
+                listDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves all delivery window options for a shipment. Delivery window options must first be generated by the
+     * &#x60;generateDeliveryWindowOptions&#x60; operation before becoming available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to get delivery window options for. (required)
+     * @param pageSize The number of delivery window options to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListDeliveryWindowOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListDeliveryWindowOptionsResponse> listDeliveryWindowOptionsWithHttpInfo(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listDeliveryWindowOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listDeliveryWindowOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListDeliveryWindowOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listDeliveryWindowOptions operation exceeds rate limit");
     }
 
     /**
@@ -3611,12 +5575,7 @@ public class FbaInboundApi {
     public ApiResponse<ListDeliveryWindowOptionsResponse> listDeliveryWindowOptionsWithHttpInfo(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listDeliveryWindowOptionsValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listDeliveryWindowOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListDeliveryWindowOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listDeliveryWindowOptions operation exceeds rate limit");
+        return listDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
     }
 
     /**
@@ -3637,6 +5596,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3648,6 +5608,39 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListDeliveryWindowOptionsResponse> callback)
             throws ApiException, LWAException {
+        return listDeliveryWindowOptionsAsync(inboundPlanId, shipmentId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves all delivery window options for a shipment. Delivery window options must first be
+     * generated by the &#x60;generateDeliveryWindowOptions&#x60; operation before becoming available. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId The shipment to get delivery window options for. (required)
+     * @param pageSize The number of delivery window options to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listDeliveryWindowOptionsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListDeliveryWindowOptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3657,6 +5650,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listDeliveryWindowOptionsValidateBeforeCall(
                 inboundPlanId, shipmentId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listDeliveryWindowOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listDeliveryWindowOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListDeliveryWindowOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3747,6 +5748,33 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListInboundPlanBoxesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListInboundPlanBoxesResponse listInboundPlanBoxes(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListInboundPlanBoxesResponse> resp =
+                listInboundPlanBoxesWithHttpInfo(inboundPlanId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of box packages in an inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListInboundPlanBoxesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3754,8 +5782,45 @@ public class FbaInboundApi {
     public ListInboundPlanBoxesResponse listInboundPlanBoxes(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
         ApiResponse<ListInboundPlanBoxesResponse> resp =
-                listInboundPlanBoxesWithHttpInfo(inboundPlanId, pageSize, paginationToken);
+                listInboundPlanBoxesWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of box packages in an inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListInboundPlanBoxesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListInboundPlanBoxesResponse> listInboundPlanBoxesWithHttpInfo(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listInboundPlanBoxesValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listInboundPlanBoxes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listInboundPlanBoxesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListInboundPlanBoxesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listInboundPlanBoxes operation exceeds rate limit");
     }
 
     /**
@@ -3778,11 +5843,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListInboundPlanBoxesResponse> listInboundPlanBoxesWithHttpInfo(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
-        okhttp3.Call call = listInboundPlanBoxesValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listInboundPlanBoxesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListInboundPlanBoxesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listInboundPlanBoxes operation exceeds rate limit");
+        return listInboundPlanBoxesWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
     }
 
     /**
@@ -3800,6 +5861,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3810,6 +5872,35 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListInboundPlanBoxesResponse> callback)
             throws ApiException, LWAException {
+        return listInboundPlanBoxesAsync(inboundPlanId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a paginated list of box packages in an inbound plan. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listInboundPlanBoxesAsync(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListInboundPlanBoxesResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3819,6 +5910,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listInboundPlanBoxesValidateBeforeCall(
                 inboundPlanId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listInboundPlanBoxes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listInboundPlanBoxesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListInboundPlanBoxesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3909,6 +6008,33 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListInboundPlanItemsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListInboundPlanItemsResponse listInboundPlanItems(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListInboundPlanItemsResponse> resp =
+                listInboundPlanItemsWithHttpInfo(inboundPlanId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of item packages in an inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListInboundPlanItemsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3916,8 +6042,45 @@ public class FbaInboundApi {
     public ListInboundPlanItemsResponse listInboundPlanItems(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
         ApiResponse<ListInboundPlanItemsResponse> resp =
-                listInboundPlanItemsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
+                listInboundPlanItemsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of item packages in an inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListInboundPlanItemsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListInboundPlanItemsResponse> listInboundPlanItemsWithHttpInfo(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listInboundPlanItemsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listInboundPlanItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listInboundPlanItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListInboundPlanItemsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listInboundPlanItems operation exceeds rate limit");
     }
 
     /**
@@ -3940,11 +6103,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListInboundPlanItemsResponse> listInboundPlanItemsWithHttpInfo(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
-        okhttp3.Call call = listInboundPlanItemsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listInboundPlanItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListInboundPlanItemsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listInboundPlanItems operation exceeds rate limit");
+        return listInboundPlanItemsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
     }
 
     /**
@@ -3962,6 +6121,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3972,6 +6132,35 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListInboundPlanItemsResponse> callback)
             throws ApiException, LWAException {
+        return listInboundPlanItemsAsync(inboundPlanId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a paginated list of item packages in an inbound plan. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listInboundPlanItemsAsync(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListInboundPlanItemsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3981,6 +6170,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listInboundPlanItemsValidateBeforeCall(
                 inboundPlanId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listInboundPlanItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listInboundPlanItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListInboundPlanItemsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4074,6 +6271,35 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListInboundPlanPalletsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListInboundPlanPalletsResponse listInboundPlanPallets(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListInboundPlanPalletsResponse> resp =
+                listInboundPlanPalletsWithHttpInfo(inboundPlanId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of pallet packages in an inbound plan. An inbound plan will have pallets when the
+     * related details are provided after generating Less-Than-Truckload (LTL) carrier shipments. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to
+     *     10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListInboundPlanPalletsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4081,8 +6307,47 @@ public class FbaInboundApi {
     public ListInboundPlanPalletsResponse listInboundPlanPallets(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
         ApiResponse<ListInboundPlanPalletsResponse> resp =
-                listInboundPlanPalletsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
+                listInboundPlanPalletsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of pallet packages in an inbound plan. An inbound plan will have pallets when the
+     * related details are provided after generating Less-Than-Truckload (LTL) carrier shipments. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to
+     *     10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListInboundPlanPalletsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListInboundPlanPalletsResponse> listInboundPlanPalletsWithHttpInfo(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listInboundPlanPalletsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listInboundPlanPallets");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listInboundPlanPalletsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListInboundPlanPalletsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listInboundPlanPallets operation exceeds rate limit");
     }
 
     /**
@@ -4107,11 +6372,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListInboundPlanPalletsResponse> listInboundPlanPalletsWithHttpInfo(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
-        okhttp3.Call call = listInboundPlanPalletsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listInboundPlanPalletsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListInboundPlanPalletsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listInboundPlanPallets operation exceeds rate limit");
+        return listInboundPlanPalletsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
     }
 
     /**
@@ -4131,6 +6392,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4141,6 +6403,37 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListInboundPlanPalletsResponse> callback)
             throws ApiException, LWAException {
+        return listInboundPlanPalletsAsync(inboundPlanId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a paginated list of pallet packages in an inbound plan. An inbound plan will have
+     * pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to
+     *     10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listInboundPlanPalletsAsync(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListInboundPlanPalletsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -4150,6 +6443,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listInboundPlanPalletsValidateBeforeCall(
                 inboundPlanId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listInboundPlanPallets");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listInboundPlanPalletsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListInboundPlanPalletsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4247,6 +6548,41 @@ public class FbaInboundApi {
      * @param status The status of an inbound plan. (optional)
      * @param sortBy Sort by field. (optional)
      * @param sortOrder The sort order. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListInboundPlansResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListInboundPlansResponse listInboundPlans(
+            Integer pageSize,
+            String paginationToken,
+            String status,
+            String sortBy,
+            String sortOrder,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListInboundPlansResponse> resp =
+                listInboundPlansWithHttpInfo(pageSize, paginationToken, status, sortBy, sortOrder, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a list of inbound plans with minimal information. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param pageSize The number of inbound plans to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param status The status of an inbound plan. (optional)
+     * @param sortBy Sort by field. (optional)
+     * @param sortOrder The sort order. (optional)
      * @return ListInboundPlansResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4255,8 +6591,53 @@ public class FbaInboundApi {
             Integer pageSize, String paginationToken, String status, String sortBy, String sortOrder)
             throws ApiException, LWAException {
         ApiResponse<ListInboundPlansResponse> resp =
-                listInboundPlansWithHttpInfo(pageSize, paginationToken, status, sortBy, sortOrder);
+                listInboundPlansWithHttpInfo(pageSize, paginationToken, status, sortBy, sortOrder, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a list of inbound plans with minimal information. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param pageSize The number of inbound plans to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param status The status of an inbound plan. (optional)
+     * @param sortBy Sort by field. (optional)
+     * @param sortOrder The sort order. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListInboundPlansResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListInboundPlansResponse> listInboundPlansWithHttpInfo(
+            Integer pageSize,
+            String paginationToken,
+            String status,
+            String sortBy,
+            String sortOrder,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listInboundPlansValidateBeforeCall(pageSize, paginationToken, status, sortBy, sortOrder, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listInboundPlans");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listInboundPlansBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListInboundPlansResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listInboundPlans operation exceeds rate limit");
     }
 
     /**
@@ -4283,12 +6664,7 @@ public class FbaInboundApi {
     public ApiResponse<ListInboundPlansResponse> listInboundPlansWithHttpInfo(
             Integer pageSize, String paginationToken, String status, String sortBy, String sortOrder)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listInboundPlansValidateBeforeCall(pageSize, paginationToken, status, sortBy, sortOrder, null);
-        if (disableRateLimiting || listInboundPlansBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListInboundPlansResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listInboundPlans operation exceeds rate limit");
+        return listInboundPlansWithHttpInfo(pageSize, paginationToken, status, sortBy, sortOrder, null);
     }
 
     /**
@@ -4309,6 +6685,7 @@ public class FbaInboundApi {
      * @param sortBy Sort by field. (optional)
      * @param sortOrder The sort order. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4321,6 +6698,40 @@ public class FbaInboundApi {
             String sortOrder,
             final ApiCallback<ListInboundPlansResponse> callback)
             throws ApiException, LWAException {
+        return listInboundPlansAsync(pageSize, paginationToken, status, sortBy, sortOrder, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a list of inbound plans with minimal information. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param pageSize The number of inbound plans to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param status The status of an inbound plan. (optional)
+     * @param sortBy Sort by field. (optional)
+     * @param sortOrder The sort order. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listInboundPlansAsync(
+            Integer pageSize,
+            String paginationToken,
+            String status,
+            String sortBy,
+            String sortOrder,
+            final ApiCallback<ListInboundPlansResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -4330,6 +6741,13 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listInboundPlansValidateBeforeCall(
                 pageSize, paginationToken, status, sortBy, sortOrder, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listInboundPlans");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listInboundPlansBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListInboundPlansResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4418,6 +6836,30 @@ public class FbaInboundApi {
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListItemComplianceDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListItemComplianceDetailsResponse listItemComplianceDetails(
+            List<String> mskus, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<ListItemComplianceDetailsResponse> resp =
+                listItemComplianceDetailsWithHttpInfo(mskus, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ListItemComplianceDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4425,8 +6867,42 @@ public class FbaInboundApi {
     public ListItemComplianceDetailsResponse listItemComplianceDetails(List<String> mskus, String marketplaceId)
             throws ApiException, LWAException {
         ApiResponse<ListItemComplianceDetailsResponse> resp =
-                listItemComplianceDetailsWithHttpInfo(mskus, marketplaceId);
+                listItemComplianceDetailsWithHttpInfo(mskus, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListItemComplianceDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListItemComplianceDetailsResponse> listItemComplianceDetailsWithHttpInfo(
+            List<String> mskus, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = listItemComplianceDetailsValidateBeforeCall(mskus, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listItemComplianceDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listItemComplianceDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListItemComplianceDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listItemComplianceDetails operation exceeds rate limit");
     }
 
     /**
@@ -4447,11 +6923,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListItemComplianceDetailsResponse> listItemComplianceDetailsWithHttpInfo(
             List<String> mskus, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call = listItemComplianceDetailsValidateBeforeCall(mskus, marketplaceId, null);
-        if (disableRateLimiting || listItemComplianceDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListItemComplianceDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listItemComplianceDetails operation exceeds rate limit");
+        return listItemComplianceDetailsWithHttpInfo(mskus, marketplaceId, null);
     }
 
     /**
@@ -4467,12 +6939,39 @@ public class FbaInboundApi {
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listItemComplianceDetailsAsync(
             List<String> mskus, String marketplaceId, final ApiCallback<ListItemComplianceDetailsResponse> callback)
+            throws ApiException, LWAException {
+        return listItemComplianceDetailsAsync(mskus, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listItemComplianceDetailsAsync(
+            List<String> mskus,
+            String marketplaceId,
+            final ApiCallback<ListItemComplianceDetailsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4482,6 +6981,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = listItemComplianceDetailsValidateBeforeCall(mskus, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listItemComplianceDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listItemComplianceDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListItemComplianceDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4588,6 +7095,40 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListPackingGroupBoxesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPackingGroupBoxesResponse listPackingGroupBoxes(
+            String inboundPlanId,
+            String packingGroupId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPackingGroupBoxesResponse> resp = listPackingGroupBoxesWithHttpInfo(
+                inboundPlanId, packingGroupId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves a page of boxes from a given packing group. These boxes were previously provided through the
+     * &#x60;setPackingInformation&#x60; operation. This API is used for workflows where boxes are packed before Amazon
+     * determines shipment splits. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingGroupId Identifier of a packing group. (required)
+     * @param pageSize The number of packing group boxes to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListPackingGroupBoxesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4596,8 +7137,53 @@ public class FbaInboundApi {
             String inboundPlanId, String packingGroupId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListPackingGroupBoxesResponse> resp =
-                listPackingGroupBoxesWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken);
+                listPackingGroupBoxesWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves a page of boxes from a given packing group. These boxes were previously provided through the
+     * &#x60;setPackingInformation&#x60; operation. This API is used for workflows where boxes are packed before Amazon
+     * determines shipment splits. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingGroupId Identifier of a packing group. (required)
+     * @param pageSize The number of packing group boxes to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListPackingGroupBoxesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPackingGroupBoxesResponse> listPackingGroupBoxesWithHttpInfo(
+            String inboundPlanId,
+            String packingGroupId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listPackingGroupBoxesValidateBeforeCall(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPackingGroupBoxes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPackingGroupBoxesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPackingGroupBoxesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listPackingGroupBoxes operation exceeds rate limit");
     }
 
     /**
@@ -4624,12 +7210,7 @@ public class FbaInboundApi {
     public ApiResponse<ListPackingGroupBoxesResponse> listPackingGroupBoxesWithHttpInfo(
             String inboundPlanId, String packingGroupId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listPackingGroupBoxesValidateBeforeCall(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listPackingGroupBoxesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPackingGroupBoxesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listPackingGroupBoxes operation exceeds rate limit");
+        return listPackingGroupBoxesWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
     }
 
     /**
@@ -4650,6 +7231,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4661,6 +7243,39 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListPackingGroupBoxesResponse> callback)
             throws ApiException, LWAException {
+        return listPackingGroupBoxesAsync(inboundPlanId, packingGroupId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves a page of boxes from a given packing group. These boxes were previously provided
+     * through the &#x60;setPackingInformation&#x60; operation. This API is used for workflows where boxes are packed
+     * before Amazon determines shipment splits. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingGroupId Identifier of a packing group. (required)
+     * @param pageSize The number of packing group boxes to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPackingGroupBoxesAsync(
+            String inboundPlanId,
+            String packingGroupId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListPackingGroupBoxesResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -4670,6 +7285,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listPackingGroupBoxesValidateBeforeCall(
                 inboundPlanId, packingGroupId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPackingGroupBoxes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listPackingGroupBoxesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListPackingGroupBoxesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4776,6 +7399,40 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListPackingGroupItemsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPackingGroupItemsResponse listPackingGroupItems(
+            String inboundPlanId,
+            String packingGroupId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPackingGroupItemsResponse> resp = listPackingGroupItemsWithHttpInfo(
+                inboundPlanId, packingGroupId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves a page of items in a given packing group. Packing options must first be generated by the corresponding
+     * operation before packing group items can be listed. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingGroupId Identifier of a packing group. (required)
+     * @param pageSize The number of packing group items to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListPackingGroupItemsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4784,8 +7441,53 @@ public class FbaInboundApi {
             String inboundPlanId, String packingGroupId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListPackingGroupItemsResponse> resp =
-                listPackingGroupItemsWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken);
+                listPackingGroupItemsWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves a page of items in a given packing group. Packing options must first be generated by the corresponding
+     * operation before packing group items can be listed. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingGroupId Identifier of a packing group. (required)
+     * @param pageSize The number of packing group items to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListPackingGroupItemsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPackingGroupItemsResponse> listPackingGroupItemsWithHttpInfo(
+            String inboundPlanId,
+            String packingGroupId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listPackingGroupItemsValidateBeforeCall(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPackingGroupItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPackingGroupItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPackingGroupItemsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listPackingGroupItems operation exceeds rate limit");
     }
 
     /**
@@ -4812,12 +7514,7 @@ public class FbaInboundApi {
     public ApiResponse<ListPackingGroupItemsResponse> listPackingGroupItemsWithHttpInfo(
             String inboundPlanId, String packingGroupId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listPackingGroupItemsValidateBeforeCall(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listPackingGroupItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPackingGroupItemsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listPackingGroupItems operation exceeds rate limit");
+        return listPackingGroupItemsWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken, null);
     }
 
     /**
@@ -4838,6 +7535,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4849,6 +7547,39 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListPackingGroupItemsResponse> callback)
             throws ApiException, LWAException {
+        return listPackingGroupItemsAsync(inboundPlanId, packingGroupId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves a page of items in a given packing group. Packing options must first be generated by
+     * the corresponding operation before packing group items can be listed. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param packingGroupId Identifier of a packing group. (required)
+     * @param pageSize The number of packing group items to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPackingGroupItemsAsync(
+            String inboundPlanId,
+            String packingGroupId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListPackingGroupItemsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -4858,6 +7589,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listPackingGroupItemsValidateBeforeCall(
                 inboundPlanId, packingGroupId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPackingGroupItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listPackingGroupItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListPackingGroupItemsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4950,6 +7689,34 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListPackingOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPackingOptionsResponse listPackingOptions(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPackingOptionsResponse> resp =
+                listPackingOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves a list of all packing options for an inbound plan. Packing options must first be generated by the
+     * corresponding operation before becoming available. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of packing options to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListPackingOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4957,8 +7724,45 @@ public class FbaInboundApi {
     public ListPackingOptionsResponse listPackingOptions(String inboundPlanId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListPackingOptionsResponse> resp =
-                listPackingOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
+                listPackingOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves a list of all packing options for an inbound plan. Packing options must first be generated by the
+     * corresponding operation before becoming available. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of packing options to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListPackingOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPackingOptionsResponse> listPackingOptionsWithHttpInfo(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listPackingOptionsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPackingOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPackingOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPackingOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listPackingOptions operation exceeds rate limit");
     }
 
     /**
@@ -4982,11 +7786,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListPackingOptionsResponse> listPackingOptionsWithHttpInfo(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
-        okhttp3.Call call = listPackingOptionsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listPackingOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPackingOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listPackingOptions operation exceeds rate limit");
+        return listPackingOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
     }
 
     /**
@@ -5006,6 +7806,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5016,6 +7817,37 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListPackingOptionsResponse> callback)
             throws ApiException, LWAException {
+        return listPackingOptionsAsync(inboundPlanId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves a list of all packing options for an inbound plan. Packing options must first be
+     * generated by the corresponding operation before becoming available. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of packing options to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPackingOptionsAsync(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListPackingOptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -5025,6 +7857,13 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 listPackingOptionsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPackingOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listPackingOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListPackingOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5117,6 +7956,34 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListPlacementOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPlacementOptionsResponse listPlacementOptions(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPlacementOptionsResponse> resp =
+                listPlacementOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a list of all placement options for an inbound plan. Placement options must first be generated by the
+     * corresponding operation before becoming available. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of placement options to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListPlacementOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5124,8 +7991,46 @@ public class FbaInboundApi {
     public ListPlacementOptionsResponse listPlacementOptions(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
         ApiResponse<ListPlacementOptionsResponse> resp =
-                listPlacementOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
+                listPlacementOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a list of all placement options for an inbound plan. Placement options must first be generated by the
+     * corresponding operation before becoming available. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of placement options to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListPlacementOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPlacementOptionsResponse> listPlacementOptionsWithHttpInfo(
+            String inboundPlanId, Integer pageSize, String paginationToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listPlacementOptionsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPlacementOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPlacementOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPlacementOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listPlacementOptions operation exceeds rate limit");
     }
 
     /**
@@ -5149,11 +8054,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListPlacementOptionsResponse> listPlacementOptionsWithHttpInfo(
             String inboundPlanId, Integer pageSize, String paginationToken) throws ApiException, LWAException {
-        okhttp3.Call call = listPlacementOptionsValidateBeforeCall(inboundPlanId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listPlacementOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPlacementOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listPlacementOptions operation exceeds rate limit");
+        return listPlacementOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, null);
     }
 
     /**
@@ -5173,6 +8074,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5183,6 +8085,37 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListPlacementOptionsResponse> callback)
             throws ApiException, LWAException {
+        return listPlacementOptionsAsync(inboundPlanId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a list of all placement options for an inbound plan. Placement options must first be
+     * generated by the corresponding operation before becoming available. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of placement options to return in the response matching the given query. (optional,
+     *     default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPlacementOptionsAsync(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListPlacementOptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -5192,6 +8125,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listPlacementOptionsValidateBeforeCall(
                 inboundPlanId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPlacementOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listPlacementOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListPlacementOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5279,14 +8220,71 @@ public class FbaInboundApi {
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListPrepDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPrepDetailsResponse listPrepDetails(String marketplaceId, List<String> mskus, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPrepDetailsResponse> resp =
+                listPrepDetailsWithHttpInfo(marketplaceId, mskus, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @return ListPrepDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ListPrepDetailsResponse listPrepDetails(String marketplaceId, List<String> mskus)
             throws ApiException, LWAException {
-        ApiResponse<ListPrepDetailsResponse> resp = listPrepDetailsWithHttpInfo(marketplaceId, mskus);
+        ApiResponse<ListPrepDetailsResponse> resp = listPrepDetailsWithHttpInfo(marketplaceId, mskus, null);
         return resp.getData();
+    }
+
+    /**
+     * Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListPrepDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPrepDetailsResponse> listPrepDetailsWithHttpInfo(
+            String marketplaceId, List<String> mskus, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = listPrepDetailsValidateBeforeCall(marketplaceId, mskus, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPrepDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPrepDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPrepDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listPrepDetails operation exceeds rate limit");
     }
 
     /**
@@ -5307,11 +8305,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<ListPrepDetailsResponse> listPrepDetailsWithHttpInfo(String marketplaceId, List<String> mskus)
             throws ApiException, LWAException {
-        okhttp3.Call call = listPrepDetailsValidateBeforeCall(marketplaceId, mskus, null);
-        if (disableRateLimiting || listPrepDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPrepDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listPrepDetails operation exceeds rate limit");
+        return listPrepDetailsWithHttpInfo(marketplaceId, mskus, null);
     }
 
     /**
@@ -5327,12 +8321,39 @@ public class FbaInboundApi {
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listPrepDetailsAsync(
             String marketplaceId, List<String> mskus, final ApiCallback<ListPrepDetailsResponse> callback)
+            throws ApiException, LWAException {
+        return listPrepDetailsAsync(marketplaceId, mskus, callback, null);
+    }
+    /**
+     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPrepDetailsAsync(
+            String marketplaceId,
+            List<String> mskus,
+            final ApiCallback<ListPrepDetailsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5342,6 +8363,13 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = listPrepDetailsValidateBeforeCall(marketplaceId, mskus, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listPrepDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listPrepDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListPrepDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5441,6 +8469,38 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListShipmentBoxesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListShipmentBoxesResponse listShipmentBoxes(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListShipmentBoxesResponse> resp = listShipmentBoxesWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of box packages in a shipment. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListShipmentBoxesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5449,8 +8509,50 @@ public class FbaInboundApi {
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListShipmentBoxesResponse> resp =
-                listShipmentBoxesWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
+                listShipmentBoxesWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of box packages in a shipment. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListShipmentBoxesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListShipmentBoxesResponse> listShipmentBoxesWithHttpInfo(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listShipmentBoxesValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listShipmentBoxes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listShipmentBoxesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListShipmentBoxesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listShipmentBoxes operation exceeds rate limit");
     }
 
     /**
@@ -5475,12 +8577,7 @@ public class FbaInboundApi {
     public ApiResponse<ListShipmentBoxesResponse> listShipmentBoxesWithHttpInfo(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listShipmentBoxesValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listShipmentBoxesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListShipmentBoxesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listShipmentBoxes operation exceeds rate limit");
+        return listShipmentBoxesWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
     }
 
     /**
@@ -5499,6 +8596,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5510,6 +8608,37 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListShipmentBoxesResponse> callback)
             throws ApiException, LWAException {
+        return listShipmentBoxesAsync(inboundPlanId, shipmentId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a paginated list of box packages in a shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listShipmentBoxesAsync(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListShipmentBoxesResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -5519,6 +8648,13 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listShipmentBoxesValidateBeforeCall(
                 inboundPlanId, shipmentId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listShipmentBoxes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listShipmentBoxesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListShipmentBoxesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5623,6 +8759,40 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListShipmentContentUpdatePreviewsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListShipmentContentUpdatePreviewsResponse listShipmentContentUpdatePreviews(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListShipmentContentUpdatePreviewsResponse> resp = listShipmentContentUpdatePreviewsWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve a paginated list of shipment content update previews for a given shipment. The shipment content update
+     * preview is a summary of the requested shipment content changes along with the transportation cost implications of
+     * the change that can only be confirmed prior to the expiry date specified. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of content update previews to return. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListShipmentContentUpdatePreviewsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5630,9 +8800,55 @@ public class FbaInboundApi {
     public ListShipmentContentUpdatePreviewsResponse listShipmentContentUpdatePreviews(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        ApiResponse<ListShipmentContentUpdatePreviewsResponse> resp =
-                listShipmentContentUpdatePreviewsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
+        ApiResponse<ListShipmentContentUpdatePreviewsResponse> resp = listShipmentContentUpdatePreviewsWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieve a paginated list of shipment content update previews for a given shipment. The shipment content update
+     * preview is a summary of the requested shipment content changes along with the transportation cost implications of
+     * the change that can only be confirmed prior to the expiry date specified. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of content update previews to return. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListShipmentContentUpdatePreviewsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListShipmentContentUpdatePreviewsResponse> listShipmentContentUpdatePreviewsWithHttpInfo(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listShipmentContentUpdatePreviewsValidateBeforeCall(
+                inboundPlanId, shipmentId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listShipmentContentUpdatePreviews");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listShipmentContentUpdatePreviewsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListShipmentContentUpdatePreviewsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("listShipmentContentUpdatePreviews operation exceeds rate limit");
     }
 
     /**
@@ -5659,13 +8875,8 @@ public class FbaInboundApi {
     public ApiResponse<ListShipmentContentUpdatePreviewsResponse> listShipmentContentUpdatePreviewsWithHttpInfo(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = listShipmentContentUpdatePreviewsValidateBeforeCall(
+        return listShipmentContentUpdatePreviewsWithHttpInfo(
                 inboundPlanId, shipmentId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listShipmentContentUpdatePreviewsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListShipmentContentUpdatePreviewsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("listShipmentContentUpdatePreviews operation exceeds rate limit");
     }
 
     /**
@@ -5686,6 +8897,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5697,6 +8909,40 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListShipmentContentUpdatePreviewsResponse> callback)
             throws ApiException, LWAException {
+        return listShipmentContentUpdatePreviewsAsync(
+                inboundPlanId, shipmentId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieve a paginated list of shipment content update previews for a given shipment. The shipment
+     * content update preview is a summary of the requested shipment content changes along with the transportation cost
+     * implications of the change that can only be confirmed prior to the expiry date specified. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of content update previews to return. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listShipmentContentUpdatePreviewsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListShipmentContentUpdatePreviewsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -5706,6 +8952,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listShipmentContentUpdatePreviewsValidateBeforeCall(
                 inboundPlanId, shipmentId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listShipmentContentUpdatePreviews");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listShipmentContentUpdatePreviewsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListShipmentContentUpdatePreviewsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5806,6 +9060,38 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListShipmentItemsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListShipmentItemsResponse listShipmentItems(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListShipmentItemsResponse> resp = listShipmentItemsWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of item packages in a shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListShipmentItemsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5814,8 +9100,50 @@ public class FbaInboundApi {
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListShipmentItemsResponse> resp =
-                listShipmentItemsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
+                listShipmentItemsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of item packages in a shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListShipmentItemsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListShipmentItemsResponse> listShipmentItemsWithHttpInfo(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listShipmentItemsValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listShipmentItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listShipmentItemsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListShipmentItemsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listShipmentItems operation exceeds rate limit");
     }
 
     /**
@@ -5840,12 +9168,7 @@ public class FbaInboundApi {
     public ApiResponse<ListShipmentItemsResponse> listShipmentItemsWithHttpInfo(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listShipmentItemsValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listShipmentItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListShipmentItemsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listShipmentItems operation exceeds rate limit");
+        return listShipmentItemsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
     }
 
     /**
@@ -5864,6 +9187,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5875,6 +9199,37 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListShipmentItemsResponse> callback)
             throws ApiException, LWAException {
+        return listShipmentItemsAsync(inboundPlanId, shipmentId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a paginated list of item packages in a shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listShipmentItemsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListShipmentItemsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -5884,6 +9239,13 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listShipmentItemsValidateBeforeCall(
                 inboundPlanId, shipmentId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listShipmentItems");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listShipmentItemsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListShipmentItemsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5987,6 +9349,40 @@ public class FbaInboundApi {
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListShipmentPalletsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListShipmentPalletsResponse listShipmentPallets(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListShipmentPalletsResponse> resp = listShipmentPalletsWithHttpInfo(
+                inboundPlanId, shipmentId, pageSize, paginationToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of pallet packages in a shipment. A palletized shipment will have pallets when the
+     * related details are provided after generating Less-Than-Truckload (LTL) carrier shipments. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to
+     *     10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
      * @return ListShipmentPalletsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5995,8 +9391,52 @@ public class FbaInboundApi {
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
         ApiResponse<ListShipmentPalletsResponse> resp =
-                listShipmentPalletsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
+                listShipmentPalletsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides a paginated list of pallet packages in a shipment. A palletized shipment will have pallets when the
+     * related details are provided after generating Less-Than-Truckload (LTL) carrier shipments. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table contains the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to
+     *     10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListShipmentPalletsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListShipmentPalletsResponse> listShipmentPalletsWithHttpInfo(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listShipmentPalletsValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listShipmentPallets");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listShipmentPalletsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListShipmentPalletsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listShipmentPallets operation exceeds rate limit");
     }
 
     /**
@@ -6023,12 +9463,7 @@ public class FbaInboundApi {
     public ApiResponse<ListShipmentPalletsResponse> listShipmentPalletsWithHttpInfo(
             String inboundPlanId, String shipmentId, Integer pageSize, String paginationToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                listShipmentPalletsValidateBeforeCall(inboundPlanId, shipmentId, pageSize, paginationToken, null);
-        if (disableRateLimiting || listShipmentPalletsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListShipmentPalletsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listShipmentPallets operation exceeds rate limit");
+        return listShipmentPalletsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken, null);
     }
 
     /**
@@ -6049,6 +9484,7 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6060,6 +9496,39 @@ public class FbaInboundApi {
             String paginationToken,
             final ApiCallback<ListShipmentPalletsResponse> callback)
             throws ApiException, LWAException {
+        return listShipmentPalletsAsync(inboundPlanId, shipmentId, pageSize, paginationToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides a paginated list of pallet packages in a shipment. A palletized shipment will have
+     * pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to
+     *     10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listShipmentPalletsAsync(
+            String inboundPlanId,
+            String shipmentId,
+            Integer pageSize,
+            String paginationToken,
+            final ApiCallback<ListShipmentPalletsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -6069,6 +9538,13 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listShipmentPalletsValidateBeforeCall(
                 inboundPlanId, shipmentId, pageSize, paginationToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-listShipmentPallets");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listShipmentPalletsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListShipmentPalletsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -6178,6 +9654,44 @@ public class FbaInboundApi {
      *     &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
      * @param shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or
      *     &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListTransportationOptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListTransportationOptionsResponse listTransportationOptions(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            String placementOptionId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListTransportationOptionsResponse> resp = listTransportationOptionsWithHttpInfo(
+                inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves all transportation options for a shipment. Transportation options must first be generated by the
+     * &#x60;generateTransportationOptions&#x60; operation before becoming available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of transportation options to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param placementOptionId The placement option to get transportation options for. Either
+     *     &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or
+     *     &#x60;shipmentId&#x60; must be specified. (optional)
      * @return ListTransportationOptionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6186,8 +9700,57 @@ public class FbaInboundApi {
             String inboundPlanId, Integer pageSize, String paginationToken, String placementOptionId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<ListTransportationOptionsResponse> resp = listTransportationOptionsWithHttpInfo(
-                inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId);
+                inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves all transportation options for a shipment. Transportation options must first be generated by the
+     * &#x60;generateTransportationOptions&#x60; operation before becoming available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of transportation options to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param placementOptionId The placement option to get transportation options for. Either
+     *     &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or
+     *     &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListTransportationOptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListTransportationOptionsResponse> listTransportationOptionsWithHttpInfo(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            String placementOptionId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listTransportationOptionsValidateBeforeCall(
+                inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listTransportationOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listTransportationOptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListTransportationOptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listTransportationOptions operation exceeds rate limit");
     }
 
     /**
@@ -6217,12 +9780,8 @@ public class FbaInboundApi {
     public ApiResponse<ListTransportationOptionsResponse> listTransportationOptionsWithHttpInfo(
             String inboundPlanId, Integer pageSize, String paginationToken, String placementOptionId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = listTransportationOptionsValidateBeforeCall(
+        return listTransportationOptionsWithHttpInfo(
                 inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId, null);
-        if (disableRateLimiting || listTransportationOptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListTransportationOptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listTransportationOptions operation exceeds rate limit");
     }
 
     /**
@@ -6246,6 +9805,7 @@ public class FbaInboundApi {
      * @param shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or
      *     &#x60;shipmentId&#x60; must be specified. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6258,6 +9818,44 @@ public class FbaInboundApi {
             String shipmentId,
             final ApiCallback<ListTransportationOptionsResponse> callback)
             throws ApiException, LWAException {
+        return listTransportationOptionsAsync(
+                inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves all transportation options for a shipment. Transportation options must first be
+     * generated by the &#x60;generateTransportationOptions&#x60; operation before becoming available. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param pageSize The number of transportation options to return in the response matching the given query.
+     *     (optional, default to 10)
+     * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value
+     *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
+     *     token value from the query parameter the API returns the first page of the result. (optional)
+     * @param placementOptionId The placement option to get transportation options for. Either
+     *     &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or
+     *     &#x60;shipmentId&#x60; must be specified. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listTransportationOptionsAsync(
+            String inboundPlanId,
+            Integer pageSize,
+            String paginationToken,
+            String placementOptionId,
+            String shipmentId,
+            final ApiCallback<ListTransportationOptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -6267,6 +9865,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = listTransportationOptionsValidateBeforeCall(
                 inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-listTransportationOptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listTransportationOptionsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListTransportationOptionsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -6372,6 +9978,37 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param slotId An identifier to a self-ship appointment slot. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ScheduleSelfShipAppointmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ScheduleSelfShipAppointmentResponse scheduleSelfShipAppointment(
+            ScheduleSelfShipAppointmentRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String slotId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ScheduleSelfShipAppointmentResponse> resp =
+                scheduleSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, slotId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param slotId An identifier to a self-ship appointment slot. (required)
      * @return ScheduleSelfShipAppointmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6380,8 +10017,50 @@ public class FbaInboundApi {
             ScheduleSelfShipAppointmentRequest body, String inboundPlanId, String shipmentId, String slotId)
             throws ApiException, LWAException {
         ApiResponse<ScheduleSelfShipAppointmentResponse> resp =
-                scheduleSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, slotId);
+                scheduleSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, slotId, null);
         return resp.getData();
+    }
+
+    /**
+     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following
+     * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param slotId An identifier to a self-ship appointment slot. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ScheduleSelfShipAppointmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ScheduleSelfShipAppointmentResponse> scheduleSelfShipAppointmentWithHttpInfo(
+            ScheduleSelfShipAppointmentRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String slotId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                scheduleSelfShipAppointmentValidateBeforeCall(body, inboundPlanId, shipmentId, slotId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-scheduleSelfShipAppointment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || scheduleSelfShipAppointmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ScheduleSelfShipAppointmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("scheduleSelfShipAppointment operation exceeds rate limit");
     }
 
     /**
@@ -6405,12 +10084,7 @@ public class FbaInboundApi {
     public ApiResponse<ScheduleSelfShipAppointmentResponse> scheduleSelfShipAppointmentWithHttpInfo(
             ScheduleSelfShipAppointmentRequest body, String inboundPlanId, String shipmentId, String slotId)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                scheduleSelfShipAppointmentValidateBeforeCall(body, inboundPlanId, shipmentId, slotId, null);
-        if (disableRateLimiting || scheduleSelfShipAppointmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ScheduleSelfShipAppointmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("scheduleSelfShipAppointment operation exceeds rate limit");
+        return scheduleSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, slotId, null);
     }
 
     /**
@@ -6428,6 +10102,7 @@ public class FbaInboundApi {
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param slotId An identifier to a self-ship appointment slot. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6439,6 +10114,36 @@ public class FbaInboundApi {
             String slotId,
             final ApiCallback<ScheduleSelfShipAppointmentResponse> callback)
             throws ApiException, LWAException {
+        return scheduleSelfShipAppointmentAsync(body, inboundPlanId, shipmentId, slotId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the
+     * following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param slotId An identifier to a self-ship appointment slot. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call scheduleSelfShipAppointmentAsync(
+            ScheduleSelfShipAppointmentRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String slotId,
+            final ApiCallback<ScheduleSelfShipAppointmentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -6448,6 +10153,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = scheduleSelfShipAppointmentValidateBeforeCall(
                 body, inboundPlanId, shipmentId, slotId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-scheduleSelfShipAppointment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || scheduleSelfShipAppointmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ScheduleSelfShipAppointmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -6531,14 +10244,74 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SetPackingInformationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SetPackingInformationResponse setPackingInformation(
+            SetPackingInformationRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SetPackingInformationResponse> resp =
+                setPackingInformationWithHttpInfo(body, inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate
+     * the box level information required for planning and transportation estimates. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return SetPackingInformationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SetPackingInformationResponse setPackingInformation(SetPackingInformationRequest body, String inboundPlanId)
             throws ApiException, LWAException {
-        ApiResponse<SetPackingInformationResponse> resp = setPackingInformationWithHttpInfo(body, inboundPlanId);
+        ApiResponse<SetPackingInformationResponse> resp = setPackingInformationWithHttpInfo(body, inboundPlanId, null);
         return resp.getData();
+    }
+
+    /**
+     * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate
+     * the box level information required for planning and transportation estimates. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SetPackingInformationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SetPackingInformationResponse> setPackingInformationWithHttpInfo(
+            SetPackingInformationRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = setPackingInformationValidateBeforeCall(body, inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-setPackingInformation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || setPackingInformationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetPackingInformationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("setPackingInformation operation exceeds rate limit");
     }
 
     /**
@@ -6559,11 +10332,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<SetPackingInformationResponse> setPackingInformationWithHttpInfo(
             SetPackingInformationRequest body, String inboundPlanId) throws ApiException, LWAException {
-        okhttp3.Call call = setPackingInformationValidateBeforeCall(body, inboundPlanId, null);
-        if (disableRateLimiting || setPackingInformationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetPackingInformationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("setPackingInformation operation exceeds rate limit");
+        return setPackingInformationWithHttpInfo(body, inboundPlanId, null);
     }
 
     /**
@@ -6579,6 +10348,7 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6588,6 +10358,32 @@ public class FbaInboundApi {
             String inboundPlanId,
             final ApiCallback<SetPackingInformationResponse> callback)
             throws ApiException, LWAException {
+        return setPackingInformationAsync(body, inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Sets packing information for an inbound plan. This should be called after an inbound plan is
+     * created to populate the box level information required for planning and transportation estimates. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call setPackingInformationAsync(
+            SetPackingInformationRequest body,
+            String inboundPlanId,
+            final ApiCallback<SetPackingInformationResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -6596,6 +10392,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = setPackingInformationValidateBeforeCall(body, inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-setPackingInformation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || setPackingInformationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SetPackingInformationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -6666,13 +10470,65 @@ public class FbaInboundApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SetPrepDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SetPrepDetailsResponse setPrepDetails(SetPrepDetailsRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SetPrepDetailsResponse> resp = setPrepDetailsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Set the preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
      * @return SetPrepDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SetPrepDetailsResponse setPrepDetails(SetPrepDetailsRequest body) throws ApiException, LWAException {
-        ApiResponse<SetPrepDetailsResponse> resp = setPrepDetailsWithHttpInfo(body);
+        ApiResponse<SetPrepDetailsResponse> resp = setPrepDetailsWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Set the preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SetPrepDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SetPrepDetailsResponse> setPrepDetailsWithHttpInfo(
+            SetPrepDetailsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = setPrepDetailsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-setPrepDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || setPrepDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetPrepDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("setPrepDetails operation exceeds rate limit");
     }
 
     /**
@@ -6691,11 +10547,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<SetPrepDetailsResponse> setPrepDetailsWithHttpInfo(SetPrepDetailsRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = setPrepDetailsValidateBeforeCall(body, null);
-        if (disableRateLimiting || setPrepDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetPrepDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("setPrepDetails operation exceeds rate limit");
+        return setPrepDetailsWithHttpInfo(body, null);
     }
 
     /**
@@ -6709,12 +10561,34 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call setPrepDetailsAsync(
             SetPrepDetailsRequest body, final ApiCallback<SetPrepDetailsResponse> callback)
+            throws ApiException, LWAException {
+        return setPrepDetailsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Set the preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call setPrepDetailsAsync(
+            SetPrepDetailsRequest body, final ApiCallback<SetPrepDetailsResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6724,6 +10598,13 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = setPrepDetailsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-setPrepDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || setPrepDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SetPrepDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -6805,12 +10686,64 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateInboundPlanName(
+            UpdateInboundPlanNameRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        updateInboundPlanNameWithHttpInfo(body, inboundPlanId, restrictedDataToken);
+    }
+
+    /**
+     * Updates the name of an existing inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void updateInboundPlanName(UpdateInboundPlanNameRequest body, String inboundPlanId)
             throws ApiException, LWAException {
-        updateInboundPlanNameWithHttpInfo(body, inboundPlanId);
+        updateInboundPlanNameWithHttpInfo(body, inboundPlanId, null);
+    }
+
+    /**
+     * Updates the name of an existing inbound plan. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateInboundPlanNameWithHttpInfo(
+            UpdateInboundPlanNameRequest body, String inboundPlanId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateInboundPlanNameValidateBeforeCall(body, inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-updateInboundPlanName");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateInboundPlanNameBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateInboundPlanName operation exceeds rate limit");
     }
 
     /**
@@ -6829,10 +10762,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<Void> updateInboundPlanNameWithHttpInfo(UpdateInboundPlanNameRequest body, String inboundPlanId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateInboundPlanNameValidateBeforeCall(body, inboundPlanId, null);
-        if (disableRateLimiting || updateInboundPlanNameBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updateInboundPlanName operation exceeds rate limit");
+        return updateInboundPlanNameWithHttpInfo(body, inboundPlanId, null);
     }
 
     /**
@@ -6847,12 +10777,38 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateInboundPlanNameAsync(
             UpdateInboundPlanNameRequest body, String inboundPlanId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return updateInboundPlanNameAsync(body, inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates the name of an existing inbound plan. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateInboundPlanNameAsync(
+            UpdateInboundPlanNameRequest body,
+            String inboundPlanId,
+            final ApiCallback<Void> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6862,6 +10818,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = updateInboundPlanNameValidateBeforeCall(body, inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-updateInboundPlanName");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateInboundPlanNameBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -6947,6 +10911,31 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UpdateItemComplianceDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateItemComplianceDetailsResponse updateItemComplianceDetails(
+            UpdateItemComplianceDetailsRequest body, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateItemComplianceDetailsResponse> resp =
+                updateItemComplianceDetailsWithHttpInfo(body, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN -
+     * A21TJRUUN4KGV) marketplace compliance validation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return UpdateItemComplianceDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6954,8 +10943,43 @@ public class FbaInboundApi {
     public UpdateItemComplianceDetailsResponse updateItemComplianceDetails(
             UpdateItemComplianceDetailsRequest body, String marketplaceId) throws ApiException, LWAException {
         ApiResponse<UpdateItemComplianceDetailsResponse> resp =
-                updateItemComplianceDetailsWithHttpInfo(body, marketplaceId);
+                updateItemComplianceDetailsWithHttpInfo(body, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN -
+     * A21TJRUUN4KGV) marketplace compliance validation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UpdateItemComplianceDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateItemComplianceDetailsResponse> updateItemComplianceDetailsWithHttpInfo(
+            UpdateItemComplianceDetailsRequest body, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateItemComplianceDetailsValidateBeforeCall(body, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-updateItemComplianceDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateItemComplianceDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateItemComplianceDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateItemComplianceDetails operation exceeds rate limit");
     }
 
     /**
@@ -6976,11 +11000,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<UpdateItemComplianceDetailsResponse> updateItemComplianceDetailsWithHttpInfo(
             UpdateItemComplianceDetailsRequest body, String marketplaceId) throws ApiException, LWAException {
-        okhttp3.Call call = updateItemComplianceDetailsValidateBeforeCall(body, marketplaceId, null);
-        if (disableRateLimiting || updateItemComplianceDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateItemComplianceDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateItemComplianceDetails operation exceeds rate limit");
+        return updateItemComplianceDetailsWithHttpInfo(body, marketplaceId, null);
     }
 
     /**
@@ -6997,6 +11017,7 @@ public class FbaInboundApi {
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7006,6 +11027,33 @@ public class FbaInboundApi {
             String marketplaceId,
             final ApiCallback<UpdateItemComplianceDetailsResponse> callback)
             throws ApiException, LWAException {
+        return updateItemComplianceDetailsAsync(body, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Update compliance details for a list of MSKUs. The details provided here are only used for the
+     * India (IN - A21TJRUUN4KGV) marketplace compliance validation. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
+     * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateItemComplianceDetailsAsync(
+            UpdateItemComplianceDetailsRequest body,
+            String marketplaceId,
+            final ApiCallback<UpdateItemComplianceDetailsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -7014,6 +11062,14 @@ public class FbaInboundApi {
         }
 
         okhttp3.Call call = updateItemComplianceDetailsValidateBeforeCall(body, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-updateItemComplianceDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateItemComplianceDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<UpdateItemComplianceDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -7105,12 +11161,65 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateShipmentName(
+            UpdateShipmentNameRequest body, String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        updateShipmentNameWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+    }
+
+    /**
+     * Updates the name of an existing shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void updateShipmentName(UpdateShipmentNameRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        updateShipmentNameWithHttpInfo(body, inboundPlanId, shipmentId);
+        updateShipmentNameWithHttpInfo(body, inboundPlanId, shipmentId, null);
+    }
+
+    /**
+     * Updates the name of an existing shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateShipmentNameWithHttpInfo(
+            UpdateShipmentNameRequest body, String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateShipmentNameValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-updateShipmentName");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateShipmentNameBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateShipmentName operation exceeds rate limit");
     }
 
     /**
@@ -7130,10 +11239,7 @@ public class FbaInboundApi {
      */
     public ApiResponse<Void> updateShipmentNameWithHttpInfo(
             UpdateShipmentNameRequest body, String inboundPlanId, String shipmentId) throws ApiException, LWAException {
-        okhttp3.Call call = updateShipmentNameValidateBeforeCall(body, inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || updateShipmentNameBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updateShipmentName operation exceeds rate limit");
+        return updateShipmentNameWithHttpInfo(body, inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -7149,12 +11255,40 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateShipmentNameAsync(
             UpdateShipmentNameRequest body, String inboundPlanId, String shipmentId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return updateShipmentNameAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates the name of an existing shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateShipmentNameAsync(
+            UpdateShipmentNameRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<Void> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7165,6 +11299,13 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 updateShipmentNameValidateBeforeCall(body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-updateShipmentName");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateShipmentNameBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -7260,6 +11401,36 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UpdateShipmentSourceAddressResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateShipmentSourceAddressResponse updateShipmentSourceAddress(
+            UpdateShipmentSourceAddressRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateShipmentSourceAddressResponse> resp =
+                updateShipmentSourceAddressWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Updates the source address of an existing shipment. The shipment source address can only be updated prior to the
+     * confirmation of the shipment carriers. As a result of the updated source address, existing transportation options
+     * will be invalidated and will need to be regenerated to capture the potential difference in transportation options
+     * and quotes due to the new source address. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return UpdateShipmentSourceAddressResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7268,8 +11439,48 @@ public class FbaInboundApi {
             UpdateShipmentSourceAddressRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<UpdateShipmentSourceAddressResponse> resp =
-                updateShipmentSourceAddressWithHttpInfo(body, inboundPlanId, shipmentId);
+                updateShipmentSourceAddressWithHttpInfo(body, inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Updates the source address of an existing shipment. The shipment source address can only be updated prior to the
+     * confirmation of the shipment carriers. As a result of the updated source address, existing transportation options
+     * will be invalidated and will need to be regenerated to capture the potential difference in transportation options
+     * and quotes due to the new source address. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UpdateShipmentSourceAddressResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateShipmentSourceAddressResponse> updateShipmentSourceAddressWithHttpInfo(
+            UpdateShipmentSourceAddressRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateShipmentSourceAddressValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-updateShipmentSourceAddress");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateShipmentSourceAddressBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateShipmentSourceAddressResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateShipmentSourceAddress operation exceeds rate limit");
     }
 
     /**
@@ -7293,11 +11504,7 @@ public class FbaInboundApi {
     public ApiResponse<UpdateShipmentSourceAddressResponse> updateShipmentSourceAddressWithHttpInfo(
             UpdateShipmentSourceAddressRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateShipmentSourceAddressValidateBeforeCall(body, inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || updateShipmentSourceAddressBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateShipmentSourceAddressResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateShipmentSourceAddress operation exceeds rate limit");
+        return updateShipmentSourceAddressWithHttpInfo(body, inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -7316,6 +11523,7 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7326,6 +11534,36 @@ public class FbaInboundApi {
             String shipmentId,
             final ApiCallback<UpdateShipmentSourceAddressResponse> callback)
             throws ApiException, LWAException {
+        return updateShipmentSourceAddressAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates the source address of an existing shipment. The shipment source address can only be
+     * updated prior to the confirmation of the shipment carriers. As a result of the updated source address, existing
+     * transportation options will be invalidated and will need to be regenerated to capture the potential difference in
+     * transportation options and quotes due to the new source address. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateShipmentSourceAddressAsync(
+            UpdateShipmentSourceAddressRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<UpdateShipmentSourceAddressResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -7335,6 +11573,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call =
                 updateShipmentSourceAddressValidateBeforeCall(body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-updateShipmentSourceAddress");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateShipmentSourceAddressBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<UpdateShipmentSourceAddressResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -7428,6 +11674,33 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UpdateShipmentTrackingDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateShipmentTrackingDetailsResponse updateShipmentTrackingDetails(
+            UpdateShipmentTrackingDetailsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateShipmentTrackingDetailsResponse> resp =
+                updateShipmentTrackingDetailsWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Updates a shipment&#x27;s tracking details. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @return UpdateShipmentTrackingDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7436,8 +11709,45 @@ public class FbaInboundApi {
             UpdateShipmentTrackingDetailsRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
         ApiResponse<UpdateShipmentTrackingDetailsResponse> resp =
-                updateShipmentTrackingDetailsWithHttpInfo(body, inboundPlanId, shipmentId);
+                updateShipmentTrackingDetailsWithHttpInfo(body, inboundPlanId, shipmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Updates a shipment&#x27;s tracking details. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UpdateShipmentTrackingDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateShipmentTrackingDetailsResponse> updateShipmentTrackingDetailsWithHttpInfo(
+            UpdateShipmentTrackingDetailsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateShipmentTrackingDetailsValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-updateShipmentTrackingDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateShipmentTrackingDetailsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateShipmentTrackingDetailsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateShipmentTrackingDetails operation exceeds rate limit");
     }
 
     /**
@@ -7458,11 +11768,7 @@ public class FbaInboundApi {
     public ApiResponse<UpdateShipmentTrackingDetailsResponse> updateShipmentTrackingDetailsWithHttpInfo(
             UpdateShipmentTrackingDetailsRequest body, String inboundPlanId, String shipmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateShipmentTrackingDetailsValidateBeforeCall(body, inboundPlanId, shipmentId, null);
-        if (disableRateLimiting || updateShipmentTrackingDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateShipmentTrackingDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateShipmentTrackingDetails operation exceeds rate limit");
+        return updateShipmentTrackingDetailsWithHttpInfo(body, inboundPlanId, shipmentId, null);
     }
 
     /**
@@ -7478,6 +11784,7 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7488,6 +11795,33 @@ public class FbaInboundApi {
             String shipmentId,
             final ApiCallback<UpdateShipmentTrackingDetailsResponse> callback)
             throws ApiException, LWAException {
+        return updateShipmentTrackingDetailsAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates a shipment&#x27;s tracking details. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table contains the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
+     * @param inboundPlanId Identifier of an inbound plan. (required)
+     * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateShipmentTrackingDetailsAsync(
+            UpdateShipmentTrackingDetailsRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<UpdateShipmentTrackingDetailsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -7497,6 +11831,14 @@ public class FbaInboundApi {
 
         okhttp3.Call call = updateShipmentTrackingDetailsValidateBeforeCall(
                 body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FbaInboundApi-updateShipmentTrackingDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateShipmentTrackingDetailsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<UpdateShipmentTrackingDetailsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

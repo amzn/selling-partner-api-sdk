@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -123,14 +124,70 @@ public class ProductPricingApi {
      * Partner API.
      *
      * @param body The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CompetitiveSummaryBatchResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CompetitiveSummaryBatchResponse getCompetitiveSummary(
+            CompetitiveSummaryBatchRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CompetitiveSummaryBatchResponse> resp =
+                getCompetitiveSummaryWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the competitive summary response, including featured buying options for the ASIN and
+     * &#x60;marketplaceId&#x60; combination. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.033 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may receive higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API.
+     *
+     * @param body The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      * @return CompetitiveSummaryBatchResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CompetitiveSummaryBatchResponse getCompetitiveSummary(CompetitiveSummaryBatchRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CompetitiveSummaryBatchResponse> resp = getCompetitiveSummaryWithHttpInfo(body);
+        ApiResponse<CompetitiveSummaryBatchResponse> resp = getCompetitiveSummaryWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the competitive summary response, including featured buying options for the ASIN and
+     * &#x60;marketplaceId&#x60; combination. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.033 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may receive higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API.
+     *
+     * @param body The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CompetitiveSummaryBatchResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CompetitiveSummaryBatchResponse> getCompetitiveSummaryWithHttpInfo(
+            CompetitiveSummaryBatchRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getCompetitiveSummaryValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getCompetitiveSummary");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCompetitiveSummaryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CompetitiveSummaryBatchResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCompetitiveSummary operation exceeds rate limit");
     }
 
     /**
@@ -150,11 +207,7 @@ public class ProductPricingApi {
      */
     public ApiResponse<CompetitiveSummaryBatchResponse> getCompetitiveSummaryWithHttpInfo(
             CompetitiveSummaryBatchRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getCompetitiveSummaryValidateBeforeCall(body, null);
-        if (disableRateLimiting || getCompetitiveSummaryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CompetitiveSummaryBatchResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCompetitiveSummary operation exceeds rate limit");
+        return getCompetitiveSummaryWithHttpInfo(body, null);
     }
 
     /**
@@ -169,12 +222,37 @@ public class ProductPricingApi {
      *
      * @param body The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getCompetitiveSummaryAsync(
             CompetitiveSummaryBatchRequest body, final ApiCallback<CompetitiveSummaryBatchResponse> callback)
+            throws ApiException, LWAException {
+        return getCompetitiveSummaryAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the competitive summary response, including featured buying options for the ASIN and
+     * &#x60;marketplaceId&#x60; combination. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 0.033 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may receive higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API.
+     *
+     * @param body The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCompetitiveSummaryAsync(
+            CompetitiveSummaryBatchRequest body,
+            final ApiCallback<CompetitiveSummaryBatchResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -184,6 +262,14 @@ public class ProductPricingApi {
         }
 
         okhttp3.Call call = getCompetitiveSummaryValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getCompetitiveSummary");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCompetitiveSummaryBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CompetitiveSummaryBatchResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -263,6 +349,35 @@ public class ProductPricingApi {
      * Partner API.
      *
      * @param body The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetFeaturedOfferExpectedPriceBatchResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetFeaturedOfferExpectedPriceBatchResponse getFeaturedOfferExpectedPriceBatch(
+            GetFeaturedOfferExpectedPriceBatchRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse> resp =
+                getFeaturedOfferExpectedPriceBatchWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the set of responses that correspond to the batched list of up to 40 requests defined in the request
+     * body. The response for each successful (HTTP status code 200) request in the set includes the computed listing
+     * price at or below which a seller can expect to become the featured offer (before applicable promotions). This is
+     * called the featured offer expected price (FOEP). Featured offer is not guaranteed because competing offers might
+     * change. Other offers might be featured based on factors such as fulfillment capabilities to a specific customer.
+     * The response to an unsuccessful request includes the available error text. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.033 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that are applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may receive higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API.
+     *
+     * @param body The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      * @return GetFeaturedOfferExpectedPriceBatchResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -270,8 +385,48 @@ public class ProductPricingApi {
     public GetFeaturedOfferExpectedPriceBatchResponse getFeaturedOfferExpectedPriceBatch(
             GetFeaturedOfferExpectedPriceBatchRequest body) throws ApiException, LWAException {
         ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse> resp =
-                getFeaturedOfferExpectedPriceBatchWithHttpInfo(body);
+                getFeaturedOfferExpectedPriceBatchWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the set of responses that correspond to the batched list of up to 40 requests defined in the request
+     * body. The response for each successful (HTTP status code 200) request in the set includes the computed listing
+     * price at or below which a seller can expect to become the featured offer (before applicable promotions). This is
+     * called the featured offer expected price (FOEP). Featured offer is not guaranteed because competing offers might
+     * change. Other offers might be featured based on factors such as fulfillment capabilities to a specific customer.
+     * The response to an unsuccessful request includes the available error text. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.033 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that are applied to the requested operation, when available. The preceding table
+     * contains the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may receive higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API.
+     *
+     * @param body The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetFeaturedOfferExpectedPriceBatchResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse> getFeaturedOfferExpectedPriceBatchWithHttpInfo(
+            GetFeaturedOfferExpectedPriceBatchRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getFeaturedOfferExpectedPriceBatchValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getFeaturedOfferExpectedPriceBatch");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getFeaturedOfferExpectedPriceBatchBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeaturedOfferExpectedPriceBatchResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("getFeaturedOfferExpectedPriceBatch operation exceeds rate limit");
     }
 
     /**
@@ -296,12 +451,7 @@ public class ProductPricingApi {
      */
     public ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse> getFeaturedOfferExpectedPriceBatchWithHttpInfo(
             GetFeaturedOfferExpectedPriceBatchRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = getFeaturedOfferExpectedPriceBatchValidateBeforeCall(body, null);
-        if (disableRateLimiting || getFeaturedOfferExpectedPriceBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeaturedOfferExpectedPriceBatchResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("getFeaturedOfferExpectedPriceBatch operation exceeds rate limit");
+        return getFeaturedOfferExpectedPriceBatchWithHttpInfo(body, null);
     }
 
     /**
@@ -321,6 +471,7 @@ public class ProductPricingApi {
      *
      * @param body The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -328,6 +479,35 @@ public class ProductPricingApi {
     public okhttp3.Call getFeaturedOfferExpectedPriceBatchAsync(
             GetFeaturedOfferExpectedPriceBatchRequest body,
             final ApiCallback<GetFeaturedOfferExpectedPriceBatchResponse> callback)
+            throws ApiException, LWAException {
+        return getFeaturedOfferExpectedPriceBatchAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the set of responses that correspond to the batched list of up to 40 requests defined in
+     * the request body. The response for each successful (HTTP status code 200) request in the set includes the
+     * computed listing price at or below which a seller can expect to become the featured offer (before applicable
+     * promotions). This is called the featured offer expected price (FOEP). Featured offer is not guaranteed because
+     * competing offers might change. Other offers might be featured based on factors such as fulfillment capabilities
+     * to a specific customer. The response to an unsuccessful request includes the available error text. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.033 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may receive higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API.
+     *
+     * @param body The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getFeaturedOfferExpectedPriceBatchAsync(
+            GetFeaturedOfferExpectedPriceBatchRequest body,
+            final ApiCallback<GetFeaturedOfferExpectedPriceBatchResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -337,6 +517,14 @@ public class ProductPricingApi {
         }
 
         okhttp3.Call call = getFeaturedOfferExpectedPriceBatchValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ProductPricingApi-getFeaturedOfferExpectedPriceBatch");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getFeaturedOfferExpectedPriceBatchBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetFeaturedOfferExpectedPriceBatchResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

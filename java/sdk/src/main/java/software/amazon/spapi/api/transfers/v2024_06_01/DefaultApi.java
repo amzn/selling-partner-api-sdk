@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -137,14 +138,76 @@ public class DefaultApi {
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
      *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetPaymentMethodsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetPaymentMethodsResponse getPaymentMethods(
+            String marketplaceId, List<String> paymentMethodTypes, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPaymentMethodsResponse> resp =
+                getPaymentMethodsWithHttpInfo(marketplaceId, paymentMethodTypes, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the list of payment methods for the seller, which can be filtered by method type. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | .5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The identifier of the marketplace from which you want to retrieve payment methods. For the
+     *     list of possible marketplace identifiers, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
+     *     (optional)
      * @return GetPaymentMethodsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetPaymentMethodsResponse getPaymentMethods(String marketplaceId, List<String> paymentMethodTypes)
             throws ApiException, LWAException {
-        ApiResponse<GetPaymentMethodsResponse> resp = getPaymentMethodsWithHttpInfo(marketplaceId, paymentMethodTypes);
+        ApiResponse<GetPaymentMethodsResponse> resp =
+                getPaymentMethodsWithHttpInfo(marketplaceId, paymentMethodTypes, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the list of payment methods for the seller, which can be filtered by method type. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | .5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The identifier of the marketplace from which you want to retrieve payment methods. For the
+     *     list of possible marketplace identifiers, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
+     *     (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetPaymentMethodsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetPaymentMethodsResponse> getPaymentMethodsWithHttpInfo(
+            String marketplaceId, List<String> paymentMethodTypes, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-getPaymentMethods");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getPaymentMethods operation exceeds rate limit");
     }
 
     /**
@@ -166,11 +229,7 @@ public class DefaultApi {
      */
     public ApiResponse<GetPaymentMethodsResponse> getPaymentMethodsWithHttpInfo(
             String marketplaceId, List<String> paymentMethodTypes) throws ApiException, LWAException {
-        okhttp3.Call call = getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, null);
-        if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPaymentMethods operation exceeds rate limit");
+        return getPaymentMethodsWithHttpInfo(marketplaceId, paymentMethodTypes, null);
     }
 
     /**
@@ -188,6 +247,7 @@ public class DefaultApi {
      * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
      *     (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -196,6 +256,34 @@ public class DefaultApi {
             String marketplaceId,
             List<String> paymentMethodTypes,
             final ApiCallback<GetPaymentMethodsResponse> callback)
+            throws ApiException, LWAException {
+        return getPaymentMethodsAsync(marketplaceId, paymentMethodTypes, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the list of payment methods for the seller, which can be filtered by method type.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | .5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceId The identifier of the marketplace from which you want to retrieve payment methods. For the
+     *     list of possible marketplace identifiers, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
+     *     (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getPaymentMethodsAsync(
+            String marketplaceId,
+            List<String> paymentMethodTypes,
+            final ApiCallback<GetPaymentMethodsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -206,6 +294,13 @@ public class DefaultApi {
 
         okhttp3.Call call =
                 getPaymentMethodsValidateBeforeCall(marketplaceId, paymentMethodTypes, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-getPaymentMethods");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -277,13 +372,67 @@ public class DefaultApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InitiatePayoutResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InitiatePayoutResponse initiatePayout(InitiatePayoutRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InitiatePayoutResponse> resp = initiatePayoutWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Initiates an on-demand payout to the seller&#x27;s default deposit method in Seller Central for the given
+     * &#x60;marketplaceId&#x60; and &#x60;accountType&#x60;, if eligible. You can only initiate one on-demand payout
+     * for each marketplace and account type within a 24-hour period. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.017 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
      * @return InitiatePayoutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InitiatePayoutResponse initiatePayout(InitiatePayoutRequest body) throws ApiException, LWAException {
-        ApiResponse<InitiatePayoutResponse> resp = initiatePayoutWithHttpInfo(body);
+        ApiResponse<InitiatePayoutResponse> resp = initiatePayoutWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Initiates an on-demand payout to the seller&#x27;s default deposit method in Seller Central for the given
+     * &#x60;marketplaceId&#x60; and &#x60;accountType&#x60;, if eligible. You can only initiate one on-demand payout
+     * for each marketplace and account type within a 24-hour period. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.017 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InitiatePayoutResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InitiatePayoutResponse> initiatePayoutWithHttpInfo(
+            InitiatePayoutRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-initiatePayout");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
     }
 
     /**
@@ -303,11 +452,7 @@ public class DefaultApi {
      */
     public ApiResponse<InitiatePayoutResponse> initiatePayoutWithHttpInfo(InitiatePayoutRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = initiatePayoutValidateBeforeCall(body, null);
-        if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
+        return initiatePayoutWithHttpInfo(body, null);
     }
 
     /**
@@ -322,12 +467,35 @@ public class DefaultApi {
      *
      * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call initiatePayoutAsync(
             InitiatePayoutRequest body, final ApiCallback<InitiatePayoutResponse> callback)
+            throws ApiException, LWAException {
+        return initiatePayoutAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Initiates an on-demand payout to the seller&#x27;s default deposit method in Seller Central for
+     * the given &#x60;marketplaceId&#x60; and &#x60;accountType&#x60;, if eligible. You can only initiate one on-demand
+     * payout for each marketplace and account type within a 24-hour period. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.017 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains
+     * the usage plan rate limits for the operation, when available. The preceding table contains the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput might have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call initiatePayoutAsync(
+            InitiatePayoutRequest body, final ApiCallback<InitiatePayoutResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -337,6 +505,13 @@ public class DefaultApi {
         }
 
         okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-initiatePayout");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

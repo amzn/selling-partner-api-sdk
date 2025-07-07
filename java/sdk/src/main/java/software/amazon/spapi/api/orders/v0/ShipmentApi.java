@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import io.github.bucket4j.Bucket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -121,12 +122,62 @@ public class ShipmentApi {
      *
      * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateShipmentStatus(UpdateShipmentStatusRequest body, String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        updateShipmentStatusWithHttpInfo(body, orderId, restrictedDataToken);
+    }
+
+    /**
+     * Update the shipment status for an order that you specify. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 5 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void updateShipmentStatus(UpdateShipmentStatusRequest body, String orderId)
             throws ApiException, LWAException {
-        updateShipmentStatusWithHttpInfo(body, orderId);
+        updateShipmentStatusWithHttpInfo(body, orderId, null);
+    }
+
+    /**
+     * Update the shipment status for an order that you specify. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 5 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateShipmentStatusWithHttpInfo(
+            UpdateShipmentStatusRequest body, String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShipmentApi-updateShipmentStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateShipmentStatusBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateShipmentStatus operation exceeds rate limit");
     }
 
     /**
@@ -145,10 +196,7 @@ public class ShipmentApi {
      */
     public ApiResponse<Void> updateShipmentStatusWithHttpInfo(UpdateShipmentStatusRequest body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, null);
-        if (disableRateLimiting || updateShipmentStatusBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updateShipmentStatus operation exceeds rate limit");
+        return updateShipmentStatusWithHttpInfo(body, orderId, null);
     }
 
     /**
@@ -162,12 +210,37 @@ public class ShipmentApi {
      * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateShipmentStatusAsync(
             UpdateShipmentStatusRequest body, String orderId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return updateShipmentStatusAsync(body, orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Update the shipment status for an order that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateShipmentStatusAsync(
+            UpdateShipmentStatusRequest body,
+            String orderId,
+            final ApiCallback<Void> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -177,6 +250,13 @@ public class ShipmentApi {
         }
 
         okhttp3.Call call = updateShipmentStatusValidateBeforeCall(body, orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShipmentApi-updateShipmentStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateShipmentStatusBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;

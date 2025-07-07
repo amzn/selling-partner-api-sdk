@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -231,14 +232,74 @@ public class ShippingApi {
      * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CancelShipmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CancelShipmentResponse cancelShipment(
+            String shipmentId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CancelShipmentResponse> resp =
+                cancelShipmentWithHttpInfo(shipmentId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values then those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return CancelShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CancelShipmentResponse cancelShipment(String shipmentId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        ApiResponse<CancelShipmentResponse> resp = cancelShipmentWithHttpInfo(shipmentId, xAmznShippingBusinessId);
+        ApiResponse<CancelShipmentResponse> resp =
+                cancelShipmentWithHttpInfo(shipmentId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values then those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CancelShipmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CancelShipmentResponse> cancelShipmentWithHttpInfo(
+            String shipmentId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-cancelShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
     }
 
     /**
@@ -259,11 +320,7 @@ public class ShippingApi {
      */
     public ApiResponse<CancelShipmentResponse> cancelShipmentWithHttpInfo(
             String shipmentId, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelShipmentValidateBeforeCall(shipmentId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
+        return cancelShipmentWithHttpInfo(shipmentId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -279,12 +336,39 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelShipmentAsync(
             String shipmentId, String xAmznShippingBusinessId, final ApiCallback<CancelShipmentResponse> callback)
+            throws ApiException, LWAException {
+        return cancelShipmentAsync(shipmentId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelShipmentAsync(
+            String shipmentId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<CancelShipmentResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -295,6 +379,13 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 cancelShipmentValidateBeforeCall(shipmentId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-cancelShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -375,14 +466,71 @@ public class ShippingApi {
      * @param body Request body for the createClaim operation (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateClaimResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateClaimResponse createClaim(
+            CreateClaimRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateClaimResponse> resp =
+                createClaimWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API will be used to create claim for single eligible shipment. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return CreateClaimResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateClaimResponse createClaim(CreateClaimRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        ApiResponse<CreateClaimResponse> resp = createClaimWithHttpInfo(body, xAmznShippingBusinessId);
+        ApiResponse<CreateClaimResponse> resp = createClaimWithHttpInfo(body, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API will be used to create claim for single eligible shipment. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateClaimResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateClaimResponse> createClaimWithHttpInfo(
+            CreateClaimRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createClaimValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-createClaim");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createClaimBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createClaim operation exceeds rate limit");
     }
 
     /**
@@ -402,11 +550,7 @@ public class ShippingApi {
      */
     public ApiResponse<CreateClaimResponse> createClaimWithHttpInfo(
             CreateClaimRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = createClaimValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || createClaimBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createClaim operation exceeds rate limit");
+        return createClaimWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -421,12 +565,38 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createClaimAsync(
             CreateClaimRequest body, String xAmznShippingBusinessId, final ApiCallback<CreateClaimResponse> callback)
+            throws ApiException, LWAException {
+        return createClaimAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API will be used to create claim for single eligible shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createClaimAsync(
+            CreateClaimRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<CreateClaimResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -436,6 +606,13 @@ public class ShippingApi {
         }
 
         okhttp3.Call call = createClaimValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-createClaim");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createClaimBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateClaimResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -535,6 +712,40 @@ public class ShippingApi {
      *     This does not support additional subtags beyond the primary and secondary language subtags. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return DirectPurchaseResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public DirectPurchaseResponse directPurchaseShipment(
+            DirectPurchaseRequest body,
+            String xAmznIdempotencyKey,
+            String locale,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<DirectPurchaseResponse> resp = directPurchaseShipmentWithHttpInfo(
+                body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related
+     * details and documents. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body DirectPurchaseRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary
+     *     language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation.
+     *     This does not support additional subtags beyond the primary and secondary language subtags. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return DirectPurchaseResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -543,8 +754,53 @@ public class ShippingApi {
             DirectPurchaseRequest body, String xAmznIdempotencyKey, String locale, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<DirectPurchaseResponse> resp =
-                directPurchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId);
+                directPurchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related
+     * details and documents. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body DirectPurchaseRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary
+     *     language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation.
+     *     This does not support additional subtags beyond the primary and secondary language subtags. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;DirectPurchaseResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<DirectPurchaseResponse> directPurchaseShipmentWithHttpInfo(
+            DirectPurchaseRequest body,
+            String xAmznIdempotencyKey,
+            String locale,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = directPurchaseShipmentValidateBeforeCall(
+                body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-directPurchaseShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || directPurchaseShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("directPurchaseShipment operation exceeds rate limit");
     }
 
     /**
@@ -571,12 +827,7 @@ public class ShippingApi {
     public ApiResponse<DirectPurchaseResponse> directPurchaseShipmentWithHttpInfo(
             DirectPurchaseRequest body, String xAmznIdempotencyKey, String locale, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = directPurchaseShipmentValidateBeforeCall(
-                body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || directPurchaseShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("directPurchaseShipment operation exceeds rate limit");
+        return directPurchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -597,6 +848,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -608,6 +860,39 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<DirectPurchaseResponse> callback)
             throws ApiException, LWAException {
+        return directPurchaseShipmentAsync(body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Purchases the shipping service for a shipment using the best fit service offering. Returns
+     * purchase related details and documents. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body DirectPurchaseRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary
+     *     language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation.
+     *     This does not support additional subtags beyond the primary and secondary language subtags. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call directPurchaseShipmentAsync(
+            DirectPurchaseRequest body,
+            String xAmznIdempotencyKey,
+            String locale,
+            String xAmznShippingBusinessId,
+            final ApiCallback<DirectPurchaseResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -617,6 +902,14 @@ public class ShippingApi {
 
         okhttp3.Call call = directPurchaseShipmentValidateBeforeCall(
                 body, xAmznIdempotencyKey, locale, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-directPurchaseShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || directPurchaseShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<DirectPurchaseResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -705,6 +998,35 @@ public class ShippingApi {
      *     request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GenerateCollectionFormResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GenerateCollectionFormResponse generateCollectionForm(
+            GenerateCollectionFormRequest body,
+            String xAmznIdempotencyKey,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GenerateCollectionFormResponse> resp = generateCollectionFormWithHttpInfo(
+                body, xAmznIdempotencyKey, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API Call to generate the collection form. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GenerateCollectionFormRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GenerateCollectionFormResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -713,8 +1035,48 @@ public class ShippingApi {
             GenerateCollectionFormRequest body, String xAmznIdempotencyKey, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<GenerateCollectionFormResponse> resp =
-                generateCollectionFormWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId);
+                generateCollectionFormWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API Call to generate the collection form. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GenerateCollectionFormRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GenerateCollectionFormResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GenerateCollectionFormResponse> generateCollectionFormWithHttpInfo(
+            GenerateCollectionFormRequest body,
+            String xAmznIdempotencyKey,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                generateCollectionFormValidateBeforeCall(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-generateCollectionForm");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || generateCollectionFormBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("generateCollectionForm operation exceeds rate limit");
     }
 
     /**
@@ -737,12 +1099,7 @@ public class ShippingApi {
     public ApiResponse<GenerateCollectionFormResponse> generateCollectionFormWithHttpInfo(
             GenerateCollectionFormRequest body, String xAmznIdempotencyKey, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                generateCollectionFormValidateBeforeCall(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || generateCollectionFormBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("generateCollectionForm operation exceeds rate limit");
+        return generateCollectionFormWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -760,6 +1117,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -770,6 +1128,35 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<GenerateCollectionFormResponse> callback)
             throws ApiException, LWAException {
+        return generateCollectionFormAsync(body, xAmznIdempotencyKey, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API Call to generate the collection form. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GenerateCollectionFormRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call generateCollectionFormAsync(
+            GenerateCollectionFormRequest body,
+            String xAmznIdempotencyKey,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GenerateCollectionFormResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -779,6 +1166,14 @@ public class ShippingApi {
 
         okhttp3.Call call = generateCollectionFormValidateBeforeCall(
                 body, xAmznIdempotencyKey, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-generateCollectionForm");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || generateCollectionFormBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GenerateCollectionFormResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -884,6 +1279,37 @@ public class ShippingApi {
      * @param postalCode postal code for access point (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAccessPointsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAccessPointsResponse getAccessPoints(
+            List<String> accessPointTypes,
+            String countryCode,
+            String postalCode,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetAccessPointsResponse> resp = getAccessPointsWithHttpInfo(
+                accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of access points in proximity of input postal code. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetAccessPointsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -892,8 +1318,49 @@ public class ShippingApi {
             List<String> accessPointTypes, String countryCode, String postalCode, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<GetAccessPointsResponse> resp =
-                getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId);
+                getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns a list of access points in proximity of input postal code. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAccessPointsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAccessPointsResponse> getAccessPointsWithHttpInfo(
+            List<String> accessPointTypes,
+            String countryCode,
+            String postalCode,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getAccessPointsValidateBeforeCall(
+                accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getAccessPoints");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAccessPointsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAccessPoints operation exceeds rate limit");
     }
 
     /**
@@ -917,12 +1384,7 @@ public class ShippingApi {
     public ApiResponse<GetAccessPointsResponse> getAccessPointsWithHttpInfo(
             List<String> accessPointTypes, String countryCode, String postalCode, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getAccessPointsValidateBeforeCall(
-                accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getAccessPointsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAccessPoints operation exceeds rate limit");
+        return getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -940,6 +1402,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -951,6 +1414,36 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<GetAccessPointsResponse> callback)
             throws ApiException, LWAException {
+        return getAccessPointsAsync(accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of access points in proximity of input postal code. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAccessPointsAsync(
+            List<String> accessPointTypes,
+            String countryCode,
+            String postalCode,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetAccessPointsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -960,6 +1453,13 @@ public class ShippingApi {
 
         okhttp3.Call call = getAccessPointsValidateBeforeCall(
                 accessPointTypes, countryCode, postalCode, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getAccessPoints");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAccessPointsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAccessPointsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1057,6 +1557,35 @@ public class ShippingApi {
      *     operation. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAdditionalInputsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAdditionalInputsResponse getAdditionalInputs(
+            String requestToken, String rateId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetAdditionalInputsResponse> resp =
+                getAdditionalInputsWithHttpInfo(requestToken, rateId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call
+     * the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that
+     * additional inputs are required for the rate (shipping offering) that you want to purchase. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param requestToken The request token returned in the response to the getRates operation. (required)
+     * @param rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates
+     *     operation. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetAdditionalInputsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1064,8 +1593,46 @@ public class ShippingApi {
     public GetAdditionalInputsResponse getAdditionalInputs(
             String requestToken, String rateId, String xAmznShippingBusinessId) throws ApiException, LWAException {
         ApiResponse<GetAdditionalInputsResponse> resp =
-                getAdditionalInputsWithHttpInfo(requestToken, rateId, xAmznShippingBusinessId);
+                getAdditionalInputsWithHttpInfo(requestToken, rateId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call
+     * the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that
+     * additional inputs are required for the rate (shipping offering) that you want to purchase. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param requestToken The request token returned in the response to the getRates operation. (required)
+     * @param rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates
+     *     operation. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAdditionalInputsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAdditionalInputsResponse> getAdditionalInputsWithHttpInfo(
+            String requestToken, String rateId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getAdditionalInputsValidateBeforeCall(requestToken, rateId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getAdditionalInputs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAdditionalInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAdditionalInputs operation exceeds rate limit");
     }
 
     /**
@@ -1090,11 +1657,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetAdditionalInputsResponse> getAdditionalInputsWithHttpInfo(
             String requestToken, String rateId, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getAdditionalInputsValidateBeforeCall(requestToken, rateId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getAdditionalInputsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAdditionalInputs operation exceeds rate limit");
+        return getAdditionalInputsWithHttpInfo(requestToken, rateId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -1114,6 +1677,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1124,6 +1688,37 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<GetAdditionalInputsResponse> callback)
             throws ApiException, LWAException {
+        return getAdditionalInputsAsync(requestToken, rateId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the JSON schema to use for providing additional inputs when needed to purchase a
+     * shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates
+     * operation indicates that additional inputs are required for the rate (shipping offering) that you want to
+     * purchase. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param requestToken The request token returned in the response to the getRates operation. (required)
+     * @param rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates
+     *     operation. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAdditionalInputsAsync(
+            String requestToken,
+            String rateId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetAdditionalInputsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1133,6 +1728,13 @@ public class ShippingApi {
 
         okhttp3.Call call = getAdditionalInputsValidateBeforeCall(
                 requestToken, rateId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getAdditionalInputs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAdditionalInputsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAdditionalInputsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1205,6 +1807,29 @@ public class ShippingApi {
      *
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetCarrierAccountFormInputsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetCarrierAccountFormInputsResponse getCarrierAccountFormInputs(
+            String xAmznShippingBusinessId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetCarrierAccountFormInputsResponse> resp =
+                getCarrierAccountFormInputsWithHttpInfo(xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API will return a list of input schema required to register a shipper account with the carrier. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetCarrierAccountFormInputsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1212,8 +1837,41 @@ public class ShippingApi {
     public GetCarrierAccountFormInputsResponse getCarrierAccountFormInputs(String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<GetCarrierAccountFormInputsResponse> resp =
-                getCarrierAccountFormInputsWithHttpInfo(xAmznShippingBusinessId);
+                getCarrierAccountFormInputsWithHttpInfo(xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API will return a list of input schema required to register a shipper account with the carrier. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetCarrierAccountFormInputsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetCarrierAccountFormInputsResponse> getCarrierAccountFormInputsWithHttpInfo(
+            String xAmznShippingBusinessId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getCarrierAccountFormInputsValidateBeforeCall(xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShippingApi-getCarrierAccountFormInputs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCarrierAccountFormInputsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCarrierAccountFormInputs operation exceeds rate limit");
     }
 
     /**
@@ -1233,11 +1891,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetCarrierAccountFormInputsResponse> getCarrierAccountFormInputsWithHttpInfo(
             String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getCarrierAccountFormInputsValidateBeforeCall(xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getCarrierAccountFormInputsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCarrierAccountFormInputs operation exceeds rate limit");
+        return getCarrierAccountFormInputsWithHttpInfo(xAmznShippingBusinessId, null);
     }
 
     /**
@@ -1252,12 +1906,37 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getCarrierAccountFormInputsAsync(
             String xAmznShippingBusinessId, final ApiCallback<GetCarrierAccountFormInputsResponse> callback)
+            throws ApiException, LWAException {
+        return getCarrierAccountFormInputsAsync(xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API will return a list of input schema required to register a shipper account with the
+     * carrier. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCarrierAccountFormInputsAsync(
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetCarrierAccountFormInputsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1268,6 +1947,14 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getCarrierAccountFormInputsValidateBeforeCall(xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShippingApi-getCarrierAccountFormInputs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCarrierAccountFormInputsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetCarrierAccountFormInputsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1349,14 +2036,74 @@ public class ShippingApi {
      * @param body GetCarrierAccountsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetCarrierAccountsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetCarrierAccountsResponse getCarrierAccounts(
+            GetCarrierAccountsRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetCarrierAccountsResponse> resp =
+                getCarrierAccountsWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API will return Get all carrier accounts for a merchant. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetCarrierAccountsRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetCarrierAccountsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetCarrierAccountsResponse getCarrierAccounts(GetCarrierAccountsRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        ApiResponse<GetCarrierAccountsResponse> resp = getCarrierAccountsWithHttpInfo(body, xAmznShippingBusinessId);
+        ApiResponse<GetCarrierAccountsResponse> resp =
+                getCarrierAccountsWithHttpInfo(body, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API will return Get all carrier accounts for a merchant. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetCarrierAccountsRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetCarrierAccountsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetCarrierAccountsResponse> getCarrierAccountsWithHttpInfo(
+            GetCarrierAccountsRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getCarrierAccountsValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getCarrierAccounts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCarrierAccountsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCarrierAccounts operation exceeds rate limit");
     }
 
     /**
@@ -1377,11 +2124,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetCarrierAccountsResponse> getCarrierAccountsWithHttpInfo(
             GetCarrierAccountsRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getCarrierAccountsValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getCarrierAccountsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCarrierAccounts operation exceeds rate limit");
+        return getCarrierAccountsWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -1397,6 +2140,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1405,6 +2149,32 @@ public class ShippingApi {
             GetCarrierAccountsRequest body,
             String xAmznShippingBusinessId,
             final ApiCallback<GetCarrierAccountsResponse> callback)
+            throws ApiException, LWAException {
+        return getCarrierAccountsAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API will return Get all carrier accounts for a merchant. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetCarrierAccountsRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCarrierAccountsAsync(
+            GetCarrierAccountsRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetCarrierAccountsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1415,6 +2185,13 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getCarrierAccountsValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getCarrierAccounts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCarrierAccountsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetCarrierAccountsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1498,6 +2275,30 @@ public class ShippingApi {
      * @param collectionFormId collection form Id to reprint a collection. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetCollectionFormResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetCollectionFormResponse getCollectionForm(
+            String collectionFormId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetCollectionFormResponse> resp =
+                getCollectionFormWithHttpInfo(collectionFormId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API reprint a collection form. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 |
+     * 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param collectionFormId collection form Id to reprint a collection. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetCollectionFormResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1505,8 +2306,41 @@ public class ShippingApi {
     public GetCollectionFormResponse getCollectionForm(String collectionFormId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<GetCollectionFormResponse> resp =
-                getCollectionFormWithHttpInfo(collectionFormId, xAmznShippingBusinessId);
+                getCollectionFormWithHttpInfo(collectionFormId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API reprint a collection form. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 |
+     * 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param collectionFormId collection form Id to reprint a collection. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetCollectionFormResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetCollectionFormResponse> getCollectionFormWithHttpInfo(
+            String collectionFormId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getCollectionFormValidateBeforeCall(collectionFormId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getCollectionForm");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCollectionFormBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCollectionForm operation exceeds rate limit");
     }
 
     /**
@@ -1526,11 +2360,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetCollectionFormResponse> getCollectionFormWithHttpInfo(
             String collectionFormId, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getCollectionFormValidateBeforeCall(collectionFormId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getCollectionFormBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCollectionForm operation exceeds rate limit");
+        return getCollectionFormWithHttpInfo(collectionFormId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -1545,6 +2375,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1553,6 +2384,31 @@ public class ShippingApi {
             String collectionFormId,
             String xAmznShippingBusinessId,
             final ApiCallback<GetCollectionFormResponse> callback)
+            throws ApiException, LWAException {
+        return getCollectionFormAsync(collectionFormId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API reprint a collection form. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param collectionFormId collection form Id to reprint a collection. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCollectionFormAsync(
+            String collectionFormId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetCollectionFormResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1563,6 +2419,13 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getCollectionFormValidateBeforeCall(collectionFormId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getCollectionForm");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCollectionFormBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetCollectionFormResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1645,6 +2508,31 @@ public class ShippingApi {
      * @param body GetCollectionFormHistoryRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetCollectionFormHistoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetCollectionFormHistoryResponse getCollectionFormHistory(
+            GetCollectionFormHistoryRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetCollectionFormHistoryResponse> resp =
+                getCollectionFormHistoryWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API Call to get the history of the previously generated collection forms. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetCollectionFormHistoryRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetCollectionFormHistoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1652,8 +2540,43 @@ public class ShippingApi {
     public GetCollectionFormHistoryResponse getCollectionFormHistory(
             GetCollectionFormHistoryRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         ApiResponse<GetCollectionFormHistoryResponse> resp =
-                getCollectionFormHistoryWithHttpInfo(body, xAmznShippingBusinessId);
+                getCollectionFormHistoryWithHttpInfo(body, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API Call to get the history of the previously generated collection forms. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetCollectionFormHistoryRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetCollectionFormHistoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetCollectionFormHistoryResponse> getCollectionFormHistoryWithHttpInfo(
+            GetCollectionFormHistoryRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getCollectionFormHistoryValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShippingApi-getCollectionFormHistory");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getCollectionFormHistoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getCollectionFormHistory operation exceeds rate limit");
     }
 
     /**
@@ -1674,11 +2597,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetCollectionFormHistoryResponse> getCollectionFormHistoryWithHttpInfo(
             GetCollectionFormHistoryRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getCollectionFormHistoryValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getCollectionFormHistoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCollectionFormHistory operation exceeds rate limit");
+        return getCollectionFormHistoryWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -1694,6 +2613,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1702,6 +2622,32 @@ public class ShippingApi {
             GetCollectionFormHistoryRequest body,
             String xAmznShippingBusinessId,
             final ApiCallback<GetCollectionFormHistoryResponse> callback)
+            throws ApiException, LWAException {
+        return getCollectionFormHistoryAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API Call to get the history of the previously generated collection forms. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetCollectionFormHistoryRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getCollectionFormHistoryAsync(
+            GetCollectionFormHistoryRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetCollectionFormHistoryResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1712,6 +2658,14 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getCollectionFormHistoryValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShippingApi-getCollectionFormHistory");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getCollectionFormHistoryBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetCollectionFormHistoryResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1792,14 +2746,69 @@ public class ShippingApi {
      * @param body GetRatesRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetRatesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetRatesResponse getRates(GetRatesRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetRatesResponse> resp = getRatesWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the available shipping service offerings. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetRatesRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetRatesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetRatesResponse getRates(GetRatesRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        ApiResponse<GetRatesResponse> resp = getRatesWithHttpInfo(body, xAmznShippingBusinessId);
+        ApiResponse<GetRatesResponse> resp = getRatesWithHttpInfo(body, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the available shipping service offerings. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetRatesRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetRatesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetRatesResponse> getRatesWithHttpInfo(
+            GetRatesRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getRatesValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getRates");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getRatesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getRates operation exceeds rate limit");
     }
 
     /**
@@ -1819,11 +2828,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetRatesResponse> getRatesWithHttpInfo(GetRatesRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getRatesValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getRatesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getRates operation exceeds rate limit");
+        return getRatesWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -1839,12 +2844,39 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getRatesAsync(
             GetRatesRequest body, String xAmznShippingBusinessId, final ApiCallback<GetRatesResponse> callback)
+            throws ApiException, LWAException {
+        return getRatesAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the available shipping service offerings. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetRatesRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getRatesAsync(
+            GetRatesRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetRatesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1854,6 +2886,13 @@ public class ShippingApi {
         }
 
         okhttp3.Call call = getRatesValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getRates");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getRatesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetRatesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1966,6 +3005,42 @@ public class ShippingApi {
      *     supported resolutions returned in the response to the getRates operation. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetShipmentDocumentsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetShipmentDocumentsResponse getShipmentDocuments(
+            String shipmentId,
+            String packageClientReferenceId,
+            String format,
+            BigDecimal dpi,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetShipmentDocumentsResponse> resp = getShipmentDocumentsWithHttpInfo(
+                shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the shipping documents associated with a package in a shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
+     * @param packageClientReferenceId The package client reference identifier originally provided in the request body
+     *     parameter for the getRates operation. (required)
+     * @param format The file format of the document. Must be one of the supported formats returned by the getRates
+     *     operation. (optional)
+     * @param dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the
+     *     supported resolutions returned in the response to the getRates operation. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetShipmentDocumentsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1978,8 +3053,54 @@ public class ShippingApi {
             String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<GetShipmentDocumentsResponse> resp = getShipmentDocumentsWithHttpInfo(
-                shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId);
+                shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the shipping documents associated with a package in a shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
+     * @param packageClientReferenceId The package client reference identifier originally provided in the request body
+     *     parameter for the getRates operation. (required)
+     * @param format The file format of the document. Must be one of the supported formats returned by the getRates
+     *     operation. (optional)
+     * @param dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the
+     *     supported resolutions returned in the response to the getRates operation. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetShipmentDocumentsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetShipmentDocumentsResponse> getShipmentDocumentsWithHttpInfo(
+            String shipmentId,
+            String packageClientReferenceId,
+            String format,
+            BigDecimal dpi,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getShipmentDocumentsValidateBeforeCall(
+                shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getShipmentDocuments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getShipmentDocumentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getShipmentDocuments operation exceeds rate limit");
     }
 
     /**
@@ -2011,12 +3132,8 @@ public class ShippingApi {
             BigDecimal dpi,
             String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getShipmentDocumentsValidateBeforeCall(
+        return getShipmentDocumentsWithHttpInfo(
                 shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getShipmentDocumentsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShipmentDocuments operation exceeds rate limit");
     }
 
     /**
@@ -2038,6 +3155,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2050,6 +3168,42 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<GetShipmentDocumentsResponse> callback)
             throws ApiException, LWAException {
+        return getShipmentDocumentsAsync(
+                shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the shipping documents associated with a package in a shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId The shipment identifier originally returned by the purchaseShipment operation. (required)
+     * @param packageClientReferenceId The package client reference identifier originally provided in the request body
+     *     parameter for the getRates operation. (required)
+     * @param format The file format of the document. Must be one of the supported formats returned by the getRates
+     *     operation. (optional)
+     * @param dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the
+     *     supported resolutions returned in the response to the getRates operation. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getShipmentDocumentsAsync(
+            String shipmentId,
+            String packageClientReferenceId,
+            String format,
+            BigDecimal dpi,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetShipmentDocumentsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2059,6 +3213,13 @@ public class ShippingApi {
 
         okhttp3.Call call = getShipmentDocumentsValidateBeforeCall(
                 shipmentId, packageClientReferenceId, format, dpi, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getShipmentDocuments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getShipmentDocumentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetShipmentDocumentsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2154,14 +3315,78 @@ public class ShippingApi {
      *     (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetTrackingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetTrackingResponse getTracking(
+            String trackingId, String carrierId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetTrackingResponse> resp =
+                getTrackingWithHttpInfo(trackingId, carrierId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns tracking information for a purchased shipment. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
+     *     (required)
+     * @param carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
+     *     (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetTrackingResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetTrackingResponse getTracking(String trackingId, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        ApiResponse<GetTrackingResponse> resp = getTrackingWithHttpInfo(trackingId, carrierId, xAmznShippingBusinessId);
+        ApiResponse<GetTrackingResponse> resp =
+                getTrackingWithHttpInfo(trackingId, carrierId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns tracking information for a purchased shipment. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
+     *     (required)
+     * @param carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
+     *     (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetTrackingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetTrackingResponse> getTrackingWithHttpInfo(
+            String trackingId, String carrierId, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getTrackingValidateBeforeCall(trackingId, carrierId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getTracking");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getTrackingBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getTracking operation exceeds rate limit");
     }
 
     /**
@@ -2184,11 +3409,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetTrackingResponse> getTrackingWithHttpInfo(
             String trackingId, String carrierId, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getTrackingValidateBeforeCall(trackingId, carrierId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getTrackingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTracking operation exceeds rate limit");
+        return getTrackingWithHttpInfo(trackingId, carrierId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -2207,6 +3428,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2217,6 +3439,36 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<GetTrackingResponse> callback)
             throws ApiException, LWAException {
+        return getTrackingAsync(trackingId, carrierId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns tracking information for a purchased shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
+     *     (required)
+     * @param carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
+     *     (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getTrackingAsync(
+            String trackingId,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetTrackingResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2226,6 +3478,13 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getTrackingValidateBeforeCall(trackingId, carrierId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-getTracking");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getTrackingBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetTrackingResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2308,6 +3567,31 @@ public class ShippingApi {
      * @param body GetUmanifestedShipmentsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetUnmanifestedShipmentsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetUnmanifestedShipmentsResponse getUnmanifestedShipments(
+            GetUnmanifestedShipmentsRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetUnmanifestedShipmentsResponse> resp =
+                getUnmanifestedShipmentsWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments
+     * with an eligible carrier for manifesting shall be returned. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetUmanifestedShipmentsRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return GetUnmanifestedShipmentsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2315,8 +3599,43 @@ public class ShippingApi {
     public GetUnmanifestedShipmentsResponse getUnmanifestedShipments(
             GetUnmanifestedShipmentsRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
         ApiResponse<GetUnmanifestedShipmentsResponse> resp =
-                getUnmanifestedShipmentsWithHttpInfo(body, xAmznShippingBusinessId);
+                getUnmanifestedShipmentsWithHttpInfo(body, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments
+     * with an eligible carrier for manifesting shall be returned. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetUmanifestedShipmentsRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetUnmanifestedShipmentsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetUnmanifestedShipmentsResponse> getUnmanifestedShipmentsWithHttpInfo(
+            GetUnmanifestedShipmentsRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getUnmanifestedShipmentsValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShippingApi-getUnmanifestedShipments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getUnmanifestedShipmentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getUnmanifestedShipments operation exceeds rate limit");
     }
 
     /**
@@ -2337,11 +3656,7 @@ public class ShippingApi {
      */
     public ApiResponse<GetUnmanifestedShipmentsResponse> getUnmanifestedShipmentsWithHttpInfo(
             GetUnmanifestedShipmentsRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = getUnmanifestedShipmentsValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || getUnmanifestedShipmentsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getUnmanifestedShipments operation exceeds rate limit");
+        return getUnmanifestedShipmentsWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -2358,6 +3673,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2366,6 +3682,33 @@ public class ShippingApi {
             GetUnmanifestedShipmentsRequest body,
             String xAmznShippingBusinessId,
             final ApiCallback<GetUnmanifestedShipmentsResponse> callback)
+            throws ApiException, LWAException {
+        return getUnmanifestedShipmentsAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API Get all unmanifested carriers with shipment locations. Any locations which has
+     * unmanifested shipments with an eligible carrier for manifesting shall be returned. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetUmanifestedShipmentsRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getUnmanifestedShipmentsAsync(
+            GetUnmanifestedShipmentsRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<GetUnmanifestedShipmentsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2376,6 +3719,14 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 getUnmanifestedShipmentsValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ShippingApi-getUnmanifestedShipments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getUnmanifestedShipmentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetUnmanifestedShipmentsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2466,6 +3817,35 @@ public class ShippingApi {
      * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return LinkCarrierAccountResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public LinkCarrierAccountResponse linkCarrierAccount(
+            LinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<LinkCarrierAccountResponse> resp =
+                linkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API associates/links the specified carrier account with the merchant. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return LinkCarrierAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2474,8 +3854,46 @@ public class ShippingApi {
             LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<LinkCarrierAccountResponse> resp =
-                linkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId);
+                linkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API associates/links the specified carrier account with the merchant. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;LinkCarrierAccountResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<LinkCarrierAccountResponse> linkCarrierAccountWithHttpInfo(
+            LinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = linkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-linkCarrierAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || linkCarrierAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount operation exceeds rate limit");
     }
 
     /**
@@ -2498,11 +3916,7 @@ public class ShippingApi {
     public ApiResponse<LinkCarrierAccountResponse> linkCarrierAccountWithHttpInfo(
             LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = linkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || linkCarrierAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount operation exceeds rate limit");
+        return linkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -2519,6 +3933,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2529,6 +3944,34 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<LinkCarrierAccountResponse> callback)
             throws ApiException, LWAException {
+        return linkCarrierAccountAsync(body, carrierId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API associates/links the specified carrier account with the merchant. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call linkCarrierAccountAsync(
+            LinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<LinkCarrierAccountResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2538,6 +3981,13 @@ public class ShippingApi {
 
         okhttp3.Call call =
                 linkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-linkCarrierAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || linkCarrierAccountBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2628,6 +4078,34 @@ public class ShippingApi {
      * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return LinkCarrierAccountResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public LinkCarrierAccountResponse linkCarrierAccount_0(
+            LinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<LinkCarrierAccountResponse> resp =
+                linkCarrierAccount_0WithHttpInfo(body, carrierId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API associates/links the specified carrier account with the merchant. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return LinkCarrierAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2636,8 +4114,45 @@ public class ShippingApi {
             LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<LinkCarrierAccountResponse> resp =
-                linkCarrierAccount_0WithHttpInfo(body, carrierId, xAmznShippingBusinessId);
+                linkCarrierAccount_0WithHttpInfo(body, carrierId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API associates/links the specified carrier account with the merchant. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;LinkCarrierAccountResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<LinkCarrierAccountResponse> linkCarrierAccount_0WithHttpInfo(
+            LinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = linkCarrierAccount_0ValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-linkCarrierAccount_0");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || linkCarrierAccount_0Bucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount_0 operation exceeds rate limit");
     }
 
     /**
@@ -2659,11 +4174,7 @@ public class ShippingApi {
     public ApiResponse<LinkCarrierAccountResponse> linkCarrierAccount_0WithHttpInfo(
             LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = linkCarrierAccount_0ValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || linkCarrierAccount_0Bucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("linkCarrierAccount_0 operation exceeds rate limit");
+        return linkCarrierAccount_0WithHttpInfo(body, carrierId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -2679,6 +4190,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2689,6 +4201,33 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<LinkCarrierAccountResponse> callback)
             throws ApiException, LWAException {
+        return linkCarrierAccount_0Async(body, carrierId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API associates/links the specified carrier account with the merchant. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call linkCarrierAccount_0Async(
+            LinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<LinkCarrierAccountResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2698,6 +4237,13 @@ public class ShippingApi {
 
         okhttp3.Call call = linkCarrierAccount_0ValidateBeforeCall(
                 body, carrierId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-linkCarrierAccount_0");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || linkCarrierAccount_0Bucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2779,14 +4325,73 @@ public class ShippingApi {
      * @param body OneClickShipmentRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return OneClickShipmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OneClickShipmentResponse oneClickShipment(
+            OneClickShipmentRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<OneClickShipmentResponse> resp =
+                oneClickShipmentWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Purchases a shipping service identifier and returns purchase-related details and documents. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body OneClickShipmentRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return OneClickShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public OneClickShipmentResponse oneClickShipment(OneClickShipmentRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        ApiResponse<OneClickShipmentResponse> resp = oneClickShipmentWithHttpInfo(body, xAmznShippingBusinessId);
+        ApiResponse<OneClickShipmentResponse> resp = oneClickShipmentWithHttpInfo(body, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Purchases a shipping service identifier and returns purchase-related details and documents. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body OneClickShipmentRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;OneClickShipmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OneClickShipmentResponse> oneClickShipmentWithHttpInfo(
+            OneClickShipmentRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = oneClickShipmentValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-oneClickShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || oneClickShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("oneClickShipment operation exceeds rate limit");
     }
 
     /**
@@ -2807,11 +4412,7 @@ public class ShippingApi {
      */
     public ApiResponse<OneClickShipmentResponse> oneClickShipmentWithHttpInfo(
             OneClickShipmentRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = oneClickShipmentValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || oneClickShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("oneClickShipment operation exceeds rate limit");
+        return oneClickShipmentWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -2827,6 +4428,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2836,6 +4438,32 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<OneClickShipmentResponse> callback)
             throws ApiException, LWAException {
+        return oneClickShipmentAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Purchases a shipping service identifier and returns purchase-related details and documents.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body OneClickShipmentRequest body (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call oneClickShipmentAsync(
+            OneClickShipmentRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<OneClickShipmentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2844,6 +4472,13 @@ public class ShippingApi {
         }
 
         okhttp3.Call call = oneClickShipmentValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-oneClickShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || oneClickShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<OneClickShipmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2936,6 +4571,39 @@ public class ShippingApi {
      *     request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return PurchaseShipmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public PurchaseShipmentResponse purchaseShipment(
+            PurchaseShipmentRequest body,
+            String xAmznIdempotencyKey,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<PurchaseShipmentResponse> resp =
+                purchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Purchases a shipping service and returns purchase related details and documents. Note: You must complete the
+     * purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the
+     * 10 minutes have expired, you will receive an error response with the error code equal to
+     * \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body PurchaseShipmentRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return PurchaseShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2944,8 +4612,51 @@ public class ShippingApi {
             PurchaseShipmentRequest body, String xAmznIdempotencyKey, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<PurchaseShipmentResponse> resp =
-                purchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId);
+                purchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * Purchases a shipping service and returns purchase related details and documents. Note: You must complete the
+     * purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the
+     * 10 minutes have expired, you will receive an error response with the error code equal to
+     * \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body PurchaseShipmentRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;PurchaseShipmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<PurchaseShipmentResponse> purchaseShipmentWithHttpInfo(
+            PurchaseShipmentRequest body,
+            String xAmznIdempotencyKey,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                purchaseShipmentValidateBeforeCall(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-purchaseShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || purchaseShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("purchaseShipment operation exceeds rate limit");
     }
 
     /**
@@ -2972,12 +4683,7 @@ public class ShippingApi {
     public ApiResponse<PurchaseShipmentResponse> purchaseShipmentWithHttpInfo(
             PurchaseShipmentRequest body, String xAmznIdempotencyKey, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                purchaseShipmentValidateBeforeCall(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || purchaseShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("purchaseShipment operation exceeds rate limit");
+        return purchaseShipmentWithHttpInfo(body, xAmznIdempotencyKey, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -2998,6 +4704,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3008,6 +4715,38 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<PurchaseShipmentResponse> callback)
             throws ApiException, LWAException {
+        return purchaseShipmentAsync(body, xAmznIdempotencyKey, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) Purchases a shipping service and returns purchase related details and documents. Note: You must
+     * complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the
+     * request after the 10 minutes have expired, you will receive an error response with the error code equal to
+     * \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body PurchaseShipmentRequest body (required)
+     * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same
+     *     request. (optional)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call purchaseShipmentAsync(
+            PurchaseShipmentRequest body,
+            String xAmznIdempotencyKey,
+            String xAmznShippingBusinessId,
+            final ApiCallback<PurchaseShipmentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3017,6 +4756,13 @@ public class ShippingApi {
 
         okhttp3.Call call = purchaseShipmentValidateBeforeCall(
                 body, xAmznIdempotencyKey, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-purchaseShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || purchaseShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<PurchaseShipmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3097,12 +4843,65 @@ public class ShippingApi {
      * @param body Request body for ndrFeedback operation (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void submitNdrFeedback(
+            SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        submitNdrFeedbackWithHttpInfo(body, xAmznShippingBusinessId, restrictedDataToken);
+    }
+
+    /**
+     * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void submitNdrFeedback(SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        submitNdrFeedbackWithHttpInfo(body, xAmznShippingBusinessId);
+        submitNdrFeedbackWithHttpInfo(body, xAmznShippingBusinessId, null);
+    }
+
+    /**
+     * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> submitNdrFeedbackWithHttpInfo(
+            SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(body, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-submitNdrFeedback");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitNdrFeedbackBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("submitNdrFeedback operation exceeds rate limit");
     }
 
     /**
@@ -3122,10 +4921,7 @@ public class ShippingApi {
      */
     public ApiResponse<Void> submitNdrFeedbackWithHttpInfo(
             SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId) throws ApiException, LWAException {
-        okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(body, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || submitNdrFeedbackBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("submitNdrFeedback operation exceeds rate limit");
+        return submitNdrFeedbackWithHttpInfo(body, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -3141,12 +4937,39 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call submitNdrFeedbackAsync(
             SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return submitNdrFeedbackAsync(body, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitNdrFeedbackAsync(
+            SubmitNdrFeedbackRequest body,
+            String xAmznShippingBusinessId,
+            final ApiCallback<Void> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3156,6 +4979,13 @@ public class ShippingApi {
         }
 
         okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(body, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-submitNdrFeedback");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitNdrFeedbackBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -3246,6 +5076,35 @@ public class ShippingApi {
      * @param carrierId carrier Id to unlink with merchant. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UnlinkCarrierAccountResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UnlinkCarrierAccountResponse unlinkCarrierAccount(
+            UnlinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UnlinkCarrierAccountResponse> resp =
+                unlinkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This API Unlink the specified carrier account with the merchant. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body UnlinkCarrierAccountRequest body (required)
+     * @param carrierId carrier Id to unlink with merchant. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
      * @return UnlinkCarrierAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3254,8 +5113,46 @@ public class ShippingApi {
             UnlinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
         ApiResponse<UnlinkCarrierAccountResponse> resp =
-                unlinkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId);
+                unlinkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId, null);
         return resp.getData();
+    }
+
+    /**
+     * This API Unlink the specified carrier account with the merchant. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body UnlinkCarrierAccountRequest body (required)
+     * @param carrierId carrier Id to unlink with merchant. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UnlinkCarrierAccountResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UnlinkCarrierAccountResponse> unlinkCarrierAccountWithHttpInfo(
+            UnlinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = unlinkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-unlinkCarrierAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || unlinkCarrierAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("unlinkCarrierAccount operation exceeds rate limit");
     }
 
     /**
@@ -3278,11 +5175,7 @@ public class ShippingApi {
     public ApiResponse<UnlinkCarrierAccountResponse> unlinkCarrierAccountWithHttpInfo(
             UnlinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId)
             throws ApiException, LWAException {
-        okhttp3.Call call = unlinkCarrierAccountValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null);
-        if (disableRateLimiting || unlinkCarrierAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("unlinkCarrierAccount operation exceeds rate limit");
+        return unlinkCarrierAccountWithHttpInfo(body, carrierId, xAmznShippingBusinessId, null);
     }
 
     /**
@@ -3299,6 +5192,7 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3309,6 +5203,34 @@ public class ShippingApi {
             String xAmznShippingBusinessId,
             final ApiCallback<UnlinkCarrierAccountResponse> callback)
             throws ApiException, LWAException {
+        return unlinkCarrierAccountAsync(body, carrierId, xAmznShippingBusinessId, callback, null);
+    }
+    /**
+     * (asynchronously) This API Unlink the specified carrier account with the merchant. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 80 | 100 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values then those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body UnlinkCarrierAccountRequest body (required)
+     * @param carrierId carrier Id to unlink with merchant. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
+     *     AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call unlinkCarrierAccountAsync(
+            UnlinkCarrierAccountRequest body,
+            String carrierId,
+            String xAmznShippingBusinessId,
+            final ApiCallback<UnlinkCarrierAccountResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3318,6 +5240,13 @@ public class ShippingApi {
 
         okhttp3.Call call = unlinkCarrierAccountValidateBeforeCall(
                 body, carrierId, xAmznShippingBusinessId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ShippingApi-unlinkCarrierAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || unlinkCarrierAccountBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<UnlinkCarrierAccountResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -126,14 +127,72 @@ public class UpdateInventoryApi {
      *
      * @param body The request body containing the inventory update data to submit. (required)
      * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SubmitInventoryUpdateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SubmitInventoryUpdateResponse submitInventoryUpdate(
+            SubmitInventoryUpdateRequest body, String warehouseId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SubmitInventoryUpdateResponse> resp =
+                submitInventoryUpdateWithHttpInfo(body, warehouseId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Submits inventory updates for the specified warehouse for either a partial or full feed of inventory items.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the inventory update data to submit. (required)
+     * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
      * @return SubmitInventoryUpdateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public SubmitInventoryUpdateResponse submitInventoryUpdate(SubmitInventoryUpdateRequest body, String warehouseId)
             throws ApiException, LWAException {
-        ApiResponse<SubmitInventoryUpdateResponse> resp = submitInventoryUpdateWithHttpInfo(body, warehouseId);
+        ApiResponse<SubmitInventoryUpdateResponse> resp = submitInventoryUpdateWithHttpInfo(body, warehouseId, null);
         return resp.getData();
+    }
+
+    /**
+     * Submits inventory updates for the specified warehouse for either a partial or full feed of inventory items.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the inventory update data to submit. (required)
+     * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SubmitInventoryUpdateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SubmitInventoryUpdateResponse> submitInventoryUpdateWithHttpInfo(
+            SubmitInventoryUpdateRequest body, String warehouseId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "UpdateInventoryApi-submitInventoryUpdate");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitInventoryUpdateBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitInventoryUpdate operation exceeds rate limit");
     }
 
     /**
@@ -153,11 +212,7 @@ public class UpdateInventoryApi {
      */
     public ApiResponse<SubmitInventoryUpdateResponse> submitInventoryUpdateWithHttpInfo(
             SubmitInventoryUpdateRequest body, String warehouseId) throws ApiException, LWAException {
-        okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, null);
-        if (disableRateLimiting || submitInventoryUpdateBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitInventoryUpdate operation exceeds rate limit");
+        return submitInventoryUpdateWithHttpInfo(body, warehouseId, null);
     }
 
     /**
@@ -172,6 +227,7 @@ public class UpdateInventoryApi {
      * @param body The request body containing the inventory update data to submit. (required)
      * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -181,6 +237,31 @@ public class UpdateInventoryApi {
             String warehouseId,
             final ApiCallback<SubmitInventoryUpdateResponse> callback)
             throws ApiException, LWAException {
+        return submitInventoryUpdateAsync(body, warehouseId, callback, null);
+    }
+    /**
+     * (asynchronously) Submits inventory updates for the specified warehouse for either a partial or full feed of
+     * inventory items. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request body containing the inventory update data to submit. (required)
+     * @param warehouseId Identifier for the warehouse for which to update inventory. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitInventoryUpdateAsync(
+            SubmitInventoryUpdateRequest body,
+            String warehouseId,
+            final ApiCallback<SubmitInventoryUpdateResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -189,6 +270,14 @@ public class UpdateInventoryApi {
         }
 
         okhttp3.Call call = submitInventoryUpdateValidateBeforeCall(body, warehouseId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "UpdateInventoryApi-submitInventoryUpdate");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || submitInventoryUpdateBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SubmitInventoryUpdateResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

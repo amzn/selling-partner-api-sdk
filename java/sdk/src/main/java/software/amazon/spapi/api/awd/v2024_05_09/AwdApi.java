@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -159,11 +160,59 @@ public class AwdApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId The ID of the inbound order you want to cancel. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void cancelInbound(String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        cancelInboundWithHttpInfo(orderId, restrictedDataToken);
+    }
+
+    /**
+     * Cancels an AWD Inbound order and its associated shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order you want to cancel. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void cancelInbound(String orderId) throws ApiException, LWAException {
-        cancelInboundWithHttpInfo(orderId);
+        cancelInboundWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * Cancels an AWD Inbound order and its associated shipment. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The preceding table indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order you want to cancel. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> cancelInboundWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelInboundValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-cancelInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelInboundBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelInbound operation exceeds rate limit");
     }
 
     /**
@@ -181,10 +230,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> cancelInboundWithHttpInfo(String orderId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelInboundValidateBeforeCall(orderId, null);
-        if (disableRateLimiting || cancelInboundBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelInbound operation exceeds rate limit");
+        return cancelInboundWithHttpInfo(orderId, null);
     }
 
     /**
@@ -198,11 +244,32 @@ public class AwdApi {
      *
      * @param orderId The ID of the inbound order you want to cancel. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelInboundAsync(String orderId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return cancelInboundAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels an AWD Inbound order and its associated shipment. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order you want to cancel. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelInboundAsync(String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -212,6 +279,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = cancelInboundValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-cancelInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelInboundBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -281,13 +355,65 @@ public class AwdApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Represents the packages you want to inbound. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InboundEligibility
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InboundEligibility checkInboundEligibility(InboundPackages body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InboundEligibility> resp = checkInboundEligibilityWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Determines if the packages you specify are eligible for an AWD inbound order and contains error details for
+     * ineligible packages. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents the packages you want to inbound. (required)
      * @return InboundEligibility
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InboundEligibility checkInboundEligibility(InboundPackages body) throws ApiException, LWAException {
-        ApiResponse<InboundEligibility> resp = checkInboundEligibilityWithHttpInfo(body);
+        ApiResponse<InboundEligibility> resp = checkInboundEligibilityWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Determines if the packages you specify are eligible for an AWD inbound order and contains error details for
+     * ineligible packages. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents the packages you want to inbound. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InboundEligibility&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InboundEligibility> checkInboundEligibilityWithHttpInfo(
+            InboundPackages body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = checkInboundEligibilityValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-checkInboundEligibility");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || checkInboundEligibilityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InboundEligibility>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("checkInboundEligibility operation exceeds rate limit");
     }
 
     /**
@@ -306,11 +432,7 @@ public class AwdApi {
      */
     public ApiResponse<InboundEligibility> checkInboundEligibilityWithHttpInfo(InboundPackages body)
             throws ApiException, LWAException {
-        okhttp3.Call call = checkInboundEligibilityValidateBeforeCall(body, null);
-        if (disableRateLimiting || checkInboundEligibilityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InboundEligibility>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("checkInboundEligibility operation exceeds rate limit");
+        return checkInboundEligibilityWithHttpInfo(body, null);
     }
 
     /**
@@ -324,12 +446,34 @@ public class AwdApi {
      *
      * @param body Represents the packages you want to inbound. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call checkInboundEligibilityAsync(
             InboundPackages body, final ApiCallback<InboundEligibility> callback) throws ApiException, LWAException {
+        return checkInboundEligibilityAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Determines if the packages you specify are eligible for an AWD inbound order and contains error
+     * details for ineligible packages. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents the packages you want to inbound. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call checkInboundEligibilityAsync(
+            InboundPackages body, final ApiCallback<InboundEligibility> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -338,6 +482,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = checkInboundEligibilityValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-checkInboundEligibility");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || checkInboundEligibilityBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InboundEligibility>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -410,11 +561,59 @@ public class AwdApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId The ID of the inbound order that you want to confirm. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void confirmInbound(String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        confirmInboundWithHttpInfo(orderId, restrictedDataToken);
+    }
+
+    /**
+     * Confirms an AWD inbound order in &#x60;DRAFT&#x60; status. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order that you want to confirm. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void confirmInbound(String orderId) throws ApiException, LWAException {
-        confirmInboundWithHttpInfo(orderId);
+        confirmInboundWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * Confirms an AWD inbound order in &#x60;DRAFT&#x60; status. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order that you want to confirm. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> confirmInboundWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmInboundValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-confirmInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmInboundBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("confirmInbound operation exceeds rate limit");
     }
 
     /**
@@ -432,10 +631,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> confirmInboundWithHttpInfo(String orderId) throws ApiException, LWAException {
-        okhttp3.Call call = confirmInboundValidateBeforeCall(orderId, null);
-        if (disableRateLimiting || confirmInboundBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("confirmInbound operation exceeds rate limit");
+        return confirmInboundWithHttpInfo(orderId, null);
     }
 
     /**
@@ -449,11 +645,33 @@ public class AwdApi {
      *
      * @param orderId The ID of the inbound order that you want to confirm. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call confirmInboundAsync(String orderId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return confirmInboundAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms an AWD inbound order in &#x60;DRAFT&#x60; status. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order that you want to confirm. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmInboundAsync(
+            String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -463,6 +681,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = confirmInboundValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-confirmInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || confirmInboundBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -532,13 +757,65 @@ public class AwdApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Payload for creating an inbound order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InboundOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InboundOrderReference createInbound(InboundOrderCreationData body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InboundOrderReference> resp = createInboundWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation creates one
+     * shipment per order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an inbound order. (required)
      * @return InboundOrderReference
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InboundOrderReference createInbound(InboundOrderCreationData body) throws ApiException, LWAException {
-        ApiResponse<InboundOrderReference> resp = createInboundWithHttpInfo(body);
+        ApiResponse<InboundOrderReference> resp = createInboundWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation creates one
+     * shipment per order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an inbound order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InboundOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InboundOrderReference> createInboundWithHttpInfo(
+            InboundOrderCreationData body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createInboundValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-createInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createInboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InboundOrderReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createInbound operation exceeds rate limit");
     }
 
     /**
@@ -557,11 +834,7 @@ public class AwdApi {
      */
     public ApiResponse<InboundOrderReference> createInboundWithHttpInfo(InboundOrderCreationData body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createInboundValidateBeforeCall(body, null);
-        if (disableRateLimiting || createInboundBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InboundOrderReference>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createInbound operation exceeds rate limit");
+        return createInboundWithHttpInfo(body, null);
     }
 
     /**
@@ -575,12 +848,36 @@ public class AwdApi {
      *
      * @param body Payload for creating an inbound order. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createInboundAsync(
             InboundOrderCreationData body, final ApiCallback<InboundOrderReference> callback)
+            throws ApiException, LWAException {
+        return createInboundAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation
+     * creates one shipment per order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an inbound order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createInboundAsync(
+            InboundOrderCreationData body,
+            final ApiCallback<InboundOrderReference> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -590,6 +887,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = createInboundValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-createInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createInboundBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InboundOrderReference>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -661,13 +965,62 @@ public class AwdApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param orderId The ID of the inbound order that you want to retrieve. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InboundOrder
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InboundOrder getInbound(String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<InboundOrder> resp = getInboundWithHttpInfo(orderId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD inbound order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order that you want to retrieve. (required)
      * @return InboundOrder
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InboundOrder getInbound(String orderId) throws ApiException, LWAException {
-        ApiResponse<InboundOrder> resp = getInboundWithHttpInfo(orderId);
+        ApiResponse<InboundOrder> resp = getInboundWithHttpInfo(orderId, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD inbound order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order that you want to retrieve. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InboundOrder&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InboundOrder> getInboundWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getInboundValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InboundOrder>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInbound operation exceeds rate limit");
     }
 
     /**
@@ -684,11 +1037,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<InboundOrder> getInboundWithHttpInfo(String orderId) throws ApiException, LWAException {
-        okhttp3.Call call = getInboundValidateBeforeCall(orderId, null);
-        if (disableRateLimiting || getInboundBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InboundOrder>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInbound operation exceeds rate limit");
+        return getInboundWithHttpInfo(orderId, null);
     }
 
     /**
@@ -701,11 +1050,32 @@ public class AwdApi {
      *
      * @param orderId The ID of the inbound order that you want to retrieve. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInboundAsync(String orderId, final ApiCallback<InboundOrder> callback)
+            throws ApiException, LWAException {
+        return getInboundAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves an AWD inbound order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The ID of the inbound order that you want to retrieve. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInboundAsync(
+            String orderId, final ApiCallback<InboundOrder> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -715,6 +1085,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = getInboundValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInboundBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InboundOrder>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -797,14 +1174,69 @@ public class AwdApi {
      * @param shipmentId ID for the shipment. A shipment contains the cases being inbounded. (required)
      * @param skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.
      *     Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InboundShipment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InboundShipment getInboundShipment(String shipmentId, String skuQuantities, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InboundShipment> resp =
+                getInboundShipmentWithHttpInfo(shipmentId, skuQuantities, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD inbound shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
+     *
+     * @param shipmentId ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.
+     *     Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      * @return InboundShipment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public InboundShipment getInboundShipment(String shipmentId, String skuQuantities)
             throws ApiException, LWAException {
-        ApiResponse<InboundShipment> resp = getInboundShipmentWithHttpInfo(shipmentId, skuQuantities);
+        ApiResponse<InboundShipment> resp = getInboundShipmentWithHttpInfo(shipmentId, skuQuantities, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD inbound shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
+     *
+     * @param shipmentId ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.
+     *     Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InboundShipment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InboundShipment> getInboundShipmentWithHttpInfo(
+            String shipmentId, String skuQuantities, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getInboundShipmentValidateBeforeCall(shipmentId, skuQuantities, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getInboundShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInboundShipmentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InboundShipment>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInboundShipment operation exceeds rate limit");
     }
 
     /**
@@ -824,11 +1256,7 @@ public class AwdApi {
      */
     public ApiResponse<InboundShipment> getInboundShipmentWithHttpInfo(String shipmentId, String skuQuantities)
             throws ApiException, LWAException {
-        okhttp3.Call call = getInboundShipmentValidateBeforeCall(shipmentId, skuQuantities, null);
-        if (disableRateLimiting || getInboundShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InboundShipment>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInboundShipment operation exceeds rate limit");
+        return getInboundShipmentWithHttpInfo(shipmentId, skuQuantities, null);
     }
 
     /**
@@ -843,12 +1271,38 @@ public class AwdApi {
      * @param skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.
      *     Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInboundShipmentAsync(
             String shipmentId, String skuQuantities, final ApiCallback<InboundShipment> callback)
+            throws ApiException, LWAException {
+        return getInboundShipmentAsync(shipmentId, skuQuantities, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves an AWD inbound shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
+     *
+     * @param shipmentId ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.
+     *     Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInboundShipmentAsync(
+            String shipmentId,
+            String skuQuantities,
+            final ApiCallback<InboundShipment> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -858,6 +1312,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = getInboundShipmentValidateBeforeCall(shipmentId, skuQuantities, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getInboundShipment");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInboundShipmentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InboundShipment>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -946,14 +1407,77 @@ public class AwdApi {
      * @param pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
      * @param formatType The format type of the output file that contains your labels. The default format type is
      *     &#x60;PDF&#x60;. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ShipmentLabels
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShipmentLabels getInboundShipmentLabels(
+            String shipmentId, String pageType, String formatType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ShipmentLabels> resp =
+                getInboundShipmentLabelsWithHttpInfo(shipmentId, pageType, formatType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label
+     * status is &#x60;GENERATED&#x60;, then the label URL is available. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param formatType The format type of the output file that contains your labels. The default format type is
+     *     &#x60;PDF&#x60;. (optional)
      * @return ShipmentLabels
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ShipmentLabels getInboundShipmentLabels(String shipmentId, String pageType, String formatType)
             throws ApiException, LWAException {
-        ApiResponse<ShipmentLabels> resp = getInboundShipmentLabelsWithHttpInfo(shipmentId, pageType, formatType);
+        ApiResponse<ShipmentLabels> resp = getInboundShipmentLabelsWithHttpInfo(shipmentId, pageType, formatType, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label
+     * status is &#x60;GENERATED&#x60;, then the label URL is available. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The preceding table indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param formatType The format type of the output file that contains your labels. The default format type is
+     *     &#x60;PDF&#x60;. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ShipmentLabels&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShipmentLabels> getInboundShipmentLabelsWithHttpInfo(
+            String shipmentId, String pageType, String formatType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getInboundShipmentLabelsValidateBeforeCall(shipmentId, pageType, formatType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getInboundShipmentLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getInboundShipmentLabelsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShipmentLabels>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getInboundShipmentLabels operation exceeds rate limit");
     }
 
     /**
@@ -976,11 +1500,7 @@ public class AwdApi {
      */
     public ApiResponse<ShipmentLabels> getInboundShipmentLabelsWithHttpInfo(
             String shipmentId, String pageType, String formatType) throws ApiException, LWAException {
-        okhttp3.Call call = getInboundShipmentLabelsValidateBeforeCall(shipmentId, pageType, formatType, null);
-        if (disableRateLimiting || getInboundShipmentLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShipmentLabels>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInboundShipmentLabels operation exceeds rate limit");
+        return getInboundShipmentLabelsWithHttpInfo(shipmentId, pageType, formatType, null);
     }
 
     /**
@@ -998,12 +1518,42 @@ public class AwdApi {
      * @param formatType The format type of the output file that contains your labels. The default format type is
      *     &#x60;PDF&#x60;. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getInboundShipmentLabelsAsync(
             String shipmentId, String pageType, String formatType, final ApiCallback<ShipmentLabels> callback)
+            throws ApiException, LWAException {
+        return getInboundShipmentLabelsAsync(shipmentId, pageType, formatType, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation.
+     * If the label status is &#x60;GENERATED&#x60;, then the label URL is available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param formatType The format type of the output file that contains your labels. The default format type is
+     *     &#x60;PDF&#x60;. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getInboundShipmentLabelsAsync(
+            String shipmentId,
+            String pageType,
+            String formatType,
+            final ApiCallback<ShipmentLabels> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1014,6 +1564,13 @@ public class AwdApi {
 
         okhttp3.Call call =
                 getInboundShipmentLabelsValidateBeforeCall(shipmentId, pageType, formatType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getInboundShipmentLabels");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getInboundShipmentLabelsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ShipmentLabels>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1142,6 +1699,58 @@ public class AwdApi {
      *     the next page of results, call the operation with this token and include the same arguments as the call that
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ShipmentListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShipmentListing listInboundShipments(
+            String sortBy,
+            String sortOrder,
+            String shipmentStatus,
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            Integer maxResults,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ShipmentListing> resp = listInboundShipmentsWithHttpInfo(
+                sortBy,
+                sortOrder,
+                shipmentStatus,
+                updatedAfter,
+                updatedBefore,
+                maxResults,
+                nextToken,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply
+     * optional filters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in
+     *     DESCENDING order. (optional)
+     * @param shipmentStatus Filter by inbound shipment status. (optional)
+     * @param updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must
+     *     be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date
+     *     must be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
      * @return ShipmentListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1156,8 +1765,63 @@ public class AwdApi {
             String nextToken)
             throws ApiException, LWAException {
         ApiResponse<ShipmentListing> resp = listInboundShipmentsWithHttpInfo(
-                sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken);
+                sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply
+     * optional filters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in
+     *     DESCENDING order. (optional)
+     * @param shipmentStatus Filter by inbound shipment status. (optional)
+     * @param updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must
+     *     be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date
+     *     must be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ShipmentListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShipmentListing> listInboundShipmentsWithHttpInfo(
+            String sortBy,
+            String sortOrder,
+            String shipmentStatus,
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            Integer maxResults,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listInboundShipmentsValidateBeforeCall(
+                sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listInboundShipments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listInboundShipmentsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShipmentListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listInboundShipments operation exceeds rate limit");
     }
 
     /**
@@ -1198,12 +1862,8 @@ public class AwdApi {
             Integer maxResults,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = listInboundShipmentsValidateBeforeCall(
+        return listInboundShipmentsWithHttpInfo(
                 sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken, null);
-        if (disableRateLimiting || listInboundShipmentsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShipmentListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listInboundShipments operation exceeds rate limit");
     }
 
     /**
@@ -1232,6 +1892,7 @@ public class AwdApi {
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1245,6 +1906,51 @@ public class AwdApi {
             Integer maxResults,
             String nextToken,
             final ApiCallback<ShipmentListing> callback)
+            throws ApiException, LWAException {
+        return listInboundShipmentsAsync(
+                sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the
+     * ability to apply optional filters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in
+     *     DESCENDING order. (optional)
+     * @param shipmentStatus Filter by inbound shipment status. (optional)
+     * @param updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must
+     *     be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date
+     *     must be in &lt;a href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO
+     *     8601&lt;/a&gt; format. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listInboundShipmentsAsync(
+            String sortBy,
+            String sortOrder,
+            String shipmentStatus,
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            Integer maxResults,
+            String nextToken,
+            final ApiCallback<ShipmentListing> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1262,6 +1968,13 @@ public class AwdApi {
                 maxResults,
                 nextToken,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listInboundShipments");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listInboundShipmentsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ShipmentListing>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1362,6 +2075,43 @@ public class AwdApi {
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
      * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return InventoryListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public InventoryListing listInventory(
+            String sku,
+            String sortOrder,
+            String details,
+            String nextToken,
+            Integer maxResults,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<InventoryListing> resp =
+                listInventoryWithHttpInfo(sku, sortOrder, details, nextToken, maxResults, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Lists AWD inventory associated with a merchant with the ability to apply optional filters. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param sku Filter by seller or merchant SKU for the item. (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to
+     *     &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
      * @return InventoryListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1369,8 +2119,55 @@ public class AwdApi {
     public InventoryListing listInventory(
             String sku, String sortOrder, String details, String nextToken, Integer maxResults)
             throws ApiException, LWAException {
-        ApiResponse<InventoryListing> resp = listInventoryWithHttpInfo(sku, sortOrder, details, nextToken, maxResults);
+        ApiResponse<InventoryListing> resp =
+                listInventoryWithHttpInfo(sku, sortOrder, details, nextToken, maxResults, null);
         return resp.getData();
+    }
+
+    /**
+     * Lists AWD inventory associated with a merchant with the ability to apply optional filters. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param sku Filter by seller or merchant SKU for the item. (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to
+     *     &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;InventoryListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<InventoryListing> listInventoryWithHttpInfo(
+            String sku,
+            String sortOrder,
+            String details,
+            String nextToken,
+            Integer maxResults,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listInventoryValidateBeforeCall(sku, sortOrder, details, nextToken, maxResults, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listInventory");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listInventoryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<InventoryListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listInventory operation exceeds rate limit");
     }
 
     /**
@@ -1399,11 +2196,7 @@ public class AwdApi {
     public ApiResponse<InventoryListing> listInventoryWithHttpInfo(
             String sku, String sortOrder, String details, String nextToken, Integer maxResults)
             throws ApiException, LWAException {
-        okhttp3.Call call = listInventoryValidateBeforeCall(sku, sortOrder, details, nextToken, maxResults, null);
-        if (disableRateLimiting || listInventoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InventoryListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listInventory operation exceeds rate limit");
+        return listInventoryWithHttpInfo(sku, sortOrder, details, nextToken, maxResults, null);
     }
 
     /**
@@ -1426,6 +2219,7 @@ public class AwdApi {
      *     that this operation can return empty pages. (optional)
      * @param maxResults Maximum number of results to return. (optional, default to 25)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1438,6 +2232,42 @@ public class AwdApi {
             Integer maxResults,
             final ApiCallback<InventoryListing> callback)
             throws ApiException, LWAException {
+        return listInventoryAsync(sku, sortOrder, details, nextToken, maxResults, callback, null);
+    }
+    /**
+     * (asynchronously) Lists AWD inventory associated with a merchant with the ability to apply optional filters.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param sku Filter by seller or merchant SKU for the item. (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to
+     *     &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listInventoryAsync(
+            String sku,
+            String sortOrder,
+            String details,
+            String nextToken,
+            Integer maxResults,
+            final ApiCallback<InventoryListing> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1447,6 +2277,13 @@ public class AwdApi {
 
         okhttp3.Call call = listInventoryValidateBeforeCall(
                 sku, sortOrder, details, nextToken, maxResults, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listInventory");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listInventoryBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<InventoryListing>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1529,11 +2366,64 @@ public class AwdApi {
      *
      * @param body Represents an AWD inbound order. (required)
      * @param orderId The ID of the inbound order that you want to update. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateInbound(InboundOrder body, String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        updateInboundWithHttpInfo(body, orderId, restrictedDataToken);
+    }
+
+    /**
+     * Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this operation to
+     * update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60; attributes.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD inbound order. (required)
+     * @param orderId The ID of the inbound order that you want to update. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void updateInbound(InboundOrder body, String orderId) throws ApiException, LWAException {
-        updateInboundWithHttpInfo(body, orderId);
+        updateInboundWithHttpInfo(body, orderId, null);
+    }
+
+    /**
+     * Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this operation to
+     * update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60; attributes.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD inbound order. (required)
+     * @param orderId The ID of the inbound order that you want to update. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateInboundWithHttpInfo(InboundOrder body, String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateInboundValidateBeforeCall(body, orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-updateInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateInboundBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateInbound operation exceeds rate limit");
     }
 
     /**
@@ -1554,10 +2444,7 @@ public class AwdApi {
      */
     public ApiResponse<Void> updateInboundWithHttpInfo(InboundOrder body, String orderId)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateInboundValidateBeforeCall(body, orderId, null);
-        if (disableRateLimiting || updateInboundBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updateInbound operation exceeds rate limit");
+        return updateInboundWithHttpInfo(body, orderId, null);
     }
 
     /**
@@ -1573,11 +2460,35 @@ public class AwdApi {
      * @param body Represents an AWD inbound order. (required)
      * @param orderId The ID of the inbound order that you want to update. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateInboundAsync(InboundOrder body, String orderId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return updateInboundAsync(body, orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this
+     * operation to update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60;
+     * attributes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD inbound order. (required)
+     * @param orderId The ID of the inbound order that you want to update. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateInboundAsync(
+            InboundOrder body, String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1587,6 +2498,13 @@ public class AwdApi {
         }
 
         okhttp3.Call call = updateInboundValidateBeforeCall(body, orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-updateInbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateInboundBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -1668,12 +2586,66 @@ public class AwdApi {
      *
      * @param body Transportation details for the shipment. (required)
      * @param shipmentId The shipment ID. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateInboundShipmentTransportDetails(
+            TransportationDetails body, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId, restrictedDataToken);
+    }
+
+    /**
+     * Updates transport details for an AWD shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Transportation details for the shipment. (required)
+     * @param shipmentId The shipment ID. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void updateInboundShipmentTransportDetails(TransportationDetails body, String shipmentId)
             throws ApiException, LWAException {
-        updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId);
+        updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId, null);
+    }
+
+    /**
+     * Updates transport details for an AWD shipment. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Transportation details for the shipment. (required)
+     * @param shipmentId The shipment ID. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateInboundShipmentTransportDetailsWithHttpInfo(
+            TransportationDetails body, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateInboundShipmentTransportDetailsValidateBeforeCall(body, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AwdApi-updateInboundShipmentTransportDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateInboundShipmentTransportDetailsBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "updateInboundShipmentTransportDetails operation exceeds rate limit");
     }
 
     /**
@@ -1692,12 +2664,7 @@ public class AwdApi {
      */
     public ApiResponse<Void> updateInboundShipmentTransportDetailsWithHttpInfo(
             TransportationDetails body, String shipmentId) throws ApiException, LWAException {
-        okhttp3.Call call = updateInboundShipmentTransportDetailsValidateBeforeCall(body, shipmentId, null);
-        if (disableRateLimiting || updateInboundShipmentTransportDetailsBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "updateInboundShipmentTransportDetails operation exceeds rate limit");
+        return updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId, null);
     }
 
     /**
@@ -1712,12 +2679,35 @@ public class AwdApi {
      * @param body Transportation details for the shipment. (required)
      * @param shipmentId The shipment ID. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateInboundShipmentTransportDetailsAsync(
             TransportationDetails body, String shipmentId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return updateInboundShipmentTransportDetailsAsync(body, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates transport details for an AWD shipment. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Transportation details for the shipment. (required)
+     * @param shipmentId The shipment ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateInboundShipmentTransportDetailsAsync(
+            TransportationDetails body, String shipmentId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1728,6 +2718,14 @@ public class AwdApi {
 
         okhttp3.Call call =
                 updateInboundShipmentTransportDetailsValidateBeforeCall(body, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "AwdApi-updateInboundShipmentTransportDetails");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateInboundShipmentTransportDetailsBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;

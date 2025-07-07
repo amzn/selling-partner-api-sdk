@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -119,13 +120,54 @@ public class AccountsApi {
      * account by Amazon account identifier.
      *
      * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return BankAccount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public BankAccount getAccount(String accountId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve an Amazon Seller Wallet bank
+     * account by Amazon account identifier.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
      * @return BankAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public BankAccount getAccount(String accountId) throws ApiException, LWAException {
-        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId);
+        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId, null);
         return resp.getData();
+    }
+
+    /**
+     * Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve an Amazon Seller Wallet bank
+     * account by Amazon account identifier.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;BankAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<BankAccount> getAccountWithHttpInfo(String accountId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getAccountValidateBeforeCall(accountId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AccountsApi-getAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
     }
 
     /**
@@ -138,11 +180,7 @@ public class AccountsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<BankAccount> getAccountWithHttpInfo(String accountId) throws ApiException, LWAException {
-        okhttp3.Call call = getAccountValidateBeforeCall(accountId, null);
-        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
+        return getAccountWithHttpInfo(accountId, null);
     }
 
     /**
@@ -151,11 +189,28 @@ public class AccountsApi {
      *
      * @param accountId The ID of the Amazon Seller Wallet account. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getAccountAsync(String accountId, final ApiCallback<BankAccount> callback)
+            throws ApiException, LWAException {
+        return getAccountAsync(accountId, callback, null);
+    }
+    /**
+     * Find particular Amazon Seller Wallet account by Amazon account identifier (asynchronously) Retrieve an Amazon
+     * Seller Wallet bank account by Amazon account identifier.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAccountAsync(
+            String accountId, final ApiCallback<BankAccount> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -165,6 +220,13 @@ public class AccountsApi {
         }
 
         okhttp3.Call call = getAccountValidateBeforeCall(accountId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AccountsApi-getAccount");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -233,13 +295,55 @@ public class AccountsApi {
      * given Amazon Seller Wallet bank account.
      *
      * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return BalanceListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public BalanceListing listAccountBalances(String accountId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<BalanceListing> resp = listAccountBalancesWithHttpInfo(accountId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a
+     * given Amazon Seller Wallet bank account.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
      * @return BalanceListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public BalanceListing listAccountBalances(String accountId) throws ApiException, LWAException {
-        ApiResponse<BalanceListing> resp = listAccountBalancesWithHttpInfo(accountId);
+        ApiResponse<BalanceListing> resp = listAccountBalancesWithHttpInfo(accountId, null);
         return resp.getData();
+    }
+
+    /**
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a
+     * given Amazon Seller Wallet bank account.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;BalanceListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<BalanceListing> listAccountBalancesWithHttpInfo(String accountId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AccountsApi-listAccountBalances");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listAccountBalancesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listAccountBalances operation exceeds rate limit");
     }
 
     /**
@@ -253,11 +357,7 @@ public class AccountsApi {
      */
     public ApiResponse<BalanceListing> listAccountBalancesWithHttpInfo(String accountId)
             throws ApiException, LWAException {
-        okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, null);
-        if (disableRateLimiting || listAccountBalancesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listAccountBalances operation exceeds rate limit");
+        return listAccountBalancesWithHttpInfo(accountId, null);
     }
 
     /**
@@ -266,11 +366,28 @@ public class AccountsApi {
      *
      * @param accountId The ID of the Amazon Seller Wallet account. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listAccountBalancesAsync(String accountId, final ApiCallback<BalanceListing> callback)
+            throws ApiException, LWAException {
+        return listAccountBalancesAsync(accountId, callback, null);
+    }
+    /**
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier (asynchronously) Retrieve
+     * the balance in a given Amazon Seller Wallet bank account.
+     *
+     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listAccountBalancesAsync(
+            String accountId, final ApiCallback<BalanceListing> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -280,6 +397,13 @@ public class AccountsApi {
         }
 
         okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AccountsApi-listAccountBalances");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listAccountBalancesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -351,13 +475,57 @@ public class AccountsApi {
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return BankAccountListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public BankAccountListing listAccounts(String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<BankAccountListing> resp = listAccountsWithHttpInfo(marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Get all Amazon Seller Wallet accounts for the seller Get all Seller Wallet accounts for a given seller.
+     *
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return BankAccountListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public BankAccountListing listAccounts(String marketplaceId) throws ApiException, LWAException {
-        ApiResponse<BankAccountListing> resp = listAccountsWithHttpInfo(marketplaceId);
+        ApiResponse<BankAccountListing> resp = listAccountsWithHttpInfo(marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Get all Amazon Seller Wallet accounts for the seller Get all Seller Wallet accounts for a given seller.
+     *
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;BankAccountListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<BankAccountListing> listAccountsWithHttpInfo(String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listAccountsValidateBeforeCall(marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AccountsApi-listAccounts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listAccountsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listAccounts operation exceeds rate limit");
     }
 
     /**
@@ -372,11 +540,7 @@ public class AccountsApi {
      */
     public ApiResponse<BankAccountListing> listAccountsWithHttpInfo(String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = listAccountsValidateBeforeCall(marketplaceId, null);
-        if (disableRateLimiting || listAccountsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listAccounts operation exceeds rate limit");
+        return listAccountsWithHttpInfo(marketplaceId, null);
     }
 
     /**
@@ -387,11 +551,30 @@ public class AccountsApi {
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listAccountsAsync(String marketplaceId, final ApiCallback<BankAccountListing> callback)
+            throws ApiException, LWAException {
+        return listAccountsAsync(marketplaceId, callback, null);
+    }
+    /**
+     * Get all Amazon Seller Wallet accounts for the seller (asynchronously) Get all Seller Wallet accounts for a given
+     * seller.
+     *
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listAccountsAsync(
+            String marketplaceId, final ApiCallback<BankAccountListing> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -401,6 +584,13 @@ public class AccountsApi {
         }
 
         okhttp3.Call call = listAccountsValidateBeforeCall(marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AccountsApi-listAccounts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listAccountsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -212,6 +213,29 @@ public class ServiceApi {
      *
      * @param body Add appointment operation input details. (required)
      * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SetAppointmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SetAppointmentResponse addAppointmentForServiceJobByServiceJobId(
+            AddAppointmentRequest body, String serviceJobId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SetAppointmentResponse> resp =
+                addAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Adds an appointment to the service job indicated by the service job identifier specified. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Add appointment operation input details. (required)
+     * @param serviceJobId An Amazon defined service job identifier. (required)
      * @return SetAppointmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -219,8 +243,43 @@ public class ServiceApi {
     public SetAppointmentResponse addAppointmentForServiceJobByServiceJobId(
             AddAppointmentRequest body, String serviceJobId) throws ApiException, LWAException {
         ApiResponse<SetAppointmentResponse> resp =
-                addAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId);
+                addAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, null);
         return resp.getData();
+    }
+
+    /**
+     * Adds an appointment to the service job indicated by the service job identifier specified. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Add appointment operation input details. (required)
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SetAppointmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SetAppointmentResponse> addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
+            AddAppointmentRequest body, String serviceJobId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(body, serviceJobId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-addAppointmentForServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "addAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -239,13 +298,7 @@ public class ServiceApi {
      */
     public ApiResponse<SetAppointmentResponse> addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
             AddAppointmentRequest body, String serviceJobId) throws ApiException, LWAException {
-        okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(body, serviceJobId, null);
-        if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "addAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
+        return addAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, null);
     }
 
     /**
@@ -260,12 +313,38 @@ public class ServiceApi {
      * @param body Add appointment operation input details. (required)
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call addAppointmentForServiceJobByServiceJobIdAsync(
             AddAppointmentRequest body, String serviceJobId, final ApiCallback<SetAppointmentResponse> callback)
+            throws ApiException, LWAException {
+        return addAppointmentForServiceJobByServiceJobIdAsync(body, serviceJobId, callback, null);
+    }
+    /**
+     * (asynchronously) Adds an appointment to the service job indicated by the service job identifier specified.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Add appointment operation input details. (required)
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call addAppointmentForServiceJobByServiceJobIdAsync(
+            AddAppointmentRequest body,
+            String serviceJobId,
+            final ApiCallback<SetAppointmentResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -276,6 +355,14 @@ public class ServiceApi {
 
         okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
                 body, serviceJobId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-addAppointmentForServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -372,6 +459,34 @@ public class ServiceApi {
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return AssignAppointmentResourcesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public AssignAppointmentResourcesResponse assignAppointmentResources(
+            AssignAppointmentResourcesRequest body,
+            String serviceJobId,
+            String appointmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<AssignAppointmentResourcesResponse> resp =
+                assignAppointmentResourcesWithHttpInfo(body, serviceJobId, appointmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
+     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
      * @return AssignAppointmentResourcesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -380,8 +495,46 @@ public class ServiceApi {
             AssignAppointmentResourcesRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
         ApiResponse<AssignAppointmentResourcesResponse> resp =
-                assignAppointmentResourcesWithHttpInfo(body, serviceJobId, appointmentId);
+                assignAppointmentResourcesWithHttpInfo(body, serviceJobId, appointmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
+     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;AssignAppointmentResourcesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<AssignAppointmentResourcesResponse> assignAppointmentResourcesWithHttpInfo(
+            AssignAppointmentResourcesRequest body,
+            String serviceJobId,
+            String appointmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(body, serviceJobId, appointmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-assignAppointmentResources");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("assignAppointmentResources operation exceeds rate limit");
     }
 
     /**
@@ -403,11 +556,7 @@ public class ServiceApi {
     public ApiResponse<AssignAppointmentResourcesResponse> assignAppointmentResourcesWithHttpInfo(
             AssignAppointmentResourcesRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(body, serviceJobId, appointmentId, null);
-        if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("assignAppointmentResources operation exceeds rate limit");
+        return assignAppointmentResourcesWithHttpInfo(body, serviceJobId, appointmentId, null);
     }
 
     /**
@@ -424,6 +573,7 @@ public class ServiceApi {
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -434,6 +584,34 @@ public class ServiceApi {
             String appointmentId,
             final ApiCallback<AssignAppointmentResourcesResponse> callback)
             throws ApiException, LWAException {
+        return assignAppointmentResourcesAsync(body, serviceJobId, appointmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
+     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call assignAppointmentResourcesAsync(
+            AssignAppointmentResourcesRequest body,
+            String serviceJobId,
+            String appointmentId,
+            final ApiCallback<AssignAppointmentResourcesResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -443,6 +621,14 @@ public class ServiceApi {
 
         okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(
                 body, serviceJobId, appointmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-assignAppointmentResources");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -528,14 +714,70 @@ public class ServiceApi {
      *
      * @param reservationId Reservation Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CancelReservationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CancelReservationResponse cancelReservation(
+            String reservationId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CancelReservationResponse> resp =
+                cancelReservationWithHttpInfo(reservationId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Cancel a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reservationId Reservation Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @return CancelReservationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CancelReservationResponse cancelReservation(String reservationId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        ApiResponse<CancelReservationResponse> resp = cancelReservationWithHttpInfo(reservationId, marketplaceIds);
+        ApiResponse<CancelReservationResponse> resp =
+                cancelReservationWithHttpInfo(reservationId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Cancel a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reservationId Reservation Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CancelReservationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CancelReservationResponse> cancelReservationWithHttpInfo(
+            String reservationId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-cancelReservation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelReservation operation exceeds rate limit");
     }
 
     /**
@@ -554,11 +796,7 @@ public class ServiceApi {
      */
     public ApiResponse<CancelReservationResponse> cancelReservationWithHttpInfo(
             String reservationId, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, null);
-        if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelReservation operation exceeds rate limit");
+        return cancelReservationWithHttpInfo(reservationId, marketplaceIds, null);
     }
 
     /**
@@ -572,12 +810,37 @@ public class ServiceApi {
      * @param reservationId Reservation Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelReservationAsync(
             String reservationId, List<String> marketplaceIds, final ApiCallback<CancelReservationResponse> callback)
+            throws ApiException, LWAException {
+        return cancelReservationAsync(reservationId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Cancel a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5
+     * | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param reservationId Reservation Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelReservationAsync(
+            String reservationId,
+            List<String> marketplaceIds,
+            final ApiCallback<CancelReservationResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -587,6 +850,13 @@ public class ServiceApi {
         }
 
         okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-cancelReservation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -674,6 +944,30 @@ public class ServiceApi {
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CancelServiceJobByServiceJobIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CancelServiceJobByServiceJobIdResponse cancelServiceJobByServiceJobId(
+            String serviceJobId, String cancellationReasonCode, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CancelServiceJobByServiceJobIdResponse> resp =
+                cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Cancels the service job indicated by the service job identifier specified. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
+     *     (required)
      * @return CancelServiceJobByServiceJobIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -681,8 +975,43 @@ public class ServiceApi {
     public CancelServiceJobByServiceJobIdResponse cancelServiceJobByServiceJobId(
             String serviceJobId, String cancellationReasonCode) throws ApiException, LWAException {
         ApiResponse<CancelServiceJobByServiceJobIdResponse> resp =
-                cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode);
+                cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode, null);
         return resp.getData();
+    }
+
+    /**
+     * Cancels the service job indicated by the service job identifier specified. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CancelServiceJobByServiceJobIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CancelServiceJobByServiceJobIdResponse> cancelServiceJobByServiceJobIdWithHttpInfo(
+            String serviceJobId, String cancellationReasonCode, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                cancelServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, cancellationReasonCode, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-cancelServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("cancelServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -702,12 +1031,7 @@ public class ServiceApi {
      */
     public ApiResponse<CancelServiceJobByServiceJobIdResponse> cancelServiceJobByServiceJobIdWithHttpInfo(
             String serviceJobId, String cancellationReasonCode) throws ApiException, LWAException {
-        okhttp3.Call call =
-                cancelServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, cancellationReasonCode, null);
-        if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelServiceJobByServiceJobId operation exceeds rate limit");
+        return cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode, null);
     }
 
     /**
@@ -722,6 +1046,7 @@ public class ServiceApi {
      * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -730,6 +1055,31 @@ public class ServiceApi {
             String serviceJobId,
             String cancellationReasonCode,
             final ApiCallback<CancelServiceJobByServiceJobIdResponse> callback)
+            throws ApiException, LWAException {
+        return cancelServiceJobByServiceJobIdAsync(serviceJobId, cancellationReasonCode, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels the service job indicated by the service job identifier specified. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelServiceJobByServiceJobIdAsync(
+            String serviceJobId,
+            String cancellationReasonCode,
+            final ApiCallback<CancelServiceJobByServiceJobIdResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -740,6 +1090,14 @@ public class ServiceApi {
 
         okhttp3.Call call = cancelServiceJobByServiceJobIdValidateBeforeCall(
                 serviceJobId, cancellationReasonCode, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-cancelServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -812,6 +1170,27 @@ public class ServiceApi {
      * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CompleteServiceJobByServiceJobIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CompleteServiceJobByServiceJobIdResponse completeServiceJobByServiceJobId(
+            String serviceJobId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CompleteServiceJobByServiceJobIdResponse> resp =
+                completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Completes the service job indicated by the service job identifier specified. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId An Amazon defined service job identifier. (required)
      * @return CompleteServiceJobByServiceJobIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -819,8 +1198,40 @@ public class ServiceApi {
     public CompleteServiceJobByServiceJobIdResponse completeServiceJobByServiceJobId(String serviceJobId)
             throws ApiException, LWAException {
         ApiResponse<CompleteServiceJobByServiceJobIdResponse> resp =
-                completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId);
+                completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId, null);
         return resp.getData();
+    }
+
+    /**
+     * Completes the service job indicated by the service job identifier specified. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CompleteServiceJobByServiceJobIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CompleteServiceJobByServiceJobIdResponse> completeServiceJobByServiceJobIdWithHttpInfo(
+            String serviceJobId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-completeServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded("completeServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -838,12 +1249,7 @@ public class ServiceApi {
      */
     public ApiResponse<CompleteServiceJobByServiceJobIdResponse> completeServiceJobByServiceJobIdWithHttpInfo(
             String serviceJobId) throws ApiException, LWAException {
-        okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null);
-        if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("completeServiceJobByServiceJobId operation exceeds rate limit");
+        return completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId, null);
     }
 
     /**
@@ -856,12 +1262,35 @@ public class ServiceApi {
      *
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call completeServiceJobByServiceJobIdAsync(
             String serviceJobId, final ApiCallback<CompleteServiceJobByServiceJobIdResponse> callback)
+            throws ApiException, LWAException {
+        return completeServiceJobByServiceJobIdAsync(serviceJobId, callback, null);
+    }
+    /**
+     * (asynchronously) Completes the service job indicated by the service job identifier specified. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call completeServiceJobByServiceJobIdAsync(
+            String serviceJobId,
+            final ApiCallback<CompleteServiceJobByServiceJobIdResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -871,6 +1300,14 @@ public class ServiceApi {
         }
 
         okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-completeServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -954,14 +1391,69 @@ public class ServiceApi {
      *
      * @param body Reservation details (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateReservationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateReservationResponse createReservation(
+            CreateReservationRequest body, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateReservationResponse> resp =
+                createReservationWithHttpInfo(body, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Create a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reservation details (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @return CreateReservationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateReservationResponse createReservation(CreateReservationRequest body, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        ApiResponse<CreateReservationResponse> resp = createReservationWithHttpInfo(body, marketplaceIds);
+        ApiResponse<CreateReservationResponse> resp = createReservationWithHttpInfo(body, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Create a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reservation details (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateReservationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateReservationResponse> createReservationWithHttpInfo(
+            CreateReservationRequest body, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createReservationValidateBeforeCall(body, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-createReservation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReservation operation exceeds rate limit");
     }
 
     /**
@@ -980,11 +1472,7 @@ public class ServiceApi {
      */
     public ApiResponse<CreateReservationResponse> createReservationWithHttpInfo(
             CreateReservationRequest body, List<String> marketplaceIds) throws ApiException, LWAException {
-        okhttp3.Call call = createReservationValidateBeforeCall(body, marketplaceIds, null);
-        if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createReservation operation exceeds rate limit");
+        return createReservationWithHttpInfo(body, marketplaceIds, null);
     }
 
     /**
@@ -998,6 +1486,7 @@ public class ServiceApi {
      * @param body Reservation details (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1007,6 +1496,30 @@ public class ServiceApi {
             List<String> marketplaceIds,
             final ApiCallback<CreateReservationResponse> callback)
             throws ApiException, LWAException {
+        return createReservationAsync(body, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Create a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5
+     * | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reservation details (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createReservationAsync(
+            CreateReservationRequest body,
+            List<String> marketplaceIds,
+            final ApiCallback<CreateReservationResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1015,6 +1528,13 @@ public class ServiceApi {
         }
 
         okhttp3.Call call = createReservationValidateBeforeCall(body, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-createReservation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1085,6 +1605,27 @@ public class ServiceApi {
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Upload document operation input details. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateServiceDocumentUploadDestination
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateServiceDocumentUploadDestination createServiceDocumentUploadDestination(
+            ServiceUploadDocument body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CreateServiceDocumentUploadDestination> resp =
+                createServiceDocumentUploadDestinationWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an upload destination. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Upload document operation input details. (required)
      * @return CreateServiceDocumentUploadDestination
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1092,8 +1633,41 @@ public class ServiceApi {
     public CreateServiceDocumentUploadDestination createServiceDocumentUploadDestination(ServiceUploadDocument body)
             throws ApiException, LWAException {
         ApiResponse<CreateServiceDocumentUploadDestination> resp =
-                createServiceDocumentUploadDestinationWithHttpInfo(body);
+                createServiceDocumentUploadDestinationWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates an upload destination. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Upload document operation input details. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateServiceDocumentUploadDestination&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateServiceDocumentUploadDestination> createServiceDocumentUploadDestinationWithHttpInfo(
+            ServiceUploadDocument body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-createServiceDocumentUploadDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "createServiceDocumentUploadDestination operation exceeds rate limit");
     }
 
     /**
@@ -1111,13 +1685,7 @@ public class ServiceApi {
      */
     public ApiResponse<CreateServiceDocumentUploadDestination> createServiceDocumentUploadDestinationWithHttpInfo(
             ServiceUploadDocument body) throws ApiException, LWAException {
-        okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, null);
-        if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "createServiceDocumentUploadDestination operation exceeds rate limit");
+        return createServiceDocumentUploadDestinationWithHttpInfo(body, null);
     }
 
     /**
@@ -1130,12 +1698,35 @@ public class ServiceApi {
      *
      * @param body Upload document operation input details. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createServiceDocumentUploadDestinationAsync(
             ServiceUploadDocument body, final ApiCallback<CreateServiceDocumentUploadDestination> callback)
+            throws ApiException, LWAException {
+        return createServiceDocumentUploadDestinationAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates an upload destination. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Upload document operation input details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createServiceDocumentUploadDestinationAsync(
+            ServiceUploadDocument body,
+            final ApiCallback<CreateServiceDocumentUploadDestination> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1145,6 +1736,14 @@ public class ServiceApi {
         }
 
         okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-createServiceDocumentUploadDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1258,6 +1857,41 @@ public class ServiceApi {
      * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
      *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
      *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAppointmentSlotsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAppointmentSlotsResponse getAppointmentSlots(
+            String asin,
+            String storeId,
+            List<String> marketplaceIds,
+            String startTime,
+            String endTime,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetAppointmentSlotsResponse> resp =
+                getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, startTime, endTime, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Gets appointment slots as per the service context specified. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 20 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin ASIN associated with the service. (required)
+     * @param storeId Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param marketplaceIds An identifier for the marketplace for which appointment slots are queried (required)
+     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
+     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
+     *     is as per business configuration. (optional)
+     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
+     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
+     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      * @return GetAppointmentSlotsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1266,8 +1900,53 @@ public class ServiceApi {
             String asin, String storeId, List<String> marketplaceIds, String startTime, String endTime)
             throws ApiException, LWAException {
         ApiResponse<GetAppointmentSlotsResponse> resp =
-                getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, startTime, endTime);
+                getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, startTime, endTime, null);
         return resp.getData();
+    }
+
+    /**
+     * Gets appointment slots as per the service context specified. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 20 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin ASIN associated with the service. (required)
+     * @param storeId Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param marketplaceIds An identifier for the marketplace for which appointment slots are queried (required)
+     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
+     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
+     *     is as per business configuration. (optional)
+     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
+     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
+     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAppointmentSlotsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAppointmentSlotsResponse> getAppointmentSlotsWithHttpInfo(
+            String asin,
+            String storeId,
+            List<String> marketplaceIds,
+            String startTime,
+            String endTime,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getAppointmentSlotsValidateBeforeCall(asin, storeId, marketplaceIds, startTime, endTime, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getAppointmentSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAppointmentSlots operation exceeds rate limit");
     }
 
     /**
@@ -1294,12 +1973,7 @@ public class ServiceApi {
     public ApiResponse<GetAppointmentSlotsResponse> getAppointmentSlotsWithHttpInfo(
             String asin, String storeId, List<String> marketplaceIds, String startTime, String endTime)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getAppointmentSlotsValidateBeforeCall(asin, storeId, marketplaceIds, startTime, endTime, null);
-        if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAppointmentSlots operation exceeds rate limit");
+        return getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, startTime, endTime, null);
     }
 
     /**
@@ -1320,6 +1994,7 @@ public class ServiceApi {
      *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
      *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1332,6 +2007,40 @@ public class ServiceApi {
             String endTime,
             final ApiCallback<GetAppointmentSlotsResponse> callback)
             throws ApiException, LWAException {
+        return getAppointmentSlotsAsync(asin, storeId, marketplaceIds, startTime, endTime, callback, null);
+    }
+    /**
+     * (asynchronously) Gets appointment slots as per the service context specified. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 20 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param asin ASIN associated with the service. (required)
+     * @param storeId Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param marketplaceIds An identifier for the marketplace for which appointment slots are queried (required)
+     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
+     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
+     *     is as per business configuration. (optional)
+     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
+     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
+     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAppointmentSlotsAsync(
+            String asin,
+            String storeId,
+            List<String> marketplaceIds,
+            String startTime,
+            String endTime,
+            final ApiCallback<GetAppointmentSlotsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1341,6 +2050,13 @@ public class ServiceApi {
 
         okhttp3.Call call = getAppointmentSlotsValidateBeforeCall(
                 asin, storeId, marketplaceIds, startTime, endTime, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getAppointmentSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1445,6 +2161,39 @@ public class ServiceApi {
      * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
      *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
      *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetAppointmentSlotsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetAppointmentSlotsResponse getAppointmmentSlotsByJobId(
+            String serviceJobId,
+            List<String> marketplaceIds,
+            String startTime,
+            String endTime,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetAppointmentSlotsResponse> resp = getAppointmmentSlotsByJobIdWithHttpInfo(
+                serviceJobId, marketplaceIds, startTime, endTime, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Gets appointment slots for the service associated with the service job id specified. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId A service job identifier to retrive appointment slots for associated service. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
+     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
+     *     is as per business configuration. (optional)
+     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
+     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
+     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      * @return GetAppointmentSlotsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1453,8 +2202,52 @@ public class ServiceApi {
             String serviceJobId, List<String> marketplaceIds, String startTime, String endTime)
             throws ApiException, LWAException {
         ApiResponse<GetAppointmentSlotsResponse> resp =
-                getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId, marketplaceIds, startTime, endTime);
+                getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId, marketplaceIds, startTime, endTime, null);
         return resp.getData();
+    }
+
+    /**
+     * Gets appointment slots for the service associated with the service job id specified. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId A service job identifier to retrive appointment slots for associated service. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
+     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
+     *     is as per business configuration. (optional)
+     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
+     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
+     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetAppointmentSlotsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetAppointmentSlotsResponse> getAppointmmentSlotsByJobIdWithHttpInfo(
+            String serviceJobId,
+            List<String> marketplaceIds,
+            String startTime,
+            String endTime,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getAppointmmentSlotsByJobIdValidateBeforeCall(serviceJobId, marketplaceIds, startTime, endTime, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-getAppointmmentSlotsByJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getAppointmmentSlotsByJobId operation exceeds rate limit");
     }
 
     /**
@@ -1480,12 +2273,7 @@ public class ServiceApi {
     public ApiResponse<GetAppointmentSlotsResponse> getAppointmmentSlotsByJobIdWithHttpInfo(
             String serviceJobId, List<String> marketplaceIds, String startTime, String endTime)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getAppointmmentSlotsByJobIdValidateBeforeCall(serviceJobId, marketplaceIds, startTime, endTime, null);
-        if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAppointmmentSlotsByJobId operation exceeds rate limit");
+        return getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId, marketplaceIds, startTime, endTime, null);
     }
 
     /**
@@ -1506,6 +2294,7 @@ public class ServiceApi {
      *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
      *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1517,6 +2306,39 @@ public class ServiceApi {
             String endTime,
             final ApiCallback<GetAppointmentSlotsResponse> callback)
             throws ApiException, LWAException {
+        return getAppointmmentSlotsByJobIdAsync(serviceJobId, marketplaceIds, startTime, endTime, callback, null);
+    }
+    /**
+     * (asynchronously) Gets appointment slots for the service associated with the service job id specified. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId A service job identifier to retrive appointment slots for associated service. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO
+     *     8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value
+     *     is as per business configuration. (optional)
+     * @param endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601
+     *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
+     *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getAppointmmentSlotsByJobIdAsync(
+            String serviceJobId,
+            List<String> marketplaceIds,
+            String startTime,
+            String endTime,
+            final ApiCallback<GetAppointmentSlotsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1526,6 +2348,14 @@ public class ServiceApi {
 
         okhttp3.Call call = getAppointmmentSlotsByJobIdValidateBeforeCall(
                 serviceJobId, marketplaceIds, startTime, endTime, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-getAppointmmentSlotsByJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1624,6 +2454,35 @@ public class ServiceApi {
      * @param resourceId Resource Identifier. (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param nextPageToken Next page token returned in the response of your previous request. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return FixedSlotCapacity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public FixedSlotCapacity getFixedSlotCapacity(
+            FixedSlotCapacityQuery body,
+            String resourceId,
+            List<String> marketplaceIds,
+            String nextPageToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<FixedSlotCapacity> resp =
+                getFixedSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides capacity in fixed-size slots. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5
+     * | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body. (required)
+     * @param resourceId Resource Identifier. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
      * @return FixedSlotCapacity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1632,8 +2491,47 @@ public class ServiceApi {
             FixedSlotCapacityQuery body, String resourceId, List<String> marketplaceIds, String nextPageToken)
             throws ApiException, LWAException {
         ApiResponse<FixedSlotCapacity> resp =
-                getFixedSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken);
+                getFixedSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides capacity in fixed-size slots. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5
+     * | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body. (required)
+     * @param resourceId Resource Identifier. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;FixedSlotCapacity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<FixedSlotCapacity> getFixedSlotCapacityWithHttpInfo(
+            FixedSlotCapacityQuery body,
+            String resourceId,
+            List<String> marketplaceIds,
+            String nextPageToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getFixedSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getFixedSlotCapacity");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFixedSlotCapacity operation exceeds rate limit");
     }
 
     /**
@@ -1655,12 +2553,7 @@ public class ServiceApi {
     public ApiResponse<FixedSlotCapacity> getFixedSlotCapacityWithHttpInfo(
             FixedSlotCapacityQuery body, String resourceId, List<String> marketplaceIds, String nextPageToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getFixedSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null);
-        if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFixedSlotCapacity operation exceeds rate limit");
+        return getFixedSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken, null);
     }
 
     /**
@@ -1676,6 +2569,7 @@ public class ServiceApi {
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param nextPageToken Next page token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1687,6 +2581,34 @@ public class ServiceApi {
             String nextPageToken,
             final ApiCallback<FixedSlotCapacity> callback)
             throws ApiException, LWAException {
+        return getFixedSlotCapacityAsync(body, resourceId, marketplaceIds, nextPageToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides capacity in fixed-size slots. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body. (required)
+     * @param resourceId Resource Identifier. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getFixedSlotCapacityAsync(
+            FixedSlotCapacityQuery body,
+            String resourceId,
+            List<String> marketplaceIds,
+            String nextPageToken,
+            final ApiCallback<FixedSlotCapacity> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1696,6 +2618,13 @@ public class ServiceApi {
 
         okhttp3.Call call = getFixedSlotCapacityValidateBeforeCall(
                 body, resourceId, marketplaceIds, nextPageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getFixedSlotCapacity");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1794,6 +2723,35 @@ public class ServiceApi {
      * @param resourceId Resource Identifier. (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param nextPageToken Next page token returned in the response of your previous request. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return RangeSlotCapacity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public RangeSlotCapacity getRangeSlotCapacity(
+            RangeSlotCapacityQuery body,
+            String resourceId,
+            List<String> marketplaceIds,
+            String nextPageToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<RangeSlotCapacity> resp =
+                getRangeSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Provides capacity slots in a format similar to availability records. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body. (required)
+     * @param resourceId Resource Identifier. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
      * @return RangeSlotCapacity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1802,8 +2760,47 @@ public class ServiceApi {
             RangeSlotCapacityQuery body, String resourceId, List<String> marketplaceIds, String nextPageToken)
             throws ApiException, LWAException {
         ApiResponse<RangeSlotCapacity> resp =
-                getRangeSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken);
+                getRangeSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Provides capacity slots in a format similar to availability records. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that were applied to the requested operation, when available. The table above indicates the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body. (required)
+     * @param resourceId Resource Identifier. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;RangeSlotCapacity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<RangeSlotCapacity> getRangeSlotCapacityWithHttpInfo(
+            RangeSlotCapacityQuery body,
+            String resourceId,
+            List<String> marketplaceIds,
+            String nextPageToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getRangeSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getRangeSlotCapacity");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getRangeSlotCapacity operation exceeds rate limit");
     }
 
     /**
@@ -1825,12 +2822,7 @@ public class ServiceApi {
     public ApiResponse<RangeSlotCapacity> getRangeSlotCapacityWithHttpInfo(
             RangeSlotCapacityQuery body, String resourceId, List<String> marketplaceIds, String nextPageToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                getRangeSlotCapacityValidateBeforeCall(body, resourceId, marketplaceIds, nextPageToken, null);
-        if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getRangeSlotCapacity operation exceeds rate limit");
+        return getRangeSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, nextPageToken, null);
     }
 
     /**
@@ -1846,6 +2838,7 @@ public class ServiceApi {
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param nextPageToken Next page token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1857,6 +2850,34 @@ public class ServiceApi {
             String nextPageToken,
             final ApiCallback<RangeSlotCapacity> callback)
             throws ApiException, LWAException {
+        return getRangeSlotCapacityAsync(body, resourceId, marketplaceIds, nextPageToken, callback, null);
+    }
+    /**
+     * (asynchronously) Provides capacity slots in a format similar to availability records. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Request body. (required)
+     * @param resourceId Resource Identifier. (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param nextPageToken Next page token returned in the response of your previous request. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getRangeSlotCapacityAsync(
+            RangeSlotCapacityQuery body,
+            String resourceId,
+            List<String> marketplaceIds,
+            String nextPageToken,
+            final ApiCallback<RangeSlotCapacity> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -1866,6 +2887,13 @@ public class ServiceApi {
 
         okhttp3.Call call = getRangeSlotCapacityValidateBeforeCall(
                 body, resourceId, marketplaceIds, nextPageToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getRangeSlotCapacity");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1938,14 +2966,67 @@ public class ServiceApi {
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param serviceJobId A service job identifier. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetServiceJobByServiceJobIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetServiceJobByServiceJobIdResponse getServiceJobByServiceJobId(
+            String serviceJobId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetServiceJobByServiceJobIdResponse> resp =
+                getServiceJobByServiceJobIdWithHttpInfo(serviceJobId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 20 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId A service job identifier. (required)
      * @return GetServiceJobByServiceJobIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetServiceJobByServiceJobIdResponse getServiceJobByServiceJobId(String serviceJobId)
             throws ApiException, LWAException {
-        ApiResponse<GetServiceJobByServiceJobIdResponse> resp = getServiceJobByServiceJobIdWithHttpInfo(serviceJobId);
+        ApiResponse<GetServiceJobByServiceJobIdResponse> resp =
+                getServiceJobByServiceJobIdWithHttpInfo(serviceJobId, null);
         return resp.getData();
+    }
+
+    /**
+     * Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 20 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId A service job identifier. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetServiceJobByServiceJobIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetServiceJobByServiceJobIdResponse> getServiceJobByServiceJobIdWithHttpInfo(
+            String serviceJobId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-getServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -1963,11 +3044,7 @@ public class ServiceApi {
      */
     public ApiResponse<GetServiceJobByServiceJobIdResponse> getServiceJobByServiceJobIdWithHttpInfo(String serviceJobId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, null);
-        if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getServiceJobByServiceJobId operation exceeds rate limit");
+        return getServiceJobByServiceJobIdWithHttpInfo(serviceJobId, null);
     }
 
     /**
@@ -1981,12 +3058,36 @@ public class ServiceApi {
      *
      * @param serviceJobId A service job identifier. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getServiceJobByServiceJobIdAsync(
             String serviceJobId, final ApiCallback<GetServiceJobByServiceJobIdResponse> callback)
+            throws ApiException, LWAException {
+        return getServiceJobByServiceJobIdAsync(serviceJobId, callback, null);
+    }
+    /**
+     * (asynchronously) Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param serviceJobId A service job identifier. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getServiceJobByServiceJobIdAsync(
+            String serviceJobId,
+            final ApiCallback<GetServiceJobByServiceJobIdResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1996,6 +3097,14 @@ public class ServiceApi {
         }
 
         okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-getServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2199,6 +3308,88 @@ public class ServiceApi {
      *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetServiceJobsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetServiceJobsResponse getServiceJobs(
+            List<String> marketplaceIds,
+            List<String> serviceOrderIds,
+            List<String> serviceJobStatus,
+            String pageToken,
+            Integer pageSize,
+            String sortField,
+            String sortOrder,
+            String createdAfter,
+            String createdBefore,
+            String lastUpdatedAfter,
+            String lastUpdatedBefore,
+            String scheduleStartDate,
+            String scheduleEndDate,
+            List<String> asins,
+            List<String> requiredSkills,
+            List<String> storeIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetServiceJobsResponse> resp = getServiceJobsWithHttpInfo(
+                marketplaceIds,
+                serviceOrderIds,
+                serviceJobStatus,
+                pageToken,
+                pageSize,
+                sortField,
+                sortOrder,
+                createdAfter,
+                createdBefore,
+                lastUpdatedAfter,
+                lastUpdatedBefore,
+                scheduleStartDate,
+                scheduleEndDate,
+                asins,
+                requiredSkills,
+                storeIds,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Gets service job details for the specified filter query. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 10 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
+     *     (optional)
+     * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param pageToken String returned in the response of your previous request. (optional)
+     * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
+     *     must be 1 - 20. Default 20. (optional, default to 20)
+     * @param sortField Sort fields on which you want to sort the output. (optional)
+     * @param sortOrder Sort order for the query you want to perform. (optional)
+     * @param createdAfter A date used for selecting jobs created at or after a specified time. Must be in ISO 8601
+     *     format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60;
+     *     and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param createdBefore A date used for selecting jobs created at or before a specified time. Must be in ISO 8601
+     *     format. (optional)
+     * @param lastUpdatedAfter A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601
+     *     format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and
+     *     &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param lastUpdatedBefore A date used for selecting jobs updated at or before a specified time. Must be in ISO
+     *     8601 format. (optional)
+     * @param scheduleStartDate A date used for filtering jobs schedules at or after a specified time. Must be in ISO
+     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param scheduleEndDate A date used for filtering jobs schedules at or before a specified time. Must be in ISO
+     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+     *     (optional)
+     * @param requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work
+     *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
+     *     20. (optional)
+     * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      * @return GetServiceJobsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2237,8 +3428,101 @@ public class ServiceApi {
                 scheduleEndDate,
                 asins,
                 requiredSkills,
-                storeIds);
+                storeIds,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Gets service job details for the specified filter query. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 10 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
+     *     (optional)
+     * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param pageToken String returned in the response of your previous request. (optional)
+     * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
+     *     must be 1 - 20. Default 20. (optional, default to 20)
+     * @param sortField Sort fields on which you want to sort the output. (optional)
+     * @param sortOrder Sort order for the query you want to perform. (optional)
+     * @param createdAfter A date used for selecting jobs created at or after a specified time. Must be in ISO 8601
+     *     format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60;
+     *     and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param createdBefore A date used for selecting jobs created at or before a specified time. Must be in ISO 8601
+     *     format. (optional)
+     * @param lastUpdatedAfter A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601
+     *     format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and
+     *     &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param lastUpdatedBefore A date used for selecting jobs updated at or before a specified time. Must be in ISO
+     *     8601 format. (optional)
+     * @param scheduleStartDate A date used for filtering jobs schedules at or after a specified time. Must be in ISO
+     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param scheduleEndDate A date used for filtering jobs schedules at or before a specified time. Must be in ISO
+     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+     *     (optional)
+     * @param requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work
+     *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
+     *     20. (optional)
+     * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetServiceJobsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetServiceJobsResponse> getServiceJobsWithHttpInfo(
+            List<String> marketplaceIds,
+            List<String> serviceOrderIds,
+            List<String> serviceJobStatus,
+            String pageToken,
+            Integer pageSize,
+            String sortField,
+            String sortOrder,
+            String createdAfter,
+            String createdBefore,
+            String lastUpdatedAfter,
+            String lastUpdatedBefore,
+            String scheduleStartDate,
+            String scheduleEndDate,
+            List<String> asins,
+            List<String> requiredSkills,
+            List<String> storeIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getServiceJobsValidateBeforeCall(
+                marketplaceIds,
+                serviceOrderIds,
+                serviceJobStatus,
+                pageToken,
+                pageSize,
+                sortField,
+                sortOrder,
+                createdAfter,
+                createdBefore,
+                lastUpdatedAfter,
+                lastUpdatedBefore,
+                scheduleStartDate,
+                scheduleEndDate,
+                asins,
+                requiredSkills,
+                storeIds,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getServiceJobs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getServiceJobs operation exceeds rate limit");
     }
 
     /**
@@ -2300,7 +3584,7 @@ public class ServiceApi {
             List<String> requiredSkills,
             List<String> storeIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = getServiceJobsValidateBeforeCall(
+        return getServiceJobsWithHttpInfo(
                 marketplaceIds,
                 serviceOrderIds,
                 serviceJobStatus,
@@ -2318,10 +3602,6 @@ public class ServiceApi {
                 requiredSkills,
                 storeIds,
                 null);
-        if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getServiceJobs operation exceeds rate limit");
     }
 
     /**
@@ -2362,6 +3642,7 @@ public class ServiceApi {
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2384,6 +3665,89 @@ public class ServiceApi {
             List<String> requiredSkills,
             List<String> storeIds,
             final ApiCallback<GetServiceJobsResponse> callback)
+            throws ApiException, LWAException {
+        return getServiceJobsAsync(
+                marketplaceIds,
+                serviceOrderIds,
+                serviceJobStatus,
+                pageToken,
+                pageSize,
+                sortField,
+                sortOrder,
+                createdAfter,
+                createdBefore,
+                lastUpdatedAfter,
+                lastUpdatedBefore,
+                scheduleStartDate,
+                scheduleEndDate,
+                asins,
+                requiredSkills,
+                storeIds,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Gets service job details for the specified filter query. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 10 | 40 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
+     * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
+     * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
+     *     (optional)
+     * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
+     * @param pageToken String returned in the response of your previous request. (optional)
+     * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
+     *     must be 1 - 20. Default 20. (optional, default to 20)
+     * @param sortField Sort fields on which you want to sort the output. (optional)
+     * @param sortOrder Sort order for the query you want to perform. (optional)
+     * @param createdAfter A date used for selecting jobs created at or after a specified time. Must be in ISO 8601
+     *     format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60;
+     *     and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param createdBefore A date used for selecting jobs created at or before a specified time. Must be in ISO 8601
+     *     format. (optional)
+     * @param lastUpdatedAfter A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601
+     *     format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and
+     *     &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param lastUpdatedBefore A date used for selecting jobs updated at or before a specified time. Must be in ISO
+     *     8601 format. (optional)
+     * @param scheduleStartDate A date used for filtering jobs schedules at or after a specified time. Must be in ISO
+     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param scheduleEndDate A date used for filtering jobs schedules at or before a specified time. Must be in ISO
+     *     8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+     *     (optional)
+     * @param requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work
+     *     processes common to service delivery for a set of products and/or service scenarios. Max values supported is
+     *     20. (optional)
+     * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getServiceJobsAsync(
+            List<String> marketplaceIds,
+            List<String> serviceOrderIds,
+            List<String> serviceJobStatus,
+            String pageToken,
+            Integer pageSize,
+            String sortField,
+            String sortOrder,
+            String createdAfter,
+            String createdBefore,
+            String lastUpdatedAfter,
+            String lastUpdatedBefore,
+            String scheduleStartDate,
+            String scheduleEndDate,
+            List<String> asins,
+            List<String> requiredSkills,
+            List<String> storeIds,
+            final ApiCallback<GetServiceJobsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2410,6 +3774,13 @@ public class ServiceApi {
                 requiredSkills,
                 storeIds,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-getServiceJobs");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2503,6 +3874,30 @@ public class ServiceApi {
      * @param body Reschedule appointment operation input details. (required)
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param appointmentId An existing appointment identifier for the Service Job. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SetAppointmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SetAppointmentResponse rescheduleAppointmentForServiceJobByServiceJobId(
+            RescheduleAppointmentRequest body, String serviceJobId, String appointmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SetAppointmentResponse> resp = rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
+                body, serviceJobId, appointmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Reschedules an appointment for the service job indicated by the service job identifier specified. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reschedule appointment operation input details. (required)
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param appointmentId An existing appointment identifier for the Service Job. (required)
      * @return SetAppointmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2511,8 +3906,45 @@ public class ServiceApi {
             RescheduleAppointmentRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
         ApiResponse<SetAppointmentResponse> resp =
-                rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, appointmentId);
+                rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, appointmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Reschedules an appointment for the service job indicated by the service job identifier specified. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The table
+     * above indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may see higher rate and burst values than those shown here. For more information, see
+     * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reschedule appointment operation input details. (required)
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param appointmentId An existing appointment identifier for the Service Job. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SetAppointmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SetAppointmentResponse> rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
+            RescheduleAppointmentRequest body, String serviceJobId, String appointmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = rescheduleAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
+                body, serviceJobId, appointmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else
+            throw new ApiException.RateLimitExceeded(
+                    "rescheduleAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
     }
 
     /**
@@ -2533,14 +3965,7 @@ public class ServiceApi {
     public ApiResponse<SetAppointmentResponse> rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
             RescheduleAppointmentRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = rescheduleAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
-                body, serviceJobId, appointmentId, null);
-        if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "rescheduleAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
+        return rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, appointmentId, null);
     }
 
     /**
@@ -2556,6 +3981,7 @@ public class ServiceApi {
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param appointmentId An existing appointment identifier for the Service Job. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2566,6 +3992,33 @@ public class ServiceApi {
             String appointmentId,
             final ApiCallback<SetAppointmentResponse> callback)
             throws ApiException, LWAException {
+        return rescheduleAppointmentForServiceJobByServiceJobIdAsync(body, serviceJobId, appointmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Reschedules an appointment for the service job indicated by the service job identifier
+     * specified. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reschedule appointment operation input details. (required)
+     * @param serviceJobId An Amazon defined service job identifier. (required)
+     * @param appointmentId An existing appointment identifier for the Service Job. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call rescheduleAppointmentForServiceJobByServiceJobIdAsync(
+            RescheduleAppointmentRequest body,
+            String serviceJobId,
+            String appointmentId,
+            final ApiCallback<SetAppointmentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2575,6 +4028,14 @@ public class ServiceApi {
 
         okhttp3.Call call = rescheduleAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
                 body, serviceJobId, appointmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2672,6 +4133,35 @@ public class ServiceApi {
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public String setAppointmentFulfillmentData(
+            SetAppointmentFulfillmentDataRequest body,
+            String serviceJobId,
+            String appointmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<String> resp =
+                setAppointmentFulfillmentDataWithHttpInfo(body, serviceJobId, appointmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Updates the appointment fulfillment data related to a given &#x60;jobID&#x60; and &#x60;appointmentID&#x60;.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Appointment fulfillment data collection details. (required)
+     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
+     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2679,8 +4169,47 @@ public class ServiceApi {
     public String setAppointmentFulfillmentData(
             SetAppointmentFulfillmentDataRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
-        ApiResponse<String> resp = setAppointmentFulfillmentDataWithHttpInfo(body, serviceJobId, appointmentId);
+        ApiResponse<String> resp = setAppointmentFulfillmentDataWithHttpInfo(body, serviceJobId, appointmentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Updates the appointment fulfillment data related to a given &#x60;jobID&#x60; and &#x60;appointmentID&#x60;.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Appointment fulfillment data collection details. (required)
+     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
+     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<String> setAppointmentFulfillmentDataWithHttpInfo(
+            SetAppointmentFulfillmentDataRequest body,
+            String serviceJobId,
+            String appointmentId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = setAppointmentFulfillmentDataValidateBeforeCall(body, serviceJobId, appointmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-setAppointmentFulfillmentData");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<String>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("setAppointmentFulfillmentData operation exceeds rate limit");
     }
 
     /**
@@ -2703,11 +4232,7 @@ public class ServiceApi {
     public ApiResponse<String> setAppointmentFulfillmentDataWithHttpInfo(
             SetAppointmentFulfillmentDataRequest body, String serviceJobId, String appointmentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = setAppointmentFulfillmentDataValidateBeforeCall(body, serviceJobId, appointmentId, null);
-        if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<String>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("setAppointmentFulfillmentData operation exceeds rate limit");
+        return setAppointmentFulfillmentDataWithHttpInfo(body, serviceJobId, appointmentId, null);
     }
 
     /**
@@ -2724,6 +4249,7 @@ public class ServiceApi {
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2734,6 +4260,34 @@ public class ServiceApi {
             String appointmentId,
             final ApiCallback<String> callback)
             throws ApiException, LWAException {
+        return setAppointmentFulfillmentDataAsync(body, serviceJobId, appointmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates the appointment fulfillment data related to a given &#x60;jobID&#x60; and
+     * &#x60;appointmentID&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Appointment fulfillment data collection details. (required)
+     * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
+     *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call setAppointmentFulfillmentDataAsync(
+            SetAppointmentFulfillmentDataRequest body,
+            String serviceJobId,
+            String appointmentId,
+            final ApiCallback<String> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2743,6 +4297,14 @@ public class ServiceApi {
 
         okhttp3.Call call = setAppointmentFulfillmentDataValidateBeforeCall(
                 body, serviceJobId, appointmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "ServiceApi-setAppointmentFulfillmentData");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<String>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2835,6 +4397,33 @@ public class ServiceApi {
      * @param body Reservation details (required)
      * @param reservationId Reservation Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UpdateReservationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateReservationResponse updateReservation(
+            UpdateReservationRequest body,
+            String reservationId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateReservationResponse> resp =
+                updateReservationWithHttpInfo(body, reservationId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reservation details (required)
+     * @param reservationId Reservation Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @return UpdateReservationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2843,8 +4432,44 @@ public class ServiceApi {
             UpdateReservationRequest body, String reservationId, List<String> marketplaceIds)
             throws ApiException, LWAException {
         ApiResponse<UpdateReservationResponse> resp =
-                updateReservationWithHttpInfo(body, reservationId, marketplaceIds);
+                updateReservationWithHttpInfo(body, reservationId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Update a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reservation details (required)
+     * @param reservationId Reservation Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UpdateReservationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateReservationResponse> updateReservationWithHttpInfo(
+            UpdateReservationRequest body,
+            String reservationId,
+            List<String> marketplaceIds,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateReservationValidateBeforeCall(body, reservationId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-updateReservation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateReservation operation exceeds rate limit");
     }
 
     /**
@@ -2865,11 +4490,7 @@ public class ServiceApi {
     public ApiResponse<UpdateReservationResponse> updateReservationWithHttpInfo(
             UpdateReservationRequest body, String reservationId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateReservationValidateBeforeCall(body, reservationId, marketplaceIds, null);
-        if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateReservation operation exceeds rate limit");
+        return updateReservationWithHttpInfo(body, reservationId, marketplaceIds, null);
     }
 
     /**
@@ -2884,6 +4505,7 @@ public class ServiceApi {
      * @param reservationId Reservation Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2894,6 +4516,32 @@ public class ServiceApi {
             List<String> marketplaceIds,
             final ApiCallback<UpdateReservationResponse> callback)
             throws ApiException, LWAException {
+        return updateReservationAsync(body, reservationId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Update a reservation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5
+     * | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Reservation details (required)
+     * @param reservationId Reservation Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateReservationAsync(
+            UpdateReservationRequest body,
+            String reservationId,
+            List<String> marketplaceIds,
+            final ApiCallback<UpdateReservationResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -2903,6 +4551,13 @@ public class ServiceApi {
 
         okhttp3.Call call =
                 updateReservationValidateBeforeCall(body, reservationId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-updateReservation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2994,6 +4649,30 @@ public class ServiceApi {
      * @param body Schedule details (required)
      * @param resourceId Resource (store) Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UpdateScheduleResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateScheduleResponse updateSchedule(
+            UpdateScheduleRequest body, String resourceId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateScheduleResponse> resp =
+                updateScheduleWithHttpInfo(body, resourceId, marketplaceIds, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update the schedule of the given resource. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Schedule details (required)
+     * @param resourceId Resource (store) Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @return UpdateScheduleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3001,8 +4680,41 @@ public class ServiceApi {
     public UpdateScheduleResponse updateSchedule(
             UpdateScheduleRequest body, String resourceId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        ApiResponse<UpdateScheduleResponse> resp = updateScheduleWithHttpInfo(body, resourceId, marketplaceIds);
+        ApiResponse<UpdateScheduleResponse> resp = updateScheduleWithHttpInfo(body, resourceId, marketplaceIds, null);
         return resp.getData();
+    }
+
+    /**
+     * Update the schedule of the given resource. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- |
+     * | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The table above indicates the default rate and burst values
+     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
+     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Schedule details (required)
+     * @param resourceId Resource (store) Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UpdateScheduleResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateScheduleResponse> updateScheduleWithHttpInfo(
+            UpdateScheduleRequest body, String resourceId, List<String> marketplaceIds, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateScheduleValidateBeforeCall(body, resourceId, marketplaceIds, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-updateSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateSchedule operation exceeds rate limit");
     }
 
     /**
@@ -3023,11 +4735,7 @@ public class ServiceApi {
     public ApiResponse<UpdateScheduleResponse> updateScheduleWithHttpInfo(
             UpdateScheduleRequest body, String resourceId, List<String> marketplaceIds)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateScheduleValidateBeforeCall(body, resourceId, marketplaceIds, null);
-        if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateSchedule operation exceeds rate limit");
+        return updateScheduleWithHttpInfo(body, resourceId, marketplaceIds, null);
     }
 
     /**
@@ -3042,6 +4750,7 @@ public class ServiceApi {
      * @param resourceId Resource (store) Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3052,6 +4761,32 @@ public class ServiceApi {
             List<String> marketplaceIds,
             final ApiCallback<UpdateScheduleResponse> callback)
             throws ApiException, LWAException {
+        return updateScheduleAsync(body, resourceId, marketplaceIds, callback, null);
+    }
+    /**
+     * (asynchronously) Update the schedule of the given resource. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 5 | 20 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Schedule details (required)
+     * @param resourceId Resource (store) Identifier (required)
+     * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateScheduleAsync(
+            UpdateScheduleRequest body,
+            String resourceId,
+            List<String> marketplaceIds,
+            final ApiCallback<UpdateScheduleResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -3060,6 +4795,13 @@ public class ServiceApi {
         }
 
         okhttp3.Call call = updateScheduleValidateBeforeCall(body, resourceId, marketplaceIds, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "ServiceApi-updateSchedule");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

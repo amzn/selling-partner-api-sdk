@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -143,11 +144,67 @@ public class FeedsApi {
      *
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void cancelFeed(String feedId, String restrictedDataToken) throws ApiException, LWAException {
+        cancelFeedWithHttpInfo(feedId, restrictedDataToken);
+    }
+
+    /**
+     * Cancels the feed that you specify. Only feeds with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled.
+     * Cancelled feeds are returned in subsequent calls to the
+     * [&#x60;getFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeed) and
+     * [&#x60;getFeeds&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeeds)
+     * operations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
+     *     (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public void cancelFeed(String feedId) throws ApiException, LWAException {
-        cancelFeedWithHttpInfo(feedId);
+        cancelFeedWithHttpInfo(feedId, null);
+    }
+
+    /**
+     * Cancels the feed that you specify. Only feeds with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled.
+     * Cancelled feeds are returned in subsequent calls to the
+     * [&#x60;getFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeed) and
+     * [&#x60;getFeeds&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeeds)
+     * operations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> cancelFeedWithHttpInfo(String feedId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-cancelFeed");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || cancelFeedBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("cancelFeed operation exceeds rate limit");
     }
 
     /**
@@ -169,10 +226,7 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Void> cancelFeedWithHttpInfo(String feedId) throws ApiException, LWAException {
-        okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, null);
-        if (disableRateLimiting || cancelFeedBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelFeed operation exceeds rate limit");
+        return cancelFeedWithHttpInfo(feedId, null);
     }
 
     /**
@@ -190,11 +244,36 @@ public class FeedsApi {
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call cancelFeedAsync(String feedId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return cancelFeedAsync(feedId, callback, null);
+    }
+    /**
+     * (asynchronously) Cancels the feed that you specify. Only feeds with &#x60;processingStatus&#x3D;IN_QUEUE&#x60;
+     * can be cancelled. Cancelled feeds are returned in subsequent calls to the
+     * [&#x60;getFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeed) and
+     * [&#x60;getFeeds&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeeds)
+     * operations. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call cancelFeedAsync(String feedId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -204,6 +283,13 @@ public class FeedsApi {
         }
 
         okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-cancelFeed");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || cancelFeedBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
@@ -279,13 +365,77 @@ public class FeedsApi {
      * Guide](https://developer-docs.amazon.com/sp-api/docs/building-listings-management-workflows-guide#should-i-submit-in-bulk-using-the-json_listings_feed-or-individually-with-the-listings-items-api).
      *
      * @param body Information required to create the feed. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateFeedResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateFeedResponse createFeed(CreateFeedSpecification body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateFeedResponse> resp = createFeedWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a feed. Upload the contents of the feed document before calling this operation. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). The rate limit for
+     * the
+     * [&#x60;JSON_LISTINGS_FEED&#x60;](https://developer-docs.amazon.com/sp-api/docs/listings-feed-type-values#listings-feed)
+     * feed type differs from the rate limit for the
+     * [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#post-feeds2021-06-30feeds)
+     * operation. For more information, refer to the [Building Listings Management Workflows
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/building-listings-management-workflows-guide#should-i-submit-in-bulk-using-the-json_listings_feed-or-individually-with-the-listings-items-api).
+     *
+     * @param body Information required to create the feed. (required)
      * @return CreateFeedResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateFeedResponse createFeed(CreateFeedSpecification body) throws ApiException, LWAException {
-        ApiResponse<CreateFeedResponse> resp = createFeedWithHttpInfo(body);
+        ApiResponse<CreateFeedResponse> resp = createFeedWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a feed. Upload the contents of the feed document before calling this operation. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). The rate limit for
+     * the
+     * [&#x60;JSON_LISTINGS_FEED&#x60;](https://developer-docs.amazon.com/sp-api/docs/listings-feed-type-values#listings-feed)
+     * feed type differs from the rate limit for the
+     * [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#post-feeds2021-06-30feeds)
+     * operation. For more information, refer to the [Building Listings Management Workflows
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/building-listings-management-workflows-guide#should-i-submit-in-bulk-using-the-json_listings_feed-or-individually-with-the-listings-items-api).
+     *
+     * @param body Information required to create the feed. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateFeedResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateFeedResponse> createFeedWithHttpInfo(
+            CreateFeedSpecification body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createFeedValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-createFeed");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createFeedBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createFeed operation exceeds rate limit");
     }
 
     /**
@@ -310,11 +460,7 @@ public class FeedsApi {
      */
     public ApiResponse<CreateFeedResponse> createFeedWithHttpInfo(CreateFeedSpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createFeedValidateBeforeCall(body, null);
-        if (disableRateLimiting || createFeedBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createFeed operation exceeds rate limit");
+        return createFeedWithHttpInfo(body, null);
     }
 
     /**
@@ -334,11 +480,39 @@ public class FeedsApi {
      *
      * @param body Information required to create the feed. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createFeedAsync(CreateFeedSpecification body, final ApiCallback<CreateFeedResponse> callback)
+            throws ApiException, LWAException {
+        return createFeedAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a feed. Upload the contents of the feed document before calling this operation. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). The rate limit for
+     * the
+     * [&#x60;JSON_LISTINGS_FEED&#x60;](https://developer-docs.amazon.com/sp-api/docs/listings-feed-type-values#listings-feed)
+     * feed type differs from the rate limit for the
+     * [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#post-feeds2021-06-30feeds)
+     * operation. For more information, refer to the [Building Listings Management Workflows
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/building-listings-management-workflows-guide#should-i-submit-in-bulk-using-the-json_listings_feed-or-individually-with-the-listings-items-api).
+     *
+     * @param body Information required to create the feed. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createFeedAsync(
+            CreateFeedSpecification body, final ApiCallback<CreateFeedResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -348,6 +522,13 @@ public class FeedsApi {
         }
 
         okhttp3.Call call = createFeedValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-createFeed");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createFeedBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -423,14 +604,72 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body Specifies the content type for the createFeedDocument operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateFeedDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateFeedDocumentResponse createFeedDocument(
+            CreateFeedDocumentSpecification body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CreateFeedDocumentResponse> resp = createFeedDocumentWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a feed document for the feed type that you specify. This operation returns a presigned URL for uploading
+     * the feed document contents. It also returns a &#x60;feedDocumentId&#x60; value that you can pass in with a
+     * subsequent call to the
+     * [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#createfeed)
+     * operation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Specifies the content type for the createFeedDocument operation. (required)
      * @return CreateFeedDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateFeedDocumentResponse createFeedDocument(CreateFeedDocumentSpecification body)
             throws ApiException, LWAException {
-        ApiResponse<CreateFeedDocumentResponse> resp = createFeedDocumentWithHttpInfo(body);
+        ApiResponse<CreateFeedDocumentResponse> resp = createFeedDocumentWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a feed document for the feed type that you specify. This operation returns a presigned URL for uploading
+     * the feed document contents. It also returns a &#x60;feedDocumentId&#x60; value that you can pass in with a
+     * subsequent call to the
+     * [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#createfeed)
+     * operation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Specifies the content type for the createFeedDocument operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateFeedDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateFeedDocumentResponse> createFeedDocumentWithHttpInfo(
+            CreateFeedDocumentSpecification body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-createFeedDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createFeedDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createFeedDocument operation exceeds rate limit");
     }
 
     /**
@@ -452,11 +691,7 @@ public class FeedsApi {
      */
     public ApiResponse<CreateFeedDocumentResponse> createFeedDocumentWithHttpInfo(CreateFeedDocumentSpecification body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, null);
-        if (disableRateLimiting || createFeedDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createFeedDocument operation exceeds rate limit");
+        return createFeedDocumentWithHttpInfo(body, null);
     }
 
     /**
@@ -473,12 +708,39 @@ public class FeedsApi {
      *
      * @param body Specifies the content type for the createFeedDocument operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createFeedDocumentAsync(
             CreateFeedDocumentSpecification body, final ApiCallback<CreateFeedDocumentResponse> callback)
+            throws ApiException, LWAException {
+        return createFeedDocumentAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a feed document for the feed type that you specify. This operation returns a presigned
+     * URL for uploading the feed document contents. It also returns a &#x60;feedDocumentId&#x60; value that you can
+     * pass in with a subsequent call to the
+     * [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#createfeed)
+     * operation. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Specifies the content type for the createFeedDocument operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createFeedDocumentAsync(
+            CreateFeedDocumentSpecification body,
+            final ApiCallback<CreateFeedDocumentResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -488,6 +750,13 @@ public class FeedsApi {
         }
 
         okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-createFeedDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createFeedDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -562,13 +831,66 @@ public class FeedsApi {
      *
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Feed
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Feed getFeed(String feedId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<Feed> resp = getFeedWithHttpInfo(feedId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
+     *     (required)
      * @return Feed
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Feed getFeed(String feedId) throws ApiException, LWAException {
-        ApiResponse<Feed> resp = getFeedWithHttpInfo(feedId);
+        ApiResponse<Feed> resp = getFeedWithHttpInfo(feedId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Feed&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Feed> getFeedWithHttpInfo(String feedId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getFeedValidateBeforeCall(feedId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-getFeed");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getFeedBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Feed>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFeed operation exceeds rate limit");
     }
 
     /**
@@ -587,11 +909,7 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<Feed> getFeedWithHttpInfo(String feedId) throws ApiException, LWAException {
-        okhttp3.Call call = getFeedValidateBeforeCall(feedId, null);
-        if (disableRateLimiting || getFeedBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Feed>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeed operation exceeds rate limit");
+        return getFeedWithHttpInfo(feedId, null);
     }
 
     /**
@@ -606,11 +924,33 @@ public class FeedsApi {
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getFeedAsync(String feedId, final ApiCallback<Feed> callback)
+            throws ApiException, LWAException {
+        return getFeedAsync(feedId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed
+     * that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getFeedAsync(String feedId, final ApiCallback<Feed> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -620,6 +960,13 @@ public class FeedsApi {
         }
 
         okhttp3.Call call = getFeedValidateBeforeCall(feedId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-getFeed");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getFeedBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Feed>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -693,13 +1040,65 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return FeedDocument
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public FeedDocument getFeedDocument(String feedDocumentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<FeedDocument> resp = getFeedDocumentWithHttpInfo(feedDocumentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the information required for retrieving a feed document&#x27;s contents. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedDocumentId The identifier of the feed document. (required)
      * @return FeedDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public FeedDocument getFeedDocument(String feedDocumentId) throws ApiException, LWAException {
-        ApiResponse<FeedDocument> resp = getFeedDocumentWithHttpInfo(feedDocumentId);
+        ApiResponse<FeedDocument> resp = getFeedDocumentWithHttpInfo(feedDocumentId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns the information required for retrieving a feed document&#x27;s contents. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
+     * table indicates the default rate and burst values for this operation. Selling partners whose business demands
+     * require higher throughput may have higher rate and burst values than those shown here. For more information,
+     * refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedDocumentId The identifier of the feed document. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;FeedDocument&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(String feedDocumentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-getFeedDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getFeedDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFeedDocument operation exceeds rate limit");
     }
 
     /**
@@ -718,11 +1117,7 @@ public class FeedsApi {
      */
     public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(String feedDocumentId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, null);
-        if (disableRateLimiting || getFeedDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeedDocument operation exceeds rate limit");
+        return getFeedDocumentWithHttpInfo(feedDocumentId, null);
     }
 
     /**
@@ -736,11 +1131,33 @@ public class FeedsApi {
      *
      * @param feedDocumentId The identifier of the feed document. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getFeedDocumentAsync(String feedDocumentId, final ApiCallback<FeedDocument> callback)
+            throws ApiException, LWAException {
+        return getFeedDocumentAsync(feedDocumentId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the information required for retrieving a feed document&#x27;s contents. **Usage Plan:**
+     * | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedDocumentId The identifier of the feed document. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getFeedDocumentAsync(
+            String feedDocumentId, final ApiCallback<FeedDocument> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -750,6 +1167,13 @@ public class FeedsApi {
         }
 
         okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-getFeedDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getFeedDocumentBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -878,6 +1302,57 @@ public class FeedsApi {
      *     number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds
      *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
      *     cause the request to fail. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetFeedsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetFeedsResponse getFeeds(
+            List<String> feedTypes,
+            List<String> marketplaceIds,
+            Integer pageSize,
+            List<String> processingStatuses,
+            OffsetDateTime createdSince,
+            OffsetDateTime createdUntil,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetFeedsResponse> resp = getFeedsWithHttpInfo(
+                feedTypes,
+                marketplaceIds,
+                pageSize,
+                processingStatuses,
+                createdSince,
+                createdUntil,
+                nextToken,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns feed details for the feeds that match the filters that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedTypes A list of feed types used to filter feeds. When feedTypes is provided, the other filter
+     *     parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be
+     *     provided. Either feedTypes or nextToken is required. (optional)
+     * @param marketplaceIds A list of marketplace identifiers used to filter feeds. The feeds returned will match at
+     *     least one of the marketplaces that you specify. (optional)
+     * @param pageSize The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param processingStatuses A list of processing statuses used to filter feeds. (optional)
+     * @param createdSince The earliest feed creation date and time for feeds included in the response, in ISO 8601
+     *     format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param createdUntil The latest feed creation date and time for feeds included in the response, in ISO 8601
+     *     format. The default is now. (optional)
+     * @param nextToken A string token returned in the response to your previous request. nextToken is returned when the
+     *     number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds
+     *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
+     *     cause the request to fail. (optional)
      * @return GetFeedsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -892,8 +1367,62 @@ public class FeedsApi {
             String nextToken)
             throws ApiException, LWAException {
         ApiResponse<GetFeedsResponse> resp = getFeedsWithHttpInfo(
-                feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken);
+                feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns feed details for the feeds that match the filters that you specify. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedTypes A list of feed types used to filter feeds. When feedTypes is provided, the other filter
+     *     parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be
+     *     provided. Either feedTypes or nextToken is required. (optional)
+     * @param marketplaceIds A list of marketplace identifiers used to filter feeds. The feeds returned will match at
+     *     least one of the marketplaces that you specify. (optional)
+     * @param pageSize The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param processingStatuses A list of processing statuses used to filter feeds. (optional)
+     * @param createdSince The earliest feed creation date and time for feeds included in the response, in ISO 8601
+     *     format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param createdUntil The latest feed creation date and time for feeds included in the response, in ISO 8601
+     *     format. The default is now. (optional)
+     * @param nextToken A string token returned in the response to your previous request. nextToken is returned when the
+     *     number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds
+     *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
+     *     cause the request to fail. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetFeedsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetFeedsResponse> getFeedsWithHttpInfo(
+            List<String> feedTypes,
+            List<String> marketplaceIds,
+            Integer pageSize,
+            List<String> processingStatuses,
+            OffsetDateTime createdSince,
+            OffsetDateTime createdUntil,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getFeedsValidateBeforeCall(
+                feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-getFeeds");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getFeedsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getFeeds operation exceeds rate limit");
     }
 
     /**
@@ -933,12 +1462,8 @@ public class FeedsApi {
             OffsetDateTime createdUntil,
             String nextToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getFeedsValidateBeforeCall(
+        return getFeedsWithHttpInfo(
                 feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken, null);
-        if (disableRateLimiting || getFeedsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeeds operation exceeds rate limit");
     }
 
     /**
@@ -966,6 +1491,7 @@ public class FeedsApi {
      *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
      *     cause the request to fail. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -979,6 +1505,58 @@ public class FeedsApi {
             OffsetDateTime createdUntil,
             String nextToken,
             final ApiCallback<GetFeedsResponse> callback)
+            throws ApiException, LWAException {
+        return getFeedsAsync(
+                feedTypes,
+                marketplaceIds,
+                pageSize,
+                processingStatuses,
+                createdSince,
+                createdUntil,
+                nextToken,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Returns feed details for the feeds that match the filters that you specify. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param feedTypes A list of feed types used to filter feeds. When feedTypes is provided, the other filter
+     *     parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be
+     *     provided. Either feedTypes or nextToken is required. (optional)
+     * @param marketplaceIds A list of marketplace identifiers used to filter feeds. The feeds returned will match at
+     *     least one of the marketplaces that you specify. (optional)
+     * @param pageSize The maximum number of feeds to return in a single call. (optional, default to 10)
+     * @param processingStatuses A list of processing statuses used to filter feeds. (optional)
+     * @param createdSince The earliest feed creation date and time for feeds included in the response, in ISO 8601
+     *     format. The default is 90 days ago. Feeds are retained for a maximum of 90 days. (optional)
+     * @param createdUntil The latest feed creation date and time for feeds included in the response, in ISO 8601
+     *     format. The default is now. (optional)
+     * @param nextToken A string token returned in the response to your previous request. nextToken is returned when the
+     *     number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds
+     *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
+     *     cause the request to fail. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getFeedsAsync(
+            List<String> feedTypes,
+            List<String> marketplaceIds,
+            Integer pageSize,
+            List<String> processingStatuses,
+            OffsetDateTime createdSince,
+            OffsetDateTime createdUntil,
+            String nextToken,
+            final ApiCallback<GetFeedsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -996,6 +1574,13 @@ public class FeedsApi {
                 createdUntil,
                 nextToken,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FeedsApi-getFeeds");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getFeedsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

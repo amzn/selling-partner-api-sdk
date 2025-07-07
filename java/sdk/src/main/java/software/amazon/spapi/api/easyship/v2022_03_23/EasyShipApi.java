@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -146,13 +147,82 @@ public class EasyShipApi {
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ModelPackage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ModelPackage createScheduledPackage(CreateScheduledPackageRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ModelPackage> resp = createScheduledPackageWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Schedules an Easy Ship order and returns the scheduled package information. This operation does the following: *
+     * Specifies the time slot and handover method for the order to be scheduled for delivery. * Updates the Easy Ship
+     * order status. * Generates a shipping label and an invoice. Calling &#x60;createScheduledPackage&#x60; also
+     * generates a warranty document if you specify a &#x60;SerialNumber&#x60; value. To get these documents, see [How
+     * to get invoice, shipping label, and warranty documents](doc:easyship-api-v2022-03-23-use-case-guide). * Shows the
+     * status of Easy Ship orders when you call the &#x60;getOrders&#x60; operation of the Selling Partner API for
+     * Orders and examine the &#x60;EasyShipShipmentStatus&#x60; property in the response body. See the **Shipping
+     * Label**, **Invoice**, and **Warranty** columns in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which documents are
+     * supported in each marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      * @return ModelPackage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ModelPackage createScheduledPackage(CreateScheduledPackageRequest body) throws ApiException, LWAException {
-        ApiResponse<ModelPackage> resp = createScheduledPackageWithHttpInfo(body);
+        ApiResponse<ModelPackage> resp = createScheduledPackageWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Schedules an Easy Ship order and returns the scheduled package information. This operation does the following: *
+     * Specifies the time slot and handover method for the order to be scheduled for delivery. * Updates the Easy Ship
+     * order status. * Generates a shipping label and an invoice. Calling &#x60;createScheduledPackage&#x60; also
+     * generates a warranty document if you specify a &#x60;SerialNumber&#x60; value. To get these documents, see [How
+     * to get invoice, shipping label, and warranty documents](doc:easyship-api-v2022-03-23-use-case-guide). * Shows the
+     * status of Easy Ship orders when you call the &#x60;getOrders&#x60; operation of the Selling Partner API for
+     * Orders and examine the &#x60;EasyShipShipmentStatus&#x60; property in the response body. See the **Shipping
+     * Label**, **Invoice**, and **Warranty** columns in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which documents are
+     * supported in each marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ModelPackage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ModelPackage> createScheduledPackageWithHttpInfo(
+            CreateScheduledPackageRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-createScheduledPackage");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createScheduledPackage operation exceeds rate limit");
     }
 
     /**
@@ -179,11 +249,7 @@ public class EasyShipApi {
      */
     public ApiResponse<ModelPackage> createScheduledPackageWithHttpInfo(CreateScheduledPackageRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, null);
-        if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createScheduledPackage operation exceeds rate limit");
+        return createScheduledPackageWithHttpInfo(body, null);
     }
 
     /**
@@ -206,12 +272,43 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createScheduledPackageAsync(
             CreateScheduledPackageRequest body, final ApiCallback<ModelPackage> callback)
+            throws ApiException, LWAException {
+        return createScheduledPackageAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Schedules an Easy Ship order and returns the scheduled package information. This operation does
+     * the following: * Specifies the time slot and handover method for the order to be scheduled for delivery. *
+     * Updates the Easy Ship order status. * Generates a shipping label and an invoice. Calling
+     * &#x60;createScheduledPackage&#x60; also generates a warranty document if you specify a &#x60;SerialNumber&#x60;
+     * value. To get these documents, see [How to get invoice, shipping label, and warranty
+     * documents](doc:easyship-api-v2022-03-23-use-case-guide). * Shows the status of Easy Ship orders when you call the
+     * &#x60;getOrders&#x60; operation of the Selling Partner API for Orders and examine the
+     * &#x60;EasyShipShipmentStatus&#x60; property in the response body. See the **Shipping Label**, **Invoice**, and
+     * **Warranty** columns in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which documents are
+     * supported in each marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createScheduledPackageAsync(
+            CreateScheduledPackageRequest body, final ApiCallback<ModelPackage> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -221,6 +318,14 @@ public class EasyShipApi {
         }
 
         okhttp3.Call call = createScheduledPackageValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-createScheduledPackage");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -306,14 +411,92 @@ public class EasyShipApi {
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateScheduledPackagesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateScheduledPackagesResponse createScheduledPackageBulk(
+            CreateScheduledPackagesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<CreateScheduledPackagesResponse> resp =
+                createScheduledPackageBulkWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * This operation automatically schedules a time slot for all the &#x60;amazonOrderId&#x60;s given as input,
+     * generating the associated shipping labels, along with other compliance documents according to the marketplace
+     * (refer to the [marketplace document support
+     * table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table)). Developers calling this operation
+     * may optionally assign a &#x60;packageDetails&#x60; object, allowing them to input a preferred time slot for each
+     * order in their request. In this case, Amazon will try to schedule the respective packages using their optional
+     * settings. On the other hand, *i.e.*, if the time slot is not provided, Amazon will then pick the earliest time
+     * slot possible. Regarding the shipping label&#x27;s file format, external developers are able to choose between
+     * PDF or ZPL, and Amazon will create the label accordingly. This operation returns an array composed of the
+     * scheduled packages, and a short-lived URL pointing to a zip file containing the generated shipping labels and the
+     * other documents enabled for your marketplace. If at least an order couldn&#x27;t be scheduled, then Amazon adds
+     * the &#x60;rejectedOrders&#x60; list into the response, which contains an entry for each order we couldn&#x27;t
+     * process. Each entry is composed of an error message describing the reason of the failure, so that sellers can
+     * take action. The table below displays the supported request and burst maximum rates: **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      * @return CreateScheduledPackagesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateScheduledPackagesResponse createScheduledPackageBulk(CreateScheduledPackagesRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateScheduledPackagesResponse> resp = createScheduledPackageBulkWithHttpInfo(body);
+        ApiResponse<CreateScheduledPackagesResponse> resp = createScheduledPackageBulkWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * This operation automatically schedules a time slot for all the &#x60;amazonOrderId&#x60;s given as input,
+     * generating the associated shipping labels, along with other compliance documents according to the marketplace
+     * (refer to the [marketplace document support
+     * table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table)). Developers calling this operation
+     * may optionally assign a &#x60;packageDetails&#x60; object, allowing them to input a preferred time slot for each
+     * order in their request. In this case, Amazon will try to schedule the respective packages using their optional
+     * settings. On the other hand, *i.e.*, if the time slot is not provided, Amazon will then pick the earliest time
+     * slot possible. Regarding the shipping label&#x27;s file format, external developers are able to choose between
+     * PDF or ZPL, and Amazon will create the label accordingly. This operation returns an array composed of the
+     * scheduled packages, and a short-lived URL pointing to a zip file containing the generated shipping labels and the
+     * other documents enabled for your marketplace. If at least an order couldn&#x27;t be scheduled, then Amazon adds
+     * the &#x60;rejectedOrders&#x60; list into the response, which contains an entry for each order we couldn&#x27;t
+     * process. Each entry is composed of an error message describing the reason of the failure, so that sellers can
+     * take action. The table below displays the supported request and burst maximum rates: **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateScheduledPackagesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateScheduledPackagesResponse> createScheduledPackageBulkWithHttpInfo(
+            CreateScheduledPackagesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createScheduledPackageBulkValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "EasyShipApi-createScheduledPackageBulk");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createScheduledPackageBulk operation exceeds rate limit");
     }
 
     /**
@@ -344,11 +527,7 @@ public class EasyShipApi {
      */
     public ApiResponse<CreateScheduledPackagesResponse> createScheduledPackageBulkWithHttpInfo(
             CreateScheduledPackagesRequest body) throws ApiException, LWAException {
-        okhttp3.Call call = createScheduledPackageBulkValidateBeforeCall(body, null);
-        if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createScheduledPackageBulk operation exceeds rate limit");
+        return createScheduledPackageBulkWithHttpInfo(body, null);
     }
 
     /**
@@ -374,12 +553,48 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createScheduledPackageBulkAsync(
             CreateScheduledPackagesRequest body, final ApiCallback<CreateScheduledPackagesResponse> callback)
+            throws ApiException, LWAException {
+        return createScheduledPackageBulkAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) This operation automatically schedules a time slot for all the &#x60;amazonOrderId&#x60;s given
+     * as input, generating the associated shipping labels, along with other compliance documents according to the
+     * marketplace (refer to the [marketplace document support
+     * table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table)). Developers calling this operation
+     * may optionally assign a &#x60;packageDetails&#x60; object, allowing them to input a preferred time slot for each
+     * order in their request. In this case, Amazon will try to schedule the respective packages using their optional
+     * settings. On the other hand, *i.e.*, if the time slot is not provided, Amazon will then pick the earliest time
+     * slot possible. Regarding the shipping label&#x27;s file format, external developers are able to choose between
+     * PDF or ZPL, and Amazon will create the label accordingly. This operation returns an array composed of the
+     * scheduled packages, and a short-lived URL pointing to a zip file containing the generated shipping labels and the
+     * other documents enabled for your marketplace. If at least an order couldn&#x27;t be scheduled, then Amazon adds
+     * the &#x60;rejectedOrders&#x60; list into the response, which contains an entry for each order we couldn&#x27;t
+     * process. Each entry is composed of an error message describing the reason of the failure, so that sellers can
+     * take action. The table below displays the supported request and burst maximum rates: **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createScheduledPackageBulkAsync(
+            CreateScheduledPackagesRequest body,
+            final ApiCallback<CreateScheduledPackagesResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -389,6 +604,14 @@ public class EasyShipApi {
         }
 
         okhttp3.Call call = createScheduledPackageBulkValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "EasyShipApi-createScheduledPackageBulk");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -478,14 +701,71 @@ public class EasyShipApi {
      * @param amazonOrderId An Amazon-defined order identifier. Identifies the order that the seller wants to deliver
      *     using Amazon Easy Ship. (required)
      * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ModelPackage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ModelPackage getScheduledPackage(String amazonOrderId, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ModelPackage> resp =
+                getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about a package, including dimensions, weight, time slot information for handover, invoice
+     * and item information, and status. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon-defined order identifier. Identifies the order that the seller wants to deliver
+     *     using Amazon Easy Ship. (required)
+     * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
      * @return ModelPackage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ModelPackage getScheduledPackage(String amazonOrderId, String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<ModelPackage> resp = getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId);
+        ApiResponse<ModelPackage> resp = getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns information about a package, including dimensions, weight, time slot information for handover, invoice
+     * and item information, and status. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon-defined order identifier. Identifies the order that the seller wants to deliver
+     *     using Amazon Easy Ship. (required)
+     * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ModelPackage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ModelPackage> getScheduledPackageWithHttpInfo(
+            String amazonOrderId, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getScheduledPackageValidateBeforeCall(amazonOrderId, marketplaceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-getScheduledPackage");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getScheduledPackage operation exceeds rate limit");
     }
 
     /**
@@ -506,11 +786,7 @@ public class EasyShipApi {
      */
     public ApiResponse<ModelPackage> getScheduledPackageWithHttpInfo(String amazonOrderId, String marketplaceId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getScheduledPackageValidateBeforeCall(amazonOrderId, marketplaceId, null);
-        if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getScheduledPackage operation exceeds rate limit");
+        return getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId, null);
     }
 
     /**
@@ -526,12 +802,39 @@ public class EasyShipApi {
      *     using Amazon Easy Ship. (required)
      * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getScheduledPackageAsync(
             String amazonOrderId, String marketplaceId, final ApiCallback<ModelPackage> callback)
+            throws ApiException, LWAException {
+        return getScheduledPackageAsync(amazonOrderId, marketplaceId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about a package, including dimensions, weight, time slot information for
+     * handover, invoice and item information, and status. **Usage Plan:** | Rate (requests per second) | Burst | | ----
+     * | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param amazonOrderId An Amazon-defined order identifier. Identifies the order that the seller wants to deliver
+     *     using Amazon Easy Ship. (required)
+     * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getScheduledPackageAsync(
+            String amazonOrderId,
+            String marketplaceId,
+            final ApiCallback<ModelPackage> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -542,6 +845,13 @@ public class EasyShipApi {
 
         okhttp3.Call call =
                 getScheduledPackageValidateBeforeCall(amazonOrderId, marketplaceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-getScheduledPackage");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -613,14 +923,76 @@ public class EasyShipApi {
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListHandoverSlotsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListHandoverSlotsResponse listHandoverSlots(ListHandoverSlotsRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListHandoverSlotsResponse> resp = listHandoverSlotsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns time slots available for Easy Ship orders to be scheduled based on the package weight and dimensions that
+     * the seller specifies. This operation is available for scheduled and unscheduled orders based on marketplace
+     * support. See **Get Time Slots** in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table). This operation can return time
+     * slots that have either pickup or drop-off handover methods - see **Supported Handover Methods** in the
+     * [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table). **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      * @return ListHandoverSlotsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ListHandoverSlotsResponse listHandoverSlots(ListHandoverSlotsRequest body)
             throws ApiException, LWAException {
-        ApiResponse<ListHandoverSlotsResponse> resp = listHandoverSlotsWithHttpInfo(body);
+        ApiResponse<ListHandoverSlotsResponse> resp = listHandoverSlotsWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns time slots available for Easy Ship orders to be scheduled based on the package weight and dimensions that
+     * the seller specifies. This operation is available for scheduled and unscheduled orders based on marketplace
+     * support. See **Get Time Slots** in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table). This operation can return time
+     * slots that have either pickup or drop-off handover methods - see **Supported Handover Methods** in the
+     * [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table). **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListHandoverSlotsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListHandoverSlotsResponse> listHandoverSlotsWithHttpInfo(
+            ListHandoverSlotsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-listHandoverSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listHandoverSlots operation exceeds rate limit");
     }
 
     /**
@@ -644,11 +1016,7 @@ public class EasyShipApi {
      */
     public ApiResponse<ListHandoverSlotsResponse> listHandoverSlotsWithHttpInfo(ListHandoverSlotsRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, null);
-        if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listHandoverSlots operation exceeds rate limit");
+        return listHandoverSlotsWithHttpInfo(body, null);
     }
 
     /**
@@ -667,12 +1035,41 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listHandoverSlotsAsync(
             ListHandoverSlotsRequest body, final ApiCallback<ListHandoverSlotsResponse> callback)
+            throws ApiException, LWAException {
+        return listHandoverSlotsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns time slots available for Easy Ship orders to be scheduled based on the package weight
+     * and dimensions that the seller specifies. This operation is available for scheduled and unscheduled orders based
+     * on marketplace support. See **Get Time Slots** in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table). This operation can return time
+     * slots that have either pickup or drop-off handover methods - see **Supported Handover Methods** in the
+     * [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table). **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listHandoverSlotsAsync(
+            ListHandoverSlotsRequest body,
+            final ApiCallback<ListHandoverSlotsResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -682,6 +1079,13 @@ public class EasyShipApi {
         }
 
         okhttp3.Call call = listHandoverSlotsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-listHandoverSlots");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -753,13 +1157,72 @@ public class EasyShipApi {
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return Packages
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public Packages updateScheduledPackages(UpdateScheduledPackagesRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<Packages> resp = updateScheduledPackagesWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Updates the time slot for handing over the package indicated by the specified &#x60;scheduledPackageId&#x60;. You
+     * can get the new &#x60;slotId&#x60; value for the time slot by calling the &#x60;listHandoverSlots&#x60; operation
+     * before making another &#x60;patch&#x60; call. See the **Update Package** column in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which marketplaces this
+     * operation is supported in. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      * @return Packages
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public Packages updateScheduledPackages(UpdateScheduledPackagesRequest body) throws ApiException, LWAException {
-        ApiResponse<Packages> resp = updateScheduledPackagesWithHttpInfo(body);
+        ApiResponse<Packages> resp = updateScheduledPackagesWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Updates the time slot for handing over the package indicated by the specified &#x60;scheduledPackageId&#x60;. You
+     * can get the new &#x60;slotId&#x60; value for the time slot by calling the &#x60;listHandoverSlots&#x60; operation
+     * before making another &#x60;patch&#x60; call. See the **Update Package** column in the [Marketplace Support
+     * Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which marketplaces this
+     * operation is supported in. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Packages&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Packages> updateScheduledPackagesWithHttpInfo(
+            UpdateScheduledPackagesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-updateScheduledPackages");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<Packages>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateScheduledPackages operation exceeds rate limit");
     }
 
     /**
@@ -781,11 +1244,7 @@ public class EasyShipApi {
      */
     public ApiResponse<Packages> updateScheduledPackagesWithHttpInfo(UpdateScheduledPackagesRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, null);
-        if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Packages>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateScheduledPackages operation exceeds rate limit");
+        return updateScheduledPackagesWithHttpInfo(body, null);
     }
 
     /**
@@ -802,12 +1261,37 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call updateScheduledPackagesAsync(
             UpdateScheduledPackagesRequest body, final ApiCallback<Packages> callback)
+            throws ApiException, LWAException {
+        return updateScheduledPackagesAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Updates the time slot for handing over the package indicated by the specified
+     * &#x60;scheduledPackageId&#x60;. You can get the new &#x60;slotId&#x60; value for the time slot by calling the
+     * &#x60;listHandoverSlots&#x60; operation before making another &#x60;patch&#x60; call. See the **Update Package**
+     * column in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table)
+     * to see which marketplaces this operation is supported in. **Usage Plan:** | Rate (requests per second) | Burst |
+     * | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may see
+     * higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateScheduledPackagesAsync(
+            UpdateScheduledPackagesRequest body, final ApiCallback<Packages> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -817,6 +1301,14 @@ public class EasyShipApi {
         }
 
         okhttp3.Call call = updateScheduledPackagesValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "EasyShipApi-updateScheduledPackages");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Packages>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

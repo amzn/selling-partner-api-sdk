@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -188,6 +189,58 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ProductTypeDefinition
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ProductTypeDefinition getDefinitionsProductType(
+            String productType,
+            List<String> marketplaceIds,
+            String sellerId,
+            String productTypeVersion,
+            String requirements,
+            String requirementsEnforced,
+            String locale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ProductTypeDefinition> resp = getDefinitionsProductTypeWithHttpInfo(
+                productType,
+                marketplaceIds,
+                sellerId,
+                productTypeVersion,
+                requirements,
+                requirementsEnforced,
+                locale,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve an Amazon product type definition. **Usage Plans:** | Plan type | Rate (requests per second) | Burst | |
+     * ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable | The
+     * x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested
+     * operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table
+     * above. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param productType The Amazon product type name. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This
+     *     parameter is limited to one marketplaceId at this time. (required)
+     * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
+     *     populated within the product type definition schema, such as brand names associated with the selling partner.
+     *     (optional)
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
+     *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
+     *     default to LATEST)
+     * @param requirements The name of the requirements set to retrieve requirements for. (optional, default to LISTING)
+     * @param requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the
+     *     product type definition schema. Non-enforced requirements enable structural validation of individual
+     *     attributes without all the required attributes being present (such as for partial updates). (optional,
+     *     default to ENFORCED)
+     * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
+     *     language of the first marketplace in the request. (optional, default to DEFAULT)
      * @return ProductTypeDefinition
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -202,8 +255,78 @@ public class DefinitionsApi {
             String locale)
             throws ApiException, LWAException {
         ApiResponse<ProductTypeDefinition> resp = getDefinitionsProductTypeWithHttpInfo(
-                productType, marketplaceIds, sellerId, productTypeVersion, requirements, requirementsEnforced, locale);
+                productType,
+                marketplaceIds,
+                sellerId,
+                productTypeVersion,
+                requirements,
+                requirementsEnforced,
+                locale,
+                null);
         return resp.getData();
+    }
+
+    /**
+     * Retrieve an Amazon product type definition. **Usage Plans:** | Plan type | Rate (requests per second) | Burst | |
+     * ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable | The
+     * x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested
+     * operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table
+     * above. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param productType The Amazon product type name. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This
+     *     parameter is limited to one marketplaceId at this time. (required)
+     * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
+     *     populated within the product type definition schema, such as brand names associated with the selling partner.
+     *     (optional)
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
+     *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
+     *     default to LATEST)
+     * @param requirements The name of the requirements set to retrieve requirements for. (optional, default to LISTING)
+     * @param requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the
+     *     product type definition schema. Non-enforced requirements enable structural validation of individual
+     *     attributes without all the required attributes being present (such as for partial updates). (optional,
+     *     default to ENFORCED)
+     * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
+     *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ProductTypeDefinition&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ProductTypeDefinition> getDefinitionsProductTypeWithHttpInfo(
+            String productType,
+            List<String> marketplaceIds,
+            String sellerId,
+            String productTypeVersion,
+            String requirements,
+            String requirementsEnforced,
+            String locale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getDefinitionsProductTypeValidateBeforeCall(
+                productType,
+                marketplaceIds,
+                sellerId,
+                productTypeVersion,
+                requirements,
+                requirementsEnforced,
+                locale,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "DefinitionsApi-getDefinitionsProductType");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getDefinitionsProductTypeBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDefinitionsProductType operation exceeds rate limit");
     }
 
     /**
@@ -244,7 +367,7 @@ public class DefinitionsApi {
             String requirementsEnforced,
             String locale)
             throws ApiException, LWAException {
-        okhttp3.Call call = getDefinitionsProductTypeValidateBeforeCall(
+        return getDefinitionsProductTypeWithHttpInfo(
                 productType,
                 marketplaceIds,
                 sellerId,
@@ -253,10 +376,6 @@ public class DefinitionsApi {
                 requirementsEnforced,
                 locale,
                 null);
-        if (disableRateLimiting || getDefinitionsProductTypeBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDefinitionsProductType operation exceeds rate limit");
     }
 
     /**
@@ -285,6 +404,7 @@ public class DefinitionsApi {
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -298,6 +418,59 @@ public class DefinitionsApi {
             String requirementsEnforced,
             String locale,
             final ApiCallback<ProductTypeDefinition> callback)
+            throws ApiException, LWAException {
+        return getDefinitionsProductTypeAsync(
+                productType,
+                marketplaceIds,
+                sellerId,
+                productTypeVersion,
+                requirements,
+                requirementsEnforced,
+                locale,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Retrieve an Amazon product type definition. **Usage Plans:** | Plan type | Rate (requests per
+     * second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable | The
+     * x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested
+     * operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table
+     * above. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param productType The Amazon product type name. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This
+     *     parameter is limited to one marketplaceId at this time. (required)
+     * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
+     *     populated within the product type definition schema, such as brand names associated with the selling partner.
+     *     (optional)
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
+     *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
+     *     default to LATEST)
+     * @param requirements The name of the requirements set to retrieve requirements for. (optional, default to LISTING)
+     * @param requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the
+     *     product type definition schema. Non-enforced requirements enable structural validation of individual
+     *     attributes without all the required attributes being present (such as for partial updates). (optional,
+     *     default to ENFORCED)
+     * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
+     *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getDefinitionsProductTypeAsync(
+            String productType,
+            List<String> marketplaceIds,
+            String sellerId,
+            String productTypeVersion,
+            String requirements,
+            String requirementsEnforced,
+            String locale,
+            final ApiCallback<ProductTypeDefinition> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -315,6 +488,14 @@ public class DefinitionsApi {
                 requirementsEnforced,
                 locale,
                 progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "DefinitionsApi-getDefinitionsProductType");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getDefinitionsProductTypeBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ProductTypeDefinition>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -420,6 +601,41 @@ public class DefinitionsApi {
      *     marketplace. (optional)
      * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
      *     the primary locale of the marketplace. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ProductTypeList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ProductTypeList searchDefinitionsProductTypes(
+            List<String> marketplaceIds,
+            List<String> keywords,
+            String itemName,
+            String locale,
+            String searchLocale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ProductTypeList> resp = searchDefinitionsProductTypesWithHttpInfo(
+                marketplaceIds, keywords, itemName, locale, searchLocale, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Search for and return a list of Amazon product types that have definitions available. **Usage Plans:** | Plan
+     * type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific|
+     * Variable | Variable | The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were
+     * applied to the requested operation. Rate limits for some selling partners will vary from the default rate and
+     * burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
+     *     &#x60;itemName&#x60;. (optional)
+     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     *     &#x60;keywords&#x60;. (optional)
+     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
+     *     marketplace. (optional)
+     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
+     *     the primary locale of the marketplace. (optional)
      * @return ProductTypeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -427,9 +643,55 @@ public class DefinitionsApi {
     public ProductTypeList searchDefinitionsProductTypes(
             List<String> marketplaceIds, List<String> keywords, String itemName, String locale, String searchLocale)
             throws ApiException, LWAException {
-        ApiResponse<ProductTypeList> resp =
-                searchDefinitionsProductTypesWithHttpInfo(marketplaceIds, keywords, itemName, locale, searchLocale);
+        ApiResponse<ProductTypeList> resp = searchDefinitionsProductTypesWithHttpInfo(
+                marketplaceIds, keywords, itemName, locale, searchLocale, null);
         return resp.getData();
+    }
+
+    /**
+     * Search for and return a list of Amazon product types that have definitions available. **Usage Plans:** | Plan
+     * type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific|
+     * Variable | Variable | The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were
+     * applied to the requested operation. Rate limits for some selling partners will vary from the default rate and
+     * burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
+     *     &#x60;itemName&#x60;. (optional)
+     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     *     &#x60;keywords&#x60;. (optional)
+     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
+     *     marketplace. (optional)
+     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
+     *     the primary locale of the marketplace. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ProductTypeList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ProductTypeList> searchDefinitionsProductTypesWithHttpInfo(
+            List<String> marketplaceIds,
+            List<String> keywords,
+            String itemName,
+            String locale,
+            String searchLocale,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
+                marketplaceIds, keywords, itemName, locale, searchLocale, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "DefinitionsApi-searchDefinitionsProductTypes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || searchDefinitionsProductTypesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("searchDefinitionsProductTypes operation exceeds rate limit");
     }
 
     /**
@@ -456,12 +718,8 @@ public class DefinitionsApi {
     public ApiResponse<ProductTypeList> searchDefinitionsProductTypesWithHttpInfo(
             List<String> marketplaceIds, List<String> keywords, String itemName, String locale, String searchLocale)
             throws ApiException, LWAException {
-        okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
+        return searchDefinitionsProductTypesWithHttpInfo(
                 marketplaceIds, keywords, itemName, locale, searchLocale, null);
-        if (disableRateLimiting || searchDefinitionsProductTypesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchDefinitionsProductTypes operation exceeds rate limit");
     }
 
     /**
@@ -482,6 +740,7 @@ public class DefinitionsApi {
      * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
      *     the primary locale of the marketplace. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -494,6 +753,41 @@ public class DefinitionsApi {
             String searchLocale,
             final ApiCallback<ProductTypeList> callback)
             throws ApiException, LWAException {
+        return searchDefinitionsProductTypesAsync(
+                marketplaceIds, keywords, itemName, locale, searchLocale, callback, null);
+    }
+    /**
+     * (asynchronously) Search for and return a list of Amazon product types that have definitions available. **Usage
+     * Plans:** | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling
+     * partner specific| Variable | Variable | The x-amzn-RateLimit-Limit response header returns the usage plan rate
+     * limits that were applied to the requested operation. Rate limits for some selling partners will vary from the
+     * default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the
+     * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
+     *     &#x60;itemName&#x60;. (optional)
+     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     *     &#x60;keywords&#x60;. (optional)
+     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
+     *     marketplace. (optional)
+     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
+     *     the primary locale of the marketplace. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call searchDefinitionsProductTypesAsync(
+            List<String> marketplaceIds,
+            List<String> keywords,
+            String itemName,
+            String locale,
+            String searchLocale,
+            final ApiCallback<ProductTypeList> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -503,6 +797,14 @@ public class DefinitionsApi {
 
         okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(
                 marketplaceIds, keywords, itemName, locale, searchLocale, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "DefinitionsApi-searchDefinitionsProductTypes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || searchDefinitionsProductTypesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ProductTypeList>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);

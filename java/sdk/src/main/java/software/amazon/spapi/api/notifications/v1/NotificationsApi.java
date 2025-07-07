@@ -17,6 +17,7 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
+import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
 import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
@@ -152,14 +153,71 @@ public class NotificationsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateDestinationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateDestinationResponse createDestination(CreateDestinationRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateDestinationResponse> resp = createDestinationWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is
+     * grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
      * @return CreateDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateDestinationResponse createDestination(CreateDestinationRequest body)
             throws ApiException, LWAException {
-        ApiResponse<CreateDestinationResponse> resp = createDestinationWithHttpInfo(body);
+        ApiResponse<CreateDestinationResponse> resp = createDestinationWithHttpInfo(body, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is
+     * grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateDestinationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateDestinationResponse> createDestinationWithHttpInfo(
+            CreateDestinationRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createDestinationValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-createDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createDestination operation exceeds rate limit");
     }
 
     /**
@@ -180,11 +238,7 @@ public class NotificationsApi {
      */
     public ApiResponse<CreateDestinationResponse> createDestinationWithHttpInfo(CreateDestinationRequest body)
             throws ApiException, LWAException {
-        okhttp3.Call call = createDestinationValidateBeforeCall(body, null);
-        if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createDestination operation exceeds rate limit");
+        return createDestinationWithHttpInfo(body, null);
     }
 
     /**
@@ -200,12 +254,38 @@ public class NotificationsApi {
      *
      * @param body (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call createDestinationAsync(
             CreateDestinationRequest body, final ApiCallback<CreateDestinationResponse> callback)
+            throws ApiException, LWAException {
+        return createDestinationAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a destination resource to receive notifications. The &#x60;createDestination&#x60;
+     * operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createDestinationAsync(
+            CreateDestinationRequest body,
+            final ApiCallback<CreateDestinationResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -215,6 +295,14 @@ public class NotificationsApi {
         }
 
         okhttp3.Call call = createDestinationValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-createDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -304,14 +392,82 @@ public class NotificationsApi {
      * @param notificationType The type of notification. For more information about notification types, refer to
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return CreateSubscriptionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateSubscriptionResponse createSubscription(
+            CreateSubscriptionRequest body, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<CreateSubscriptionResponse> resp =
+                createSubscriptionWithHttpInfo(body, notificationType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a subscription for the specified notification type to be delivered to the specified destination. Before
+     * you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation.
+     * In cases where the specified notification type supports multiple payload versions, you can utilize this API to
+     * subscribe to a different payload version if you already have an existing subscription for a different payload
+     * version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
      * @return CreateSubscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public CreateSubscriptionResponse createSubscription(CreateSubscriptionRequest body, String notificationType)
             throws ApiException, LWAException {
-        ApiResponse<CreateSubscriptionResponse> resp = createSubscriptionWithHttpInfo(body, notificationType);
+        ApiResponse<CreateSubscriptionResponse> resp = createSubscriptionWithHttpInfo(body, notificationType, null);
         return resp.getData();
+    }
+
+    /**
+     * Creates a subscription for the specified notification type to be delivered to the specified destination. Before
+     * you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation.
+     * In cases where the specified notification type supports multiple payload versions, you can utilize this API to
+     * subscribe to a different payload version if you already have an existing subscription for a different payload
+     * version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;CreateSubscriptionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateSubscriptionResponse> createSubscriptionWithHttpInfo(
+            CreateSubscriptionRequest body, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = createSubscriptionValidateBeforeCall(body, notificationType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-createSubscription");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createSubscription operation exceeds rate limit");
     }
 
     /**
@@ -336,11 +492,7 @@ public class NotificationsApi {
      */
     public ApiResponse<CreateSubscriptionResponse> createSubscriptionWithHttpInfo(
             CreateSubscriptionRequest body, String notificationType) throws ApiException, LWAException {
-        okhttp3.Call call = createSubscriptionValidateBeforeCall(body, notificationType, null);
-        if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createSubscription operation exceeds rate limit");
+        return createSubscriptionWithHttpInfo(body, notificationType, null);
     }
 
     /**
@@ -360,6 +512,7 @@ public class NotificationsApi {
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -369,6 +522,36 @@ public class NotificationsApi {
             String notificationType,
             final ApiCallback<CreateSubscriptionResponse> callback)
             throws ApiException, LWAException {
+        return createSubscriptionAsync(body, notificationType, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a subscription for the specified notification type to be delivered to the specified
+     * destination. Before you can subscribe, you must first create the destination by calling the
+     * &#x60;createDestination&#x60; operation. In cases where the specified notification type supports multiple payload
+     * versions, you can utilize this API to subscribe to a different payload version if you already have an existing
+     * subscription for a different payload version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
+     * ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * were applied to the requested operation, when available. The table above indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may observe higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createSubscriptionAsync(
+            CreateSubscriptionRequest body,
+            String notificationType,
+            final ApiCallback<CreateSubscriptionResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
@@ -377,6 +560,14 @@ public class NotificationsApi {
         }
 
         okhttp3.Call call = createSubscriptionValidateBeforeCall(body, notificationType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-createSubscription");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -451,13 +642,68 @@ public class NotificationsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return DeleteDestinationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public DeleteDestinationResponse deleteDestination(String destinationId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<DeleteDestinationResponse> resp = deleteDestinationWithHttpInfo(destinationId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more
+     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param destinationId The identifier for the destination that you want to delete. (required)
      * @return DeleteDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public DeleteDestinationResponse deleteDestination(String destinationId) throws ApiException, LWAException {
-        ApiResponse<DeleteDestinationResponse> resp = deleteDestinationWithHttpInfo(destinationId);
+        ApiResponse<DeleteDestinationResponse> resp = deleteDestinationWithHttpInfo(destinationId, null);
         return resp.getData();
+    }
+
+    /**
+     * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more
+     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param destinationId The identifier for the destination that you want to delete. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;DeleteDestinationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<DeleteDestinationResponse> deleteDestinationWithHttpInfo(
+            String destinationId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = deleteDestinationValidateBeforeCall(destinationId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-deleteDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteDestination operation exceeds rate limit");
     }
 
     /**
@@ -477,11 +723,7 @@ public class NotificationsApi {
      */
     public ApiResponse<DeleteDestinationResponse> deleteDestinationWithHttpInfo(String destinationId)
             throws ApiException, LWAException {
-        okhttp3.Call call = deleteDestinationValidateBeforeCall(destinationId, null);
-        if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteDestination operation exceeds rate limit");
+        return deleteDestinationWithHttpInfo(destinationId, null);
     }
 
     /**
@@ -497,12 +739,36 @@ public class NotificationsApi {
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteDestinationAsync(
             String destinationId, final ApiCallback<DeleteDestinationResponse> callback)
+            throws ApiException, LWAException {
+        return deleteDestinationAsync(destinationId, callback, null);
+    }
+    /**
+     * (asynchronously) Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is
+     * grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param destinationId The identifier for the destination that you want to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deleteDestinationAsync(
+            String destinationId, final ApiCallback<DeleteDestinationResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -512,6 +778,14 @@ public class NotificationsApi {
         }
 
         okhttp3.Call call = deleteDestinationValidateBeforeCall(destinationId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-deleteDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -605,6 +879,36 @@ public class NotificationsApi {
      * @param notificationType The type of notification. For more information about notification types, refer to
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return DeleteSubscriptionByIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public DeleteSubscriptionByIdResponse deleteSubscriptionById(
+            String subscriptionId, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<DeleteSubscriptionByIdResponse> resp =
+                deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes the subscription indicated by the subscription identifier and notification type that you specify. The
+     * subscription identifier can be for any subscription associated with your application. After you successfully call
+     * this operation, notifications will stop being sent for the associated subscription. The
+     * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param subscriptionId The identifier for the subscription that you want to delete. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
      * @return DeleteSubscriptionByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -612,8 +916,48 @@ public class NotificationsApi {
     public DeleteSubscriptionByIdResponse deleteSubscriptionById(String subscriptionId, String notificationType)
             throws ApiException, LWAException {
         ApiResponse<DeleteSubscriptionByIdResponse> resp =
-                deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
+                deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType, null);
         return resp.getData();
+    }
+
+    /**
+     * Deletes the subscription indicated by the subscription identifier and notification type that you specify. The
+     * subscription identifier can be for any subscription associated with your application. After you successfully call
+     * this operation, notifications will stop being sent for the associated subscription. The
+     * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param subscriptionId The identifier for the subscription that you want to delete. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;DeleteSubscriptionByIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<DeleteSubscriptionByIdResponse> deleteSubscriptionByIdWithHttpInfo(
+            String subscriptionId, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = deleteSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "NotificationsApi-deleteSubscriptionById");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deleteSubscriptionById operation exceeds rate limit");
     }
 
     /**
@@ -639,11 +983,7 @@ public class NotificationsApi {
      */
     public ApiResponse<DeleteSubscriptionByIdResponse> deleteSubscriptionByIdWithHttpInfo(
             String subscriptionId, String notificationType) throws ApiException, LWAException {
-        okhttp3.Call call = deleteSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null);
-        if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteSubscriptionById operation exceeds rate limit");
+        return deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType, null);
     }
 
     /**
@@ -664,12 +1004,44 @@ public class NotificationsApi {
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteSubscriptionByIdAsync(
             String subscriptionId, String notificationType, final ApiCallback<DeleteSubscriptionByIdResponse> callback)
+            throws ApiException, LWAException {
+        return deleteSubscriptionByIdAsync(subscriptionId, notificationType, callback, null);
+    }
+    /**
+     * (asynchronously) Deletes the subscription indicated by the subscription identifier and notification type that you
+     * specify. The subscription identifier can be for any subscription associated with your application. After you
+     * successfully call this operation, notifications will stop being sent for the associated subscription. The
+     * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param subscriptionId The identifier for the subscription that you want to delete. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deleteSubscriptionByIdAsync(
+            String subscriptionId,
+            String notificationType,
+            final ApiCallback<DeleteSubscriptionByIdResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -680,6 +1052,14 @@ public class NotificationsApi {
 
         okhttp3.Call call =
                 deleteSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "NotificationsApi-deleteSubscriptionById");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -754,13 +1134,69 @@ public class NotificationsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetDestinationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetDestinationResponse getDestination(String destinationId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetDestinationResponse> resp = getDestinationWithHttpInfo(destinationId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is
+     * grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param destinationId The identifier generated when you created the destination. (required)
      * @return GetDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetDestinationResponse getDestination(String destinationId) throws ApiException, LWAException {
-        ApiResponse<GetDestinationResponse> resp = getDestinationWithHttpInfo(destinationId);
+        ApiResponse<GetDestinationResponse> resp = getDestinationWithHttpInfo(destinationId, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is
+     * grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param destinationId The identifier generated when you created the destination. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetDestinationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetDestinationResponse> getDestinationWithHttpInfo(
+            String destinationId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDestination operation exceeds rate limit");
     }
 
     /**
@@ -781,11 +1217,7 @@ public class NotificationsApi {
      */
     public ApiResponse<GetDestinationResponse> getDestinationWithHttpInfo(String destinationId)
             throws ApiException, LWAException {
-        okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, null);
-        if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDestination operation exceeds rate limit");
+        return getDestinationWithHttpInfo(destinationId, null);
     }
 
     /**
@@ -801,11 +1233,35 @@ public class NotificationsApi {
      *
      * @param destinationId The identifier generated when you created the destination. (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getDestinationAsync(String destinationId, final ApiCallback<GetDestinationResponse> callback)
+            throws ApiException, LWAException {
+        return getDestinationAsync(destinationId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about the destination that you specify. The &#x60;getDestination&#x60;
+     * operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param destinationId The identifier generated when you created the destination. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getDestinationAsync(
+            String destinationId, final ApiCallback<GetDestinationResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -815,6 +1271,13 @@ public class NotificationsApi {
         }
 
         okhttp3.Call call = getDestinationValidateBeforeCall(destinationId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getDestination");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -880,13 +1343,64 @@ public class NotificationsApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetDestinationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetDestinationsResponse getDestinations(String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetDestinationsResponse> resp = getDestinationsWithHttpInfo(restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more
+     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
      * @return GetDestinationsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetDestinationsResponse getDestinations() throws ApiException, LWAException {
-        ApiResponse<GetDestinationsResponse> resp = getDestinationsWithHttpInfo();
+        ApiResponse<GetDestinationsResponse> resp = getDestinationsWithHttpInfo(null);
         return resp.getData();
+    }
+
+    /**
+     * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more
+     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetDestinationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetDestinationsResponse> getDestinationsWithHttpInfo(String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getDestinationsValidateBeforeCall(null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getDestinations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getDestinations operation exceeds rate limit");
     }
 
     /**
@@ -904,11 +1418,7 @@ public class NotificationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetDestinationsResponse> getDestinationsWithHttpInfo() throws ApiException, LWAException {
-        okhttp3.Call call = getDestinationsValidateBeforeCall(null);
-        if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDestinations operation exceeds rate limit");
+        return getDestinationsWithHttpInfo(null);
     }
 
     /**
@@ -923,11 +1433,34 @@ public class NotificationsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getDestinationsAsync(final ApiCallback<GetDestinationsResponse> callback)
+            throws ApiException, LWAException {
+        return getDestinationsAsync(callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about all destinations. The &#x60;getDestinations&#x60; operation is
+     * grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getDestinationsAsync(
+            final ApiCallback<GetDestinationsResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -937,6 +1470,13 @@ public class NotificationsApi {
         }
 
         okhttp3.Call call = getDestinationsValidateBeforeCall(progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getDestinations");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1025,14 +1565,81 @@ public class NotificationsApi {
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSubscriptionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSubscriptionResponse getSubscription(
+            String notificationType, String payloadVersion, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetSubscriptionResponse> resp =
+                getSubscriptionWithHttpInfo(notificationType, payloadVersion, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about subscription of the specified notification type and payload version.
+     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
+     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
+     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @return GetSubscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetSubscriptionResponse getSubscription(String notificationType, String payloadVersion)
             throws ApiException, LWAException {
-        ApiResponse<GetSubscriptionResponse> resp = getSubscriptionWithHttpInfo(notificationType, payloadVersion);
+        ApiResponse<GetSubscriptionResponse> resp = getSubscriptionWithHttpInfo(notificationType, payloadVersion, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns information about subscription of the specified notification type and payload version.
+     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
+     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
+     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSubscriptionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSubscriptionResponse> getSubscriptionWithHttpInfo(
+            String notificationType, String payloadVersion, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getSubscriptionValidateBeforeCall(notificationType, payloadVersion, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getSubscription");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSubscription operation exceeds rate limit");
     }
 
     /**
@@ -1057,11 +1664,7 @@ public class NotificationsApi {
      */
     public ApiResponse<GetSubscriptionResponse> getSubscriptionWithHttpInfo(
             String notificationType, String payloadVersion) throws ApiException, LWAException {
-        okhttp3.Call call = getSubscriptionValidateBeforeCall(notificationType, payloadVersion, null);
-        if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSubscription operation exceeds rate limit");
+        return getSubscriptionWithHttpInfo(notificationType, payloadVersion, null);
     }
 
     /**
@@ -1081,12 +1684,43 @@ public class NotificationsApi {
      *     (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getSubscriptionAsync(
             String notificationType, String payloadVersion, final ApiCallback<GetSubscriptionResponse> callback)
+            throws ApiException, LWAException {
+        return getSubscriptionAsync(notificationType, payloadVersion, callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about subscription of the specified notification type and payload version.
+     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
+     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
+     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that were applied to the requested operation, when available. The table above indicates the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSubscriptionAsync(
+            String notificationType,
+            String payloadVersion,
+            final ApiCallback<GetSubscriptionResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1097,6 +1731,13 @@ public class NotificationsApi {
 
         okhttp3.Call call =
                 getSubscriptionValidateBeforeCall(notificationType, payloadVersion, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getSubscription");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1188,6 +1829,34 @@ public class NotificationsApi {
      * @param notificationType The type of notification. For more information about notification types, refer to
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSubscriptionByIdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSubscriptionByIdResponse getSubscriptionById(
+            String subscriptionId, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetSubscriptionByIdResponse> resp =
+                getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60;
+     * operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param subscriptionId The identifier for the subscription that you want to get. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
      * @return GetSubscriptionByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1195,8 +1864,46 @@ public class NotificationsApi {
     public GetSubscriptionByIdResponse getSubscriptionById(String subscriptionId, String notificationType)
             throws ApiException, LWAException {
         ApiResponse<GetSubscriptionByIdResponse> resp =
-                getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
+                getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType, null);
         return resp.getData();
+    }
+
+    /**
+     * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60;
+     * operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param subscriptionId The identifier for the subscription that you want to get. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSubscriptionByIdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSubscriptionByIdResponse> getSubscriptionByIdWithHttpInfo(
+            String subscriptionId, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "NotificationsApi-getSubscriptionById");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
     }
 
     /**
@@ -1220,11 +1927,7 @@ public class NotificationsApi {
      */
     public ApiResponse<GetSubscriptionByIdResponse> getSubscriptionByIdWithHttpInfo(
             String subscriptionId, String notificationType) throws ApiException, LWAException {
-        okhttp3.Call call = getSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, null);
-        if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
+        return getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType, null);
     }
 
     /**
@@ -1243,12 +1946,42 @@ public class NotificationsApi {
      *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *     (required)
      * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getSubscriptionByIdAsync(
             String subscriptionId, String notificationType, final ApiCallback<GetSubscriptionByIdResponse> callback)
+            throws ApiException, LWAException {
+        return getSubscriptionByIdAsync(subscriptionId, notificationType, callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about a subscription for the specified notification type. The
+     * &#x60;getSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
+     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param subscriptionId The identifier for the subscription that you want to get. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to
+     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
+     *     (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSubscriptionByIdAsync(
+            String subscriptionId,
+            String notificationType,
+            final ApiCallback<GetSubscriptionByIdResponse> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1259,6 +1992,14 @@ public class NotificationsApi {
 
         okhttp3.Call call =
                 getSubscriptionByIdValidateBeforeCall(subscriptionId, notificationType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "NotificationsApi-getSubscriptionById");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
         if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
