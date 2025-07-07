@@ -35,11 +35,11 @@ from {package_name}.auth.credentials import SPAPIConfig
 
     # Create main package __init__.py file
     # Get all API directories
-    api_dirs = [d for d in os.listdir(sdk_path) if os.path.isdir(os.path.join(sdk_path, d))]
+    api_dirs = sorted([d for d in os.listdir(sdk_path) if os.path.isdir(os.path.join(sdk_path, d))])
 
     # For each API directory, generate the import statements
     for api_dir in api_dirs:
-        api_files = [f for f in os.listdir(os.path.join(sdk_path, api_dir)) if f.endswith('_api.py')]
+        api_files = sorted([f for f in os.listdir(os.path.join(sdk_path, api_dir)) if f.endswith('_api.py')])
         for api_file in api_files:
             class_name = get_api_class_name(api_file)
             content += f"\nfrom {package_name}.api.{api_dir}.{api_file[:-3]} import {class_name}"
