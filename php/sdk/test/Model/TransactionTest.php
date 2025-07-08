@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\df\transactions\v2021_12_28\Transaction;
+use SpApi\Model\finances\v2024_06_19\Transaction;
 
 /**
  * TransactionTest Class Doc Comment
  *
  * @category    Class
- * @description The transaction status details.
+ * @description Contains all information related to the transaction.
  * @package     SpApi
  */
 class TransactionTest extends TestCase
@@ -52,6 +52,40 @@ class TransactionTest extends TestCase
     }
 
     /**
+     * Test attribute "selling_partner_metadata"
+     */
+    public function testPropertySellingPartnerMetadata()
+    {
+        
+        $testValue = new \SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata();
+        
+        $this->model->setSellingPartnerMetadata($testValue);
+        $this->assertEquals($testValue, $this->model->getSellingPartnerMetadata());
+    }
+
+    /**
+     * Test attribute "related_identifiers"
+     */
+    public function testPropertyRelatedIdentifiers()
+    {
+        $testValue = [];
+        
+        $this->model->setRelatedIdentifiers($testValue);
+        $this->assertEquals($testValue, $this->model->getRelatedIdentifiers());
+    }
+
+    /**
+     * Test attribute "transaction_type"
+     */
+    public function testPropertyTransactionType()
+    {
+        $testValue = 'test';
+        
+        $this->model->setTransactionType($testValue);
+        $this->assertEquals($testValue, $this->model->getTransactionType());
+    }
+
+    /**
      * Test attribute "transaction_id"
      */
     public function testPropertyTransactionId()
@@ -63,26 +97,93 @@ class TransactionTest extends TestCase
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "transaction_status"
      */
-    public function testPropertyStatus()
+    public function testPropertyTransactionStatus()
     {
-        $enumInstance = new Transaction();
-        $allowedValues = $enumInstance->getStatusAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setStatus($testValue);
-        $this->assertEquals($testValue, $this->model->getStatus());
+        $testValue = 'test';
+        
+        $this->model->setTransactionStatus($testValue);
+        $this->assertEquals($testValue, $this->model->getTransactionStatus());
     }
 
     /**
-     * Test attribute "errors"
+     * Test attribute "description"
      */
-    public function testPropertyErrors()
+    public function testPropertyDescription()
+    {
+        $testValue = 'test';
+        
+        $this->model->setDescription($testValue);
+        $this->assertEquals($testValue, $this->model->getDescription());
+    }
+
+    /**
+     * Test attribute "posted_date"
+     */
+    public function testPropertyPostedDate()
     {
         
-        $testValue = new \SpApi\Model\vendor\df\transactions\v2021_12_28\ErrorList();
+        $testValue = new \DateTime();
         
-        $this->model->setErrors($testValue);
-        $this->assertEquals($testValue, $this->model->getErrors());
+        $this->model->setPostedDate($testValue);
+        $this->assertEquals($testValue, $this->model->getPostedDate());
+    }
+
+    /**
+     * Test attribute "total_amount"
+     */
+    public function testPropertyTotalAmount()
+    {
+        
+        $testValue = new \SpApi\Model\finances\v2024_06_19\Currency();
+        
+        $this->model->setTotalAmount($testValue);
+        $this->assertEquals($testValue, $this->model->getTotalAmount());
+    }
+
+    /**
+     * Test attribute "marketplace_details"
+     */
+    public function testPropertyMarketplaceDetails()
+    {
+        
+        $testValue = new \SpApi\Model\finances\v2024_06_19\MarketplaceDetails();
+        
+        $this->model->setMarketplaceDetails($testValue);
+        $this->assertEquals($testValue, $this->model->getMarketplaceDetails());
+    }
+
+    /**
+     * Test attribute "items"
+     */
+    public function testPropertyItems()
+    {
+        $testValue = [];
+        
+        $this->model->setItems($testValue);
+        $this->assertEquals($testValue, $this->model->getItems());
+    }
+
+    /**
+     * Test attribute "contexts"
+     */
+    public function testPropertyContexts()
+    {
+        $testValue = [];
+        
+        $this->model->setContexts($testValue);
+        $this->assertEquals($testValue, $this->model->getContexts());
+    }
+
+    /**
+     * Test attribute "breakdowns"
+     */
+    public function testPropertyBreakdowns()
+    {
+        $testValue = [];
+        
+        $this->model->setBreakdowns($testValue);
+        $this->assertEquals($testValue, $this->model->getBreakdowns());
     }
 }
