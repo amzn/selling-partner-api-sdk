@@ -1,6 +1,11 @@
 {
-    "packageName":"software.amzn.spapi",
+    "packageName": "software.amzn.spapi",
     "packageVersion": "1.1.2",
-    "targetFramework":"net7.0",
-    "engineOptions": { "library": "Stubble" }
+    "targetFramework": "net7.0",
+    "engineOptions": { "library": "Stubble" },
+    "globalProperties": {
+        "modelTests": false,
+        "modelDocs": false,
+        "apiDocs": false
+    }
 }

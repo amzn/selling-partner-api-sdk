@@ -1,5 +1,10 @@
 {
     "usePromises": true,
     "useES6": true,
-    "modelPropertyNaming": "camelCase"
+    "modelPropertyNaming": "camelCase",
+    "globalProperties": {
+        "modelTests": false,
+        "modelDocs": false,
+        "apiDocs": false
+    }
 }
