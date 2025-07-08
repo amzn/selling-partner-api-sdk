@@ -51,6 +51,7 @@ export const defaultRateLimitMap = {
   "DefaultApi-listFinancialEventsByGroupId": [1, 30, 2],
   "DefaultApi-listFinancialEventsByOrderId": [1, 30, 2],
   "DefaultApi-listFinancialEvents": [1, 30, 2],
+  "DefaultApi-listTransactions": [1, 10, 2],
   "DefaultApi-initiatePayout": [1, 2, 60],
   "DefaultApi-getPaymentMethods": [1, 30, 2],
   "FbaInboundApi-getPrepInstructions": [2, 30],
