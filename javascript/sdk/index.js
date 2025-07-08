@@ -8,6 +8,7 @@ export * as EasyshipSpApi from './src/easyship_v2022_03_23/index.js';
 export * as FbaeligibilitySpApi from './src/fbaeligibility_v1/index.js';
 export * as FbainventorySpApi from './src/fbainventory_v1/index.js';
 export * as FeedsSpApi from './src/feeds_v2021_06_30/index.js';
+export * as Finances20240619SpApi from './src/finances_2024_06_19/index.js';
 export * as FinancesSpApi from './src/finances_v0/index.js';
 export * as FulfillmentinboundSpApi from './src/fulfillmentinbound_v2024_03_20/index.js';
 export * as Fulfillmentinbound_v0SpApi from './src/fulfillmentinbound_v0/index.js';
