@@ -220,7 +220,6 @@ public class VendorOrdersApi {
      * @param purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes:
      *     alpha-numeric code. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -630,7 +629,6 @@ public class VendorOrdersApi {
      * @param includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order
      *     numbers are returned. (optional, default to true)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -885,7 +883,6 @@ public class VendorOrdersApi {
      *
      * @param body The request body containing the acknowledgement to an order (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

@@ -336,7 +336,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -565,7 +564,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -848,7 +846,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1117,7 +1114,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1402,7 +1398,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1677,7 +1672,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1906,7 +1900,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2140,7 +2133,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2375,7 +2367,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2613,7 +2604,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2844,7 +2834,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3155,7 +3144,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3428,7 +3416,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3673,7 +3660,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3933,7 +3919,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4190,7 +4175,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4428,7 +4412,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4704,7 +4687,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4937,7 +4919,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5192,7 +5173,6 @@ public class ShippingApi {
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is
      *     AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

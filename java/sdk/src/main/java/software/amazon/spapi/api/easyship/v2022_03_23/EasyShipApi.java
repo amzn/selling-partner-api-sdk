@@ -272,7 +272,6 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -553,7 +552,6 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -802,7 +800,6 @@ public class EasyShipApi {
      *     using Amazon Easy Ship. (required)
      * @param marketplaceId An identifier for the marketplace in which the seller is selling. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1035,7 +1032,6 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1261,7 +1257,6 @@ public class EasyShipApi {
      *
      * @param body The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

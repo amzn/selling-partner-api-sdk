@@ -251,7 +251,6 @@ public class ReportsApi {
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -456,7 +455,6 @@ public class ReportsApi {
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -655,7 +653,6 @@ public class ReportsApi {
      *
      * @param body Information required to create the report. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -865,7 +862,6 @@ public class ReportsApi {
      *
      * @param body Information required to create the report schedule. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1079,7 +1075,6 @@ public class ReportsApi {
      * @param reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1286,7 +1281,6 @@ public class ReportsApi {
      *
      * @param reportDocumentId The identifier for the report document. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1499,7 +1493,6 @@ public class ReportsApi {
      * @param reportScheduleId The identifier for the report schedule. This identifier is unique only in combination
      *     with a seller ID. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1714,7 +1707,6 @@ public class ReportsApi {
      * @param reportTypes A list of report types used to filter report schedules. Refer to [Report Type
      *     Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2094,7 +2086,6 @@ public class ReportsApi {
      *     results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying
      *     &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

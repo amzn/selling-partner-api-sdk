@@ -239,7 +239,6 @@ public class TransactionsApi {
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -426,7 +425,6 @@ public class TransactionsApi {
      *
      * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -642,7 +640,6 @@ public class TransactionsApi {
      *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
      *     return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

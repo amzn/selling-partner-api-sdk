@@ -404,7 +404,6 @@ public class DefinitionsApi {
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -740,7 +739,6 @@ public class DefinitionsApi {
      * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
      *     the primary locale of the marketplace. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

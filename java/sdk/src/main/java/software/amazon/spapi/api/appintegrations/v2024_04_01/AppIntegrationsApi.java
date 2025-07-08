@@ -214,7 +214,6 @@ public class AppIntegrationsApi {
      *
      * @param body The request body for the &#x60;createNotification&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -418,7 +417,6 @@ public class AppIntegrationsApi {
      *
      * @param body The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -633,7 +631,6 @@ public class AppIntegrationsApi {
      * @param body The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      * @param notificationId A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

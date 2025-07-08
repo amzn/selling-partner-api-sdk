@@ -229,7 +229,6 @@ public class FbaInventoryApi {
      * @param body List of items to add to Sandbox inventory. (required)
      * @param xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -417,7 +416,6 @@ public class FbaInventoryApi {
      *
      * @param body CreateInventoryItem Request Body Parameter. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -624,7 +622,6 @@ public class FbaInventoryApi {
      * @param sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries. (required)
      * @param marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1076,7 +1073,6 @@ public class FbaInventoryApi {
      * @param nextToken String token returned in the response of your previous request. The string token will expire 30
      *     seconds after being created. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

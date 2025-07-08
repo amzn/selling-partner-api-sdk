@@ -342,7 +342,6 @@ public class DefaultApi {
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

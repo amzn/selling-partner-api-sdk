@@ -243,7 +243,6 @@ public class FbaInboundApi {
      * @param shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -687,7 +686,6 @@ public class FbaInboundApi {
      * @param pageStartIndex The page start index for paginating through the total packages&#x27; labels. This is a
      *     required parameter for Non-Partnered LTL Shipments. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1047,7 +1045,6 @@ public class FbaInboundApi {
      *     the response. You can find out which marketplaces a seller participates in by calling the
      *     getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1379,7 +1376,6 @@ public class FbaInboundApi {
      *     specified time. The selection includes updates made by Amazon and by the seller. (optional)
      * @param nextToken A string token returned in the response to your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1621,7 +1617,6 @@ public class FbaInboundApi {
      * @param shipmentId A shipment identifier used for selecting items in a specific inbound shipment. (required)
      * @param marketplaceId Deprecated. Do not use. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2025,7 +2020,6 @@ public class FbaInboundApi {
      *     specified time. The selection includes updates made by Amazon and by the seller. (optional)
      * @param nextToken A string token returned in the response to your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

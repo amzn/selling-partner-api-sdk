@@ -207,7 +207,6 @@ public class OffersApi {
      *
      * @param body The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -410,7 +409,6 @@ public class OffersApi {
      *
      * @param body The request body for the &#x60;listOffers&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

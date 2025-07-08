@@ -248,7 +248,6 @@ public class OrdersV0Api {
      * @param body Request body of &#x60;confirmShipment&#x60;. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -447,7 +446,6 @@ public class OrdersV0Api {
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -647,7 +645,6 @@ public class OrdersV0Api {
      *
      * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -847,7 +844,6 @@ public class OrdersV0Api {
      *
      * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1084,7 +1080,6 @@ public class OrdersV0Api {
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1306,7 +1301,6 @@ public class OrdersV0Api {
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1514,7 +1508,6 @@ public class OrdersV0Api {
      *
      * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2573,7 +2566,6 @@ public class OrdersV0Api {
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2980,7 +2972,6 @@ public class OrdersV0Api {
      * @param body The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      * @param orderId The Amazon order identifier in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

@@ -313,7 +313,6 @@ public class ServiceApi {
      * @param body Add appointment operation input details. (required)
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -573,7 +572,6 @@ public class ServiceApi {
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -810,7 +808,6 @@ public class ServiceApi {
      * @param reservationId Reservation Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1046,7 +1043,6 @@ public class ServiceApi {
      * @param cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1262,7 +1258,6 @@ public class ServiceApi {
      *
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1486,7 +1481,6 @@ public class ServiceApi {
      * @param body Reservation details (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1698,7 +1692,6 @@ public class ServiceApi {
      *
      * @param body Upload document operation input details. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1994,7 +1987,6 @@ public class ServiceApi {
      *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
      *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2294,7 +2286,6 @@ public class ServiceApi {
      *     format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is
      *     as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2569,7 +2560,6 @@ public class ServiceApi {
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param nextPageToken Next page token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2838,7 +2828,6 @@ public class ServiceApi {
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param nextPageToken Next page token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3058,7 +3047,6 @@ public class ServiceApi {
      *
      * @param serviceJobId A service job identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3642,7 +3630,6 @@ public class ServiceApi {
      *     20. (optional)
      * @param storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3981,7 +3968,6 @@ public class ServiceApi {
      * @param serviceJobId An Amazon defined service job identifier. (required)
      * @param appointmentId An existing appointment identifier for the Service Job. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4249,7 +4235,6 @@ public class ServiceApi {
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4505,7 +4490,6 @@ public class ServiceApi {
      * @param reservationId Reservation Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4750,7 +4734,6 @@ public class ServiceApi {
      * @param resourceId Resource (store) Identifier (required)
      * @param marketplaceIds An identifier for the marketplace in which the resource operates. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

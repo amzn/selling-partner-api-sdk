@@ -249,7 +249,6 @@ public class TransferScheduleApi {
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -448,7 +447,6 @@ public class TransferScheduleApi {
      *
      * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -630,7 +628,6 @@ public class TransferScheduleApi {
      *
      * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -847,7 +844,6 @@ public class TransferScheduleApi {
      *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1085,7 +1081,6 @@ public class TransferScheduleApi {
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

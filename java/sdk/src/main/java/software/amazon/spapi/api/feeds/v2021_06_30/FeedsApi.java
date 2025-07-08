@@ -244,7 +244,6 @@ public class FeedsApi {
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -480,7 +479,6 @@ public class FeedsApi {
      *
      * @param body Information required to create the feed. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -708,7 +706,6 @@ public class FeedsApi {
      *
      * @param body Specifies the content type for the createFeedDocument operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -924,7 +921,6 @@ public class FeedsApi {
      * @param feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
      *     (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1131,7 +1127,6 @@ public class FeedsApi {
      *
      * @param feedDocumentId The identifier of the feed document. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1491,7 +1486,6 @@ public class FeedsApi {
      *     operation and include this token as the only parameter. Specifying nextToken with any other parameters will
      *     cause the request to fail. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

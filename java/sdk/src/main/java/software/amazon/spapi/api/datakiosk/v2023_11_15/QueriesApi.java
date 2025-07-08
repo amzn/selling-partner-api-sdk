@@ -237,7 +237,6 @@ public class QueriesApi {
      * @param queryId The identifier for the query. This identifier is unique only in combination with a selling partner
      *     account ID. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -459,7 +458,6 @@ public class QueriesApi {
      *
      * @param body The body of the request. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -674,7 +672,6 @@ public class QueriesApi {
      *
      * @param documentId The identifier for the Data Kiosk document. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -988,7 +985,6 @@ public class QueriesApi {
      *     modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60;
      *     returns the first page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1223,7 +1219,6 @@ public class QueriesApi {
      *
      * @param queryId The query identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

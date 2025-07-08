@@ -227,7 +227,6 @@ public class MerchantFulfillmentApi {
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment to cancel. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -428,7 +427,6 @@ public class MerchantFulfillmentApi {
      *
      * @param body The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -639,7 +637,6 @@ public class MerchantFulfillmentApi {
      *
      * @param body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -853,7 +850,6 @@ public class MerchantFulfillmentApi {
      *
      * @param body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1060,7 +1056,6 @@ public class MerchantFulfillmentApi {
      *
      * @param shipmentId The Amazon-defined shipment identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
