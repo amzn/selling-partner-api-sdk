@@ -342,7 +342,6 @@ public class ProductPricingApi {
      * @param customerType Indicates whether to request pricing information from the point of view of Consumer or
      *     Business buyers. Default is Consumer. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -626,7 +625,6 @@ public class ProductPricingApi {
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -847,7 +845,6 @@ public class ProductPricingApi {
      *
      * @param body The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1143,7 +1140,6 @@ public class ProductPricingApi {
      *     SellerId, which is included with every operation that you submit. (required)
      * @param customerType Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1366,7 +1362,6 @@ public class ProductPricingApi {
      *
      * @param body The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1710,7 +1705,6 @@ public class ProductPricingApi {
      * @param offerType Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers.
      *     Default is B2C. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

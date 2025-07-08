@@ -326,7 +326,6 @@ public class DefaultApi {
      *     date-time must be no later than two minutes before the request was submitted. (optional)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -654,7 +653,6 @@ public class DefaultApi {
      *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1009,7 +1007,6 @@ public class DefaultApi {
      *     parameter. Default: Now minus two minutes. (optional)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1278,7 +1275,6 @@ public class DefaultApi {
      *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
      * @param nextToken A string token returned in the response of your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

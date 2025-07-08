@@ -210,7 +210,6 @@ public class ShipmentApi {
      * @param body The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

@@ -206,7 +206,6 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -377,7 +376,6 @@ public class SupplySourcesApi {
      *
      * @param body A request to create a supply source. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -552,7 +550,6 @@ public class SupplySourcesApi {
      *
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -732,7 +729,6 @@ public class SupplySourcesApi {
      * @param nextPageToken The pagination token to retrieve a specific page of results. (optional)
      * @param pageSize The number of supply sources to return per paginated request. (optional, default to 10.0)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -921,7 +917,6 @@ public class SupplySourcesApi {
      * @param supplySourceId The unique identitier of a supply source. (required)
      * @param body (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1111,7 +1106,6 @@ public class SupplySourcesApi {
      * @param supplySourceId The unique identifier of a supply source. (required)
      * @param body (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

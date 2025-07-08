@@ -216,7 +216,6 @@ public class CustomerInvoicesApi {
      *
      * @param purchaseOrderNumber Purchase order number of the shipment for which to return the invoice. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -541,7 +540,6 @@ public class CustomerInvoicesApi {
      * @param nextToken Used for pagination when there are more orders than the specified result size limit. The token
      *     value is returned in the previous API call. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

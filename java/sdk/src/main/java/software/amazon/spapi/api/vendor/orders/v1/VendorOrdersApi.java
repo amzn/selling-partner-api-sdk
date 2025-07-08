@@ -233,7 +233,6 @@ public class VendorOrdersApi {
      * @param purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes:
      *     8-character alpha-numeric code. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -759,7 +758,6 @@ public class VendorOrdersApi {
      *     purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client
      *     application are returned. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1388,7 +1386,6 @@ public class VendorOrdersApi {
      *     purchase order. If not included in filter, this will return purchase orders for all the buyer&#x27;s
      *     warehouses used for vendor group purchase orders. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1684,7 +1681,6 @@ public class VendorOrdersApi {
      *
      * @param body Submits acknowledgements for one or more purchase orders from a vendor. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

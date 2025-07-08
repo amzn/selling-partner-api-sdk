@@ -447,7 +447,6 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -698,7 +697,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -979,7 +977,6 @@ public class FbaInboundApi {
      * @param shipmentId The shipment to confirm the delivery window option for. (required)
      * @param deliveryWindowOptionId The id of the delivery window option to be confirmed. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1222,7 +1219,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingOptionId Identifier of a packing option. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1467,7 +1463,6 @@ public class FbaInboundApi {
      * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits
      *     and destinations of SKUs. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1725,7 +1720,6 @@ public class FbaInboundApi {
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param contentUpdatePreviewId Identifier of a content update preview. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1972,7 +1966,6 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2187,7 +2180,6 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2400,7 +2392,6 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2632,7 +2623,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to generate delivery window options for. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2849,7 +2839,6 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3076,7 +3065,6 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3340,7 +3328,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3612,7 +3599,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3854,7 +3840,6 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4091,7 +4076,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4307,7 +4291,6 @@ public class FbaInboundApi {
      *
      * @param operationId Identifier of an asynchronous operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4513,7 +4496,6 @@ public class FbaInboundApi {
      *
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -4798,7 +4780,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5044,7 +5025,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5299,7 +5279,6 @@ public class FbaInboundApi {
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param contentUpdatePreviewId Identifier of a content update preview. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5596,7 +5575,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -5861,7 +5839,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6121,7 +6098,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6392,7 +6368,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6685,7 +6660,6 @@ public class FbaInboundApi {
      * @param sortBy Sort by field. (optional)
      * @param sortOrder The sort order. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -6939,7 +6913,6 @@ public class FbaInboundApi {
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7231,7 +7204,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7535,7 +7507,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -7806,7 +7777,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -8074,7 +8044,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -8321,7 +8290,6 @@ public class FbaInboundApi {
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -8596,7 +8564,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -8897,7 +8864,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -9187,7 +9153,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -9484,7 +9449,6 @@ public class FbaInboundApi {
      *     of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the
      *     token value from the query parameter the API returns the first page of the result. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -9805,7 +9769,6 @@ public class FbaInboundApi {
      * @param shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or
      *     &#x60;shipmentId&#x60; must be specified. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -10102,7 +10065,6 @@ public class FbaInboundApi {
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param slotId An identifier to a self-ship appointment slot. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -10348,7 +10310,6 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -10561,7 +10522,6 @@ public class FbaInboundApi {
      *
      * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -10777,7 +10737,6 @@ public class FbaInboundApi {
      * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -11017,7 +10976,6 @@ public class FbaInboundApi {
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -11255,7 +11213,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -11523,7 +11480,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -11784,7 +11740,6 @@ public class FbaInboundApi {
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

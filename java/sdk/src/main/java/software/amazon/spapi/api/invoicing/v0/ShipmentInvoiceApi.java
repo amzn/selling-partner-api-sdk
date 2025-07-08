@@ -214,7 +214,6 @@ public class ShipmentInvoiceApi {
      *
      * @param shipmentId The shipment identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -430,7 +429,6 @@ public class ShipmentInvoiceApi {
      *     notification. For information about subscribing to notifications, see the [Notifications API Use Case
      *     Guide](doc:notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -650,7 +648,6 @@ public class ShipmentInvoiceApi {
      * @param body (required)
      * @param shipmentId The identifier for the shipment. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

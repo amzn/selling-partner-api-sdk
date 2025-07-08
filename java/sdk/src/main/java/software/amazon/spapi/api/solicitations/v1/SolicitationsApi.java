@@ -261,7 +261,6 @@ public class SolicitationsApi {
      * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
      *     Only one marketplace can be specified. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -533,7 +532,6 @@ public class SolicitationsApi {
      * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed.
      *     Only one marketplace can be specified. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

@@ -232,7 +232,6 @@ public class InvoicesApi {
      *
      * @param body Information required to create the export request. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -465,7 +464,6 @@ public class InvoicesApi {
      * @param marketplaceId The marketplace from which you want the invoice. (required)
      * @param invoiceId The invoice identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1040,7 +1038,6 @@ public class InvoicesApi {
      *     ID. (optional)
      * @param sortBy The attribute by which you want to sort the invoices in the response. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1340,7 +1337,6 @@ public class InvoicesApi {
      *
      * @param marketplaceId The marketplace identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1556,7 +1552,6 @@ public class InvoicesApi {
      *
      * @param invoicesDocumentId The export document identifier. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1766,7 +1761,6 @@ public class InvoicesApi {
      *
      * @param exportId The unique identifier for the export. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2094,7 +2088,6 @@ public class InvoicesApi {
      *     default value is the time of the request. (optional)
      * @param status Return exports matching the status specified. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

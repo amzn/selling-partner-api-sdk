@@ -206,7 +206,6 @@ public class VendorInvoiceApi {
      *
      * @param body The request body containing one or more invoices for vendor orders. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

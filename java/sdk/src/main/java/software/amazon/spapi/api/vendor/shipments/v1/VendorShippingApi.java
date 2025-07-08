@@ -889,7 +889,6 @@ public class VendorShippingApi {
      * @param sellerWarehouseCode Get Shipping Details based on vendor warehouse code. This value should be same as
      *     &#x27;sellingParty.partyId&#x27; in the Shipment. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1440,7 +1439,6 @@ public class VendorShippingApi {
      * @param sellerWarehouseCode Get Shipping labels based on vendor warehouse code. This value must be same as the
      *     &#x60;sellingParty.partyId&#x60; in the shipment. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1701,7 +1699,6 @@ public class VendorShippingApi {
      *
      * @param body A request to submit shipment confirmation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1909,7 +1906,6 @@ public class VendorShippingApi {
      *
      * @param body A request to submit shipment request. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

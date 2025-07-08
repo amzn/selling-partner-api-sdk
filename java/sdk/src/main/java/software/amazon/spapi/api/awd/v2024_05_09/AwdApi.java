@@ -244,7 +244,6 @@ public class AwdApi {
      *
      * @param orderId The ID of the inbound order you want to cancel. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -446,7 +445,6 @@ public class AwdApi {
      *
      * @param body Represents the packages you want to inbound. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -645,7 +643,6 @@ public class AwdApi {
      *
      * @param orderId The ID of the inbound order that you want to confirm. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -848,7 +845,6 @@ public class AwdApi {
      *
      * @param body Payload for creating an inbound order. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1050,7 +1046,6 @@ public class AwdApi {
      *
      * @param orderId The ID of the inbound order that you want to retrieve. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1271,7 +1266,6 @@ public class AwdApi {
      * @param skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.
      *     Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1518,7 +1512,6 @@ public class AwdApi {
      * @param formatType The format type of the output file that contains your labels. The default format type is
      *     &#x60;PDF&#x60;. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1892,7 +1885,6 @@ public class AwdApi {
      *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
      *     that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2219,7 +2211,6 @@ public class AwdApi {
      *     that this operation can return empty pages. (optional)
      * @param maxResults Maximum number of results to return. (optional, default to 25)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2460,7 +2451,6 @@ public class AwdApi {
      * @param body Represents an AWD inbound order. (required)
      * @param orderId The ID of the inbound order that you want to update. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2679,7 +2669,6 @@ public class AwdApi {
      * @param body Transportation details for the shipment. (required)
      * @param shipmentId The shipment ID. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

@@ -226,7 +226,6 @@ public class VendorShippingApi {
      *
      * @param purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -555,7 +554,6 @@ public class VendorShippingApi {
      * @param nextToken Used for pagination when there are more packing slips than the specified result size limit. The
      *     token value is returned in the previous API call. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -792,7 +790,6 @@ public class VendorShippingApi {
      *
      * @param body Request body containing the shipment confirmations data. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1015,7 +1012,6 @@ public class VendorShippingApi {
      *
      * @param body Request body containing the shipment status update data. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails

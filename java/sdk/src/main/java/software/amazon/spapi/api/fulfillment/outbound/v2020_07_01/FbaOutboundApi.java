@@ -292,7 +292,6 @@ public class FbaOutboundApi {
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -506,7 +505,6 @@ public class FbaOutboundApi {
      *
      * @param body CreateFulfillmentOrderRequest parameter (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -745,7 +743,6 @@ public class FbaOutboundApi {
      *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -959,7 +956,6 @@ public class FbaOutboundApi {
      *
      * @param body GetDeliveryOffersRequest parameter (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1246,7 +1242,6 @@ public class FbaOutboundApi {
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
      *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1527,7 +1522,6 @@ public class FbaOutboundApi {
      * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
      *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1755,7 +1749,6 @@ public class FbaOutboundApi {
      *
      * @param marketplaceId The marketplace for which to return the list of features. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1974,7 +1967,6 @@ public class FbaOutboundApi {
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2187,7 +2179,6 @@ public class FbaOutboundApi {
      *
      * @param body GetFulfillmentPreviewRequest parameter (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2409,7 +2400,6 @@ public class FbaOutboundApi {
      * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
      *     operation. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2646,7 +2636,6 @@ public class FbaOutboundApi {
      *     fulfillment order. (optional)
      * @param nextToken A string token returned in the response to your previous request. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -2941,7 +2930,6 @@ public class FbaOutboundApi {
      * @param language The language that the &#x60;TranslatedDescription&#x60; property of the
      *     &#x60;ReasonCodeDetails&#x60; response object should be translated into. (optional)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3189,7 +3177,6 @@ public class FbaOutboundApi {
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
@@ -3432,7 +3419,6 @@ public class FbaOutboundApi {
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
