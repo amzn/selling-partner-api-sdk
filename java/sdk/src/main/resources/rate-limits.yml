@@ -178,6 +178,11 @@ DefaultApi-listFinancialEvents:
   - 1
   - 30
   - 2
+# Finances V20204-06-19 API
+DefaultApi-listTransactions:
+  - 1
+  - 10
+  - 2
 # Transfers API
 DefaultApi-initiatePayout:
   - 1
