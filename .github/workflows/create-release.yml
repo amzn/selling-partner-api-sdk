@@ -12,50 +12,50 @@ env:
   SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
 jobs:
-#  release_python:
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: write
-#    env:
-#      TWINE_USERNAME: ${{ secrets.PYTHON_PYPI_USERNAME }}
-#      TWINE_PASSWORD: ${{ secrets.PYTHON_PYPI_PASSWORD }}
-#    steps:
-#      - uses: actions/checkout@v4
-#        with:
-#          token: ${{ secrets.MAFGE_PAT }}
-#      - uses: actions/setup-python@v5
-#        with:
-#          python-version: '3.9'
-#      - name: Copy required files and install dependencies
-#        working-directory: python/sdk
-#        run: |
-#          cp ../dev-toolkit/distribution/** .
-#          cp ../dev-toolkit/distribution/.bumpversion.cfg .
-#          cp ../../LICENSE .
-#          cp ../README.md .
-#          pip install -r build-requirements.txt
-#      - name: Build SP-API Python SDK
-#        working-directory: python/sdk
-#        run: |
-#          bump2version --new-version ${{ github.event.inputs.newVersionNumber }} --allow-dirty --no-tag patch
-#          python -m build
-#      - name: Copy back and commit version files
-#        run: |
-#          # Copy the updated files back to dev-toolkit/distribution
-#          cp python/sdk/.bumpversion.cfg python/dev-toolkit/distribution/
-#          cp python/sdk/pyproject.toml python/dev-toolkit/distribution/
-#
-#          # Set identity
-#          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-#          git config --local user.name "github-actions[bot]"
-#
-#          # Persist new version
-#          git add python/dev-toolkit/distribution/.bumpversion.cfg python/dev-toolkit/distribution/pyproject.toml
-#          git commit -m "chore: bump python version to ${{ github.event.inputs.newVersionNumber }}"
-#          git push
-#      - name: Publish to PyPI
-#        working-directory: python/sdk
-#        run: python -m twine upload dist/*
+  release_python:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TWINE_USERNAME: ${{ secrets.PYTHON_PYPI_USERNAME }}
+      TWINE_PASSWORD: ${{ secrets.PYTHON_PYPI_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MAFGE_PAT }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Copy required files and install dependencies
+        working-directory: python/sdk
+        run: |
+          cp ../dev-toolkit/distribution/** .
+          cp ../dev-toolkit/distribution/.bumpversion.cfg .
+          cp ../../LICENSE .
+          cp ../README.md .
+          pip install -r build-requirements.txt
+      - name: Build SP-API Python SDK
+        working-directory: python/sdk
+        run: |
+          bump2version --new-version ${{ github.event.inputs.newVersionNumber }} --allow-dirty --no-tag patch
+          python -m build
+      - name: Copy back and commit version files
+        run: |
+          # Copy the updated files back to dev-toolkit/distribution
+          cp python/sdk/.bumpversion.cfg python/dev-toolkit/distribution/
+          cp python/sdk/pyproject.toml python/dev-toolkit/distribution/
+
+          # Set identity
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Persist new version
+          git add python/dev-toolkit/distribution/.bumpversion.cfg python/dev-toolkit/distribution/pyproject.toml
+          git commit -m "chore: bump python version to ${{ github.event.inputs.newVersionNumber }}"
+          git push
+      - name: Publish to PyPI
+        working-directory: python/sdk
+        run: python -m twine upload dist/*
 
   release_java:
     runs-on: ubuntu-latest
@@ -78,54 +78,54 @@ jobs:
         working-directory: java/sdk
         run: ./gradlew publish
 
-#  release_javascript:
-#    runs-on: ubuntu-latest
-#    env:
-#      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_AUTH_TOKEN }}
-#
-#    steps:
-#      - uses: actions/checkout@v4
-#      - uses: actions/setup-node@v4
-#        with:
-#          node-version: '21'
-#          registry-url: 'https://registry.npmjs.org'
-#      - name: Set version in package.json
-#        working-directory: javascript/sdk
-#        run: |
-#          npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
-#          echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
-#      - name: Copy README.md file
-#        working-directory: javascript
-#        run: |
-#          cp -R README.md sdk/
-#      - name: Install dependencies
-#        working-directory: javascript/sdk
-#        run: npm install
-#      - name: Publish to npm
-#        working-directory: javascript/sdk
-#        run: npm publish
-#
-#  release_php:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v4
-#      - name: Run GitHub File Sync
-#        id: sync
-#        uses: BetaHuhn/repo-file-sync-action@v1
-#        with:
-#          GH_PAT: ${{ secrets.TOMLIKED_PAT }}
-#          PR_LABELS: false
-#      - name: Enable auto merge for PR
-#        run: |
-#          URL="$(echo '${{ steps.sync.outputs.pull_request_urls }}' | jq -r first)"
-#          echo "Merging PR: $URL"
-#          gh pr merge --auto --merge "$URL"
-#        env:
-#          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+  release_javascript:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_AUTH_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Set version in package.json
+        working-directory: javascript/sdk
+        run: |
+          npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
+          echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
+      - name: Copy README.md file
+        working-directory: javascript
+        run: |
+          cp -R README.md sdk/
+      - name: Install dependencies
+        working-directory: javascript/sdk
+        run: npm install
+      - name: Publish to npm
+        working-directory: javascript/sdk
+        run: npm publish
+
+  release_php:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run GitHub File Sync
+        id: sync
+        uses: BetaHuhn/repo-file-sync-action@v1
+        with:
+          GH_PAT: ${{ secrets.TOMLIKED_PAT }}
+          PR_LABELS: false
+      - name: Enable auto merge for PR
+        run: |
+          URL="$(echo '${{ steps.sync.outputs.pull_request_urls }}' | jq -r first)"
+          echo "Merging PR: $URL"
+          gh pr merge --auto --merge "$URL"
+        env:
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
   tag_and_release:
-    needs: [release_java]
+    needs: [release_java, release_php, release_javascript, release_python]
     runs-on: ubuntu-latest
 
     steps:
@@ -146,7 +146,7 @@ jobs:
           tag_name: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release_php_repo:
-    needs: [release_java]
+    needs: [release_java, release_php, release_javascript, release_python]
     runs-on: ubuntu-latest
 
     steps:
