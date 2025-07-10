@@ -62,8 +62,8 @@ jobs:
         working-directory: python/sdk
         run: python -m twine upload dist/*
 
-    tag_and_release:
-      needs: [ release_python ]
-      uses: ./.github/workflows/create-tag-release.yml
-      with:
-        newVersionNumber: "python-${{ github.event.inputs.newVersionNumber }}"
+  tag_and_release:
+    needs: [ release_python ]
+    uses: ./.github/workflows/create-tag-release.yml
+    with:
+      newVersionNumber: "python-${{ github.event.inputs.newVersionNumber }}"
