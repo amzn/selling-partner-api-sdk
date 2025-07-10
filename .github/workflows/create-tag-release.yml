@@ -1,0 +1,29 @@
+name: Create Tag and GitHub Release
+
+on:
+  workflow_call:
+    inputs:
+      newVersionNumber:
+        type: string
+        required: true
+
+jobs:
+  tag_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
+              sha: context.sha
+            })
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.newVersionNumber }}

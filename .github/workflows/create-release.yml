@@ -86,24 +86,9 @@ jobs:
 
   tag_and_release:
     needs: [release_java, release_php, release_javascript, release_python]
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Create tag
-        uses: actions/github-script@v5
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
-              sha: context.sha
-            })
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.event.inputs.newVersionNumber }}
+    uses: ./.github/workflows/create-tag-release.yml
+    with:
+      newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release_php_repo:
     needs: [release_java, release_php, release_javascript, release_python]
