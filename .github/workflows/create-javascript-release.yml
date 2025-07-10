@@ -1,0 +1,48 @@
+name: Create JavaScript Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+  workflow_call:
+    inputs:
+      newVersionNumber:
+        type: string
+        required: true
+
+jobs:
+  release_javascript:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_AUTH_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Set version in package.json
+        working-directory: javascript/sdk
+        run: |
+          npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
+          echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
+      - name: Copy README.md file
+        working-directory: javascript
+        run: |
+          cp -R README.md sdk/
+      - name: Install dependencies
+        working-directory: javascript/sdk
+        run: npm install
+      - name: Publish to npm
+        working-directory: javascript/sdk
+        run: npm publish
+
+  tag_and_release:
+    needs: [ release_javascript ]
+    uses: ./.github/workflows/create-tag-release.yml
+    with:
+      tagName: "javascript-${{ github.event.inputs.newVersionNumber }}"

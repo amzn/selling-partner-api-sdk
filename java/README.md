@@ -1,7 +1,7 @@
 ## Java SDK for Selling Partner API
 [![Maven](https://img.shields.io/maven-central/v/software.amazon.spapi/spapi-sdk.svg?label=Maven)](https://central.sonatype.com/artifact/software.amazon.spapi/spapi-sdk)
 
-[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=OmYTAA80V_4)
+[![Video Thumbnail](https://github.com/amzn/selling-partner-api-sdk/blob/main/java/docs/video-thumbnail.png?raw=true)](https://www.youtube.com/watch?v=OmYTAA80V_4)
 
 *Click on the image to watch the video.*
 
