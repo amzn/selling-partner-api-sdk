@@ -1,7 +1,7 @@
 ## Python SDK for Selling Partner API
 [![PyPI version](https://img.shields.io/pypi/v/amzn-sp-api?label=PyPI)](https://pypi.org/project/amzn-sp-api/)
 
-[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=IEWTnO2L620&pp=0gcJCbEJAYcqIYzv)
+[![Video Thumbnail](https://github.com/amzn/selling-partner-api-sdk/blob/main/python/docs/video-thumbnail.png?raw=true)](https://www.youtube.com/watch?v=IEWTnO2L620&pp=0gcJCbEJAYcqIYzv)
 
 *Click on the image to watch the video.*
 

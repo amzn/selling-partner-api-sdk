@@ -3,7 +3,7 @@ name: Create Tag and GitHub Release
 on:
   workflow_call:
     inputs:
-      newVersionNumber:
+      tagName:
         type: string
         required: true
 
@@ -20,10 +20,10 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
+              ref: "refs/tags/${{ inputs.tagName }}",
               sha: context.sha
             })
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.event.inputs.newVersionNumber }}
+          tag_name: ${{ inputs.tagName }}

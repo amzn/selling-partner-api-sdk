@@ -1,0 +1,70 @@
+name: Create PHP Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+  workflow_call:
+    inputs:
+      newVersionNumber:
+        type: string
+        required: true
+
+jobs:
+  release_php:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run GitHub File Sync
+        id: sync
+        uses: BetaHuhn/repo-file-sync-action@v1
+        with:
+          GH_PAT: ${{ secrets.TOMLIKED_PAT }}
+          PR_LABELS: false
+      - name: Enable auto merge for PR
+        run: |
+          URL="$(echo '${{ steps.sync.outputs.pull_request_urls }}' | jq -r first)"
+          echo "Merging PR: $URL"
+          gh pr merge --auto --merge "$URL"
+        env:
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+
+  tag_and_release:
+    needs: [ release_php ]
+    uses: ./.github/workflows/create-tag-release.yml
+    with:
+      tagName: "php-${{ github.event.inputs.newVersionNumber }}"
+
+  tag_and_release_php_repo:
+    needs: [release_php]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: amzn/selling-partner-api-php-release
+          token: ${{ secrets.TOMLIKED_PAT }}
+      - name: Get SHA
+        id: sha
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.TOMLIKED_PAT }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: 'selling-partner-api-php-release',
+              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
+              sha: "${{ steps.sha.outputs.sha }}"
+            })
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.TOMLIKED_PAT }}
+          repository: amzn/selling-partner-api-php-release
+          tag_name: ${{ github.event.inputs.newVersionNumber }}
