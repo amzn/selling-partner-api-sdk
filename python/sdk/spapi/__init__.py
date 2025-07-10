@@ -27,7 +27,7 @@ from spapi.api.fulfillment_inbound_v2024_03_20.fba_inbound_api import FbaInbound
 from spapi.api.fulfillment_outbound_v2020_07_01.fba_outbound_api import FbaOutboundApi
 from spapi.api.invoices_v2024_06_19.invoices_api import InvoicesApi
 from spapi.api.listings_items_v2021_08_01.listings_api import ListingsApi
-from spapi.api.listings_restrictions_v2021_08_01.listings_api import ListingsApi
+from spapi.api.listings_restrictions_v2021_08_01.listings_restrictions_api import ListingsRestrictionsApi
 from spapi.api.merchant_fulfillment_v0.merchant_fulfillment_api import MerchantFulfillmentApi
 from spapi.api.messaging_v1.messaging_api import MessagingApi
 from spapi.api.notifications_v1.notifications_api import NotificationsApi
