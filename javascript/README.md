@@ -1,7 +1,7 @@
 ## JavaScript SDK for Selling Partner API
 [![npm version](https://badge.fury.io/js/@amazon-sp-api-release%2Famazon-sp-api-sdk-js.svg)](https://www.npmjs.com/package/@amazon-sp-api-release/amazon-sp-api-sdk-js)
 
-[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=5pRZXYhjNIQ)
+[![Video Thumbnail](https://github.com/amzn/selling-partner-api-sdk/blob/main/javascript/docs/video-thumbnail.png?raw=true)](https://www.youtube.com/watch?v=5pRZXYhjNIQ)
 
 *Click on the image to watch the video.*
 
@@ -63,7 +63,7 @@ async function getMarketplaceParticipations() {
   try {
       //Configure Sellers ApiClient
       const sellersApiClient = new SellersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
-      sellersApiClient.enableAutoRetrievalAccessToken('<YOUR_CLIENT_ID>','<YOUR_CLIENT_SECRET>', '<YOUR_REFRESH_TOKEN>' null);
+      sellersApiClient.enableAutoRetrievalAccessToken('<YOUR_CLIENT_ID>','<YOUR_CLIENT_SECRET>', '<YOUR_REFRESH_TOKEN>', null);
       const sellersApi = new SellersSpApi.SellersApi(sellersApiClient);
       
       //Call GetMarkerplaceParticipations API

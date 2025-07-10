@@ -8,9 +8,6 @@ on:
         description: New version number
         required: true
 
-env:
-  SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
-
 jobs:
   release_python:
     uses: ./.github/workflows/create-python-release.yml
@@ -18,104 +15,22 @@ jobs:
       newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   release_java:
-    runs-on: ubuntu-latest
-    env:
-      ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.JAVA_OSSRH_USER_NAME }}
-      ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.JAVA_OSSRH_PASSWORD }}
-      ORG_GRADLE_PROJECT_signingKey: ${{ secrets.JAVA_SIGNING_KEY }}
-      ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'corretto'
-          cache: gradle
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-      - name: Publish Java SDK to Maven Central
-        working-directory: java/sdk
-        run: ./gradlew publish
+    uses: ./.github/workflows/create-java-release.yml
+    with:
+      newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   release_javascript:
-    runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_AUTH_TOKEN }}
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '21'
-          registry-url: 'https://registry.npmjs.org'
-      - name: Set version in package.json
-        working-directory: javascript/sdk
-        run: |
-          npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
-          echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
-      - name: Copy README.md file
-        working-directory: javascript
-        run: |
-          cp -R README.md sdk/
-      - name: Install dependencies
-        working-directory: javascript/sdk
-        run: npm install
-      - name: Publish to npm
-        working-directory: javascript/sdk
-        run: npm publish
+    uses: ./.github/workflows/create-javascript-release.yml
+    with:
+      newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   release_php:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run GitHub File Sync
-        id: sync
-        uses: BetaHuhn/repo-file-sync-action@v1
-        with:
-          GH_PAT: ${{ secrets.TOMLIKED_PAT }}
-          PR_LABELS: false
-      - name: Enable auto merge for PR
-        run: |
-          URL="$(echo '${{ steps.sync.outputs.pull_request_urls }}' | jq -r first)"
-          echo "Merging PR: $URL"
-          gh pr merge --auto --merge "$URL"
-        env:
-          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+    uses: ./.github/workflows/create-php-release.yml
+    with:
+      newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release:
     needs: [release_java, release_php, release_javascript, release_python]
     uses: ./.github/workflows/create-tag-release.yml
     with:
-      newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
-
-  tag_and_release_php_repo:
-    needs: [release_java, release_php, release_javascript, release_python]
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: amzn/selling-partner-api-php-release
-          token: ${{ secrets.TOMLIKED_PAT }}
-      - name: Get SHA
-        id: sha
-        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-      - name: Create tag
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.TOMLIKED_PAT }}
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: 'selling-partner-api-php-release',
-              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
-              sha: "${{ steps.sha.outputs.sha }}"
-            })
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.TOMLIKED_PAT }}
-          repository: amzn/selling-partner-api-php-release
-          tag_name: ${{ github.event.inputs.newVersionNumber }}
+      tagName: ${{ github.event.inputs.newVersionNumber }}

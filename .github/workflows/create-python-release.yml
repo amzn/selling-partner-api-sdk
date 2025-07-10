@@ -13,9 +13,6 @@ on:
         type: string
         required: true
 
-env:
-  SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
-
 jobs:
   release_python:
     runs-on: ubuntu-latest
@@ -66,4 +63,4 @@ jobs:
     needs: [ release_python ]
     uses: ./.github/workflows/create-tag-release.yml
     with:
-      newVersionNumber: "python-${{ github.event.inputs.newVersionNumber }}"
+      tagName: "python-${{ github.event.inputs.newVersionNumber }}"
