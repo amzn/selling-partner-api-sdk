@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// Initializes a new instance of the <see cref="Item" /> class.
         /// </summary>
         /// <param name="asin">The unique identifier of an item in the Amazon catalog. (required).</param>
-        /// <param name="attributes">A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference)..</param>
+        /// <param name="attributes">A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01)..</param>
         /// <param name="classifications">An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;..</param>
         /// <param name="dimensions">An array of dimensions that are associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;..</param>
         /// <param name="identifiers">Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers..</param>
@@ -78,9 +78,9 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         public string Asin { get; set; }
 
         /// <summary>
-        /// A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference).
+        /// A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).
         /// </summary>
-        /// <value>A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference).</value>
+        /// <value>A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).</value>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
         public Dictionary<string, Object> Attributes { get; set; }
 
