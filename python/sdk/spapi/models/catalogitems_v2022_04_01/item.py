@@ -131,7 +131,7 @@ class Item(object):
     def attributes(self):
         """Gets the attributes of this Item.  # noqa: E501
 
-        A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference).  # noqa: E501
+        A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).  # noqa: E501
 
         :return: The attributes of this Item.  # noqa: E501
         :rtype: Dict[str, object]
@@ -142,7 +142,7 @@ class Item(object):
     def attributes(self, attributes):
         """Sets the attributes of this Item.
 
-        A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference).  # noqa: E501
+        A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).  # noqa: E501
 
         :param attributes: The attributes of this Item.  # noqa: E501
         :type: Dict[str, object]
