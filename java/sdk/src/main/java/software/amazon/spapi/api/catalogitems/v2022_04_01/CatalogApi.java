@@ -137,7 +137,7 @@ public class CatalogApi {
 
     /**
      * Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per second) | Burst | |
-     * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
      * limits for the operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
@@ -169,7 +169,7 @@ public class CatalogApi {
 
     /**
      * Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per second) | Burst | |
-     * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
      * limits for the operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
@@ -194,7 +194,7 @@ public class CatalogApi {
 
     /**
      * Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per second) | Burst | |
-     * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
      * limits for the operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
@@ -235,7 +235,7 @@ public class CatalogApi {
 
     /**
      * Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per second) | Burst | |
-     * ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
      * limits for the operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
@@ -260,7 +260,7 @@ public class CatalogApi {
 
     /**
      * (asynchronously) Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
      * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput might have higher
      * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
@@ -289,7 +289,7 @@ public class CatalogApi {
     }
     /**
      * (asynchronously) Retrieves details for an item in the Amazon catalog. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 5 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
      * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
      * values for this operation. Selling partners whose business demands require higher throughput might have higher
      * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
@@ -478,7 +478,7 @@ public class CatalogApi {
 
     /**
      * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by
-     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
      * available. The preceding table contains the default rate and burst values for this operation. Selling partners
      * whose business demands require higher throughput might have higher rate and burst values than those shown here.
@@ -549,7 +549,7 @@ public class CatalogApi {
 
     /**
      * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by
-     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
      * available. The preceding table contains the default rate and burst values for this operation. Selling partners
      * whose business demands require higher throughput might have higher rate and burst values than those shown here.
@@ -618,7 +618,7 @@ public class CatalogApi {
 
     /**
      * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by
-     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
      * available. The preceding table contains the default rate and burst values for this operation. Selling partners
      * whose business demands require higher throughput might have higher rate and burst values than those shown here.
@@ -699,7 +699,7 @@ public class CatalogApi {
 
     /**
      * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by
-     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
      * available. The preceding table contains the default rate and burst values for this operation. Selling partners
      * whose business demands require higher throughput might have higher rate and burst values than those shown here.
@@ -767,7 +767,7 @@ public class CatalogApi {
 
     /**
      * (asynchronously) Search for a list of Amazon catalog items and item-related information. You can search by
-     * identifier or by keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * identifier or by keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
      * available. The preceding table contains the default rate and burst values for this operation. Selling partners
      * whose business demands require higher throughput might have higher rate and burst values than those shown here.
@@ -837,7 +837,7 @@ public class CatalogApi {
     }
     /**
      * (asynchronously) Search for a list of Amazon catalog items and item-related information. You can search by
-     * identifier or by keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 | The
+     * identifier or by keywords. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
      * available. The preceding table contains the default rate and burst values for this operation. Selling partners
      * whose business demands require higher throughput might have higher rate and burst values than those shown here.
